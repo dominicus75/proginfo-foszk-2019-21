@@ -109,8 +109,8 @@ többfelhasználós, hálózatos környezetben, adatbázisokhoz való hozzáfér
 rendszeres és a felhasználói folyamatok zavartalan működést biztosító szoftveralkalmazás.
 
 A **[relációs adatbázis-kezelő rendszer (RDBMS)](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer)**
-olyan adatbázis-kezelő rendszer, amelynek logikai adatbázisát szoftverkomponensei
-kizárólag a relációs adatmodellek elvén épülnek fel, illetve kérdezhetőek le.
+olyan adatbázis-kezelő rendszer, amelynek logikai adatbázisa kizárólag a relációs
+adatmodell elvén épül fel, illetve kérdezhető le.
 
 ### 1.3 Adattípusok
 
