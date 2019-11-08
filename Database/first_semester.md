@@ -1,13 +1,11 @@
 # 2019/20 I. félév szóbeli tételek
 
 
-## 1. tétel (Jegyzet<sup id="1">[[1]](#note1)</sup>: 1., 2., 2.1. fejezet, 5-9. oldal)
+## 1. tétel
 
-**Az adatbázis-kezelés alapfogalmai. DBMS, adattípusok. Adatmodellezés. Az adatmodellek
-típusai. Az EK-modell alapelemei (egyed, egyedtípus, egyedpéldány, tulajdonság,
-kapcsolat).**
+*(Jegyzet<sup id="1">[[1]](#note1)</sup>: 1., 2., 2.1. fejezet, 5-9. oldal)*
 
-### 1.1 Alapfogalmak
+### 1.1 Az adatbázis-kezelés alapfogalmai
 
 **Adat:** tényeket, eseményeket rögzítő elemi, objektív (értelmezhető, nyers)
 ismeret, adatbázisban tárolt érték.
@@ -26,17 +24,19 @@ a nézetdefiníciókat és a leképezéseket kell megváltoztatni. Miután a kon
 séma keresztülment a logikai újraszervezésen, az alkalmazói programoknak, amelyek
 a külső sémaelemekre hivatkoztak, ugyanúgy kell működniük, mint azelőtt.
 
-**[Adatbázis](https://hu.wikipedia.org/wiki/Adatb%C3%A1zis):** azonos minőségű
-(jellemzőjű), többnyire strukturált adatok összessége, amelyet egy azok tárolására,
-lekérdezésére és szerkesztésére alkalmas szoftvereszköz kezel. Célja adatok
-megbízható, hosszú távon tartós (perzisztens) tárolása, és viszonylag gyors
-visszakereshetőségének biztosítása.
+**[Adatbázis](https://hu.wikipedia.org/wiki/Adatb%C3%A1zis):** véges számú
+egyedelőfordulások, azok egyenként is véges számú tulajdonságértékének és
+kapcsolatelőfordulásának az adatmodell szerint szervezett együttese. Másképp:
+azonos minőségű (jellemzőjű), többnyire strukturált adatok összessége, amelyet
+egy azok tárolására, lekérdezésére és szerkesztésére alkalmas szoftvereszköz kezel.
+Célja adatok megbízható, hosszú távon tartós (perzisztens) tárolása, és viszonylag
+gyors visszakereshetőségének biztosítása.
 
 **Adatbázis séma:** az adatbázis szerkezete, amit tervezéskor, egyszeri alkalommal
 hozunk létre. Különböző adatmodellek segítségével megadja, hogy az adatbázisban
 milyen egyedhalmazok vannak, ezek milyen tulajdonsághalmazokkal és kapcsolatokkal
 rendelkeznek. Tömören: *az adatbázist felépítő relációk sémáit és a köztük fennálló
-kapcsolatokat tartalmazó halmaz*.
+kapcsolatokat tartalmazó leírás*.
 
 **Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
 (attribútumai) segítségével lehet leírni, azonosítani. Másképpen: *önálló lényeggel
@@ -74,6 +74,13 @@ Tömören: *„Az adat az, amit tárolunk, az információ pedig, amit kinyerün
 Az információ olyan adat, amely a feldolgozás révén értelmet nyer.”*<sup id="2">
 [[2]](#note2)</sup>
 
+**Kapcsolattípus:** az egyedtípusok közötti viszonyok absztrakt osztályai, melyek
+leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. **Nem
+összekeverendő a kapcsolat típusával (2. tétel, 3. pont)!**
+
+**Kapcsolat előfordulás:** egy absztrakt kapcsolattípus konkrét előfordulása, két
+egyedpéldány közötti tényleges kapcsolat.
+
 **Rekord:** bejegyzés (sor), az adatbázis alapvető adategysége, a tábla által
 ábrázolt entitás (egyedtípus) egy konkrét példányát írja le. Pontosan egy
 értéket tartalmaz a tábla minden mezőjéből.
@@ -110,92 +117,173 @@ rendszeres és a felhasználói folyamatok zavartalan működést biztosító sz
 
 A **[relációs adatbázis-kezelő rendszer (RDBMS)](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer)**
 olyan adatbázis-kezelő rendszer, amelynek logikai adatbázisa kizárólag a relációs
-adatmodell elvén épül fel, illetve kérdezhető le.
+adatmodell elve alapján épül fel, illetve kérdezhető le.
 
 ### 1.3 Adattípusok
 
 ### 1.4 Adatmodellezés
 
-Az **[Adatmodell](https://hu.wikipedia.org/wiki/Adatmodell)** a valóság objektumait
+Az **[Adatmodell](https://hu.wikipedia.org/wiki/Adatmodell)** az adatbázis
+általános struktúrája, amely véges számú egyedtípusnak, azok egyenként is véges számú
+tulajdonság-, és kapcsolattípusának szervezett együttese. A valóság objektumait
 (egyedeit), ezek tulajdonságait és a köztük lévő kapcsolatokat, illetve a logikai
-adatbázis szerkezeti leírását, nevezetesen azonos jellemzőjű információk
-logikai modellezését és a rajtuk végezhető logikai műveletek meghatározását
-tartalmazza.
+adatbázis szerkezeti leírását, nevezetesen azonos jellemzőjű információk logikai
+modellezését és a rajtuk végezhető logikai műveletek meghatározását tartalmazza.
 
 
 ### 1.5 Adatmodellek típusai
 
 ### 1.6 Az E-K (E-R) modell alapelemei
 
-## 2. tétel (Jegyzet: 2.1. fejezet, 10-14. oldal)
+## 2. tétel
 
-**Az EK-modell részletes bemutatása. Egyedek, kapcsolatok, attribútumok. Kapcsolatok
-osztályozása. Speciális kapcsolat-típusok.**
+*(Jegyzet: 2.1. fejezet, 10-14. oldal)*
 
-## 3. tétel (Jegyzet: 3.1., 3.2., 3.3. fejezet, 15-20. oldal)
+### 2.1 Az Egyed-Kapcsolat (Entity-Relation) modell
 
-**A relációs adatmodell. Relációséma, reláció. Relációk tulajdonságai. Kulcsok.
-Indexek, tulajdonságaik.**
+### 2.2 Egyedek, kapcsolatok, attribútumok
 
-## 4. tétel (Jegyzet: 3.4. fejezet, 21-27. oldal)
+### 2.3 Kapcsolatok osztályozása (a kapcsolatok típusai)
 
-**Relációs adatbázisséma elkészítése EK-diagramból. Egyedek, gyenge egyedek,
-kapcsolatok, specializáló kapcsolatok, összetett és többértékű attribútumok leképezése.**
+### 2.4 Speciális kapcsolat típusok
 
-## 5. tétel (Jegyzet: 4.1., 4.2., 4.4. fejezet, 28-30. és 33. oldal)
+## 3. tétel
 
-**Relációalgebra. Halmazműveletek, redukciós, aggregáló műveletek. Multihalmazok.**
+*(Jegyzet: 3.1., 3.2., 3.3. fejezet, 15-20. oldal)*
 
-## 6. tétel (Jegyzet: 4.3. fejezet, 30-33. oldal)
+### 3.1 A relációs adatmodell
 
-**Relációalgebra. Kombinációs műveletek. Az összekapcsolás lehetőségei.**
+### 3.2 Reláció fogalma és tulajdonságai
 
-## 7. tétel (Jegyzet: 5.1., 5.2. fejezet, 34-38. oldal)
+### 3.3 Relációséma
 
-**Relációs adatbázis normalizálása – elméleti alapok. Redundancia, anomáliák
-redundáns adattárolás esetén. Funkcionális függőség fogalma. Attribútumhalmaz
-lezártja függéshalmaz szerint.**
+### 3.4 Kulcsok, indexek és tulajdonságaik
 
-## 8. tétel (Jegyzet: 5.3. fejezet, 38-40. oldal)
+## 4. tétel
 
-**Relációs adatbázis normalizálása – elméleti alapok. Tábla dekompozíciója. Hűséges ill.
-függőségőrző felbontás. Heath tétele.**
+*(Jegyzet: 3.4. fejezet, 21-27. oldal)*
+
+### 4.1 Relációs adatbázisséma elkészítése E-K diagram alapján
+
+### 4.2 Egyedek, gyenge egyedek, kapcsolatok, specializáló kapcsolatok, összetett és többértékű attribútumok leképezése
 
 
-## 9. tétel (Jegyzet: 41-45. oldal (5.4. fejezet))
 
-**Relációs adatbázis normalizálása – eljárások. Az 1NF, 2NF és 3NF követelményei.
-Teljes függés fogalma. Harmadik normálformára alakítás. A Boyce-Codd normálforma
-fogalma.**
+## 5. tétel
+
+*(Jegyzet: 4.1., 4.2., 4.4. fejezet, 28-30. és 33. oldal)*
+
+### 5.1 Relációalgebra fogalma
+
+### 5.2 Halmazműveletek
+
+### 5.3 Multihalmazok
+
+## 6. tétel
+
+*(Jegyzet: 4.3. fejezet, 30-33. oldal)*
+
+### 6.1 Relációalgebra fogalma
+
+### 6.2 Kombinációs műveletek
+
+### 6.3 Az összekapcsolás lehetőségei
+
+## 7. tétel
+
+*(Jegyzet: 5.1., 5.2. fejezet, 34-38. oldal)*
+
+### 7.1 Relációs adatbázis normalizálása – elméleti alapok
+
+### 7.2 Redundancia, anomáliák redundáns adattárolás esetén
+
+### 7.3 Funkcionális függőség fogalma
+
+### 7.4 Attribútumhalmaz lezártja függéshalmaz szerint
+
+## 8. tétel
+
+*(Jegyzet: 5.3. fejezet, 38-40. oldal)*
+
+### 8.1 Relációs adatbázis normalizálása – elméleti alapok
+
+### 8.2 Tábla dekompozíciója
+
+### 8.3 Hűséges ill. függőségőrző felbontás
+
+### 8.4 Heath tétele
 
 
-## 10. tétel (Jegyzet: 6.1., 6.2., 6.3. fejezet, 48-53. oldal)
+## 9. tétel
 
-**Az SQL nyelv. Általános jellemzők, szintaxis, speciális logikai kifejezések. DDL-utasítások.
-Relációsémák, indexek. Hivatkozástípusok relációsémák definiálásakor.**
+*(Jegyzet: 5.4. fejezet, 41-45. oldal)*
 
+### 9.1 Relációs adatbázis normalizálása – eljárások
 
-## 11. tétel (Jegyzet: 6.4., 6.7. fejezet, 53-54., 61-62. oldal)
+### 9.2 Az 1NF, 2NF és 3NF követelményei
 
-**Az SQL nyelv. Nézettábla kialakítása és szerepe. Adattábla aktualizálása
-(DML-utasítások).**
+### 9.3 Teljes függés fogalma
 
+### 9.4 Harmadik normálformára alakítás
 
-## 12. tétel (Jegyzet: 6.5., 6-6. fejezet, 54-60. oldal)
-
-**Az SQL nyelv. Lekérdezés relációs adattáblákból, a relációalgebrai műveletek
-megvalósítása. Összesítő függvények alkalmazása. Alkérdések az SQL nyelvben.**
+### 9.5 A Boyce-Codd normálforma fogalma
 
 
-## 13. tétel (Jegyzet: 63-66. oldal (7.1., 7.2., 7.3., 7.4., 7.5. fejezet))
+## 10. tétel
 
-**Az SQL megszorításai, triggerei. Domain-ek, attribútumokra, rekordokra vonatkozó megszorítások.
-Önálló megszorítások. Triggerek.**
+*(Jegyzet: 6.1., 6.2., 6.3. fejezet, 48-53. oldal)*
+
+### 10.1 Az SQL nyelv általános jellemzői
+
+### 10.2 Az SQL nyelv szintaxisa, speciális logikai kifejezései
+
+### 10.3 Adatdefiníciós utasítások (DDL)
+
+### 10.4 Relációsémák, indexek
+
+### 10.5 Hivatkozástípusok relációsémák definiálásakor
+
+## 11. tétel
+
+*(Jegyzet: 6.4., 6.7. fejezet, 53-54., 61-62. oldal)*
+
+### 11.1 Az SQL nyelv általános jellemzői
+
+### 11.2 Nézettábla kialakítása és szerepe
+
+### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
 
 
-## 14. tétel (Előadás + összeállított források)
+## 12. tétel
 
-**Adatbázis-kapcsolati rétegek feladata, típusai (ODBC, OLE DB, DAO).**
+*(Jegyzet: 6.5., 6-6. fejezet, 54-60. oldal)*
+
+### 12.1 Az SQL nyelv általános jellemzői
+
+### 12.2 Lekérdezés relációs adattáblákból, a relációalgebrai műveletek megvalósítása
+
+### 12.3 Összesítő függvények alkalmazása
+
+### 12.4 Alkérdések az SQL nyelvben
+
+
+## 13. tétel
+
+*(Jegyzet: 7.1., 7.2., 7.3., 7.4., 7.5. fejezet, 63-66. oldal)*
+
+### 13.1 Az SQL megszorításai, triggerei
+
+### 13.2 Domain-ek, attribútumokra, rekordokra vonatkozó megszorítások
+
+### 13.3 Önálló megszorítások
+
+### 13.4 Triggerek
+
+## 14. tétel
+
+*(Előadás + összeállított források)*
+
+### Adatbázis-kapcsolati rétegek feladata, típusai (ODBC, OLE DB, DAO)
 
 
 ### Jegyzetek:
