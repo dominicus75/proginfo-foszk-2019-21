@@ -216,12 +216,12 @@ történeti jelentősége van.
 **[Relációs adatmodell](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3s_adatmodell):**
 az egyik legáttekinthetőbb és a 80-as évektől kezdve a legelterjedtebb adatmodell.
 Kidolgozása [Edgar F. Codd](https://hu.wikipedia.org/wiki/Edgar_F._Codd), az IBM
-kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *„A Relational Model Data Large
-Shared Data Banks”* című munkájában fektette le. Codd adatmodellje a nevét a
-relációs algebráról kapta, amely az adatmodell elvi alapjául szolgált, így
-legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3)
-fogalma. A relációs adatbázis-kezelő rendszerek legfontosabb tulajdonságait,
-adottságait és szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
+kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *[„A Relational Model Data Large
+Shared Data Banks”](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf)* című
+munkájában fektette le. Codd adatmodellje a nevét a relációs algebráról kapta,
+amely az adatmodell elvi alapjául szolgált, így legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3) fogalma. A relációs
+adatbázis-kezelő rendszerek legfontosabb tulajdonságait, adottságait és
+szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
 (ami valójában 13...) foglalja össze.
 
 A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
@@ -265,12 +265,12 @@ Előnyei:
 
 Az egyik legáttekinthetőbb és a 80-as évektől kezdve a legelterjedtebb adatmodell.
 Kidolgozása [Edgar F. Codd](https://hu.wikipedia.org/wiki/Edgar_F._Codd), az IBM
-kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *„A Relational Model Data Large
-Shared Data Banks”* című munkájában fektette le. Codd adatmodellje a nevét a
-relációs algebráról kapta, amely az adatmodell elvi alapjául szolgált, így
-legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3)
-fogalma. A relációs adatbázis-kezelő rendszerek legfontosabb tulajdonságait,
-adottságait és szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
+kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *[„A Relational Model Data Large
+Shared Data Banks”](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf)* című
+munkájában fektette le. Codd adatmodellje a nevét a relációs algebráról kapta,
+amely az adatmodell elvi alapjául szolgált, így legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3) fogalma. A relációs
+adatbázis-kezelő rendszerek legfontosabb tulajdonságait, adottságait és
+szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
 (ami valójában 13...) foglalja össze.
 
 A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
