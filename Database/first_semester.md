@@ -264,7 +264,7 @@ Előnyei:
 ### 3.1 A relációs adatmodell
 
 Az egyik legáttekinthetőbb és a 80-as évektől kezdve a legelterjedtebb adatmodell.
-Kidolgozása [Edgar F. Codd] (https://hu.wikipedia.org/wiki/Edgar_F._Codd), az IBM
+Kidolgozása [Edgar F. Codd](https://hu.wikipedia.org/wiki/Edgar_F._Codd), az IBM
 kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *„A Relational Model Data Large
 Shared Data Banks”* című munkájában fektette le. Codd adatmodellje a nevét a
 relációs algebráról kapta, amely az adatmodell elvi alapjául szolgált, így
