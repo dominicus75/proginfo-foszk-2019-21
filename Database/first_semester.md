@@ -56,6 +56,9 @@ rendelkező) egyedpéldánytól.
 **Egyedhalmaz:** azonos egyedtípusú egyedpéldányok (azonos táblában tárolt) halmaza.
 Pl. a Könyv tábla tartalma.
 
+**Értéktartomány [domain]:** az adott jelentésű tulajdonság általánosan felvehető
+értékeinek a halmaza.
+
 **Információ:** értelmezett, a befogadó számára jelentéssel bíró adat, szubjektív
 ismeret.
 
@@ -113,7 +116,19 @@ ez a Kiadó tulajdonságtípus egy konkrét (adott könyvre jellemző) előfordu
 
 Az **[adatbázis-kezelő rendszer (Database Management System, DBMS)](https://hu.wikipedia.org/wiki/Adatb%C3%A1zis-kezel%C5%91_rendszer)**
 többfelhasználós, hálózatos környezetben, adatbázisokhoz való hozzáférést,
-rendszeres és a felhasználói folyamatok zavartalan működést biztosító szoftveralkalmazás.
+rendszeres és a felhasználói folyamatok zavartalan működést biztosító szoftveralkalmazás,
+amely a különféle felhasználói folyamatok és a fizikai adatbázis – tipikusan egy
+fájlrendszer vagy más állománykezelő – között teremt kapcsolatot.
+
+A DBMS főbb feladatai:
+* Támogatja új adatbázisok létrehozását, azok struktúrájának, tárolási módjának
+  kialakítását
+* Megvalósítja az adatbázisban tárolt adatok kezelését, karbantartását
+* Lehetővé teszi a tárolt adatok feldolgozását, lekérdezését
+* Lehetővé teszi az adatbázisok megosztását több felhasználó között
+* Garantálja az adatok biztonságát, konzisztenciáját, a hozzáférések szabályozását,
+vagyis hogy a felhasználói műveleteket csak arra jogosult személyek végezhessék,
+és ezek a műveletek ne veszélyeztessék az adatok integritását
 
 A **[relációs adatbázis-kezelő rendszer (RDBMS)](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer)**
 olyan adatbázis-kezelő rendszer, amelynek logikai adatbázisa kizárólag a relációs
@@ -121,19 +136,112 @@ adatmodell elve alapján épül fel, illetve kérdezhető le.
 
 ### 1.3 Adattípusok
 
+Az adattípus meghatározza az adat értékhalmazát (a típus példányai által felvehető
+értéktartományt), a vele végezhető műveleteket és a számítógépes ábrázolás módját,
+vagyis a tárolására használt memóriaterület bitjeinek darabszámát és azok
+értelmezését.
+
+Az adattípusokat értékhalmazuk alapján két csoportba soroljuk.
+
+* Egyszerű (elemi, atomi) adattípusok, melyek szerkezetileg nem bonthatók tovább
+  * szám (egész [int] vagy tört[float, double])
+  * karakter
+  * logikai (bool)
+  * dátum (DATE, TIME, DATETIME)
+
+* Összetett adattípusok, melyeket elemi típusokból lehet képezni, itt az értékhalmaz
+  mellett a szerkezet is lényeges
+  * halmaz: azonos típusú elemek halmaza, minden elem különböző, nincs sorrendiség
+  * lista: azonos típusú elemek rendezett sorozata
+  * struktúra: különféle típusú elemek rendezett sorozata
+  * fentiek kombinációi
+
+* NULL, definiálatlan adat (ami nem azonos a 0 értékkel!)
+
+
 ### 1.4 Adatmodellezés
 
+*„A modellezés a közös, lényeges és tartós jegyek kiemelését, absztrakcióját
+jelenti. [...] Az adatmodell véges számú egyedtípusnak illetve azok egyenként is
+véges számú tulajdonság- és kapcsolattípusának a szervezett együttese. [...] Az
+adatbázis tartalma strukturálisan az adatmodell felépítésének felel meg. Tehát a
+modell egyed-, tulajdonság- és kapcsolattípusai szerint rendezzük el az előfordulásokat.
+Azonban az adatmodell nem pusztán struktúra, hanem a típusok és az
+azokra vonatkozó korlátok szervezett együttese.”*<sup id="4">[[4]](#note4)</sup>
+
 Az **[Adatmodell](https://hu.wikipedia.org/wiki/Adatmodell)** az adatbázis
-általános struktúrája, amely véges számú egyedtípusnak, azok egyenként is véges számú
-tulajdonság-, és kapcsolattípusának szervezett együttese. A valóság objektumait
-(egyedeit), ezek tulajdonságait és a köztük lévő kapcsolatokat, illetve a logikai
-adatbázis szerkezeti leírását, nevezetesen azonos jellemzőjű információk logikai
-modellezését és a rajtuk végezhető logikai műveletek meghatározását tartalmazza.
+általános struktúrája. A valóság objektumait (egyedeit), ezek tulajdonságait és
+a köztük lévő kapcsolatokat, illetve a logikai adatbázis szerkezeti leírását,
+nevezetesen azonos jellemzőjű információk logikai modellezését és a rajtuk
+végezhető logikai műveletek meghatározását tartalmazza.
 
 
 ### 1.5 Adatmodellek típusai
 
+**[Hierarchikus adatmodell](http://centroszet.hu/tananyag/adatbazis/21_hierarchikus_modell.html):**
+ alapelve az, hogy az egyedeket a köztük lévő kapcsolat alapján fastruktúra-szerű
+hierarchiába rendezi, a számítógép könyvtárszerkezetéhez hasonlóan (mely a
+hierarchikus modell legismertebb, napjainkban is használt alkalmazása). A feldolgozás
+fabejáró és egyéb fastruktúra kezelő algoritmusok segítségével történik.
+
+A hierarchikus modell kizárólag egy-egy (1:1) és egy-sok (1:N) jellegű kapcsolatok
+megvalósítására alkalmas. A kapcsolat alapján a két egyedtípus között alá-fölé rendelő
+viszony (szülő-gyermek kapcsolat) jön létre, melyben minden gyermek (leszármazott)
+egyedtípusnak csak egyetlen őse lehet, viszont minden ős egyedtípushoz rendelhető
+több leszármazott. A hierarchikus modell természetéből adódóan nem ábrázolhatók
+benne sok-sok (n:m) típusú kapcsolatok. További hátránya, hogy az adatok elérése
+csak egyféle útvonalon lehetséges, a tárolt hierarchiának megfelelő sorrendben.
+
+A hierarchikus modell az 1960-s évek végén alakult ki és az 1970-es évek végéig
+használták, mára teljesen kiszorította a relációs modell, napjainkban már csak
+történeti jelentősége van.
+
+**[Hálós adatmodell](https://hu.wikipedia.org/wiki/H%C3%A1l%C3%B3s_adatmodell):**
+tekinthető a hierarchikus modell kiterjesztésének. A különbség az, hogy míg a
+hierarchikus modell gráfja csak fa lehet, a hálósnál tetszőleges gráf előfordulhat.
+Ez azt jelenti, hogy egy egyedtípusnak több őse is lehet.
+A hálós adatmodellben a sok-sok (N:M) kapcsolatok is kezelhetők, úgy hogy azokat
+két egy-sok (1:N) kapcsolatra bontják fel.
+
+A rekordok pointerekkel (mutatókkal) kapcsolódnak egymáshoz, ezek ciklikusan
+körbefutnak egy összetartozó rekordcsoporton, amelyet setnek neveznek. A hierarchikus
+modellhez hasonlóan az adatbázisba fixen beépített kapcsolatok következtében
+csak a tárolt kapcsolatok segítségével bejárható adat-visszakeresések oldhatók
+meg hatékonyan, viszont szerkezetük merev, módosításuk nehézkes.
+
+A hálós adatmodellt 1971-ben az adatrendszer nyelvek konferenciáján (CODASYL)
+definiálták, mára teljesen kiszorította a relációs modell, napjainkban már csak
+történeti jelentősége van.
+
+**Relációs adatmodell:** az egyik legáttekinthetőbb és a 80-as évektől kezdve a
+legelterjedtebb adatmodell. Kidolgozása [Edgar F. Codd] (https://hu.wikipedia.org/wiki/Edgar_F._Codd),
+az IBM kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *„A Relational Model Data Large
+Shared Data Banks”* című munkájában fektette le. Codd adatmodellje a nevét a
+relációs algebráról kapta, amely az adatmodell elvi alapjául szolgált, így
+legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3)
+fogalma. A relációs adatbázis-kezelő rendszerek legfontosabb tulajdonságait,
+adottságait és szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
+(ami valójában 13...) foglalja össze.
+
+A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
+eltérés az előzőekben bemutatott két modellhez képest az, hogy itt nincsenek előre
+definiált kapcsolatok az egyes adategységek között, hanem a kapcsolatok
+létrehozásához szükséges adatokat tároljuk többszörösen.
+
+Előnyei:
+* A relációs adatszerkezet egyszerűen értelmezhető a felhasználók és az alkalmazás
+  készítők számára is
+* A logikai adatmodell relációi egy relációs adatbázis-kezelő rendszerbe módosítások
+  nélkül átvihetők.
+* A relációs modellben az adatbázis tervezés a normál formák bevezetésével egzakt
+  módon elvégezhető
+
+
 ### 1.6 Az E-K (E-R) modell alapelemei
+
+
+
+
 
 ## 2. tétel
 
@@ -147,11 +255,35 @@ modellezését és a rajtuk végezhető logikai műveletek meghatározását tar
 
 ### 2.4 Speciális kapcsolat típusok
 
+
 ## 3. tétel
 
 *(Jegyzet: 3.1., 3.2., 3.3. fejezet, 15-20. oldal)*
 
 ### 3.1 A relációs adatmodell
+
+Az egyik legáttekinthetőbb és a 80-as évektől kezdve a legelterjedtebb adatmodell.
+Kidolgozása [Edgar F. Codd] (https://hu.wikipedia.org/wiki/Edgar_F._Codd), az IBM
+kutatója nevéhez fűződik. Alapjait 1970-ben megjelent *„A Relational Model Data Large
+Shared Data Banks”* című munkájában fektette le. Codd adatmodellje a nevét a
+relációs algebráról kapta, amely az adatmodell elvi alapjául szolgált, így
+legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3)
+fogalma. A relációs adatbázis-kezelő rendszerek legfontosabb tulajdonságait,
+adottságait és szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
+(ami valójában 13...) foglalja össze.
+
+A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
+eltérés az előzőekben bemutatott két modellhez képest az, hogy itt nincsenek előre
+definiált kapcsolatok az egyes adategységek között, hanem a kapcsolatok
+létrehozásához szükséges adatokat tároljuk többszörösen.
+
+Előnyei:
+* A relációs adatszerkezet egyszerűen értelmezhető a felhasználók és az alkalmazás
+  készítők számára is
+* A logikai adatmodell relációi egy relációs adatbázis-kezelő rendszerbe módosítások
+  nélkül átvihetők.
+* A relációs modellben az adatbázis tervezés a normál formák bevezetésével egzakt
+  módon elvégezhető
 
 ### 3.2 Reláció fogalma és tulajdonságai
 
@@ -249,7 +381,7 @@ modellezését és a rajtuk végezhető logikai műveletek meghatározását tar
 
 ### 11.1 Az SQL nyelv általános jellemzői
 
-### 11.2 Nézettábla kialakítása és szerepe
+### 11.2 Nézettábla (VIEW) kialakítása és szerepe
 
 ### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
 
@@ -291,14 +423,17 @@ modellezését és a rajtuk végezhető logikai műveletek meghatározását tar
 könyve értendő.
 * <span id="note2">[[2]](#2)</span> Michael J. Hernandez: Adatbázis-tervezés, 31. o.
 * <span id="note3">[[3]](#3)</span> dr. Halassy Béla: [Az adatbázistervezés alapjai és titkai](http://mek.oszk.hu/11100/11123/11123.pdf), 33. o.
-
+* <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
+[Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
 
 ### Felhasznált (ajánlott) irodalom:
 * Sallai András: [Adatbázis-kezelés](http://szit.hu/doku.php?id=oktatas:adatbazis-kezeles)
 * dr. Katona Endre: [Adatbázisok](https://www.inf.u-szeged.hu/sites/default/files/db-ea1.pdf)
 * dr. Kovács László: [Adatbáziskezelés - SQL](http://193.6.12.228/uigtk/uipz/hallgatoi/SQL.pdf)
 * dr. Halassy Béla: [Az adatbázistervezés alapjai és titkai](http://mek.oszk.hu/11100/11123/11123.pdf)
+* dr. Halassy Béla: [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf)
 * Demetrovics Katalin: [Adatbáziskezelés](http://www.zipernowsky.hu/~naszlaci/alapok+hardver/adatbazis/ab_alap_demetrovicsk.pdf)
+* dr. Holovács József: [Adatbázis-kezelés](http://aries.ektf.hu/~holovacs/AB/)
 * Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés II.](http://mek.oszk.hu/14400/14433/pdf/14433.pdf)
 * Kósa Márk - Pánovics János: [Fejezetek az adatbázisrendszerek elméletéből](https://gyires.inf.unideb.hu/KMITT/b01/index.html)
 * Michael J. Hernandez: [Adatbázis-tervezés](https://www.animakonyv.hu/index.php?BODY=BookInfo&OP=details&ID=54734)
