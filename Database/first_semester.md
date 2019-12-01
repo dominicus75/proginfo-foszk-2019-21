@@ -173,7 +173,9 @@ Az **[Adatmodell](https://hu.wikipedia.org/wiki/Adatmodell)** az adatbázis
 általános struktúrája. A valóság objektumait (egyedeit), ezek tulajdonságait és
 a köztük lévő kapcsolatokat, illetve a logikai adatbázis szerkezeti leírását,
 nevezetesen azonos jellemzőjű információk logikai modellezését és a rajtuk
-végezhető logikai műveletek meghatározását tartalmazza.
+végezhető logikai műveletek meghatározását tartalmazza. Kizárólag az adatbázis
+logikai kereteit határozza meg, nem foglalkozik azzal, hogy az adatokat fizikailag
+hogyan kell tárolni, módosítani, illetve betölteni a memóriába.
 
 
 ### 1.5 Adatmodellek típusai
@@ -237,6 +239,16 @@ Előnyei:
 * A relációs modellben az adatbázis tervezés a normál formák bevezetésével egzakt
   módon elvégezhető
 
+**Objektumorientált modell:** az objektumorientált programozási nyelvek
+eszközrendszerével definiálja az adatbázis struktúráját, összetett, komplex
+adattípusok megvalósítását is igényli. Leíró nyelve az Object Definition Language
+(ODL), lekérdező nyelve az OQL. Az objektumorientált modellre épülő adatbázis-kezelő
+rendszereket OODBMS-nek nevezzük (Object Oriented DBMS). Hatékonyságukban jelenleg
+még alulmaradnak a relációs adatbázisokkal szemben.
+
+**Objektum-relációs modell:** a relációs modell bővítése objektumorientált
+lehetőségekkel (ISO 9075:2008). A relációs és az objektum orientált megközelítést
+egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORDBMS).
 
 ### 1.6 Az E-K (E-R) modell alapelemei
 
@@ -368,6 +380,65 @@ Előnyei:
 
 ### 10.1 Az SQL nyelv általános jellemzői
 
+**SQL-szabványok**
+
+A relációsadatbázis-kezelő rendszerek szabványos adathozzáférési és adatdefiníciós
+nyelve az SQL. Az SQL-t leíró első szabványt az
+[ANSI](https://hu.wikipedia.org/wiki/ANSI) 1986-ban
+jegyezte be, erre **SQL86** néven szoktak hivatkozni. Az SQL leírását az
+[ISO](https://hu.wikipedia.org/wiki/Nemzetk%C3%B6zi_Szabv%C3%A1ny%C3%BCgyi_Szervezet)
+9075 számú szabványának aktuális változata rögzíti.
+
+Az ISO/IEC 9075 1992-ig kiadott első változatai:
+* [ISO 9075:1987](https://www.iso.org/standard/16661.html) (SQL-86).
+* [ISO/IEC 9075:1989](https://www.iso.org/standard/16662.html) (SQL-89).
+* [ISO/IEC 9075:1992](https://www.iso.org/standard/16663.html) (SQL-92/SQL2).
+
+Az **ISO/IEC 9075:1999** változatától (SQL3) a szabvány már több részre bomlik,
+ezek külön-külön tartalmazzák az egyes témaköröket és kiterjesztéseket leíró
+szabályokat. Az ISO/IEC 9075:1999 például 5 részt tartalmaz, míg a 2003-as kiadás
+már kilencet (a többdimenziós tömbökkel foglalkozó részt 2019-ben csapták hozzá
+tizedikként). A leírásokban az 1999 utáni SQL-szabványokra vagy az ISO/IEC-számmal
+(SZABVÁNYSZÁM[-RÉSZ]:ÉVSZÁM, pl. 9075-1:1999 vagy csak 9075:1999), vagy a kiadás
+évével (SQL:ÉVSZÁM, pl. SQL:1999) hivatkoznak.
+
+Az ISO/IEC 9075 szabvány 1999 után kiadott változatai:
+* 9075:2003 (SQL:2003)
+* 9075:2006 (SQL:2006)
+* 9075:2008 (SQL:2008)
+* 9075:2011 (SQL:2011)
+
+A szabvány legújabb változata a **2016**-os kiadás, ennek részei a következők:
+* [9075-1:2016](https://www.iso.org/standard/63555.html): A nyelv alapjai (a
+szabvány egyes részeit írja le, és olyan információkat tartalmaz, amelyek minden
+részre vonatkoznak).
+* [9075-2:2016](https://www.iso.org/standard/63556.html): Adatstruktúrák és alapvető
+műveletek (az SQL nyelv adatmeghatározó és adatkezelő részeinek nyelvtanát és
+jelentéstanát írja le).
+* [9075-3:2016](https://www.iso.org/standard/63475.html): Hívásszintű interfész (SQL/CLI,
+megfelel a [Microsoft ODBC](https://tudasbazis.sulinet.hu/hu/szakkepzes/informatika/adatbazis-kezeles/kliens-szerver-hierarchia/az-odbc-lenyege) szabványának).
+* [9075-4:2016](https://www.iso.org/standard/63557.html): Tárolt eljárások (SQL/PSM,
+azokat az eljárásközpontú SQL-utasításokat határozza meg, amelyek felhasználói
+függvényekben és eljárásokban használhatók).
+* [9075-9:2016](https://www.iso.org/standard/63476.html): Külső adatok kezelése (SQL/MED,
+az 1. részt olyan nyelvi elemekkel és meghatározásokkal egészíti ki, amelyek
+lehetővé teszik az SQL-nek, hogy nem SQL adatforrásokat (fájlokat) is elérjen).
+* [9075-10:2016](https://www.iso.org/standard/63477.html): Beágyazott JSQL (SQL/OLB,
+az SQL-nek a Java programozási nyelvbe történő beágyazását írja le nyelvtani és
+jelentéstani szempontból. Megfelel az ANSI
+[SQLJ Part O](https://en.wikipedia.org/wiki/SQLJ#SQLJ_part_0) szabványának).
+* [9075-11:2016](https://www.iso.org/standard/63565.html): Információs és meghatározási
+sémák (SQL/sémák)
+* [9075-13:2016](https://www.iso.org/standard/63478.html): Java programnyelvet
+használó részprogramok és típusok (SQL/JRT, leírja, hogy miként használhatunk Java
+kódot egy SQL adatbázison belül).
+* [9075-14:2016](https://www.iso.org/standard/63566.html): XML-hez kapcsolódó
+előírások (SQL/XML, azt határozzák meg, hogy miként használhatunk XML-t
+egy SQL adatbázison belül. A W3C [XQuery](https://gyires.inf.unideb.hu/GyBITT/12/ch06.html)
+szabványához igazodik).
+* [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
+(SQL/MDA).
+
 ### 10.2 Az SQL nyelv szintaxisa, speciális logikai kifejezései
 
 ### 10.3 Adatdefiníciós utasítások (DDL)
@@ -382,6 +453,65 @@ Előnyei:
 
 ### 11.1 Az SQL nyelv általános jellemzői
 
+**SQL-szabványok**
+
+A relációsadatbázis-kezelő rendszerek szabványos adathozzáférési és adatdefiníciós
+nyelve az SQL. Az SQL-t leíró első szabványt az
+[ANSI](https://hu.wikipedia.org/wiki/ANSI) 1986-ban
+jegyezte be, erre **SQL86** néven szoktak hivatkozni. Az SQL leírását az
+[ISO](https://hu.wikipedia.org/wiki/Nemzetk%C3%B6zi_Szabv%C3%A1ny%C3%BCgyi_Szervezet)
+9075 számú szabványának aktuális változata rögzíti.
+
+Az ISO/IEC 9075 1992-ig kiadott első változatai:
+* [ISO 9075:1987](https://www.iso.org/standard/16661.html) (SQL-86).
+* [ISO/IEC 9075:1989](https://www.iso.org/standard/16662.html) (SQL-89).
+* [ISO/IEC 9075:1992](https://www.iso.org/standard/16663.html) (SQL-92/SQL2).
+
+Az **ISO/IEC 9075:1999** változatától (SQL3) a szabvány már több részre bomlik,
+ezek külön-külön tartalmazzák az egyes témaköröket és kiterjesztéseket leíró
+szabályokat. Az ISO/IEC 9075:1999 például 5 részt tartalmaz, míg a 2003-as kiadás
+már kilencet (a többdimenziós tömbökkel foglalkozó részt 2019-ben csapták hozzá
+tizedikként). A leírásokban az 1999 utáni SQL-szabványokra vagy az ISO/IEC-számmal
+(SZABVÁNYSZÁM[-RÉSZ]:ÉVSZÁM, pl. 9075-1:1999 vagy csak 9075:1999), vagy a kiadás
+évével (SQL:ÉVSZÁM, pl. SQL:1999) hivatkoznak.
+
+Az ISO/IEC 9075 szabvány 1999 után kiadott változatai:
+* 9075:2003 (SQL:2003)
+* 9075:2006 (SQL:2006)
+* 9075:2008 (SQL:2008)
+* 9075:2011 (SQL:2011)
+
+A szabvány legújabb változata a **2016**-os kiadás, ennek részei a következők:
+* [9075-1:2016](https://www.iso.org/standard/63555.html): A nyelv alapjai (a
+szabvány egyes részeit írja le, és olyan információkat tartalmaz, amelyek minden
+részre vonatkoznak).
+* [9075-2:2016](https://www.iso.org/standard/63556.html): Adatstruktúrák és alapvető
+műveletek (az SQL nyelv adatmeghatározó és adatkezelő részeinek nyelvtanát és
+jelentéstanát írja le).
+* [9075-3:2016](https://www.iso.org/standard/63475.html): Hívásszintű interfész (SQL/CLI,
+megfelel a [Microsoft ODBC](https://tudasbazis.sulinet.hu/hu/szakkepzes/informatika/adatbazis-kezeles/kliens-szerver-hierarchia/az-odbc-lenyege) szabványának).
+* [9075-4:2016](https://www.iso.org/standard/63557.html): Tárolt eljárások (SQL/PSM,
+azokat az eljárásközpontú SQL-utasításokat határozza meg, amelyek felhasználói
+függvényekben és eljárásokban használhatók).
+* [9075-9:2016](https://www.iso.org/standard/63476.html): Külső adatok kezelése (SQL/MED,
+az 1. részt olyan nyelvi elemekkel és meghatározásokkal egészíti ki, amelyek
+lehetővé teszik az SQL-nek, hogy nem SQL adatforrásokat (fájlokat) is elérjen).
+* [9075-10:2016](https://www.iso.org/standard/63477.html): Beágyazott JSQL (SQL/OLB,
+az SQL-nek a Java programozási nyelvbe történő beágyazását írja le nyelvtani és
+jelentéstani szempontból. Megfelel az ANSI
+[SQLJ Part O](https://en.wikipedia.org/wiki/SQLJ#SQLJ_part_0) szabványának).
+* [9075-11:2016](https://www.iso.org/standard/63565.html): Információs és meghatározási
+sémák (SQL/sémák)
+* [9075-13:2016](https://www.iso.org/standard/63478.html): Java programnyelvet
+használó részprogramok és típusok (SQL/JRT, leírja, hogy miként használhatunk Java
+kódot egy SQL adatbázison belül).
+* [9075-14:2016](https://www.iso.org/standard/63566.html): XML-hez kapcsolódó
+előírások (SQL/XML, azt határozzák meg, hogy miként használhatunk XML-t
+egy SQL adatbázison belül. A W3C [XQuery](https://gyires.inf.unideb.hu/GyBITT/12/ch06.html)
+szabványához igazodik).
+* [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
+(SQL/MDA).
+
 ### 11.2 Nézettábla (VIEW) kialakítása és szerepe
 
 ### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
@@ -392,6 +522,65 @@ Előnyei:
 *(Jegyzet: 6.5., 6-6. fejezet, 54-60. oldal)*
 
 ### 12.1 Az SQL nyelv általános jellemzői
+
+**SQL-szabványok**
+
+A relációsadatbázis-kezelő rendszerek szabványos adathozzáférési és adatdefiníciós
+nyelve az SQL. Az SQL-t leíró első szabványt az
+[ANSI](https://hu.wikipedia.org/wiki/ANSI) 1986-ban
+jegyezte be, erre **SQL86** néven szoktak hivatkozni. Az SQL leírását az
+[ISO](https://hu.wikipedia.org/wiki/Nemzetk%C3%B6zi_Szabv%C3%A1ny%C3%BCgyi_Szervezet)
+9075 számú szabványának aktuális változata rögzíti.
+
+Az ISO/IEC 9075 1992-ig kiadott első változatai:
+* [ISO 9075:1987](https://www.iso.org/standard/16661.html) (SQL-86).
+* [ISO/IEC 9075:1989](https://www.iso.org/standard/16662.html) (SQL-89).
+* [ISO/IEC 9075:1992](https://www.iso.org/standard/16663.html) (SQL-92/SQL2).
+
+Az **ISO/IEC 9075:1999** változatától (SQL3) a szabvány már több részre bomlik,
+ezek külön-külön tartalmazzák az egyes témaköröket és kiterjesztéseket leíró
+szabályokat. Az ISO/IEC 9075:1999 például 5 részt tartalmaz, míg a 2003-as kiadás
+már kilencet (a többdimenziós tömbökkel foglalkozó részt 2019-ben csapták hozzá
+tizedikként). A leírásokban az 1999 utáni SQL-szabványokra vagy az ISO/IEC-számmal
+(SZABVÁNYSZÁM[-RÉSZ]:ÉVSZÁM, pl. 9075-1:1999 vagy csak 9075:1999), vagy a kiadás
+évével (SQL:ÉVSZÁM, pl. SQL:1999) hivatkoznak.
+
+Az ISO/IEC 9075 szabvány 1999 után kiadott változatai:
+* 9075:2003 (SQL:2003)
+* 9075:2006 (SQL:2006)
+* 9075:2008 (SQL:2008)
+* 9075:2011 (SQL:2011)
+
+A szabvány legújabb változata a **2016**-os kiadás, ennek részei a következők:
+* [9075-1:2016](https://www.iso.org/standard/63555.html): A nyelv alapjai (a
+szabvány egyes részeit írja le, és olyan információkat tartalmaz, amelyek minden
+részre vonatkoznak).
+* [9075-2:2016](https://www.iso.org/standard/63556.html): Adatstruktúrák és alapvető
+műveletek (az SQL nyelv adatmeghatározó és adatkezelő részeinek nyelvtanát és
+jelentéstanát írja le).
+* [9075-3:2016](https://www.iso.org/standard/63475.html): Hívásszintű interfész (SQL/CLI,
+megfelel a [Microsoft ODBC](https://tudasbazis.sulinet.hu/hu/szakkepzes/informatika/adatbazis-kezeles/kliens-szerver-hierarchia/az-odbc-lenyege) szabványának).
+* [9075-4:2016](https://www.iso.org/standard/63557.html): Tárolt eljárások (SQL/PSM,
+azokat az eljárásközpontú SQL-utasításokat határozza meg, amelyek felhasználói
+függvényekben és eljárásokban használhatók).
+* [9075-9:2016](https://www.iso.org/standard/63476.html): Külső adatok kezelése (SQL/MED,
+az 1. részt olyan nyelvi elemekkel és meghatározásokkal egészíti ki, amelyek
+lehetővé teszik az SQL-nek, hogy nem SQL adatforrásokat (fájlokat) is elérjen).
+* [9075-10:2016](https://www.iso.org/standard/63477.html): Beágyazott JSQL (SQL/OLB,
+az SQL-nek a Java programozási nyelvbe történő beágyazását írja le nyelvtani és
+jelentéstani szempontból. Megfelel az ANSI
+[SQLJ Part O](https://en.wikipedia.org/wiki/SQLJ#SQLJ_part_0) szabványának).
+* [9075-11:2016](https://www.iso.org/standard/63565.html): Információs és meghatározási
+sémák (SQL/sémák)
+* [9075-13:2016](https://www.iso.org/standard/63478.html): Java programnyelvet
+használó részprogramok és típusok (SQL/JRT, leírja, hogy miként használhatunk Java
+kódot egy SQL adatbázison belül).
+* [9075-14:2016](https://www.iso.org/standard/63566.html): XML-hez kapcsolódó
+előírások (SQL/XML, azt határozzák meg, hogy miként használhatunk XML-t
+egy SQL adatbázison belül. A W3C [XQuery](https://gyires.inf.unideb.hu/GyBITT/12/ch06.html)
+szabványához igazodik).
+* [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
+(SQL/MDA).
 
 ### 12.2 Lekérdezés relációs adattáblákból, a relációalgebrai műveletek megvalósítása
 
@@ -427,26 +616,3 @@ könyve értendő.
 * <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
 [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
 
-### Felhasznált (ajánlott) irodalom:
-* Sallai András: [Adatbázis-kezelés](http://szit.hu/doku.php?id=oktatas:adatbazis-kezeles)
-* dr. Katona Endre: [Adatbázisok](https://www.inf.u-szeged.hu/sites/default/files/db-ea1.pdf)
-* dr. Kovács László: [Adatbáziskezelés - SQL](http://193.6.12.228/uigtk/uipz/hallgatoi/SQL.pdf)
-* dr. Halassy Béla: [Az adatbázistervezés alapjai és titkai](http://mek.oszk.hu/11100/11123/11123.pdf)
-* dr. Halassy Béla: [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf)
-* Demetrovics Katalin: [Adatbáziskezelés](http://www.zipernowsky.hu/~naszlaci/alapok+hardver/adatbazis/ab_alap_demetrovicsk.pdf)
-* dr. Holovács József: [Adatbázis-kezelés](http://aries.ektf.hu/~holovacs/AB/)
-* Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés II.](http://mek.oszk.hu/14400/14433/pdf/14433.pdf)
-* Kósa Márk - Pánovics János: [Fejezetek az adatbázisrendszerek elméletéből](https://gyires.inf.unideb.hu/KMITT/b01/index.html)
-* Michael J. Hernandez: [Adatbázis-tervezés](https://www.animakonyv.hu/index.php?BODY=BookInfo&OP=details&ID=54734)
-* Wikipédia: [SQL-szócikk](https://hu.wikipedia.org/wiki/SQL)
-* Cser Lajos: [SQL alapok](http://cserlajos.hu/files/db2014-n/06-sql-alap.pdf)
-* John L. Viescas, Michael J. Hernandez: [SQL-Iekérdezések földi halandóknak](http://dev.logisztika.bme.hu/logdb/irodalom/SQL.lekerdezesek.foldi.halandoknak.2009.eBOOk-digIT.pdf)
-* [w3schools SQL Tutorial](https://www.w3schools.com/sql/default.asp)
-* Wikipédia: [MySQL-szócikk](https://hu.wikipedia.org/wiki/MySQL)
-* Sallai András: [MySQL jegyzet](https://szit.hu/doku.php?id=oktatas:adatb%C3%A1zis-kezel%C3%A9s:mysql:mysql_jegyzet)
-* Andó Mihály: [SQL, MySQL oktatóprogram](http://sql.misi.eu/)
-* [MySQL 8.0 Kézikönyv](https://dev.mysql.com/doc/refman/8.0/en/)
-* Wikipédia: [MariaDB-szócikk](https://hu.wikipedia.org/wiki/MariaDB)
-* Sallai András: [MariaDB](http://szit.hu/doku.php?id=oktatas:adatbazis-kezeles:mariadb)
-* [MariaDB dokumentáció](https://mariadb.com/kb/en/library/documentation/)
-* [Mi a különbség a MariaDB és a MySQL között?](https://linuxadm.hu/cikk/Mi-a-kulonbseg-a-MariaDB-es-a-MySQL-kozott-)
