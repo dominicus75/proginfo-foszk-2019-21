@@ -14,6 +14,14 @@
 
 ### A pénz jelen és jövőértéke, számításának módszerei
 
+A jelenérték (angolul present value, rövidítve PV) a pénz időértékét kifejező 
+közgazdaságtani fogalom. Kifejezi, hogy jövőben egy egységnyi pénz ma hány egységnyit 
+ér, illetve a jelenleg rendelkezésre álló pénztől elvárt hozamkövetelményt.
+
+**Kiszámítása:**
+
+$PV = Cˇ1 * \frac{1}{(1+r)^t}$
+
 
 ## 4. tétel
 
