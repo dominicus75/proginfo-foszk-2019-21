@@ -324,6 +324,11 @@ leírásra (pl. SQL).
 
 ![Imgur](https://i.imgur.com/Wpes4XX.jpg)
 
+E-K Diagram készítéséhez egy szabad szoftver: [Dia](http://dia-installer.de/), ha
+a [Libreoffice Draw](https://hu.libreoffice.org/termekbemutato/draw/) nem elég. A
+Linux disztribúciók tárolóiban megtalálható, Windowshoz a linkről letölthető
+(mindkettő tud magyarul is).
+
 ### 2.2 Egyedek, kapcsolatok, attribútumok
 
 **Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
@@ -402,7 +407,32 @@ ez a Kiadó tulajdonságtípus egy konkrét (adott könyvre jellemző) előfordu
 
 ### 2.3 Kapcsolatok osztályozása (a kapcsolatok típusai)
 
+Egy kapcsolat lehet **két egyed közötti (bináris) vagy sokágú (kettőnél több egyed
+közötti)** kapcsolat. Utóbbi elég ritkán fordul elő és szükség esetén visszavezethető
+több bináris kapcsolatra, vagy helyettesíthető gyenge entitással.
+
+A bináris kapcsolatoknak három típusa van:
+
+* 1:1 (egy az egyhez) kapcsolat esetén minden egyes egyedhez pontosan egy másik
+egyed tartozik. Ennek jelölésmódja az, hogy a kapcsolatot úgy kötjük az egyedekhez,
+hogy minden egyed felé mutat nyíl.
+
+* 1:N (egy a sokhoz) kapcsolat esetén az egyik egyedhez több másik egyedet tudunk
+társítani, de a másik csoport minden egyes példányához pontosan egyet társítunk.
+A nyilat úgy rajzoljuk, hogy az „1-es reláció felé” mutasson.
+
+* N:M (sok a sokhoz) kapcsolat esetén mindkét típusú egyedhez tetszőleges számú
+másik típusú egyed tartozhat. N:M típusú és sokágú kapcsolat mindig helyettesíthető
+gyenge entitással és több bináris kapcsolattal.
+
+![Imgur](https://i.imgur.com/xiw6XLQ.jpg)
+
+A kapcsolat típusa lényeges az E-K modell szempontjából, ezért azt az E-K diagramon
+is jelölni szokták (nyilakkal, vagy „varjúlábakkal”).
+
 ### 2.4 Speciális kapcsolat típusok
+
+![Imgur](https://i.imgur.com/Jv8zwTB.jpg)
 
 
 ## 3. tétel
@@ -418,8 +448,7 @@ Shared Data Banks”](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf)* c�
 munkájában fektette le. Codd adatmodellje a nevét a relációs algebráról kapta,
 amely az adatmodell elvi alapjául szolgált, így legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3) fogalma. A relációs
 adatbázis-kezelő rendszerek legfontosabb tulajdonságait, adottságait és
-szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
-(ami valójában 13...) foglalja össze.
+szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai) foglalja össze.
 
 A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
 eltérés az előzőekben bemutatott két modellhez képest az, hogy itt nincsenek előre
