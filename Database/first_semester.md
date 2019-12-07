@@ -92,9 +92,9 @@ egyedpéldány közötti tényleges kapcsolat.
 és tárolása a relációs adatmodellnek megfelelően.
 
 **Relációséma:** a reláció neve és az attribútumok (tulajdonságtípusok) halmaza.
-Például a Könyv reláció sémája a következő: *Könyv(ISBN, Kiadó, Szerző, Cím)*. Adott
-adatbázishoz tartozó relációsémák összessége (és a köztük fennálló kapcsolatok leírása)
-alkotja az adatbázissémát.
+Például a Könyv reláció sémája a következő: *Könyv(ISBN, Kiadó, Szerző, Cím)*.
+Adott adatbázishoz tartozó relációsémák összessége (és a köztük fennálló
+kapcsolatok leírása) alkotja az adatbázissémát.
 
 **Tulajdonság (attribútum):** a valós világban létező egyednek (entitásnak) az
 adatmodellezés szempontjából lényeges jellemzője.
@@ -201,9 +201,9 @@ történeti jelentősége van.
 **[Hálós adatmodell](https://hu.wikipedia.org/wiki/H%C3%A1l%C3%B3s_adatmodell):**
 tekinthető a hierarchikus modell kiterjesztésének. A különbség az, hogy míg a
 hierarchikus modell gráfja csak fa lehet, a hálósnál tetszőleges gráf előfordulhat.
-Ez azt jelenti, hogy egy egyedtípusnak több őse is lehet.
-A hálós adatmodellben a sok-sok (N:M) kapcsolatok is kezelhetők, úgy hogy azokat
-két egy-sok (1:N) kapcsolatra bontják fel.
+Ez azt jelenti, hogy egy egyedtípusnak több őse is lehet. A hálós adatmodellben
+a sok-sok (N:M) kapcsolatok is kezelhetők, úgy hogy azokat két egy-sok (1:N)
+kapcsolatra bontják fel.
 
 A rekordok pointerekkel (mutatókkal) kapcsolódnak egymáshoz, ezek ciklikusan
 körbefutnak egy összetartozó rekordcsoporton, amelyet setnek neveznek. A hierarchikus
@@ -223,8 +223,7 @@ Shared Data Banks”](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf)* c�
 munkájában fektette le. Codd adatmodellje a nevét a relációs algebráról kapta,
 amely az adatmodell elvi alapjául szolgált, így legfontosabb eleme a matematikai [reláció](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3) fogalma. A relációs
 adatbázis-kezelő rendszerek legfontosabb tulajdonságait, adottságait és
-szükségszerűségeit [Codd 12 szabálya](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai)
-(ami valójában 13...) foglalja össze.
+szükségszerűségeit [Codd 12 szabálya - ami valójában 13...](https://hu.wikipedia.org/wiki/Rel%C3%A1ci%C3%B3sadatb%C3%A1zis-kezel%C5%91_rendszer#Codd_szab%C3%A1lyai) foglalja össze.
 
 A relációs modellben az adatokat táblázatok soraiban képezzük le. A legfontosabb
 eltérés az előzőekben bemutatott két modellhez képest az, hogy itt nincsenek előre
@@ -262,7 +261,53 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 2.1 Az Egyed-Kapcsolat (Entity-Relation) modell
 
+[Imgur](https://i.imgur.com/0jGIb9w.jpg)
+
 ### 2.2 Egyedek, kapcsolatok, attribútumok
+
+
+**Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
+(attribútumai) segítségével lehet leírni, azonosítani. Másképpen: *önálló lényeggel
+bíró dolog, amelyről ismereteket közlünk*<sup id="3">[[3]](#note3)</sup>.
+
+**Egyedtípus:** a valós világbeli egyed adatbázis-szintű absztrakciója, leképezése;
+az ismeretekkel leírandó jelenségek absztrakt osztálya. Azon (általunk kiválasztott,
+az adatbázis céljának megfelelő) tulajdonságtípusok összessége, amelyekkel az adott
+dolgot az adatbázisban ábrázolni szeretnénk.
+*Pl. Könyv(ISBN, Kiadó, Szerző, Cím)*.
+
+**Egyedpéldány (vagy előfordulás):** egy elvont egyedtípus konkrét előfordulása.
+Az egyedpéldány attribútumai egyedi értékeket vesznek fel, ez által válik
+megkülönböztethetővé a többi (azonos típusú, de más értékű tulajdonságokkal
+rendelkező) egyedpéldánytól.
+
+**Egyedhalmaz:** azonos egyedtípusú egyedpéldányok (azonos táblában tárolt) halmaza.
+Pl. a Könyv tábla tartalma.
+
+**Értéktartomány [domain]:** az adott jelentésű tulajdonság általánosan felvehető
+értékeinek a halmaza.
+
+**Kapcsolattípus:** az egyedtípusok közötti viszonyok absztrakt osztályai, melyek
+leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. **Nem
+összekeverendő a kapcsolat típusával (2. tétel, 3. pont)!**
+
+**Kapcsolat előfordulás:** egy absztrakt kapcsolattípus konkrét előfordulása, két
+egyedpéldány közötti tényleges kapcsolat.
+
+**Tulajdonság (attribútum):** a valós világban létező egyednek (entitásnak) az
+adatmodellezés szempontjából lényeges jellemzője.
+
+**Tulajdonságtípus:** az egyedeket leíró ismeretek (tulajdonságok) elvont osztálya,
+másképpen fogalmazva: az adattábla (reláció) oszlopainak elnevezése, melynek
+segítségével az adott oszlopban tárolt adatok értelmet nyernek, információvá válnak.
+Adott egyedtípust leíró tulajdonságtípusok felsorolását a relációséma tartalmazza.
+A már említett Könyv egyedtípust például az *(ISBN, Kiadó, Szerző, Cím)*
+tulajdonságtípusokkal írjuk le.
+
+**Tulajdonság előfordulás (vagy érték):** tulajdonságtípus konkrét előfordulása
+egy adott egyedpéldányban (vagyis: az adott egyedpéldány konkrét tulajdonsága).
+Maradva a könyv példánál: ha Kiadó felveszi az "Akadémiai Kiadó" értéket, akkor
+ez a Kiadó tulajdonságtípus egy konkrét (adott könyvre jellemző) előfordulása.
 
 ### 2.3 Kapcsolatok osztályozása (a kapcsolatok típusai)
 
