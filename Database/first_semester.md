@@ -253,7 +253,49 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ![Imgur](https://i.imgur.com/Wpes4XX.jpg)
 
+A valós világ jelenségeit egyedekkel, tulajdonságokkal és kapcsolatokkal leíró
+modellt egyed-kapcsolat modellnek, az ezt ábrázoló diagramot egyed-kapcsolat
+diagramnak nevezik. Rövidítve az E-K modell és E-K diagram, illetve az angol
+entity-relationship model elnevezés alapján az E-R modell és az E-R diagram
+elnevezések használatosak.
 
+**Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
+(attribútumai) segítségével lehet leírni, azonosítani. Másképpen: *önálló lényeggel
+bíró dolog, amelyről ismereteket közlünk*<sup id="3">[[3]](#note3)</sup>. Az E-K
+diagramban téglalappal jelöljük, amelybe beírjuk a nevét.
+
+**Gyenge egyed:** olyan egyed, amelynek attribútumhalmazából nem tudunk kijelölni
+kulcsot ezért kapcsolatai és nem a tulajdonságai határozzák meg. Dupla-vonalas
+téglalappal jelöljük.
+
+**Kapcsolat:** két vagy több egyed között határoz meg relációt. Rekurzív kapcsolat
+esetén az egyed önmagával van relációban. Az E-K diagramban rombusszal jelöljük
+amelybe beleírjuk a kapcsolat nevét.
+
+**Kulcs:** azt a legszűkebb attribútumhalmazt, amely egyértelműen azonosítja az
+egyedet kulcsnak nevezzük. A kulcsban szereplő attribútumok nevét aláhúzással
+jelöljük. Egy kulcs lehet:
+* egyszerű (egyetlen attribútumból álló)
+* összetett (több attribútumból álló).
+
+**Meghatározó kapcsolat:** gyenge egyedet meghatározó kapcsolat. A meghatározó
+kapcsolat jele a dupla-vonalas rombusz.
+
+**Specializáló kapcsolat:** olyan kapcsolat, amely hierarchiát jelöl az egyedek
+között. A specializáló kapcsolatot háromszöggel jelöljük, amelynek felső csúcsa
+a főtípus felé mutat. Mivel a specializáló kapcsolat leszármaztatást jelöl, ezért
+a származtatott egyedek öröklik, a főegyed (vagy főtípus) tulajdonságait.
+
+![Imgur](https://i.imgur.com/Jv8zwTB.jpg)
+
+**Többértékű attribútum:** olyan attribútum, amely egyidejűleg több értékkel
+rendelkezik. Dupla-vonalas ellipszissel jelöljük.
+
+**Tulajdonság (attribútum):** a valós világban létező egyednek (entitásnak) az
+adatmodellezés szempontjából lényeges jellemzője. Az attribútumokat úgy célszerű
+megválasztani, hogy azok egyértelműen meghatározzák az egyedet. Minden egyed kell,
+hogy rendelkezzen legalább egy attribútummal. Kapcsolatok is rendelkezhetnek
+attribútummal. Az E-K diagramban ellipszissel jelöljük, amelybe  beleírjuk a nevét.
 
 ## 2. tétel
 
@@ -261,14 +303,33 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 2.1 Az Egyed-Kapcsolat (Entity-Relation) modell
 
+A valós világ jelenségeit egyedekkel, tulajdonságokkal és kapcsolatokkal leíró
+modellt egyed-kapcsolat modellnek, az ezt ábrázoló diagramot egyed-kapcsolat
+diagramnak nevezik. Rövidítve az E-K modell és E-K diagram, illetve az angol
+entity-relationship model elnevezés alapján az E-R modell és az E-R diagram
+elnevezések használatosak.
+
+Az adatbázis logikai modelljének elkészítéséhez az alábbi szempontokat kell
+figyelembe venni:
+
+* Miről szeretnénk eltárolni adatokat?
+* Milyen adatokat szeretnénk tárolni?
+* Hogyan viszonyulnak egymáshoz a tárolandó az adatok?
+
+A fenti kérdésekre adjuk meg a választ az egyed-kapcsolat diagram jelölésrendszere
+segítségével. Ez egy grafikus leíró eszköz, diagram segítségével szemléletesen
+adja meg az adatbázis struktúráját. Az adatbázis implementálásához a diagramot
+transzformálni kell valamilyen adatmodellre, ill. annak megfelelő nyelvi
+leírásra (pl. SQL).
+
 ![Imgur](https://i.imgur.com/Wpes4XX.jpg)
 
 ### 2.2 Egyedek, kapcsolatok, attribútumok
 
-
 **Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
 (attribútumai) segítségével lehet leírni, azonosítani. Másképpen: *önálló lényeggel
-bíró dolog, amelyről ismereteket közlünk*<sup id="3">[[3]](#note3)</sup>.
+bíró dolog, amelyről ismereteket közlünk*<sup id="3">[[3]](#note3)</sup>. Az E-K
+diagramban téglalappal jelöljük, amelybe beírjuk a nevét.
 
 **Egyedtípus:** a valós világbeli egyed adatbázis-szintű absztrakciója, leképezése;
 az ismeretekkel leírandó jelenségek absztrakt osztálya. Azon (általunk kiválasztott,
@@ -291,6 +352,10 @@ Pl. a Könyv tábla tartalma.
 kulcsot ezért kapcsolatai és nem a tulajdonságai határozzák meg. Dupla-vonalas
 téglalappal jelöljük.
 
+**Kapcsolat:** két vagy több egyed között határoz meg relációt. Rekurzív kapcsolat
+esetén az egyed önmagával van relációban. Az E-K diagramban rombusszal jelöljük
+amelybe beleírjuk a kapcsolat nevét.
+
 **Kapcsolattípus:** az egyedtípusok közötti viszonyok absztrakt osztályai, melyek
 leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. **Nem
 összekeverendő a kapcsolat típusával (2. tétel, 3. pont)!**
@@ -298,11 +363,30 @@ leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. 
 **Kapcsolat előfordulás:** egy absztrakt kapcsolattípus konkrét előfordulása, két
 egyedpéldány közötti tényleges kapcsolat.
 
+**Kulcs:** azt a legszűkebb attribútumhalmazt, amely egyértelműen azonosítja az
+egyedet kulcsnak nevezzük. A kulcsban szereplő attribútumok nevét aláhúzással
+jelöljük. Egy kulcs lehet:
+* egyszerű (egyetlen attribútumból álló)
+* összetett (több attribútumból álló).
+
 **Meghatározó kapcsolat:** gyenge egyedet meghatározó kapcsolat. A meghatározó
 kapcsolat jele a dupla-vonalas rombusz.
 
+**Specializáló kapcsolat:** olyan kapcsolat, amely hierarchiát jelöl az egyedek
+között. A specializáló kapcsolatot háromszöggel jelöljük, amelynek felső csúcsa
+a főtípus felé mutat. Mivel a specializáló kapcsolat leszármaztatást jelöl, ezért
+a származtatott egyedek öröklik, a főegyed (vagy főtípus) tulajdonságait.
+
+![Imgur](https://i.imgur.com/Jv8zwTB.jpg)
+
+**Többértékű attribútum:** olyan attribútum, amely egyidejűleg több értékkel
+rendelkezik. Dupla-vonalas ellipszissel jelöljük.
+
 **Tulajdonság (attribútum):** a valós világban létező egyednek (entitásnak) az
-adatmodellezés szempontjából lényeges jellemzője.
+adatmodellezés szempontjából lényeges jellemzője. Az attribútumokat úgy célszerű
+megválasztani, hogy azok egyértelműen meghatározzák az egyedet. Minden egyed kell,
+hogy rendelkezzen legalább egy attribútummal. Kapcsolatok is rendelkezhetnek
+attribútummal. Az E-K diagramban ellipszissel jelöljük, amelybe  beleírjuk a nevét.
 
 **Tulajdonságtípus:** az egyedeket leíró ismeretek (tulajdonságok) elvont osztálya,
 másképpen fogalmazva: az adattábla (reláció) oszlopainak elnevezése, melynek
