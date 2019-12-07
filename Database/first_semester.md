@@ -251,7 +251,7 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 1.6 Az E-K (E-R) modell alapelemei
 
-
+![Imgur](https://i.imgur.com/Wpes4XX.jpg)
 
 
 
@@ -261,7 +261,7 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 2.1 Az Egyed-Kapcsolat (Entity-Relation) modell
 
-<img src="https://i.imgur.com/0jGIb9w.jpg" title="source: imgur.com" style="border: 1px" />
+![Imgur](https://i.imgur.com/Wpes4XX.jpg)
 
 ### 2.2 Egyedek, kapcsolatok, attribútumok
 
@@ -287,12 +287,19 @@ Pl. a Könyv tábla tartalma.
 **Értéktartomány [domain]:** az adott jelentésű tulajdonság általánosan felvehető
 értékeinek a halmaza.
 
+**Gyenge egyed:** olyan egyed, amelynek attribútumhalmazából nem tudunk kijelölni
+kulcsot ezért kapcsolatai és nem a tulajdonságai határozzák meg. Dupla-vonalas
+téglalappal jelöljük.
+
 **Kapcsolattípus:** az egyedtípusok közötti viszonyok absztrakt osztályai, melyek
 leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. **Nem
 összekeverendő a kapcsolat típusával (2. tétel, 3. pont)!**
 
 **Kapcsolat előfordulás:** egy absztrakt kapcsolattípus konkrét előfordulása, két
 egyedpéldány közötti tényleges kapcsolat.
+
+**Meghatározó kapcsolat:** gyenge egyedet meghatározó kapcsolat. A meghatározó
+kapcsolat jele a dupla-vonalas rombusz.
 
 **Tulajdonság (attribútum):** a valós világban létező egyednek (entitásnak) az
 adatmodellezés szempontjából lényeges jellemzője.
