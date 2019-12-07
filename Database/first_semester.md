@@ -261,7 +261,7 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 2.1 Az Egyed-Kapcsolat (Entity-Relation) modell
 
-[Imgur](https://i.imgur.com/0jGIb9w.jpg)
+<img src="https://i.imgur.com/0jGIb9w.jpg" title="source: imgur.com" border="1" />
 
 ### 2.2 Egyedek, kapcsolatok, attribútumok
 
