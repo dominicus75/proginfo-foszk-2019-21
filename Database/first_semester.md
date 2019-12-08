@@ -269,14 +269,18 @@ kulcsot ezért kapcsolatai és nem a tulajdonságai határozzák meg. Dupla-vona
 téglalappal jelöljük.
 
 **Kapcsolat:** két vagy több egyed között határoz meg relációt. Rekurzív kapcsolat
-esetén az egyed önmagával van relációban. Az E-K diagramban rombusszal jelöljük
-amelybe beleírjuk a kapcsolat nevét.
+esetén az egyed önmagával van relációban. Egy egyedtípus teljesen részt vesz egy
+kapcsolatban, ha minden egyedpéldány kapcsolatban áll valamely másik egyeddel.
+Az E-K diagramban rombusszal jelöljük amelybe beleírjuk a kapcsolat nevét.
 
 **Kulcs:** azt a legszűkebb attribútumhalmazt, amely egyértelműen azonosítja az
 egyedet kulcsnak nevezzük. A kulcsban szereplő attribútumok nevét aláhúzással
 jelöljük. Egy kulcs lehet:
 * egyszerű (egyetlen attribútumból álló)
 * összetett (több attribútumból álló).
+
+**Külső (vagy idegen) kulcs:** olyan kulcs, ami egy másik séma elsődleges kulcsára
+hivatkozik, ezzel összeköti a két sémát.
 
 **Meghatározó kapcsolat:** gyenge egyedet meghatározó kapcsolat. A meghatározó
 kapcsolat jele a dupla-vonalas rombusz.
@@ -374,6 +378,9 @@ jelöljük. Egy kulcs lehet:
 * egyszerű (egyetlen attribútumból álló)
 * összetett (több attribútumból álló).
 
+**Külső (vagy idegen) kulcs:** olyan kulcs, ami egy másik séma elsődleges kulcsára
+hivatkozik, ezzel összeköti a két sémát.
+
 **Meghatározó kapcsolat:** gyenge egyedet meghatározó kapcsolat. A meghatározó
 kapcsolat jele a dupla-vonalas rombusz.
 
@@ -407,11 +414,22 @@ ez a Kiadó tulajdonságtípus egy konkrét (adott könyvre jellemző) előfordu
 
 ### 2.3 Kapcsolatok osztályozása (a kapcsolatok típusai)
 
-Egy kapcsolat lehet **két egyed közötti (bináris) vagy sokágú (kettőnél több egyed
-közötti)** kapcsolat. Utóbbi elég ritkán fordul elő és szükség esetén visszavezethető
-több bináris kapcsolatra, vagy helyettesíthető gyenge entitással.
+A kapcsolattípusok általában rendelkeznek bizonyos megszorításokkal, amelyek
+korlátozzák azokat a lehetséges egyedkombinációkat, amelyek részt vehetnek egy
+kapcsolathalmazban. A kapcsolatokra vonatkozó megszorításoknak két fő típusát
+különböztetjük meg: számosság és részvétel. Ezeket együtt a kapcsolattípusok
+strukturális megszorításainak is szokás nevezni.
 
-A bináris kapcsolatoknak három típusa van:
+Egy kapcsolat lehet **két egyed közötti (bináris vagy másodfokú) vagy sokágú
+(kettőnél több egyed közötti, vagy n-ed fokú)** kapcsolat. Utóbbi elég ritkán
+fordul elő és szükség esetén visszavezethető több bináris kapcsolatra, vagy
+helyettesíthető gyenge entitással.
+
+**A bináris kapcsolatok számossága**
+
+A bináris (másodfokú) kapcsolatok számossága meghatározza azon kapcsolat-előfordulások
+maximális számát, amelyekben egy egyed részt vehet. A bináris kapcsolattípusok
+lehetséges számosságai:
 
 * 1:1 (egy az egyhez) kapcsolat esetén minden egyes egyedhez pontosan egy másik
 egyed tartozik. Ennek jelölésmódja az, hogy a kapcsolatot úgy kötjük az egyedekhez,
@@ -419,18 +437,51 @@ hogy minden egyed felé mutat nyíl.
 
 * 1:N (egy a sokhoz) kapcsolat esetén az egyik egyedhez több másik egyedet tudunk
 társítani, de a másik csoport minden egyes példányához pontosan egyet társítunk.
-A nyilat úgy rajzoljuk, hogy az „1-es reláció felé” mutasson.
+A diagramban a nyilat úgy rajzoljuk, hogy az „1-es reláció felé” mutasson.
 
 * N:M (sok a sokhoz) kapcsolat esetén mindkét típusú egyedhez tetszőleges számú
 másik típusú egyed tartozhat. N:M típusú és sokágú kapcsolat mindig helyettesíthető
 gyenge entitással és több bináris kapcsolattal.
 
+A kapcsolat típusa lényeges az E-K modell szempontjából, ezért azt az E-K diagramon
+is jelölni szokták (nyilakkal).
+
 ![Imgur](https://i.imgur.com/xiw6XLQ.jpg)
 
-A kapcsolat típusa lényeges az E-K modell szempontjából, ezért azt az E-K diagramon
-is jelölni szokták (nyilakkal, vagy „varjúlábakkal”).
+**Részvételi megszorítások**
+
+Egy egyedtípus teljesen részt vesz egy kapcsolatban, ha minden egyedpéldány
+kapcsolatban áll valamely másik egyeddel. Ezt egy olyan dupla vonallal jelöljük,
+amely a részt vevő egyedtípust köti össze a kapcsolattal. A teljes részvétel
+azonban általában nem teljesül.
+
+A részvételi megszorítás meghatározza azon kapcsolat-előfordulások minimális és
+maximális számát, amelyekben az egyes egyedek részt vehetnek, ezért számossági
+megszorításnak, vagy **kardinalitás**nak nevezzük, amely azt mutatja meg,
+hogy az adott egyedtípusból hány példány vehet és hány példány vesz kötelezően részt
+a kapcsolatban.
+
+**Minimum kardinalitás:** minimális példányszám az egyedből, amelynek részt kell
+vennie a kapcsolatban.
+
+**Maximum kardinalitás:** az egyedpéldányok maximális száma, ami egy adott egyedhez
+kapcsolódhat a kapcsolatban.
+
+Az **ordinalitás** azt jelzi, hogy egy egyedek közti kapcsolat kötelező vagy
+opcionális.
+
+Az E-K diagramban a kapcsolatot jelképező vonal közepe felé a minimális,
+széle felé a maximális részvételt jelöljük mindkét oldalon.
+
+![Imgur](https://i.imgur.com/VqJoSEe.jpg)
 
 ### 2.4 Speciális kapcsolat típusok
+
+Ha valamely általános egyednek bizonyos altípusait külön szeretnénk modellezni,
+akkor a főtípus és az altípusok viszonyát specializáló kapcsolattal írhatjuk le.
+Mivel a specializáló kapcsolat leszármaztatást jelöl, ezért a származtatott egyedek
+öröklik, a főegyed (vagy főtípus) tulajdonságait (objektumorientált stílusú
+reprezentálás).
 
 ![Imgur](https://i.imgur.com/Jv8zwTB.jpg)
 
