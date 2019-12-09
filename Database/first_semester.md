@@ -1,3 +1,5 @@
+[Kezdőlap](README.md)
+
 # 2019/20 I. félév szóbeli tételek
 
 
@@ -420,10 +422,11 @@ kapcsolathalmazban. A kapcsolatokra vonatkozó megszorításoknak két fő típu
 különböztetjük meg: számosság és részvétel. Ezeket együtt a kapcsolattípusok
 strukturális megszorításainak is szokás nevezni.
 
-Egy kapcsolat lehet **két egyed közötti (bináris vagy másodfokú) vagy sokágú
-(kettőnél több egyed közötti, vagy n-ed fokú)** kapcsolat. Utóbbi elég ritkán
-fordul elő és szükség esetén visszavezethető több bináris kapcsolatra, vagy
-helyettesíthető gyenge entitással.
+Egy **kapcsolattípus foka** a kapcsolatban részt vevő egyedtípusok száma. Egy kapcsolat
+így lehet **két egyedtípus közötti (bináris vagy másodfokú) vagy sokágú (kettőnél több
+egyedtípus közötti, vagy n-ed fokú)** kapcsolat. Utóbbi elég ritkán fordul elő és
+szükség esetén visszavezethető több bináris kapcsolatra, vagy helyettesíthető
+gyenge entitással.
 
 **A bináris kapcsolatok számossága**
 
@@ -471,7 +474,8 @@ Az **ordinalitás** azt jelzi, hogy egy egyedek közti kapcsolat kötelező vagy
 opcionális.
 
 Az E-K diagramban a kapcsolatot jelképező vonal közepe felé a minimális,
-széle felé a maximális részvételt jelöljük mindkét oldalon.
+széle felé a maximális részvételt jelöljük mindkét oldalon. A kör nulla kardinálist
+jelöl, a függőleges vonal 1-et, a varjúláb pedig sokat.
 
 ![Imgur](https://i.imgur.com/VqJoSEe.jpg)
 
@@ -481,10 +485,15 @@ Ha valamely általános egyednek bizonyos altípusait külön szeretnénk modell
 akkor a főtípus és az altípusok viszonyát specializáló kapcsolattal írhatjuk le.
 Mivel a specializáló kapcsolat leszármaztatást jelöl, ezért a származtatott egyedek
 öröklik, a főegyed (vagy főtípus) tulajdonságait (objektumorientált stílusú
-reprezentálás).
+reprezentálás), de emellett saját attribútumokkal is rendelkezhetnek.
 
 ![Imgur](https://i.imgur.com/Jv8zwTB.jpg)
 
+A specializáló kapcsolat az egyedek többszörös előfordulását eredményezi. Ha ugyanis
+egyedhalmazokat képzelünk a főtípus és altípusok helyére, akkor egy egyedpéldány több
+egyedhalmazban is szerepel. A specializáló kapcsolat lényegében 1:1 kapcsolatot jelent egy
+főtípus és egy altípus között, de sajátos módon nem különböző egyedeket, hanem ugyanazon
+egyed két előfordulását kapcsolja össze.
 
 ## 3. tétel
 
@@ -514,9 +523,19 @@ Előnyei:
 * A relációs modellben az adatbázis tervezés a normál formák bevezetésével egzakt
   módon elvégezhető
 
+A relációs adatmodell lényege, hogy a különböző relációsémák azonos attribútumokat
+tartalmazhatnak, ezáltal kerülnek kapcsolatba egymással, és így a különálló adattáblák
+együttese egy szervesen összefüggő adatbázist alkot.
+
 ### 3.2 Reláció fogalma és tulajdonságai
 
 ### 3.3 Relációséma
+
+**Relációséma:** a reláció neve és az attribútumok (tulajdonságtípusok) halmaza.
+A relációsémát R(A 1 ,...,A n ) módon szokás jelölni, ahol A 1 ,...,A n attribútumok,
+R pedig a séma neve. Például a Könyv reláció sémája a következő: *Könyv(ISBN,
+Kiadó, Szerző, Cím)*. Adott adatbázishoz tartozó relációsémák összessége (és a
+köztük fennálló kapcsolatok leírása) alkotja az adatbázissémát.
 
 ### 3.4 Kulcsok, indexek és tulajdonságaik
 
@@ -832,3 +851,4 @@ könyve értendő.
 * <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
 [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
 
+[Kezdőlap](README.md)

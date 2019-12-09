@@ -1,3 +1,5 @@
+[Kezdőlap](README.md)
+
 # 2019/20 I. félév szóbeli tételek
 
 ## 1. tétel
@@ -14,8 +16,8 @@
 
 ### A pénz jelen és jövőértéke, számításának módszerei
 
-A jelenérték (angolul present value, rövidítve PV) a pénz időértékét kifejező 
-közgazdaságtani fogalom. Kifejezi, hogy jövőben egy egységnyi pénz ma hány egységnyit 
+A jelenérték (angolul present value, rövidítve PV) a pénz időértékét kifejező
+közgazdaságtani fogalom. Kifejezi, hogy jövőben egy egységnyi pénz ma hány egységnyit
 ér, illetve a jelenleg rendelkezésre álló pénztől elvárt hozamkövetelményt.
 
 **Kiszámítása:**
@@ -67,15 +69,15 @@ $PV = Cˇ1 * \frac{1}{(1+r)^t}$
 
 ## 8. tétel
 
-### Makrogazdasági mutatók bemutatása, összetevői, különös tekintettel: GDP, NDP, GNI, NNI, GDNI 
+### Makrogazdasági mutatók bemutatása, összetevői, különös tekintettel: GDP, NDP, GNI, NNI, GDNI
 
 
 ## 9. tétel
 
-### 9.1 Makrogazdasági egyensúlyok, egyensúlytalanságok. 
+### 9.1 Makrogazdasági egyensúlyok, egyensúlytalanságok.
 
 
-### 9.2 Makrogazdasági számlák, elszámolások 3 és 4 szereplős modelljei. 
+### 9.2 Makrogazdasági számlák, elszámolások 3 és 4 szereplős modelljei.
 
 
 ### 9.3 Infláció és defláció közgazdaságtana
@@ -87,3 +89,6 @@ $PV = Cˇ1 * \frac{1}{(1+r)^t}$
 
 
 ### 10.2 Az árupiac, pénzpiac és munkaerőpiac közgazdaságtana.
+
+
+[Kezdőlap](README.md)
