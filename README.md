@@ -7,3 +7,7 @@
 ## [Közgazdaságtan](Economics/README.md)
 
 * [Első félév](Economics/first_semester.md)
+
+## [Hálózatok](Networks/README.md)
+
+* [Első félév](Networks/first_semester.md)
