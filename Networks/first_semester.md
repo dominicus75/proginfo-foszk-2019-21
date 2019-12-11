@@ -421,15 +421,27 @@ munkaállomások üzemeltetése.
 
 ### 10.8 Egy- és többmódusú optikai kábelek
 
-**Egymódusú szál (Single Mode):** A mag átmérőjét csökkentve a hullámhossz nagyságrendjére
-csak a tengelyirányú fénysugár jut át. A fényimpulzusok nem torzulnak, nagyobb
-adatátviteli sebesség érhető el. Jellemzők: 9/125μm átmérő; 1310nm, 1550nm hullámhossz.
+*A módusok az optikai szálban haladó egyes fényhullámok „útvonalát” írják le. A
+többmódusú szálakban több úton terjed a fény, míg az egymódusúban csak egyetlen
+módon, az optikai szál magjával párhuzamosan.*
 
-**Többmódusú szál (Multi Mode):** A fényforrásból különböző szögben kilépő fénysugarak
-különböző szögben verődnek vissza a két optikai közeg határáról, ezért különböző
-utat tesznek meg különböző idő alatt. Ezért a fényimpulzusok torzulnak. Emiatt az
-adatátviteli sebesség csökken. Jellemzők: 50/125μm ill. 62.5/125μm átmérő; 850nm,
-1310nm hullámhossz.
+![Imgur](https://i.imgur.com/dEo1zEe.jpg)
+
+**Egymódusú szál (Single Mode, SM):** Olyan optikai szál, mely csak egy adott frekvencián
+– és annak közvetlen környezetében – képes a fény átvitelére, más frekvenciákon
+a szál csillapítása igen erős. Az egymódusú szálakban a fényimpulzusok nem torzulnak
+ezért valamivel nagyobb sávszélességen képesek jelátvitelre, mint a multimódusú szálak.
+Monomódusú optikai szálak esetén a sávszélesség korlátlannak tekinthető. A kis
+csillapítás (SM: 0,25-0,4 dB/km; MM: 0,7-3,5 dB/km), nagy távolságok (egymódusú
+szálaknál akár 70-100 km) áthidalását teszi lehetővé erősítők beiktatása nélkül.
+
+**Többmódusú szál (Multi Mode, MM):** több frekvencián is képes a fény nagyobb
+távolságra való eljuttatására. Az egyes frekvenciák körüli sávszélesség némileg
+kisebb, mint az egymódusú szál esetében, mert a fényforrásból különböző szögben
+kilépő fénysugarak különböző szögben verődnek vissza a két optikai közeg határáról,
+ezért a fényimpulzusok torzulnak. Emiatt az adatátviteli sebesség csökken. Az
+olcsóbb, multimódusú szálakra épülő rendszereket rövidebb távolságok (max. 2 km)
+áthidalásánál használják.
 
 **Többmódusú, emelkedő törésmutatójú szál (Multi Mode Graded):** A mag anyagának
 törésmutatója a tengelytől távolodva növekszik. Ez mintegy fókuszálja a fényt. E
