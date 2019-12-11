@@ -9,8 +9,7 @@
 
 Az Ethernet az [IEEE 802.3-as szabványt](https://hu.wikipedia.org/wiki/IEEE_802.3)
 megvalósító, korábban [busz](https://hu.wikipedia.org/wiki/Busztopol%C3%B3gia), ma
-inkább [csillag](https://people.inf.elte.hu/moaqaci/szamalap_beadando_1/szamitogepes_halozatok_vilaga.htm#_Toc213477392)topológiát alkalmazó helyi hálózat ([LAN](https://hu.wikipedia.org/wiki/Helyi_h%C3%A1l%C3%B3zat)),
-amelynek sebessége 10Mb/s vagy 100Mb/s.
+inkább [csillag](https://people.inf.elte.hu/moaqaci/szamalap_beadando_1/szamitogepes_halozatok_vilaga.htm#_Toc213477392)topológiát alkalmazó helyi hálózat ([LAN](https://hu.wikipedia.org/wiki/Helyi_h%C3%A1l%C3%B3zat)).
 
 **Ethernet szegmens** az Ethernet-hálózat két aktív eszköz (bridge vagy switch) közötti
 része, amelyben minden eszköz ugyanazt a fizikai réteget (átviteli közeget) használva
@@ -105,14 +104,67 @@ különböző helyen lesz elhelyezve és a két „fél” híd között egy üv
 felhasználásra. Így általában max. 2 km hidalható át Ethernet rendszer esetén.
 
 
-### 1.5 A switching technológia
+### 1.5 A switching technológia (kapcsolt Ethernet)
+
+Ahogy újabb és újabb állomások csatlakoznak a klasszikus Ethernethez, minden
+állomás egyre csökkenő részt kap a rögzített kapacitásból. Esetenként a LAN
+telítődhet. Korábban a lokális hálózatok legáltalánosabb aktív elemei a Hub-ok
+(elosztók), a Repeater-ek (ismétlők), és a Bridge-k (hidak) voltak, jellemzően koax-
+kábellel összekötve, maximum 10Mb/s átviteli sebességgel. A mai hálózatokat
+nem csak a sebesség és a kábel típusa különbözteti meg a korábbi megoldásoktól,
+hanem a topológia és a hálózat aktív elemei is. Manapság legtöbbször 100Mb/s vagy
+1Gb/s sebességű csavart érpárral működő, illetve 1Gb/s vagy 10Gb/s sebességű
+optikai hálózatokkal találkozunk. Szinte kivétel nélkül jellemző a lokális
+hálózatokra a csillagpontos topológia és a kapcsolt Ethernet, azaz a Switch-ek é
+s a Router-ek mint aktív hálózati elemek használata.
+
+Ahogy a koax-kábeleket egyre jobban kiszorította a csavart érpár, ennek jellegéből
+valamint a már kiépített telefonközpont orientáltságú felépítmény azaz a csillagpontos
+topológiából fakadóan a hálózat hosztjait is „telefonközpont jellegű” eszközzel
+lehetett csak összekapcsolni. Az ezt megvalósító hálózati összekötő, összekapcsoló
+eszköz a Switch (kapcsoló).
 
 Egy LAN switch logikai funkciójában megegyezik a bridge-k funkciójával, azaz
 elkülönült hálózati szegmenseket kapcsol össze és a lokális forgalmat nem engedi
 ki. A különbség csupán annyi, hogy a swicth képes a portjai között egymástól
-függetlenül is kereteket továbbítani.
+függetlenül is kereteket továbbítani. A Switch tehát egy hálózati összekötő elem,
+ami alapesetben az adatkapcsolati rétegben dolgozik. A Switch a hozzá csatlakoztatott
+eszközök közötti adatáramlást biztosítja. A Switch lényegében egy gyors működésű
+többportos (2. rétegbeli) híd. Mindegyik port külön ütközési tartományt hoz létre.
+
+A Switch működése – kapcsoló jellegéből következően – lehetővé teszi, hogy a
+keretek az adó állomástól közvetlenül csak a MAC címben szereplő vevő állomáshoz
+jussanak el. Ahhoz, hogy ezt a Switch megtehesse, rendelkeznie kell azzal az
+információval, hogy melyik portjára milyen MAC című állomás csatlakozott. Ez az
+információ egy táblázatban (MAC Address Table), a Switch memóriájában tárolódik,
+és a beérkező keretek forráscímeinek segítségével töltődik fel. Mivel minden állomás
+a Switch egy-egy egyedi portjára csatlakozik, ha egyszerre több portra érkezik
+keret, akkor sem lép fel ütközés, mivel a portok egymástól függetlenek.
+
+A Switch-ek legfontosabb tulajdonságai: a portok száma és típusa (réz/üveg); a
+sebesség (10/100/1000); a duplexitás (Full/Half); az áteresztő vagy kapcsolási
+képesség (Backplane speed).
 
 ### 1.6 Az Ethernet swich-ek típusai
+
+**Kapcsolási módok**
+* **Vonalkapcsolt (áramkörkapcsolt) technológia:** az információátvitel előtt
+dedikált kapcsolat (kommunikációs áramkör) épül ki a két végpont között, s ez
+folyamatosan fennáll, amíg a kommunikáció tart.
+* **Üzenetkapcsolt (store-and-forward) technológia:** nem épül ki áramkör, hanem a
+teljes üzenet kapcsolóközpontról kapcsolóközpontra halad, mindig csak egy
+összeköttetést terhelve.
+* **Csomagkapcsolt technológia:** az információt (korlátozott maximális méretű)
+részekre (csomagokra) darabolják, s a csomagokat (mint önálló egységeket)
+üzenetkapcsolt elven továbbítják.
+* **Tárol és továbbít:** A keret továbbítása a teljes keret megérkezése után kezdődik
+meg. A kapcsoló újraszámítja a keretellenőrző összeget (CRC, vagy más néven Frame
+Control Sequence, FCS), s ha a keret hibás, eldobja.
+* **Közvetlen kapcsolás:** A célcím (6 bájt) megérkezése után azonnal megkezdődik
+a keret továbbítása a kimeneti porton.
+* **Töredékmentes kapcsolás:** A minimális keretméret (64 bájt) megérkezése után
+kezdődik a keret továbbítása a kimeneti porton. (Esetlegesen ütköző keret nem
+kerül továbbításra).
 
 
 ## 2. tétel
@@ -190,6 +242,11 @@ információkat adnak át egymásnak
 * Elérhetőségi információk cseréje
 
 ### 4.2 Forgalomirányítás az IP hálózaton: a RIP és az OSPF protokoll
+
+A számítógép-hálózatokban sokféle útválasztó algoritmus használatos. A statikus
+algoritmusok közé tartozik például a legrövidebb útalapú útválasztás és az
+elárasztás. A dinamikus algoritmus a távolságvektor és a kapcsolatállapot-alapú ú
+tválasztás. A legtöbb meglévő hálózat ezek valamelyikét használja.
 
 **RIP (Routing Information Protocol – útválasztási információ protokoll)**
 
@@ -363,6 +420,20 @@ munkaállomások üzemeltetése.
 ### 10.7 Fényvezető szálas adatátvitel
 
 ### 10.8 Egy- és többmódusú optikai kábelek
+
+**Egymódusú szál (Single Mode):** A mag átmérőjét csökkentve a hullámhossz nagyságrendjére
+csak a tengelyirányú fénysugár jut át. A fényimpulzusok nem torzulnak, nagyobb
+adatátviteli sebesség érhető el. Jellemzők: 9/125μm átmérő; 1310nm, 1550nm hullámhossz.
+
+**Többmódusú szál (Multi Mode):** A fényforrásból különböző szögben kilépő fénysugarak
+különböző szögben verődnek vissza a két optikai közeg határáról, ezért különböző
+utat tesznek meg különböző idő alatt. Ezért a fényimpulzusok torzulnak. Emiatt az
+adatátviteli sebesség csökken. Jellemzők: 50/125μm ill. 62.5/125μm átmérő; 850nm,
+1310nm hullámhossz.
+
+**Többmódusú, emelkedő törésmutatójú szál (Multi Mode Graded):** A mag anyagának
+törésmutatója a tengelytől távolodva növekszik. Ez mintegy fókuszálja a fényt. E
+típus tulajdonságai az előző kettő közé tehetők.
 
 ### 10.9 Csillapítás jellemzése fényvezető szálakban
 
