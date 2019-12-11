@@ -449,8 +449,27 @@ típus tulajdonságai az előző kettő közé tehetők.
 
 ### 10.9 Csillapítás jellemzése fényvezető szálakban
 
+A fényvezetőszálak alapvető minőségi jellemzője a veszteség, illetve az egységnyi
+szálhosszra eső csillapítás. A csillapítás által az optikai szálban okozott
+jelerősség veszteség matematikai leírásához az egységnyi csillapítás paraméterét
+használják (*jele: a*), melyet 1 km szakaszon mértek. Mértékegysége: dB/km.
+
+A csillapítás exponenciálisan növekszik a szál hosszával együtt, korlátozva ezzel
+az adatátvitel hatótávot. A 3 dB csillapítás növekedés megfelel a propagált
+jelerősség 50%-os csökkenésének.
+
 ### 10.10 A fénykábelek fizikai felépítése
 
+Az optikai szál egy igen tiszta, néhány tíz (a technológia megjelenése idején még
+néhány száz) mikrométer átmérőjű üvegszálból és az ezt körülvevő, kisebb optikai
+törésmutatójú héjból álló vezeték. Működési elve a fénysugár teljes visszaverődésén
+alapul: a fénykábel egyik végén belépő fényimpulzus a vezeték teljes hosszán teljes
+visszaverődést szenved, így a vezeték hajlítása esetén is – minimális
+energiaveszteséggel – a szál másik végén fog kilépni.
+
+![Imgur](https://i.imgur.com/Yx8chPY.png)
+
+Egy kábelben több – jellemzően páros számú – fényvezető szálat szoktak elhelyezni.
 
 ## 11. tétel
 
