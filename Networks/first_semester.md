@@ -164,12 +164,12 @@ irányelveik szerint.
 más AS-hez kapcsolódik. Így internetkapcsolata akkor is megmarad, ha valamelyik
 kapcsolata teljesen csődöt mond. Nem enged át saját magán két másik AS közötti
 forgalmat.
-* A *stub („csonk”)* autonóm rendszer egyetlen más AS-hez kapcsolódik.**
+* A **stub („csonk”)** autonóm rendszer egyetlen más AS-hez kapcsolódik.
 * A **transit** autonóm rendszer olyan AS, ami lehetővé teszi hogy rajta keresztül
 kapcsolódjanak más hálózatokhoz. Az internetszolgáltatók (ISP) mindig tranzit AS-ek,
 hiszen kapcsolatot biztosítanak két hálózat között.
 
-**[Interior Gateway Protocol (IGP, belső átjáró protokoll)]()**
+**[Interior Gateway Protocol (IGP, belső átjáró protokoll)](https://gyires.inf.unideb.hu/GyBITT/30/ch05s06.html#d0e20447)**
 
 Az autonóm rendszeren belüli forgalomirányításra szolgáló protokoll, mint az
 OSPF (Open Shortest Path First – nyílt hozzáférésű, a legrövidebb utat előrevevő
