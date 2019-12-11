@@ -147,18 +147,107 @@ függetlenül is kereteket továbbítani.
 
 ### 4.1 Autonóm hálózatok, a belső és külső átjáró protokoll (IGP/EGP) fogalma
 
+Az interneten autonóm rendszer (**Autonomous System, AS**), önálló rendszer vagy
+útválasztási tartomány (**routing domain**) az IP-hálózatok olyan csoportja, melyen
+belül egyetlen, jól meghatározott útválasztási irányelv (**routing policy**) érvényesül.
+Az autonóm rendszer tulajdonképpen útválasztók (routerek) csoportja, amelyeket
+egységesen vezérelnek egy adminisztratív entitás (például egy internetszolgáltató,
+egy nagyvállalat vagy egy egyetem) megbízásából.
+
+Az internet nagyszámú autonóm rendszerből tevődik össze. Minden autonóm rendszert
+egyedi számmal azonosítanak: **Autonomous System Number (ASN)**.
+
+Az autonóm rendszerek három kategóriába oszthatók, kapcsolódásaik és működtetési
+irányelveik szerint.
+
+* A **többkapcsolatú (multihomed)** autonóm rendszer olyan AS, ami egynél több
+más AS-hez kapcsolódik. Így internetkapcsolata akkor is megmarad, ha valamelyik
+kapcsolata teljesen csődöt mond. Nem enged át saját magán két másik AS közötti
+forgalmat.
+* A *stub („csonk”)* autonóm rendszer egyetlen más AS-hez kapcsolódik.**
+* A **transit** autonóm rendszer olyan AS, ami lehetővé teszi hogy rajta keresztül
+kapcsolódjanak más hálózatokhoz. Az internetszolgáltatók (ISP) mindig tranzit AS-ek,
+hiszen kapcsolatot biztosítanak két hálózat között.
+
+**[Interior Gateway Protocol (IGP, belső átjáró protokoll)]()**
+
+Az autonóm rendszeren belüli forgalomirányításra szolgáló protokoll, mint az
+OSPF (Open Shortest Path First – nyílt hozzáférésű, a legrövidebb utat előrevevő
+protokoll). Az egyes autonóm rendszerek különböző típusú IGP-vel rendelkezhetnek,
+az EGP azonban egységes az egész Internetre.
+
+**[Exterior Gateway Protocol (EGP, külső átjáró protokoll)](https://www.szabilinux.hu/trendek/trendek5321.html)**
+
+Az autonóm rendszerek közötti forgalomirányításra szolgáló protokoll, mint pl.
+a BGP (Border Gateway Protocol – határátjáró protokoll).
+
+A EGP 3 feladatot lát el:
+
+* Szomszédok felderítése, melynek során két EGP router megegyezik, hogy elérhetőségi
+információkat adnak át egymásnak
+* Szomszédok elérhetőségének tesztelése, mely folyamatosan zajlik (Hello és IHU
+(I Heard You) csomagok cseréjével)
+* Elérhetőségi információk cseréje
+
 ### 4.2 Forgalomirányítás az IP hálózaton: a RIP és az OSPF protokoll
 
-### 4.3 A DHCP protokoll
+**RIP (Routing Information Protocol – útválasztási információ protokoll)**
 
-**Dinamikus állomáskonfiguráló protokoll (Dynamic Host Configuration Protocol)**
+A RIP egy a [Bellman–Ford-algoritmusra](http://tamop412.elte.hu/tananyagok/algoritmusok/lecke26_lap1.html#hiv3)
+épülő távolságvektor-alapú protokoll, ami azt jelenti, hogy az alapján választja
+ki az adatcsomagok számára kijelölt utat, hogy melyikkel jár együtt a legkevesebb
+útválasztó érintése. Ez kis rendszerekben jól működött, de ahogy a hálózatok nagyobbak
+lettek, egyre kevésbé volt elfogadható, ezért fokozatosan felváltják újabb protokollok,
+például az OSPF.
 
-A DHCP protokoll azt oldja meg, hogy a TCP/IP hálózatra csatlakozó hálózati végpontok (például
+A RIP azt igényli az útválasztóktól, hogy más útválasztókra figyelve információkat
+szerezzenek az útvonalakról és lépésszámokról, és ezt építsék be a saját táblájába.
+A RIP szereplői aktív és passzív eszközök. Aktív RIP csomópontnak hívjuk azokat
+az útválasztókat, amelyek részt vesznek a távolságvektor-adatokra vonatkozó
+információcserében. Elküldik útválasztó tábláikat a többi útválasztónak és figyelik
+a tőlük érkező frissítéseket. A passzív RIP eszközök csak beépítik a frissítéseket,
+de nem publikálják a saját útválasztó táblájukat. Passzív RIP csomópontnak számítanak
+a normál hálózati számítógépek is.
+
+Két táblázattal rendelkezik:
+* *Forgalomirányító tábla:* A célhálózat címének ismeretében a táblázatból
+megállapítható a következő ugrás IP címe
+* *ARP tábla:* A cél interfész IP címének ismeretében kikereshető annak MAC címe
+
+Az útvonalak jóságát a két forgalomirányító közötti hálózatok számával (hop = ugrás)
+fejezi ki. A metrika az ugrások számával azonos. Ha túl sok útválasztó van, akkor
+a táblák lassú átadása problémákhoz vezethet. Emiatt a RIP beállít egy maximumot
+arra vonatkozóan, hogy hány útválasztón haladhatnak át a táblák, míg a feladótól
+a címzettig megérkeznek. Ez a lépésszám-küszöbérték a RIP esetében 15 (a 16-os
+lépésszám/költség a „végtelent”, az elérhetetlen célpontot jelöli).
+
+**OSPF (Open Shortest Path First – nyílt hozzáférésű, a legrövidebb utat előrevevő protokoll)**
+
+Az OSPF egy kapcsolatállapot alapú útválasztó protokoll, amely nem ugrásszám, hanem
+a sávszélesség alapján választja ki a legrövidebb (és hurokmentes) útvonalat. Az
+OSPF nagy és nagyon nagy összetett hálózatokhoz is képes alkalmazkodni. A hálózat
+topológiájában bekövetkezett változásokhoz való újrakonfigurálás is gyorsabb, mint
+a RIP esetében.
+
+Az OSPF által alkalmazott kapcsolatállapot alapú módszernél az útválasztók a
+hálózati topológiát térképezik fel. Az útválasztók az útválasztó-azonosító alapján
+azonosítják egymást a topológián belül. Az útválasztó-azonosító (általában) az
+útválasztó hatáskörébe tartozó, számszerűleg legnagyobb IP-cím. Minden útválasztó
+fastruktúrába rendezi az útválasztókat, amelynek ő maga a gyökere. Ennek a hálózati
+fastruktúrának a neve „legrövidebb út gráf” (SPT, Shortest Path Tree). A hálózat
+útvonalai megfeleltethetőek ezen gráf éleinek Az útválasztó kiszámítja az egyes
+útvonalak költségét. A költség mérésébe belefoglalható a lépésszámon kívül sok más
+információ is, például a kapcsolat sebessége vagy az összeköttetés megbízhatósága.
+
+
+### 4.3 Dinamikus állomáskonfiguráló protokoll (Dynamic Host Configuration Protocol, DHCP)
+
+A DHCP protokoll feladata, hogy a TCP/IP hálózatra csatlakozó hálózati végpontok (például
 számítógépek) automatikusan megkapják a hálózat használatához szükséges beállításokat.
-Ilyen szokott lenni például az IP-cím, hálózati maszk, alapértelmezett átjáró stb.
-A DHCP szerver-kliens alapú protokoll, nagy vonalakban a kliensek által küldött DHCP
-kérésekből, és a szerver által adott DHCP válaszokból áll.
-A DHCP-vel dinamikusan oszthatóak ki IP-címek, tehát a hálózatról lecsatlakozó számítógépek
+Ilyen például az IP-cím, hálózati maszk, alapértelmezett átjáró stb. A DHCP
+szerver-kliens alapú protokoll, nagy vonalakban a kliensek által küldött DHCP
+kérésekből, és a szerver által adott DHCP válaszokból áll. A DHCP-vel dinamikusan
+oszthatóak ki IP-címek, tehát a hálózatról lecsatlakozó számítógépek
 IP-címeit megkapják a hálózatra felcsatlakozó számítógépek, ezért hatékonyabban
 használhatóak ki a szűkebb címtartományok.
 
