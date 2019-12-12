@@ -453,16 +453,86 @@ jelek továbbítása esetén nem lehet 6000 b/s-nál nagyobb adatsebességet el�
 
 ### 10.4 A jel-zaj viszony jellemzése, a decibel érték
 
+Jel-zaj viszony, angol kifejezéssel **Signal-to-noise ratio (rövidítésekben SNR vagy S/N)**
+a hasznos és a zavaró jel (zaj) aránya [decibelben](https://hu.wikipedia.org/wiki/Decibel)
+kifejezve, vagyis a jel (információ) és a háttérzaj teljesítményének hányadosa.
+
+A decibel (dB) két mennyiség arányának logaritmikus mértéke. Ha S/N = 10, akkor
+ez 10 dB, ha S/N = 100, akkor ez 20 dB, ha S/N = 1000, akkor ez 30 dB és így tovább.
+
 ### 10.5 Maximális adatátviteli sebesség zajos csatornán (Shannon tétele)
 
-Shannon tétele azt mondja ki, hogy egy **B** sávszélességű, S/N jel-zaj viszonyú
+1948-ban [Claude Shannon](https://hu.wikipedia.org/wiki/Claude_Shannon) folytatta
+Nyquist munkáját, és kiterjesztette a véletlen zajnak kitett csatornákra is.
+Shannon mintavételezési tétele értelmében egy időben folytonos jel teljes mértékben
+rekonstruálható diszkrét, egyenlő időközű mintákból, ha a mintavételezett jel
+legmagasabb frekvenciájú összetevője kisebb, mint a mintavételi frekvencia fele.
+A mintavételi frekvencia felét Nyquist-frekvenciának nevezzük.
+
+Shannon tétele azt mondja ki, hogy egy **B** sávszélességű, **S/N** jel-zaj viszonyú
 csatorna esetében mekkora az elérhető maximális adatsebesség:
 
-**Maximális adatsebesség = B log<sub>2</sub>(1+S/N) [bit/sec]**
+**Maximális adatsebesség = B*log<sub>2</sub>(1+S/N) [bit/sec]**
 
 A B mértékegysége Hz, az S/N-é dB.
 
 ### 10.6 Vezetékes adatátvitel: sodrott érpár, alapsávú és szélessávú koaxiális kábel
+
+**Sodrott érpár (twisted pair)**
+
+![Imgur](https://i.imgur.com/pkW2zvQ.jpg)
+
+A legrégebbi, de még ma is a legelterjedtebb átviteli közeg. A sodrott érpár két
+szigetelt rézhuzalból áll, melyek tipikusan kb. 1 mm vastagságúak. A huzalok a
+DNS-hez hasonlóan spirálszerűen egymás köré vannak sodorva. A sodrás oka az, hogy
+az egyes sodrott huzalokból érkező hullámok kioltják egymást, tehát az eredményül
+kapott huzal kevésbé sugároz.
+
+A sodrott érpárnak számos változata van. A sok irodaházban telepített közönséges
+változatát *5-ös kategóriájú (Category 5) vagy „Cat 5”-ös* kábelezésnek nevezzük.
+Az 5-ös kategóriájú sodrott érpár két finoman egymás köré sodrott, szigetelt
+vezetékből áll. Általában négy ilyen érpárt fognak össze egy műanyag köpennyel,
+ami védi, és egyben tartja a nyolc vezetéket.
+
+A Cat 6 kategóriáig terjedő vezetéktípusokat gyakran nevezik UTP-nek (*Unshielded
+Twisted Pair – árnyékolatlan sodrott érpár*), mivel egyszerűen vezetékekből és
+szigetelésekből állnak. Ezzel szemben a 7-es kategóriájú (Cat 7) kábelek esetén
+az egyes sodrott érpárokat árnyékolják, csakúgy, mint a teljes kábelt (de még a
+műanyag védőköpenyen belül). Az árnyékolás csökkenti a szomszédos vezetékek
+közötti külső interferenciával és az áthallásokkal szembeni érzékenységet annak
+érdekében, hogy megfeleljenek az elvárt teljesítőképességre vonatkozó előírásoknak.
+
+**Koaxiális kábel**
+
+![Imgur](https://i.imgur.com/dBottkf.png)
+
+A koaxiális kábel közepén tömör rézhuzalmag van, amelyet szigetelő vesz körül.
+A szigetelő körül sűrű szövésű hálóból álló rézvezető található. A fémháló szerepe
+az elektromos árnyékolás, azaz a belső éren továbbított jel megóvása a külső
+zavaroktól. Ezt műanyag burkolattal vonják be mechanikai védelem céljából. A
+koaxiális kábel kialakítása és árnyékolása a nagy sávszélesség és a
+kiváló zajérzéketlenség jó kombinációját adja. Az elérhető sávszélesség a kábel
+minőségétől és hosszától függ. A mai modern kábelek sávszélessége néhány GHz.
+
+*Alapsávú koaxiális kábel*
+
+Ezt a koaxiális kábelt régebben elterjedten használták számítógépes lokális hálózatban,
+valamint távbeszélőrendszerekben is nagytávolságú átvitelre. A mindenkori sávszélesség
+a kábel hosszától függ. 1 km-nél kisebb távolságon 10 Mbit/s-os átviteli sebesség
+valósítható meg.
+
+Alkalmazták az Ethernet hálózatokban is, ahol megkülönböztetünk: vékony koaxiális
+(10Base2) és vastag koaxiális (10Base5) kábeleket. A típusjelzésben szereplő 2-es
+és 5-ös szám az Ethernet hálózatban kialakítható maximális szegmenshosszra utal:
+vékony kábelnél ez 200 méter, vastagnál 500 méter lehet.
+
+*Szélessávú koaxiális kábel*
+
+Ez a fajta kábelrendszer a kábeltelevíziózás szabványos kábelein keresztül analóg
+jelátvitelt tesz lehetővé. A szabványos kábeltelevíziós technikából adódóan az
+ilyen széles sávú hálózatok esetén az analóg jelátvitelnek megfelelően (ami kevésbé
+kritikus, mint a digitális) a kábel akár 100 km-es távolságra, 300 MHz-es, de
+néha 450 MHz-es jelek átvitelére is alkalmas.
 
 ### 10.7 Fényvezető szálas adatátvitel
 
