@@ -415,10 +415,9 @@ adatátviteli sebességet tipikusan a csatorna kapacitásának mérésére, jelz
 használják.
 
 Nagyobb egységek:
-
-| 1 kb/s | 1000 b/s  |
-| 1 Mb/s | 1000 kb/s |
-| 1 Gb/s | 1000 Mb/s |
+* 1 kb/s = 1000 b/s
+* 1 Mb/s = 1000 kb/s
+* 1 Gb/s = 1000 Mb/s
 
 ### 10.2 A fizikai csatorna vágási frekvenciája és sávszélessége
 
