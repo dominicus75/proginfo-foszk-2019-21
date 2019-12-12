@@ -171,10 +171,109 @@ kerül továbbításra).
 
 ### 2.1 A hálózati réteg helye és legfontosabb feladatai
 
-### 2.2 Datagram és virtuális áramkör alapú szolgálat
+A hálózat réteg az alatta elhelyezkedő adatkapcsolati réteg szolgáltatásait igénybe
+véve, valamint saját szolgáltatásai segítségével szolgálja ki a felette elhelyezkedő
+szállítási réteget. Információs alapegysége a csomag. Legfontosabb feladata az,
+hogy a csomagok a forrás hoszttól a cél hosztig eljussanak. A hálózati réteg feladata
+– tehát az általa nyújtott szolgáltatás – az útvonalválasztás és a forgalomirányítás.
+A szolgáltatást olyan módon kell biztosítani, hogy a szállítási réteg már csak a
+számára releváns adatokat kapja meg. Ehhez arra van szükség, hogy a szolgáltatások
+függetlenek legyenek a hálózat – azon belül is – az útválasztók (Router-ek)
+kialakításától.
+
+### 2.2 Datagram és virtuális áramkör alapú szolgáltatás
+
+A felkínált szolgáltatás típusától függően kétfajta szerveződés lehetséges. Az
+*összeköttetés nélküli szolgáltatás* esetében a hálózatba érkező csomagok egyenként
+és egymástól függetlenül kerülnek továbbításra; előzetes összeköttetés-felépítésre
+nincs szükség. Ebben az összefüggésben a csomagokat gyakran **datagramoknak
+(datagrams, DG)**, a hálózatot pedig datagramalapú hálózatnak (datagram network)
+is nevezik, a távirat (telegram) kifejezés mintájára. Az internetprotokoll
+(IP, Internet Protocol), amely a teljes internet alapját képezi, meghatározó
+példája az összeköttetés nélküli hálózati szolgáltatásnak. Minden csomag tartalmazza
+a címzett IP-címet, amelyet az útválasztók használnak az egyes csomagok egyesével
+történő továbbításához. Az IPv4-csomagok címe 32 bites, az IPv6-csomagok címe
+pedig 128 bites.
+
+Az *összeköttetés-alapú szolgáltatás*hoz szükség van egy virtuális áramkör-alapú
+hálózatra. A **virtuális áramkörök** alapötlete, hogy elkerülik azt, hogy minden
+egyes csomag számára újra és újra útvonalat kelljen választani. Ehelyett, már az
+összeköttetés felépítésekor kiválasztanak a küldő és a címzett hoszt között egy
+utat, amelyet az útválasztók az összeköttetés kiépítése keretében tárolnak a
+táblázataikban. Ezt az utat használják azután a kapcsolat teljes forgalmának
+lebonyolítására. Amikor az összeköttetés megszűnik, a virtuális áramkör is bomlik.
+Az összeköttetés-alapú szolgáltatás esetén minden csomag tartalmaz egy azonosítót,
+amely megmondja, hogy a csomag melyik virtuális áramkörhöz tartozik.
+
+A virtuális áramkörök a szolgáltatásminőségi garanciák és a hálózaton belüli
+torlódáskezelés területén rendelkeznek némi előnnyel, mert az erőforrásokat
+(puffereket, sávszélességet, processzoridőt) előre, az összeköttetés felépítésekor
+le tudják foglalni. Mire a csomagok megérkeznek, a szükséges sávszélesség és ú
+tválasztó-kapacitás már rendelkezésre fog állni. Datagramalapú hálózatokban a
+torlódások elkerülése bonyolultabb kérdés.
 
 ### 2.3 Alapvető forgalomirányítási algoritmusok: az elárasztás, a legrövidebb út algoritmus, a távolságvektor alapú forgalomirányítás
 
+A hálózati réteg fő feladata, hogy a csomagokat a forrásgéptől a célgépig irányítsa.
+A legtöbb hálózatban a csomagoknak ehhez több útválasztón kell keresztülhaladni,
+több ugrást kell megtenni. Az útválasztó/forgalomirányító algoritmus (routing
+algorithm) a hálózati réteg szoftverének azon része, amely azért a döntésért
+felelős, hogy egy bejövő csomag melyik kimeneti vonalon kerüljön továbbításra.
+Ha a hálózat belül datagramokat használ, ezt a döntést újra meg újra meg kell
+hozni minden beérkező adatcsomagra, mivel lehet, hogy a legjobb útvonal a legutóbbi
+meghatározás óta változott. Ha a hálózat belül virtuális áramköröket használ, akkor
+útválasztó döntéseket csak új virtuális áramkör felépítésekor kell meghozni.
+Ezután az adatcsomagok már csak az előzőleg kialakított útvonalat követik. Ezt az
+utóbbi esetet néha viszony-útválasztásnak (session routing) is nevezik, mivel az ú
+tvonal érvényben marad a teljes felhasználói viszony (mint például a VPN-en
+keresztüli bejelentkezés) alatt.
+
+A számítógép-hálózatokban sokféle útválasztó algoritmus használatos. A statikus
+algoritmusok közé tartozik például a **legrövidebb útalapú útválasztás és az
+**elárasztás**, dinamikus algoritmus például a távolságvektor-alapú útválasztás.
+A legtöbb meglévő hálózat ezek valamelyikét használja.
+
+**Elárasztás**
+
+Az útválasztó algoritmus megvalósításakor minden útválasztónak helyi ismeretek
+alapján kell döntéseket hoznia, nem pedig a hálózat teljes képe alapján. Egy
+egyszerű helyi módszer az elárasztás (flooding), amelyben minden bejövő csomagot
+minden kimenő vonalon kiküldünk, kivéve azon, amelyiken beérkezett. Az elárasztás
+sok csomag elküldésénél nem praktikus, de van néhány fontos alkalmazási helye.
+Először is, ez biztosítja, hogy egy csomag a hálózat összes csomópontjához eljusson.
+Ez azonban pazarlás lehet, ha egyetlen címzettnek van szüksége a csomagra, de
+adatszórásnál hatékony módszer.
+
+**Legrövidebb út algoritmus**
+
+Az optimális útvonal nem feltétlenül jelenti a fizikailag legrövidebb útvonalat,
+mivel számos egyéb tényező is befolyásolhatja az optimális választást. Mértékadó
+információ lehet például a csomópont átlépések száma, az az idő, amennyi alatt a
+csomag eljut a céljáig, illetve a vonalhasználat költségei. Általánosan egy adott
+szakasz mértékét a távolság, az adatátviteli sebesség, az átlagos forgalom, a
+kommunikációs költség, az átlagos sorhossz vagy más egyéb tényezők alapján határozzák
+meg. A legrövidebb út tehát sok paraméter együttes vizsgálata után az egyes
+komponensek súlyától (súlyfüggvényétől) függően több különböző út is lehet.
+
+A [módszer](https://hu.wikipedia.org/wiki/Dijkstra-algoritmus) (a szemafort is kiagyaló) Edsger Wybe Dijkstra holland matematikustól származik, 1959-ből.
+
+**Távolságvektor alapú forgalomirányítás**
+
+A számítógép-hálózatok általában dinamikus algoritmust használnak, ami lényegesen
+összetettebb, mint az elárasztás, de sokkal hatékonyabb is, mivel megtalálja a
+legrövidebb utat az aktuális topológiában.
+
+A távolságvektor-alapú útválasztás (distance vector routing) alapja, hogy minden
+útválasztónak egy táblázatot (vagyis egy vektort) kell karbantartania, amelyben
+minden célhoz szerepel a legrövidebb ismert távolság, és annak a vonalnak az
+azonosítója, amelyiken a célhoz lehet eljutni. A táblázatokat a szomszédokkal való
+információcsere útján frissítik. Végül minden útválasztó tudni fogja a legjobb
+adatkapcsolatot minden célcím megtalálásához.
+
+A távolságvektor-alapú útválasztó algoritmust néha máshogy is nevezik, mint például
+elosztott Bellman–Ford útválasztó algoritmus – az algoritmust kifejlesztő kutatók
+után. Ez volt az ARPANET eredeti útválasztó algoritmusa és ezt használták az
+interneten is RIP néven (4.2 tétel).
 
 ## 3. tétel
 
