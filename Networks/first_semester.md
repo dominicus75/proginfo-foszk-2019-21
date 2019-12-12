@@ -229,8 +229,8 @@ tvonal érvényben marad a teljes felhasználói viszony (mint például a VPN-e
 keresztüli bejelentkezés) alatt.
 
 A számítógép-hálózatokban sokféle útválasztó algoritmus használatos. A statikus
-algoritmusok közé tartozik például a **legrövidebb útalapú útválasztás és az
-**elárasztás**, dinamikus algoritmus például a távolságvektor-alapú útválasztás.
+algoritmusok közé tartozik például a **legrövidebb útalapú útválasztás** és az
+**elárasztás**, dinamikus algoritmus például a **távolságvektor-alapú útválasztás**.
 A legtöbb meglévő hálózat ezek valamelyikét használja.
 
 **Elárasztás**
