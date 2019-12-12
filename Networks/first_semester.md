@@ -407,17 +407,82 @@ munkaállomások üzemeltetése.
 
 ### 10.1 Az adatátviteli sebesség fogalma
 
+Az adatátviteli sebesség (hálózati sebesség, sávszélesség, bitráta, bandwidth),
+az információáramlás sebességének mértéke, amely az adatátviteli berendezések által
+másodpercenként átvitt jelek avagy bitek számát adja meg. Tömören: **az időegység
+alatt átvitt információ mennyisége**. Mértékegysége a bit/másodperc, b/s, bps. Az
+adatátviteli sebességet tipikusan a csatorna kapacitásának mérésére, jelzésére
+használják.
+
+Nagyobb egységek:
+
+| 1 kb/s | 1000 b/s  |
+| 1 Mb/s | 1000 kb/s |
+| 1 Gb/s | 1000 Mb/s |
+
 ### 10.2 A fizikai csatorna vágási frekvenciája és sávszélessége
 
+Azt a frekvenciatartományt, amelyen belül a csillapítás mértéke nem túl nagy,
+sávszélességnek (bandwidth) nevezzük. A gyakorlatban a csillapítás megváltozása
+nem igazán éles, ezért a sávszélesség 0-tól addig a frekvenciáig tart, amelynél
+a jel teljesítménye az eredeti jel teljesítményének felére csökken. A sávszélesség
+az átviteli közeg fizikai tulajdonsága, amely többek között a rézvezeték vagy az
+üvegszál kialakításától függ. Gyakran használnak szűrőket, hogy tovább korlátozzák
+egy jel sávszélességét.
+
 ### 10.3 Maximális adatátviteli sebesség zajmentes csatornán (Nyquist tétele)
+
+A [Henry Nyquist](https://hu.wikipedia.org/wiki/Harry_Nyquist) által 1924-ben
+felismert összefüggés kimondja, hogy még egy tökéletesen csillapítás- és
+torzításmentes csatornának is megvan a maximális átviteli kapacitása. A csatornán
+átvitt adatok értelmezése, azaz az adatok visszaállítása Nyquist bizonyítása
+szerint a következő. Ha egy tetszőleges jelet egy **B** sávszélességű, aluláteresztő
+szűrőn (*olyan áramkör, mely a jel alacsony frekvenciás összetevőit átengedi, a
+magas frekvenciásakat kiszűri*) bocsájtunk át, akkor a szűrt jelből másodpercenként
+pontosan **2B** minta vételezésével a jel visszaállítható. Másodpercenként 2B-nél
+több mintavételre azért nincs szükség, mivel az aluláteresztő szűrő a magasabb
+frekvenciájú komponenseket már eleve kiszűrte.
+
+Amennyiben a jelnek V diszkrét szintje van, akkor a Nyquist tétel kimondja, hogy:
+
+**Maximális adatsebesség = 2B*log<sub>2</sub>(V) [bit/sec]**
+
+A B mértékegysége Hertz (Hz).
+
+Például egy zajmentes, 3 kHz sávszélességű csatornán bináris (azaz kétszintű)
+jelek továbbítása esetén nem lehet 6000 b/s-nál nagyobb adatsebességet elérni.
 
 ### 10.4 A jel-zaj viszony jellemzése, a decibel érték
 
 ### 10.5 Maximális adatátviteli sebesség zajos csatornán (Shannon tétele)
 
+Shannon tétele azt mondja ki, hogy egy **B** sávszélességű, S/N jel-zaj viszonyú
+csatorna esetében mekkora az elérhető maximális adatsebesség:
+
+**Maximális adatsebesség = B log<sub>2</sub>(1+S/N) [bit/sec]**
+
+A B mértékegysége Hz, az S/N-é dB.
+
 ### 10.6 Vezetékes adatátvitel: sodrott érpár, alapsávú és szélessávú koaxiális kábel
 
 ### 10.7 Fényvezető szálas adatátvitel
+
+Egy optikai összeköttetés optikai adóból, fényvezető szálból és optikai vevőből
+áll. Az optikai adó az elektromos jelet alakítja át fénnyé, az optikai szál az
+átviteli közeg, a vevő pedig a torzult optikai jelet alakítja vissza elektromos
+jellé.
+
+A fényforrás egy LED, vagy lézer dióda. Ezek az eszközök félvezetők, melyek nagyon
+jól fókuszálható fényt állítanak elő a rajtuk átfolyó áram erősségétől függő
+intenzitással. Fényérzékelőként fototranzisztort alkalmaznak. Ez szintén félvezető,
+ami a rá eső fény erősségétől függő kimeneti jelet állít elő.
+
+Ennél az átviteli közegnél a legproblémásabb és legfontosabb kérdés a jelek be és
+kicsatolása, amire alapvetően kétféle csatolótípust alkalmaznak. A passzív illesztő
+két, az optikai szálra kapcsolódó csatlakozóból áll. Az egyik egy LED-et, míg a
+másik egy fényérzékelő félvezetőt tartalmaz. Az aktív illesztő annyiban több mint a
+passzív, hogy a vett jeleket átalakítja villamos mennyiséggé, felerősíti,
+visszaalakítja fényimpulzusokká és újra a közegre kapcsolja.
 
 ### 10.8 Egy- és többmódusú optikai kábelek
 
@@ -429,8 +494,9 @@ módon, az optikai szál magjával párhuzamosan.*
 
 **Egymódusú szál (Single Mode, SM):** Olyan optikai szál, mely csak egy adott frekvencián
 – és annak közvetlen környezetében – képes a fény átvitelére, más frekvenciákon
-a szál csillapítása igen erős. Az egymódusú szálakban a fényimpulzusok nem torzulnak
-ezért valamivel nagyobb sávszélességen képesek jelátvitelre, mint a multimódusú szálak.
+a szál csillapítása igen erős. Az egymódusú kábel esetében a cső átmérője a fény
+hullámhosszával megegyező így a fényimpulzusok nem torzulnak ezért valamivel
+nagyobb sávszélességen képesek jelátvitelre, mint a multimódusú szálak.
 Monomódusú optikai szálak esetén a sávszélesség korlátlannak tekinthető. A kis
 csillapítás (SM: 0,25-0,4 dB/km; MM: 0,7-3,5 dB/km), nagy távolságok (egymódusú
 szálaknál akár 70-100 km) áthidalását teszi lehetővé erősítők beiktatása nélkül.
