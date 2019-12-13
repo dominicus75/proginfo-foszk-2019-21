@@ -273,11 +273,20 @@ adatkapcsolatot minden célcím megtalálásához.
 A távolságvektor-alapú útválasztó algoritmust néha máshogy is nevezik, mint például
 elosztott Bellman–Ford útválasztó algoritmus – az algoritmust kifejlesztő kutatók
 után. Ez volt az ARPANET eredeti útválasztó algoritmusa és ezt használták az
-interneten is RIP néven (4.2 tétel).
+interneten is RIP néven (lásd 4.2 tétel).
 
 ## 3. tétel
 
 ### 3.1 Az IP protokoll helye és feladatai
+
+Az IP a klasszikus OSI besorolás alapján a 3., a hálózati rétegben helyezkedik el.
+Csomagkapcsolt hálózatot valósít meg, azaz nem építi fel a kapcsolatot a forrás
+és a cél között, hanem minden egyes csomagot külön irányít (route-ol). Hibadetektálást
+és hibajavítást nem végez (ezeket nevezzük „megbízhatatlan” protokollnak), ezeket
+a funkciókat főleg a szállítási rétegben elhelyezkedő protokollokra bízza (például TCP).
+Ennek oka az, hogy az egyszerűségre törekedtek. Így a hibajavítás terhe főképp a
+forrás és a cél számítógépeknél jelentkezik, és nem terheli feleslegesen az
+egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 ### 3.2 Az IPv4 és IPv6 csomagok fontosabb fejrész információi
 
@@ -287,9 +296,53 @@ interneten is RIP néven (4.2 tétel).
 
 ### 3.5 Az IP címek osztályozása
 
+A teljes IP-cím két részre osztható: egy hálózati és egy hoszt azonosítókból áll.
+A hálózati rész értéke az egy hálózaton – például Ethernet LAN-on – lévő összes
+hoszt esetén megegyezik. A hálózati azonosító hossza változó méretű lehet, azt a
+teljes cím első bitjei határozzák meg, az IP-címeket ez alapján címosztályokba
+soroljuk. **Az A osztályú címekben 8 biten ábrázolták a hálózatazonosítót, a B
+osztályúakban 16 biten, a C osztályúakban pedig 24-en**. Ezt a rendszert aztán
+később kiegészítették az úgynevezett alhálózatokkal (subnet), amelyek helyi szinten
+nagyobb szabadságot adtak a hálózat strukturálásában.
+
+![Imgur](https://i.imgur.com/UqDyUIr.jpg)
+
 ### 3.6 Az alhálózati maszk szerepe: a hálózat felosztása alhálózatokra
 
-### 3.7 Az alapértelmezett átjáró
+Annak az érdekében, hogy a szervezetek a nekik kiosztott címosztályokat további
+alhálózatokra bonthassák, vezették be az alhálózatot jelölő maszkot. Ezzel lehetővé
+válik pl. egy B osztályú cím két vagy több tartományra bontása, így elkerülhető
+további internetcímek igénylése. Az alhálózati maszk szintén 32 bitből áll: az
+IP-cím hálózati részének hosszáig csupa egyeseket tartalmaz, utána nullákkal
+egészül ki. Mivel az előtag hossza nem következtethető ki magából az IP-címből,
+az útválasztó protokolloknak át kell adniuk az előtagokat az útválasztóknak.
+Bizonyos esetekben az előtagokat egyszerűen a hosszuk írja le, mint a „/16” esetében
+(amelyet „per 16”-nak mondanak). Az előtag hossza megfelel az 1-esek bináris maszkjának
+a hálózati részben. Az ilyen írásmódot **alhálózati maszknak (subnet mask)** hívják.
+Ha ezt ÉS kapcsolatba hozzuk az IP-címmel, megkapjuk a hálózati részt.
+
+A **CIDR ( Classless Internet Domain Routing)** egy olyan, sokkal inkább a valós
+igényekhez alkalmazkodó címzési séma, mellyel az útválasztási táblákban egész
+címblokkok adhatók meg. A CIDR rendszer működése nem támaszkodik egy előre
+meghatározott hosszúságú (8, 16 vagy 24 bites) hálózatazonosító használatára.
+Helyette egyetlen szám, az úgynevezett **CIDR előtag (CIDR prefix)** adja meg a
+hálózat azonosítására használt bitek számát. Ezt az előtagot szokás **változó
+hosszúságú alhálózati maszknak (Variable Length Subnet Mask; VLSM)** is nevezni.
+
+A CIDR jelölésben a cím után egy perjel következi, utána pedig egy tízes számrendszerbeli
+szám, amely azt mutatja meg, hogy az adott címből hány bit azonosítja a hálózatot.
+A 205.123.196.183/25 CIDR formátumú cím például azt jelenti, hogy a cím első 25
+bitje a hálózatazonosító. Ez a korábbi rendszerben gondolkodva a 255.255.255.128
+alhálózati maszknak felel meg.
+
+### 3.7 Az alapértelmezett átjáró (default gateway)
+
+Az a hálózati csomópont, amelynek a gép azokat a csomagokat küldi, amelyek nem a
+helyi hálózat valamely állomásának szólnak. Az alapértelmezett átjáró feladata a
+távoli csomópontok felé az adatok továbbítása, illetve az onnan érkező információk
+fogadása a gép számára.
+
+Megegyezés szerint az alapértelmezett átjáró a hálózat legkisebb címe.
 
 ### 3.8 Példa több alhálózatot (és routert) tartalmazó IP hálózatra
 
