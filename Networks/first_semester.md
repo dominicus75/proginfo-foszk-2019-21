@@ -305,7 +305,7 @@ osztályúakban 16 biten, a C osztályúakban pedig 24-en**. Ezt a rendszert azt
 később kiegészítették az úgynevezett alhálózatokkal (subnet), amelyek helyi szinten
 nagyobb szabadságot adtak a hálózat strukturálásában.
 
-![Imgur](https://i.imgur.com/UqDyUIr.jpg)
+![Imgur](https://i.imgur.com/7UP5dFg.png)
 
 ### 3.6 Az alhálózati maszk szerepe: a hálózat felosztása alhálózatokra
 
