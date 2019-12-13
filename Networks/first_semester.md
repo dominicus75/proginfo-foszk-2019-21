@@ -307,11 +307,11 @@ osztályúakban 16 biten, a C osztályúakban pedig 24-en**. Ezt a rendszert azt
 később kiegészítették az úgynevezett alhálózatokkal (subnet), amelyek helyi szinten
 nagyobb szabadságot adtak a hálózat strukturálásában.
 
-| Osztály | Netmaszk mérete (bit) | Hálózatok száma | Hoszt ID hossza (bit) | Hosztok száma |
+| Osztály | Net ID mérete (bit)   | Hálózatok száma | Hoszt ID hossza (bit) | Hosztok száma |
 |:-------:|-----------------------|-----------------|-----------------------|---------------|
-| A | 8  | 2<sup>7</sup> - 2 = 126 | 24 | 2<sup>24</sup> - 2 = 16777214 |
-| B | 16 | 2<sup>14</sup> = 16384  | 16 | 2<sup>16</sup> - 2 = 65534 |
-| C | 24 | 2<sup>21</sup> = 2097152| 8  | 2<sup>8</sup> - 2 = 254 |
+| **A** | 8  | 2<sup>7</sup> - 2 = **126** | 24 | 2<sup>24</sup> - 2 = **16777214** |
+| **B** | 16 | 2<sup>14</sup> = **16384**  | 16 | 2<sup>16</sup> - 2 = **65534** |
+| **C** | 24 | 2<sup>21</sup> = **2097152**| 8  | 2<sup>8</sup> - 2 = **254** |
 
 ### 3.6 Az alhálózati maszk szerepe: a hálózat felosztása alhálózatokra
 
