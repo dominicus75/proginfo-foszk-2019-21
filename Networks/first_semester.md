@@ -291,7 +291,7 @@ egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 ![Imgur](https://i.imgur.com/rO4YDxh.png)
 
-
+![Imgur](https://i.imgur.com/z8sNf7H.png)
 
 ### 3.3 Az IPv4 címzési rendszere, az IPv4 cím szerkezete
 
