@@ -291,11 +291,112 @@ egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 **Az IPv4 fejrész információi**
 
-![Imgur](https://i.imgur.com/rO4YDxh.png)
+![Imgur](https://i.imgur.com/a8doquy.png)
+
+**Verzió (4 bit):** Ez a mező teszi lehetővé, hogy azonos hálózatban eltérő IP verziók
+működhessenek, egy-egy átállás így folyamatosan mehet végbe, nem kell egyszerre
+az egész hálózat összes berendezését átállítani. Jelenleg évek óta tart például
+az IPv4-ről IPv6-ra történő migrációja az internetnek. A verziószámot 4 biten
+tárolja, értéke 4 (0100) ha IPv4, 6 (0110) amennyiben IPv6 protokollhoz tartozik
+a csomag.
+
+**A fejléc hossza (Internet Header Length, IHL, 4 bit):** Az IP fejléc hossza nem állandó,
+ez a mező hordozza a fejléc hosszára vonatkozó információt. A hosszt 32 bites
+szavakban adja meg, 5 és 15 között vehet fel értéket, ami minimum 20 maximum 60
+bájtos fejlécet jelent (a fejléchossz az opciók változó száma miatt nem állandó).
+
+**Differenciált szolgáltatások (Differentiated Services Code Point, DSCP, 8 bit):**
+eredeti neve Szolgáltatás típusa (Type of Service) volt. Akárcsak régen, ma is
+az a célja, hogy különbséget tegyen az eltérő szolgáltatási osztályok között. A
+differenciált szolgáltatások kialakításakor az IETF újra felhasználta a mezőt.
+Jelenleg 6 bitet használnak a csomag szolgáltatási osztályának jelzésére, 2 bit
+explicit torlódásértesítési információt hordoz.
+
+**Teljes hossz (Total Length, 16 bit):** a datagram minden része beleértendő, a fejrész
+is és az adatrész is. A maximális hossz 65 535 bájt. Jelenleg ez a felső korlát
+még elegendő, de a jövőbeni gigabites hálózatoknál nagyobb datagramokra lehet
+majd szükség, mivel az IPv6-ban már van lehetőség ún. Jumbogram vagy Jumbo frame
+küldésre, mely elméleti maximális csomagmérete 1 bájt híján 4 GB.
+
+**Azonosító (Identification, 16 bit):** a daraboláskor szükséges ahhoz, hogy a
+címzett hoszt eldönthesse, melyik datagramhoz tartozik az újonnan érkezett darab.
+Egy datagram minden darabja ugyanazt az Azonosító értéket tartalmazza.
+
+*A következő egy kihasználatlan bit (az ábrán sötétszürkével jelölve), amelynek
+nincs funkciója, csak van...*
+
+**DF (Do not fragment! – Ne darabold!):** Egyetlen jelzőbit, beállításával az üzenet
+darabolását lehet tiltani. Ilyenkor a routerek elkerülik a kiscsomagos hálózatokat.
+
+**MF (More Fragments – Több darab):** Szintén egyetlen bit, mely jelzi, hogy létezik
+még több darabja az üzenetnek. Egy darabolt üzenet minden darabjának a fejléce
+tartalmazza, kivéve az utolsót.
+
+**Darabeltolás (Fragment offset, 13 bit):** megmondja, hova tartozik a mostani darab a
+datagramban. Egy datagram minden darabjának – kivéve az utolsót – 8 bájt többszörösének
+kell lennie, mert ez az elemi darabméret. Mivel 13 bit áll rendelkezésre, ez
+legfeljebb 8192 darabot jelent datagramonként, amely 65 536 bájtos maximális
+datagramhosszt eredményez, eggyel nagyobbat, mint amit a Teljes hossz mező lehetővé
+tesz. Az Azonosítás, MF és Darabeltolás mező együtt valósítja meg a darabolást.
+
+**Élettartam (TTL, Time To Live, 8 bit):** Ezzel a mezővel korlátozzák egy csomag hálózatban
+eltölthető idejét, illetve egyúttal a megoldás azt is biztosítja, hogy ne maradhassanak
+a hálózatban vég nélkül keringő csomagok. Kezdőértéke 255 lehet maximálisan, melyet
+minden router csökkent eggyel továbbításkor. Ha eléri a nullát, egyszerűen eldobja.
+
+**Protokoll (Protocol, 8 bit):** Ez a mező jelzi, hogy a csomag milyen protokoll
+számára szállít. Amikor a csomagokból összeállítja az üzenetet a vételi oldal, ez
+alapján továbbítja a felsőbb réteg megfelelő protokolljának (ált. TCP vagy UDP).
+
+**Fejrész ellenőrző összeg (Header checksum, 16 bit):** Csak a fejrészre vonatkozik! Az
+élettartam mező miatt minden alkalommal újra kell számolni.
 
 **Az IPv6 fejrész információi**
 
-![Imgur](https://i.imgur.com/z8sNf7H.png)
+Az IPv6 fejléc egyszerűbb lett, mint az IPv4-es. Alapesetben csak az útvonalválasztáshoz
+szükséges információkat tartalmazza. A fejléc nagy részét a forrás és cél állomások
+128 bites címei teszik ki.
+
+![Imgur](https://i.imgur.com/M5C8iiq.png)
+
+**Verzió (4 bit):** Az internet protokoll verziója, értéke 6. A célja megegyezik
+az IPv4 csomag azonos nevű mezőjével.
+
+**Forgalom osztály (Traffic Class, 8 bit):** megegyezik az IPv4-fejléc differenciált
+szolgáltatások (Differentiated Services, DS) mezőjével. Szintén egy 6 bites DSCP
+(Differentiated Services Code Point) érték osztályozza a csomagokat és egy 2
+bites ECN (Explicit Congedtion Notification) mező szolgál torlódásvezérlésre.
+
+**Folyamcímke (Flow Label, 20 bit)**: lehetővé teszi a valós idejű alkalmazások
+speciális kezelését. Segítségével értesíthetők a forgalomirányítók és a kapcsolók,
+hogy egy csomagfolyam esetén ugyanazt az útvonalat használják, így a csomagokat
+nem kell összerendezni.
+
+**Adatmező hossza (Payload Length, 16 bit):** megegyezik az IPv4-fejléc Total Length
+(Teljes hossz) mezőjével. A teljes csomag méretét adja meg a fejrésszel és az
+opcionális kiegészítésekkel együtt.
+
+**Következő fejléc (Next Header, 8 bit):** megegyezik az IPv4 Protokoll nevű
+mezőjével. Ez adja meg a csomagban lévő adattartalom típusát, lehetővé téve ezzel
+a hálózati réteg számára, hogy az adatokat a megfelelő felsőbb rétegbeli protokollnak
+továbbítsa. A mezőt akkor is használják, ha az IPv6-csomagban opcionális kiterjesztések
+vannak.
+
+**Ugrás korlát (Hop Limit, 8 bit):** megfelel az IPv4 csomag TTL-mezőjének. Értéke mindig
+eggyel csökken, amikor egy forgalomirányító továbbítja a csomagot. Amikor a számláló
+eléri a 0 értéket, a csomagot az adott forgalomirányító eldobja és egy ICMPv6
+üzenettel értesíti a küldő állomást arról, hogy a csomag nem érkezett meg a célhoz.
+
+**Forrás IP-cím (Source Address, 128 bit)** ez a mező adja meg a küldő állomás
+IPv6 címét.
+
+**Cél IP-cím (Destination Address, 128 bit):** ez a mező adja meg a fogadó állomás
+IPv6-címét.
+
+Az IPv6-csomag kiterjesztett fejléct (Extension Header, EH) is tartalmazhat, ami
+további hálózati rétegbeli információkat biztosít. Ez a kiterjesztett fejléc
+opcionális és az IPv6-fejléc és az adat között helyezkedhet el. Használják például
+csomagok feldarabolása vagy biztonság és mobilitás támogatás esetén is.
 
 ### 3.3 Az IPv4 címzési rendszere, az IPv4 cím szerkezete
 
