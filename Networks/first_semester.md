@@ -296,6 +296,8 @@ egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 ### 3.5 Az IP címek osztályozása
 
+![Imgur](https://i.imgur.com/YjE6LCg.png)
+
 A teljes IP-cím két részre osztható: egy hálózati és egy hoszt azonosítókból áll.
 A hálózati rész értéke az egy hálózaton – például Ethernet LAN-on – lévő összes
 hoszt esetén megegyezik. A hálózati azonosító hossza változó méretű lehet, azt a
@@ -305,7 +307,11 @@ osztályúakban 16 biten, a C osztályúakban pedig 24-en**. Ezt a rendszert azt
 később kiegészítették az úgynevezett alhálózatokkal (subnet), amelyek helyi szinten
 nagyobb szabadságot adtak a hálózat strukturálásában.
 
-![Imgur](https://i.imgur.com/YjE6LCg.png)
+| Osztály | Netmaszk mérete (bit) | Hálózatok száma | Hoszt ID hossza (bit) | Hosztok száma |
+|:-------:|-----------------------|-----------------|-----------------------|---------------|
+| A | 8  | 2<sup>7</sup> - 2 = 126 | 24 | 2<sup>24</sup> - 2 = 16777214 |
+| B | 16 | 2<sup>14</sup> = 16384  | 16 | 2<sup>16</sup> - 2 = 65534 |
+| C | 24 | 2<sup>21</sup> = 2097152| 8  | 2<sup>8</sup> - 2 = 254 |
 
 ### 3.6 Az alhálózati maszk szerepe: a hálózat felosztása alhálózatokra
 
@@ -638,7 +644,8 @@ A legrégebbi, de még ma is a legelterjedtebb átviteli közeg. A sodrott érp�
 szigetelt rézhuzalból áll, melyek tipikusan kb. 1 mm vastagságúak. A huzalok a
 DNS-hez hasonlóan spirálszerűen egymás köré vannak sodorva. A sodrás oka az, hogy
 az egyes sodrott huzalokból érkező hullámok kioltják egymást, tehát az eredményül
-kapott huzal kevésbé sugároz.
+kapott huzal kevésbé sugároz. Általában minden érpár esetén az egyik vezeték
+egyszínű, a másik pedig fehér alapú csíkozással van ellátva.
 
 A sodrott érpárnak számos változata van. A sok irodaházban telepített közönséges
 változatát *5-ös kategóriájú (Category 5) vagy „Cat 5”-ös* kábelezésnek nevezzük.
