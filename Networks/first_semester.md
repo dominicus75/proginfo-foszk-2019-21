@@ -289,7 +289,11 @@ egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 ### 3.2 Az IPv4 és IPv6 csomagok fontosabb fejrész információi
 
+**Az IPv4 fejrész információi**
+
 ![Imgur](https://i.imgur.com/rO4YDxh.png)
+
+**Az IPv6 fejrész információi**
 
 ![Imgur](https://i.imgur.com/z8sNf7H.png)
 
