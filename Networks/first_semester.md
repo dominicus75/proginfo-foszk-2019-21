@@ -192,8 +192,7 @@ is nevezik, a távirat (telegram) kifejezés mintájára. Az internetprotokoll
 (IP, Internet Protocol), amely a teljes internet alapját képezi, meghatározó
 példája az összeköttetés nélküli hálózati szolgáltatásnak. Minden csomag tartalmazza
 a címzett IP-címet, amelyet az útválasztók használnak az egyes csomagok egyesével
-történő továbbításához. Az IPv4-csomagok címe 32 bites, az IPv6-csomagok címe
-pedig 128 bites.
+történő továbbításához.
 
 Az *összeköttetés-alapú szolgáltatás*hoz szükség van egy virtuális áramkör-alapú
 hálózatra. A **virtuális áramkörök** alapötlete, hogy elkerülik azt, hogy minden
@@ -290,9 +289,38 @@ egyébként is leterhelt hálózati útirányválasztó csomópontokat (router).
 
 ### 3.2 Az IPv4 és IPv6 csomagok fontosabb fejrész információi
 
+![Imgur](https://i.imgur.com/rO4YDxh.png)
+
+
+
 ### 3.3 Az IPv4 címzési rendszere, az IPv4 cím szerkezete
 
+Egy hagyományos IP cím 32 darab bináris számjegyből áll, amely egy 32 bites címet
+alkot. Mivel ember számára gyakran nehezen értelmezhető ez a forma, így fel szokták
+bontani pontokkal elválasztott nyolcas csoportokra (oktett), és ezeket egy-egy
+decimális számként értelmezzük, melyek 0-255 közötti értéket vehetnek fel. A
+hálózatok hierarchiáját úgy valósítjuk meg, hogy az IP címet két részre osztjuk.
+A 32 bites cím első valahány bitje a hálózatot fogja jelölni (Net ID), az utána
+következők pedig az egyes állomásokat (Host ID).
+
 ### 3.4 A hálózat címe és az üzenetszórási (broadcast) cím
+
+Egy IPv4 hálózaton az első cím a **hálózatcímnek** van fenntartva. Ez a cím a hoszt
+részen csupa nullákat tartalmaz (a hálózat azonosító bithelyeken pedig a hivatkozott
+hálózat azonosítóját). A hálózat minden állomása ugyanazt a hálózatcímet használja.
+
+Minden végberendezésnek egyedi címmel kell rendelkeznie a hálózati kommunikációhoz.
+IPv4-címek esetén a hálózatcím és a szórási cím közötti címeket rendelhetjük hozzá
+a végberendezésekhez. A cím nullák és egyesek bármely kombinációját tartalmazhatja
+a hoszt részen, kivéve a csupa nulla (ez a hálózat címe) és a csupa egyes (ez pedig
+a szórási vagy broadcast cím) címet.
+
+Az IPv4 **szórási cím** egy speciális címe az alhálózatoknak, amelynek segítségével
+minden állomással egyszerre kommunikálhatunk. Ehhez a küldőnek egyszerűen egy
+csomagot kell küldenie a hálózat szórási címére, ezt a hálózat minden állomása
+megkapja és feldolgozza. A szórási cím a hálózat tartományának legmagasabb címe.
+Ez az a cím, ahol az hoszt részben minden bit 1-es. Ha egy oktett bináris alakban
+csupa 1-eseket tartalmaz, akkor a decimális értéke 255.
 
 ### 3.5 Az IP címek osztályozása
 
@@ -349,8 +377,6 @@ távoli csomópontok felé az adatok továbbítása, illetve az onnan érkező i
 fogadása a gép számára.
 
 Megegyezés szerint az alapértelmezett átjáró a hálózat legkisebb címe.
-
-### 3.8 Példa több alhálózatot (és routert) tartalmazó IP hálózatra
 
 
 ## 4. tétel
