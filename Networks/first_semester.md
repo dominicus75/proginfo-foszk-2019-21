@@ -47,7 +47,7 @@ tárgyát, hanem csakis a megfelelő LAN felé kerülnek továbbításra. Az az 
 amit a transzparens hidak használnak, a hátrafelé tanulás (backward learning).
 
 A hálózat topológiája változhat, ahogy állomásokat és hidakat üzembe vagy üzemen
-kívül helyeznek, az üzemelésük helyét megváltoztatják. A dinamikusan változó topológia
+kívül helyeznek, az üzemelésük helyét megváltoztatják. A **dinamikusan változó topológia**
 kezelése érdekében minden alkalommal, amikor létrejön egy táblabejegyzés, eltárolják
 a keret beérkezésének időpontját is. Amikor egy olyan keret érkezik, amely feladójáról
 helyes bejegyzés szerepel a táblában, az időinformációt az aktuális időponttal
@@ -115,8 +115,8 @@ nem csak a sebesség és a kábel típusa különbözteti meg a korábbi megold�
 hanem a topológia és a hálózat aktív elemei is. Manapság legtöbbször 100Mb/s vagy
 1Gb/s sebességű csavart érpárral működő, illetve 1Gb/s vagy 10Gb/s sebességű
 optikai hálózatokkal találkozunk. Szinte kivétel nélkül jellemző a lokális
-hálózatokra a csillagpontos topológia és a kapcsolt Ethernet, azaz a Switch-ek é
-s a Router-ek mint aktív hálózati elemek használata.
+hálózatokra a csillagpontos topológia és a kapcsolt Ethernet, azaz a Switch-ek
+és a Router-ek mint aktív hálózati elemek használata.
 
 Ahogy a koax-kábeleket egyre jobban kiszorította a csavart érpár, ennek jellegéből
 valamint a már kiépített telefonközpont orientáltságú felépítmény azaz a csillagpontos
@@ -928,11 +928,201 @@ Egy kábelben több – jellemzően páros számú – fényvezető szálat szok
 
 ### 13.1 Az Ethernet-típusú hálózati szabványok és főbb jellemzőik: közegelérési protokoll, adatátviteli sebesség, kábelezés
 
-### 13.2 Ethernet keretformátumok
+A DEC, Intel és Xerox cégek által kidolgozott alapsávú LAN-ra vonatkozó specifikáció,
+amelyet az IEEE 802.3 számon szabványosított 1983-ban. Az [IEEE 802.3](https://hu.wikipedia.org/wiki/IEEE_802.3)
+egy szabványgyűjtemény, amely az IEEE szabványokkal meghatározott, Ethernet
+kábelezést használó fizikai rétegnek és adatkapcsolati rétegnek a megvalósításait
+írja le. Ez egy általánosan használt LAN technológia, amely fizikai kapcsolatot
+hoz létre a hálózati csomópontok és/vagy az infrastruktúra eszközei (hubok,
+switchek, routerek) között, különböző és sokféle réz- és optikai kábelek segítségével.
+
+A szabvány főbb változatai:
+
+* **Klasszikus Ethernet, 1983 (IEEE 802.3):**
+
+Az Ethernet szinte azonnal – a klasszikus Ethernet egyetlen hosszú kábelt tartalmazó
+architektúrájának megjelenését követően – továbbfejlődött. A kábel töréseivel vagy
+az érintkezési hibák megtalálásával összefüggő probléma egy új vezetékezési mintát
+kényszerített ki, amelyben minden állomás saját kábellel csatlakozik egy központi
+elosztóhoz (hub). Az elosztó egyszerűen villamos kapcsolatot létesít a hozzá
+csatlakozó vezetékek között, mintha összeforrasztották volna azokat.
+
+A megnevezés első száma az átviteli sebességet jelöli. Az Ethernet hálózatok
+fajtáinak a jelölésére használjuk a Base szót, ami azt fejezi ki, hogy a fizikai
+rétegben  alapsávi  kódolást  használunk,  azaz  nem  vivőfrekvenciával  modulálunk.
+A következő szám, koaxiális kábel esetén a kábel hosszát adja meg 100 méteres
+egységekre kerekítve. A klasszikus Ethernet kábelek leggyakoribb típusai:
+
+| Megnevezés | Kábelezés | Max szegmenshossz | Csomópont/szegmens |
+
+
+* **Kapcsolt Ethernet**
+
+  * *Gyors Ethernet, 1995 (IEEE 802.3u):*
+
+
+  * *Gigabites Ethernet, 1998 (IEEE 802.3z):*
+
+
+
+**Közegelérési protokollok**
+
+Az Ethernet hálózat eszközei a legtöbb esetben egy közös fizikai csatornát használnak
+a kommunikáció megvalósításához. Az IEEE 802.3 szabvány szerinti Ethernet hálózatba
+kapcsolt állomások mindegyike egyenlő jogokkal rendelkezik a közeg használatát
+illetően. Szükség van egy olyan protokollra, amely versenyhelyzet esetén eldönti,
+hogy a csatornára igényt tartók közül ki nyerje el a jogot az adásra. Ezzel a
+problémával az adatkapcsolati réteg egy alrétege, a közegelérési alréteg
+**(MAC, Medium Access Control)** foglalkozik. A közegelérés-vezérlési eljárások
+azokat a szabályokat tartalmazzák, amelyek megadják, mikor és mennyi ideig használhatja
+egy állomás az adatcsatornát.
+
+*Csatornakiosztásos (statikus) protokollok*
+
+* ** TDM (Time Division Multiplexing, időosztásos nyalábolás):** a versenyhelyzeteket
+a legegyszerűbben úgy kerülhetjük el, ha előre meghatározott időközönként a csatornát
+más-más állomás használja.
+
+* **FDM (Frequency Division Multiplexing, frekvenciaosztásos nyalábolás):** a
+csatorna sávszélességét osztják fel annyi részre, amennyi állomás kapcsolódik a
+csatornára. Mindenkinek külön frekvencia-sávja van.
+
+*Csatornafigyelő (dinamikus) protokollok*
+
+* **CSMA (Carrier Sense Multiple Access, vivőjel-érzékelés többszörös hozzáféréssel):**
+ha egy állomás küldeni akar, de a csatorna foglalt, akkor addig vár, amíg az fel
+nem szabadul. Amint ez bekövetkezik, az állomás útnak indítja a keretet. Ha ütközés
+lép fel, akkor véletlen ideig várakoznia kell, majd ismét meg kell próbálnia elküldeni a
+keretet. Az „1-perzisztens” kifejezés azt jelenti, hogy amint felszabadul a csatorna,
+az adásra kész állomás pontosan 1 valószínűséggel (azaz biztosan) fog keretet küldeni.
+
+* **CSMA/CD (Carrier Sense Multiple Access with Collision Detection, vivőjel-érzékelés
+többszörös hozzáféréssel, ütközés detektálással):** a CSMA protokoll kiterjesztése
+ütközésvizsgálattal. Mindegyik állomás állandóan figyeli a hálózati forgalmat.
+Ha talál olyan adatcsomagot, amelyet neki címeztek leveszi, a többit figyelmen
+kívül hagyja. Az adatküldésre készülő állomás is hallja a közegen zajló forgalmat,
+és ha azt érzékeli, hogy valaki már adásban van, azaz vivőt érzékel (Carrier Sense),
+akkor várakozik az adás megszűnéséig. Amikor elcsendesül a közeg, megkezdi az adást,
+amelyet egyedül csak a megcímzett állomás fog átvenni.
+
+* **CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance, ütközés elkerülés):**
+a készülék megvizsgálja a közeget, hogy érzékelhető-e adatjel. Ha a közeg szabad,
+akkor a készülék küld egy értesítést a média használati szándékáról. A készülék
+ezután elküldi az adatokat. Ezt a módszert használják a 802.11 vezeték nélküli
+hálózati technológiák.
+
+**Adatátviteli sebesség**
+
+Az adatátviteli sebesség (hálózati sebesség, sávszélesség, bitráta, bandwidth),
+az információáramlás sebességének mértéke, amely az adatátviteli berendezések által
+másodpercenként átvitt jelek avagy bitek számát adja meg. Tömören: **az időegység
+alatt átvitt információ mennyisége**. Mértékegysége a bit/másodperc, b/s, bps. Az
+adatátviteli sebességet tipikusan a csatorna kapacitásának mérésére, jelzésére
+használják.
+
+Nagyobb egységek:
+* 1 kb/s = 1000 b/s
+* 1 Mb/s = 1000 kb/s
+* 1 Gb/s = 1000 Mb/s
+
+### 13.2 Ethernet keretformátumok (IEEE 802.3)
+
+Az ethernet hálózatokon az adatok keretekben jutnak el a címzettől a feladóig. A
+keretek valójában nem mások, mint mezőkre osztott bitsorozatok. Az információ adóoldali
+szétdarabolását és vevő oldali összeillesztését az Ethernet a felsőbb rétegekre
+bízza, ahogy a hibajavítást is.
+
+A mezőkben a következők szerepelhetnek:
+
+1. Az **előtag (preamble)** váltakozva tartalmaz egyeseket és nullákat. 7 darab
+10101010 tartalmú bájtból álló sorozat. A 10 Mbit/s-os és kisebb sebességű
+Ethernet-megvalósításoknál az órajel szinkronizálása ennek a mezőnek a segítségével
+történik. Az Ethernet gyorsabb változatai szinkron működésűek, ezeknél időzítési
+információkra nincs szükség; ennek ellenére, a kompatibilitás érdekében a mező
+megmaradt.
+
+2. Az előtagot egy egy oktettből álló mező a keretkezdő (**Start Frame Delimiter, SFD**)
+követi, amely az időzítési információk végét, a keret tényleges kezdetét jelzi.
+Tartalma az 10101011 bitsorozat.
+
+3. Ezután a **cél (destination)** és **küldő (source) állomás** 48-bites címei
+következnek. Az Ethernet hálózaton minden állomást egy egyedi, 48-bites (6 bájtos)
+ún. **MAC (Media Access Control) cím** azonosít. Ezen címek kiosztását az
+IEEE kontrollálja.
+
+4. A **hossz/típus mező**t kétféle célra lehet használni. Ha értéke a decimális
+1536-nál, vagyis a hexadecimális 0×600-nál kisebb, akkor a benne szereplő érték
+hosszt ad meg, egyébként típus értékként azt adja meg, hogy az Ethernet folyamatainak
+lezárulása után melyik felsőbb rétegbeli protokoll fogja kapni az adatokat. A
+hossz a mező követő adatrészben található bájtok számát adja meg.
+
+5. Az **adat mező** és a szükség szerinti kitöltés hossza tetszőleges lehet,
+azonban a keret mérete nem haladhatja meg a felső mérethatárt. A **maximális átviteli
+egység (maximum transmission unit, MTU)** az Ethernet esetében 1500 oktett (bájt),
+az adatok mérete tehát ezt nem haladhatja meg. A mező tartalma nincs meghatározva.
+Ha nincs elég felhasználói adat ahhoz, hogy a keret mérete elérje a minimális
+kerethosszt, akkor előre meg nem határozott mennyiségű adat kerül beillesztésre,
+közvetlenül a felhasználói adatok mögé. Ezt a többletadatot nevezzük kitöltésnek.
+Az Ethernet keretek hosszának 64 és 1518 oktett között kell lennie.
+
+6. A keret végén szereplő **FCS (Frame Check Sequence - Keret Ellenőrző Sorozat)**
+mezőben 4 bájton CRC ellenőrző összeg helyezkedik el. Ha a vevő által számolt és
+a keretben lévő összeg nem egyezik, a keret eldobásra kerül.
 
 ### 13.3 Az ütközésérzékelés és a maximális szegmenshossz
 
+Az ütközésérzékelés (Collision Detection) esetén a készülék figyeli, hogy van-e
+adatjel a közegen. Amennyiben az adatjel hiányzik, jelezve hogy a közeg szabad,
+a készülék továbbítja az adatokat. Ha ezek után adatjeleket érzékelünk – ami azt
+jelzi, hogy egy másik készülék is ugyanabban az időben forgalmazott –, minden más
+eszköz leállítja a küldést és később újra próbálkozik. Az Ethernet hagyományos
+változatait ennek a módszernek a használatára fejlesztették ki.
+
+A kapcsolt technológiák széles körű elterjedése a modern hálózatokban jórészt
+feleslegesé tette a CSMA/CD által használt folyamatokat. A LAN-eszközök között
+szinte az összes vezetékes kapcsolat manapság full-duplex, vagyis a készülék
+egyszerre képes küldeni és fogadni is. Míg az Ethernet hálózatokat a CSMA/CD-technológiára
+tervezték, a mai közvetítő eszközöknél ütközések nem fordulnak elő.
+
 ### 13.4 Ethernet szegmensek összekapcsolása a fizikai rétegben (ismétlőkkel)
+
+Minden Ethernet-verzió rendelkezik egy legnagyobb megengedett szegmensenkénti
+kábelhosszal (erősítetlen hossz), amely távolságra a jel terjed. Hogy nagyobb
+hálózatokat lehessen kialakítani, több kábelszegmenst ismétlőkkel (**repeater**)
+kell összekapcsolni. **Az ismétlők fizikai rétegben működő eszközök, amelyek
+fogadják, erősítik (azaz regenerálják, újra előállítják) és mindkét irányba
+kiküldik a jelet**. Szoftverszempontból a kábelszegmensek ismétlőkkel összekapcsolt
+sorozata nem különbözik egy egyszerű kábeltől (leszámítva az ismétlők által
+behozott kismértékű késleltetést). Az ismétlőkkel összekapcsolt hálózat egyetlen
+nagy LAN-ként viselkedik, az összes gép ugyanabban a broadcast domain-ben van.
+
+Ezeken a kábeleken keresztül az információt a [Manchester-kódolás](https://hu.wikipedia.org/wiki/Manchesteri_k%C3%B3dol%C3%A1s)
+használatával továbbítják. Egy Ethernet-hálózat több kábelszegmenst és több ismétlőt
+tartalmazhat, de **két adó-vevő nem lehet messzebb egymástól 2,5 km-nél, valamint
+bármelyik két adó-vevő között legfeljebb csak négy ismétlő lehet**.
+
+A jelismétlőket elterjedten a busz topológiájú LAN-oknál használják, hiszen gyűrű
+topológia esetén minden állomás eleve jelismétlőként működik: fogadja az üzenetet,
+és a szintjére visszaállított jelet küld tovább. Jelismétlők használatánál mindegyik
+hálózati szegmensnek ugyanolyan típusúnak kell lennie.
+
+A **hub**okat tipikusan helyi hálózatokban használják számítógépek és más eszközök
+összekötésére.
+
+Az egyszerűbb **passzív hub**ok csupán fizikai összekötő pontként szolgálnak, nem
+módosítják vagy figyelik a rajtuk keresztülhaladó forgalmat. Működésük során a
+bemeneti kapura érkező csomagokat értelmezés és válogatás nélkül minden más kapura
+kimenetként másolják, így azt minden az adott hubba csatlakozó hálózati eszköz
+megkapja.
+
+Ezzel szemben az **aktív vagy intelligens hub**ok többportos ismétlőként működnek, a
+fogadott csomagokat értelmezik, és csak arra a kapura továbbítják, amelyiken a
+csomag célállomása található.
+
+A legelterjedtebbek a 8, 16, 24 portos eszközök, de találkozhatunk kisebb, 4
+portossal is. A passzív hubok elektromos tápellátást nem igényelnek. Az intelligens
+hubok aktív hubként üzemelnek, mikroprocesszorral és hibakereső képességekkel
+rendelkeznek.
 
 
 [Kezdőlap](README.md)

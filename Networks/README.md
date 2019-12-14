@@ -15,5 +15,7 @@
 * Kovácsházy Tamás: [Ethernet ismertető](http://home.mit.bme.hu/~khazy/edu/docs/ethernet.pdf)
 * Joe Casad: [Tanuljuk meg a TCP/IP használatát 24 óra alatt](http://redinfo.hu/mi/07%20-%20halozati_alapismeretek/Tanuljuk.meg.a.TCP.IP.hasznalatat.24.ora.alatt.2010.eBOOk-digIT.pdf)
 * Microsoft: [A TCP/IP-címzés és az alhálózatok alapjainak ismertetése](https://support.microsoft.com/hu-hu/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)
+* Garzó András: [A közegelérési alréteg, az ALOHA, a CSMA, és az Ethernet](http://linuxvilag.pbk.hu/content/files/cikk/45/cikk_45_71_74.pdf)
+
 
 [Kezdőlap](../README.md)
