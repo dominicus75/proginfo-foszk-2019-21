@@ -938,14 +938,13 @@ switchek, routerek) között, különböző és sokféle réz- és optikai kábe
 
 A szabvány főbb változatai:
 
-**Klasszikus Ethernet, 1983 (IEEE 802.3):**
-
-Az Ethernet szinte azonnal – a klasszikus Ethernet egyetlen hosszú kábelt tartalmazó
-architektúrájának megjelenését követően – továbbfejlődött. A kábel töréseivel vagy
-az érintkezési hibák megtalálásával összefüggő probléma egy új vezetékezési mintát
-kényszerített ki, amelyben minden állomás saját kábellel csatlakozik egy központi
-elosztóhoz (hub). Az elosztó egyszerűen villamos kapcsolatot létesít a hozzá
-csatlakozó vezetékek között, mintha összeforrasztották volna azokat.
+**Klasszikus Ethernet, 1983 (IEEE 802.3):** Az Ethernet szinte azonnal – a klasszikus
+Ethernet egyetlen hosszú kábelt tartalmazó architektúrájának megjelenését követően
+– továbbfejlődött. A kábel töréseivel vagy az érintkezési hibák megtalálásával
+összefüggő probléma egy új vezetékezési mintát kényszerített ki, amelyben minden
+állomás saját kábellel csatlakozik egy központi elosztóhoz (hub). Az elosztó
+egyszerűen villamos kapcsolatot létesít a hozzá csatlakozó vezetékek között, mintha
+összeforrasztották volna azokat.
 
 A megnevezés első száma az átviteli sebességet jelöli (Mb/s). Az Ethernet hálózatok
 fajtáinak a jelölésére használjuk a Base szót, ami azt fejezi ki, hogy a jelátvitel
@@ -963,7 +962,16 @@ A klasszikus Ethernet kábelek leggyakoribb típusai:
 | 10Base-F   | optikai   | 2000 méter| 1024 |
 
 
-**Gyors Ethernet, 1995 (IEEE 802.3u):**
+**Gyors Ethernet, 1995 (IEEE 802.3u):** a klasszikus Ethernet továbbfejlesztése,
+100 Mbit/s átviteli sebességgel.
+
+A Gyors Ethernet kábelek leggyakoribb típusai:
+
+| Megnevezés | Kábelezés | Max szegmenshossz |
+|------------|-----------|-------------------|
+| 100Base-T4 | sodrott érpár | 100 méter |
+| 100Base-TX | sodrott érpár | 100 méter |
+| 100Base-FX | optikai | 2000 méter |
 
 
 **Gigabites Ethernet, 1998 (IEEE 802.3z):**
@@ -982,6 +990,15 @@ bármelyik gép és kapcsoló tetszés szerinti időben küldheti el az adatait 
 Az adónak nem kell figyelnie a csatorna forgalmát, mert a versengés kizárt. Míg
 az elosztók esetében az összes állomás egy ütközési tartományt (collision domain)
 képez, **kapcsoló esetén, minden porthoz saját ütközési tartomány tartozik**.
+
+A Gigabites Ethernet kábelek leggyakoribb típusai:
+
+| Megnevezés | Kábelezés | Max szegmenshossz |
+|------------|-----------|-------------------|
+| 1000Base-SX | optikai | 550 méter |
+| 1000Base-LX | optikai | 5000 méter |
+| 1000Base-CX | 2 pár STP | 25 méter |
+| 1000Base-T  | 4 pár UTP | 100 méter|
 
 
 **Közegelérési protokollok**
@@ -1102,6 +1119,9 @@ feleslegesé tette a CSMA/CD által használt folyamatokat. A LAN-eszközök kö
 szinte az összes vezetékes kapcsolat manapság full-duplex, vagyis a készülék
 egyszerre képes küldeni és fogadni is. Míg az Ethernet hálózatokat a CSMA/CD-technológiára
 tervezték, a mai közvetítő eszközöknél ütközések nem fordulnak elő.
+
+A maximális szegmenshossz – az alkalmazott szabvány változat függvényében – 25 és
+5000 méter között változhat.
 
 ### 13.4 Ethernet szegmensek összekapcsolása a fizikai rétegben (ismétlőkkel)
 
