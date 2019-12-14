@@ -900,14 +900,145 @@ Egy kábelben több – jellemzően páros számú – fényvezető szálat szok
 
 ### 11.1 A közegelérési alréteg (MAC) helye és feladata
 
+Az adatkapcsolati réteg közegelérési alrétegének (MAC) két fő feladata van:
+1. adatbeágyazás
+2. közeghozzáférés-vezérlés.
+
+A MAC-alréteg interfészként működik a logikai kapcsolatvezérlő (LLC) alréteg és
+a hálózat fizikai rétege között.
+
+**Az adatbeágyazási folyamat** magában foglalja a keret összeállítását a továbbítás
+előtt, és a szétbontását a kézhezvétel után. A keret felépítésekor a MAC-réteg
+egy fejlécet és egy utótagot ad a hálózati réteg PDU-jához.
+
+Az adatbeágyazás három fő funkciót biztosít:
+* *Keret határolás:* a keretezési folyamat fontos határolókat biztosít, amiket a
+keretet alkotó bitek csoportjának azonosítására használnak. Ez biztosítja a
+szinkronizációt az adó és a vevő csomópontok között.
+* *Címzés:* a beágyazási folyamat az adatkapcsolati réteg címzését is biztosítja.
+Minden Ethernet keret fejléce tartalmazza a fizikai címet (MAC-cím), amely lehetővé
+teszi a keret kézbesítését a rendeltetési helyére.
+* *Hibafelismerés:* mindegyik Ethernet keret tartalmaz egy utótagot a keret tartalmára
+vonatkozóan, ami egy ciklikus redundancia ellenőrzés (CRC). Egy keret vétele után
+a fogadó csomópont is készít egy CRC-t, hogy összehasonlítsa azt a keretben lévővel.
+Ha a két CRC-számítás eredménye megegyezik, a keret nagy valószínűséggel hiba nélkül
+érkezett.
+
+** A közeghozzáférés-vezérléshez** tartoznak azok a protokollok, amelyek az adatszóró
+csatorna használatának vezérléséért felelősek. A MAC-alréteget megvalósító hardver
+a közeghozzáférés-vezérlő. A MAC-alréteg különösen fontos szerepet tölt be a
+LAN-hálózatokban, különösen a vezeték nélküli LAN-hálózatokban, mert ezek
+természetükből adódóan adatszóró csatornák. Ezzel szemben – a műholdas rendszerek
+kivételével – a WAN-hálózatok kétpontos összeköttetésekből állnak össze.
+
 ### 11.2 A statikus és a dinamikus csatornakiosztás lényege, jellemzői
+
+A csatorna minden esetben fizikai összeköttetést biztosít a hozzá csatlakozó
+felhasználók között. Bármelyik felhasználó, aki a csatornát használja, zavarni
+fogja a többieket, akik ugyanúgy használni szeretnék a csatornát. A közegelérés-vezérlési
+eljárások azokat a szabályokat tartalmazzák, amelyek megadják, mikor és mennyi
+ideig használhatja egy állomás az adatcsatornát.
+
+A statikus csatornakiosztás vagy az időt vagy a sávszélességet osztja fel előre
+az állomások között. Ez a módszer azonban pazarló (ha egy állomás nem ad, akkor is
+megkapja a rá eső időt/sávszélességet). A dinamikus csatornakiosztás azt jelenti,
+hogy ezeket a fix, azaz statikus korlátokat lebontjuk. A dinamikus csatornakiosztás
+célja az igényekhez való rugalmas alkalmazkodás, a csatorna lehető legjobb
+kihasználása változó körülmények között is.
+
+*Csatornakiosztásos (statikus) protokollok*
+
+* **TDM (Time Division Multiplexing, időosztásos nyalábolás):** a versenyhelyzeteket
+a legegyszerűbben úgy kerülhetjük el, ha előre meghatározott időközönként a csatornát
+más-más állomás használja.
+
+* **FDM (Frequency Division Multiplexing, frekvenciaosztásos nyalábolás):** a
+csatorna sávszélességét osztják fel annyi részre, amennyi állomás kapcsolódik a
+csatornára. Mindenkinek külön frekvencia-sávja van.
+
+*Csatornafigyelő (dinamikus) protokollok*
+
+* **CSMA (Carrier Sense Multiple Access, vivőjel-érzékelés többszörös hozzáféréssel):**
+ha egy állomás küldeni akar, de a csatorna foglalt, akkor addig vár, amíg az fel
+nem szabadul. Amint ez bekövetkezik, az állomás útnak indítja a keretet. Ha ütközés
+lép fel, akkor véletlen ideig várakoznia kell, majd ismét meg kell próbálnia elküldeni a
+keretet. Az „1-perzisztens” kifejezés azt jelenti, hogy amint felszabadul a csatorna,
+az adásra kész állomás pontosan 1 valószínűséggel (azaz biztosan) fog keretet küldeni.
+
+* **CSMA/CD (Carrier Sense Multiple Access with Collision Detection, vivőjel-érzékelés
+többszörös hozzáféréssel, ütközés detektálással):** a CSMA protokoll kiterjesztése
+ütközésvizsgálattal. Mindegyik állomás állandóan figyeli a hálózati forgalmat.
+Ha talál olyan adatcsomagot, amelyet neki címeztek leveszi, a többit figyelmen
+kívül hagyja. Az adatküldésre készülő állomás is hallja a közegen zajló forgalmat,
+és ha azt érzékeli, hogy valaki már adásban van, azaz vivőt érzékel (Carrier Sense),
+akkor várakozik az adás megszűnéséig. Amikor elcsendesül a közeg, megkezdi az adást,
+amelyet egyedül csak a megcímzett állomás fog átvenni.
+
+* **CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance, ütközés elkerülés):**
+a készülék megvizsgálja a közeget, hogy érzékelhető-e adatjel. Ha a közeg szabad,
+akkor a készülék küld egy értesítést a média használati szándékáról. A készülék
+ezután elküldi az adatokat. Ezt a módszert használják a 802.11 vezeték nélküli
+hálózati technológiák.
 
 ### 11.3 Az ütközés fogalma
 
+Ütközésről beszélünk, ha egy közös adatátviteli csatornán két (vagy több) csomópont
+egy időpillanatban továbbít információt.
+
 ### 11.4 Versenyhelyzetes és versenyhelyzet mentes csatornamegosztó protokollok
+
+Azokat a rendszereket, amelyekben a közös csatorna használata konfliktushelyzetek
+kialakulásához vezethet, **versenyhelyzetes (contention)** rendszereknek nevezzük.
+
+**Versenyhelyzetes protokollok**
+
+* **ALOHA:** lényege hogy a felhasználó bármikor adhat, ha van továbbítandó
+adata. De ha bárki bármikor adhat, akkor valószínű, hogy ütközések lesznek. A küldő
+azonban figyelheti a csatornát, így meg tudja állapítani hogy a keret tönkrement-e
+vagy sem. Ha a keret megsérült akkor a küldő újraküld véletlenszerű várakozási
+idő után. Egy keret akkor nem szenved ütközést, ha elküldésének első pillanatától
+kezdve egy keret ideig más állomás nem próbálkozik keretküldéssel. Az egyszerű
+ALOHA elven működő hálózatok maximális kihasználtsága 18%.
+* **Réselt ALOHA:** képes arra hogy egy egyszerű ALOHA rendszer kapacitását megduplázzák.
+A módszer lényege, hogy az időt szeletekre osztják, oly módon hogy minden felhasználónál
+ugyanazok az időintervallum határok pontos helyei-ezt egy szinkronjel segítségével
+határozzák meg. Az állomások az ütközést azzal detektálják, hogy nem kaptak az
+üzenetükre nyugtakeretet. Az állomás a következő időszeletben véletlenszerűen
+kezd adásba (véletlenszerű ideig várakozik), ez csökkenti az ütközés valószínűségét.
+Előfordulhat a véletlenszerű várakozás miatt az is, hogy egyetlen állomás sem
+kezdeményez adást. A réselt ALOHA a rendszerben nem kezdhető küldés bármikor, hanem
+előbb meg kell várni az időrés kezdetét. Ha véges számú állomást tételezünk fel,
+akkor a kihasználtság növekedhet. Réselt ALOHA-s hálózatokban a maximális
+kihasználtság 37%-os.
+
+**Versenyhelyzet mentes protokollok**
+
+* **Vezérjeles gyűrűprotokoll (token ring protocol IEEE 802.5):** a hálózat topológiája
+határozza meg az állomások adásának a sorrendjét. Az állomások egymásután egy gyűrűbe
+vannak kapcsolva. A vezérjel továbbadása a következő állomáshoz egyszerűen abból áll,
+hogy egy állomás fogadja az egyik irányból a vezérjelet és továbbadja a másik
+irányba. A keretek is a vezérjel haladásának irányában továbbítódnak. Ennek
+megfelelően a keretek körbehaladnak a gyűrű mentén, és elérik a címzett állomást.
+Hogy egy adatkeret ne körözzön a hálózatban a végtelenségig (úgy, mint a vezérjel),
+valamelyik állomásnak el kell távolítania a gyűrűről. Ez lehet az az állomás,
+amelyik eredetileg küldte a keretet, vagy a keret célállomása.
 
 ### 11.5 A CSMA/CD protokoll működése
 
+**CSMA/CD (Carrier Sense Multiple Access with Collision Detection, vivőjel-érzékelés
+többszörös hozzáféréssel, ütközés detektálással):** közös kommunikációs csatorna
+több fél közötti dinamikus elosztásának módját és szabályait meghatározó rendszer.
+Szabályrendszere biztosítja, hogy a közös csatornán kommunikáló felek képesek
+legyenek a szimultán adások és az ezekből következő ütközések detektálására,
+valamint ezek elhárítására.
+
+A CSMA/CD a CSMA protokoll kiterjesztése ütközésvizsgálattal. Mindegyik állomás
+állandóan figyeli a hálózati forgalmat. Ha talál olyan adatcsomagot, amelyet neki
+címeztek leveszi, a többit figyelmen kívül hagyja. Az adatküldésre készülő állomás
+is hallja a közegen zajló forgalmat, és ha azt érzékeli, hogy valaki már adásban
+van, azaz vivőt érzékel (Carrier Sense), akkor várakozik az adás megszűnéséig.
+Amikor elcsendesül a közeg, megkezdi az adást, amelyet egyedül csak a megcímzett
+állomás fog átvenni.
 
 ## 12. tétel
 
