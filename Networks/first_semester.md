@@ -924,7 +924,7 @@ a fogadó csomópont is készít egy CRC-t, hogy összehasonlítsa azt a keretbe
 Ha a két CRC-számítás eredménye megegyezik, a keret nagy valószínűséggel hiba nélkül
 érkezett.
 
-** A közeghozzáférés-vezérléshez** tartoznak azok a protokollok, amelyek az adatszóró
+**A közeghozzáférés-vezérléshez** tartoznak azok a protokollok, amelyek az adatszóró
 csatorna használatának vezérléséért felelősek. A MAC-alréteget megvalósító hardver
 a közeghozzáférés-vezérlő. A MAC-alréteg különösen fontos szerepet tölt be a
 LAN-hálózatokban, különösen a vezeték nélküli LAN-hálózatokban, mert ezek
@@ -1044,15 +1044,188 @@ Amikor elcsendesül a közeg, megkezdi az adást, amelyet egyedül csak a megcí
 
 ### 12.1 Az adatkapcsolati réteg helye és feladatai
 
+Az adatkapcsolati réteg (Data Link Layer) az OSI hivatkozási modell második rétege,
+amely a Hálózati réteg alatt és a Fizikai réteg fölött helyezkedik el. Feladata az,
+hogy biztosítsa azt, hogy az adó oldali adatok a vevő oldalra is adatként jussanak
+el, és ne legyen belőle értelmetlen jelek sorozata. Ezt úgy valósítja meg, hogy
+az adatokat egyértelműen azonosítható adatkeretbe tördeli szét, ellátja a szükséges
+vezérlőbitekkel, majd sorrendben továbbítja azokat. A vevő oldal pedig a kapott
+kereteket megfelelő sorrendben összeállítja. Az adó oldal ezenkívül még a vevő
+által küldött nyugtázásokat is feldolgozza. Mivel a fizikai réteg a biteket értelmezés
+nélkül továbbítja, ezért az adatkapcsolati réteg feladata, hogy meghatározza illetve
+felismerje a keretek határait. Így a felette elhelyezkedő réteg már hibáktól
+mentes adatokat kap. Másik fontos feladata az, hogy a kétirányú átvitel esetén
+az esetleges ütközésekből adódó problémákat megoldja, és hogy forgalomszabályozást
+végezzen – tájékoztassa az adót a vevő fogadási szándékáról.
+
 ### 12.2 Keretképzés, a keret fő részei
+
+Az adatkapcsolati réteg legtipikusabb feladata a keretezés (nyilván adó oldalon a
+keretekbe tördelés, vevő oldalon a keretek eltávolítása – jellemzően az adó oldali
+funkciókat tárgyaljuk részletesen). A réteg alapegysége az adat keret (Data Frame).
+Önmagában a keretekre tördelés nem megoldás, szükség van (például) egy ellenőrző
+összegre, ami megmutatja, hogy az adott keret sérülésmentesen érkezett-e meg a
+vevő oldalra. Amennyiben az ellenőrző összegben eltérés van, akkor az egész keretet
+meg kell ismételni.
+
+A négy legáltalánosabban használt keretezési módszer a következő
+* **karakterszámlálás, bájtszámlálás:** a keret hosszának, azaz a benne foglalt
+bájtok számának megfelelő adatot írja bele egy fejlécbe, az úgynevezett
+bájtszám mezőbe. Ennek az algoritmusnak az a (potenciális) hibája, hogy az átviteli
+hiba szerencsétlen esetben pont a bájtszám mezőt érintheti, azaz ronthatja el.
+Így az átvitel kiesik a szinkronból, képtelenség lesz megtalálni a következő
+keret elejét (illetve végét). Ez a módszer ma már jellemzően nincs használatban.
+* **kezdő és végkarakterek beszúrása:** a keret elejét és a végét is egy-egy
+különleges jelzőbájttal (Flag) látjuk el (jellemzően egy escape karakterrel).
+* **kezdő és végbitek beszúrása:**  lehetővé teszi, hogy tetszőleges számú bit
+legyen a keretben, sőt, hogy a karakterkódok is tetszőleges számú bitből (ne csak
+8 bitből) álljanak. Minden keret egy speciális bitmintával indul, amit szintén
+jelzőbájtnak (Flag) nevezünk. Tartalmilag így néz ki: `01111110` azaz 6 db egymást
+követő 1-es. A bitbeszúrásos módszerrel egyértelműen felismerhetők a kerethatárok.
+A szinkron elvesztése esetén meg kell keresni a 6 db egymást követő 1-est, és így
+meg is találjuk a kerethatárokat, hiszen a 6db 1-es csak ott fordulhat elő.
+* **fizikai rétegbeli kódolás megsértése:** bizonyos kódolások esetén léteznek
+olyan jelsorozatok, jelváltások, amelyek az adatátvitel során objektíve nem
+fordulhatnak elő. Így ezek felhasználhatóak jelzésekre, mivel az átvitt adattal
+semmiképpen sem téveszthetőek össze. Ezek a kódok, azaz jelsorozatok könnyen
+azonosíthatóak, és így a keretek beazonosításához nincs szükség az átvitt adatok
+módosításárra (majd visszaalakítására). Összességében ez az eljárás terheli meg
+a legkevesebb „feleslegesen” átvitt adattal az adatátvitelt.
+
+Az legtöbb adatkapcsolati protokoll a gyakorlatban, a nagyobb biztonság érdekében
+(még ha ezzel jelentősen meg is növeli az átvitt adatok mennyiségét) a fenti
+módszerek valamely kombinációját alkalmazza. Például a keret az IEEE802.11 protokollban
+egy 72 bites, az IEEE802.3 protokollban egy 56 bites előtaggal (Preamble) kezdődik.
+
+**A keret részei:**
+
+1. Az **előtag (preamble)** váltakozva tartalmaz egyeseket és nullákat. 7 darab
+10101010 tartalmú bájtból álló sorozat. A 10 Mbit/s-os és kisebb sebességű
+Ethernet-megvalósításoknál az órajel szinkronizálása ennek a mezőnek a segítségével
+történik. Az Ethernet gyorsabb változatai szinkron működésűek, ezeknél időzítési
+információkra nincs szükség; ennek ellenére, a kompatibilitás érdekében a mező
+megmaradt.
+
+2. Az előtagot egy egy oktettből álló mező a keretkezdő (**Start Frame Delimiter, SFD**)
+követi, amely az időzítési információk végét, a keret tényleges kezdetét jelzi.
+Tartalma az 10101011 bitsorozat.
+
+3. Ezután a **cél (destination)** és **küldő (source) állomás** 48-bites címei
+következnek. Az Ethernet hálózaton minden állomást egy egyedi, 48-bites (6 bájtos)
+ún. **MAC (Media Access Control) cím** azonosít. Ezen címek kiosztását az
+IEEE kontrollálja.
+
+4. A **hossz/típus mező**t kétféle célra lehet használni. Ha értéke a decimális
+1536-nál, vagyis a hexadecimális 0×600-nál kisebb, akkor a benne szereplő érték
+hosszt ad meg, egyébként típus értékként azt adja meg, hogy az Ethernet folyamatainak
+lezárulása után melyik felsőbb rétegbeli protokoll fogja kapni az adatokat. A
+hossz a mező követő adatrészben található bájtok számát adja meg.
+
+5. Az **adat mező** és a szükség szerinti kitöltés hossza tetszőleges lehet,
+azonban a keret mérete nem haladhatja meg a felső mérethatárt. A **maximális átviteli
+egység (maximum transmission unit, MTU)** az Ethernet esetében 1500 oktett (bájt),
+az adatok mérete tehát ezt nem haladhatja meg. A mező tartalma nincs meghatározva.
+Ha nincs elég felhasználói adat ahhoz, hogy a keret mérete elérje a minimális
+kerethosszt, akkor előre meg nem határozott mennyiségű adat kerül beillesztésre,
+közvetlenül a felhasználói adatok mögé. Ezt a többletadatot nevezzük kitöltésnek.
+Az Ethernet keretek hosszának 64 és 1518 oktett között kell lennie.
+
+6. A keret végén szereplő **FCS (Frame Check Sequence - Keret Ellenőrző Sorozat)**
+mezőben 4 bájton CRC ellenőrző összeg helyezkedik el. Ha a vevő által számolt és
+a keretben lévő összeg nem egyezik, a keret eldobásra kerül.
 
 ### 12.3 Fizikai cím
 
+A **MAC-cím** (**Media Access Control**, a hardvercím, MAC-rétegbeli cím és fizikai
+cím elnevezés is használatos) egy hexadecimális számsorozat, amellyel még a
+gyártás során látják el a hálózati kártyákat. A hálózat többi eszköze ezt használja
+a hálózat előre meghatározott portjainak azonosítására. Ezek mellett az irányítótáblák
+és egyéb adatszerkezetek létrehozására és frissítésére is alkalmas.
+
+Minden eszköznek saját MAC-címe van. A több interfésszel rendelkező eszközöknek
+célszerűen több is lehet. A címet (címtartományokat) a szabványügyi hivatal adja
+ki a gyártónak, és ezt a gyártó fizikailag beégeti vagy szoftverrel beállítja az
+interfészben. A címet 12 darab hexadecimális számjegy formájában szokták megadni,
+amelyből az első hat hexadecimális számjegy kiosztását az IEEE felügyeli, ezek a
+gyártót vagy az eladót azonosítják. A MAC-címnek ezt a részét egyedi
+szervezetazonosítónak (Organizational Unique Identifier, OUI) nevezzük. A fennmaradó
+hat hexadecimális számjegyet a gyártó adminisztrálja saját körben.
+
+A fizikai cím egy Ethernet hálózaton (LAN) megegyezik az Ethernet címmel. Ha egy
+számítógép csatlakozik az internetre, akkor az IP-címe és a MAC-címe össze van
+rendelve egy megfeleltetési táblázatban. A telekommunikációs rétegek adatkapcsolási
+(2.) rétege használja, ezen belül van egy külön alréteg a fizikai címek számára.
+
 ### 12.4 Hibavédelem az adatkapcsolati rétegben: ellenőrző összeg
+
+A **keretellenőrző (Frame Check Sequence, FCS) mezőt** (4 bájt) a hibák észlelésére
+használják a keretben. Ez a **[ciklikus redundancia kódot (Cyclic Redundancy Code,
+CRC)](https://hu.wikipedia.org/wiki/Hibajav%C3%ADt%C3%A1s#Ciklikus_redundancia-ellen%C5%91rz%C3%A9s_(Cyclic_redundancy_check_%E2%80%93_CRC))** használja. A küldő készülék beleteszi a CRC-számítás
+eredményét a keret FCS-mezejébe. A fogadó készülék megkapja a keretet, és szintén
+generál egy CRC-t a hibakereséséhez. Ha a számítások megegyeznek, nem történt hiba.
+Ha a számítások nem egyeznek, az azt jelzi, hogy az adat megváltozott, ezért a
+keretet el kell dobni. Az adatban bekövetkezett változás annak a következménye
+lehet, hogy a biteket képviselő elektromos jelekben zavar keletkezett.
 
 ### 12.5 A pont-pont (PPP) protokoll
 
+A **Pont-pont vagy kétpontos protokoll (PPP, Point-to-Point Protocol)** egy magas
+szintű adatkapcsolati protokoll kétpontos vonalakhoz. Széleskörűen alkalmazott
+megoldás az Internetben. A PPP egy korábbi, egyszerűbb protokoll továbbfejlesztése,
+amelyet **SLIP-nek (Serial Line Internet Protocol – soros vonali internetprotokoll)**
+neveznek. A PPP-protokollt hibakezelésre, kapcsolatok konfigurálására, több protokoll
+támogatására, hitelesítésre és több más célra használják.
+
+Szolgáltatásai:
+
+* Olyan keretezési módszert vezet be, mely egyértelműen ábrázolja a keret végét
+és a következő keret elejét. A keretformátum egyúttal megoldja a hibajelzést is.
+* Adatkapcsolat-vezérlő protokollt tartalmaz **(LCP - Link Control Protocol)** a
+vonalak felélesztésére, tesztelésére, vonalak bontására.
+* Különböző hálózati vezérlő protokollokat **(NCP - Network Control Protocol)**
+tartalmaz mindegyik támogatott hálózati réteghez.
+
+A PPP keretformátuma
+
+| Mező mérete (bájtban)| 1 | 1 | 1 | 1 vagy 2 | Változó | 2 vagy 4 | 1 |
+|----------------------|---|---|---|----------|---------|----------|---|
+| Mező | Jelző (01111110) | Cím (11111111) | Vezérlő (00000011) | Protokoll | Hasznos teher | Ellenőrző összeg | Jelző (01111110) |
+
+Minden PPP keret a szabványos jelző bájttal (01111110) kezdődik. Ezután következik
+a Cím mező, mely mindig az 11111111 értékre van állítva annak jelzésére, hogy
+minden állomásnak vennie kell a keretet. A harmadik mező a Vezérlő mező, mely
+alapesetben a 00000011 értékre van állítva, mely a számozatlan keret jelzésére
+szolgál. Alapesetben a PPP nem biztosít megbízható átvitelt, de zajos környezetben
+(pl. vezeték nélküli hálózat) a megbízható átvitel megoldható a számozott mód
+használatával (sorszámok és nyugták alkalmazásával). A következő mező a Protokoll
+mező, mely azt jelzi, milyen csomag van az adat mezőben (pl. LCP, NCP, IP, IPX,
+stb.). Következik az adat mező, mely változó hosszúságú, de alapértelmezésként
+maximum 1500 bájt. Ezután jön az Ellenőrző összeg mező, mely általában 2 bájt,
+de lehet 4 bájt is.
+
 ### 12.6 Forgalomszabályozás (a gyors adók, lassú vevők problémája)
+
+Egy az adatkapcsolati rétegben (de a legtöbb magasabb szintű rétegben is) előforduló
+probléma az, hogy a gyors adók adatelárasztással fenyegetik a lassú vevőket. Valamilyen
+forgalomszabályozási mechanizmust kell beépíteni annak érdekében, hogy az adók
+tudhassák, hogy a vevők egy adott pillanatban mekkora szabad puffer területtel
+rendelkeznek.
+
+A **flow control** az ethernet folyamat szabályozását végzi olyan módon, hogy a
+hálózati eszköz képes megmondani a közvetlen szomszédjának, hogy túl van terhelve
+adatokkal. Ilyen például amikor az eszköz gyorsabban kap adatokat, mint ahogyan
+azt fel tudná dolgozni. A flow control lehetővé teszi, hogy a túlterhelt készülék
+küldjön egy szünet keretet, melyben azt kéri, hogy a vezeték túl oldalán lévő
+készülék állítsa meg az adatküldést ideiglenesen.
+
+A gyakorlatban két megközelítés terjedt el
+* **Visszacsatolás-alapú forgalomszabályozás (feedback-based flow control):** a
+vevő információt küld vissza a feladónak, amelyben engedélyt ad neki további adatok
+küldésére, vagy legalábbis tájékoztatja saját pillanatnyi állapotáról.
+* **Sebességalapú forgalomszabályozás (rate-based flow control):** a protokollba
+be van építve egy sebességkorlát, amelyet minden küldőnek minden adattovábbítás
+során tiszteletben kell tartania. Ez a megoldás a fogadó részéről semmilyen
+visszacsatolást nem igényel.
 
 
 ## 13. tétel
