@@ -938,7 +938,7 @@ switchek, routerek) között, különböző és sokféle réz- és optikai kábe
 
 A szabvány főbb változatai:
 
-* **Klasszikus Ethernet, 1983 (IEEE 802.3):**
+**Klasszikus Ethernet, 1983 (IEEE 802.3):**
 
 Az Ethernet szinte azonnal – a klasszikus Ethernet egyetlen hosszú kábelt tartalmazó
 architektúrájának megjelenését követően – továbbfejlődött. A kábel töréseivel vagy
@@ -956,12 +956,12 @@ egységekre kerekítve. A klasszikus Ethernet kábelek leggyakoribb típusai:
 | Megnevezés | Kábelezés | Max szegmenshossz | Csomópont/szegmens |
 
 
-* **Kapcsolt Ethernet**
+**Kapcsolt Ethernet**
 
-  * *Gyors Ethernet, 1995 (IEEE 802.3u):*
+* *Gyors Ethernet, 1995 (IEEE 802.3u):*
 
 
-  * *Gigabites Ethernet, 1998 (IEEE 802.3z):*
+* *Gigabites Ethernet, 1998 (IEEE 802.3z):*
 
 
 
@@ -979,7 +979,7 @@ egy állomás az adatcsatornát.
 
 *Csatornakiosztásos (statikus) protokollok*
 
-* ** TDM (Time Division Multiplexing, időosztásos nyalábolás):** a versenyhelyzeteket
+* **TDM (Time Division Multiplexing, időosztásos nyalábolás):** a versenyhelyzeteket
 a legegyszerűbben úgy kerülhetjük el, ha előre meghatározott időközönként a csatornát
 más-más állomás használja.
 
