@@ -947,22 +947,41 @@ kényszerített ki, amelyben minden állomás saját kábellel csatlakozik egy k
 elosztóhoz (hub). Az elosztó egyszerűen villamos kapcsolatot létesít a hozzá
 csatlakozó vezetékek között, mintha összeforrasztották volna azokat.
 
-A megnevezés első száma az átviteli sebességet jelöli. Az Ethernet hálózatok
-fajtáinak a jelölésére használjuk a Base szót, ami azt fejezi ki, hogy a fizikai
-rétegben  alapsávi  kódolást  használunk,  azaz  nem  vivőfrekvenciával  modulálunk.
-A következő szám, koaxiális kábel esetén a kábel hosszát adja meg 100 méteres
-egységekre kerekítve. A klasszikus Ethernet kábelek leggyakoribb típusai:
+A megnevezés első száma az átviteli sebességet jelöli (Mb/s). Az Ethernet hálózatok
+fajtáinak a jelölésére használjuk a Base szót, ami azt fejezi ki, hogy a jelátvitel
+alapsávon történik, ami azt jelenti, hogy a jelátvivő közegen csak az Ethernet
+jel közlekedik. A következő szám, koaxiális kábel esetén a kábel hosszát adja
+meg 100 méteres egységekre kerekítve.
+
+A klasszikus Ethernet kábelek leggyakoribb típusai:
 
 | Megnevezés | Kábelezés | Max szegmenshossz | Csomópont/szegmens |
+|------------|-----------|-------------------|--------------------|
+| 10Base5  | vastag koax | 500 méter | 100 |
+| 10Base2  | vékony koax | 185 méter | 30 |
+| 10Base-T | sodrott érpár | 100 méter | 1024 |
+| 10Base-F   | optikai   | 2000 méter| 1024 |
 
 
-**Kapcsolt Ethernet**
-
-* *Gyors Ethernet, 1995 (IEEE 802.3u):*
+**Gyors Ethernet, 1995 (IEEE 802.3u):**
 
 
-* *Gigabites Ethernet, 1998 (IEEE 802.3z):*
+**Gigabites Ethernet, 1998 (IEEE 802.3z):**
 
+A gigabites Ethernet – eltérően a klasszikus Ethernet-től – pont-pont felépítésű.
+A legegyszerűbb topológiánál a két számítógép van gigabites Ethernettel összekapcsolva.
+Gyakoribb az a megoldás, amikor egy kapcsoló vagy elosztó köt össze több számítógépet,
+vagy további elosztókat vagy további kapcsolókat. Minden esetben egy Ethernet kábel
+végén pontosan egy-egy eszköz található csak.
+
+A gigabites Ethernet két működési módot támogat: a duplex és félduplex működést.
+„Normális” esetnek a duplex módot tekintik, a forgalom mindkét irányban egyidőben
+folyhat. Ezt akkor használják, ha egy központi kapcsolót vagy a periférián lévő
+gépekkel, vagy más kapcsolókkal kötnek össze. Ekkor minden adatot pufferelnek, így
+bármelyik gép és kapcsoló tetszés szerinti időben küldheti el az adatait (kereteit).
+Az adónak nem kell figyelnie a csatorna forgalmát, mert a versengés kizárt. Míg
+az elosztók esetében az összes állomás egy ütközési tartományt (collision domain)
+képez, **kapcsoló esetén, minden porthoz saját ütközési tartomány tartozik**.
 
 
 **Közegelérési protokollok**
