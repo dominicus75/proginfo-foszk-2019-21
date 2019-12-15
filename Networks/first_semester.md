@@ -729,7 +729,8 @@ kivéve, ha a SYN jelzőbit értéke 1. Ez esetben ennek a mezőnek a tartalma a
 sorozatszám (Initial Sequence Number; ISN), amit a rendszer arra használ, hogy
 szinkronizálja a sorozatszámokat a küldő és a fogadó gépen.
 * **Nyugtaszám (Acknowledgement number, 32 bit):** a következő várt bájt sorszámát
-tartalmazza, nem az utolsó rendben beérkezett bájtét.
+tartalmazza, ezzel nyugtázva az ennél kisebb sorszámú szegmensek sikeres fogadását
+is.
 * **Fejrész hossza (TCP header length, 4 bit):** ez a mező mondja meg, hány 32
 bites szóból áll a TCP-fejrész. Ez azért szükséges, mert a fejrész mérete az Opciók
 (options) mező változó hossza miatt szintén változó. Tulajdonképpen ez a mező jelzi
@@ -768,7 +769,10 @@ adott szegmenssel kapcsolatban:
   küldőnek nincs több továbbítandó adata. Az összeköttetés bontása után azonban
   még korlátlan ideig folytathatja az adatok vételét.
 * **Ablak méret (Window size, 16 bit):** a TCP forgalomszabályozása során használt
-változó, megmondja, hogy a vevő mennyi adatot képes még fogadni.
+változó, a nyugtázás előtt elküldhető szegmensek számát jelöli. Az adatátvitel
+gyorsítása érdekében ugyanis a TCP nem várja meg a nyugtát minden egyes szegmens
+elküldése előtt, helyette több szegmens elküldését is engedélyezi a nyugta beérkezése
+előtt.
 * **Ellenőrző összeg (Checksum, 16 bit):** ennek a mezőnek a tatalmát a rendszer
 a továbbított adatok épségének ellenőrzésére használja. A fogadó gép ugyanazon
 algoritmus alapján, mint a küldő, maga is előállítja a kapott szegmensből az
@@ -783,15 +787,123 @@ lehetősége, ezek kerülnek ebbe a mezőbe.
 
 **Összeköttetés létesítése és bontása**
 
+A TCP protokoll ellentétben az UDP-vel kapcsolatorientált, megbízható összeköttetést
+biztosít két eszköz között. A kommunikáció három lépésből áll, a kapcsolat felépítéséből,
+az átvitelből és a kapcsolat bontásából.
+
+Egy kapcsolat felépítésének általános menete a következő:
+* a forrás-, és a célalkalmazás értesíti az operációs rendszert a kapcsolat
+létrehozási szándékáról.
+* az egyik csomópont kezdeményezi a kapcsolatot, a másiknak pedig fogadnia kell
+azt.
+* a két operációs rendszer protokoll-szoftvermoduljai a hálózaton elküldött üzenetekkel
+kapcsolatba lépnek egymással és ellenőrzik, hogy az adatküldés engedélyezett-e,
+illetve, hogy mindkét oldal készen áll-e.
+* ezután a kapcsolat létrejön, a szükséges szinkronizálások elvégzése után pedig
+megkezdődik az adatok átvitele. Az átvitel során a két készülék protokollszoftverei
+közötti kapcsolat a megérkezett adatok helyességének ellenőrzése céljából változatlanul
+fennmarad.
+
+Amikor már nincs szállítandó adat, a kliens beállítja a szegmens fejlécében szereplő
+**FIN** jelzőbitet. Ezután a kapcsolat szerver oldali vége egy normál, adatokat tartalmazó
+szegmenssel válaszol, amelyben az **ACK** jelzőbittel érvényesített nyugtaszám
+igazolja, hogy minden bájt megérkezett. Miután az összes szegmens nyugtázása
+megtörtént, a munkamenet is lezárul.
+
+Az ellenkező irányú munkamenet bontása is ugyanígy történik. A fogadó fél a forrásnak
+küldött szegmens fejlécében szereplő **FIN** jelzőbit beállításával közli, hogy
+nincs több küldendő adat. A válaszként küldött nyugta igazolja, hogy az összes
+adatbájt megérkezett, a munkamenet pedig lezárul.
 
 **Átviteli politika**
 
 
 **Torlódáskezelés**
 
+Amikor bármely hálózatban a felajánlott terhelés nagyobb, mint amennyit a hálózat
+kezelni képes, torlódás keletkezik. A hálózati réteg az útválasztókban lévő várakozási
+sorok növekedését figyelve észreveszi a torlódás tényét, és – ha csak a csomagok
+eldobásával is – megpróbálja kezelni. A szállítási réteg feladata, hogy torlódási
+jelzést kapjon a hálózati rétegtől, és lecsökkentse a hálózatba küldött forgalom
+sebességét.
+
+A TCP torlódáskezelése az **AIMD (Additive Increase Multiplicative Decrease –
+additív növelés, multiplikatív csökkentés)** vezérlési törvényt valósítja meg.
+Kétállapotú torlódási jelzésként a csomagvesztést használja fel. A TCP torlódáskezelés
+négy, egymáshoz kapcsolódó algoritmusból áll.
+
+*Az algoritmusokban szereplő változók:*
+* **CongWin (congestion window, torlódási ablak):** a mérete megmutatja, hogy a
+küldő összesen hány bájt adatot tarthat a hálózaton egy időben. Az ennek megfelelő
+sebesség CongWin osztva RTT-vel.
+* **MSS (Maximum Segment Size, legnagyobb lehetséges szegmensméret):** a hosztok
+által elfogadott legnagyobb szegmens méret.
+* **RTT (Round-Trip Time, körülfordulási idő)**
+* **SST (Slow Start Threshold, lassú kezdés küszöbérték):** a két algoritmus közötti
+váltás határpontja.
+
+A négy torlódáskezelő algoritmus:
+1. **Slow Start – Lassú indulás:** a torlódási ablak minden nyugta után megduplázódik.
+Mindez addig tart, amíg az ablak az SST küszöbértéket el nem éri, vagy csomagvesztés
+nem történik (mindkettő torlódást jelez). Ekkor az ablakot a felére kell csökkenteni.
+2. **Congestion Avoidance – Torlódás elkerülés:** ez az algoritmus akkor lép működésbe,
+ha az SST értéke a fele annak a küldési ablakénak, amelyben a torlódást észleltük.
+Ezért először a CongWin-t az SST értékére kell állítani, majd minden RTT után egy
+MSS-el növelni az ablak méretét (lineáris növekedés).
+3. **Fast Retransmit – Gyors újraküldés:** az elveszett csomag egyből újraküldhető
+anélkül, hogy az időzítő lejártát meg kellene várni.
+4. **Rast Recovery – Gyors helyreállítás:** egy olyan ideiglenes állapot, ami
+megpróbálja a nyugtaórajelet tovább biztosítani egy olyan torlódási ablakkal,
+amelynek a mérete az új küszöbbel vagy a gyors újraküldés idején érvényes torlódási
+ablakméret felével egyenlő. Ennek elérése érdekében a nyugtamásolatokat folyamatosan
+számolja (beleértve azt a hármat is, amelyek a gyors újraküldést okozták) mindaddig,
+amíg a hálózatban lévő csomagok száma az új küszöb értékére nem esik.
+
+Összefoglalva, ha úgy érzékeljük, van elég átbocsátóképesség, akkor növeljük az
+adatsebességet, amíg torlódásra utaló jeleket nem tapasztalunk, amikor is csökkentenünk
+kell.
 
 ### 5.3 Az UDP protokoll
 
+Az **UDP (User Datagram Protocol – felhasználói datagram protokoll)** az internet
+egyik alapprotokollja. Feladata datagram alapú szolgáltatás biztosítása, azaz
+rövid, gyors üzenetek küldése. Jellemzően akkor használják, amikor a gyorsaság
+fontosabb a megbízhatóságnál, mert az UDP nem garantálja a csomag megérkezését.
+Olyan alkalmazások használják, amelyek a hibaellenőrzést maguk végzik, vagy a
+működésükhöz egyszerűen nincs szükség különösebb hibakezelésre. Ilyen szolgáltatások
+például a DNS, a valós idejű multimédia átvitelek, vagy a hálózati játékok.
+
+Az UDP olyan szegmenseket (segment) használ az átvitelhez, amelyek egy 8 bájtos
+fejrészből, valamint a felhasználói adatokból állnak. A két port a végpontok forrás-
+és a célgépen belüli azonosítására szolgál. Amikor egy UDP-szegmens megérkezik,
+akkor az adatmezejét a szállítási entitás kézbesíti a címzett portra kapcsolódó
+folyamatnak. Az UDP használatának tulajdonképpen az a legnagyobb előnye a nyers
+IP használatával szemben, hogy a fejrészben megtalálható a feladó és a címzett
+portszáma is. A portszámokat tartalmazó mezők nélkül a szállítási réteg nem tudná,
+hogy mit kezdjen a csomaggal.
+
+*A UDP fejléc részei*
+
+![Imgur](https://i.imgur.com/EPlBXJR.png)
+
+* **Forrásport (Source port, 16 bit):** a forrásgépen a kommunikációban résztvevő
+alkalmazáshoz rendelt kapu száma.
+* **Célport (Destination port, 16 bit):** a célgépen a kommunikációban résztvevő
+alkalmazáshoz rendelt kapu száma.
+* **UDP-szegmens hossza (Length, 16 bit):** a mező a 8 bájtos fejrész és az adatmező
+együttes hosszát tartalmazza. A legrövidebb lehetséges hossz 8 bájt, ami csak a
+fejrészt tartalmazza. A legnagyobb lehetséges hossz 65 515 bájt, ugyanis az IP-csomagok
+mérethatára nem teszi lehetővé a legnagyobb, 16 biten ábrázolható számú bájt
+használatát.
+* **UDP ellenőrző összeg (Checksum, 16 bit):** a csomag tartalmának sértetlenségét
+ellenőrzi. Kiszámolása nem kötelező, ekkor ezt a mezőt 0-ra kell állítani.
+
+Az UDP nem végez forgalomszabályozást, torlódáskezelést vagy újraküldést egy rossz
+szegmens vétele esetén. Ez mind a felhasználói folyamatokon múlik. Amit elvégez:
+egy interfészt biztosít az IP-protokoll használatához, azzal a többletképességgel,
+hogy a portok használatával egyszerre több folyamatot képes demultiplexelni,
+valamint szükség esetén hibajelzést biztosítani végponttól végpontig. Ez minden,
+amit az UDP kínál.
 
 ## 6. tétel
 
