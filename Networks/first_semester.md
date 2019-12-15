@@ -637,7 +637,83 @@ munkaállomások üzemeltetése.
 
 ### 5.1 A szállítási réteg helye és feladatai
 
+A **szállítási réteg (transport layer)** az OSI-modell (alulról) negyedik (a Hálózati
+réteg fölötti) és a TCP/IP-modell harmadik (az Internet réteg fölötti) rétege.
+Legfontosabb feladata az, hogy adatokat fogadjon a viszonyrétegtől, – ha szükséges –
+feldarabolja azokat kisebb egységekre, továbbítsa ezeket a hálózati rétegnek, és
+biztosítsa azt, hogy minden kis egység hibátlanul megérkezzen a másik oldalra.
+Ráadásul, mindezt hatékonyan kell elvégezni és oly módon, hogy a felsőbb rétegek
+számára rejtve maradjanak a hardvertechnikában az idő folyamán jelentkező változások.
+A szállítási réteg egy igazi végpontok közötti réteg, a forráshoszttól egészen a
+célkosztig tart. Vagyis: a forrásgépen futó egyik program beszélget egy hasonló
+programmal a célgépen, felhasználva az üzenetek fejléceit és a vezérlőüzeneteket.
+Az alacsonyabb szintű rétegek protokolljait a gépek a közvetlen szomszédjukkal
+való kommunikációhoz használják, nem pedig a tényleges küldő és a fogadó kommunikál
+velük, hiszen ezeket több útválasztó is elválaszthatja egymástól.
+
+A szállítási szolgáltatást egy, a szállítási entitások között használt szállítási
+protokoll valósítja meg. Némely tekintetben a szállítási protokollok az adatkapcsolati
+protokollokra emlékeztetnek. Mindkettőnek többek között hibakezelést, sorszámozást
+és forgalomszabályozást kell végeznie.
+
+Az internet két fő protokollt használ a szállítási rétegben, az egyik *összeköttetés-alapú*,
+a másik *összeköttetés nélküli*. A két protokoll kiegészíti egymást. Az összeköttetés
+nélküli protokoll az **UDP (User Datagram Protocol – felhasználói datagram protokoll)**,
+amely majdnem semmit sem tesz azon túl, hogy csomagokat továbbít alkalmazások között,
+rájuk bízva, hogy erre egy olyan protokollt építsenek, amilyenre szükségük van.
+Az összeköttetés-alapú protokoll pedig a **TCP (Transmission Control Protocol
+– átvitelvezérlő protokoll)**, amely szinte mindent elintéz. Összeköttetéseket hoz
+létre, újraküldéssel megbízhatóvá teszi azokat, emellett forgalomszabályozást és
+torlódáskezelést is megvalósít, mindezt az alkalmazás helyett teszi.
+
 ### 5.2 A TCP protokoll működése: a port fogalma, a TCP fejléc, összeköttetés létesítése és bontása, átviteli politika, torlódáskezelés
+
+A legtöbb internetes alkalmazás megbízható, sorrendhelyes kézbesítést igényel. Az
+UDP ezt nem tudja nyújtani, ezért egy másik protokollra is szükség van. Ez az internet
+legfontosabb igáslova, a **TCP (Transmission Control Protocol – átvitelvezérlő
+protokoll)**, az internet gerincét alkotó TCP/IP protokollcsalád egyik fő protokollja.
+Arra tervezték, hogy dinamikusan alkalmazkodjon az összekapcsolt hálózatok tulajdonságaihoz,
+valamint hogy nagymértékben ellenálló legyen sokféle meghibásodással szemben.
+
+Minden TCP-t támogató gép rendelkezik egy TCP szállítási entitással, amely lehet
+egy könyvtári eljárás, egy felhasználói folyamat vagy leggyakrabban a kernel része.
+A TCP-folyamokat és az IP-réteg felé használható interfészeket minden esetben a
+TCP-entitás kezeli. A helyi folyamatoktól kapott felhasználói adatfolyamokat a
+TCP-entitás 64 KB-ot meg nem haladó méretű darabokra szedi szét (a gyakorlatban
+sokszor 1460 adatbájtos darabokra, mert így az IP- és TCP-fejrészekkel együtt is
+beleférnek egy Ethernet-keretbe). Az egyes darabokat önálló IP-datagramokban küldi
+el. Amikor egy géphez TCP-adatokat tartalmazó datagram érkezik, az a TCP-entitáshoz
+kerül, amely visszaállítja az eredeti bájtfolyamokat. Minden TCP-összeköttetés
+duplex és kétpontos. A duplex azt jelenti, hogy a forgalom egyszerre haladhat
+minkét irányba. A kétpontos azt jelenti, hogy minden összeköttetésnek pontosan
+két végpontja van. A TCP nem támogatja az adatszórást és a többesküldést.
+
+#### A port fogalma
+
+A portok egy hálózati kommunikációs csatorna végpontjai. A portok használata teszi
+lehetővé, hogy egy adott számítógépen futó alkalmazások – ugyanazt a hálózati
+erőforrást használva – a beérkező csomagokból csak a nekik szólókat kapják meg.
+A portokat száma 0 és 65535 között lehet.
+
+**A portokat három csoportba soroljuk:**
+
+* **jól ismert portok (well known ports):** 0-1023-as sávban lévő portok, amelyeket
+általában csak rendszerfolyamatok vagy rendszerprogramok használnak, és ezek
+szorosan kötődnek valamilyen szolgáltatáshoz (a 20 és 21-es port az FTP-hez, 22-es
+az SSH-hoz, 23-as a telnethez, 25-ös az SMTP-hez, a 80-as a HTTP-hez).
+* **regisztrált portok (1024-49151):** kevésbé kötődnek egy-egy szolgáltatáshoz,
+ilyen portszám többféle célra is felhasználható.
+* **dinamikus vagy privát portok (49152-65535):** nem kapcsolódik hozzájuk semmilyen
+kijelölt szolgáltatás, ezek az egyes programok által szabadon felhasználhatók.
+
+**Minden portnak három állapota lehet az adott rendszertől függően:**
+
+* **Nyitott/Open:** teljesen nyitott az internet felé. Ha van nyitott portunk,
+számítógépünk sebezhető.
+* **Zárt/Closed:** a port zárva van ugyan, de látszik az internet felé. Különböző
+hacker eszközökkel a számítógép így is sebezhető.
+* **Lopakodó/Stealth:** Ez a port teljesen láthatatlan az internet felé. Az automatizált
+támadások ellen a Stealth portok jelentik az egyetlen védekezési módot.
 
 ### 5.3 Az UDP protokoll
 
