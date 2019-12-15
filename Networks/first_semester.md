@@ -720,30 +720,64 @@ támadások ellen a Stealth portok jelentik az egyetlen védekezési módot.
 ![Imgur](https://i.imgur.com/7DFOERs.png)
 
 A TCP fejléc részei:
-* **Forrásport (Source port, 16 bit):**
-* **Célport (Destination port, 16 bit):**
-* **Sorszám (Sequence number, 32 bit):**
-* **Nyugtaszám (Acknowledgement number, 32 bit):**
-* **Fejrész hossza (TCP header length, 4 bit):**
-* **Nem használt, tartalék (3 bit):** a TCP jól átgondolt tervezésére szolgál
+* **Forrásport (Source port, 16 bit):** a forrásgépen a kommunikációban résztvevő
+alkalmazáshoz rendelt kapu száma.
+* **Célport (Destination port, 16 bit):** a célgépen a kommunikációban résztvevő
+alkalmazáshoz rendelt kapu száma.
+* **Sorszám (Sequence number, 32 bit):** az adott szegmens első bájtjának sorozatszáma,
+kivéve, ha a SYN jelzőbit értéke 1. Ez esetben ennek a mezőnek a tartalma a kezdő
+sorozatszám (Initial Sequence Number; ISN), amit a rendszer arra használ, hogy
+szinkronizálja a sorozatszámokat a küldő és a fogadó gépen.
+* **Nyugtaszám (Acknowledgement number, 32 bit):** a következő várt bájt sorszámát
+tartalmazza, nem az utolsó rendben beérkezett bájtét.
+* **Fejrész hossza (TCP header length, 4 bit):** ez a mező mondja meg, hány 32
+bites szóból áll a TCP-fejrész. Ez azért szükséges, mert a fejrész mérete az Opciók
+(options) mező változó hossza miatt szintén változó. Tulajdonképpen ez a mező jelzi
+az adat kezdetét (32 bites szavakban mérve) a szegmensen belül, de mivel ez egyben
+a fejrész szavakban mért hossza is, a végeredmény ugyanaz.
+* **Fenntartott, tartalék (Reserved, 3 bit):** a TCP jól átgondolt tervezésére szolgál
 tanúbizonyságul, hogy ezek a bitek 30 éve változatlanul használaton kívül vannak
 (és az eredeti 6-ból csupán 3-at használtak fel, így maradt 3). Valamennyi bitjének
 nullát kell tartalmaznia.
 * **Jelzőbitek (Flags)**, amelyek speciális információkat közölnek a fogadóval az
 adott szegmenssel kapcsolatban:
   * *NS (Nonce sum):* rejtett védelem.
-  * *CWR (Congestion Window Reduced – torlódási ablak csökkentve):*
+  * *CWR (Congestion Window Reduced – torlódási ablak csökkentve):* az ECE mezővel
+  együtt használatos torlódás jelzésére. A CWR bittel a TCP-küldő a TCP-vevő felé
+  jelzi a Torlódási ablak csökkentve (Congestion Window Reduced) eseményt, így a
+  vevő tudni fogja, hogy az adó lelassított, és megszüntetheti az ECH-Echo küldését.
   * *ECE (Explicit Congestion Notification Echo – explicit torlódásjelzés visszhangja):*
-  * *URG (Urgent Pointer – sürgősségi mutató):*
-  * *ACK (Acknowledgement – nyugtázás):*
-  * *PSH (Push – lökjed!):*
-  * *RST (Reset – visszaállítás):*
-  * *SYN (Synchronization – szinkronizálás):*
-  * *FIN (Finish – befejezés):*
-* **Ablak méret (Window size, 16 bit):**
-* **Ellenőrző összeg (Checksum, 16 bit):**
-* **Sürgősségi mutató (Urgent Pointer, 16 bit):**
-* **Opciók (Options,  0-320 bit):**
+  a CWR mezővel együtt használatos torlódás jelzésére. Ha a vevő a hálózattól torlódási
+  jelzést kap, az ECE bittel ECN-Echo jelzést küld a TCP-küldő számára, ami azt
+  jelenti, hogy a küldőnek le kell lassítania.
+  * *URG (Urgent Pointer – sürgősségi mutató):* ha az értéke 1, akkor a vevőnek
+  figyelembe kell vennie a Sürgősségi mutató (Urgent Pointer) mező értékét.
+  * *ACK (Acknowledgement – nyugtázás):* ha értéke 1, jelzi a Nyugtaszám mező
+  érvényességét, 0 érték esetén a szegmens nem tartalmaz nyugtát, tehát a Nyugtaszám
+  mező figyelmen kívül hagyható.
+  * *PSH (Push – lökjed!):* jelzi a késedelem nélküli adat továbbítását. Ez egyben
+  a vevő felé is udvarias kérést jelent: ne pufferelje a vett adatot, hanem azonnal
+  továbbítsa az alkalmazás felé.
+  * *RST (Reset – visszaállítás):* egy hoszt összeomlása, vagy más okból összezavart
+  összeköttetés helyreállítására szolgál. Ezenkívül érvénytelen szegmens elutasítására é
+  s összeköttetés létesítésének megtagadására is használják.
+  * *SYN (Synchronization – szinkronizálás):* szinkronizációs üzenet, kapcsolat
+  létrehozására, illetve fenntartására irányuló kérés. Emellett a sorszámok
+  szinkronizálása is ezen bit segítségével történik.
+  * *FIN (Finish – befejezés):* összeköttetés bontására szolgál. Jelzi, hogy a
+  küldőnek nincs több továbbítandó adata. Az összeköttetés bontása után azonban
+  még korlátlan ideig folytathatja az adatok vételét.
+* **Ablak méret (Window size, 16 bit):** a TCP forgalomszabályozása során használt
+változó, megmondja, hogy a vevő mennyi adatot képes még fogadni.
+* **Ellenőrző összeg (Checksum, 16 bit):** ennek a mezőnek a tatalmát a rendszer
+a továbbított adatok épségének ellenőrzésére használja. A fogadó gép ugyanazon
+algoritmus alapján, mint a küldő, maga is előállítja a kapott szegmensből az
+ellenőrzőösszeget, és összehasonlítja azt az ebben a mezőben található értékkel.
+Ha a kettő egyezik, az átvitel sikeres volt.
+* **Sürgősségi mutató (Urgent Pointer, 16 bit):** egy eltolási mutató, amely arra
+a sorozatszámra mutat, ahonnan a sürgősen továbbítandó információ kezdődik.
+* **Opciók (Options,  0-320 bit):** a TCP-nek van néhány kisebb opcionális beállítási
+lehetősége, ezek kerülnek ebbe a mezőbe.
 * **Kitöltés (Padding):** az opciók mérete változó lehet, viszont a fejlécnek
 32 bites szavakból kell állnia, ezért nullákkal kel kiegészíteni.
 
