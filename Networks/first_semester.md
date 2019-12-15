@@ -695,7 +695,7 @@ lehetővé, hogy egy adott számítógépen futó alkalmazások – ugyanazt a h
 erőforrást használva – a beérkező csomagokból csak a nekik szólókat kapják meg.
 A portokat száma 0 és 65535 között lehet.
 
-**A portokat három csoportba soroljuk:**
+*A portokat három csoportba soroljuk:*
 
 * **jól ismert portok (well known ports):** 0-1023-as sávban lévő portok, amelyeket
 általában csak rendszerfolyamatok vagy rendszerprogramok használnak, és ezek
@@ -706,7 +706,7 @@ ilyen portszám többféle célra is felhasználható.
 * **dinamikus vagy privát portok (49152-65535):** nem kapcsolódik hozzájuk semmilyen
 kijelölt szolgáltatás, ezek az egyes programok által szabadon felhasználhatók.
 
-**Minden portnak három állapota lehet az adott rendszertől függően:**
+*Minden portnak három állapota lehet az adott rendszertől függően:*
 
 * **Nyitott/Open:** teljesen nyitott az internet felé. Ha van nyitott portunk,
 számítógépünk sebezhető.
@@ -717,8 +717,35 @@ támadások ellen a Stealth portok jelentik az egyetlen védekezési módot.
 
 **TCP-fejléc**
 
-![Imgur](https://i.imgur.com/IVpPaxO.png)
+![Imgur](https://i.imgur.com/7DFOERs.png)
 
+A TCP fejléc részei:
+* **Forrásport (Source port, 16 bit):**
+* **Célport (Destination port, 16 bit):**
+* **Sorszám (Sequence number, 32 bit):**
+* **Nyugtaszám (Acknowledgement number, 32 bit):**
+* **Fejrész hossza (TCP header length, 4 bit):**
+* **Nem használt, tartalék (3 bit):** a TCP jól átgondolt tervezésére szolgál
+tanúbizonyságul, hogy ezek a bitek 30 éve változatlanul használaton kívül vannak
+(és az eredeti 6-ból csupán 3-at használtak fel, így maradt 3). Valamennyi bitjének
+nullát kell tartalmaznia.
+* **Jelzőbitek (Flags)**, amelyek speciális információkat közölnek a fogadóval az
+adott szegmenssel kapcsolatban:
+  * *NS (Nonce sum):* rejtett védelem.
+  * *CWR (Congestion Window Reduced – torlódási ablak csökkentve):*
+  * *ECE (Explicit Congestion Notification Echo – explicit torlódásjelzés visszhangja):*
+  * *URG (Urgent Pointer – sürgősségi mutató):*
+  * *ACK (Acknowledgement – nyugtázás):*
+  * *PSH (Push – lökjed!):*
+  * *RST (Reset – visszaállítás):*
+  * *SYN (Synchronization – szinkronizálás):*
+  * *FIN (Finish – befejezés):*
+* **Ablak méret (Window size, 16 bit):**
+* **Ellenőrző összeg (Checksum, 16 bit):**
+* **Sürgősségi mutató (Urgent Pointer, 16 bit):**
+* **Opciók (Options,  0-320 bit):**
+* **Kitöltés (Padding):** az opciók mérete változó lehet, viszont a fejlécnek
+32 bites szavakból kell állnia, ezért nullákkal kel kiegészíteni.
 
 **Összeköttetés létesítése és bontása**
 
