@@ -534,8 +534,8 @@ információkat adnak át egymásnak
 
 A számítógép-hálózatokban sokféle útválasztó algoritmus használatos. A statikus
 algoritmusok közé tartozik például a legrövidebb útalapú útválasztás és az
-elárasztás. A dinamikus algoritmus a távolságvektor és a kapcsolatállapot-alapú ú
-tválasztás. A legtöbb meglévő hálózat ezek valamelyikét használja.
+elárasztás. A dinamikus algoritmus a távolságvektor és a kapcsolatállapot-alapú
+útválasztás. A legtöbb meglévő hálózat ezek valamelyikét használja.
 
 **RIP (Routing Information Protocol – útválasztási információ protokoll)**
 
@@ -688,7 +688,7 @@ duplex és kétpontos. A duplex azt jelenti, hogy a forgalom egyszerre haladhat
 minkét irányba. A kétpontos azt jelenti, hogy minden összeköttetésnek pontosan
 két végpontja van. A TCP nem támogatja az adatszórást és a többesküldést.
 
-#### A port fogalma
+**A port fogalma**
 
 A portok egy hálózati kommunikációs csatorna végpontjai. A portok használata teszi
 lehetővé, hogy egy adott számítógépen futó alkalmazások – ugyanazt a hálózati
@@ -714,6 +714,20 @@ számítógépünk sebezhető.
 hacker eszközökkel a számítógép így is sebezhető.
 * **Lopakodó/Stealth:** Ez a port teljesen láthatatlan az internet felé. Az automatizált
 támadások ellen a Stealth portok jelentik az egyetlen védekezési módot.
+
+**TCP-fejléc**
+
+![Imgur](https://i.imgur.com/IVpPaxO.png)
+
+
+**Összeköttetés létesítése és bontása**
+
+
+**Átviteli politika**
+
+
+**Torlódáskezelés**
+
 
 ### 5.3 Az UDP protokoll
 
@@ -762,6 +776,20 @@ támadások ellen a Stealth portok jelentik az egyetlen védekezési módot.
 ### 9.2 A forgalomirányító (router) feladata és működése
 
 ### 9.3 A router és a híd (kapcsoló) összehasonlítása
+
+Bár mindkét eszköz számítógép-hálózatokat kapcsol össze, más módon teszik azt. A
+hálózati híd az OSI modell második, tehát az Adatkapcsolati rétegében operál, míg
+a router az OSI modell 3. más szóval a hálózati rétegében tevékenykedik. Ez azt
+jelenti, hogy a híd a hardveres MAC-cím alapján irányítja a kereteket, a router
+pedig a szoftveresen hozzárendelt IP-címek alapján. Ennek egyik következménye,
+hogy a hidak nem tudnak különbséget tenni alhálózatok között, a routerek viszont
+igen.
+
+Ha az egyes szegmenseket hidakkal kapcsoljuk össze, ezáltal egy nagy hálózatot
+hozunk létre, viszont a ha a szegmenseket routerekkel kötjük össze, azok külön-külön
+alhálózatok lesznek. Ha egy gépet át kell helyezni egyik szegmensből a másikba,
+akkor a routeres megoldás esetén új IP-címet kell hozzárendelni, viszont a hidas
+megoldásnál nem kell semmit újrakonfigurálni.
 
 ### 9.4 Különböző típusú hálózatok összekapcsolása
 
