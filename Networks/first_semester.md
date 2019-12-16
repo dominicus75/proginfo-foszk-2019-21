@@ -933,14 +933,172 @@ amit az UDP kínál.
 
 ### 8.1 A számítógép-hálózat fogalma, hálózatok csoportosítása, jellemző alkalmazási területek
 
+A számítógép-hálózat autonóm (önálló működésre képes) számítógépek összekapcsolt
+(információcserére képes) rendszere. A „számítógép hálózat” és az „elosztott rendszer”
+rendszer közti különbség legegyszerűbben úgy írható le, hogy az elosztott rendszerekben
+lévő gépeket egy közös operációs rendszer fogja össze, míg a klasszikus hálózat
+autonóm gépekből áll. Az elosztott rendszert az átlag felhasználó jellemzően egy
+gépnek (erőforrásnak) látja.
+
+A hálózati rendszer elemei közötti kommunikáció feltételeit és szabályait a hálózati
+protokoll rögzíti. A hálózati kommunikációban használt protokollok általában a
+következőket határozzák meg:
+* üzenet kódolása
+* üzenet formázása és beágyazása
+* üzenet mérete
+* üzenet időzítése
+* üzenet szállítási feltételei.
+
+Felhasználási területek, előnyök:
+* **Erőforrás-megosztás:** hogy a hálózatban lévő programok, adatok és eszközök
+– az erőforrások és a felhasználók fizikai helyétől függetlenül – „bárki” számára
+elérhetők legyenek.
+* **Megbízhatóság növelése:** alternatív erőforrások alkalmazásával érhető el.
+* **Költségcsökkentés:** pl. nagy teljesítményű hálózati nyomtató alkalmazásával jelentősen
+csökkenthetők a költségek.
+* **Skálázhatóság:** annak biztosítása, hogy a rendszer teljesítményét a terhelés
+növekedésével oly módon lehessen fokozatosan növelni, hogy újabb processzorokat
+adunk hozzá.
+* **Kommunikációs eszköz**.
+
+A hálózatok csoportosítása kiterjedés szerint:
+
+* **PAN (Personal Area Network):** jellemzően néhány méternél nem távolabb elhelyezkedő
+vezeték nélküli összeköttetésben (pl. Bluetooth) álló eszközök
+* **LAN (Local Area Network):** a **helyi hálózatok** általában egy iroda vagy
+épület falain belül helyezkednek el, esetleg néhány, egymáshoz közeli épületeket
+kötnek össze. A helyi hálózatok segítségével gyors és megbízható kapcsolatot
+teremthetünk a számítógépek között. Legelterjedtebb változatai az Ethernet (IEEE
+802.3 szabvány) hálózatok. Kiterjedése nem haladhatja meg a 10-15 km átmérőjű kört.
+Általában egy cég vagy szervezet felügyelete alatt állnak.
+* **MAN (Metropolitan Area Network):** a városi hálózatok általában település
+határain belül működnek. Általában több „közeli” helyi hálózatot kötnek össze, és
+a köztük lévő kommunikációt vezérlik. Ilyen például a kábeltévés hálózat vagy a
+városi telekommunikációs hálózat.
+* **WAN (Wide Area Network):** egy országot vagy egy kontinenst szolgál ki.
+* **INTERNET:** az egész bolygót (és műholdjait) lefedő világhaló, összekötött
+hálózatok összessége.
+
+A méretkategóriák nem pontos, hanem inkább nagyságrendi információk.
+
 ### 8.2 A kommunikációs hálózat fogalma és típusai: üzenetszórásos, pont-pont közötti és csatornákból felépülő hálózat
+
+A **kommunikációs hálózat** olyan kommunikációs rendszer, amelyben meghatározott
+csomópontok között, előre definiált közegekben és rögzített szabályok (protokollok)
+szerint zajlik a kommunikáció.
+
+A **broadcasting (üzenetszórás)** során a csomagot sokszorosítják és a másolatokat
+több kapcsolaton keresztül elküldik a hálózat minden eszközéhez. A gyakorlatban
+a broadcastolt csomagokat csak egy szórási tartományon (broadcast domain) belül
+található eszközök kapják meg, így a broadcast relatív értelemben értendő. Az
+ugyanarra az Ethernet repeaterre vagy hálózati kapcsolóra csatlakozó számítógépek
+ugyanabba a szórási tartományba tartoznak. Útválasztók és más, magasabb hálózati
+rétegbeli eszközök képeznek határokat a szórási tartományok között.
+
+A **pont-pont összeköttetés** esetén a két kommunikációs végpontot pl. egy kábellel
+kötik össze, és az üzenetek ezen a kábelen keresztül haladnak. Amikor egy vevő
+megkapja a csomagot és az nem neki szól, akkor azt továbbadja egy következő pont-pont
+összeköttetésen keresztül. Ezért az ilyen típusú hálózatokat más néven szokták árol
+és továbbít (store-and-forward) hálózatoknak is nevezni.
+
+Egy számítógép-hálózat fontos jellemzője annak topológiája. Attól függően, hogy
+az állomásainkat összekötő hálózat pont-pont kapcsolatokból áll, vagy üzenetszórásos
+csatornát tartalmaz, más-más topológiák lehetségesek.
+
+Pont-pont összeköttetés esetén ötféle topológiát különböztetünk meg: csillag, fa,
+gyűrű, teljes és szabálytalan. Az első négyet helyi hálózatoknál, a szabálytalant
+főleg nagy távolságok áthidalásánál alkalmazzák.
+
+Többszörös hozzáférésű csatorna esetén a topológia lehet busz vagy gyűrű (klasszikus
+Ethernet). A busz rendszerben ha valaki ad, azt mindenki hallja. A busz végein
+hullámimpedanciával való lezárást kell alkalmazni, hogy a jelek ne verődjenek
+vissza. A gyűrű megvalósítása pont-pont kapcsolatokból áll. Úgy lehet mégis
+üzenetszórásos csatornaként használni, hogy az állomások ismételnek, míg az
+információ vissza nem ér az adóhoz, és az eredeti adó vonja ki a gyűrűből.
+
 
 ### 8.3 Az OSI modell rétegei és az egyes rétegek feladatai
 
+Ez a modell a **Nemzetközi Szabványügyi Szervezet (ISO - International
+Organization for Standardization)** ajánlása. Ezt a modellt hivatalosan **OSI
+(Open System Interconnection = nyílt rendszerek összekapcsolása)** hivatkozási
+vagy referenciamodellnek nevezik, és egy olyan ajánlást definiál, amelynek megfelelő
+rendszerek egymással elvileg képesek együttműködni. Bár valóban léteznek is OSI
+szerinti hálózatok, mi ezt csak referenciamodellként használjuk, azaz különböző
+hálózatok tárgyalásakor az egyes rétegekben definiált funkciókészletre a réteg
+nevével vagy számával hivatkozunk.
+
 ![Imgur](https://i.imgur.com/RJVjieT.png)
+
+1. A **fizikai réteg (physical layer)** feladata az, hogy továbbítsa a biteket a
+kommunikációs csatornán. Ez a réteg tipikusan olyan kérdésekkel foglalkozik, hogy
+milyen átviteli közeget és milyen csatlakozókat használjunk, milyen kódolásokat
+(modulációt) alkalmazzunk (például: milyen feszültségszintet használjunk a logikai 1,
+és mekkorát a logikai 0 reprezentálásához), mennyi ideig tartson egy bit továbbítása,
+az átvitel megvalósítható-e egyszerre mindkét irányban, miként jön létre és hogyan
+bomlik le az összeköttetés, ha már nincs szükség rá, stb. Az átvitel adategysége a
+**bit** vagy **szimbólum**.
+2. Az **adatkapcsolati réteg (data link layer)** legfontosabb feladata az, hogy a
+fizikai szint szolgáltatásainak igénybevételével a hálózati réteg számára hibáktól
+mentes átvitelt biztosítson szomszédos állomások között. Ehhez az átviendő információt
+keretekbe (frame) szervezi, amelyek az adatokon kívül a társentitásnak szóló vezérlő
+információt is tartalmaznak. Ezeket a megfelelő sorrendben elküldi a célállomásnak,
+majd végül feldolgozza a vevő által visszaküldött nyugtázó kereteket. A használt
+egyszerű címzési séma fizikai szintű, azaz a használt címek **fizikai címek (MAC
+címek)** amelyeket a gyártó fixen állított be hálózati kártya szinten. A kommunikáció
+adategysége a **keret**.
+3. A **hálózati réteg (network layer)** fő feladata az, hogy az adatkapcsolati
+réteg szomszédos állomások közötti átviteli képességére építve megoldja a csomagok
+eljuttatását a forrásgéptől a célgépig. A legfontosabb kérdés itt az, hogy milyen
+útvonalon kell a csomagokat a forrásállomástól a célállomásig eljuttatni. A torlódásvédelem
+(congestion control) megvalósítása is e réteg feladata. Az útvonalválasztók ezen
+a szinten működnek a hálózatban. Itt már logikai címzési sémát használ a modell
+– az értékeket a hálózat karbantartója adja meg egy hierarchikus szervezésű címzési
+séma használatával. A legismertebb protokoll a 3. rétegen az **IP**. Ebben a rétegben
+az adategységet **csomagnak** nevezzük.
+4. A **szállítási réteg (transport layer)** legfontosabb feladata az, hogy kijavítsa
+a hálózati rétegben előforduló esetleges hibákat (például csomagvesztés, sorrendcsere),
+és így végponttól végpontig terjedő megbízható átvitelt biztosítson. Biztosítja
+továbbá, hogy egy végponton belül azonosíthatók legyenek az alkalmazások (portszámok
+alapján). Néhány protokoll kapcsolat orientált, tehát adatküldés előtt felépíti
+a két végpont között az összeköttetést. A legismertebb ilyen szállítási protokoll
+a **TCP**. Más protokollok csak annyit biztosítanak, hogy meg lehessen címezni az
+alkalmazásokat, de semmilyen más megbízhatóságot nem, ilyen pl az **UDP**. A
+kommunikáció adategysége a **szegmens**.
+5. A **viszony réteg (session layer)** a végfelhasználói alkalmazások közötti
+dialógus menedzselésére alkalmas mechanizmust valósít meg. A megvalósított mechanizmus
+lehet duplex vagy félduplex. Ellenőrzési pontokat iktat be a kommunikáció folyamatába,
+amelyekhez a megszakadást követően vissza lehet térni.
+6. A **megjelenítési réteg (presentation layer)** biztosítja az alkalmazási réteg
+számára, hogy az adatok a végfelhasználó rendszerének megfelelő formában álljanak
+rendelkezésre. Visszakódolás, adattömörítés, titkosítás, és egyszerűbb adatkezelések
+történnek ebben a rétegben. Itt már az átvitt adatok konkrét szerkezetévével
+(pl. fájlkiterjesztések) és formázásával foglalkoznak.
+7. Az **alkalmazási réteg (application layer)** számos hálózati szolgáltatás
+protokollját tartalmazhatja. Ide tartozik minden olyan protokoll, amely közvetlenül
+a felhasználókat szolgálja ki. Az alkalmazási réteg szolgáltatásai támogatják a
+szoftver alkalmazások közötti kommunikációt, és az alsóbb szintű hálózati szolgáltatások
+képesek értelmezni alkalmazásoktól jövő igényeket, illetve, az alkalmazások képesek
+a hálózaton küldött adatok igényenkénti értelmezésére. Az alkalmazási réteg protokolljain
+keresztül az alkalmazások képesek egyeztetni formátumról, további eljárásról,
+biztonsági, szinkronizálási vagy egyéb hálózati igényekről. A legismertebb alkalmazási
+réteg szintű protokollok a **HTTP (weboldalak átvitele)**, az **SMTP (levelezés)**,
+az **FTP (fájlátvitel)** és a **Telnet (távoli bejelentkezés)**.
 
 ### 8.4 A rétegközi interfész és a protokoll fogalma
 
+Az OSI-modellnek az a legnagyobb vívmánya, hogy éles különbséget tesz szolgáltatások,
+interfészek és protokollok között. Mindegyik réteg szolgáltatásokat nyújt a felette
+levő rétegnek. A **szolgáltatás** azt definiálja, hogy egy réteg mit csinál, nem pedig
+azt, hogy a felette levő entitások hogyan érik el az adott szolgáltatást, illetve,
+hogy a réteg hogyan működik. A réteg **interfésze** megmondja a felette levő
+folyamatoknak, hogy hogyan vehetik igénybe az adott réteg szolgáltatásait. Megadja
+a lehetséges paramétereket és azt, hogy milyen eredményt vár. Ez sem tartalmaz
+semmit arról, hogy a réteg hogyan is működik belül. A protokoll egy egyezmény,
+vagy szabvány, amelyet a kommunikáló feleknek követni kell az adatátvitel során.
+Egy konkrét feladat elvégzéséhez (tehát szolgáltatás nyújtásához) a réteg olyan
+protokollt használ, amilyet csak akar. Tetszése szerint válthat egyikről a másikra
+anélkül, hogy a felette levő rétegek szoftvereinek működését befolyásolná.
 
 ## 9. tétel
 
