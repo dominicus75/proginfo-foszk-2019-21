@@ -144,7 +144,7 @@ ahol
 A tőke **jövőbeni értékét (Future Value, FV)** az idő és a kamatláb segítségével
 állapítjuk meg, vagyis kamatos kamatot számítunk.
 
-## FV = C<sub>0</sub>( 1 + r )<sup>t</sup>
+## FV = C<sub>0</sub>(1 + r)<sup>t</sup>
 
 ahol:
 * t = az évek száma
