@@ -203,14 +203,18 @@ javak szűkössége mögött a termelési tényezők szűkössége húzódik meg
 Az előzőekhez képest sajátos termelési tényező a tudás, az információ. A tudományos
 kutatás „termeli”. Az oktatás teremti meg megértésének, befogadásának, alkalmazásának
 és továbbfejlesztésének szubjektív feltételeit, a korszerű számítástechnika és
-kommunikációtechnika pedig biztosítja gyors és korlátlan elterjedését. Ennél a
-termelési tényezőnél újszerűen jelenik meg a szűkösség problémája. A tudás, az
-információ nagyon gyorsan terjed. Ha valaki megszerzi, hasznosítja, nem csökken
+kommunikációtechnika pedig biztosítja gyors és korlátlan elterjedését. A tudás,
+az információ nagyon gyorsan terjed. Ha valaki megszerzi, hasznosítja, nem csökken
 az állománya, senkit nem lehet kizárni belőle, szemben a hagyományos termelési
-tényezőkkel. A tudás, az információ esetében a szűkösség a befogadó, a felhasználó oldalán
-lehet. Nagyon veszélyes szűkösség, hiszen az információ robbanásszerű fejlődése
-végérvényesen elmaradottá teheti a lemaradókat. Legyen az személy, ország, vagy
-földrajzi régió.
+tényezőkkel. A tudás, az információ esetében a szűkösség a befogadó, a felhasználó
+oldalán lehet. Nagyon veszélyes szűkösség, hiszen az információ robbanásszerű
+fejlődése végérvényesen elmaradottá teheti a lemaradókat. Legyen az személy, ország,
+vagy földrajzi régió.
+
+A termelési tényezők különböző kombinációit technológiának nevezzük. A fejlett
+országokban általában **tőkeintenzív (sok tőkét és viszonylag kevés, de magas szinten
+képzett munkaerőt alkalmazó)** technológiákat alkalmaznak. A kevésbé fejlett gazdaságok
+ezzel szemben inkább a sok munkát igénylő **munkaintenzív technológiákat** hasznosítják.
 
 A termelési tényezők, erőforrások szűkössége behatárolja a termelés lehetőségeit.
 Így állandó ellentmondás keletkezik a szükségletek (amelyek lényegében korlátlanok)
@@ -219,10 +223,13 @@ A termelési tényezők, erőforrások szűkössége behatárolja a termelés le
 erőforrások és javak céltudatos felhasználását értjük, melynek eredményeként a
 szükségletek a lehető legmagasabb fokon elégíthetők ki.
 
-A termelési tényezők különböző kombinációit technológiának nevezzük. A fejlett
-országokban általában **tőkeintenzív (sok tőkét és viszonylag kevés, de magas szinten
-képzett munkaerőt alkalmazó)** technológiákat alkalmaznak. A kevésbé fejlett gazdaságok
-ezzel szemben inkább a sok munkát igénylő **munkaintenzív technológiákat** hasznosítják.
+Az embereknek a szükségletek kielégítésére irányuló tevékenysége sajátos **körfolyamat**
+formájában szerveződik meg. A gazdasági körforgás folyamatos, szakadatlan ismétlődését
+(termelés, elosztás, csere, fogyasztás) **újratermelésnek** nevezzük. Az újratermelés
+*magába foglalja az állandóan megújuló szükségletek kielégítését, valamint a termékek
+és szolgáltatások folyamatos termelése mellett, a gazdasági szereplők közötti
+kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelési tényezők
+állandó felhasználását igényli.
 
 ## 5. tétel
 
