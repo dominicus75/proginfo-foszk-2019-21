@@ -63,8 +63,8 @@ Közgazdaságtan, 4. o.
 minden olyan meghatározott értékkel bíró tárgy, amely a kereskedelmi forgalomban
 hosszabb-rövidebb ideig mint állandó fizetési eszköz használatos, amelynek átadásával
 dolgokat lehet megvásárolni, illetve adósságokat törleszteni. A pénz attól fizetési
-eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre. „A
-pénz egyenlőséget teremt azáltal, hogy mindent összemérhetővé tesz.” (Arisztotelész)
+eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre. *„A
+pénz egyenlőséget teremt azáltal, hogy mindent összemérhetővé tesz.”* (Arisztotelész)
 
 A pénz kialakulása és fejlődése szorosan összekapcsolódik a munkamegosztás, a
 kereskedelem és a piac fogalmával, fejlődésével. **Pénz az, amit a piac annak fogad
@@ -116,10 +116,6 @@ kötelező érték, amit a piac elfogad.
 
 ### A pénz jelen és jövőértéke, számításának módszerei
 
-A jelenérték (angolul present value, rövidítve PV) a pénz időértékét kifejező
-közgazdaságtani fogalom. Kifejezi, hogy jövőben egy egységnyi pénz ma hány egységnyit
-ér, illetve a jelenleg rendelkezésre álló pénztől elvárt hozamkövetelményt.
-
 A beruházási-befektetési döntéseinknél az időnek speciális szerepe van. A tőkebefektetések
 értékelésénél mindig figyelembe kell venni az időt. Csak azonos időpontra átszámított
 jövedelmeket és költségeket szabad összehasonlítani! Ennek kapcsán beszélünk a
@@ -129,17 +125,16 @@ tőke (tőkebefektetés, jövedelem) jelenlegi értékéről, vagy röviden jele
 A **jelenérték (Present Value, PV)** egy jövőbeni pénzösszeg vagy pénzösszeg sorozat
 mai pénzben kifejezve. Ehhez használatos a diszkontálás módszere.
 
-
-A befektetésünkre vonatkozó végső döntést a nettó jelenérték segítségével hozhatjuk
-meg. **Nettó jelenérték (Net Present Value, NPV)** a befektetés révén megszerzett
-tőkejószág jelenértékének és a megszerzés, befektetés pénzráfordításának különbsége.
-
 ![Imgur](https://i.imgur.com/I3inm7L.png)
 
 ahol
 * t = az évek száma
 * C<sub>t</sub> = a t. évben esedékes összeg
 * r = az éves pénzlekötés, bankbetét kamatlábának századrésze (piaci kamatláb)
+
+A befektetésünkre vonatkozó végső döntést a nettó jelenérték segítségével hozhatjuk
+meg. **Nettó jelenérték (Net Present Value, NPV)** a befektetés révén megszerzett
+tőkejószág jelenértékének és a megszerzés, befektetés pénzráfordításának különbsége.
 
 A tőke **jövőbeni értékét (Future Value, FV)** az idő és a kamatláb segítségével
 állapítjuk meg, vagyis kamatos kamatot számítunk.
