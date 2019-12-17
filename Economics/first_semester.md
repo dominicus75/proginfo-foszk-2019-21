@@ -52,7 +52,7 @@ erőforrások felhasználásával végezze a termelést
 és szolgáltatásokat kik fogják elfogyasztani, milyen elvek alapján osztják el a
 megtermelt javakat és a keletkezett jövedelmeket.
 
-* <span id="note1">[[1]](#1)</span> Paul A. Samuelson , William D. Nordhaus:
+<span id="note1">[[1]](#1)</span> Paul A. Samuelson , William D. Nordhaus:
 Közgazdaságtan, 4. o.
 
 ## 2. tétel
