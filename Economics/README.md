@@ -7,6 +7,7 @@
 ### Felhasznált (ajánlott) irodalom:
 
 * [Wikipédia-szócikk](https://hu.wikipedia.org/wiki/K%C3%B6zgazdas%C3%A1gtan)
+* Pénzügy Sziget: [Tudástár/Közgazdaság](https://penzugysziget.hu/index.php?option=com_content&view=category&id=87&Itemid=101)
 * [Gazdasági alapismeretek](http://www.humantarhaz.hu/e-tananyag/gazdasagi-alapismeretek)
 * Paul A. Samuelson , William D. Nordhaus: [Közgazdaságtan](https://akademiai.hu/187/gazdasag/kozgazdasagtan/kozgazdasagtan_bovitett_atdolgozott_kiadas)
 * Károlyné Dóra Margit (2006): [Közgazdaságtan I.](https://drive.google.com/drive/folders/1tA0Woihl2zEnyGhAvJTMazZq81rG2yHl?usp=sharing)

@@ -6,10 +6,60 @@
 
 ### Közgazdaságtan tárgya, és jellemzői
 
+A közgazdaságtan olyan társadalomtudomány, amely a gazdasági rendszerrel, vagyis
+a javak megtermelésével, elosztásával, értékelésével és fogyasztásával foglalkozik.
+„Azt tanulmányozza, miként használják a társadalmak szűkös erőforrásaikat értékes
+termékek és szolgáltatások előállítására és hogyan osztják el ezeket a különböző
+egyének között.”<sup id="1">[[1]](#note1)</sup>
+
+A Közgazdaságtan az embereknek az újratermelési körfolyamatban (lépései: termelés,
+elosztás, fogyasztás) felmerülő döntési alternatíváival és e döntések társadalmi
+következményeivel is foglakozik.
+
+A közgazdaságtan két főbb területre oszlik:
+* **mikroökonómia:** az elkülönült gazdasági egységek (egyedi piacok, vállalatok
+és háztartások) viselkedésével foglalkozik. Részletesen foglalkozik a piacokkal,
+azok működésével, a fogyasztókkal, viselkedésükkel, az általuk elfogyasztott javakkal,
+a termelőkkel, a termeléssel és a termelési tényezőkkel, valamint a különböző
+módon kialakuló kereslettel, kínálattal és a létrejövő piaci árakkal. [Adam Smith-t](https://hu.wikipedia.org/wiki/Adam_Smith) tartják a mikroökonómia (és úgy
+általában a modern közgazdaságtan) megalapítójának.
+* **makroökonómia:** a teljes nemzetgazdaságokat (és a közöttük lévő kapcsolatokat)
+vizsgálja, melyek állapotát aggregált változókon (mint a **nemzeti jövedelem**, az
+**árszínvonal**, az **összes megtermelt termék és szolgáltatás mennyisége**, **munkanélküliség**
+stb.) keresztül jellemzi. Kiemelt céljai közé tartozik, hogy a gazdasági döntéshozókat
+elemzéseivel segítse annak megértésében, miként érhetőek el az olyan fontos nemzeti
+(kormányzati) célok, mint a gazdasági növekedés gyorsítása, az árstabilitás és a
+foglalkoztatás szintjének növelése, vagy hogy miként valósítható meg az erőforrások
+hatékony elosztása. A modern makroökonómia megteremtőjének [John Maynard Keynes](https://hu.wikipedia.org/wiki/John_Maynard_Keynes) angol közgazdászt tekintik.
+
+A gazdaság jelenségeihez való viszony, a levont következtetések célja tekintetében
+megkülönböztetjük a normatív és pozitív közgazdaságtant is.
+* A **pozitív közgazdaságtan** arra törekszik, hogy a lehető legpontosabban leírja
+a gazdasági folyamatokat, felismerje és feltárja az összefüggéseket. Arra a kérdésre
+keresi a választ, hogy *„mi van?”* és nem arra, hogy *„milyen legyen?”*, *„milyennek
+kellene lennie?”*.
+* A **normatív közgazdaságtan** azt tekinti céljának, hogy leírja, milyennek kell
+lennie a gazdaságnak, mit kell tenniük a gazdaság szereplőinek, hogy megfeleljenek
+a tudomány által feltárt törvényeknek, normáknak. E mellett a normatív közgazdaságtanban
+etikai elvek és méltányossági normák is szerepet kapnak.
+
+A közgazdaságtan alapkérdései
+* a **„Mit termeljenek?”** kérdés arra keresi a választ, hogy a gazdaság szereplői
+milyen javakat és szolgáltatásokat, azok milyen mennyiségét és minőségét állítsák elő
+* a **„Hogyan termeljenek?”** kérdés azzal kapcsolatos, hogy a ki, hogyan, milyen
+erőforrások felhasználásával végezze a termelést
+* a **„Kinek termeljenek?”** kérdés arra keresi a választ, hogy a különféle javakat
+és szolgáltatásokat kik fogják elfogyasztani, milyen elvek alapján osztják el a
+megtermelt javakat és a keletkezett jövedelmeket.
+
+* <span id="note1">[[1]](#1)</span> Paul A. Samuelson , William D. Nordhaus:
+Közgazdaságtan, 4. o.
 
 ## 2. tétel
 
 ### A pénz természete, funkciói, belső és külső értéke
+
+
 
 
 ## 3. tétel
