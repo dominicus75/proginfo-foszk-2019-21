@@ -59,7 +59,57 @@ Közgazdaságtan, 4. o.
 
 ### A pénz természete, funkciói, belső és külső értéke
 
+**A pénz az általános egyenértékes szerepét tartósan betöltő csereeszköz**. Pénz
+minden olyan meghatározott értékkel bíró tárgy, amely a kereskedelmi forgalomban
+hosszabb-rövidebb ideig mint állandó fizetési eszköz használatos, amelynek átadásával
+dolgokat lehet megvásárolni, illetve adósságokat törleszteni. A pénz attól fizetési
+eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre. „A
+pénz egyenlőséget teremt azáltal, hogy mindent összemérhetővé tesz.” (Arisztotelész)
 
+A pénz kialakulása és fejlődése szorosan összekapcsolódik a munkamegosztás, a
+kereskedelem és a piac fogalmával, fejlődésével. **Pénz az, amit a piac annak fogad
+el, vagyis megállapodás kérdése**. A pénz a leglikvidebb jószág (költség nélkül
+elcserélhető), ezáltal a csere lebonyolítására a legalkalmasabb eszköz.
+
+Az az árú, amely – megállapodás folytán – az áruvilágból kiemelkedik az árucsere
+lebonyolítása érdekében, általános egyenértékesnek tekinthető. Ahhoz, hogy egy dolog
+ezt a feladatot be tudja tölteni (tehát pénzként használható legyen), a következő
+tulajdonságokkal kell rendelkeznie:
+* forgalomképes
+* osztható
+* tartós
+* egyszerű, könnyen felismerhető
+* könnyen szállítható, kezelhető
+* megfelelő minőségben és mennyiségben fellehető.
+
+**A pénz funkciói**
+* *Értékmérő:* saját értékét összeméri a más javakban megtestesülő munkamennyiséggel,
+ezzel – mintegy mértékegységként funkcionálva – egymással is összemérhetővé teszi
+őket, értéket rendel az árukhoz. Pénz segítségével értékeli és hasonlítja össze
+a piac a különböző áruknak tulajdonított értéket, a termelők ráfordításait, teljesítményét.
+* *Forgalmi eszköz:* mint állandósult egyenértékes cseretárgy, amely tökéletesen
+likvid, lebonyolítja az áruk adásvételét, a tranzakciókat. A forgalmi eszköz
+funkcióban a pénz térben és időben együtt mozog az áruval, de azzal ellentétes
+irányban.
+* *Fizetési eszköz (cseretárgy):* a pénzmozgás elválik az árumozgástól. A korábban
+keletkezett fizetési kötelezettség (hiteltartozás), vagy az árutól teljesen független
+pénzáramlás (pl. adó, segély) valósul meg.
+* *Felhalmozási eszköz:* ez a pénzfunkció a forgalmi eszköz és az értékmérő funkcióból
+adódik. A pénz formájában felhalmozott vagyon a leglikvidebb vagyonforma, hiszen
+bármikor, vásárolható rajta más vagyontárgy.
+* *Nemzetközi pénz:* a pénz világpénz funkciójáról beszélünk, ha valamely pénzeszköz
+nemzetközi áru- és pénzforgalomban tölti be a pénz funkcióit (napjainkban ezt leginkább
+az amerikai dollár tölti be).
+
+Az értékmérő és forgalmi eszköz funkció folyamatos és általános betöltése nélkül
+nem beszélhetünk pénzről.
+
+**A pénz értéke**
+* **belső, önmagában vett érték:** ritkaságából, forgalomképességéből, egyéb belső
+tulajdonságából adódóan közmegegyezéssel neki tulajdonított érték (a belső értékre
+is érvényes a *„pénz az, amit a piac annak fogad el”* elv).
+* **külső, jogilag nevesített érték:** az állam által törvényi erővel megállapított
+kötelező érték, amit a piac elfogad.
 
 
 ## 3. tétel
@@ -70,10 +120,40 @@ A jelenérték (angolul present value, rövidítve PV) a pénz időértékét ki
 közgazdaságtani fogalom. Kifejezi, hogy jövőben egy egységnyi pénz ma hány egységnyit
 ér, illetve a jelenleg rendelkezésre álló pénztől elvárt hozamkövetelményt.
 
-**Kiszámítása:**
+A beruházási-befektetési döntéseinknél az időnek speciális szerepe van. A tőkebefektetések
+értékelésénél mindig figyelembe kell venni az időt. Csak azonos időpontra átszámított
+jövedelmeket és költségeket szabad összehasonlítani! Ennek kapcsán beszélünk a
+tőke (tőkebefektetés, jövedelem) jelenlegi értékéről, vagy röviden jelenértékéről
+(Present Value, PV) és jövőbeni vagy röviden jövőértékéről (Future Value, FV).
 
-$PV = Cˇ1 * \frac{1}{(1+r)^t}$
+A **jelenérték (Present Value, PV)** egy jövőbeni pénzösszeg vagy pénzösszeg sorozat
+mai pénzben kifejezve. Ehhez használatos a diszkontálás módszere.
 
+
+A befektetésünkre vonatkozó végső döntést a nettó jelenérték segítségével hozhatjuk
+meg. **Nettó jelenérték (Net Present Value, NPV)** a befektetés révén megszerzett
+tőkejószág jelenértékének és a megszerzés, befektetés pénzráfordításának különbsége.
+
+![Imgur](https://i.imgur.com/I3inm7L.png)
+
+ahol
+* t = az évek száma
+* C<sub>t</sub> = a t. évben esedékes összeg
+* r = az éves pénzlekötés, bankbetét kamatlábának századrésze (piaci kamatláb)
+
+A tőke **jövőbeni értékét (Future Value, FV)** az idő és a kamatláb segítségével
+állapítjuk meg, vagyis kamatos kamatot számítunk.
+
+## FV = C<sub>0</sub>( 1 + r )<sup>t</sup>
+
+ahol:
+* t = az évek száma
+* r = a kamatláb századrésze
+* C<sub>0</sub> = jelenleg meglévő pénzösszeg
+
+A befektetéseknél, különösen a reáltőke vásárlásoknál a jelenérték-számítás a
+használatosabb. Ha pénzt takarékbetétbe, vagy egyéb kamatozó értékpapírba fektetjük,
+akkor a jövőérték-számítás segít az értékelésben.
 
 ## 4. tétel
 
