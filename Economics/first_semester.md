@@ -130,20 +130,20 @@ mai pénzben kifejezve. Ehhez használatos a diszkontálás módszere.
 ahol
 * t = az évek száma
 * C<sub>t</sub> = a t. évben esedékes összeg
-* r = az éves pénzlekötés, bankbetét kamatlábának századrésze (piaci kamatláb)
+* r = az éves pénzlekötés, bankbetét kamatlábának századrésze (pl. 5% kamat esetén: 0,05)
 
 A befektetésünkre vonatkozó végső döntést a nettó jelenérték segítségével hozhatjuk
 meg. **Nettó jelenérték (Net Present Value, NPV)** a befektetés révén megszerzett
 tőkejószág jelenértékének és a megszerzés, befektetés pénzráfordításának különbsége.
 
 A tőke **jövőbeni értékét (Future Value, FV)** az idő és a kamatláb segítségével
-állapítjuk meg, vagyis kamatos kamatot számítunk.
+állapítjuk meg, vagyis kamatos kamatot számítunk. Változatlan kamat esetén a képlet:
 
 ## FV = C<sub>0</sub>(1 + r)<sup>t</sup>
 
 ahol:
 * t = az évek száma
-* r = a kamatláb századrésze
+* r = a kamatláb századrésze (pl. 5% kamat esetén: 0,05)
 * C<sub>0</sub> = jelenleg meglévő pénzösszeg
 
 A befektetéseknél, különösen a reáltőke vásárlásoknál a jelenérték-számítás a
@@ -154,6 +154,75 @@ akkor a jövőérték-számítás segít az értékelésben.
 
 ### A termelési tényezők bemutatása, gazdasági szerepük a mikro-gazdasági körfolyamatokban
 
+A gazdasági javak nem állnak szabadon és korlátlanul az emberiség rendelkezésére
+(szűkösség – a javak mennyisége korlátozott az igényekhez képest). A szükségletek
+kielégítése tehát szinte teljes mértékben attól függ, hogy mit és mennyit termelünk.
+A termelés emberi szükségletek kielégítésére alkalmas javak előállításának folyamata.
+Ez – tágabb értelemben, mint újratermelés – a javak előállításán túl magába foglalja
+a javak elosztását, forgalmazását és végső felhasználását, azaz elfogyasztását is.
+
+**Termelési tényezőknek** nevezzük a javak és szolgáltatások előállítása során
+felhasznált gazdasági erőforrásokat. A közgazdaságtan hagyományosan négy alapvető
+termelési tényezőt különböztet meg:
+
+* **Munka:** az ember fizikai és szellemi képességeinek az összessége, amelyet a
+termékek előállítása során felhasznál. Céltudatos tevékenység, amely meghatározott
+cél elérésére irányul. A munka ebben az értelemben folyamat, a munkaerő kifejtése.
+*Munkaerőn* a munkaképességet, vagyis azoknak a szellemi és fizikai képességeknek az
+összességét értjük, amelyek egy ember testi mivoltában, élő személyiségében rejlenek,
+amelyeket mozgásba hoz, működtet valamely termék vagy szolgáltatás előállítása során.
+* **Természeti tényezők** vagy **természeti erőforrások:** a természetben megtalálható,
+természetes formájukban termelési célokra használható tényezők.
+A természeti tényezők két csoportra oszthatók:
+  * *megújuló természeti erőforrások:* az erőforrások azon csoportja, amely emberi
+  időléptékben képes megújulni (vagy újratermelődni), azaz nem fogy el (nap, víz, szél)
+  * *meg nem újuló természeti erőforrások:* olyan természeti erőforrás, aminek nincs
+  újraképződési mechanizmusa, vagy ha van, az emberi léptékkel túlságosan hosszú
+  időbe telik. A nem megújuló energiaforrás nem gyártható, termeszthető, illetve
+  nem újrafelhasználható a fogyasztással megközelítő mértékben. Ide tartoznak az
+  ásványkincsek, ércek, szén, kőolaj, földgáz, amelyek készletei végesek.
+* **Tőke:** a gazdasági rendszer terméke, korábbi termelési
+folyamatban létrehozott eszközök, pénz, tudás, amelyeket a további termelésben
+használnak fel jövedelemszerzési céllal. A tőke különböző formában jelenhet meg.
+Ennek alapján beszélünk reáltőkéről (gépek, berendezések, áruk) és nomináltőkéről
+(pénz és értékpapír).
+* **Vállalkozás:** a vállalkozói tevékenységek összessége. A vállalkozó, mint termelési
+tényező vállalkozói képességeivel, felkészültségével irányítja és ellenőrzi a
+termelési folyamatokat, felhasználja, tudatosan összehangolja a többi termelési
+tényezőt.
+
+Mivel a természeti erőforrások és a munka eredeti formájában, átalakítás nélkül
+képezi a termelés feltételét, ezért ezeket elsődleges vagy eredeti termelési
+tényezőknek nevezzük. A tőke javakat, mivel maguk is termelési folyamatban jöttek
+létre, származékos termelési tényezőknek nevezzük.
+
+A szűkösség nemcsak a szükségletkielégítésre alkalmas javakra, hanem e javak
+előállításához nélkülözhetetlen hagyományos termelési tényezőkre is igaz. Sőt, a
+javak szűkössége mögött a termelési tényezők szűkössége húzódik meg.
+
+Az előzőekhez képest sajátos termelési tényező a tudás, az információ. A tudományos
+kutatás „termeli”. Az oktatás teremti meg megértésének, befogadásának, alkalmazásának
+és továbbfejlesztésének szubjektív feltételeit, a korszerű számítástechnika és
+kommunikációtechnika pedig biztosítja gyors és korlátlan elterjedését. Ennél a
+termelési tényezőnél újszerűen jelenik meg a szűkösség problémája. A tudás, az
+információ nagyon gyorsan terjed. Ha valaki megszerzi, hasznosítja, nem csökken
+az állománya, senkit nem lehet kizárni belőle, szemben a hagyományos termelési
+tényezőkkel. A tudás, az információ esetében a szűkösség a befogadó, a felhasználó oldalán
+lehet. Nagyon veszélyes szűkösség, hiszen az információ robbanásszerű fejlődése
+végérvényesen elmaradottá teheti a lemaradókat. Legyen az személy, ország, vagy
+földrajzi régió.
+
+A termelési tényezők, erőforrások szűkössége behatárolja a termelés lehetőségeit.
+Így állandó ellentmondás keletkezik a szükségletek (amelyek lényegében korlátlanok)
+és az anyagi javak szűkössége között. Ez az, ami az egyént, a társadalmi csoportot
+és az egész társadalmat gazdálkodásra kényszeríti. Gazdálkodás alatt a termelési
+erőforrások és javak céltudatos felhasználását értjük, melynek eredményeként a
+szükségletek a lehető legmagasabb fokon elégíthetők ki.
+
+A termelési tényezők különböző kombinációit technológiának nevezzük. A fejlett
+országokban általában **tőkeintenzív (sok tőkét és viszonylag kevés, de magas szinten
+képzett munkaerőt alkalmazó)** technológiákat alkalmaznak. A kevésbé fejlett gazdaságok
+ezzel szemben inkább a sok munkát igénylő **munkaintenzív technológiákat** hasznosítják.
 
 ## 5. tétel
 
