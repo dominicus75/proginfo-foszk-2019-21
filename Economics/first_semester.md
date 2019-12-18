@@ -380,24 +380,27 @@ A makrogazdasági mutatók minden elszámolásban szorosan kapcsolódnak egymás
 rendszert alkotnak. A mutatószámokat függetlenül attól, hogy milyen típusúak több
 ismérv szerint is csoportosíthatjuk.
 
-**Az alkalmazott ár szerint:**
+**Az alkalmazott ár szerint**
 * *folyóáron* számított mutatók: az adott év folyó árain számítva adja a kibocsátás
 pénzbeni értékét.
 * *változatlan áron* számított mutatók: az adott év kibocsátását egy kiválasztott
 év (bázisév) árain összesítjük.
-A halmozottság foka szerint:
+
+**A halmozottság foka szerint**
 * *bruttó mutatók*: minden teljesítményt teljes értéken vesznek figyelembe
 * *félnettó mutatók*: amelyeket úgy számítunk, hogy a bruttó értékből levonják a
 térbeli (vertikális) halmozódást (a folyó termelő felhasználást).
 * *nettó mutatók*: a félnettó mutató értékét csökkenteni kell az amortizáció mértékével,
 vagyis kiszűrjük az időbeni halmozódást is.
-A „hol és kik által” szerint:
+
+**A „hol és kik által” szerint**
 * *hazai jellegű mutatók:* adott ország területén keletkezett teljesítményt hazai
 outputnak (jövedelemnek) tekintik függetlenül attól, hogy az hazai vagy külföldi
 szereplőtől származik.
 * *nemzeti jellegű mutatók:* adott ország állampolgárainak teljesítményeit nemzeti
 outputnak (jövedelemnek) tekintik függetlenül attól, hogy hol tartózkodnak.
-Az idő függvénye szerint:
+
+**Az idő függvénye szerint**
 * *stock (állomány) típusú mutatók*: egy adott időpontban méri fel az ország összes
 vagyoni értékét (pl. Nemzeti Vagyon)
 * *flow (áramlás, folyamat) típusú mutatók*: egy időszak alatt létrejött teljesítményt
