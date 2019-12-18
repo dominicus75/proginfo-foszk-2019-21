@@ -235,43 +235,222 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 ### Piaci viszonyok gazdaságtana (1).
 
-#### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével.
+#### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
 
-#### 5.2 Fogyasztói magatartásról.
+#### 5.2 Fogyasztói magatartás
 
 
-#### 5.3 Költségvetési korlátról.
+#### 5.3 Költségvetési korlát
 
 
-#### 5.4 Hermann Gossen törvényei és a haszonelmélet.
+#### 5.4 Hermann Gossen törvényei és a haszonelmélet
 
 
 ## 6. tétel
 
 ### Piaci viszonyok gazdaságtana (2).
 
-#### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével.
+#### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
 
-#### 6.2 Költség/haszon egyensúly.
+#### 6.2 Költség/haszon egyensúly
 
+A **költség-haszon elemzés (Cost Benefit Analysis, CBA)** eszköz a projektberuházás
+gazdasági előnyeinek megbecsléséhez. Vizsgálja az adott projektberuházás során
+felhasználni kívánt forrásokat és az általuk nyerhető bevételeket az összes lehetséges
+megoldási módozatra vonatkozóan. A költség-haszon elemzés elemei a **kereslet-kínálati
+függvény**, a **nettó jelenérték**, a **jövedelmezőségi index** és a **megtérülési
+ráta**. A költségek figyelembe vételekor mind a beruházási, mind a működési költségeket
+figyelembe kell venni. A profit valamely gazdasági tevékenység során felmerült,
+számszerűen kifejezett bevételek és ráfordítások különbsége.
 
-#### 6.3 Árkalkuláció és a piac viszonya.
+A költség-haszon elemzés cash-flow szemléletben készül és figyelembe veszi a pénz
+időértékét. Ha a projektberuházás nettó jelenértéke pozitív, azaz a beruházási
+költségek jelenértéke alacsonyabb, mint a beruházással elérhető többletbevétel,
+akkor a vállalat jobban jár a projekttel, mert annak előnyei meghaladják a megvalósítás
+költségeit.
+
+A **jövedelmezőségi index (Profitability Index, PI)** a költség haszon arányát
+mutatja meg. *Azok a beruházások valósíthatóak meg, amelyeknél az index értéke
+nagyobb, mint egy*, azaz a költségek jelenértéke kisebb, mint a beruházás megvalósulása
+során megjelenő többlet vállalati haszon jelenértéke.
+
+#### 6.3 Árkalkuláció és a piac viszonya
 
 
 #### 6.4 A munkakultúra és hatékonyság értékelése
+
+**Munkakultúra**
+
+
+**Hatékonyság**
+
+
 
 
 ## 7. tétel
 
 ### Makrogazdaságtan fogalma, tárgya, módszerei, viszonya a mikro ökonómiához.
 
+A **nemzetgazdaság egy ország gazdasági szereplőinek, a gazdasági tevékenységeket
+folytató egyéneknek, vállalkozásoknak és intézményeknek az összessége, és a köztük
+kialakult kapcsolatok és kölcsönhatások bonyolult rendszere**. Egy nemzetgazdaság
+működése a nemzetgazdaságot alkotó szereplők cselekedeteinek összessége. A
+makroökonómia azokat a folyamatokat igyekszik bemutatni és elemezni, amelyek az
+egyéni cselekedetek összességének eredményei. Ebből kifolyólag **a makroökonómia
+összevont (aggregált) kategóriák és mutatók segítségével dolgozik**.
+
+A makrogazdaságtannak vizsgálnia kell azoknak az intézményeknek a szerepét is,
+amelyek különleges szerepet játszanak az összfolyamatok befolyásolásában. Fel kell
+tárnia azokat a tényezőket és folyamatokat, amelyekre az állami intézményrendszernek
+hatása van. Modellezi az egyes lépések hatásait, és kimutatja lehetséges következményeit.
+Következésképpen **a makroökonómia funkciói közé tartozik az is, hogy elméleti alapot
+nyújtson a kormányzati gazdaságpolitikák számára**. Ezért elemzéseivel segíti a
+gazdasági döntéshozókat annak megértésében, miként érhetőek el az olyan fontos
+nemzeti (kormányzati) célok, mint a gazdasági növekedés gyorsítása, az árstabilitás
+és a foglalkoztatás szintjének növelése, vagy hogy miként valósítható meg az
+erőforrások hatékony elosztása.
+
+A makroökonómia feltárja azokat a törvényszerűségeket, amelyek a gazdaság
+egészének kapcsolatait, mozgásait jelentik. Foglalkozik a nemzetgazdaság
+teljesítményét meghatározó tényezőkkel, a reál- és pénzfolyamatokkal, a gazdaság
+egyensúlyi és egyensúlytalansági kérdéseivel, a kormányzati gazdaságpolitika
+lehetőségeivel és hatásaival.
+
+**A makroökonómia elemzési módszerei**
+
+* **Aggregálás:** kisebb gazdasági egységek és folyamatok nagyobb egységekbe való
+összevonása, összegzése (*kettős aggregálás:* a gazdasági szereplők aggregálása,
+eredményeként gazdasági szférák jönnek létre, úgy mint *fogyasztói*, *vállalati*
+és *államháztartási*; az előállított javak és szolgáltatások aggregálása amiből
+végső fokon egyetlen termékhalmaz, az *összkibocsátás* jön létre).
+* **Indexálás:** egy heterogén sokaság (pl. a fogyasztói árak vagy az összkibocsátás)
+nyomon követésére szolgál, és azt mutatja meg, hogy egy gazdasági mutató értéke
+miként változott meg az idők folyamán (dinamikus indexszám vagy összehasonlító
+viszonyszám – egy adott időszaki értéket egy korábbi értékhez viszonyítunk).
+* **Mérleg:** egy kétoldalú kimutatás, amelynek bal oldalán az eszközöket felhasználásuk
+szerint, jobb oldalán az eszközöket forrásuk szerint összesítjük egy meghatározott
+időpontban és értékben.
+* **Modellezés:** a valóság egyszerűsített, áttekinthető leírása, amely egy bonyolult
+rendszer alapvető vonásainak néhány lényegi összefüggésen keresztüli ábrázolására
+szolgál.
+
+**Viszonya a mikroökonómiához**
+
+Míg a mikroökonómia az egyes piaci szereplők optimális gazdálkodási és cselekvési
+lehetőségeit és ennek feltételeit a gazdasági egységekben (háztartás és vállalat)
+lezajló gazdasági jelenségeket és folyamatokat az egyes szereplők nézőpontjából
+vizsgálja, addig a makroökonómia ugyanezen gazdasági rendszernek egy másik metszetével
+foglalkozik. Számára a gazdaság, mint egész az érdekes, ennek megfelelően a gazdaság
+átfogó jelenségeit (összkibocsátás, foglalkoztatás, a gazdasági összteljesítmény
+változása, áremelkedések, stb.) elemzi. A mikroökonómia és a makroökonómia tehát
+a gazdaság más-más keresztmetszetét (dimenzióit) vizsgálja, ugyanakkor egymást
+kiegészítő ismereteket közöl az egységes egészként működő gazdaságról.
+
 
 ## 8. tétel
 
 ### Makrogazdasági mutatók bemutatása, összetevői, különös tekintettel: GDP, NDP, GNI, NNI, GDNI
 
+A makrogazdaság teljesítményét a gazdaság folyamatos működése közben vizsgáljuk.
+Általában azt mérjük, hogy egy év alatt mennyi a kibocsátás. A kibocsátás a termékek
+és szolgáltatások azon körének aggregátuma, amely áruként elhagyja a termelőegységeket.
+A *gazdaság kibocsátását (és ezzel teljesítményét)* termelési oldalról a *megtermelt
+termékek és szolgáltatások aggregált értéke*, kiadási oldalról az *összes kiadás
+értéke*, jövedelmi oldalról a *termelés eladásáért első fázisban kapott jövedelmek
+értéke* mutatja.
+
+A makrogazdaság össztermelése számbavételének kiinduló pontja a megtermelt javak,
+az anyagi és nem anyagi szolgáltatások összessége. A makroteljesítmény összegébe
+beszámítható javak körét korábban eltérő elvek alapján határozták meg az egyes
+országok számbavételi rendszerében:
+* az **MPS (Material Product System, Anyagi Termelés Rendszere)** a gazdasági
+tevékenységet az anyagi termelésre és az anyagi szolgáltatásokra értelmezi, a nem
+anyagi szolgáltatásokat (oktatás, egészségügy, államigazgatás) eredményeit (teljesítményét)
+figyelmen kívül hagyja (a KGST-országok alkalmazták).
+* az **SNA (System of National Accounts, Nemzeti Számlarendszer)** a javak
+összesítésekor minden létrehozott terméket, szolgáltatást és szervezett tevékenységet
+számításba vesz, tehát összegzi az MPS rendszerben nem anyagi jellegűnek tekintett
+tevékenységeket is. Az ENSZ dolgozta ki, 1953-ban vezették be. 1993-ban jelentősebb
+változtatásokkal korszerűsítették, ma ez az egyetlen nemzetközileg is használt
+rendszer.
+
+A makrogazdasági mutatók minden elszámolásban szorosan kapcsolódnak egymáshoz, önálló
+rendszert alkotnak. A mutatószámokat függetlenül attól, hogy milyen típusúak több
+ismérv szerint is csoportosíthatjuk.
+
+**Az alkalmazott ár szerint:**
+* *folyóáron* számított mutatók: az adott év folyó árain számítva adja a kibocsátás
+pénzbeni értékét.
+* *változatlan áron* számított mutatók: az adott év kibocsátását egy kiválasztott
+év (bázisév) árain összesítjük.
+A halmozottság foka szerint:
+* *bruttó mutatók*: minden teljesítményt teljes értéken vesznek figyelembe
+* *félnettó mutatók*: amelyeket úgy számítunk, hogy a bruttó értékből levonják a
+térbeli (vertikális) halmozódást (a folyó termelő felhasználást).
+* *nettó mutatók*: a félnettó mutató értékét csökkenteni kell az amortizáció mértékével,
+vagyis kiszűrjük az időbeni halmozódást is.
+A „hol és kik által” szerint:
+* *hazai jellegű mutatók:* adott ország területén keletkezett teljesítményt hazai
+outputnak (jövedelemnek) tekintik függetlenül attól, hogy az hazai vagy külföldi
+szereplőtől származik.
+* *nemzeti jellegű mutatók:* adott ország állampolgárainak teljesítményeit nemzeti
+outputnak (jövedelemnek) tekintik függetlenül attól, hogy hol tartózkodnak.
+Az idő függvénye szerint:
+* *stock (állomány) típusú mutatók*: egy adott időpontban méri fel az ország összes
+vagyoni értékét (pl. Nemzeti Vagyon)
+* *flow (áramlás, folyamat) típusú mutatók*: egy időszak alatt létrejött teljesítményt
+mérnek
+
+**Az SNA számlarendszer legfőbb mutatói**
+
+**Teljes kibocsátás (Gross Output, GO):** az SNA rendszer kiindulópontja az összes,
+vagy teljes kibocsátás, azaz a nemzetgazdaságban egy adott időszak alatt megtermelt
+minden termék és szolgáltatás, függetlenül attól, hogy hol értékesítették azokat.
+Az eredeti SNA-rendszer egyik alapmutatója volt, az új SNA már nem használja. Az
+új rendszer a bruttó kibocsátást csak a számítások kiinduló adatának tekinti.
+
+**Bruttó Hazai Termék (Gross Domestic Product, GDP):** egy országban adott évben
+előállított, végső fogyasztásra szánt termékek és szolgáltatások összértéke.
+Jövedelem-oldalról a GDP nem más, mint az országban adott évben realizált bruttó
+jövedelem (elsődleges elosztással nyert jövedelem). Elsődleges jövedelemnek nevezzük
+a termelési tényezők tulajdonosainak jövedelmét (munkabér, kamat, földjáradék,
+profit).
+
+**Nettó Hazai Termék (Net Domestic Product = NDP ):** az ország területén keletkezett
+nettó jövedelmek összege (amortizációval csökkentett GDP). Jövedelem-oldalról az
+NDP az adott évben keletkezett új elsődleges jövedelmek összege.
+
+Az ország területén keletkező jövedelmek nem azonosak az ország állampolgárainak
+jövedelmével. Egyrészt a belföldön keletkező jövedelmek egy része külföldre áramlik,
+másrészt az ország állampolgárai külföldről is kapnak jövedelmeket. **A nemzetközi
+jövedelemmozgásokkal korrigált mutatók a nemzeti jövedelemmutatók**.
+
+**Bruttó Nemzeti Jövedelem (Gross National Income, GNI):** az ország állampolgárai
+által az adott évben realizált összes elsődleges jövedelem. A GDP módosított formája.
+
+**Nettó Nemzeti Jövedelem (Net National Income, NNI):** a Bruttó Nemzeti Jövedelem
+amortizációval csökkentett része.
+
+A **Nemzeti Jövedelem** tehát a **Hazai Termékből** származik, és kiszámítása a külföldiek
+kifelé áramló átutalásainak levonásával és a hazai állampolgárok külföldről befelé
+irányuló átutalásainak hozzáadásával történik.
+
+**Bruttó rendelkezésre álló Nemzeti Jövedelem (Gross National Disposable Income,
+GNDI):** a GNI módosított formája. Az ország állampolgárai által adott évben
+felhasználható bruttó jövedelem összege, korrigálva az országba beáramló, és az
+országból kiáramló nemzetközi transzferekkel.
+
+**Nettó rendelkezésre álló jövedelem (Net National Disposable Income, NNDI):** a
+GNDI nettó párja, azaz amortizációval csökkentett része.
+
+A rendelkezésre álló jövedelmet az adott makrogazdaságban elfogyasztják, vagy
+felhalmozzák. Ez nem ugyanazt jelenti a bruttó és a nettó mutatók esetében. Bruttó
+mutatók esetén a felhalmozás a bruttó beruházást jelenti, amely a pótló és bővítő
+jellegű beruházásokat és a készletek növelését foglalja magába. **Pótló jellegű
+beruházás** *az elhasznált tőke javak pótlására szolgáló beruházás*, míg a **bővítő
+jellegű beruházás (nettó beruházás)** *kapacitásnövelő* hatású.
 
 ## 9. tétel
 

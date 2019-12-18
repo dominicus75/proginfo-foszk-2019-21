@@ -13,5 +13,6 @@
 * Károlyné Dóra Margit (2006): [Közgazdaságtan I.](https://drive.google.com/drive/folders/1tA0Woihl2zEnyGhAvJTMazZq81rG2yHl?usp=sharing)
 * dr. Gyulaffy Béláné: Pénzügyi ismeretek (PSZF, 1998).
 * Farkasné Fekete Mária, Molnár József: [Közgazdaságtan I.](https://miau.gau.hu/avir/intranet/debrecen_hallgatoi/tananyagok/jegyzet/18-Mikrookonomia.pdf)
+* Misz József, Tömpe Ferenc: [Makroökonómia](http://miau.gau.hu/avir/intranet/debrecen_hallgatoi/tananyagok/jegyzet/19-Makrookonomia.pdf)
 
 [Kezdőlap](../README.md)
