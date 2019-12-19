@@ -63,8 +63,7 @@ Közgazdaságtan, 4. o.
 minden olyan meghatározott értékkel bíró tárgy, amely a kereskedelmi forgalomban
 hosszabb-rövidebb ideig mint állandó fizetési eszköz használatos, amelynek átadásával
 dolgokat lehet megvásárolni, illetve adósságokat törleszteni. A pénz attól fizetési
-eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre. *„A
-pénz egyenlőséget teremt azáltal, hogy mindent összemérhetővé tesz.”* (Arisztotelész)
+eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre.
 
 A pénz kialakulása és fejlődése szorosan összekapcsolódik a munkamegosztás, a
 kereskedelem és a piac fogalmával, fejlődésével. **Pénz az, amit a piac annak fogad
@@ -86,7 +85,9 @@ tulajdonságokkal kell rendelkeznie:
 * *Értékmérő:* saját értékét összeméri a más javakban megtestesülő munkamennyiséggel,
 ezzel – mintegy mértékegységként funkcionálva – egymással is összemérhetővé teszi
 őket, értéket rendel az árukhoz. Pénz segítségével értékeli és hasonlítja össze
-a piac a különböző áruknak tulajdonított értéket, a termelők ráfordításait, teljesítményét.
+a piac a különböző áruknak tulajdonított értéket, a termelők ráfordításait,
+teljesítményét. *„A pénz egyenlőséget teremt azáltal, hogy mindent összemérhetővé
+tesz.”* (Arisztotelész)
 * *Forgalmi eszköz:* mint állandósult egyenértékes cseretárgy, amely tökéletesen
 likvid, lebonyolítja az áruk adásvételét, a tranzakciókat. A forgalmi eszköz
 funkcióban a pénz térben és időben együtt mozog az áruval, de azzal ellentétes
@@ -445,7 +446,7 @@ GNDI):** a GNI módosított formája. Az ország állampolgárai által adott é
 felhasználható bruttó jövedelem összege, korrigálva az országba beáramló, és az
 országból kiáramló nemzetközi transzferekkel.
 
-**Nettó rendelkezésre álló jövedelem (Net National Disposable Income, NNDI):** a
+**Nettó rendelkezésre álló Nemzeti Jövedelem (Net National Disposable Income, NNDI):** a
 GNDI nettó párja, azaz amortizációval csökkentett része.
 
 A rendelkezésre álló jövedelmet az adott makrogazdaságban elfogyasztják, vagy
@@ -459,11 +460,194 @@ jellegű beruházás (nettó beruházás)** *kapacitásnövelő* hatású.
 
 ### 9.1 Makrogazdasági egyensúlyok, egyensúlytalanságok.
 
+Gazdasági egyensúlyon legáltalánosabban és legátfogóbban a társadalmi újratermelés
+két szélső pólusa, a termelés és fogyasztás egymásnak való megfelelését értjük.
+Ez a megfelelés azt jelenti, hogy a termelés volumene és összetétele, valamint a
+fogyasztás volumene és szerkezete nagyjából azonosan alakul. Ez az egyensúly a
+gazdasági folyamatok kettős jellegének megfelelően értelmezhető, vagyis mint
+reálfolyamatok egyensúlya, és mint pénzügyi, jövedelmi egyensúly. Ez az összevontan
+értelmezett egyensúly sok gazdasági részterület egyensúlyából tevődik össze. Közvetlenül
+két további egyensúlyra bontható: az egyik a termelési javak termelése és a termelő
+fogyasztás, a másik a fogyasztási javak termelése és a személyes fogyasztás egyensúlya.
+Az egyensúly vagy annak hiánya, az egyensúlytalanság vegyes piacgazdaságban mindig
+piaci egyensúly és egyensúlytalanság is, a kereslet és kínálat viszonyában értelmezhető.
 
-### 9.2 Makrogazdasági számlák, elszámolások 3 és 4 szereplős modelljei.
+Az általános gazdasági egyensúly hiánya szükségszerűen megjelenik az alapvető gazdasági
+folyamatokban, az ott kialakuló funkciózavarokban. Az egyensúlytalanság állapota jut
+kifejezésre a foglalkoztatás hiányában is, a munkanélküliség kialakulásában és számottevő
+növekedésében.
+
+A gazdasági folyamatok két alapvető egyensúlytalansága a munkanélküliség és az
+infláció.
+
+A **munkanélküliség** a munkaerő-piac egyensúlytalansága, amikor a munkaképes korú
+lakosságnak egy része nem talál munkahelyet. Ekkor a munkaerő kínálata meghaladja
+a munkaerő iránti keresletet. A munkanélküliség tehát munkapiaci túlkínálat, amikor
+a reálbér magasabb, mint az egyensúlyi reálbér. Az árupiacon keresletcsökkenést
+eredményez, s ez átterjed a pénzpiacra is. A lakosság megtakarításai is csökkennek,
+ezáltal a beruházási kereslet csökkenése miatt makrogazdasági szinten is csökkenti
+a keresletet.
+
+Az **infláció** huzamos és jelentős mértékű árszínvonal-emelkedést jelent. Az infláció
+olyan folyamat, amely közvetlenül nem a pénzügyi piacokon alakul ki, de valamennyi
+piacra átterjed. Az inflációval ellentétes folyamat a **defláció**, amely tartós
+árszínvonal csökkenést jelent.
+
+
+### 9.2 Makrogazdasági számlák, elszámolások 3 és 4 szereplős modelljei
+
+A makroökonómiában a gazdaság szereplőit gazdasági szektornak is nevezik. Egy
+gazdasági szektor azon gazdasági alanyok összessége, amelyek
+* hasonló gazdasági célokat akarnak elérni,
+* azonos erőforrásokkal és korlátozó tényezőkkel számolnak,
+* fentiek alapján azonos jellegű gazdasági döntéseket hoznak.
+
+**A gazdaság szereplői (gazdasági szektorok)**
+* **Háztartások:** fogyasztási cikkeket fogyasztanak és munkaerőt adnak el
+* **Vállalkozások:** szolgáltatások előállítása úgy, hogy bevételeiből fedezzék a kiadásaikat
+* **Állam (költségvetési szféra)**: az állami szervek összessége. A vállalati szféra
+megrendelője, a háztartási szféra számára támogatást nyújt, valamint mindkettőtől
+bevételei (adók) származnak
+* **Külföld:** a nemzetgazdaság külső kapcsolatait testesíti meg
+
+*A háztartás és a vállalat együttesen alkotja a magánszektort. A magánszektor és
+az állami szektor együttesen adja a belföldi szektort.*
+
+A **makrogazdasági körforgás** olyan rendszer, amely nyomon követi a reálfolyamatok
+során keletkezett jövedelmeket, azok elosztását és felhasználását ill. megteremti
+a kapcsolatot a reál- és jövedelmi folyamatok között. A **körforgást folyótételek
+számla segítségével mutatjuk be**, amely egy kétoldalú kimutatás; amely valamely
+gazdasági szektornak (háztartások, vállalatok, stb.) egy meghatározott időszak
+alatt végbement jövedelmi műveleteit ábrázolja, azaz egy szektor jövedelmeinek
+összetételét (forrásait) és felhasználását tükrözi.
+
+A **folyó tételek számlája számlamérlegekkel mutatja ki a gazdasági egységek
+jövedelemváltozásait**. Ez természetesen egyszerre két szektor számláján jelenik
+meg, hiszen ami az egyiknél bevételként jelentkezik, az egy másiknál kiadás (kettős
+könyvelés).
+
+A négy gazdasági szektor folyó tételek számláin kívül szükség van két szintetikus
+(az egész gazdaságot átfogó) számlára is. Ezek:
+* A **tőkeszámla**, amely a megtakarítások és a beruházások viszonyát mutatja ki,
+a tőkemozgásokat és a tőkepiacot testesíti meg.
+* A **bruttó hazai termék (GDP)** számla, amely az egész nemzetgazdaság jövedelmét
+összesíti aktív (tartozik) és passzív (követel) oldalakkal.
+
+*A tőkeszámla és a GDP számla a makrogazdaság vagyonmérlegei is*.
+
+**Kétszektoros modell** esetében a háztartási szféra és a vállalati szféra folyótétel
+számlái, valamint a tőkeszámla és az összevont (GDP) számla szerepel.
+
+**Háromszektoros modell** esetében megjelenik az állam (kormányzat) is. Ennek
+következtében itt újdonság az adók megjelenése, ezek az egyes szektoroknál kiadásként,
+az állam oldalán bevételként jelentkeznek. Az állam kiadásai a transzferek, melyek a
+háztartásoknál bevételként jelennek meg, illetve a kormányzati kiadások, amelyeket
+a vállalatok bevételeiként könyveljük el.
+
+**A négyszektoros modell** az állam mellett megjelenik a külföld is. A vállalat
+az exportért jövedelmet kap, míg az importért fizet.
 
 
 ### 9.3 Infláció és defláció közgazdaságtana
+
+Az **infláció**, mint árjelenség abban nyilvánul meg, hogy egy vizsgált időszakban az
+árszínvonal tartós emelkedése következik be, amely pénzügyi jelenségként értelmezve
+a pénz vásárlóerejének romlásával jár együtt. Amikor inflációról beszélünk, nem
+az egyes termékárakból indulunk ki, hanem – mint a makroökonómiában általában
+– aggregátumok (termékcsoportok) árszínvonalát vizsgáljuk.
+
+**Árszínvonalon (P)** a makrogazdaság termékárainak, termékmennyiséggel súlyozott
+nemzetgazdasági átlagát értjük. Reciproka az 1/P, a **pénz vásárlóerejét** mutatja
+meg. Többféle árszínvonal között beszélünk pl.
+* *fogyasztói árszínvonalról*, amikor egy kb. 2000 tételből álló fogyasztói kosárra
+terjed ki az árak vizsgálata,
+* *termelői árszínvonalról*, ahol ennél is több anyag és tőkejószág árát elemzik,
+* *mezőgazdasági*, *ipari*, stb. árszínvonalról.
+
+Az árak időszakok közötti mozgását (változását) az **árindex**-el fejezzük ki, ami
+lehet növekvő vagy csökkenő. **A gazdaság egészére jellemző, tartósan és folyamatosan
+növekvő árindex az infláció**. Ha az árindex csökken, deflációról beszélünk.
+
+**Okok szerint az infláció két fő formáját különböztetjük meg:**
+* A **keresleti infláció** a makrogazdasági szinten megnövekvő kereslet alapján
+alakul ki. A növekvő kereslet bekövetkezhet a fogyasztás, a beruházás növekedésével,
+valamint a nominális pénzkínálat növelésével.
+* A **költség infláció** makrogazdasági szinten a kínálat csökkenésével alakulhat
+ki. A kínálat csökkenésének közvetlen oka lehet a nominális munkabérek emelkedése,
+vagy a tőkeállomány csökkenése. Az infláció okai lehetnek: az ún. ár - bér spirál
+és az inflációs várakozás is.
+
+A **inflációs várakozások** lényege az, hogy a gazdasági szereplők a múltbéli
+események alapján alakítják ki jövőre vonatkozó elképzeléseiket. Ha az emberek
+inflációt várnak, infláció akkor is lesz, ha egyébként nem lett volna, és az
+előrehozott vásárlások miatt keresleti sokk is kialakulhat. A megelőző időszakok
+inflációs rátái, azok változásai alakítják ki az inflációs várakozásaikat.
+
+**Az inflációs ráta nagyságától függően beszélhetünk:**
+* **Kúszó inflációról**, amikor az inflációs ráta néhány százalékot tesz ki (egyszámjegyű),
+viszonylag stabil, aminek következtében a gazdaság szereplői még megbízható kalkulációkra
+(előrelátásra) képesek, és nem zavarja meg a gazdasági tisztánlátást sem.
+* **Vágtató inflációról**, amikor az inflációs ráta évi 2-3 számjegyű. Az infláció
+ilyen mértéke már a gazdaság szereplőit arra ösztönzi, hogy vagyonukat kevésbé
+inflálódó külföldi pénzben, vagy értékálló tárgyakban tartsák (ékszer, ingatlan,
+stb.). Jellemzője továbbá, hogy a termékek iránti keresletet mesterségesen növeli
+(felvásárlási láz). **Erőforrás-korlátos gazdaságban ez nem csak a megtakarításokat
+és a beruházásokat csökkenti, hanem tovább gerjeszti (növeli) az infláció mértékét**.
+* **Hiperinfláció** esetén az inflációs ráta olyan mértékű, ami a gyakorlatban
+megszünteti a pénz funkcionálását az árucserében, helyébe a közvetlen termékcsere
+vagy más eszközök lépnek. Ennél is szélesebb hatása, hogy szétzilálja a gazdasági
+kapcsolatokat: ilyenkor a gazdasági döntések már minden objektív alapot nélkülöznek
+és súlyos társadalmi konfliktusokhoz vezethetnek (pl. 1923: Németország, 1946 Magyarország).
+
+**Az infláció prognosztizálhatósága (tudományos alapú előrejelzés) alapján lehet:**
+* **előre látott infláció**: a gazdaság szereplői képesek vele előre számolni,
+tehát fel tudnak rá készülni.
+* **előre nem látott infláció**: sokkal veszélyesebb váratlansága miatt.
+
+**Az infláció az árakban történő megjelenése alapján lehet:**
+* **kiegyensúlyozott infláció**: a termékek árai közel azonos arányban emelkednek.
+* **kiegyensúlyozatlan infláció**: a termékek ára eltérő arányban emelkedik. Ez a
+gazdaság szerkezetében, jövedelmi viszonyaiban torzulást okoz, mert azokban az
+iparágakban, ahol az árak gyorsabban emelkednek, a termelők gazdagodnak, más
+iparágakban csődbe mennek.
+
+Az infláció negatívan hat a nominális változók reálértékére, így:
+* a munkapiacon csökkenti a reálbért,
+* a pénzpiacon csökkenti a reálkamatot,
+* a termékpiacon csökkenti a vásárlóerőt.
+
+**Antiinflációs intézkedések**
+
+* Kereslet csökkentése
+  * reálértékének csökkentése
+  * közkiadások csökkentése
+  * a szociális szféra kiadásainak csökkentése
+  * piaci kamatláb emelésével a pénzkereslet csökkentése
+* Árupiaci összkinálat növelése
+  * vállalkozói szféra jövedelmeinek növelése
+  * vállalkozói szféra terheinek csökkentése, adókedvezmények
+  * piaci kamatláb csökkentésével a beruházási kedv növelése
+
+**Az inflációval ellentétes folyamat a *defláció*, amely tartós árszínvonal
+csökkenést jelent.**
+
+A közgazdászok szokták a kifejezést a pénzmennyiség csökkenésére is használni, ami
+gyakran kiváltó oka az árszínvonal negatív változásának is. A defláció a likviditásigény
+növekedésével jár együtt, miközben a pénz vásárlóereje nő. A lakosság elhalasztja
+vásárlásait a további árcsökkenés reményében. A hitelre vásárolt áruk értéke a
+hitelidőszak végére csökken a pénz vásárlóerejéhez képest.
+
+Első nekifutásra azt gondolhatnánk, hogy a defláció egy szerencsés szituáció,
+hiszen folyamatosan csökkennek az árak, egyre olcsóbban tudjuk a termékeket,
+szolgáltatásokat igénybe venni. Ugyanakkor az egyre olcsóbbá váló termékek,
+szolgáltatások azt eredményezik, hogy  a vállalatoknak csökken az árbevétele, így
+költség csökkentésre, leépítésre kényszerülnek a defláció hatásaként. Ha pedig
+egyre több foglalkoztatott válik munkanélkülivé, akkor további fogyasztás tűnik el,
+így még kevesebb termék legyártására lesz igény, tehát a vállalkozások árbevétel
+csökkenését ez is erősíti. Emiatt a cégek profitja is csökken, ami a részvények
+árfolyamára is kihat. A részvények árfolyama esni fog, így a részvényeken a
+befektetők nem realizálnak profitot, vagy a nyugdíjhoz szükséges megtakarítási
+összegük zsugorodik, ami további megtakarításra ösztönözheti a befektetőket.
 
 
 ## 10. tétel
