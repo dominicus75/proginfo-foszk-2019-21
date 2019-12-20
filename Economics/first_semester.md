@@ -302,11 +302,12 @@ A költségvetési egyenes pontjai által reprezentált fogyasztói kosarak megv
 a jövedelem teljes elköltését jelenti. Minden, ezen kívüli pont (jószágkombináció)
 az adott árak és adott jövedelem-nagyság mellett elérhetetlen. A költségvetési
 egyenes ily módon a fogyasztó számára **költségvetési korlát** is, amely **megmutatja,
-hogy vásárlásaival meddig mehet el**. Az árnövekedés a fogyasztó reáljövedelmét
-csökkenti, az árcsökkenés növeli. Ezt az árváltozás jövedelemhatásának nevezzük.
-Azoknak a fogyasztói kosaraknak összességét, amelyeket a fogyasztó adott jövedelméből
-meg tud vásárolni, a szakirodalom többféle elnevezéssel illeti, amelyek közül a
-leggyakoribb a megvásárolható, **elérhető javak halmaza** kifejezés.
+hogy vásárlásaival meddig mehet el**. E mellett, ha a költségvetési halmazon belül
+az egyik termékcsoportból többet vásárol, ez automatikusan magával vonja, hogy a
+másikból kevesebbet tud. Azoknak a fogyasztói kosaraknak összességét, amelyeket a
+adott jövedelméből meg tud vásárolni, a szakirodalom többféle elnevezéssel illeti,
+amelyek közül a leggyakoribb a megvásárolható, **elérhető javak halmaza** kifejezés,
+de előfordul a költségvetési halmaz is.
 
 #### 5.4 Hermann Gossen törvényei és a haszonelmélet
 
