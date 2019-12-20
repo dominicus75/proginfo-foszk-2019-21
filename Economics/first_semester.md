@@ -110,7 +110,22 @@ nem beszélhetünk pénzről.
 tulajdonságából adódóan közmegegyezéssel neki tulajdonított érték (a belső értékre
 is érvényes a *„pénz az, amit a piac annak fogad el”* elv).
 * **külső, jogilag nevesített érték:** az állam által törvényi erővel megállapított
-kötelező érték, amit a piac elfogad.
+kötelező érték, amit a piac elfogad. Törvényes fizetési eszközön olyan pénzt értünk,
+amelynek segítségével bármilyen pénzkövetelés kiegyenlíthető, és amelynek elfogadását
+az adott nemzetgazdaságban kötelezően előírják.
+
+A pénz a történelem során két alapformában működött. Az **árupénz** olyan pénz, amely
+a vizsgált nemzetgazdaságban áruként is jelen van, ilyen – volt – főleg az arany
+és az ezüst, illetve más nemesfémek. A **hitelpénz** saját értékkel nem bíró törvényes
+fizetőeszköz, amely hitelnyújtással keletkezik és hitel-visszafizetéssel szűnik meg.
+
+**Készpénznek** nevezzük azt a pénzt, amely a jogrendszer által e célból kiemelt
+árucsoportok egyes darabjaiból áll, mint az érmék és a bankjegyek. **Számlapénz**
+a hitelintézményeknél (elsősorban bankoknál) meglévő betét, amely felett a
+tulajdonos a hitelintézménnyel kötött szerződés értelmében rendelkezik. A betét
+lehet látra szóló, amikor a pénz felhasználása bármikor megtörténhet, illetve lehet
+határidős, ha a tulajdonos csak egy előre megállapított időpont után rendelkezhet
+pénze felett.
 
 
 ## 3. tétel
@@ -652,10 +667,171 @@ befektetők nem realizálnak profitot, vagy a nyugdíjhoz szükséges megtakarí
 
 ## 10. tétel
 
-### 10.1 A munkaerőpiac szereplői.
+### 10.1 A munkaerőpiac szereplői
 
+Azokat, akik a munkakínálatot megvásárolják vállalatoknak, vagy munkáltatóknak
+nevezzük. Akik pedig eladják munkaszolgáltatásukat, a munkavállalók. A munkapiacra,
+mint egy olyan helyre kell gondoljunk, ahol ez a két fél találkozik, és megállapodás
+születik köztük a foglalkoztatás feltételeiben, többek között az egyik legfontosabban,
+a szolgáltatás árában. A munkaerő-kereslet és kínálat közötti különbség a munkaerőhiány
+vagy a munkaerő-felesleg (munkanélküliség). A munkaerőhiány előnyös a munkavállalók
+számára. A munkaerő-felesleg a vevőknek kedvez. A munkaerőpiac az egyes szakmák,
+foglalkozási ágak és térségek szerint további részpiacokra bontható.
 
-### 10.2 Az árupiac, pénzpiac és munkaerőpiac közgazdaságtana.
+**A munkakereslet**
+
+A munkapiac *keresleti oldalán* a munkaszolgáltatások vásárlói, a vállalkozások
+állnak. A kereslet-meghatározás makroszinten nem jelenthet mást, mint az egyes
+vállalatok munkakeresleteinek egyszerű összegzését.
+
+A munkahelyek létrehozása a piacgazdaságban elsősorban a magántulajdonon alapuló,
+nyereségérdekelt szabad vállalkozások feladata, hozadéka pedig a gazdasági növekedés.
+A közhatalom (kormány, helyi önkormányzat) nyereségérdekelt vállalkozásain kívül
+is hoz létre munkahelyeket a közfeladatok ellátására, amivel növeli a munkaerő-keresletet
+és egyben a közfoglalkoztatottak létszámát. Az ilyen tevékenységeknél a jövedelmek
+közösség általi részbeni újraelosztása is megtörténik a közterhek által. **A nagymértékű
+közfoglalkoztatottság fékezi a gazdasági társaságok versenyképességét és negatívan
+hat a nyereségtermelő munkahelyek számának az alakulására**. A közhatalom feladata
+ezzel szemben az, hogy tartósan olyan körülményeket alakítson ki, amelyek segítik
+a vállalkozásokat abban, hogy további munkahelyeket hozzanak létre. Ilyenek például
+a jogbiztonság a kiszámítható gazdasági környezet és az oktatás. Ide tartozik a
+kreativitás és az innováció – a vállalkozói tevékenységet is beleértve – fejlesztése
+az oktatás és a képzés minden szintjén.
+
+**A munkakínálat**
+
+A munkakínálat a lehetséges munkavállalókból áll. Mikroszinten a munkakínálat az
+egyéni (családi) választás következménye, ami makroszinten az összes háztartás
+választási lehetőségének és szándékainak meghatározását jelenti. Az aggregált
+(nemzetgazdasági) munkakínálat nagysága a reálbér monoton növekvő függvénye, megmutatja,
+hogy különböző reálbérszintek mellett hányan kívánnak és tudnak munkát vállalni.
+
+A munkapiaci kínálat meghatározása (hasonlóan a keresleti oldalhoz) közvetlenül
+vagy közvetve a megszerezhető jövedelem (reálbér, fogyasztás) nagyságával van
+kapcsolatban. Hangsúlyozni kell azonban, hogy számos egyéb fontos társadalmi-gazdasági
+tényező hat a makroszintű munkakínálatra is. Ezek közül néhány:
+1. A **népesség demográfiai folyamatai**: a természetes szaporodás üteme, a
+népességvándorlás egyenlege, az aktívak-inaktívak aránya, stb.
+2. Az egyes társadalmi rétegek munkavállalási hajlandóságának alakulását
+befolyásoló nem jövedelmi tényezők (pl. a nők munkavállalását elősegítők).
+3. Az **oktatási rendszer** kibocsátási jellemzőinek és a munkáltatói igényeknek a
+megfelelése.
+
+A munkapiacot egyensúlyban levőnek tekintjük, amikor a munka aggregált kereslete
+megegyezik aggregált kínálatával.
+
+### 10.2 Az árupiac, pénzpiac és munkaerőpiac közgazdaságtana
+
+A gazdasági folyamatok legfontosabb színtere a piac. Egy jól működő makrogazdaságban
+egymás mellett többféle piac működik. Ezek a részpiacok mindegyike nagyon fontos.
+Ha csak az egyik nem működik megfelelően annak hatása érezhető lesz a többi részpiacon
+is.
+
+A gazdaság teljes működése az alábbi részpiacok közötti kölcsönhatáshoz kapcsolódik:
+* fogyasztási javak piaca
+* tőkejavak piaca
+* pénzpiac
+* munkapiac
+
+**A fogyasztási cikkek piacát, és a tőkejavak piacát együttesen árupiacnak is nevezzük**.
+Ez a piac határozza meg, hogy mennyi jövedelem képződik az országban.
+
+Az egyes részpiacok szorosan összefüggnek egymással: a pénzmozgások tükörképei az
+árumozgásoknak, a termelési tényezők (a tőkejavak és a munkaerő) kereslete szorosan
+kapcsolódik az árupiac eladási lehetőségeihez stb. A piacok együttes hatására alakuló
+árupiaci keresletet **aggregált keresletnek**, és vele szemben álló, minden piac mozgását
+tükröző árupiaci kínálatot **aggregált kínálatnak** nevezzük.
+
+**Árupiac**
+
+Az árupiacon termékek és szolgáltatások cserélnek gazdát, vagyis itt jelentkezik
+a javak iránti kereslet és ezek kínálata. Az árupiacon kétféle jószág cserélhet
+gazdát: **fogyasztási cikk és tőkejószág**. A fogyasztási cikkek a háztartási szektor
+szükségleteit elégítik ki. A tőkejavak vagy beruházási javak a vállalati szektor
+szükségleteit elégítik ki: más termékek vagy szolgáltatások előállítására használják
+fel azokat.
+
+Az árupiac, hasonlóan a többi piachoz akkor van egyensúlyban, ha a kereslet megegyezik
+a kínálattal. **Az árupiaci kereslet azon javak mennyisége, amelyet a gazdaság
+szereplői az adott árszínvonalon vásárolni szeretnének**. A makrogazdaság **árukínálatán
+azt a termékmennyiséget értjük, amelyet a gazdaság szereplői adott technológiai
+kapacitások mellett, adott árszínvonalon hajlandóak termelni**.
+
+**A pénzpiac**
+
+A pénzpiac elsősorban a bankrendszer és a többi gazdasági szektor közötti kapcsolat
+formáját jelenti – a pénzpiac funkciója, hogy egyensúlyba hozza a bankrendszer
+által teremtett pénzmennyiséget a gazdaság szereplői által igényelt pénzmennyiséggel.
+
+**Pénzkínálaton** egy gazdaság forgalomban lévő pénzmennyiségét értjük. **Pénzkeresletnek**
+nevezzük azt a vagyonmennyiséget, amely felett a gazdasági szereplők azonnal rendelkezni
+kívánnak.
+
+A pénzügyi szektor különböző szereplőit egyetlen makroszektorként kezeljük és
+bankrendszernek nevezzük. Ez tehát az az intézmény, amely a pénzt egy hitelművelettel
+forgalomba hozza. Hitelügyletnek nevezzük az olyan üzletet, amelynél a szolgáltatás
+vagy a termékátadás az üzletkötés periódusában történik, az ellenszolgáltatást
+viszont csak egy későbbi időpontban nyújtják. A pénzteremtés szempontjából a
+monetáris hitelügyletek érdekesek, amikor pénzkölcsönöket folyósítanak, illetve
+törlesztik.
+
+A bank nemcsak akkor teremt pénzt, ha valamelyik gazdasági szereplő kötelezvényeit
+készpénz ellenében megvásárolja, hanem akkor is, ha ezeket az értékpapírokat úgy
+veszi meg, hogy az eladónak a számlakönyvben jóváírja a kötelezvényekért elvileg
+kifizetendő összeget, jelezvén, hogy addig az összegig hajlandó az ügyfél kifizetéseit
+teljesíteni. A pénzteremtés ebben az esetben könyvelési műveletekkel történik.
+**A bank tehát hitelnyújtás útján teremt pénzt, mégpedig saját pénzt hoz forgalomba**.
+
+A pénzforgalom kiterjedése olyan bankrendszert követel, amelyben az egyes bankok
+hajlandóak teljesíteni más bankok fizetési ígéreteit. Szükség van tehát legalább
+egy olyan pénzre, amelyet minden bank, sőt minden gazdasági szereplő köteles elfogadni.
+Ez a törvényes fizetési eszköz, amelyen olyan pénzt értünk, melynek segítségével
+bármilyen pénzkövetelés kiegyenlíthető, és amelynek elfogadását az adott nemzetgazdaságban
+kötelezően előírják.
+
+Pénzteremtési műveleteiket gazdaságossági szempontok alapján végző hitelintézményeket
+**kereskedelmi** vagy **üzleti bankoknak** nevezzük.
+
+A XIX. században egyre gyakrabban került sor pénzügyi és hitelválságokra, ezért
+egyre inkább terjedt a felismerés, hogy szükség van a **bankok bankjára**. Ez a
+központi bank a neki átruházott jogkörből adódóan hiteleket folyósít a bankoknak
+a hitelválságok elhárítása és a pénzügyi és hitelrendszer működőképességének
+fenntartása érdekében.
+
+A **központi bank (vagy jegybank)** az alábbi funkciókat tölti be:
+* rendelkezik a készpénz kibocsátás monopóliumával,
+* biztosítja a hitelrendszer működőképességét és így a pénzérték stabilitását,
+* általában a kormány bankja, vagyis lebonyolítja a kormány pénzügyi transzakcióit,
+hiteleket folyósít neki,
+* birtokolja és kezeli az ország monetáris tartalékait, amelyek a nemzetgazdaság nemzetközi
+fizetőképességének fenntartását szolgálják.
+
+**Egyszintű bankrendszer** működik egy gazdaságban, ha a központi bank a kereskedelmi
+bankok összes feladatát is ellátja, vagyis csak egyetlen egy bank létezik igen
+kiterjedt fiókhálózattal. Valamely gazdaság bankrendszere **kétszintű**, ha a
+különféle kereskedelmi bankok mellett létezik a központi bank is.
+
+A forgalomban lévő pénzmennyiség reálértéke az az árumennyiség, amelyet a
+pénztulajdonosok ebből adott árak mellett vásárolhatnak, azaz a nominálpénzmennyiség
+és az árszínvonal hányadosa. Pénzpiaci egyensúlyról akkor beszélünk, ha a
+reálpénzkereslet egyenlő a pénzkínálat reálértékével. A pénzpiac működésének egyik
+legfontosabb sajátossága, hogy az egyensúly csak a keresleti oldal változásával
+alakulhat ki. A nominális pénzkínálat ugyanis mindig megegyezik a forgalomban levő
+pénzmennyiséggel.
+
+**A munkaerőpiac**
+
+A munkaerőpiac vagy munkapiac a munka, mint termelési tényező adásvételét közvetíti.
+A munkaerő az emberek munkavégző képessége, a munka pedig a termelési tényező. A
+munka nem választható el attól a személytől, aki végzi azt. A munka maga pedig
+csak a termelés folyamatában kerül kifejtésre. Az adásvétel során egy szerződést
+kötnek, amelyben az eladó kötelezi magát a munka elvégzésére (munkavégző képességének
+kifejtésére), aminek ellentételeként munkabért kap.
+
+A **nominálbér vagy pénzbér a munka ára**, vagyis az a pénzmennyiség, amit a munka
+felhasználója a munka tulajdonosának fizet. A nominálbért valamilyen időegységre
+(egy órára, egy hónapra) vetítjük, azaz dimenziója: Ft/idő. A **reálbér** az a
+jószágmennyiség, amit a fogyasztó adott árak mellett nominálbéréből vásárolhat.
 
 
 [Kezdőlap](README.md)

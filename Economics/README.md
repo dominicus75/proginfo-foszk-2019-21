@@ -15,5 +15,6 @@
 * Farkasné Fekete Mária, Molnár József: [Közgazdaságtan I.](https://miau.gau.hu/avir/intranet/debrecen_hallgatoi/tananyagok/jegyzet/18-Mikrookonomia.pdf)
 * Misz József, Tömpe Ferenc: [Makroökonómia](http://miau.gau.hu/avir/intranet/debrecen_hallgatoi/tananyagok/jegyzet/19-Makrookonomia.pdf)
 * Elemzésközpont: [Miért gond a defláció?](https://elemzeskozpont.hu/deflacio-miert-gond-deflacio)
+* Meyer Dietmar, Solt Katalin: [Makroökonómia](http://kgt.bme.hu/files//BMEGT301924/Makrookonomia_jegyzet.pdf)
 
 [Kezdőlap](../README.md)
