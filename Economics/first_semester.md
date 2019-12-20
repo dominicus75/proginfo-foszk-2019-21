@@ -256,12 +256,102 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 #### 5.2 Fogyasztói magatartás
 
+Mikroökonómiai értelemben termékpiacon a végső fogyasztásra kerülő javak, vagyis
+a fogyasztási cikkek piacát értjük. A fogyasztás célja és értelme a szükségletek
+kielégítése. A szükséglet minden végső fogyasztás alapvető mozgatórugója, hiányérzet,
+amely cselekvést vált ki önmaga megszüntetésére.
+
+A szükséglet-kielégítés eszközei a javak és szolgáltatások. A javak és szolgáltatások
+szűkössége miatt a szükségletek soha nem elégíthetők ki teljesen. A fogyasztó ezért
+rendszeresen választásra kényszerül, el kell döntenie, hogy szűkös jövedelemforrásait
+figyelembe véve mely szükségleteit elégíti ki, hogy ezek kielégítése során milyen
+sorrendet választ, és melyek azok a szükségletei, amelyek kielégítéséről rövidebb-hosszabb
+ideig lemond. A választott lehetőség mindig egy másik alternatíváról való lemondást
+is jelent. Bármely lehetőség kiválasztásának alternatív költsége azon lehetőség
+hasznossága, amelyről lemondunk a választott alternatíva érdekében. A fogyasztó
+tudatosan vagy ösztönösen, de rangsorolja szükségleteit. **A szükségletek egyéni
+rangsorát preferencia-skálának nevezzük**. Ez természetesen egyéni rangsor, függ
+az egyén ízlésétől, jó vagy rossz szokásától.
+
+Amikor a fogyasztó a tényleges döntését hozza arról, hogy mit vásároljon, saját belső
+értékrendjéből indul ki, figyelembe veszi a javak hasznos tulajdonságait, személyes
+pénzjövedelmét és az árakat. Leegyszerűsítve úgy is fogalmazhatunk, hogy a fogyasztó,
+amikor vásárlási szándékkal megjelenik a piacon, három – a vásárlás szempontjából
+fontos – tényezőt visz magával. A saját kielégítésre váró szükségleteit, a saját
+értékrendjét tükröző preferencia-skáláját és a javak megvásárlásához szükséges
+pénzjövedelmét. A pénzjövedelmének nagysága a piacon kialakult árakkal együtt
+korlátozza, behatárolja választási lehetőségeit.
+
+A **nominál jövedelem** egy pénzmennyiség, a **reáljövedelem** pedig a rajta megvásárolható
+áru- és szolgáltatásmennyiség. A jövedelemkorlát és az árak miatt nem minden
+szükséglet, csak a fizetőképes szükséglet válik a piacon keresletté. Amikor keresletről
+beszélünk mindig ezt a **fizetőképes keresletet** értjük alatta.
+
+A fogyasztó alapvető célja adott preferencia rendszer mellett a fogyasztás révén
+elérhető hasznosság maximalizálása. A fogyasztói magatartás vizsgálatának kulcsfogalma
+a hasznosság. Ennek értelmezése, mérése a fogyasztói döntések modellezésének legnehezebb
+kérdése.
 
 #### 5.3 Költségvetési korlát
 
+![Imgur](https://i.imgur.com/sRZtaRL.png)
+
+A gyakorlatban a jószágkosarak sok termékből állnak. Ha egy kéttermékes (vagy termékcsoportos)
+modellt feltételezünk, így a döntési problémát grafikusan is tudjuk ábrázolni.
+A költségvetési egyenes pontjai által reprezentált fogyasztói kosarak megvásárlása
+a jövedelem teljes elköltését jelenti. Minden, ezen kívüli pont (jószágkombináció)
+az adott árak és adott jövedelem-nagyság mellett elérhetetlen. A költségvetési
+egyenes ily módon a fogyasztó számára **költségvetési korlát** is, amely **megmutatja,
+hogy vásárlásaival meddig mehet el**. Az árnövekedés a fogyasztó reáljövedelmét
+csökkenti, az árcsökkenés növeli. Ezt az árváltozás jövedelemhatásának nevezzük.
+Azoknak a fogyasztói kosaraknak összességét, amelyeket a fogyasztó adott jövedelméből
+meg tud vásárolni, a szakirodalom többféle elnevezéssel illeti, amelyek közül a
+leggyakoribb a megvásárolható, **elérhető javak halmaza** kifejezés.
 
 #### 5.4 Hermann Gossen törvényei és a haszonelmélet
 
+A hasznosság a fogyasztó szükségleteinek kielégítettsége. A hasznosság fogalmán
+valamely jószág hasznos tulajdonságainak összességét értjük, illetve azt a kielégülést,
+élvezetet, amelyet a fogyasztó az adott jószág birtoklása/elfogyasztása, illetve
+szolgáltatás igénybevétele révén nyer. A fogyasztó alapvető célja adott preferencia
+rendszer mellett a fogyasztás révén elérhető hasznosság maximalizálása.
+
+A fogyasztói magatartás vizsgálatának kulcsfogalma a hasznosság. Ennek értelmezése,
+mérése a fogyasztói döntések modellezésének legnehezebb kérdése. A hasznosság tehát
+a jószág oldaláról szemlélve olyan hasznos tulajdonságoknak összességét jelenti,
+amelyek alkalmassá teszik valamilyen emberi szükséglet kielégítésére. A fogyasztó
+oldaláról nézve pedig a hasznosság a jószág elfogyasztásával nyert haszonérzés,
+élvezet, a szükségletkielégítettség szubjektív érzete.
+
+A fogyasztó egységnyi termék elfogyasztása révén nyert hasznosság érzete azonban
+az elfogyasztott mennyiség növekedésével változik, legtöbbször csökken. Azon
+tapasztalatok alapján, hogy a fogyasztás során nem minden egység fogyasztása okoz
+azonos élvezetet, született meg a csökkenő élvezetek, vagy **csökkenő határhaszon**
+elve. A fogyasztó döntését mindig az elfogyasztott utolsó egység hasznossága
+befolyásolja. [Hermann Heinrich Gossen](https://hu.wikipedia.org/wiki/Hermann_Heinrich_Gossen)
+német közgazdász ezt a törvényszerűséget így foglalta össze: *„Egy adott élvezet
+nagysága csökken, ha ezt az élvezetet megszakítás nélkül, folyamatosan elégítjük
+ki addig, amíg telítettség nem lép fel”* (Gossen I. törvénye). Ennek egyenes
+mikroökonómiai következménye a javak keresleti görbéjének negatív meredeksége is.
+
+A fogyasztó nem az egy-egy termék elfogyasztása révén nyert hasznosságot akarja
+maximalizálni, hanem az összfogyasztás révén nyertet. Így nem is egyszerűen termékeket,
+hanem inkább fogyasztói kosarakat hasonlít össze. **A fogyasztói kosár a fogyasztó
+által fogyasztott termékek, illetve szolgáltatások halmaza**. A fogyasztó mindaddig
+cserélgeti gondolatban a termékeket a fogyasztói kosarában, amíg az így elköltött
+pénz utolsó egységén megszerzett határhaszon valamennyi termékre vonatkozóan egyenlővé
+válik. Ezzel az eljárással lehet a fogyasztói döntést optimalizálni, vagyis az adott
+jövedelemből megvásárolni a maximális összhasznot. A fogyasztói magatartás elméletének
+fejlődése során ez az összefüggés olyan lényegesnek bizonyult, hogy a közgazdászok
+külön elnevezéssel illették. Ez az előnykiegyenlítődés elve, vagy másként **Gossen
+II. törvénye**, amely kimondja, hogy **a fogyasztó akkor költi el optimálisan
+jövedelmét, ha az utolsó pénzegység által nyerhető határhaszon bármelyik termékre
+nézve ugyanakkora**.
+
+Bár Gossen mindkét törvénye csak meghatározott (és sokszor a valóságtól távol álló)
+feltételek megléte esetén teljesül, a közgazdaságtan tudományának formálódásában
+betöltött szerepüket nem szabad lebecsülni. A neoklasszikus közgazdászok e törvényekre
+alapozva alkották meg az első közgazdasági modelleket.
 
 ## 6. tétel
 
