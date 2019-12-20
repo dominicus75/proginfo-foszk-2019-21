@@ -253,7 +253,7 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 #### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
-![Imgur](https://i.imgur.com/lcfAgZa.png)
+![Imgur](https://i.imgur.com/jXG2qig.png)
 
 [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall)
 
@@ -364,7 +364,7 @@ alapozva alkották meg az első közgazdasági modelleket.
 
 #### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
-![Imgur](https://i.imgur.com/lcfAgZa.png)
+![Imgur](https://i.imgur.com/jXG2qig.png)
 
 
 #### 6.2 Költség/haszon egyensúly
