@@ -885,5 +885,31 @@ A munkanélküliségnek azt a nagyságát, amely a munkapiac mennyiségi egyens�
 is létezik, és amely a gazdaság állapotától függetlenül tartósan fennáll, természetes
 munkanélküliségnek nevezzük.
 
+**A munkapiac sajátosságai**
+
+* A bérek nem ingadoznak a kereslet – kínálat hatására, a munkaerő túlkínálata esetén
+nő a munkanélküliek száma, de nem csökken a foglalkoztatottak bére. A reálbérek
+növekedése irreverzibilis, tehát visszafordíthatatlan. A bérnek tehát nincs piactisztító
+hatása.
+* A munkapiac nem szabadon versenyző piac. Ugyanis a munkapiacon három hatalmi tényező
+jelenik meg:
+  * *Szakszervezetek*, amelyek a munkások érdekeit képviselik
+  * *Munkaadók különböző szervezetei*, amelyek a gyárosok illetve vállalkozók országos
+  szakmai szövetségei védik a munkaadók érdekeit
+  * *Állam. Hogy az állam egy ország bérvitáiban milyen állást foglal el, melyik
+  felet támogatja, azt – ideális esetben – nem csoportérdekek, hanem átgondolt
+  gazdaságpolitikai megfontolások döntik el.
+* *Szegmentált piac*, azaz, a globális munkaerő piac nemcsak helyi piacokra esik
+szét, hanem ezen belül bizonyos szakmákra bomlik, melyek kereslete és kínálata
+önállóan alakul.
+* A munkapiac rugalmassága: a munkaerő kereslet néhány százalékos növekedését a
+munkakínálat követni képes, a munkapiac néhány százalékos zsugorodása pedig nem
+növeli a hivatalos munkanélküliséget. Ezt a munkaerő kínálatának marginális sávja
+biztosítja. Összetevői:
+  * iskolát befejezett, családban várakozó fiatalok
+  * női munkaerő
+  * részmunkaidőben dolgozók
+  * vendégmunkások.
+
 
 [Kezdőlap](README.md)
