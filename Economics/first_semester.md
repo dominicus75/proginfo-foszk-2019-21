@@ -717,8 +717,6 @@ befolyásoló nem jövedelmi tényezők (pl. a nők munkavállalását elősegí
 3. Az **oktatási rendszer** kibocsátási jellemzőinek és a munkáltatói igényeknek a
 megfelelése.
 
-A munkapiacot egyensúlyban levőnek tekintjük, amikor a munka aggregált kereslete
-megegyezik aggregált kínálatával.
 
 ### 10.2 Az árupiac, pénzpiac és munkaerőpiac közgazdaságtana
 
@@ -756,6 +754,22 @@ a kínálattal. **Az árupiaci kereslet azon javak mennyisége, amelyet a gazdas
 szereplői az adott árszínvonalon vásárolni szeretnének**. A makrogazdaság **árukínálatán
 azt a termékmennyiséget értjük, amelyet a gazdaság szereplői adott technológiai
 kapacitások mellett, adott árszínvonalon hajlandóak termelni**.
+
+*A makrogazdaság árukereslet legfontosabb befolyásoló tényezői:*
+* jövedelem ( elképzelt, tervezett jövedelem)
+* pénzmennyiség
+* valamint az előbbieket befolyásoló tényezők (itt leginkább az állam gazdaságpolitikája
+a meghatározó).
+
+Az összgazdasági **fogyasztás** az egyes gazdasági szereplők fogyasztásából tevődik
+össze. A legfontosabb befolyásoló tényező a jövedelem, amelynek egy részét használják
+fel mindig áru-, és szolgáltatásvásárlásokra. A **megtakarítás** az a jövedelemrész,
+amit nem költenek el fogyasztási célra.
+
+A fogyasztási és beruházási keresletet a tervezett jövedelemtől függően vizsgáltuk.
+Különböző jövedelemszintekhez különböző összkeresleti szintek tartoznak. **Egyensúlyi
+jövedelemről** beszélünk, ha a tervezett jövedelem egyenlő a tervezett fogyasztás
+és a szándékolt beruházás összegével.
 
 **A pénzpiac**
 
@@ -821,9 +835,10 @@ pénzmennyiséggel.
 
 **A munkaerőpiac**
 
-A munkaerőpiac vagy munkapiac a munka, mint termelési tényező adásvételét közvetíti.
-A munkaerő az emberek munkavégző képessége, a munka pedig a termelési tényező. A
-munka nem választható el attól a személytől, aki végzi azt. A munka maga pedig
+A munkapiac egy nemzetgazdaságban adott időszak alatt jelentkező összes munkakereslet és
+munkakínálat, valamint azok kölcsönhatása. A munkapiacon a munka (vagy munkaerő) adásvétele
+történik. A munkaerő az emberek munkavégző képessége, a munka pedig a termelési tényező.
+A munka nem választható el attól a személytől, aki végzi azt. A munka maga pedig
 csak a termelés folyamatában kerül kifejtésre. Az adásvétel során egy szerződést
 kötnek, amelyben az eladó kötelezi magát a munka elvégzésére (munkavégző képességének
 kifejtésére), aminek ellentételeként munkabért kap.
@@ -832,6 +847,43 @@ A **nominálbér vagy pénzbér a munka ára**, vagyis az a pénzmennyiség, ami
 felhasználója a munka tulajdonosának fizet. A nominálbért valamilyen időegységre
 (egy órára, egy hónapra) vetítjük, azaz dimenziója: Ft/idő. A **reálbér** az a
 jószágmennyiség, amit a fogyasztó adott árak mellett nominálbéréből vásárolhat.
+
+A munkapiacot egyensúlyban levőnek tekintjük, amikor a munka aggregált kereslete
+megegyezik aggregált kínálatával.
+
+**Munkaképes korú** a lakosság azon része, amelyik a tanulási illetve képzési fázison
+túl van és a nyugdíjkorhatár előtt áll. A munkapiac kínálatának forrása a munkaképes
+népesség.
+
+Az *aktív népesség:* a munkaképes népesség azon része, amelyik a munkapiacon megjelenik
+és hajlandó és képes munkát vállalni. Az *inaktív népesség:* tagjai nem hajlandóak
+(bár tudnának) munkát vállalni, mert megélhetésüket más forrásból fedezik (pl.
+vagyonból vagy eltartottak), vagy külső tényezők akadályozzák meg őket a
+munkavállalásban (pl. sorkatonák vagy korlátozottan munkaképesek).
+
+**A munkaerőpiac legfontosabb mutatószámai**
+* *aktivitási ráta:* az aktív népesség és a munkaképes korú népesség százalékban
+kifejezett aránya
+* *foglalkoztatási ráta:* a munkában állók aránya a munkaképes korú népességen
+belül (foglalkoztatott az, aki az adott héten legalább egy órányi, jövedelmet
+biztosító munkát végzett, illetve rendelkezett olyan munkahellyel, ahonnan
+átmenetileg – betegség, szabadság stb. miatt – volt távol)
+* *munkanélküliségi ráta:* a munkanélkülieknek a teljes munkaerő-állományon
+belüli részarányát mutatja.
+
+A munkanélküliek csoportosítását a közgazdaságtan döntően a munkanélküliséget
+kiváltó okok szerint végzi el. A munkanélküliség okainak feltárása a makroökonómia
+egyik fontos feladata. Közgazdaságtani szempontból a legfontosabb megkülönböztetés a
+munkanélküliség kialakulásához való egyéni, szubjektív viszony. Ebből a megközelítésből
+beszélhetünk
+* *szándékolt (vagy önkéntes)** munkanélküliségről, ha a munka nélkül maradt dolgozók
+nem kívánnak változtatni helyzetükön, vagy maguk választották azt.
+* *kényszerű* munkanélküliségről, amikor a munka nélkül maradtak munkát keresnek,
+de nem találnak.
+
+A munkanélküliségnek azt a nagyságát, amely a munkapiac mennyiségi egyensúlya mellett
+is létezik, és amely a gazdaság állapotától függetlenül tartósan fennáll, természetes
+munkanélküliségnek nevezzük.
 
 
 [Kezdőlap](README.md)
