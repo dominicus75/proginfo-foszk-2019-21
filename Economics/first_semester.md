@@ -253,6 +253,10 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 #### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
+![Imgur](https://i.imgur.com/lcfAgZa.png)
+
+[Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall)
+
 
 #### 5.2 Fogyasztói magatartás
 
@@ -360,6 +364,8 @@ alapozva alkották meg az első közgazdasági modelleket.
 
 #### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
+![Imgur](https://i.imgur.com/lcfAgZa.png)
+
 
 #### 6.2 Költség/haszon egyensúly
 
@@ -385,15 +391,95 @@ során megjelenő többlet vállalati haszon jelenértéke.
 
 #### 6.3 Árkalkuláció és a piac viszonya
 
+Az **ár** egy termék vagy szolgáltatás egy egységéért fizetett ellenérték. A piaci
+szereplők és erőviszonyok mind hatással lehetnek az árak kialakítására, és ezek
+együttes hatásaként alakul ki a termék végső ára.
+
+**Az ár funkciói:**
+* fedezze a költségeket és profitot termeljen,
+* tükrözze a piaci viszonyokat,
+* fejezze ki a társadalmi preferenciákat,
+* orientálja a vásárlókat.
+
+A vállalat  (termelő) és a kereskedő erőviszonya alapján dől el, hogy melyik fél
+milyen erővel tud hatni az árak alakulására. A **termelő domináns** abban az esetben,
+ha kínálata valamilyen szempontból versenytárs nélküli a piacon. Elsősorban multicégek
+vannak olyan helyzetben, hogy a termék útját egészen a fogyasztóig nyomon tudják
+követni, és képesek a kereskedőket rászorítani az általuk meghatározott árak követésére.
+A **kereskedő domináns**, ha nagymérvű piaci részesedése van és több kisebb szállítóval
+tartja a kapcsolatot. **Kiegyenlített erőviszonyok** esetén az ár alku tárgya, a
+termelő és a kereskedő közösen állapítja meg.
+
+A vevők általában alacsonyabb ár mellett több terméket vásárolnak, magasabb ár
+mellett kevesebbet. Az ármozgásokra következő kereslet változásokat a vevők árérzékenysége
+határozza meg. Vevők ármagatartását jellemezheti az, hogy az ár hol helyezkedik el
+a vevő preferenciái között. Minél magasabban preferált jellemző az ár, annál érzékenyebben
+reagál a vevő annak változására. Az **árrugalmasság** megmutatja, hogy 1% árváltozás
+hány százalék keresetváltozást okoz. Bizonyos **presztízs-termékek** esetében
+**árparadoxon** lép fel, ami azt jelenti, hogy *a növekvő ár növeli a keresletet*.
+
+**Árérzékenységet befolyásoló tényezők:**
+* A termék egyedisége,
+* Helyettesíthetőség (ha van helyettesítő termék, akkor nagyobb az árérzékenység),
+* Összehasonlítás bonyolultsága,
+* Költekezés mértéke (mennyire jelent a vásárlás nagy kiadást),
+* Az ár-minőség kapcsolat (jelenti-e a magas ár a jó minőséget?),
+* Raktározhatóság (diszkont termékek esetében az alacsony ár növeli a keresletet).
+
+Az árak alsó határa azok önköltsége, felső határa pedig az az összeg, amit a piacon
+a fogyasztó egyáltalán hajlandó megadni az adott termékért. E két határ jelöli ki
+azt a sávot, amiben a termék végső árát meg kell határozni. Az optimális árkialakításhoz
+figyelembe kellene venni az összes árképzésre ható tényezőt, azonban mivel ez sokszor
+nem megoldható, így egyszerűsített árképzési módszereket kell igénybe venni:
+Az árak alsó határa azok önköltsége, felső határa pedig az az összeg, amit a piacon a fogyasztó egyáltalán hajlandó megadni az adott termékért. E két határ jelöli ki azt a sávot, amiben a termék végső határát meg kell határozni. Az optimális árkialakításhoz figyelembe kellene venni az összes árképzésre ható tényezőt, azonban mivel ez sokszor nem megoldható, így egyszerűsített árképzési módszereket kell igénybe venni:
+* Költségorientált árképzés (önköltség + haszon).
+* Kereskedelmi cégeknél az önköltségbe a beszerzési áron felül még figyelembe veszik
+az egyéb kapcsolódó költségeket is. A költségviselő képesség elve szerit azon
+termékeknél amelyek jobban elviseli a költségeket, magasabb haszonkulcsot lehet
+érvényesíteni.
+* Keresletorientált árképzés: a kereslethez igazítják az árakat.
+* Konkurencia-orientált árképzés: különösen erős a kényszer a versenytársak árainak
+követésére, ha gyenge a vállalat piaci pozíciója (nem diktálhat feltételeket), vagy
+árérzékeny termékeket forgalmaz.
+* Árimázs: azt jelenti, hogy az adott kereskedelmi cég üzleteit a vevők mennyire
+tartják az árak szempontjából kedvező vásárlási helynek.
 
 #### 6.4 A munkakultúra és hatékonyság értékelése
 
 **Munkakultúra**
 
+A munkakultúra a korszerű technikák, munkavégzéssel szorosan összefüggő technológiák
+szakmai ismeretének és alkotó alkalmazásának, a munkaerő társadalmi méretekben
+történő felkészültségének, szaktudásának szintjét és hatékonyságát kifejező komplex
+fogalom. A munkakultúra fejlettsége meghatározó hatással van az adott ország gazdaságának
+fejlődési szintjére (dr. Poór Ferenc).
+
+A munkakultúra mindezeken túl a munka szeretete (magasabb szinten szenvedélye),
+esztétikája és etikája, a munkacsoportokban való pozitív együttműködés képessége,
+a kezdeményezés és az esetenként nélkülözhetetlen újrakezdés, a következetesség és
+a célhoz érés kitartása. Így a munkakultúra fogalma közeli rokonságban van a művelt,
+alkotó, kezdeményező, tevékeny ember fogalmával.
+
+Tömören: a munkakultúra értékek, hitek, szokások, viselkedési normák (ígéretek betartása,
+döntési mód, tudásmegosztás, nyílt kommunikáció, együttműködés, stb.) összessége.
 
 **Hatékonyság**
 
+A hatékonyság a kibocsátás és a ráfordítás viszonyszáma. Egy adott tevékenység során
+előállított, termékek, szolgáltatások és egyéb eredmények, valamint az előállításukhoz
+felhasznált források közötti kapcsolat. A hatékonyság fogalmát két oldalról vizsgálhatjuk:
+a meghatározott cél elérése a lehető legkisebb ráfordítással (minimum elve), vagy
+az adott ráfordítással a lehető legjobb eredmény elérése (maximum elv). A hatékonyság
+fogalma nem egyenlő a hatásosság fogalmával. A hatásosság csak az eredmények mérésén
+alapul, míg a hatékonyság esetében az eredmények és a ráfordítások mérése együttesen
+történik.
 
+A **hatékonysági mutató** az egységnyi felhasznált erőforrásra jutó kibocsátásmennyiséget
+jelenti. A **termelékenységi mutató** az élőmunka hatékonyságát méri, az egy munkaórára
+vagy az egy főre jutó kibocsátás fejezhető ki vele. Egy **erőforrás jövedelmezősége**
+az erőforrás felhasználásával előállított termékek bevételének és az erőforrás
+értékének az aránya. Egy vállalat jövedelmezősége az összes termelési érték és a
+felmerülő költségek arányát jelenti.
 
 
 ## 7. tétel
