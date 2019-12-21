@@ -251,7 +251,38 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 ### Piaci viszonyok gazdaságtana (1).
 
-#### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
+#### 5.1 A Marshall-kereszt
+
+A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
+– **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
+helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
+piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
+görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
+tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
+vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
+ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
+folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
+alakulnak ki.
+
+![Imgur](https://i.imgur.com/jXG2qig.png)
+
+Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
+nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
+esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
+alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
+A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
+áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
+növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
+**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
+
+Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
+kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
+Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
+azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
+érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
+viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
+
+#### 5.2 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
 A **kereslet** a vevők vásárlási szándéka egy árura vonatkozóan. Számszerűsítve az
 az árumennyiség, melyet az emberek hajlandók és képesek megvenni a különböző árak
@@ -297,36 +328,7 @@ kínálat mellett az egyensúlyi ár növekedése miatt a termék magasabb áron
 tolódik**. Változatlan kínálat mellett az egyensúlyi ár csökken, a termékek alacsonyabb
 áron kerülnek értékesítésre.
 
-![Imgur](https://i.imgur.com/jXG2qig.png)
-
-A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
-– **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
-helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
-piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
-görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
-tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
-vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
-ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
-folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
-alakulnak ki.
-
-Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
-nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
-esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
-alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
-A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
-áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
-növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
-**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
-
-Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
-kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
-Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
-azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
-érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
-viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
-
-#### 5.2 Fogyasztói magatartás
+#### 5.3 Fogyasztói magatartás
 
 Mikroökonómiai értelemben termékpiacon a végső fogyasztásra kerülő javak, vagyis
 a fogyasztási cikkek piacát értjük. A fogyasztás célja és értelme a szükségletek
@@ -364,7 +366,7 @@ elérhető hasznosság maximalizálása. A fogyasztói magatartás vizsgálatán
 a hasznosság. Ennek értelmezése, mérése a fogyasztói döntések modellezésének legnehezebb
 kérdése.
 
-#### 5.3 Költségvetési korlát
+#### 5.4 Költségvetési korlát
 
 ![Imgur](https://i.imgur.com/sRZtaRL.png)
 
@@ -381,7 +383,7 @@ adott jövedelméből meg tud vásárolni, a szakirodalom többféle elnevezéss
 amelyek közül a leggyakoribb a megvásárolható, **elérhető javak halmaza** kifejezés,
 de előfordul a költségvetési halmaz is.
 
-#### 5.4 Hermann Gossen törvényei és a haszonelmélet
+#### 5.5 Hermann Gossen törvényei és a haszonelmélet
 
 A hasznosság a fogyasztó szükségleteinek kielégítettsége. A hasznosság fogalmán
 valamely jószág hasznos tulajdonságainak összességét értjük, illetve azt a kielégülést,
@@ -429,11 +431,7 @@ alapozva alkották meg az első közgazdasági modelleket.
 
 ### Piaci viszonyok gazdaságtana (2).
 
-#### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
-
-
-
-![Imgur](https://i.imgur.com/jXG2qig.png)
+#### 6.1 A Marshall kereszt
 
 A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
 – **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
@@ -446,9 +444,28 @@ vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az 
 folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
 alakulnak ki.
 
+![Imgur](https://i.imgur.com/jXG2qig.png)
+
+Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
+nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
+esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
+alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
+A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
+áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
+növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
+**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
+
+Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
+kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
+Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
+azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
+érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
+viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
+
+#### 6.2 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
 
-#### 6.2 Költség/haszon egyensúly
+#### 6.3 Költség/haszon egyensúly
 
 A **költség-haszon elemzés (Cost Benefit Analysis, CBA)** eszköz a projektberuházás
 gazdasági előnyeinek megbecsléséhez. Vizsgálja az adott projektberuházás során
@@ -470,7 +487,7 @@ mutatja meg. *Azok a beruházások valósíthatóak meg, amelyeknél az index é
 nagyobb, mint egy*, azaz a költségek jelenértéke kisebb, mint a beruházás megvalósulása
 során megjelenő többlet vállalati haszon jelenértéke.
 
-#### 6.3 Árkalkuláció és a piac viszonya
+#### 6.4 Árkalkuláció és a piac viszonya
 
 Az **ár** egy termék vagy szolgáltatás egy egységéért fizetett ellenérték. A piaci
 szereplők és erőviszonyok mind hatással lehetnek az árak kialakítására, és ezek
@@ -525,7 +542,7 @@ követésére, ha gyenge a vállalat piaci pozíciója (nem diktálhat feltétel
 * Árimázs: azt jelenti, hogy az adott kereskedelmi cég üzleteit a vevők mennyire
 tartják az árak szempontjából kedvező vásárlási helynek.
 
-#### 6.4 A munkakultúra és hatékonyság értékelése
+#### 6.5 A munkakultúra és hatékonyság értékelése
 
 **Munkakultúra**
 
