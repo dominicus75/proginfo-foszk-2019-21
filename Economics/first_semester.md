@@ -63,12 +63,13 @@ Közgazdaságtan, 4. o.
 minden olyan meghatározott értékkel bíró tárgy, amely a kereskedelmi forgalomban
 hosszabb-rövidebb ideig mint állandó fizetési eszköz használatos, amelynek átadásával
 dolgokat lehet megvásárolni, illetve adósságokat törleszteni. A pénz attól fizetési
-eszköz, mert a csereeszköz használata jogilag érvényes tranzakciót hoz létre.
-
+eszköz, mert csereeszközként való használata jogilag érvényes tranzakciót hoz létre.
 A pénz kialakulása és fejlődése szorosan összekapcsolódik a munkamegosztás, a
-kereskedelem és a piac fogalmával, fejlődésével. **Pénz az, amit a piac annak fogad
-el, vagyis megállapodás kérdése**. A pénz a leglikvidebb jószág (költség nélkül
-elcserélhető), ezáltal a csere lebonyolítására a legalkalmasabb eszköz.
+kereskedelem és a piac fogalmával, fejlődésével.
+
+**Pénz az, amit a piac annak fogad el, vagyis megállapodás kérdése**. A pénz a
+leglikvidebb jószág (költség nélkül elcserélhető), ezáltal a csere lebonyolítására
+a legalkalmasabb eszköz.
 
 Az az árú, amely – megállapodás folytán – az áruvilágból kiemelkedik az árucsere
 lebonyolítása érdekében, általános egyenértékesnek tekinthető. Ahhoz, hogy egy dolog
@@ -92,18 +93,18 @@ tesz.”* (Arisztotelész)
 likvid, lebonyolítja az áruk adásvételét, a tranzakciókat. A forgalmi eszköz
 funkcióban a pénz térben és időben együtt mozog az áruval, de azzal ellentétes
 irányban.
-* *Fizetési eszköz (cseretárgy):* a pénzmozgás elválik az árumozgástól. A korábban
-keletkezett fizetési kötelezettség (hiteltartozás), vagy az árutól teljesen független
-pénzáramlás (pl. adó, segély) valósul meg.
+* *Fizetési eszköz:* a pénzmozgás elválik az árumozgástól. A korábban keletkezett
+fizetési kötelezettség (hiteltartozás), vagy az árutól teljesen független pénzáramlás
+(pl. adó, segély) valósul meg.
 * *Felhalmozási eszköz:* ez a pénzfunkció a forgalmi eszköz és az értékmérő funkcióból
 adódik. A pénz formájában felhalmozott vagyon a leglikvidebb vagyonforma, hiszen
-bármikor, vásárolható rajta más vagyontárgy.
+bármikor vásárolható rajta más vagyontárgy.
 * *Nemzetközi pénz:* a pénz világpénz funkciójáról beszélünk, ha valamely pénzeszköz
 nemzetközi áru- és pénzforgalomban tölti be a pénz funkcióit (napjainkban ezt leginkább
 az amerikai dollár tölti be).
 
-Az értékmérő és forgalmi eszköz funkció folyamatos és általános betöltése nélkül
-nem beszélhetünk pénzről.
+**Az értékmérő és forgalmi eszköz funkció folyamatos és általános betöltése nélkül
+nem beszélhetünk pénzről**.
 
 **A pénz értéke**
 * **belső, önmagában vett érték:** ritkaságából, forgalomképességéből, egyéb belső
@@ -135,8 +136,8 @@ pénze felett.
 A beruházási-befektetési döntéseinknél az időnek speciális szerepe van. A tőkebefektetések
 értékelésénél mindig figyelembe kell venni az időt. Csak azonos időpontra átszámított
 jövedelmeket és költségeket szabad összehasonlítani! Ennek kapcsán beszélünk a
-tőke (tőkebefektetés, jövedelem) jelenlegi értékéről, vagy röviden jelenértékéről
-(Present Value, PV) és jövőbeni vagy röviden jövőértékéről (Future Value, FV).
+tőke (tőkebefektetés, jövedelem) jelenlegi értékéről, vagy röviden **jelenértékéről
+(Present Value, PV)** és jövőbeni vagy röviden **jövőértékéről (Future Value, FV)**.
 
 A **jelenérték (Present Value, PV)** egy jövőbeni pénzösszeg vagy pénzösszeg sorozat
 mai pénzben kifejezve. Ehhez használatos a diszkontálás módszere.
@@ -197,24 +198,23 @@ A természeti tényezők két csoportra oszthatók:
   időbe telik. A nem megújuló energiaforrás nem gyártható, termeszthető, illetve
   nem újrafelhasználható a fogyasztással megközelítő mértékben. Ide tartoznak az
   ásványkincsek, ércek, szén, kőolaj, földgáz, amelyek készletei végesek.
-* **Tőke:** a gazdasági rendszer terméke, korábbi termelési
-folyamatban létrehozott eszközök, pénz, tudás, amelyeket a további termelésben
-használnak fel jövedelemszerzési céllal. A tőke különböző formában jelenhet meg.
-Ennek alapján beszélünk reáltőkéről (gépek, berendezések, áruk) és nomináltőkéről
-(pénz és értékpapír).
+* **Tőke:** a gazdasági rendszer terméke, korábbi termelési folyamatban létrehozott
+eszközök, pénz, tudás, amelyeket a további termelésben használnak fel jövedelemszerzési
+céllal. A tőke különböző formában jelenhet meg. Ennek alapján beszélünk reáltőkéről
+(gépek, berendezések, áruk) és nomináltőkéről (pénz és értékpapír).
 * **Vállalkozás:** a vállalkozói tevékenységek összessége. A vállalkozó, mint termelési
 tényező vállalkozói képességeivel, felkészültségével irányítja és ellenőrzi a
 termelési folyamatokat, felhasználja, tudatosan összehangolja a többi termelési
 tényezőt.
 
 Mivel a természeti erőforrások és a munka eredeti formájában, átalakítás nélkül
-képezi a termelés feltételét, ezért ezeket elsődleges vagy eredeti termelési
-tényezőknek nevezzük. A tőke javakat, mivel maguk is termelési folyamatban jöttek
-létre, származékos termelési tényezőknek nevezzük.
+képezi a termelés feltételét, ezért ezeket **elsődleges** vagy **eredeti termelési
+tényezőknek** nevezzük. A tőke javakat, mivel maguk is termelési folyamatban jöttek
+létre, **származékos termelési tényezőknek** nevezzük.
 
 A szűkösség nemcsak a szükségletkielégítésre alkalmas javakra, hanem e javak
-előállításához nélkülözhetetlen hagyományos termelési tényezőkre is igaz. Sőt, a
-javak szűkössége mögött a termelési tényezők szűkössége húzódik meg.
+előállításához nélkülözhetetlen hagyományos termelési tényezőkre is igaz. Sőt, **a
+javak szűkössége mögött a termelési tényezők szűkössége húzódik meg**.
 
 Az előzőekhez képest sajátos termelési tényező a tudás, az információ. A tudományos
 kutatás „termeli”. Az oktatás teremti meg megértésének, befogadásának, alkalmazásának
@@ -227,7 +227,7 @@ oldalán lehet. Nagyon veszélyes szűkösség, hiszen az információ robbanás
 fejlődése végérvényesen elmaradottá teheti a lemaradókat. Legyen az személy, ország,
 vagy földrajzi régió.
 
-A termelési tényezők különböző kombinációit technológiának nevezzük. A fejlett
+**A termelési tényezők különböző kombinációit technológiának nevezzük**. A fejlett
 országokban általában **tőkeintenzív (sok tőkét és viszonylag kevés, de magas szinten
 képzett munkaerőt alkalmazó)** technológiákat alkalmaznak. A kevésbé fejlett gazdaságok
 ezzel szemben inkább a sok munkát igénylő **munkaintenzív technológiákat** hasznosítják.
@@ -255,32 +255,45 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
 – **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
-helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
-piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
-görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
-tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
-vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
-ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
+helyzet elemzésére. A Marshall-kereszt lényege, hogy monitorozza a piaci
 folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
 alakulnak ki.
 
+A piaci működés elemzésének Marshall által kifejlesztett módszere egyetlen termék
+elszigetelt piacát vizsgálja, ahol a termék keresett mennyisége csak saját árának
+függvénye, nem függ más termékek árától. Ez a piaci egyensúly tehát részpiaci
+egyensúly. E feltételek mellett a margarin keresett mennyisége például független
+a vaj árától (helyettesítő termék). E mellett a marshall-i keresleti függvény eltekint
+az árváltozás jövedelemhatásától (reáljövedelem), ezért azt később John Hicks az
+árváltozás jövedelemhatásával korrigálta. Ez az ún. korrigált, vagy Hicks-i keresleti
+függvény.
+
+Marshall piaci modellje statikus modell. Segítségével megérthetjük, hogy a piaci
+egyensúlytalanság esetén szükségszerűen működésbe lépnek az egyensúly irányába ható
+mechanizmusok, erők.
+
 ![Imgur](https://i.imgur.com/jXG2qig.png)
 
-Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
-nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
-esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
-alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
-A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
-áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
-növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
-**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
+**Kínálati többlet, túlkínálat** van a piacon, ha a piaci ár az egyensúlyi ár fölött
+van, mert ilyenkor az eladók többet akarnak eladni, mint amennyit a vevők hajlandók,
+illetve képesek megvásárolni. Ilyen esetben a piaci automatizmusok működése az ár
+csökkenését eredményezi, azaz a termelők alacsonyabb áron is hajlandók adni a terméküket,
+amit a fogyasztók hajlandók megvásárolni. A kínált mennyiség csökkenni fog, mivel
+lesznek olyan termelők, akiknek az alacsony áron már nem éri meg piacra vinni a
+terméket. A keresett mennyiség pedig természetesen növekedni fog, hiszen több
+fogyasztó hajlandó az olcsóbb terméket megvásárolni. **Az árcsökkenés mindaddig
+folytatódik, amíg ki nem alakul az egyensúlyi ár**.
 
-Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
-kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
+**Túlkereslet, vagy hiány** akkor jellemzi a piacot, amikor a piaci ár az egyensúlyi
+ár alatt van, mert az áruból többet vásárolhatnánk, mint amennyit a termelők kínálnak.
 Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
 azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
 érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
 viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
+
+Az **egyensúlyi ár** az az ár, amelynél a kereslet és a kínálat egyenlő, ezt a két
+görbe metszéspontja jelöli ki. Egyensúlyi mennyiség az ehhez tartozó keresett,
+illetve kínált árutömeg.
 
 #### 5.2 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
@@ -303,37 +316,64 @@ Ez azt jelenti, hogy az ár és a kereslet mennyisége között negatív korrel�
 Vagyis ha minden egyéb feltétel és körülmény változatlan, akkor az alacsonyabb árakhoz
 nagyobb kereslet tartozik.
 
-Ha megváltozik valami a kereslet mennyiségét befolyásoló alábbi tényezők közül és
-az **nem a termék ára**, akkor a **kereslet megváltozásáról** beszélünk. **A kereslet
-akkor változik, ha a piaci ártól függetlenül változik meg a keresett mennyiség**.
+**Paradox árhatások**
 
-A kereslet mennyisége két okból csökkenhet:
-1. **helyettesítési hatás:** ha egy jószág ára nő, akkor a fogyasztók árérzékenyebb
-hányada igyekszik azt helyettesíteni egy olcsóbb, de ugyanazon szükségletet kielégítő
-másik jószággal (pl. ha az egyik húsfajta drágul, az emberek a másik – olcsóbb – fajtát
-fogják inkább venni).
-2. **jövedelmi hatás:** ha egy jószág ára nő, azt a fogyasztó a saját reáljövedelmének
-csökkenéseként érzékeli (kevesebbet tud vásárolni belőle, mint eddig, vagyis a pénze
-kevesebbet ér).
+Attól az általános szabálytól, hogy az ár és a keresett mennyiség ellentétes irányban
+mozog, vannak kivételek:
+* **presztízs-, vagy sznobhatás:** amikor egy divatos árucikk ára csökken, és a
+fogyasztók egy része azért nem vásárolja, mert olcsóbban már bárki megveheti.
+* **spekulációs hatás:** amikor az áremelésre a fogyasztók többletvásárlással reagálnak,
+további áremelésre számítva.
+* **[Veblen-hatás](https://hu.wikipedia.org/wiki/Konzumizmus):** amikor a fogyasztó
+az árakhoz kapcsolja a minőséget. Többet vásárol magasabb áron, mert azt gondolja
+hogy ami drágább, az jobb minőségű, és fordítva.
 
-**A kereslet mennyisége függ a fogyasztók átlagjövedelmétől, a piac nagyságától,
-az adott jószággal összefüggő keresletű vagy azt helyettesítő termékek árától**. A
-fenti objektív tényezők mellett számításba kell venni szubjektív tényezőket is,
-úgy mint a *fogyasztói ízlést*, vagy a *fogyasztói preferenciákat*, illetve sajátos
-– egyéb – tényezőket (pl. időjárás).
+Ha a keresletre ható tényezők közül nem az ár, hanem az egyéb tényezők valamelyike
+változik, akkor maga a kereslet változik. Ekkor a keresleti görbe eltolódik. **A
+kereslet akkor változik, ha a piaci ártól függetlenül változik meg a keresett
+mennyiség**.
+
+**A kereslet mennyisége több okból csökkenhet:**
+* A **jövedelem csökkenése**, ha a termék normál termék.
+* A **helyettesítő termékek** árának csökkenése.
+* Az adott termékkel **kiegészítő** viszonyban lévő áru árának növekedése.
+* A fogyasztó azon várakozása, hogy a jövőben a termék olcsóbb lesz.
+* A fogyasztó ízlésére ható tényezők, amelyek az adott terméket kevésbé kedveltté teszik.
+* Az adott piac által kiszolgált **népesség számának csökkenése**.
+
+**Amikor a kereslet csökken, az eredeti keresleti görbe balra, lefelé tolódik**.
+Változatlan kínálat mellett az egyensúlyi ár csökken, a termékek alacsonyabb áron
+kerülnek értékesítésre.
+
+**A keresletet növelő tényezők:**
+* A jövedelem növekedése.
+* A helyettesítő termékek árának növekedése (relatív árváltozás, vagyis termékünk
+olcsóbb lett a helyettesítő termékhez képest).
+* Az adott termékkel kiegészítő viszonyban lévő áru árának csökkenése (együtt fogyasztott
+termékek, pl. mokkacukor és kávé esetében).
+* A fogyasztó azon várakozása, hogy a jövőben a termék drágább lesz.
+* A fogyasztó ízlésére ható tényezők, pl. reklámok, amelyek az adott terméket népszerűbbé,
+kedveltebbé teszik.
+* Az adott piac által kiszolgált népesség számának növekedése (például a Balaton parton
+nyáron lényegesen többen vannak, mint télen).
 
 **Amikor a kereslet nő, az eredeti keresleti görbe eltolódik jobbra**. Változatlan
 kínálat mellett az egyensúlyi ár növekedése miatt a termék magasabb áron kerül
-értékesítésre. **Amikor a kereslet csökken, az eredeti keresleti görbe balra, lefelé
-tolódik**. Változatlan kínálat mellett az egyensúlyi ár csökken, a termékek alacsonyabb
-áron kerülnek értékesítésre.
+értékesítésre.
+
+A keresleti görbe eltolódásából a következő szabályok vonhatók le az áralakulásra
+illetve a kereslet és kínálat mennyiségére vonatkozóan (egyéb feltételeket változatlannak
+véve):
+* a keresletben bekövetkező növekedés növeli az árat, és növeli a kínálat mennyiségét,
+* a kereslet csökkenése csökkenti az árat és csökkentően hat a kínálatra.
+
 
 #### 5.3 Fogyasztói magatartás
 
 Mikroökonómiai értelemben termékpiacon a végső fogyasztásra kerülő javak, vagyis
 a fogyasztási cikkek piacát értjük. A fogyasztás célja és értelme a szükségletek
-kielégítése. A szükséglet minden végső fogyasztás alapvető mozgatórugója, hiányérzet,
-amely cselekvést vált ki önmaga megszüntetésére.
+kielégítése. **A szükséglet** minden végső fogyasztás alapvető mozgatórugója, **hiányérzet,
+amely cselekvést vált ki önmaga megszüntetésére**.
 
 A szükséglet-kielégítés eszközei a javak és szolgáltatások. A javak és szolgáltatások
 szűkössége miatt a szükségletek soha nem elégíthetők ki teljesen. A fogyasztó ezért
@@ -349,12 +389,8 @@ az egyén ízlésétől, jó vagy rossz szokásától.
 
 Amikor a fogyasztó a tényleges döntését hozza arról, hogy mit vásároljon, saját belső
 értékrendjéből indul ki, figyelembe veszi a javak hasznos tulajdonságait, személyes
-pénzjövedelmét és az árakat. Leegyszerűsítve úgy is fogalmazhatunk, hogy a fogyasztó,
-amikor vásárlási szándékkal megjelenik a piacon, három – a vásárlás szempontjából
-fontos – tényezőt visz magával. A saját kielégítésre váró szükségleteit, a saját
-értékrendjét tükröző preferencia-skáláját és a javak megvásárlásához szükséges
-pénzjövedelmét. A pénzjövedelmének nagysága a piacon kialakult árakkal együtt
-korlátozza, behatárolja választási lehetőségeit.
+pénzjövedelmét és az árakat. A pénzjövedelmének nagysága a piacon kialakult árakkal
+együtt korlátozza, behatárolja választási lehetőségeit.
 
 A **nominál jövedelem** egy pénzmennyiség, a **reáljövedelem** pedig a rajta megvásárolható
 áru- és szolgáltatásmennyiség. A jövedelemkorlát és az árak miatt nem minden
@@ -367,6 +403,11 @@ a hasznosság. Ennek értelmezése, mérése a fogyasztói döntések modellezé
 kérdése.
 
 #### 5.4 Költségvetési korlát
+
+A javak és szolgáltatások szűkössége miatt a szükségletek soha nem elégíthetők ki
+teljesen. A fogyasztó ezért rendszeresen választásra kényszerül, el kell döntenie,
+hogy szűkös jövedelemforrásait figyelembe véve mely szükségleteit elégíti ki. A
+választott lehetőség mindig egy másik alternatíváról való lemondást is jelent.
 
 ![Imgur](https://i.imgur.com/sRZtaRL.png)
 
@@ -392,7 +433,7 @@ szolgáltatás igénybevétele révén nyer. A fogyasztó alapvető célja adott
 rendszer mellett a fogyasztás révén elérhető hasznosság maximalizálása.
 
 A fogyasztói magatartás vizsgálatának kulcsfogalma a hasznosság. Ennek értelmezése,
-mérése a fogyasztói döntések modellezésének legnehezebb kérdése. A hasznosság tehát
+mérése a fogyasztói döntések modellezésének legnehezebb kérdése. A hasznosság
 a jószág oldaláról szemlélve olyan hasznos tulajdonságoknak összességét jelenti,
 amelyek alkalmassá teszik valamilyen emberi szükséglet kielégítésére. A fogyasztó
 oldaláról nézve pedig a hasznosság a jószág elfogyasztásával nyert haszonérzés,
@@ -408,16 +449,16 @@ német közgazdász ezt a törvényszerűséget így foglalta össze: *„Egy ad
 nagysága csökken, ha ezt az élvezetet megszakítás nélkül, folyamatosan elégítjük
 ki addig, amíg telítettség nem lép fel”* (Gossen I. törvénye).
 
-A fogyasztó nem az egy-egy termék elfogyasztása révén nyert hasznosságot akarja
+A fogyasztó nem egy-egy termék elfogyasztása révén nyert hasznosságot akarja
 maximalizálni, hanem az összfogyasztás révén nyertet. Így nem is egyszerűen termékeket,
 hanem inkább fogyasztói kosarakat hasonlít össze. **A fogyasztói kosár a fogyasztó
 által fogyasztott termékek, illetve szolgáltatások halmaza**. A fogyasztó mindaddig
-cserélgeti gondolatban a termékeket a fogyasztói kosarában, amíg az így elköltött
+cserélgeti gondolatban a termékeket a fogyasztói kosarában, **amíg az így elköltött
 pénz utolsó egységén megszerzett határhaszon valamennyi termékre vonatkozóan egyenlővé
-válik. Ezzel az eljárással lehet a fogyasztói döntést optimalizálni, vagyis az adott
+válik**. Ezzel az eljárással lehet a fogyasztói döntést optimalizálni, vagyis az adott
 jövedelemből megvásárolni a maximális összhasznot. A fogyasztói magatartás elméletének
 fejlődése során ez az összefüggés olyan lényegesnek bizonyult, hogy a közgazdászok
-külön elnevezéssel illették. Ez az előnykiegyenlítődés elve, vagy másként **Gossen
+külön elnevezéssel illették. Ez az **előnykiegyenlítődés elve**, vagy másként **Gossen
 II. törvénye**, amely kimondja, hogy **a fogyasztó akkor költi el optimálisan
 jövedelmét, ha az utolsó pénzegység által nyerhető határhaszon bármelyik termékre
 nézve ugyanakkora**.
@@ -435,42 +476,118 @@ alapozva alkották meg az első közgazdasági modelleket.
 
 A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
 – **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
-helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
-piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
-görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
-tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
-vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
-ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
+helyzet elemzésére. A Marshall-kereszt lényege, hogy monitorozza a piaci
 folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
 alakulnak ki.
 
+A piaci működés elemzésének Marshall által kifejlesztett módszere egyetlen termék
+elszigetelt piacát vizsgálja, ahol a termék keresett mennyisége csak saját árának
+függvénye, nem függ más termékek árától. Ez a piaci egyensúly tehát részpiaci
+egyensúly. E feltételek mellett a margarin keresett mennyisége például független
+a vaj árától (helyettesítő termék). E mellett a marshall-i keresleti függvény eltekint
+az árváltozás jövedelemhatásától (reáljövedelem), ezért azt később John Hicks az
+árváltozás jövedelemhatásával korrigálta. Ez az ún. korrigált, vagy Hicks-i keresleti
+függvény.
+
+Marshall piaci modellje statikus modell. Segítségével megérthetjük, hogy a piaci
+egyensúlytalanság esetén szükségszerűen működésbe lépnek az egyensúly irányába ható
+mechanizmusok, erők.
+
 ![Imgur](https://i.imgur.com/jXG2qig.png)
 
-Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
-nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
-esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
-alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
-A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
-áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
-növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
-**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
+**Kínálati többlet, túlkínálat** van a piacon, ha a piaci ár az egyensúlyi ár fölött
+van, mert ilyenkor az eladók többet akarnak eladni, mint amennyit a vevők hajlandók,
+illetve képesek megvásárolni. Ilyen esetben a piaci automatizmusok működése az ár
+csökkenését eredményezi, azaz a termelők alacsonyabb áron is hajlandók adni a terméküket,
+amit a fogyasztók hajlandók megvásárolni. A kínált mennyiség csökkenni fog, mivel
+lesznek olyan termelők, akiknek az alacsony áron már nem éri meg piacra vinni a
+terméket. A keresett mennyiség pedig természetesen növekedni fog, hiszen több
+fogyasztó hajlandó az olcsóbb terméket megvásárolni. **Az árcsökkenés mindaddig
+folytatódik, amíg ki nem alakul az egyensúlyi ár**.
 
-Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
-kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
+**Túlkereslet, vagy hiány** akkor jellemzi a piacot, amikor a piaci ár az egyensúlyi
+ár alatt van, mert az áruból többet vásárolhatnánk, mint amennyit a termelők kínálnak.
 Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
 azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
 érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
 viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
 
+Az **egyensúlyi ár** az az ár, amelynél a kereslet és a kínálat egyenlő, ezt a két
+görbe metszéspontja jelöli ki. Egyensúlyi mennyiség az ehhez tartozó keresett,
+illetve kínált árutömeg.
+
 #### 6.2 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
+Kínálaton azt a meghatározott mennyiségű árutömeget értjük, amelyet az árutermelők
+valamely piacon, adott áron eladásra felkínálnak. Valamely áru piaci kínálata az
+adott árut termelők egyéni kínálatainak összessége.
+
+A **kínálati görbe** a piaci ár és a termelők által eladni kívánt jószágmennyiség
+közötti kapcsolatot mutatja bármely lehetséges ár esetén, tehát azt, hogy különböző
+áraknál az eladók milyen mennyiséget értékesítenének, egyéb tényezők változatlansága
+mellett. **A kínálati görbe jobbra emelkedő irányú, azaz növekvő ár mellett a termelők
+(eladók) többet (vagy többen) hajlandók és képesek termelni**, és piacra vinni. Csökkenő
+árhoz kisebb kínált mennyiség tartozik, ilyenkor ugyanis az alacsonyabb ár már nem
+biztos, hogy minden vállalat költségét fedezi, ezek kivonulnak a piacról.
+
+Ha a kínálatra ható tényezők közül nem a termék ára, hanem az egyéb tényezők
+valamelyike változik, akkor maga a kínálati függvény változik, a kínálati görbe
+eltolódik. **A kínálat akkor változik, ha a piaci ártól függetlenül változik meg
+a felkínált mennyiség**.
+
+**A kínálatot növelő tényezők:**
+* A termelési tényezők árának csökkenése, például csökkennek a kamatok, vagy a
+bérköltségeket növelő társadalombiztosítási járulékok, így a munka ára.
+* Az adott termelési tényezőkkel alternatív módon előállítható termékek árának
+csökkenése esetén a vállalat inkább átcsoportosítja e területre a termelési tényezőket.
+* A technológia fejlődése, amely révén a termék egységét kisebb költséggel lehet előállítani.
+* Kapcsolódó, vagy alapanyagot biztosító ágazat termelésének alakulása.
+* A jövőre vonatkozó pozitív várakozások. Kedvező kilátások esetén a vállalatok jelentős
+fejlesztésekbe kezdenek.
+* A kínálati oldal szereplőinek száma. Ha több termelő állítja elő ugyanazt a terméket, a
+kínálat bármilyen ár mellett nagyobb lesz, mintha egyedüli termelő van a piacon.
+* Kedvező időjárás, például a mezőgazdaságban.
+
+**A kínálat növekedésének hatására a kínálati görbe jobbra, lefelé tolódik.**
+
+**A kínálatot csökkentő tényezők:**
+* A termelési tényezők árának növekedése.
+* Az adott termelési tényezőkkel alternatív módon előállítható termékek árának növekedése
+esetén a vállalat inkább átcsoportosítja e területről a termelési tényezőket, azokat a
+drágábbá váló termék termelésére használja.
+* A jövőre vonatkozó negatív várakozások (a jövőben a termék piaca kedvezőtlenül
+alakulhat, ára csökkenhet, nőhetek a piaci kockázatok).
+* Kedvezőtlen időjárás, aszály, árvíz vagy egyéb természeti katasztrófa.
+
+**A kínálat csökkenésének hatására a kínálati görbe balra, felfelé tolódik.**
+
+Az egyensúlyi ár az az ár, amelynél a kereslet és a kínálat egyenlő, ezt a két görbe
+metszéspontja jelöli ki. Egyensúlyi mennyiség az ehhez tartozó keresett, illetve
+kínált árutömeg.
+
+**Kínálati többlet, túlkínálat** van a piacon, ha a piaci ár az egyensúlyi ár fölött
+van, mert ilyenkor az eladók többet akarnak eladni, mint amennyit a vevők hajlandók,
+illetve képesek megvásárolni.
+
+**Túlkereslet, vagy hiány** akkor jellemzi a piacot, amikor a piaci ár az egyensúlyi
+ár alatt van, mert az áruból többet vásárolhatnánk, mint amennyit a termelők kínálnak.
+
+A kínálati görbe eltolódásából a következő szabályok vonhatók le az áralakulásra
+illetve a kereslet és kínálat mennyiségére vonatkozóan (egyéb feltételeket változatlannak
+véve):
+* **a kínálat növekedése csökkenti az árat és növeli a keresletet**,
+* **a kínálat csökkenése növeli az árat és csökkenti a keresletet**.
+
+A keresleti görbe esetében az ár változására a kereslet azonnal reagálhat. A kínálat
+azonban nem mindig tud azonnal növekedni vagy csökkenni, ha az ár megváltozik, mert
+ehhez időre van szükség.
 
 #### 6.3 Költség/haszon egyensúly
 
 A **költség-haszon elemzés (Cost Benefit Analysis, CBA)** eszköz a projektberuházás
-gazdasági előnyeinek megbecsléséhez. Vizsgálja az adott projektberuházás során
-felhasználni kívánt forrásokat és az általuk nyerhető bevételeket az összes lehetséges
-megoldási módozatra vonatkozóan. A költség-haszon elemzés elemei a **kereslet-kínálati
+gazdasági előnyeinek megbecsléséhez. Vizsgálja az adott beruházás során felhasználni
+kívánt forrásokat és az általuk nyerhető bevételeket az összes lehetséges megoldási
+módozatra vonatkozóan. A költség-haszon elemzés elemei a **kereslet-kínálati
 függvény**, a **nettó jelenérték**, a **jövedelmezőségi index** és a **megtérülési
 ráta**. A költségek figyelembe vételekor mind a beruházási, mind a működési költségeket
 figyelembe kell venni. A profit valamely gazdasági tevékenység során felmerült,
@@ -494,12 +611,12 @@ szereplők és erőviszonyok mind hatással lehetnek az árak kialakítására, 
 együttes hatásaként alakul ki a termék végső ára.
 
 **Az ár funkciói:**
-* fedezze a költségeket és profitot termeljen,
-* tükrözze a piaci viszonyokat,
-* fejezze ki a társadalmi preferenciákat,
+* fedezi a költségeket és profitot termeljen,
+* tükrözi a piaci viszonyokat,
+* kifejezi a társadalmi preferenciákat,
 * orientálja a vásárlókat.
 
-A vállalat  (termelő) és a kereskedő erőviszonya alapján dől el, hogy melyik fél
+A vállalat (termelő) és a kereskedő erőviszonya alapján dől el, hogy melyik fél
 milyen erővel tud hatni az árak alakulására. A **termelő domináns** abban az esetben,
 ha kínálata valamilyen szempontból versenytárs nélküli a piacon. Elsősorban multicégek
 vannak olyan helyzetben, hogy a termék útját egészen a fogyasztóig nyomon tudják
@@ -529,7 +646,6 @@ a fogyasztó egyáltalán hajlandó megadni az adott termékért. E két határ 
 azt a sávot, amiben a termék végső árát meg kell határozni. Az optimális árkialakításhoz
 figyelembe kellene venni az összes árképzésre ható tényezőt, azonban mivel ez sokszor
 nem megoldható, így egyszerűsített árképzési módszereket kell igénybe venni:
-Az árak alsó határa azok önköltsége, felső határa pedig az az összeg, amit a piacon a fogyasztó egyáltalán hajlandó megadni az adott termékért. E két határ jelöli ki azt a sávot, amiben a termék végső határát meg kell határozni. Az optimális árkialakításhoz figyelembe kellene venni az összes árképzésre ható tényezőt, azonban mivel ez sokszor nem megoldható, így egyszerűsített árképzési módszereket kell igénybe venni:
 * Költségorientált árképzés (önköltség + haszon).
 * Kereskedelmi cégeknél az önköltségbe a beszerzési áron felül még figyelembe veszik
 az egyéb kapcsolódó költségeket is. A költségviselő képesség elve szerit azon
