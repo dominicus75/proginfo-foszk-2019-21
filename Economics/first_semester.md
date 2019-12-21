@@ -253,10 +253,78 @@ kapcsolatok ismétlődését*. A gazdaság újratermelési folyamata a termelés
 
 #### 5.1 A fogyasztói érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
+A **kereslet** a vevők vásárlási szándéka egy árura vonatkozóan. Számszerűsítve az
+az árumennyiség, melyet az emberek hajlandók és képesek megvenni a különböző árak
+mellett adott termékből. A kereslet alapvető meghatározói az egyéni preferenciák.
+A piaci kereslet az egyéni keresletek összegét jelenti. A piaci kereslet görbéje
+úgy határozható meg, hogy összeadjuk az egyének által keresett mennyiséget minden
+egyes ár mellett.
+
+Egyéb tényezők változatlansága mellett a keresett mennyiség fordítottan arányos a
+termék piaci árával. A **keresleti görbe** – egyéb tényezők változatlansága mellett
+– a jószágból keresett mennyiség és az ár közti viszonyt szemléltei egy derékszögű
+koordináta-rendszerben, ahol a vízszintes tengely a mennyiséget, a függőleges pedig
+az árat képviseli. A görbe egy meghatározott időszakban meglévő összefüggést ábrázol.
+Azt a mennyiséget mutatja tehát, amelyet a vásárlók hajlandók megvásárolni egy adott
+áron. A **keresleti görbe általában balról jobbra lejt**, amit az elméleti közgazdászok
+gyakorta a **negatív meredekségű keresleti görbe törvényeként** fogalmaznak meg.
+Ez azt jelenti, hogy az ár és a kereslet mennyisége között negatív korreláció van.
+Vagyis ha minden egyéb feltétel és körülmény változatlan, akkor az alacsonyabb árakhoz
+nagyobb kereslet tartozik.
+
+Ha megváltozik valami a kereslet mennyiségét befolyásoló alábbi tényezők közül és
+az **nem a termék ára**, akkor a **kereslet megváltozásáról** beszélünk. **A kereslet
+akkor változik, ha a piaci ártól függetlenül változik meg a keresett mennyiség**.
+
+A kereslet mennyisége két okból csökkenhet:
+1. **helyettesítési hatás:** ha egy jószág ára nő, akkor a fogyasztók árérzékenyebb
+hányada igyekszik azt helyettesíteni egy olcsóbb, de ugyanazon szükségletet kielégítő
+másik jószággal (pl. ha az egyik húsfajta drágul, az emberek a másik – olcsóbb – fajtát
+fogják inkább venni).
+2. **jövedelmi hatás:** ha egy jószág ára nő, azt a fogyasztó a saját reáljövedelmének
+csökkenéseként érzékeli (kevesebbet tud vásárolni belőle, mint eddig, vagyis a pénze
+kevesebbet ér).
+
+**A kereslet mennyisége függ a fogyasztók átlagjövedelmétől, a piac nagyságától,
+az adott jószággal összefüggő keresletű vagy azt helyettesítő termékek árától**. A
+fenti objektív tényezők mellett számításba kell venni szubjektív tényezőket is,
+úgy mint a *fogyasztói ízlést*, vagy a *fogyasztói preferenciákat*, illetve sajátos
+– egyéb – tényezőket (pl. időjárás).
+
+**Amikor a kereslet nő, az eredeti keresleti görbe eltolódik jobbra**. Változatlan
+kínálat mellett az egyensúlyi ár növekedése miatt a termék magasabb áron kerül
+értékesítésre. **Amikor a kereslet csökken, az eredeti keresleti görbe balra, lefelé
+tolódik**. Változatlan kínálat mellett az egyensúlyi ár csökken, a termékek alacsonyabb
+áron kerülnek értékesítésre.
+
 ![Imgur](https://i.imgur.com/jXG2qig.png)
 
-[Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall)
+A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
+– **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
+helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
+piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
+görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
+tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
+vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
+ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
+folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
+alakulnak ki.
 
+Amennyiben az **egyensúlyinál magasabb ár** lenne a piacon, a kínált mennyiség
+nagyobb lenne a keresett mennyiségnél, azaz **túlkínálatról** beszélhetünk. Ilyen
+esetben a piaci automatizmusok működése az ár csökkenését eredményezi, azaz a termelők
+alacsonyabb áron is hajlandók adni a terméküket, amit a fogyasztók hajlandók megvásárolni.
+A kínált mennyiség csökkenni fog, mivel lesznek olyan termelők, akiknek az alacsony
+áron már nem éri meg piacra vinni a terméket. A keresett mennyiség pedig természetesen
+növekedni fog, hiszen több fogyasztó hajlandó az olcsóbb terméket megvásárolni.
+**Az árcsökkenés mindaddig folytatódik, amíg ki nem alakul az egyensúlyi ár**.
+
+Amennyiben az **egyensúlyinál alacsonyabb ár** lenne a piacon, a kínált mennyiség
+kisebb lenne, mint a keresett mennyiség, azaz **túlkeresletről (áruhiányról)** beszélhetünk.
+Ilyen esetben a piaci automatizmus működése miatt az ár emelkedni fog, hiszen a termelők
+azt látják, hogy szükség van a termékükre, az emberek többet is hajlandók fizetni
+érte. A magasabb áron természetesen több terméket visznek piacra, a keresett mennyiség
+viszont csökkenni fog. **Az automatizmus eredménye az egyensúlyi ár kialakulása lesz**.
 
 #### 5.2 Fogyasztói magatartás
 
@@ -336,8 +404,7 @@ elve. A fogyasztó döntését mindig az elfogyasztott utolsó egység hasznoss�
 befolyásolja. [Hermann Heinrich Gossen](https://hu.wikipedia.org/wiki/Hermann_Heinrich_Gossen)
 német közgazdász ezt a törvényszerűséget így foglalta össze: *„Egy adott élvezet
 nagysága csökken, ha ezt az élvezetet megszakítás nélkül, folyamatosan elégítjük
-ki addig, amíg telítettség nem lép fel”* (Gossen I. törvénye). Ennek egyenes
-mikroökonómiai következménye a javak keresleti görbéjének negatív meredeksége is.
+ki addig, amíg telítettség nem lép fel”* (Gossen I. törvénye).
 
 A fogyasztó nem az egy-egy termék elfogyasztása révén nyert hasznosságot akarja
 maximalizálni, hanem az összfogyasztás révén nyertet. Így nem is egyszerűen termékeket,
@@ -364,7 +431,21 @@ alapozva alkották meg az első közgazdasági modelleket.
 
 #### 6.1 A termelői érdekviszonyok bemutatása Alfred Marshall keresztje segítségével
 
+
+
 ![Imgur](https://i.imgur.com/jXG2qig.png)
+
+A **Marshall-kereszt** a mikroökonómiai piaci egyensúly modellje – [Alfred Marshall](https://hu.wikipedia.org/wiki/Alfred_Marshall) brit közgazdász után
+– **a keresleti és kínálati függvény együttes ábrázolása**, alkalmas egy piaci
+helyzet elemzésére. A két függvény metszéspontja határozza meg a egyensúlyi vagy
+piactisztító árat és a hozzá tartozó mennyiséget, ott ahol a keresleti és a kínálati
+görbe találkozik. Ez az az ár, amely esetén a keresett és a kínált mennyiség megegyezik,
+tehát a termelők által piacra vitt mennyiséget a vásárlók meg kívánják és tudják
+vásárolni, azaz a piacon felkínált mennyiség elfogy. Ilyenkor alakul ki az egyensúlyi
+ár és az egyensúlyi mennyiség. A Marshall-kereszt lényege, hogy monitorozza a piaci
+folyamatokat, azaz, hogy milyen kereslet és kínálat mellett milyen piaci árak
+alakulnak ki.
+
 
 
 #### 6.2 Költség/haszon egyensúly
