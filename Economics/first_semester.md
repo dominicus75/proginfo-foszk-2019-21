@@ -409,20 +409,31 @@ teljesen. A fogyasztó ezért rendszeresen választásra kényszerül, el kell d
 hogy szűkös jövedelemforrásait figyelembe véve mely szükségleteit elégíti ki. A
 választott lehetőség mindig egy másik alternatíváról való lemondást is jelent.
 
-![Imgur](https://i.imgur.com/sRZtaRL.png)
+![Imgur](https://i.imgur.com/615iCnm.png)
 
-A gyakorlatban a jószágkosarak sok termékből állnak. Ha egy kéttermékes (vagy termékcsoportos)
-modellt feltételezünk, így a döntési problémát grafikusan is tudjuk ábrázolni.
-A költségvetési egyenes pontjai által reprezentált fogyasztói kosarak megvásárlása
-a jövedelem teljes elköltését jelenti. Minden, ezen kívüli pont (jószágkombináció)
-az adott árak és adott jövedelem-nagyság mellett elérhetetlen. A költségvetési
+A gyakorlatban a jószágkosarak sok termékből állnak. Ha egy kéttermékes (vagy
+termékcsoportos) modellt feltételezünk, így a döntési problémát grafikusan is tudjuk
+ábrázolni. Egy fogyasztó közömbösségi görbéinek sokaságát közömbösségi térképnek
+nevezzük (ahol a görbék nem metszetik egymást).
+
+A **közömbösségi görbe** a fogyasztó számára azonos hasznosságú jószágkombinációk
+halmaza. Az origótól távolabb elhelyezkedő közömbösségi görbék nagyobb hasznosságú
+jószágkombinációt jelentenek. A közömbösségi görbék rendszere kifejezi a fogyasztó
+hasznossági értékítéletét, hasznosságra vonatkozó preferencia-rendszerét. A fogyasztó
+döntését a termékek hasznossági értékítéletén kívül a fogyasztásra rendelkezésre
+álló jövedelme és a jószágok ára befolyásolja. Ezeket a fogyasztás külső korlátainak
+is nevezik.
+
+A költségvetési egyenes olyan jószágkombinációk összessége, amely egy adott jövedelemből,
+annak teljes elköltésével, adott piaci árak mellett megvásárolható. A költségvetési
 egyenes ily módon a fogyasztó számára **költségvetési korlát** is, amely **megmutatja,
-hogy vásárlásaival meddig mehet el**. E mellett, ha a költségvetési halmazon belül
-az egyik termékcsoportból többet vásárol, ez automatikusan magával vonja, hogy a
-másikból kevesebbet tud. Azoknak a fogyasztói kosaraknak összességét, amelyeket a
-adott jövedelméből meg tud vásárolni, a szakirodalom többféle elnevezéssel illeti,
-amelyek közül a leggyakoribb a megvásárolható, **elérhető javak halmaza** kifejezés,
-de előfordul a költségvetési halmaz is.
+hogy vásárlásaival meddig mehet el**. A közömbösségi görbék és a költségvetési
+egyenes megrajzolásával megállapítható az optimális fogyasztói szerkezet. Ez a
+legmagasabban fekvő közömbösségi görbe és a költségvetési egyenes érintési pontjában
+található jószágkombináció. A költségvetési egyenes helyzete megváltozik, ha
+változik a fogyasztó jövedelme. Ekkor a költségvetési egyenes az eredetihez képest,
+azzal párhuzamosan jobbra vagy balra tolódik. Ha megváltozik a termékek áraránya,
+akkor az egyenes meredeksége változik meg.
 
 #### 5.5 Hermann Gossen törvényei és a haszonelmélet
 
