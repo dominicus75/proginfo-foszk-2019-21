@@ -168,8 +168,8 @@ jelenti. [...] Az adatmodell véges számú egyedtípusnak illetve azok egyenké
 véges számú tulajdonság- és kapcsolattípusának a szervezett együttese. [...] Az
 adatbázis tartalma strukturálisan az adatmodell felépítésének felel meg. Tehát a
 modell egyed-, tulajdonság- és kapcsolattípusai szerint rendezzük el az előfordulásokat.
-Azonban az adatmodell nem pusztán struktúra, hanem a típusok és az
-azokra vonatkozó korlátok szervezett együttese.”*<sup id="4">[[4]](#note4)</sup>
+Azonban az adatmodell nem pusztán struktúra, hanem a típusok és az azokra vonatkozó
+korlátok szervezett együttese.”*<sup id="4">[[4]](#note4)</sup>
 
 Az **[Adatmodell](https://hu.wikipedia.org/wiki/Adatmodell)** az adatbázis
 általános struktúrája. A valóság objektumait (egyedeit), ezek tulajdonságait és
@@ -253,13 +253,13 @@ egyesítő megoldások az objektum relációs adatbázis-kezelő rendszerek (ORD
 
 ### 1.6 Az E-K (E-R) modell alapelemei
 
-![Imgur](https://i.imgur.com/Wpes4XX.jpg)
-
 A valós világ jelenségeit egyedekkel, tulajdonságokkal és kapcsolatokkal leíró
 modellt egyed-kapcsolat modellnek, az ezt ábrázoló diagramot egyed-kapcsolat
 diagramnak nevezik. Rövidítve az E-K modell és E-K diagram, illetve az angol
 entity-relationship model elnevezés alapján az E-R modell és az E-R diagram
 elnevezések használatosak.
+
+![Imgur](https://i.imgur.com/Dlbp7CI.jpg)
 
 **Egyed (entitás, entity):** egy a valós világban létező dolog, amit a tulajdonságai
 (attribútumai) segítségével lehet leírni, azonosítani. Másképpen: *önálló lényeggel
@@ -328,7 +328,7 @@ adja meg az adatbázis struktúráját. Az adatbázis implementálásához a dia
 transzformálni kell valamilyen adatmodellre, ill. annak megfelelő nyelvi
 leírásra (pl. SQL).
 
-![Imgur](https://i.imgur.com/Wpes4XX.jpg)
+![Imgur](https://i.imgur.com/Dlbp7CI.jpg)
 
 E-K Diagram készítéséhez egy szabad szoftver: [Dia](http://dia-installer.de/), ha
 a [Libreoffice Draw](https://hu.libreoffice.org/termekbemutato/draw/) nem elég. A
@@ -529,15 +529,67 @@ együttese egy szervesen összefüggő adatbázist alkot.
 
 ### 3.2 Reláció fogalma és tulajdonságai
 
+A matematikában **halmazok Descartes-szorzatának részhalmazát** általában relációnak
+nevezik. Mivel az adattáblát relációként definiáltuk, innen kapta nevét a relációs
+adatmodell. Ahogy az E-K modellnél megkülönböztettünk egyedtípust és egyedpéldányt,
+a relációs modellnél is beszélhetünk **relációtípus**ról, amely a relációsémának felel
+meg, és **relációpéldány**ról, amely az adattáblának felel meg. Több adattábla
+együttesen alkotja a relációs adatbázist, amely egy teljes jelenségkör leírására
+alkalmas.
+
+Mivel a definíció szerint a reláció egy halmaz, így **a relációs modellben a tábla
+minden sora különböző**, és a sorokra semmilyen rendezettséget nem tételez fel.
+Logikai szinten a relációk **táblában (adattábla)** jelennek meg. Az adattábla sorokból és
+oszlopokból áll. Egy sorát **rekord**nak nevezzük, amely annyi mezőből áll, ahány
+oszlopa van a táblának. Az attribútumok számát (az oszlopok számát) az R **reláció
+fokának**, a sorok számát pedig a **reláció számosságának** nevezzük.
+
 ### 3.3 Relációséma
 
 **Relációséma:** a reláció neve és az attribútumok (tulajdonságtípusok) halmaza.
-A relációsémát R(A 1 ,...,A n ) módon szokás jelölni, ahol A 1 ,...,A n attribútumok,
-R pedig a séma neve. Például a Könyv reláció sémája a következő: *Könyv(ISBN,
-Kiadó, Szerző, Cím)*. Adott adatbázishoz tartozó relációsémák összessége (és a
-köztük fennálló kapcsolatok leírása) alkotja az adatbázissémát.
+A relációsémát R(A<sub>1</sub>,...,A<sub>n</sub> ) módon szokás jelölni, ahol
+A<sub>1</sub>,...,A<sub>n</sub> attribútumok, R pedig a séma neve. Például a Könyv
+reláció sémája a következő: *Könyv(ISBN, Kiadó, Szerző, Cím)*. Adott adatbázishoz
+tartozó relációsémák összessége (és a köztük fennálló kapcsolatok leírása) alkotja
+az adatbázissémát.
 
 ### 3.4 Kulcsok, indexek és tulajdonságaik
+
+**Szuperkulcs:** olyan attribútumhalmaz, amely egyértelműen azonosítja a tábla
+sorait (rekordjait), kikötve, hogy ha egyetlen attribútumot is elhagyunk belőle,
+akkor ez már nem teljesül. A teljes attribútumhalmaz mindig szuperkulcs, hiszen
+definíció szerint a tábla minden sora különböző.
+
+**Kulcs:** az a **minimális szuperkulcs**, amelynek egyetlen valódi részhalmaza sem
+szuperkulcs. Ha egyetlen attribútumból áll, akkor **egyszerű**, egyébként **összetett**
+kulcsról beszélünk. A kulcs nem a tábla tulajdonsága, hanem annak megkövetelése,
+hogy a sémához tartozó táblában (annak bármely időpontbeli állapotában) *nem lehet
+két azonos kulcsú sor*.
+
+**Kulcsjelölt:** olyan attribútum vagy attribútumhalmaz, amely eleget tesz a minimális
+kulcs definíciójának.
+
+**Elsődleges kulcs (Primary Key):** ha egy relációsémának több kulcsa is van, egyet
+kiválasztunk közülük, ez lesz az elsődleges kulcs (ha csak egy van, akkor szükségképpen
+az lesz az elsődleges kulcs). Egy relációsémában mindig csak egy elsődleges kulcs
+lehet, amelynek nem lehet NULL az értéke.
+
+**Idegen** vagy **külső kulcs (Foreign Key):** egy másik séma elsődleges kulcsára
+hivatkozik. A külső kulcs értéke a hivatkozott táblában előforduló kulcsérték vagy
+NULL lehet. Két reláció csak akkor áll kapcsolatban egymással, ha az egyik **külső
+kulcsként** tartalmazza a másik **elsődleges kulcsát**. Az idegen kulcsot tartalmazó
+relációt **hivatkozó relációnak**, a másikat, melyben ez a kulcs elsődleges,
+**hivatkozott relációnak** nevezzük.
+
+**Index:** nem része a relációs modellnek, hanem kiegészítő adatstruktúra, amelyet
+egy táblához lehet generálni. Az index a táblához kapcsolódó, gyors keresést lehetővé
+tevő táblázat. Az index tartalmazza, hogy a tábla rekordjai egy vagy több oszlop
+alapján (pl. vezetéknév és keresztnév) sorba rendezve hogyan következnek egymás
+után. Fontos, hogy ez nem jelenti a teljes tábla megismétlését többféle rendezettséggel:
+az index csak egy mutató, amely hivatkozik a táblára. Az indexek létrehozása jelentősen
+növeli az adatbázis hatékonyságát, de a méretét is. Egy általános adatbázisban az
+indexek helyfoglalása körülbelül akkora, mint az adatoké.
+
 
 ## 4. tétel
 
