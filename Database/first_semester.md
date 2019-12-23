@@ -569,6 +569,9 @@ két azonos kulcsú sor*.
 **Kulcsjelölt:** olyan attribútum vagy attribútumhalmaz, amely eleget tesz a minimális
 kulcs definíciójának.
 
+**Másodlagos attribútum:** minden olyan attribútum, ami nem kulcs, vagy nem része
+valamely kulcsnak.
+
 **Elsődleges kulcs (Primary Key):** ha egy relációsémának több kulcsa is van, egyet
 kiválasztunk közülük, ez lesz az elsődleges kulcs (ha csak egy van, akkor szükségképpen
 az lesz az elsődleges kulcs). Egy relációsémában mindig csak egy elsődleges kulcs
@@ -582,13 +585,14 @@ relációt **hivatkozó relációnak**, a másikat, melyben ez a kulcs elsődleg
 **hivatkozott relációnak** nevezzük.
 
 **Index:** nem része a relációs modellnek, hanem kiegészítő adatstruktúra, amelyet
-egy táblához lehet generálni. Az index a táblához kapcsolódó, gyors keresést lehetővé
-tevő táblázat. Az index tartalmazza, hogy a tábla rekordjai egy vagy több oszlop
-alapján (pl. vezetéknév és keresztnév) sorba rendezve hogyan következnek egymás
-után. Fontos, hogy ez nem jelenti a teljes tábla megismétlését többféle rendezettséggel:
-az index csak egy mutató, amely hivatkozik a táblára. Az indexek létrehozása jelentősen
-növeli az adatbázis hatékonyságát, de a méretét is. Egy általános adatbázisban az
-indexek helyfoglalása körülbelül akkora, mint az adatoké.
+egy táblához lehet generálni. Egy táblához egyszerre több index is létrehozható.
+Az index a táblához kapcsolódó, gyors keresést lehetővé tevő táblázat. Az index
+tartalmazza, hogy a tábla rekordjai egy vagy több oszlop alapján (pl. vezetéknév
+és keresztnév) sorba rendezve hogyan következnek egymás után. Fontos, hogy ez nem
+jelenti a teljes tábla megismétlését többféle rendezettséggel: az index csak egy
+mutató, amely hivatkozik a táblára. Az indexek létrehozása jelentősen növeli az
+adatbázis hatékonyságát, de a méretét is. Egy általános adatbázisban az indexek
+helyfoglalása körülbelül akkora, mint az adatoké.
 
 
 ## 4. tétel
@@ -597,8 +601,57 @@ indexek helyfoglalása körülbelül akkora, mint az adatoké.
 
 ### 4.1 Relációs adatbázisséma elkészítése E-K diagram alapján
 
+A konverzió alapelve az, hogy egy reláció egy egyedtípusnak felel meg. A relációs
+adatmodell egy relációja tehát egy egyedtípus előfordulásait fogja tartalmazni. A
+reláció neve megegyezik az egyedtípus azonosító nevével. A reláció szerkezet is
+az E-K modellből jön. A reláció több mezőből épül fel, ahogy az egyedtípus is a
+tulajdonságokból áll össze.
+
+Tehát az első szabály a konverziónál az az irányelv, hogy az egyedből készítsünk
+relációt, amelynek neve az egyed neve, attribútumai az egyed attribútumai, elsődleges
+kulcsa az egyed kulcs-attribútuma(i). Az így kapott séma feletti adattábla minden
+egyes sora egy egyedpéldánynak felel meg. Az EK-modellben megismert kapcsolatok
+a relációs modellben külső kulcsok formájában jelennek meg.
+
 ### 4.2 Egyedek, gyenge egyedek, kapcsolatok, specializáló kapcsolatok, összetett és többértékű attribútumok leképezése
 
+**A leképezési eljárás lépései**
+
+1. **Erős egyedtípusok leképezése:** az E-K modell minden erős egyedtípusához
+rendeljünk hozzá egy relációsémát, amely tartalmazza annak összes egyszerű attribútumát.
+Az összetett attribútumoknak csak az egyszerű komponenseit adjuk hozzá. Válasszuk
+az E-K modell kulcs attribútumainak egyikét az relációséma elsődleges kulcsául.
+2. **Gyenge egyedtípusok leképezése:** az E-K modell minden gyenge egyedtípusához
+rendeljünk hozzá egy relációsémát, melynek attribútumai legyenek az entitás összes
+egyszerű attribútuma és összetett attribútumainak egyszerű komponensei. A gyenge
+entitás relációsémáját bővíteni kell a meghatározó kapcsolat(ok)ban szereplő egyed(ek)
+kulcsával (külső kulcsok).
+3. **Bináris kapcsolattípusok leképezése:**
+  * 1:1 kapcsolat esetén kiválasztjuk a kapcsolatban résztvevő két entitás egyikét
+  (bármelyiket), és annak sémájába új attribútumként felvesszük a másik entitás kulcs
+  attribútumait, valamint a kapcsolat attribútumait.
+  * 1:N kapcsolat esetén az „N” oldali entitás sémájába új attribútumként felvesszük
+  a másik entitás kulcs attribútumait, valamint a kapcsolat attribútumait.
+  * N:M kapcsolat esetén új sémát veszünk fel, amelynek attribútumai a kapcsolódó
+  entitások kulcs attribútumai, és a kapcsolat saját attribútumai.
+4. **Többértékű attribútumok leképezése:** minden többértékű attribútum esetén hozzunk
+létre egy új relációsémát. Ez tartalmazzon egy, az eredetinek megfelelő attribútumot,
+valamint annak a relációsémának az elsődleges kulcsát — külső kulcsként —, amelyet
+az eredeti attribútumot tartalmazó egyedtípusból vagy kapcsolattípusból képeztünk.
+Ha a többértékű attribútum összetett, akkor az egyszerű komponenseit vegyük fel
+az új séma attribútumaiként.
+5. **n-edfokú (n > 2) kapcsolatok leképezése:** vegyünk fel a kapcsolathoz egy új sémát,
+amelynek neve a kapcsolat neve, attribútumai pedig a kapcsolódó entitások kulcs
+attribútumai és a kapcsolat saját attribútumai. Vegyük fel külső kulcsként a
+kapcsolatban részt vevő egyedtípusokból képzett relációsémák elsődleges kulcsait.
+6. **Specializáló kapcsolatok leképezése:**
+  * minden altípushoz külön séma felvétele, egy egyed csak egy sémában szerepel.
+  Az altípusok öröklik a főtípus attribútumait.
+  * minden altípushoz külön tábla felvétele, egy egyed több táblában is szerepelhet.
+  A főtípus táblájában minden egyed szerepel, és annyi altípuséban ahánynak megfelel.
+  Az altípusok a főtípustól csak a kulcs-attribútumokat öröklik.
+  * egy közös tábla felvétele, az attribútumok uniójával. Az aktuálisan értékkel
+  nem rendelkező attribútumok NULL értékűek.
 
 
 ## 5. tétel
@@ -607,9 +660,33 @@ indexek helyfoglalása körülbelül akkora, mint az adatoké.
 
 ### 5.1 Relációalgebra fogalma
 
+A relációs algebra adattáblákon végzett műveletek rendszere, amely az adatbázis
+lekérdezés matematikai alapját képezi. A lekérdezések eredménye egy új reláció,
+amelyet egy vagy több relációból kapunk. Az eredményül kapott új relációk tovább
+manipulálhatók ugyanezen algebra műveleteivel. A relációalgebrai műveletek egy
+sorozata relációalgebrai kifejezést alkot, amelynek az eredménye szintén egy reláció,
+ami egy adatbázis-lekérdezés eredményét reprezentálja.
+
+A relációalgebra műveletei két csoportra oszthatók. Az egyik csoport a matematikai
+halmazelmélet halmazműveleteiből áll; ezek azért alkalmazhatók, mert **a formális
+relációs modellben a relációt rekordok halmazaként definiáljuk**. A halmazműveletek
+közé tartozik az **unió, a metszet, a (halmaz)különbség és a Descartes-szorzat**.
+A másik csoport olyan műveletekből áll, amelyeket speciálisan a relációs modellhez
+fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az összekapcsolás**.
+
 ### 5.2 Halmazműveletek
 
+Két táblát kompatibilisnek nevezünk, ha sémáik megegyeznek, vagy csak az attribútumok
+elnevezésében különböznek (mind az attribútumok száma, mind értéktartománya azonos).
+A halmazműveleteket csak kompatibilis táblákon értelmezzük.
+
+A halmazműveletekre is igazak a [de Morgan azonosságok] (https://hu.wikipedia.org/wiki/De_Morgan-azonoss%C3%A1gok)
+
 ### 5.3 Multihalmazok
+
+Multihalmazon olyan halmazt értünk, amely ismétlődő elemeket is tartalmazhat. Ha
+a relációt multihalmaznak tekintjük, akkor ezzel az adattáblában azonos sorokat
+is megengedünk. A relációs algebra műveletei multihalmazokra is értelmezhetők.
 
 ## 6. tétel
 
@@ -617,7 +694,33 @@ indexek helyfoglalása körülbelül akkora, mint az adatoké.
 
 ### 6.1 Relációalgebra fogalma
 
+A relációs algebra adattáblákon végzett műveletek rendszere, amely az adatbázis
+lekérdezés matematikai alapját képezi. A lekérdezések eredménye egy új reláció,
+amelyet egy vagy több relációból kapunk. Az eredményül kapott új relációk tovább
+manipulálhatók ugyanezen algebra műveleteivel. A relációalgebrai műveletek egy
+sorozata relációalgebrai kifejezést alkot, amelynek az eredménye szintén egy reláció,
+ami egy adatbázis-lekérdezés eredményét reprezentálja.
+
+A relációalgebra műveletei két csoportra oszthatók. Az egyik csoport a matematikai
+halmazelmélet halmazműveleteiből áll; ezek azért alkalmazhatók, mert **a formális
+relációs modellben a relációt rekordok halmazaként definiáljuk**. A halmazműveletek
+közé tartozik az **unió, a metszet, a (halmaz)különbség és a Descartes-szorzat**.
+A másik csoport olyan műveletekből áll, amelyeket speciálisan a relációs modellhez
+fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az összekapcsolás**.
+
 ### 6.2 Kombinációs műveletek
+
+**Descartes-szorzat**
+
+A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
+rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. A
+gyakorlatban ritkán használjuk.
+
+**Természetes-összekapcsolás (Natural join)**
+
+**Külső-összekapcsolás (Outer join)**
+
+**Théta-összekapcsolás (Theta-join)**
 
 ### 6.3 Az összekapcsolás lehetőségei
 
@@ -666,6 +769,29 @@ indexek helyfoglalása körülbelül akkora, mint az adatoké.
 *(Jegyzet: 6.1., 6.2., 6.3. fejezet, 48-53. oldal)*
 
 ### 10.1 Az SQL nyelv általános jellemzői
+
+A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
+SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
+ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
+nyelv, amely a relációkon dolgozik. Az SQL-t jellemzően kliens-szerver hierarchiában
+használják, ahol az adatbázis a szerveren kerül tárolásra. A kliens oldaláról érkező
+kéréseket a szerver szolgálja ki, és az adatokat visszaadja a kliensnek.
+
+Az SQL nyelv **önálló felhasználás**a esetén csak a nyelv saját utasításai állnak
+rendelkezésre. Ennek alkalmazására főként akkor kerülhet sor, ha nincs megfelelő
+alkalmazás az adott feladat elvégzésére. A **beágyazott SQL** esetén egy algoritmikus
+nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemeit.
+Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
+kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
+
+Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
+**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
+és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+
+Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
+mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
+eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 
 **SQL-szabványok**
 
@@ -728,6 +854,20 @@ szabványához igazodik).
 
 ### 10.2 Az SQL nyelv szintaxisa, speciális logikai kifejezései
 
+Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzékeny. A
+szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó szerint (literally)
+kell érteni, tehát nyilván lényeges a nagybetűk–kisbetűk különbsége. **A nyelv kulcsszavait
+(parancsait) általában nagybetűvel szokás írni (pl. SELECT), a kód jobb olvashatósága
+és áttekinthetősége érdekében**. Az **oszlopneveknél a kisbetűs írásmód javasolt**,
+különösen ha a kulcsszavak nagybetűsek, ekkor ugyanis jól elkülönül egymástól a
+kettő.
+
+Változó nincs, csak tábla- és oszlopnevekre lehet hivatkozni. Az SQL utasítások
+kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, literálokból
+(számszerű, dátum jellegű, szöveges konstansok) állnak. Az utasítások sorfolytonosan
+írhatók (és egymásba is ágyazhatók), minden utasítást pontosvesszővel kell lezárni.
+
+
 ### 10.3 Adatdefiníciós utasítások (DDL)
 
 ### 10.4 Relációsémák, indexek
@@ -739,6 +879,29 @@ szabványához igazodik).
 *(Jegyzet: 6.4., 6.7. fejezet, 53-54., 61-62. oldal)*
 
 ### 11.1 Az SQL nyelv általános jellemzői
+
+A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
+SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
+ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
+nyelv, amely a relációkon dolgozik. Az SQL-t jellemzően kliens-szerver hierarchiában
+használják, ahol az adatbázis a szerveren kerül tárolásra. A kliens oldaláról érkező
+kéréseket a szerver szolgálja ki, és az adatokat visszaadja a kliensnek.
+
+Az SQL nyelv **önálló felhasználás**a esetén csak a nyelv saját utasításai állnak
+rendelkezésre. Ennek alkalmazására főként akkor kerülhet sor, ha nincs megfelelő
+alkalmazás az adott feladat elvégzésére. A **beágyazott SQL** esetén egy algoritmikus
+nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemeit.
+Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
+kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
+
+Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
+**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
+és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+
+Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
+mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
+eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 
 **SQL-szabványok**
 
@@ -809,6 +972,29 @@ szabványához igazodik).
 *(Jegyzet: 6.5., 6-6. fejezet, 54-60. oldal)*
 
 ### 12.1 Az SQL nyelv általános jellemzői
+
+A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
+SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
+ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
+nyelv, amely a relációkon dolgozik. Az SQL-t jellemzően kliens-szerver hierarchiában
+használják, ahol az adatbázis a szerveren kerül tárolásra. A kliens oldaláról érkező
+kéréseket a szerver szolgálja ki, és az adatokat visszaadja a kliensnek.
+
+Az SQL nyelv **önálló felhasználás**a esetén csak a nyelv saját utasításai állnak
+rendelkezésre. Ennek alkalmazására főként akkor kerülhet sor, ha nincs megfelelő
+alkalmazás az adott feladat elvégzésére. A **beágyazott SQL** esetén egy algoritmikus
+nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemeit.
+Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
+kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
+
+Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
+**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
+és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+
+Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
+mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
+eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 
 **SQL-szabványok**
 
@@ -902,5 +1088,6 @@ könyve értendő.
 * <span id="note3">[[3]](#3)</span> dr. Halassy Béla: [Az adatbázistervezés alapjai és titkai](http://mek.oszk.hu/11100/11123/11123.pdf), 33. o.
 * <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
 [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
+
 
 [Kezdőlap](README.md)
