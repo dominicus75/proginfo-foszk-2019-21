@@ -680,7 +680,7 @@ Két táblát kompatibilisnek nevezünk, ha sémáik megegyeznek, vagy csak az a
 elnevezésében különböznek (mind az attribútumok száma, mind értéktartománya azonos).
 A halmazműveleteket csak kompatibilis táblákon értelmezzük.
 
-A halmazműveletekre is igazak a [de Morgan azonosságok] (https://hu.wikipedia.org/wiki/De_Morgan-azonoss%C3%A1gok)
+A halmazműveletekre is igazak a [de Morgan azonosságok](https://hu.wikipedia.org/wiki/De_Morgan-azonoss%C3%A1gok)
 
 ### 5.3 Multihalmazok
 
