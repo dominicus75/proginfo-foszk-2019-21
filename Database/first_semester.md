@@ -732,7 +732,7 @@ Megállapodás szerint **az unió, a metszet, és a különbség műveletek ered
 ugyanazok lesznek az attribútumnevei, mint amik az első relációnak** voltak. Az átnevezés
 művelet segítségével később át lehet nevezni az eredménybeli attribútumokat.
 
-**Descartes-szorzat**
+**Descartes-szorzat (cross join)**
 
 A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
 rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. A
@@ -792,7 +792,11 @@ fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az 
 
 ### 6.2 Kombinációs műveletek
 
-**Descartes-szorzat**
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli.*
+
+**Descartes-szorzat (cross join)**
 
 A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
 rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. A
@@ -808,11 +812,41 @@ a gyakorlatban, mert az adathalmaz redundanciáját növeli.
 SELECT * FROM table1, table2;
 ```
 
-**Természetes-összekapcsolás (Natural join)**
+**Összekapcsolás (illesztés, join)**
 
-**Külső-összekapcsolás (Outer join)**
+A relációs modell lényegéhez tartozik, hogy két tábla között a megegyező attribútumok
+létesítenek kapcsolatot. Az összekapcsolás művelete két vagy több relációt kapcsol
+össze egy-egy attribútum érték összehasonlításával. Az összekapcsolás eredmény
+relációjában az első reláció csak azon sorai szerepelnek, melyekre található a
+feltételt kielégítő sor a második relációban.
 
-**Théta-összekapcsolás (Theta-join)**
+Relációk összekapcsolásakor meg kell adni az összekapcsolás módját (természetes,
+belső vagy külső) és a sorok összekapcsolásának feltételét (az `ON` kulcsszó után).
+A JOIN nyelvi elemek egy része kifejezhető a
+
+```sql
+SELECT <attribútumok> FROM <táblák> WHERE <feltételek>;
+```
+
+kifejezés segítségével is.
+
+*Az összekapcsolás módja szerint lehet:*
+
+* **Természetes-összekapcsolás (Natural join):** két reláció Descartes-szorzatából
+  az azonos nevű attribútumokon megegyező értékű elemek kiválasztásával, illetve az
+  azonos nevű attribútumok közül az ismétlődések elhagyásával nyert relációt eredményezi.
+  Ha az azonos nevű oszlopok adattípusa eltérő, akkor hibával tér vissza.
+  ```sql
+    SELECT *
+    FROM table1
+    NATURAL JOIN table2;
+  ```
+  Az `ON` kikötés nem használható, ezért irányíthatatlan a kapcsolat, minden azonos
+  nevű mező kapcsolódik.
+* **Külső-összekapcsolás (Outer join):**
+
+* **Théta-összekapcsolás (Theta-join):**
+
 
 ### 6.3 Az összekapcsolás lehetőségei
 
@@ -877,9 +911,14 @@ nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemei
 Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
 kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
 
-Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
-**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
-és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+*Az SQL nyelvi elemeket 4 részre lehet bontani:*
+* **adatdefiníciós (Data Definition Language, DDL):** adatstruktúra definiáló
+utasítások – adatbázisok, táblák létrehozása, módosítása és törlése;
+* **adatkezelési (Data Manipulation Language, DML):** adatokon műveletet végző
+utasítások – adatok rögzítése, módosítása, törlése;
+* **lekérdező (Data Query Language, DQL):** adat lekérdező utasítás (`SELECT`);
+* **adatvezérlő (Data Control Language, DCL):** adatvezérlő, felügyelő utasítások
+ – tranzakciók kezelése, jogosultságok menedzselése.
 
 Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
 mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
@@ -944,6 +983,10 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli.*
+
 ### 10.2 Az SQL nyelv szintaxisa, speciális logikai kifejezései
 
 Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzékeny. A
@@ -960,6 +1003,8 @@ kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, li
 írhatók (és egymásba is ágyazhatók), minden utasítást pontosvesszővel kell lezárni.
 
 ### 10.3 Adatdefiníciós utasítások (DDL)
+
+
 
 ### 10.4 Relációsémák, indexek
 
@@ -986,9 +1031,14 @@ nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemei
 Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
 kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
 
-Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
-**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
-és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+*Az SQL nyelvi elemeket 4 részre lehet bontani:*
+* **adatdefiníciós (Data Definition Language, DDL):** adatstruktúra definiáló
+utasítások – adatbázisok, táblák létrehozása, módosítása és törlése;
+* **adatkezelési (Data Manipulation Language, DML):** adatokon műveletet végző
+utasítások – adatok rögzítése, módosítása, törlése;
+* **lekérdező (Data Query Language, DQL):** adat lekérdező utasítás (`SELECT`);
+* **adatvezérlő (Data Control Language, DCL):** adatvezérlő, felügyelő utasítások
+ – tranzakciók kezelése, jogosultságok menedzselése.
 
 Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
 mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
@@ -1053,9 +1103,15 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli.*
+
 ### 11.2 Nézettábla (VIEW) kialakítása és szerepe
 
 ### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
+
+
 
 
 ## 12. tétel
@@ -1079,9 +1135,14 @@ nyelvbe (C, Pascal, FORTRAN, PHP, stb.) ágyazva alkalmazzuk az SQL nyelv elemei
 Ebben az esetben az algoritmikus feladatokat a befogadó (host) nyelvre, az adatbázissal
 kapcsolatos műveleteket pedig az SQL-re bízhatjuk.
 
-Az SQL nyelvi elemeket 4 részre, **adatdefiníciós (Data Definition Language, DDL)**,
-**adatkezelési (Data Manipulation Language, DML)**, **lekérdező (Data Query Language, DQL)**
-és **adatvezérlő (Data Control Language, DCL)** részekre lehet bontani.
+*Az SQL nyelvi elemeket 4 részre lehet bontani:*
+* **adatdefiníciós (Data Definition Language, DDL):** adatstruktúra definiáló
+utasítások – adatbázisok, táblák létrehozása, módosítása és törlése;
+* **adatkezelési (Data Manipulation Language, DML):** adatokon műveletet végző
+utasítások – adatok rögzítése, módosítása, törlése;
+* **lekérdező (Data Query Language, DQL):** adat lekérdező utasítás (`SELECT`);
+* **adatvezérlő (Data Control Language, DCL):** adatvezérlő, felügyelő utasítások
+ – tranzakciók kezelése, jogosultságok menedzselése.
 
 Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
 mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
@@ -1146,7 +1207,13 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli.*
+
 ### 12.2 Lekérdezés relációs adattáblákból, a relációalgebrai műveletek megvalósítása
+
+
 
 ### 12.3 Összesítő függvények alkalmazása
 
