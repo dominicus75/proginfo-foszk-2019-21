@@ -793,7 +793,7 @@ fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az 
 ### 6.2 Kombinációs műveletek
 
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
-szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` - logikai
 vagy operátor) jelöli.*
 
 **Descartes-szorzat (cross join)**
@@ -821,7 +821,11 @@ relációjában az első reláció csak azon sorai szerepelnek, melyekre találh
 feltételt kielégítő sor a második relációban.
 
 Relációk összekapcsolásakor meg kell adni az összekapcsolás módját (természetes,
-belső vagy külső) és a sorok összekapcsolásának feltételét (az `ON` kulcsszó után).
+belső vagy külső) és a sorok összekapcsolásának feltételét. Az `ON` kulcsszót
+használhatjuk az összekapcsolás tetszőleges feltételének vagy oszlopainak megadására.
+Az összekapcsolási feltétel független a többi keresési feltételtől. Az ON segítségével
+különböző nevű oszlopok is összekapcsolhatóak.
+
 A JOIN nyelvi elemek egy része kifejezhető a
 
 ```sql
@@ -829,6 +833,8 @@ SELECT <attribútumok> FROM <táblák> WHERE <feltételek>;
 ```
 
 kifejezés segítségével is.
+
+![Imgur](https://i.imgur.com/JE58fcX.png)
 
 *Az összekapcsolás módja szerint lehet:*
 
@@ -845,7 +851,10 @@ kifejezés segítségével is.
   nevű mező kapcsolódik.
 * **Külső-összekapcsolás (Outer join):**
 
+* **Belső-összekapcsolás (Inner join):**
+
 * **Théta-összekapcsolás (Theta-join):**
+  A théta szó egy tetszőleges feltételre utal, amit θ jellel szokás jelölni.
 
 
 ### 6.3 Az összekapcsolás lehetőségei
@@ -1218,6 +1227,14 @@ vagy operátor) jelöli.*
 ### 12.3 Összesítő függvények alkalmazása
 
 ### 12.4 Alkérdések az SQL nyelvben
+
+Az SQL támogatja azt a lehetőséget, hogy a `WHERE` vagy `HAVING` szelekciós feltételben
+nemcsak létező, letárolt adatelemekre hivatkozzunk, hanem számított kifejezéseket
+is alkalmazhassunk. A számítást egy másik SELECT utasítással tudjuk megadni, tehát
+az egyik lekérdezés szelekciós feltételében hivatkozunk egy másik lekérdezés eredményére.
+Ezt alkérdésnek vagy belső SELECT-nek is nevezzük, formailag megegyezik a normál
+SELECT utasítással. Az alkérdésnek mindig zárójelben kell megadni, hogy elemei
+elkülönüljenek.
 
 
 ## 13. tétel
