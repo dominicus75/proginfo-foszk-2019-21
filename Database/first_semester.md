@@ -627,12 +627,12 @@ egyszerű attribútuma és összetett attribútumainak egyszerű komponensei. A 
 entitás relációsémáját bővíteni kell a meghatározó kapcsolat(ok)ban szereplő egyed(ek)
 kulcsával (külső kulcsok).
 3. **Bináris kapcsolattípusok leképezése:**
-  * 1:1 kapcsolat esetén kiválasztjuk a kapcsolatban résztvevő két entitás egyikét
+  * **1:1 kapcsolat** esetén kiválasztjuk a kapcsolatban résztvevő két entitás egyikét
   (bármelyiket), és annak sémájába új attribútumként felvesszük a másik entitás kulcs
   attribútumait, valamint a kapcsolat attribútumait.
-  * 1:N kapcsolat esetén az „N” oldali entitás sémájába új attribútumként felvesszük
+  * **1:N kapcsolat** esetén az „N” oldali entitás sémájába új attribútumként felvesszük
   a másik entitás kulcs attribútumait, valamint a kapcsolat attribútumait.
-  * N:M kapcsolat esetén új sémát veszünk fel, amelynek attribútumai a kapcsolódó
+  * **N:M kapcsolat** esetén új sémát veszünk fel, amelynek attribútumai a kapcsolódó
   entitások kulcs attribútumai, és a kapcsolat saját attribútumai.
 4. **Többértékű attribútumok leképezése:** minden többértékű attribútum esetén hozzunk
 létre egy új relációsémát. Ez tartalmazzon egy, az eredetinek megfelelő attribútumot,
@@ -647,10 +647,10 @@ kapcsolatban részt vevő egyedtípusokból képzett relációsémák elsődlege
 6. **Specializáló kapcsolatok leképezése:**
   * minden altípushoz külön séma felvétele, egy egyed csak egy sémában szerepel.
   Az altípusok öröklik a főtípus attribútumait.
-  * minden altípushoz külön tábla felvétele, egy egyed több táblában is szerepelhet.
-  A főtípus táblájában minden egyed szerepel, és annyi altípuséban ahánynak megfelel.
+  * minden altípushoz külön séma felvétele, egy egyed több sémában is szerepelhet.
+  A főtípus sémájában minden egyed szerepel, és annyi altípuséban ahánynak megfelel.
   Az altípusok a főtípustól csak a kulcs-attribútumokat öröklik.
-  * egy közös tábla felvétele, az attribútumok uniójával. Az aktuálisan értékkel
+  * egy közös séma felvétele, az attribútumok uniójával. Az aktuálisan értékkel
   nem rendelkező attribútumok NULL értékűek.
 
 
@@ -677,16 +677,98 @@ fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az 
 ### 5.2 Halmazműveletek
 
 Két táblát kompatibilisnek nevezünk, ha sémáik megegyeznek, vagy csak az attribútumok
-elnevezésében különböznek (mind az attribútumok száma, mind értéktartománya azonos).
-A halmazműveleteket csak kompatibilis táblákon értelmezzük.
+elnevezésében különböznek (mind az attribútumok száma, mind értéktartománya – a
+tárolt adat típusa – azonos). A halmazműveleteket csak kompatibilis táblákon
+értelmezzük. Minden értelmezett halmazművelethez legalább két operandus szükséges.
+A halmazműveletekre is igazak a [de Morgan azonosságok](https://hu.wikipedia.org/wiki/De_Morgan-azonoss%C3%A1gok). A relációkra
+általában a komplemens képzés nem értelmezhető.
 
-A halmazműveletekre is igazak a [de Morgan azonosságok](https://hu.wikipedia.org/wiki/De_Morgan-azonoss%C3%A1gok)
+A halmazokon értelmezett hagyományos matematikai műveletek bináris műveletek, azaz
+mindegyiket két halmazra (relációra) alkalmazzuk. Ide tartozik az **unió, a metszet,
+a (halmaz)különbség és a Descartes-szorzat**.
+
+**Unió**
+
+Az unió művelete azonos szerkezetű két vagy több reláció között végezhető el. Az
+eredmény reláció tartalmazza azokat a sorokat, melyek a műveletbe bevont relációk
+közül legalább egyben szerepelnek. Ha ugyanaz a sor az egyesítendő relációk közül
+többen is szerepelne, akkor is csak egyszer szerepel az eredmény relációban.
+
+*Halmazelméleti unió SQL-ben:*
+
+```sql
+  (SELECT * FROM table1) UNION (SELECT * FROM table2);
+```
+
+**Metszet (Intersection)**
+
+A metszet művelete azonos szerkezetű két vagy több reláció között végezhető el. Az
+eredmény reláció csak azokat a sorokat tartalmazza, melyek a műveletbe bevont
+relációk közül mindegyikben szerepelnek.
+
+*Halmazelméleti metszet SQL-ben:*
+
+```sql
+  (SELECT * FROM table1) INTERSECT (SELECT * FROM table2);
+```
+
+**Különbség (Difference)**
+
+A különbség művelete azonos szerkezetű két reláció között végezhető el. Az eredmény
+reláció csak azokat a sorokat tartalmazza, melyek a első relációban megtalálhatóak,
+de a másodikban nem.
+
+*Halmazelméleti különbség SQL-ben:*
+
+```sql
+  (SELECT * FROM table1) EXCEPT (SELECT * FROM table2);
+
+  (SELECT * FROM table1) MINUS (SELECT *FROM table2);
+```
+
+*Tulajdonságok:* az unió és metszet összetevői felcserélhetők, a különbségé nem.
+
+Megállapodás szerint **az unió, a metszet, és a különbség műveletek eredmény relációnak
+ugyanazok lesznek az attribútumnevei, mint amik az első relációnak** voltak. Az átnevezés
+művelet segítségével később át lehet nevezni az eredménybeli attribútumokat.
+
+**Descartes-szorzat**
+
+A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
+rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. A
+eredményreláció elemei rendezett párok, amely azt jelenti, hogy az elemek közül
+az első az első relációból, a második a második relációból való. Ez is egy bináris
+(két operandusú) halmazművelet, azonban azoknak a relációknak, amelyekre alkalmazzuk,
+nem kell kompatibiliseknek lenniük. A Descartes-szorzatot általában nem alkalmazzák
+a gyakorlatban, mert az adathalmaz redundanciáját növeli.
+
+*Descartes-szorzat SQL-ben:*
+
+```sql
+SELECT * FROM table1, table2;
+```
 
 ### 5.3 Multihalmazok
 
-Multihalmazon olyan halmazt értünk, amely ismétlődő elemeket is tartalmazhat. Ha
-a relációt multihalmaznak tekintjük, akkor ezzel az adattáblában azonos sorokat
-is megengedünk. A relációs algebra műveletei multihalmazokra is értelmezhetők.
+A relációs algebra műveletei multihalmazokra is értelmezhetők. **Multihalmazon olyan
+halmazt értünk, amely ismétlődő elemeket is tartalmazhat**. Ha a relációt multihalmaznak
+tekintjük, akkor ezzel az adattáblában azonos sorokat is megengedünk.
+
+**Az adatbázis-kezelő rendszerek általában multihalmazokkal dolgoznak**, és csak külön
+kérésre végzik el az azonos sorok kiszűrését. Ennek okai a következők:
+* Az adattábla fizikai tárolása természetes módon megengedi az azonos sorokat.
+* Egyes relációs műveletek (például unió, projekció) lényegesen gyorsabbak, ha nem
+kell kiszűrni az azonos sorokat.
+* Egyes esetekben a multihalmaz szolgáltat korrekt eredményt (a szelekció feltételeiben
+megadott attribútumok egyezősége esetén sem kerülnek összeolvasztásra az azonos
+tulajdonságú, de más-más egyedpéldányokat reprezentáló sorok).
+
+A multihalmaz nem megengedett a formális relációs modellben, de elfogadható a
+gyakorlatban. Ezért minden adatbázis-műveletnél el kell dönteni, hogy a relációs
+modell szerint halmazokkal, vagy (az adatbázis-kezelő számára természetesebb)
+multihalmazokkal kívánunk dolgozni, és ennek megfelelően kell a műveleteket
+végrehajtani.
+
 
 ## 6. tétel
 
@@ -714,7 +796,17 @@ fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az 
 
 A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
 rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. A
-gyakorlatban ritkán használjuk.
+eredményreláció elemei rendezett párok, amely azt jelenti, hogy az elemek közül
+az első az első relációból, a második a második relációból való. Ez is egy bináris
+(két operandusú) halmazművelet, azonban azoknak a relációknak, amelyekre alkalmazzuk,
+nem kell kompatibiliseknek lenniük. A Descartes-szorzatot általában nem alkalmazzák
+a gyakorlatban, mert az adathalmaz redundanciáját növeli.
+
+*Descartes-szorzat SQL-ben:*
+
+```sql
+SELECT * FROM table1, table2;
+```
 
 **Természetes-összekapcsolás (Natural join)**
 
@@ -866,7 +958,6 @@ Változó nincs, csak tábla- és oszlopnevekre lehet hivatkozni. Az SQL utasít
 kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, literálokból
 (számszerű, dátum jellegű, szöveges konstansok) állnak. Az utasítások sorfolytonosan
 írhatók (és egymásba is ágyazhatók), minden utasítást pontosvesszővel kell lezárni.
-
 
 ### 10.3 Adatdefiníciós utasítások (DDL)
 
