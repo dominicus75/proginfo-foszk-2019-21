@@ -814,6 +814,12 @@ SELECT * FROM table1, table2;
 
 **Összekapcsolás (illesztés, join)**
 
+Jól megtervezett (normalizált) adatbázisokban az összetartozó információk sokszor
+több táblába vannak szétosztva. Ezzel elkerülhető a redundancia, továbbá az adatok
+módosításnál vagy törlésénél így egyszerűbb elkerülni bizonyos hibákat (inkonzisztens
+adatok, információvesztés). Amikor lekérdezünk az adatbázisból, össze kell szednünk
+az összetartozó adat-töredékeket. Erre szolgál a táblák összekapcsolása.
+
 A relációs modell lényegéhez tartozik, hogy két tábla között a megegyező attribútumok
 létesítenek kapcsolatot. Az összekapcsolás művelete két vagy több relációt kapcsol
 össze egy-egy attribútum érték összehasonlításával. Az összekapcsolás eredmény
@@ -822,9 +828,9 @@ feltételt kielégítő sor a második relációban.
 
 Relációk összekapcsolásakor meg kell adni az összekapcsolás módját (természetes,
 belső vagy külső) és a sorok összekapcsolásának feltételét. Az `ON` kulcsszót
-használhatjuk az összekapcsolás tetszőleges feltételének vagy oszlopainak megadására.
-Az összekapcsolási feltétel független a többi keresési feltételtől. Az ON segítségével
-különböző nevű oszlopok is összekapcsolhatóak.
+használhatjuk az összekapcsolás tetszőleges feltételének vagy oszlopainak megadására,
+segítségével különböző nevű oszlopok is összekapcsolhatóak. Az összekapcsolási
+feltétel független a többi keresési feltételtől.
 
 A JOIN nyelvi elemek egy része kifejezhető a
 
@@ -849,15 +855,47 @@ kifejezés segítségével is.
   ```
   Az `ON` kikötés nem használható, ezért irányíthatatlan a kapcsolat, minden azonos
   nevű mező kapcsolódik.
-* **Külső-összekapcsolás (Outer join):**
+* **Külső-összekapcsolás (Outer join):** az összekapcsolt két tábla egyikénél vagy
+  mindkettőnél valamennyi rekord megőrzését garantálja. Az SQL szabvány szerint
+  a `LEFT`, `RIGHT` vagy `FULL OUTER JOIN` kulcsszavakkal adható meg. A *baloldali
+  oldali külső összekapcsolás* (`LEFT JOIN`) azt jelenti, hogy az eredménytáblában
+  a baloldali tábla azon sorai is szerepelnek, melyek a jobboldali tábla egyetlen
+  sorával sem párosíthatók. A *jobboldali oldali külső összekapcsolás* (`RIGHT JOIN`)
+  ugyan ez, csak fordítva. A * teljes külső összekapcsolás* (`FULL OUTER JOIN` vagy
+  egyszerűen: `FULL JOIN`) mindkét tábla nem párosított rekordjait megőrzi az
+  eredménytáblában.
 
-* **Belső-összekapcsolás (Inner join):**
+  ```sql
+    SELECT column_name
+    FROM table1
+    LEFT JOIN table2
+    ON table1.column_name = table2.column_name;
 
-* **Théta-összekapcsolás (Theta-join):**
-  A théta szó egy tetszőleges feltételre utal, amit θ jellel szokás jelölni.
+    SELECT column_name
+    FROM table1
+    RIGHT JOIN table2
+    ON table1.column_name = table2.column_name;
 
+    SELECT column_name
+    FROM table1
+    FULL [OUTER] JOIN table2
+    ON table1.column_name = table2.column_name
+    WHERE condition;
+  ```
+* **Belső-összekapcsolás (Inner join):** a két tábla közös soraival tér vissza.
 
-### 6.3 Az összekapcsolás lehetőségei
+  ```sql
+    SELECT column_name(s)
+    FROM table1
+    INNER JOIN table2
+    ON table1.column_name = table2.column_name;
+  ```
+
+* **Théta-összekapcsolás (Theta-join):** nem egyenlőségen alapuló összekapcsolás,
+  itt a táblák Descartes-szorzatából tetszőleges feltétel szerint választunk ki
+  sorokat. A théta szó erre a tetszőleges feltételre utal, amit θ jellel szokás
+  jelölni.
+
 
 ## 7. tétel
 
@@ -870,6 +908,7 @@ kifejezés segítségével is.
 ### 7.3 Funkcionális függőség fogalma
 
 ### 7.4 Attribútumhalmaz lezártja függéshalmaz szerint
+
 
 ## 8. tétel
 
@@ -1018,6 +1057,7 @@ kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, li
 ### 10.4 Relációsémák, indexek
 
 ### 10.5 Hivatkozástípusok relációsémák definiálásakor
+
 
 ## 11. tétel
 
@@ -1248,6 +1288,7 @@ elkülönüljenek.
 ### 13.3 Önálló megszorítások
 
 ### 13.4 Triggerek
+
 
 ## 14. tétel
 
