@@ -1294,7 +1294,62 @@ elkülönüljenek.
 
 *(Előadás + összeállított források)*
 
-### Adatbázis-kapcsolati rétegek feladata, típusai (ODBC, OLE DB, DAO)
+### Adatbázis-kapcsolati rétegek feladata, típusai (ODBC, OLE DB, DAO, PDO)
+
+Az SQL alapú adatbázis kezelést megvalósító alkalmazások egyik lehetséges csoportját
+a hívásszintű interfész – Call-Level Interface, SQL/CLI, amelyet az [ISO/IEC 9075-3:2016](https://www.iso.org/standard/63475.html) szabvány ír le – alapú
+alkalmazások alkotják, melynek fő jellemzője, hogy a gazdanyelvi programba a gazdanyelv
+szabályait teljesítő formalizmussal adatbázis-kezelő függvényhívásokat illeszthetünk
+be. Itt nem szabvány SQL utasítások formájában hajtódik végre az adatkezelés, hanem
+a gazdanyelv függvényhívásian keresztül. Természetesen az adatbázis-kezelő rendszer
+felé kiadott relációs algebrán alapuló utasítások továbbra is SQL utasítások lesznek,
+csak más formalizmusban, más előkészítési lépéseken keresztül hajtódnak végre.
+
+A CLI lényegében egy olyan alkalmazásprogramozási felület vagy alkalmazásprogramozási
+interfész (Application Programming Interface, API), amely egy adatbázis-független
+adathozzáférési absztrakciós réteget alkot, mely az alkalmazások számára egységes
+elérést biztosít és elrejti előlük a különböző adatbázis-rendszerekhez való
+hozzáférés sajátosságait.
+
+A CLI a gazdanyelv szintaktikájához idomul, az eljárások, függvények hívása a gazdanyelvi
+környezetben történik, ahol a tulajdonképpeni SQL utasítás, mint paraméter kerül
+átadásra. Az SQL-kapcsolat definiálása is függvénnyel történik.
+
+**ODBC (Open Database Connectivity)**
+
+Az ODBC (Open DataBase Connectivity, Nyílt adatbázis kapcsolat) a Microsoft korai,
+programozási nyelvtől független megoldása az adatbázis független adatelérésnek.
+A magja szabványos, vagyis lényegében megfelel a hívásszintű interfészt (Call-Level
+Interface) leíró [ISO/IEC 9075-3:2016](https://www.iso.org/standard/63475.html)
+specifikációnak (röviden SQL/CLI).
+
+Az ODBC egy C nyelven alapuló interfészt ad, mely egységes felületet biztosít az
+adatbázisokhoz a következő területeken:
+* Csatlakozás és bejelentkezés,
+* Adattípus és adatábrázolás,
+* Hibakódok,
+* SQL parancsok.
+
+Minden adatbázishoz szükséges saját ODBC-meghajtó
+
+**PDO (PHP Data Objects)**
+
+A PHP Adat Objektum kiterjesztése egy pehelysúlyú, következetes programozási felületet
+kínál a különféle adatbázisokhoz való hozzáféréshez a PHP kódból. Minden adatbázis-meghajtó,
+amely implementálja a PDO interfészt, képes adatbázis-specifikus funkciók szabályos
+függvényként való végrehajtására. Megjegyzendő, hogy **önmagában a PDO használatával nem
+lehet bármilyen adatbázis-funkciót végrehajtani; az adatbázis szerverhez való hozzáféréshez
+a megfelelő adatbázis-specifikus PDO-meghajtó használata is szükséges**.
+
+A PDO egy adatbázis-független adathozzáférési absztrakciós réteget biztosít, ami
+azt jelenti, hogy ugyanazokat a függvényeket lehet alkalmazni, függetlenül attól,
+hogy milyen adatbázisból kérünk le adatokat. A PDO nem egy új adatbázis-absztrakciót
+kínál, nem írja újra az SQL-t vagy emulálja az esetleg hiányzó funkcióit. (Forrás:
+[PHP Kézikönyv](https://www.php.net/manual/en/intro.pdo.php))
+
+A PDO számos driverrel rendelkezik, melyek közül a legismertebbek a PostgreSQL,
+Oracle, MS SQL, SQLite és a MySQL. Az ezzel készített PHP-s alkalmazások mögött
+könnyedén – a kód jelentős módosítása nélkül – cserélhető az adatbázis rendszer.
 
 
 ### Jegyzetek:
