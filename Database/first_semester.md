@@ -963,7 +963,7 @@ függőségek fordulnak elő.
 
 Egy funkcionális függéshalmaz (jelölése: **F**) elemeiből az Armstrong-axiómák
 segítségével képezhető, immár az összes függőséget magában foglaló halmazt az
-eredeti **függőségi halmaz lezártjának** nevezzük. Jelölése: **F<sup>+</sup>.
+eredeti **függőségi halmaz lezártjának** nevezzük. Jelölése: **F<sup>+</sup>**.
 Egy függőségi halmaz lezártja tehát tartalmazza a kiinduló funkcionális függéshalmaz
 elemei mellett azokat a függéseket is, amelyek az Armstrong-axiómák segítségével
 levezethetők a kiinduló halmaz elemeiből. Az Armstrong-axiómák segítségével ugyanis
