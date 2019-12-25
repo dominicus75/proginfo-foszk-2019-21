@@ -861,7 +861,7 @@ kifejezés segítségével is.
   oldali külső összekapcsolás* (`LEFT JOIN`) azt jelenti, hogy az eredménytáblában
   a baloldali tábla azon sorai is szerepelnek, melyek a jobboldali tábla egyetlen
   sorával sem párosíthatók. A *jobboldali oldali külső összekapcsolás* (`RIGHT JOIN`)
-  ugyan ez, csak fordítva. A * teljes külső összekapcsolás* (`FULL OUTER JOIN` vagy
+  ugyan ez, csak fordítva. A *teljes külső összekapcsolás* (`FULL OUTER JOIN` vagy
   egyszerűen: `FULL JOIN`) mindkét tábla nem párosított rekordjait megőrzi az
   eredménytáblában.
 
@@ -903,11 +903,87 @@ kifejezés segítségével is.
 
 ### 7.1 Relációs adatbázis normalizálása – elméleti alapok
 
+Az adatmodellezés egyik fő célja az optimalizálás, vagyis az adatmodellt alkotó
+egyedtípusok lehető legjobb belső és külső szerkezetének a megkeresése. Adatbázis
+tervezés során olyan adatstruktúrákat kell kialakítani amelyek segítik a hatékony
+adatkezelést. Fontos hogy az egyes táblákba csak a logikailag valóban összetartozó
+adatok kerüljenek, és hogy minél kevesebb ismétlődés legyen az adatok között.
+
+Az optimális adatmodell kialakítására – egyéb technikák mellett – a normalizálás
+szolgál. A normalizálás az adatbázis belső szerkezetének ellenőrzése, lépésenkénti
+átalakítása oly módon, hogy az adatbázis minden egyes lépésben egy-egy újabb kritériumnak,
+egymásra épülő normálformának (n-ik normálformában lenni annyit jelent, hogy már
+az n-1. normálformában benne van) feleljen meg. A műveletsorozat célja a redundancia-
+és anomáliamentes adatbázisok kialakítása.
+
+Egy reláció normálformája a legmagasabb olyan normálforma, amely feltételének a
+reláció megfelel, és így jelzi a reláció normalizáltságának a fokát.
+
 ### 7.2 Redundancia, anomáliák redundáns adattárolás esetén
 
-### 7.3 Funkcionális függőség fogalma
+Redundanciának ill. redundáns adattárolásnak nevezzük azt, amikor a minimálisan
+szükségesnél több adatot tárolunk egy adott információs állapot ábrázolása során.
+Egy ábrázolás általában attól lesz redundáns, hogy magában foglalja az adathalmaz
+más részeiből számítható információkat is.
+
+A redundáns adattárolás a következő anomáliákhoz vezethet:
+
+* **Beszúrási anomália:** amikor egy adatrekord beszúrása egy másik, hozzá logikailag
+nem kapcsolódó adatcsoport beszúrását kívánja meg.
+* **Módosítási anomália:** ha egy relációban egy adat módosítása több helyen
+történő módosítást igényel.
+* **Törlési anomália:** amennyiben egy adat törlésével másik, hozzá logikailag
+nem kapcsolódó adatcsoportot is elveszítünk.
+
+### 7.3 Funkcionális függőség (FD – Functional Dependency) fogalma
+
+A funkcionális függés egy olyan megszorítás, amely az adatbázis két attribútumhalmaza
+között áll fenn. Egy funkcionális függés az attribútumok szemantikájának vagy
+jelentésének egy jellemzője. A függőség nem az aktuális tábla, hanem a séma
+tulajdonsága.
+
+Funkcionális függésről akkor beszélünk, ha egy tábla valamelyik mezőjében lévő
+érték meghatározza egy másik mező értékét. A funkcionális függőség bal oldalát a
+függőség meghatározójának nevezzük. A funkcionális függőség bal oldalán több
+attribútum is megjelenhet, melyek együttesen határozzák meg a jobb oldalon szereplő
+attribútum értékét. A funkcionális függőség jobb oldalán több attribútum is állhat.
+
+A funkcionális függés kiterjesztése a **teljes funkcionális függés**. Három feltétele
+van:
+* egy tábla minden nem kulcs mezője függjön a kulcstól,
+* minden, nem kulcs mező csak a kulcstól függjön,
+* összetett kulcs esetén, minden nem kulcs mező függjön a kulcs minden elemétől.
+
+Az **A → B függést triviálisnak** nevezzük, ha B részhalmaza A-nak, ellenkező esetben
+**nem triviális**. Az **A → B függést teljesen nemtriviálisnak** nevezzük, ha a két
+attribútumhalmaznak nincs közös eleme. A gyakorlatban általában teljesen nemtriviális
+függőségek fordulnak elő.
 
 ### 7.4 Attribútumhalmaz lezártja függéshalmaz szerint
+
+Egy funkcionális függéshalmaz (jelölése: **F**) elemeiből az Armstrong-axiómák
+segítségével képezhető, immár az összes függőséget magában foglaló halmazt az
+eredeti **függőségi halmaz lezártjának** nevezzük. Jelölése: **F<sup>+</sup>.
+Egy függőségi halmaz lezártja tehát tartalmazza a kiinduló funkcionális függéshalmaz
+elemei mellett azokat a függéseket is, amelyek az Armstrong-axiómák segítségével
+levezethetők a kiinduló halmaz elemeiből. Az Armstrong-axiómák segítségével ugyanis
+egy adott függőségi halmazból következő bármely függőség formálisan levezethető.
+
+**Armstrong-axiómák:**
+
+1. *Tranzitivitás (átvihetőség):* az elempárok azon tulajdonsága, hogy egymással
+  relációban állnak, „láncszerűen” tovább adódik. Tehát, ha R(A, B, C) relációsémában
+  B argumentum függ A-tól, C pedig B-től, akkor C tranzitíven függ A-tól.
+2. *Reflexivitás (triviális függés):* egy attribútumhalmaz mindig meghatározza
+  önmagát, vagy saját maga bármelyik részhalmazát.
+3. *Augmentivitás (bővíthetőség):* egy funkcionális függés mindkét oldalának ugyanazzal
+  az attribútumhalmazzal való bővítése újabb érvényes funkcionális függést eredményez.
+
+A lezárt képzésénél kiindulunk az adott attribútumhalmazból, és többször ismételten
+növeljük ezt a halmazt azoknak a funkcionális függőségeknek a jobb oldali attribútumaival,
+amely függőségek bal oldalát már tartalmazza a leendő lezárt. Nyilvánvalóan
+eljutunk egy pontig, amikor a halmaz már nem bővíthető tovább. Ez az eredményhalmaz
+lesz a lezárt.
 
 
 ## 8. tétel
@@ -916,11 +992,52 @@ kifejezés segítségével is.
 
 ### 8.1 Relációs adatbázis normalizálása – elméleti alapok
 
-### 8.2 Tábla dekompozíciója
+Az adatmodellezés egyik fő célja az optimalizálás, vagyis az adatmodellt alkotó
+egyedtípusok lehető legjobb belső és külső szerkezetének a megkeresése. Adatbázis
+tervezés során olyan adatstruktúrákat kell kialakítani amelyek segítik a hatékony
+adatkezelést. Fontos hogy az egyes táblákba csak a logikailag valóban összetartozó
+adatok kerüljenek, és hogy minél kevesebb ismétlődés legyen az adatok között.
+
+Az optimális adatmodell kialakítására – egyéb technikák mellett – a normalizálás
+szolgál. A normalizálás az adatbázis belső szerkezetének ellenőrzése, lépésenkénti
+átalakítása oly módon, hogy az adatbázis minden egyes lépésben egy-egy újabb kritériumnak,
+egymásra épülő normálformának (n-ik normálformában lenni annyit jelent, hogy már
+az n-1. normálformában benne van) feleljen meg. A műveletsorozat célja a redundancia-
+és anomáliamentes adatbázisok kialakítása.
+
+A normalizálás néhány rögzített irányelven alapszik (ezek a normálformák), amelyek
+iránymutatást adnak a tervezéshez, helyes mederbe terelve a modellezés menetét.
+
+### 8.2 Tábla dekompozíciója (felbontása)
+
+A dekompozíció során az induló séma felbontásával emeljük ki a nem kívánt funkcionális
+függőségeket külön relációkba. Azaz a felesleges funkcionális függőséget tartalmazó
+sémát dekompozícióval hozzuk normalizált alakra. A dekompozíciós módszerben felállított
+tervezési irányelveket több, egymásra épülő követelmény alakjában adják meg. Az
+egyes követelményeket szokás normálformáknak is nevezni. A gyakorlatban azt kell
+mérlegelni, hogy a redundancia és az anomáliák mennyire jelentenek súlyos veszélyt,
+indokolt-e azok megszüntetésével a táblák számát növelni (dekompozíció).
+
+A dekompozíciónak mindig veszteségmentesnek kell lennie.
 
 ### 8.3 Hűséges ill. függőségőrző felbontás
 
+A dekompozíció megfordítható – reverzibilis – művelet. Ez azt jelenti, hogy az
+eredmény-relációkból mindig visszaállíthatók az eredetiek. Egy felbontást hűségesnek
+nevezünk, ha a felbontás után adódó relációk természetes összekapcsolásával az
+eredeti relációt kapjuk vissza. A hűségesség tehát azt jelenti, hogy az összekapcsolás
+nem állít elő fölös sorokat, hűséges az eredeti relációhoz.
+
 ### 8.4 Heath tétele
+
+**Azt mondja ki, hogy akkor tekinthető egy felbontás biztosan veszteségmentesnek vagy
+hűségesnek, ha a kapott relációk összekapcsolásával az eredeti relációt kapjuk vissza**.
+
+R(B, C, D), ahol B, C és D attribútumhalmazoknak nincs közös eleme. Ha D funkcionálisan
+függ C-től, akkor az R1(B, C), R2(C, D) felbontás hűséges, mivel R1 és R2 relációkból
+természetes összekapcsolással az eredeti R relációt kapjuk vissza (C attribútum
+R1 relációban idegenkulcs, R2-ben pedig elsődleges kulcs, tehát C biztosítja a
+kapcsolatot a két reláció között).
 
 
 ## 9. tétel
@@ -929,11 +1046,57 @@ kifejezés segítségével is.
 
 ### 9.1 Relációs adatbázis normalizálása – eljárások
 
+A **2NF** kialakításakor azt a táblát, amiben részleges funkcionális függés van, két
+új táblára bontjuk. Az egyik táblába az összetett kulcs egyik eleme kerül, a tőle
+függő összes mezővel együtt. A másik táblába a kulcs másik eleme kerül a tőle
+függő összes mezővel együtt. A két kapott táblában már nem lesz összetett kulcs,
+tehát nem lesz részleges funkcionális függés sem. Az új táblák azonosítói az eredeti
+összetett kulcs elemei lesznek.
+
+
 ### 9.2 Az 1NF, 2NF és 3NF követelményei
+
+Az **első normálforma (1NF)** az alap relációs modellben ismertetett reláció fogalom
+formális definíciójának a részeként is felfogható. Egy relációséma 1NF-ben van, ha
+az attribútumok értéktartománya csak egyszerű (atomi) adatokból áll (nem tartalmaz
+például listát vagy struktúrát).
+
+A **második normálforma (2NF)** a teljes funkcionális függés fogalmán alapul. Egy
+relációséma 2NF-ben van, ha minden másodlagos attribútum funkcionálisan függ az
+elsődleges kulcstól. Azok a relációk, melyek elsődleges kulcsa csak egy attribútumból
+áll, mindig második normálformában vannak, ekkor ugyanis nem lehetséges, hogy csak az
+elsődleges kulcs egy részétől függjön egy nem elsődleges attribútum.
+
+A **harmadik normálforma (3NF)** a tranzitív függés fogalmán alapul. Egy relációséma
+3NF-ben van, ha minden másodlagos attribútuma közvetlenül függ az elsődleges kulcstól,
+és csak attól függ (nincs tranzitív függés, tehát egy leíró attribútum sem függ egy
+másiktól, csak a kulcstól).
 
 ### 9.3 Teljes függés fogalma
 
+A funkcionális függés kiterjesztése a **teljes funkcionális függés**. Három feltétele
+van:
+* egy tábla minden nem kulcs (leíró) mezője függjön a kulcstól,
+* minden, nem kulcs mező csak a kulcstól függjön,
+* összetett kulcs esetén, minden nem kulcs mező függjön a kulcs minden elemétől.
+
+**Részleges funkcionális függés** a teljes funkcionális függés egyik akadálya. Akkor
+fordulhat elő egy táblában, ha abban van összetett kulcs és nem teljesül a teljes
+funkcionális függés azon feltétele, miszerint *„minden nem kulcs mező függjön a
+kulcs minden elemétől”*, vagyis ha **az összetett kulcs egyik részét eltávolítva a
+függés továbbra is fennáll**. Ebből következik, hogy **részleges funkcionális függés
+csak akkor fordulhat elő egy táblában, ha abban összetett kulcs van**. A normalizálás
+során a részleges funkcionális függést meg kell szüntetni.
+
 ### 9.4 Harmadik normálformára alakítás
+
+Az egyed akkor van harmadik normálformában, ha
+* az attribútumok értéktartománya csak egyszerű (atomi) adatokból áll,
+* minden leíró tulajdonsága funkcionálisan függ a kulcsától (1NF),
+* minden leíró tulajdonsága csak a teljes kulcsától függ (2NF),
+* leíró tulajdonságai semmilyen más tulajdonságától, csak a kulcsától függnek (3NF).
+
+
 
 ### 9.5 A Boyce-Codd normálforma fogalma
 
