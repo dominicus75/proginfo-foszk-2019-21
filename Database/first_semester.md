@@ -1352,14 +1352,13 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 |------------|----------|
 | **ALL** | IGAZ, ha az összes alkérdés összes eredménye megfelel a feltételnek |
 | **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
-| **ANY** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
+| **ANY** vagy **SOME** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
 | **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van |
 | **EXISTS**  | IGAZ, ha a szóban forgó alkérdés legalább egy sort vissza ad. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
 | **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
 | **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert.  |
 | **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
 | **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
-| **SOME**  | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek (ugyan az, mint az **ANY**) |
 
 **Az operátorok precedenciája (végrehajtási sorrendje) csökkenő sorrendben:**
 1. Összehasonlító operátorok
