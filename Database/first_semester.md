@@ -1403,11 +1403,16 @@ Teljes szintaxis:
   CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] adatbázis_név
     [létrehozási_feltételek];
 
-  létrehozási_feltételek :=
+  létrehozási_feltételek ::=
     [DEFAULT] CHARACTER SET [=] alkalmazott karakterkészlet beállítása (pl. utf8)
-  | [DEFAULT] COLLATE [=] a karaktertáblához tartozó rendezési szabályok megadása (pl. utf8_hungarian_ci)
+  | [DEFAULT] COLLATE [=] rendezési szabályok megadása (pl. utf8_hungarian_ci)
 
 ```
+
+A rendezési szabályok a kis-, és nagybetű érzékenységet és az adott nyelv abc-je
+szerinti sorba rendezésre vonatkozó beállításokat tartalmazzák. Az `utf8_hungarian_ci`
+például nem kis-, és nagybetű érzékeny (ci - case insensitive) és a magyar abc
+szerit rendezi sorba a szöveges adatokat, figyelembe véve az ékezetes betűket is.
 
 Példa:
 ```sql
