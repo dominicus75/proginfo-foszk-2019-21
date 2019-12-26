@@ -1280,17 +1280,15 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
-szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
-vagy operátor) jelöli.*
-
 ### 10.2 Az SQL nyelv szintaxisa, speciális logikai kifejezései
 
 Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzékeny. A
-szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó szerint (literally)
-kell érteni, itt tehát lényeges a nagybetűk–kisbetűk különbsége. **A nyelv kulcsszavait
-(parancsait) általában nagybetűvel szokás írni (pl. SELECT), a kód jobb olvashatósága
-és áttekinthetősége érdekében**. Az **oszlopneveknél a kisbetűs írásmód javasolt**,
+táblák és oszlopok nevének leírásához ajánlatos **csak ASCII (ékezet nélküli) karaktereket
+használni**. A szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó
+szerint (literally) kell érteni, itt tehát lényeges a nagybetűk–kisbetűk különbsége
+(ezek tartalmazhatnak UTF8 karaktereket is). **A nyelv kulcsszavait (parancsait)
+általában nagybetűvel szokás írni (pl. SELECT), a kód jobb olvashatósága és
+áttekinthetősége érdekében**. Az **oszlopneveknél a kisbetűs írásmód javasolt**,
 különösen ha a kulcsszavak nagybetűsek, ekkor ugyanis jól elkülönül egymástól a
 kettő.
 
@@ -1300,6 +1298,19 @@ kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, li
 utasítások sorfolytonosan írhatók (és egymásba is ágyazhatók), vagy tetszőlegesen
 tagolhatók (szóköz, tabulátor) akár több sorba is írhatók, de minden utasítást
 pontosvesszővel kell lezárni.
+
+Az egysoros kommenteket dupla kötőjel (`--`) jelöli, a többsorosakat pedig
+`/*` és `*/`. A megjegyzésbe tett tartalmakat a SQL nem veszi figyelembe.
+
+
+```sql
+
+  -- Ez itt egy egysoros komment
+
+  /* Ez pedig egy
+  több soros megjegyzés */
+
+```
 
 A zárójelek a műveletek végrehajtási sorrendjét módosítják (először a zárójeles
 kifejezés kerül kiértékelésre). Segítségükkel a műveletek egymásba ágyazhatók.
@@ -1353,10 +1364,10 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 | **ALL** | IGAZ, ha az összes alkérdés eredménye megfelel a feltételnek |
 | **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
 | **ANY** vagy **SOME** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
-| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ``` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ``` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
+| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
 | **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
 | **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
-| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. ``` SELECT * FROM Ügyfelek WHERE Város LIKE 'b%'; ``` (minden ügyfelet listáz, akinek a városa b-vel kezdődik) |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. ` SELECT * FROM Ügyfelek WHERE Város LIKE 'b%'; ` (minden ügyfelet listáz, akinek a városa b-vel kezdődik) |
 | **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
 | **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
 
@@ -1366,13 +1377,80 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 3. AND
 4. OR
 
-A végrehajtási sorrend megváltoztatható a kerek zárójelek használatával.
+A végrehajtási sorrend megváltoztatható kerek zárójelek használatával.
 
 ### 10.3 Adatdefiníciós utasítások (DDL)
+
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
+metaszintaxishoz hasonló módon.*
+
+Az adatdefiníciós nyelv segítségével hozhatjuk létre illetve szüntethetjük meg magát
+az adatbázist, illetve a relációkat (táblákat), az indexeket, a nézet táblákat,
+[és még sok egyebet](https://mariadb.com/kb/en/create/).
+
+A következő SQL parancsok tartoznak ide:
+* **CREATE** (létrehozás)
+* **DROP** (eldobás)
+* **ALTER** (módosítás)
+
+**Adatbázis létrehozása**
+
+Teljes szintaxis:
+```sql
+
+  CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] adatbázis_név
+    [létrehozási_feltételek];
+
+  létrehozási_feltételek :=
+    [DEFAULT] CHARACTER SET [=] alkalmazott karakterkészlet beállítása (pl. utf8)
+  | [DEFAULT] COLLATE [=] a karaktertáblához tartozó rendezési szabályok megadása (pl. utf8_hungarian_ci)
+
+```
+
+Példa:
+```sql
+
+  CREATE DATABASE IF NOT EXISTS `Adatbazis`
+  CHARACTER SET = utf8
+  COLLATE = utf8_hungarian_ci;
+
+```
+
+A karakterkészlet és a rendezési szabályok az egyes táblák létrehozásánál is megadhatók
+(akkor az adott táblára fognak csak vonatkozni).
+
+
+**Relációséma létrehozása**
+
+Relációséma létrehozására a [CREATE TABLE](https://mariadb.com/kb/en/create-table/) utasítás
+szolgál, amely egyben egy üres táblát is létrehoz a sémához. Az attribútumok
+definiálása (név és adattípus beállítása) mellett a kulcsok (elsődleges és külső),
+indexek valamint tábla-, és oszlopszintű megszorítások megadására is lehetőséget
+nyújt.
+
+
+Teljes szintaxis:
+```sql
+
+  CREATE TABLE [IF NOT EXISTS] Táblanév
+
+```
+
+
+Példa:
+```sql
+
+```
+
+
 
 
 
 ### 10.4 Relációsémák, indexek
+
+
 
 ### 10.5 Hivatkozástípusok relációsémák definiálásakor
 
@@ -1470,13 +1548,21 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
-szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
-vagy operátor) jelöli.*
-
 ### 11.2 Nézettábla (VIEW) kialakítása és szerepe
 
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
+metaszintaxishoz hasonló módon.*
+
+
+
 ### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
+
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
+metaszintaxishoz hasonló módon.*
 
 
 
@@ -1574,11 +1660,12 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
+### 12.2 Lekérdezés relációs adattáblákból (DQL)
+
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
-vagy operátor) jelöli.*
-
-### 12.2 Lekérdezés relációs adattáblákból (DQL)
+vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
+metaszintaxishoz hasonló módon.*
 
 
 
@@ -1604,16 +1691,24 @@ zárójelek e mellett a műveletek végrehajtási sorrendjét is módosítják. 
 ágyazott lekérdezéseket az alaprendszer belülről kifelé haladva dolgozza fel, tehát
 először a legbelső zárójelben lévő kifejezés értékelődik ki.
 
+Az egyenlőség vizsgálat esetén a belső lekérdezés csak egy értéket adhat vissza.
+
 
 ## 13. tétel
 
 *(Jegyzet: 7.1., 7.2., 7.3., 7.4., 7.5. fejezet, 63-66. oldal)*
 
-### 13.1 Az SQL megszorításai, triggerei
+### 13.1 Az SQL megszorításai
+
+
 
 ### 13.2 Domain-ek, attribútumokra, rekordokra vonatkozó megszorítások
 
+
+
 ### 13.3 Önálló megszorítások
+
+
 
 ### 13.4 Triggerek
 
