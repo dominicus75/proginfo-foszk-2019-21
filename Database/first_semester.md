@@ -1147,9 +1147,9 @@ számolni a [szinonim](https://hu.wikipedia.org/wiki/Szinon%C3%ADmia) és [homon
 teremteni a korrekt normalizálási alapot. Minden attribútumnévnek világosnak és
 egyértelműnek kell lennie, ami pontosan tükrözi az oszlop tartalmát.
 2. **Többértékű és összetett attribútumok felbontása**.
-  * az összetett attribútumokat a részattribútumaikkal helyettesítjük,
-  * a többértékű attribútumokat új relációsémába visszük át, az új séma elsődleges
-  kulcsát idegenkulcsként beillesztve a kiinduló sémába.
+    * az összetett attribútumokat a részattribútumaikkal helyettesítjük,
+    * a többértékű attribútumokat új relációsémába visszük át, az új séma elsődleges
+    kulcsát idegenkulcsként beillesztve a kiinduló sémába.
 3. **Elsődleges kulcs kiválasztása** a kulcsjelöltek közül. Ha nincs alkalmas kulcsjelölt,
 akkor létre kell hozni egy olyat (azonosító, ID, auto increment megkötéssel), amelytől
 a reláció minden leíró attribútuma függ.
