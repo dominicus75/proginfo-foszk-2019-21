@@ -20,6 +20,7 @@
 * Cser Lajos: [SQL alapok](http://cserlajos.hu/files/db2014-n/06-sql-alap.pdf)
 * John L. Viescas, Michael J. Hernandez: [SQL-Iekérdezések földi halandóknak](http://dev.logisztika.bme.hu/logdb/irodalom/SQL.lekerdezesek.foldi.halandoknak.2009.eBOOk-digIT.pdf)
 * [w3schools SQL Tutorial](https://www.w3schools.com/sql/default.asp)
+* ELTE-Prognyelvek portál: [Az SQL lekérdezési nyelv](http://nyelvek.inf.elte.hu/leirasok/SQL/index.php)
 * Wikipédia: [MySQL-szócikk](https://hu.wikipedia.org/wiki/MySQL)
 * Sallai András: [MySQL jegyzet](https://szit.hu/doku.php?id=oktatas:adatb%C3%A1zis-kezel%C3%A9s:mysql:mysql_jegyzet)
 * Andó Mihály: [SQL, MySQL oktatóprogram](http://sql.misi.eu/)

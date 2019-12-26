@@ -1288,7 +1288,7 @@ vagy operátor) jelöli.*
 
 Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzékeny. A
 szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó szerint (literally)
-kell érteni, tehát nyilván lényeges a nagybetűk–kisbetűk különbsége. **A nyelv kulcsszavait
+kell érteni, itt tehát lényeges a nagybetűk–kisbetűk különbsége. **A nyelv kulcsszavait
 (parancsait) általában nagybetűvel szokás írni (pl. SELECT), a kód jobb olvashatósága
 és áttekinthetősége érdekében**. Az **oszlopneveknél a kisbetűs írásmód javasolt**,
 különösen ha a kulcsszavak nagybetűsek, ekkor ugyanis jól elkülönül egymástól a
@@ -1296,8 +1296,79 @@ kettő.
 
 Változó nincs, csak tábla- és oszlopnevekre lehet hivatkozni. Az SQL utasítások
 kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, literálokból
-(számszerű, dátum jellegű, szöveges konstansok) állnak. Az utasítások sorfolytonosan
-írhatók (és egymásba is ágyazhatók), minden utasítást pontosvesszővel kell lezárni.
+(számszerű, dátum jellegű, szöveges konstansok, aposztrófok közé írva) állnak. Az
+utasítások sorfolytonosan írhatók (és egymásba is ágyazhatók), vagy tetszőlegesen
+tagolhatók (szóköz, tabulátor) akár több sorba is írhatók, de minden utasítást
+pontosvesszővel kell lezárni.
+
+A zárójelek a műveletek végrehajtási sorrendjét módosítják (először a zárójeles
+kifejezés kerül kiértékelésre). Segítségükkel a műveletek egymásba ágyazhatók.
+
+**Az SQL aritmetikai operátorai**
+
+|  Operátor  |  Leírás  |
+|:----------:|----------|
+| + | összeadás |
+| - | kivonás |
+| * | szorzás |
+| / | osztás  |
+| % | maradékos osztás |
+
+**Az SQL összehasonlító operátorai**
+
+Ezek segítségével összehasonlításokat végezhetünk. Számoknál és szöveges adatoknál
+egyaránt használhatók.
+
+|  Operátor  |  Leírás  |
+|------------|----------|
+| = | egyenlő |
+| > | nagyobb, mint |
+| < | kisebb, mint  |
+| >=  | nagyobb vagy egyenlő  |
+| <=  | kisebb vagy egyenlő |
+| <> vagy !=  | nem egyenlő |
+
+**Az SQL [bitenkénti](https://hu.wikipedia.org/wiki/Bitm%C5%B1velet#Bitm%C5%B1veletek) logikai operátorai**
+
+A bitművelet olyan művelet, amely egy vagy több bitsorozatot vagy bináris számot
+az egyes bitek szintjén manipulál. A két operandust bitsorozatokként ábrázolják
+amelyek egy párt alkotnak. Az operátor a párok felhasználásával bitenként
+állítja össze az eredményt. Gyors, primitív tevékenység, amit a CPU közvetlenül
+támogat.
+
+|  Operátor  |  Leírás  |
+|:----------:|----------|
+| & | Bitenénti ÉS (AND) |
+| | | Bitenkénti VAGY (OR) |
+| ^ | Bitenkénti KIZÁRÓ VAGY (XOR)  |
+
+**Az SQL logikai operátorai**
+
+Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
+mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
+eleme NULL, akkor a kifejezés értéke is NULL lesz*.
+
+|  Operátor  |  Leírás  |
+|------------|----------|
+| **ALL** | IGAZ, ha az összes alkérdés összes eredménye megfelel a feltételnek |
+| **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
+| **ANY** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
+| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van |
+| **EXISTS**  | IGAZ, ha a szóban forgó alkérdés legalább egy sort vissza ad. Előtte a
+NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
+| **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert.  |
+| **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
+| **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
+| **SOME**  | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek (ugyan az, mint az **ANY**) |
+
+**Az operátorok precedenciája (végrehajtási sorrendje) csökkenő sorrendben:**
+1. Összehasonlító operátorok
+2. NOT
+3. AND
+4. OR
+
+A végrehajtási sorrend megváltoztatható a kerek zárójelek használatával.
 
 ### 10.3 Adatdefiníciós utasítások (DDL)
 
@@ -1509,21 +1580,31 @@ szabványához igazodik).
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
 vagy operátor) jelöli.*
 
-### 12.2 Lekérdezés relációs adattáblákból, a relációalgebrai műveletek megvalósítása
+### 12.2 Lekérdezés relációs adattáblákból (DQL)
 
 
 
-### 12.3 Összesítő függvények alkalmazása
+### 12.3 Relációalgebrai műveletek megvalósítása
 
-### 12.4 Alkérdések az SQL nyelvben
+
+
+### 12.4 Összesítő (aggregáló) függvények alkalmazása
+
+
+
+### 12.5 Alkérdések az SQL nyelvben
 
 Az SQL támogatja azt a lehetőséget, hogy a `WHERE` vagy `HAVING` szelekciós feltételben
 nemcsak létező, letárolt adatelemekre hivatkozzunk, hanem számított kifejezéseket
 is alkalmazhassunk. A számítást egy másik SELECT utasítással tudjuk megadni, tehát
 az egyik lekérdezés szelekciós feltételében hivatkozunk egy másik lekérdezés eredményére.
 Ezt alkérdésnek vagy belső SELECT-nek is nevezzük, formailag megegyezik a normál
-SELECT utasítással. Az alkérdésnek mindig zárójelben kell megadni, hogy elemei
-elkülönüljenek.
+SELECT utasítással.
+
+Az alkérdéseket mindig zárójelben kell megadni, hogy elemeik elkülönüljenek. A
+zárójelek e mellett a műveletek végrehajtási sorrendjét is módosítják. Az egymásba
+ágyazott lekérdezéseket az alaprendszer belülről kifelé haladva dolgozza fel, tehát
+először a legbelső zárójelben lévő kifejezés értékelődik ki.
 
 
 ## 13. tétel
