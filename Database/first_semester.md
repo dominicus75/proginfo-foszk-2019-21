@@ -935,6 +935,11 @@ történő módosítást igényel.
 * **Törlési anomália:** amennyiben egy adat törlésével másik, hozzá logikailag
 nem kapcsolódó adatcsoportot is elveszítünk.
 
+A karbantartási anomáliák abból származnak, hogy nem az igazán összetartozó adatokat
+vesszük be egy relációba. Hogy mely mezők tartoznak igazán egy relációba, azt a
+mezők közötti összetartozási viszony, a mezők közötti függőségek határozzák meg.
+A legfontosabb függőségi típus a funkcionális függőség.
+
 ### 7.3 Funkcionális függőség (FD – Functional Dependency) fogalma
 
 A funkcionális függés egy olyan megszorítás, amely az adatbázis két attribútumhalmaza
@@ -947,6 +952,12 @@ Funkcionális függésről akkor beszélünk, ha egy tábla valamelyik mezőjéb
 függőség meghatározójának nevezzük. A funkcionális függőség bal oldalán több
 attribútum is megjelenhet, melyek együttesen határozzák meg a jobb oldalon szereplő
 attribútum értékét. A funkcionális függőség jobb oldalán több attribútum is állhat.
+
+A funkcionális függőségekkel magyarázható a redundancia is. Ha ugyanis egy ismétlődő
+értékű mező meghatároz egy másik mezőt, akkor a függés definíciója alapján annak
+is ismétlődnie kell. Tehát a redundancia oka a nem megfelelő, felesleges funkcionális
+függőség a relációsémán belül. A funkcionális függőségek felderítését, és az adatbázis
+funkcionális függőségek-mentessé alakítását (dekompozícióját) nevezzük normalizálásnak.
 
 A funkcionális függés kiterjesztése a **teljes funkcionális függés**. Három feltétele
 van:
@@ -978,6 +989,15 @@ egy adott függőségi halmazból következő bármely függőség formálisan l
   önmagát, vagy saját maga bármelyik részhalmazát.
 3. *Augmentivitás (bővíthetőség):* egy funkcionális függés mindkét oldalának ugyanazzal
   az attribútumhalmazzal való bővítése újabb érvényes funkcionális függést eredményez.
+
+**Az Armstrong-axiómákból levezethető szabályok**
+* **Additivitás – Egyesítési szabály:** az azonos bal oldalú függőségek jobb oldalán
+szereplő attribútum-halmazokat egyesíthetjük (ha teljesül egy **A → B** és egy
+**A → C** függőség, akkor teljesül az **A → {B, C}** függőség is).
+* **Dekompozíció – Szétvághatósági szabály:** az additivitás ellentéte. A funkcionális
+függőség jobb oldalán szereplő attribútum-halmaz minden részhalmaza is függ a
+baloldaltól (vagyis: ha **A → {B, C}** függőség teljesül, akkor **A → B** és A → C**
+is fennáll).
 
 A lezárt képzésénél kiindulunk az adott attribútumhalmazból, és többször ismételten
 növeljük ezt a halmazt azoknak a funkcionális függőségeknek a jobb oldali attribútumaival,
@@ -1024,9 +1044,8 @@ A dekompozíciónak mindig veszteségmentesnek kell lennie.
 
 A dekompozíció megfordítható – reverzibilis – művelet. Ez azt jelenti, hogy az
 eredmény-relációkból mindig visszaállíthatók az eredetiek. Egy felbontást hűségesnek
-nevezünk, ha a felbontás után adódó relációk természetes összekapcsolásával az
-eredeti relációt kapjuk vissza. A hűségesség tehát azt jelenti, hogy az összekapcsolás
-nem állít elő fölös sorokat, hűséges az eredeti relációhoz.
+nevezünk, ha a felbontás után adódó relációk összekapcsolásával az eredeti relációt
+kapjuk vissza.
 
 ### 8.4 Heath tétele
 
@@ -1035,9 +1054,9 @@ hűségesnek, ha a kapott relációk összekapcsolásával az eredeti relációt
 
 R(B, C, D), ahol B, C és D attribútumhalmazoknak nincs közös eleme. Ha D funkcionálisan
 függ C-től, akkor az R1(B, C), R2(C, D) felbontás hűséges, mivel R1 és R2 relációkból
-természetes összekapcsolással az eredeti R relációt kapjuk vissza (C attribútum
-R1 relációban idegenkulcs, R2-ben pedig elsődleges kulcs, tehát C biztosítja a
-kapcsolatot a két reláció között).
+összekapcsolással az eredeti R relációt kapjuk vissza (C attribútum R1 relációban
+idegenkulcs, R2-ben pedig elsődleges kulcs, tehát C biztosítja a kapcsolatot a két
+reláció között).
 
 
 ## 9. tétel
@@ -1046,30 +1065,55 @@ kapcsolatot a két reláció között).
 
 ### 9.1 Relációs adatbázis normalizálása – eljárások
 
-A **2NF** kialakításakor azt a táblát, amiben részleges funkcionális függés van, két
-új táblára bontjuk. Az egyik táblába az összetett kulcs egyik eleme kerül, a tőle
-függő összes mezővel együtt. A másik táblába a kulcs másik eleme kerül a tőle
-függő összes mezővel együtt. A két kapott táblában már nem lesz összetett kulcs,
-tehát nem lesz részleges funkcionális függés sem. Az új táblák azonosítói az eredeti
-összetett kulcs elemei lesznek.
+A normalizációs folyamat Codd első javaslata szerint (Codd, 1972) végigvisz egy
+relációsémát tesztek egy sorozatán annak ellenőrzésére, hogy kielégít-e egy bizonyos
+normálformát. Ezt a folyamatot, **analízis alapú relációs tervezésnek** tekinthetjük.
+Codd kezdetben három normálformát javasolt, Boyce és Codd később egy, a 3NF-nél
+erősebb normálformát definiált, amelyet **Boyce–Codd-normálformának (BCNF)** nevezünk.
+**Mindegyik normálforma egyetlen analitikai eszközön alapul: a reláció attribútumai
+között fennálló funkcionális függéseken**.
 
+Az adatok normalizálása egy olyan folyamatnak tekinthető, amely elemzi az adott
+relációsémákat a funkcionális függéseik és elsődleges kulcsaik alapján, hogy minimalizálja
+a redundanciát és a beszúrási, törlési és módosítási anomáliákat.
+
+A nem megfelelő relációsémákat felbontjuk kisebb relációsémákra, amelyek rendelkeznek
+az elvárt tulajdonságokkal. A normalizációs eljárás tehát az adatbázis-tervezők
+számára a következőket biztosítja:
+* formális keretrendszert a relációsémák elemzéséhez, amely a relációsémák kulcsain
+és az attribútumaik között fennálló funkcionális függéseken alapszik,
+* normálformatesztek egy sorozatát, amelyek egy-egy relációsémán hajthatók végre,
+hogy az adatbázis tetszőleges mértékig normalizálható legyen.
+
+Bár számos magasabb normálformát definiáltak (mint például a 4NF és az 5NF), ezek
+gyakorlati hasznossága kérdésessé válik akkor, amikor azok az adatbázis-tervezők
+és felhasználók, akiknek ez a feladatuk, nehezen tudják megérteni, illetve felismerni
+azokat a megszorításokat, amelyeken ezek a normálformák alapulnak. Az iparban manapság
+alkalmazott adatbázis-tervezés során ezért **csak a 3NF-ig, BCNF-ig végrehajtott
+normalizálásra fordítanak figyelmet**.
 
 ### 9.2 Az 1NF, 2NF és 3NF követelményei
 
+Az alábbi normálformák az elsődleges kulcson alapulnak. Ezen normálformák léteznek
+általánosabb definíciói is, amelyek a reláció összes kulcsjelöltjét figyelembe veszik,
+nem csak az elsődleges kulcsot.
+
 Az **első normálforma (1NF)** az alap relációs modellben ismertetett reláció fogalom
 formális definíciójának a részeként is felfogható. Egy relációséma 1NF-ben van, ha
-az attribútumok értéktartománya csak egyszerű (atomi) adatokból áll (nem tartalmaz
-például listát vagy struktúrát).
+**az attribútumok értéktartománya csak egyszerű (atomi) adatokból áll** (azaz nem
+nem többértékű és nem összetett attribútum; nem tartalmaz például listát vagy struktúrát).
 
 A **második normálforma (2NF)** a teljes funkcionális függés fogalmán alapul. Egy
-relációséma 2NF-ben van, ha minden másodlagos attribútum funkcionálisan függ az
-elsődleges kulcstól. Azok a relációk, melyek elsődleges kulcsa csak egy attribútumból
+relációséma 2NF-ben van, ha **minden másodlagos attribútum funkcionálisan függ az
+elsődleges kulcstól**. Azok a relációk, melyek elsődleges kulcsa csak egy attribútumból
 áll, mindig második normálformában vannak, ekkor ugyanis nem lehetséges, hogy csak az
 elsődleges kulcs egy részétől függjön egy nem elsődleges attribútum.
 
-A **harmadik normálforma (3NF)** a tranzitív függés fogalmán alapul. Egy relációséma
-3NF-ben van, ha minden másodlagos attribútuma közvetlenül függ az elsődleges kulcstól,
-és csak attól függ (nincs tranzitív függés, tehát egy leíró attribútum sem függ egy
+A **harmadik normálforma (3NF)** a tranzitív függés fogalmán alapul. Egy egyed leíró
+(nem kulcs) tulajdonsága akkor és csak akkor függ tranzitíven az egyed kulcsától,
+ha azt meghatározza a kulcstól függő másik leíró tulajdonság is. Egy relációséma
+3NF-ben van, ha **minden másodlagos attribútuma közvetlenül függ az elsődleges kulcstól,
+és csak attól függ** (nincs tranzitív függés, tehát egy leíró attribútum sem függ egy
 másiktól, csak a kulcstól).
 
 ### 9.3 Teljes függés fogalma
@@ -1096,9 +1140,51 @@ Az egyed akkor van harmadik normálformában, ha
 * minden leíró tulajdonsága csak a teljes kulcsától függ (2NF),
 * leíró tulajdonságai semmilyen más tulajdonságától, csak a kulcsától függnek (3NF).
 
+**A normalizálás lépései:**
 
+1. A normalizálás feltétele az egyértelműség. Ezért legelőször fel kell
+számolni a [szinonim](https://hu.wikipedia.org/wiki/Szinon%C3%ADmia) és [homonim](https://hu.wikipedia.org/wiki/Homon%C3%ADmia) oszlopneveket, azaz meg kell
+teremteni a korrekt normalizálási alapot. Minden attribútumnévnek világosnak és
+egyértelműnek kell lennie, ami pontosan tükrözi az oszlop tartalmát.
+2. **Többértékű és összetett attribútumok felbontása**.
+  * az összetett attribútumokat a részattribútumaikkal helyettesítjük,
+  * a többértékű attribútumokat új relációsémába visszük át, az új séma elsődleges
+  kulcsát idegenkulcsként beillesztve a kiinduló sémába.
+3. **Elsődleges kulcs kiválasztása** a kulcsjelöltek közül. Ha nincs alkalmas kulcsjelölt,
+akkor létre kell hozni egy olyat (azonosító, ID, auto increment megkötéssel), amelytől
+a reláció minden leíró attribútuma függ.
+4. **Részleges funkcionális függés megszüntetése:** a sémát felbontjuk Heath tétele
+szerint, a részleges függőség mentén úgy, hogy a kulcsa egy elemű legyen. Kiemeljük
+a kulcsból azokat az tulajdonságokat, amelyek önállóan is meghatározzák a másodlagos
+attribútumokat. Az így kapott elsődleges (kulcs) attribútumokból és a tőlük függő
+másodlagos tulajdonságokból új relációt hozunk létre. Ebben az új relációban elsődleges
+kulcsként kell szerepelni azoknak az attribútumoknak, amelyektől az átvitt leíró
+attribútumok függnek. Erre az eredeti relációban idegenkulcsként kell hivatkozni.
+Ha a kulcs eleve egy attribútumból áll, illetve a sémában nincs másodlagos attribútum,
+akkor 2NF-ben van (nem kell felbontani).
+5. **Tranzitív függés megszüntetése:** ekkor ugyanis a kulcs egy köztes attribútumon
+keresztül, tranzitíven határozza meg a másik leíró attribútum értékét. A sémát
+felbontjuk Heath tétele szerint, a tranzitív függőség mentén. Az eredeti relációból
+eltávolítjuk a tranzitíven függő leíró attribútumokat egy másik relációba. Ebben
+az új relációban elsődleges kulcsként kell szerepelni azoknak az attribútumoknak,
+amelyektől az átvitt leíró attribútumok függnek. Erre az eredeti relációban idegenkulcsként
+kell hivatkozni. Ha a sémában nincs másodlagos attribútum, akkor 3NF-ben van.
 
 ### 9.5 A Boyce-Codd normálforma fogalma
+
+A **Boyce–Codd-féle normálforma (BCNF)** látszólag a 3NF egy egyszerűbb alakja, de
+valójában erősebb, mint a 3NF. Azaz **minden BCNF-ben lévő reláció egyúttal 3NF-ben
+is van**, ám egy 3NF-ben lévő reláció nem szükségképpen van BCNF-ben. A BCNF formális
+definíciója alig különbözik a 3NF definíciójától, a gyakorlatban a legtöbb relációséma,
+amely 3NF-ben van, egyúttal BCNF-ben is van.
+
+Egy relációséma BCNF-ben van, ha bármely olyan **A→B** függés esetén, ahol **B**
+nem részhalmaza **A**-nak (nemtriviális függés), **A szuperkulcs**. A séma nincs
+BCNF-ben, ha van benne olyan nemtriviális függés, amelynek meghatározó (bal) oldala
+nem szuperkulcs.
+
+**BCNF-re hozás:** a sémát felbontjuk Heath tétele szerint, a normálformát sértő
+függőség mentén.
 
 
 ## 10. tétel
