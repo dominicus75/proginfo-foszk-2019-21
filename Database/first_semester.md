@@ -1338,9 +1338,9 @@ támogat.
 
 |  Operátor  |  Leírás  |
 |:----------:|----------|
-| & | Bitenénti ÉS (AND) |
-| | | Bitenkénti VAGY (OR) |
-| ^ | Bitenkénti KIZÁRÓ VAGY (XOR)  |
+| `&` | Bitenénti ÉS (AND) |
+| `|` | Bitenkénti VAGY (OR) |
+| `^` | Bitenkénti KIZÁRÓ VAGY (XOR)  |
 
 **Az SQL logikai operátorai**
 
