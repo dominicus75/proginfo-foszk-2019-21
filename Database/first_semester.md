@@ -1353,10 +1353,10 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 | **ALL** | IGAZ, ha az összes alkérdés eredménye megfelel a feltételnek |
 | **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
 | **ANY** vagy **SOME** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
-| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ```sql SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ``` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
+| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ``` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ``` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
 | **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
 | **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
-| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. ```sql SELECT * FROM Ügyfelek WHERE Város LIKE 'b%'; ``` (minden ügyfelet listáz, akinek a városa b-vel kezdődik) |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. ``` SELECT * FROM Ügyfelek WHERE Város LIKE 'b%'; ``` (minden ügyfelet listáz, akinek a városa b-vel kezdődik) |
 | **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
 | **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
 
