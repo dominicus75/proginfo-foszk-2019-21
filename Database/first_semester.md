@@ -627,13 +627,13 @@ egyszerű attribútuma és összetett attribútumainak egyszerű komponensei. A 
 entitás relációsémáját bővíteni kell a meghatározó kapcsolat(ok)ban szereplő egyed(ek)
 kulcsával (külső kulcsok).
 3. **Bináris kapcsolattípusok leképezése:**
-  * **1:1 kapcsolat** esetén kiválasztjuk a kapcsolatban résztvevő két entitás egyikét
-  (bármelyiket), és annak sémájába új attribútumként felvesszük a másik entitás kulcs
-  attribútumait, valamint a kapcsolat attribútumait.
-  * **1:N kapcsolat** esetén az „N” oldali entitás sémájába új attribútumként felvesszük
-  a másik entitás kulcs attribútumait, valamint a kapcsolat attribútumait.
-  * **N:M kapcsolat** esetén új sémát veszünk fel, amelynek attribútumai a kapcsolódó
-  entitások kulcs attribútumai, és a kapcsolat saját attribútumai.
+    * **1:1 kapcsolat** esetén kiválasztjuk a kapcsolatban résztvevő két entitás egyikét
+    (bármelyiket), és annak sémájába új attribútumként felvesszük a másik entitás kulcs
+    attribútumait, valamint a kapcsolat attribútumait.
+    * **1:N kapcsolat** esetén az „N” oldali entitás sémájába új attribútumként felvesszük
+    a másik entitás kulcs attribútumait, valamint a kapcsolat attribútumait.
+    * **N:M kapcsolat** esetén új sémát veszünk fel, amelynek attribútumai a kapcsolódó
+    entitások kulcs attribútumai, és a kapcsolat saját attribútumai.
 4. **Többértékű attribútumok leképezése:** minden többértékű attribútum esetén hozzunk
 létre egy új relációsémát. Ez tartalmazzon egy, az eredetinek megfelelő attribútumot,
 valamint annak a relációsémának az elsődleges kulcsát — külső kulcsként —, amelyet
@@ -645,13 +645,13 @@ amelynek neve a kapcsolat neve, attribútumai pedig a kapcsolódó entitások ku
 attribútumai és a kapcsolat saját attribútumai. Vegyük fel külső kulcsként a
 kapcsolatban részt vevő egyedtípusokból képzett relációsémák elsődleges kulcsait.
 6. **Specializáló kapcsolatok leképezése:**
-  * minden altípushoz külön séma felvétele, egy egyed csak egy sémában szerepel.
-  Az altípusok öröklik a főtípus attribútumait.
-  * minden altípushoz külön séma felvétele, egy egyed több sémában is szerepelhet.
-  A főtípus sémájában minden egyed szerepel, és annyi altípuséban ahánynak megfelel.
-  Az altípusok a főtípustól csak a kulcs-attribútumokat öröklik.
-  * egy közös séma felvétele, az attribútumok uniójával. Az aktuálisan értékkel
-  nem rendelkező attribútumok NULL értékűek.
+    * minden altípushoz külön séma felvétele, egy egyed csak egy sémában szerepel.
+    Az altípusok öröklik a főtípus attribútumait.
+    * minden altípushoz külön séma felvétele, egy egyed több sémában is szerepelhet.
+    A főtípus sémájában minden egyed szerepel, és annyi altípuséban ahánynak megfelel.
+    Az altípusok a főtípustól csak a kulcs-attribútumokat öröklik.
+    * egy közös séma felvétele, az attribútumok uniójával. Az aktuálisan értékkel
+    nem rendelkező attribútumok NULL értékűek.
 
 
 ## 5. tétel
