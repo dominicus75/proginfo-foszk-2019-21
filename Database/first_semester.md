@@ -1914,7 +1914,7 @@ résznyelve. A DML-utasításokkal rekordokat illeszthetünk a létrehozott adat
 tábláiba, módosíthatjuk a tárolt adatokat, vagy törölhetjük a fölöslegessé vált
 rekordokat.
 
-Az adatmanipulációs műveleteknek három típusa van:
+Az adatmanipulációs nyelv három fő utasítása:
 * **INSERT** – adatok beszúrása
 * **UPDATE** – adatok módosítása
 * **DELETE** – adatok törlése
