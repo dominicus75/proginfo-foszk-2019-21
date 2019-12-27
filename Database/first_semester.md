@@ -1397,22 +1397,28 @@ A következő SQL parancsok tartoznak ide:
 
 **Adatbázis létrehozása**
 
-Teljes szintaxis:
+Szintaxis:
 ```sql
 
-  CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] adatbázis_név
-    [létrehozási_feltételek];
+  CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] <adatbázis_név>
+    [<létrehozási_feltételek>];
 
-  létrehozási_feltételek ::=
-    [DEFAULT] CHARACTER SET [=] alkalmazott karakterkészlet beállítása (pl. utf8)
-  | [DEFAULT] COLLATE [=] rendezési szabályok megadása (pl. utf8_hungarian_ci)
+  <létrehozási_feltételek> ::=
+    [DEFAULT] CHARACTER SET [=] <karakterkészlet>
+  | [DEFAULT] COLLATE [=] <rendezési_szabályok>
+
+      <karakterkészlet> ::= pl. utf8, alapértelmezett: latin1
+  <rendezési_szabályok> ::= A kis-, és nagybetű érzékenységet és az adott nyelv
+                            abc-je szerinti sorba rendezésre vonatkozó beállításokat
+                            tartalmazzák. Az utf8_hungarian_ci például nem kis-,
+                            és nagybetű érzékeny (ci - case insensitive) és a magyar
+                            abc szerit rendezi sorba a szöveges adatokat, figyelembe
+                            véve az ékezetes betűket is.
 
 ```
 
-A rendezési szabályok a kis-, és nagybetű érzékenységet és az adott nyelv abc-je
-szerinti sorba rendezésre vonatkozó beállításokat tartalmazzák. Az `utf8_hungarian_ci`
-például nem kis-, és nagybetű érzékeny (ci - case insensitive) és a magyar abc
-szerit rendezi sorba a szöveges adatokat, figyelembe véve az ékezetes betűket is.
+A karakterkészlet és a rendezési szabályok az egyes táblák létrehozásánál is megadhatók
+(akkor az adott táblára fognak csak vonatkozni).
 
 Példa:
 ```sql
@@ -1423,10 +1429,6 @@ Példa:
 
 ```
 
-A karakterkészlet és a rendezési szabályok az egyes táblák létrehozásánál is megadhatók
-(akkor az adott táblára fognak csak vonatkozni).
-
-
 **Relációséma létrehozása**
 
 Relációséma létrehozására a [CREATE TABLE](https://mariadb.com/kb/en/create-table/) utasítás
@@ -1436,10 +1438,14 @@ indexek valamint tábla-, és oszlopszintű megszorítások megadására is lehe
 nyújt.
 
 
-Teljes szintaxis:
+Szintaxis:
 ```sql
 
-  CREATE TABLE [IF NOT EXISTS] Táblanév
+  CREATE TABLE [IF NOT EXISTS] <Táblanév> (
+    <oszlop_neve> <adattípus>(<méret>) [<oszlop_megszorítások>],
+    [<tábla_megszorítások>]
+  )[ENGINE [=] <adatbázismotor> | COLLATE [=] <rendezési_szabályok>];
+
 
 ```
 
