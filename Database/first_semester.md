@@ -1383,7 +1383,7 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 
 A végrehajtási sorrend megváltoztatható kerek zárójelek használatával.
 
-### 10.3 Adatdefiníciós utasítások (DDL)
+### 10.3 [Adatdefiníciós utasítások (DDL)](https://mariadb.com/kb/en/data-definition/)
 
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
@@ -1644,7 +1644,7 @@ metaszintaxishoz hasonló módon.*
 
 
 
-### 11.3 Adatmanipulációs utasítások (DML), adattábla aktualizálása
+### 11.3 [Adatmanipulációs utasítások (DML)](https://mariadb.com/kb/en/data-manipulation/), adattábla aktualizálása
 
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
@@ -1747,7 +1747,7 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
-### 12.2 Lekérdezés relációs adattáblákból (DQL)
+### 12.2 [Lekérdezés relációs adattáblákból (DQL)](https://mariadb.com/kb/en/selecting-data/)
 
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
