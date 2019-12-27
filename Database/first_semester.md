@@ -1286,11 +1286,15 @@ Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzéke
 táblák és oszlopok nevének leírásához ajánlatos **csak ASCII (ékezet nélküli) karaktereket
 használni**. A szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó
 szerint (literally) kell érteni, itt tehát lényeges a nagybetűk–kisbetűk különbsége
-(ezek tartalmazhatnak UTF8 karaktereket is). **A nyelv kulcsszavait (parancsait)
-általában nagybetűvel szokás írni (pl. SELECT), a kód jobb olvashatósága és
-áttekinthetősége érdekében**. Az **oszlopneveknél a kisbetűs írásmód javasolt**,
-különösen ha a kulcsszavak nagybetűsek, ekkor ugyanis jól elkülönül egymástól a
-kettő.
+(ezek tartalmazhatnak UTF8 karaktereket is).
+
+**A nyelv kulcsszavait (parancsait) általában nagybetűvel szokás írni (pl. SELECT),
+a kód jobb olvashatósága és áttekinthetősége érdekében**. A **tábla-, és oszlopneveknél
+a kisbetűs írásmód javasolt**, különösen ha a kulcsszavak nagybetűsek, ekkor ugyanis
+jól elkülönül egymástól a kettő. A táblák és oszlopok neveit a biztonság érdekében
+rakjuk backtick-ek (tompa ékezet) közé (pl. `username`), mert ha véletlenül egy
+fenntartott szót használunk oszlop-, vagy táblanévnek, akkor ezek nélkül hibás
+lesz a kód (` = backtick = **AltGr+7**).
 
 Változó nincs, csak tábla- és oszlopnevekre lehet hivatkozni. Az SQL utasítások
 kulcsszavakból (SQL names, keywords), azonosítókból, műveleti jelekből, literálokból
@@ -1395,12 +1399,14 @@ A következő SQL parancsok tartoznak ide:
 * **DROP** (eldobás)
 * **ALTER** (módosítás)
 
-**Adatbázis létrehozása**
+#### [CREATE DATABASE](https://mariadb.com/kb/en/create-database/)
+
+Létrehoz egy üres adatbázist a megadott néven.
 
 Szintaxis:
 ```sql
 
-  CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] <adatbázis_név>
+  CREATE [OR REPLACE] {DATABASE | SCHEMA} [IF NOT EXISTS] `<adatbázis_név>`
     [<létrehozási_feltételek>];
 
   <létrehozási_feltételek> ::=
@@ -1429,25 +1435,54 @@ Példa:
 
 ```
 
-**Relációséma létrehozása**
+#### [CREATE TABLE](https://mariadb.com/kb/en/create-table/)
 
-Relációséma létrehozására a [CREATE TABLE](https://mariadb.com/kb/en/create-table/) utasítás
-szolgál, amely egyben egy üres táblát is létrehoz a sémához. Az attribútumok
-definiálása (név és adattípus beállítása) mellett a kulcsok (elsődleges és külső),
-indexek valamint tábla-, és oszlopszintű megszorítások megadására is lehetőséget
-nyújt.
-
+Relációséma létrehozására a CREATE TABLE utasítás szolgál, amely egyben egy üres
+táblát is létrehoz a sémához, a megadott névvel. Az attribútumok definiálása (név
+és adattípus beállítása) mellett a kulcsok (elsődleges és külső), indexek valamint
+tábla-, és oszlopszintű megszorítások megadására is lehetőséget nyújt.
 
 Szintaxis:
 ```sql
 
-  CREATE TABLE [IF NOT EXISTS] <Táblanév> (
-    <oszlop_neve> <adattípus>(<méret>) [<oszlop_megszorítások>],
+  CREATE TABLE [IF NOT EXISTS] `<Táblanév>` (
+    `<oszlop_neve>` <adattípus>(<méret>) [<oszlop_megszorítások>],
     [<tábla_megszorítások>]
-  )[ENGINE [=] <adatbázismotor> | COLLATE [=] <rendezési_szabályok>];
+  )[ENGINE [=] <adatbázismotor> | CHARACTER SET [=] <karakterkészlet>
+   | COLLATE [=] <rendezési_szabályok>];
 
+  <Táblanév>, <oszlop_neve> ::= max. 64 karakter hosszú, szóköz nélküli ASCII szöveg
+                <adattípus> ::= az adattípushoz DEFAULT '<érték>' kifejezéssel
+                                alapértelmezett érték definiálható
+                    <méret> ::= a tárolt adat maximális mérete
+     <oszlop_megszorítások> ::= az oszlopra vonatkozó megszorítások (pl. PRIMARY
+                                KEY = elsődleges kulcs, azonosító; NULL vagy NOT
+                                NULL; REFERENCES = külső kulcs hivatkozás).
+      <tábla_megszorítások> ::= az egész táblára vonatkozó megszorítások (a NULL
+                                és a NOT NULL kivételével azonosak az oszlop
+                                megszorításokkal, pl. PRIMARY KEY, REFERENCES)
+           <adatbázismotor> ::= a MySQL saját, eredeti adatbázismotorja a MyISAM
+                                nem támogatja a tranzakció kezelést, és a hivatkozási
+                                integritás megőrzését sem. Ezért általában az InnoDB
+                                motort állítják be alapértelmezettként.
 
 ```
+
+A MySQL-ben több módszer is létezik a lemezfájlok belső struktúrájának kialakítására
+és kezelésére. Ezeket a DBMS különálló, akár egyenként is telepíthető moduljai,
+az **adatbázismotorok** biztosítják. Az egyes motorok eltérő kiegészítő lehetőségeket
+biztosítanak a relációk kezelésének alapvető funkcióin túl. Egy tábla definiálásakor
+megadhatjuk, hogy melyik adatbázismotort szeretnénk használni, a MySQL pedig mindig
+a kiválasztott módon fogja kezelni a relációt.
+
+A telepített motorok a SHOW ENGINES; paranccsal tekinthetők meg.
+
+A MySQL adatbázisokban az **InnoDB** motorral kezelt táblákban használhatunk
+tranzakciókezelést, **csak az InnoDB relációkban őrizhetjük meg az idegen kulcsok
+helyességét**. A MySQL-szerverek konfigurációjában megadható az alapértelmezett
+táblamotor, karakterkódolás, és a többi táblatulajdonság is.
+
+Az [SQL adattípusok](https://webfejlesztes.gtportal.eu/?f0=7_tabla_06).
 
 
 Példa:
@@ -1462,6 +1497,47 @@ Példa:
 ### 10.4 Relációsémák, indexek
 
 
+#### Indexek<sup id="5">[[5]](#note5)</sup>
+
+A lemezműveletek mindig kritikus pontot jelentenek a sebesség tekintetében. Amikor
+egy tábla valamelyik mezőjének értékétől függően akarjuk a rekordok egy részét
+kiválogatni, ez a probléma hatványozottan jelentkezik. A DBMS ugyanis úgy állítja
+össze a rekordok szükséges részhalmazát, hogy minden rekordot beolvas, és a kérdéses
+mező rekordonkénti vizsgálata alapján eldönteni, hogy mely rekordok kerüljenek az
+eredményhalmazba. Előfordulhat, csak a legutolsó rekord, vagy egyetlen egyed sem
+elégíti ki a feltételt, de ennek eldöntéséhez mindig minden rekordot meg kell vizsgálni.
+
+Az indexelés jelentősen redukálja az ilyen műveletek lebonyolításához szükséges időt.
+
+A technika lényege, hogy a bázistábla (a rekordok adatait tároló reláció) létrehozásakor
+bármelyik mezőt indexelhetjük. Az indexelés azt jelenti, hogy a DBMS úgynevezett
+indextáblát (röviden indexet) hoz létre a mező számára. A bázistábla feltöltésekor
+az indexelt mező összes előforduló értékét bemásolja az indextáblába, és az index
+rekordjait sorba rendezi az értékek szerint. Az indextáblában a minden mezőérték
+mellett följegyzi azt is, hogy a bázistábla adott értéket tároló rekordja hol
+található a lemezen.
+
+Az indextábla minden sora az indexelt mező egye-egy értékét és a hozzá tartozó
+rekordmutatót tárolja. A sorok az indexelt értékek szerint rendezettek.
+
+Ha a bázistáblában egy indexelt mező alapján akarunk rekordokat keresni, vagy kiválogatni,
+akkor a DBMS automatikusan beolvassa a memóriába a teljes indextáblát, kiválogatja
+a megfelelő mezőértékeket (ez a művelet a rendezettség miatt gyors lesz), és
+bázistáblának csak a kiválasztott, az ezeket az értékeket tartalmazó rekordjait
+olvassa be a lemezről.
+
+Egy táblában bármennyi mező indexelhető. Ha több mezőt is indexelünk, akkor
+természetesen mindegyik számára különálló indextábla készül.
+
+Minden indextábla helyet foglal a lemezen, és ezzel növeli az adatbázis méretét.
+Ráadásul az indexek csak akkor működnek helyesen, ha a DBMS a bázistábla rekordjainak
+változásakor (új rekord, rekordtörlés, mezőérték változtatás) automatikusan frissíti
+az indextáblát is.
+
+Ha helyesen akarunk eljárni, akkor csak azokat a mezőket indexeljük,
+* amelyek alapján gyakran válogatunk ki rekordokat egy nagy méretű bázistáblából,
+* biztosítani akarjuk, hogy a mező rekordonként egyedi értéket tartalmazzon,
+* a mezőt idegen kulcsként akarjuk használni.
 
 ### 10.5 Hivatkozástípusok relációsémák definiálásakor
 
@@ -1793,6 +1869,7 @@ könyve értendő.
 * <span id="note3">[[3]](#3)</span> dr. Halassy Béla: [Az adatbázistervezés alapjai és titkai](http://mek.oszk.hu/11100/11123/11123.pdf), 33. o.
 * <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
 [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
+* <span id="note5">[[5]](#5)</span> Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés I.](https://mek.oszk.hu/14400/14432/pdf/14432.pdf), 138-140. o.
 
 
 [Kezdőlap](README.md)

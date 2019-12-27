@@ -13,6 +13,7 @@
 * dr. Halassy Béla: [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf)
 * Demetrovics Katalin: [Adatbáziskezelés](http://www.zipernowsky.hu/~naszlaci/alapok+hardver/adatbazis/ab_alap_demetrovicsk.pdf)
 * dr. Holovács József: [Adatbázis-kezelés](http://aries.ektf.hu/~holovacs/AB/)
+* Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés I.](https://mek.oszk.hu/14400/14432/pdf/14432.pdf)
 * Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés II.](http://mek.oszk.hu/14400/14433/pdf/14433.pdf)
 * Kósa Márk - Pánovics János: [Fejezetek az adatbázisrendszerek elméletéből](https://gyires.inf.unideb.hu/KMITT/b01/index.html)
 * Michael J. Hernandez: [Adatbázis-tervezés](https://www.animakonyv.hu/index.php?BODY=BookInfo&OP=details&ID=54734)
