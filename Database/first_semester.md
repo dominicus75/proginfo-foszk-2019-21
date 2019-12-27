@@ -1829,7 +1829,7 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
-### 11.2 [Nézettábla (VIEW)](https://mariadb.com/kb/en/create-view/) kialakítása és szerepe
+### 11.2 Nézettábla (VIEW) kialakítása és szerepe
 
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
@@ -1837,7 +1837,69 @@ vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Na
 metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
 alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
+A nézet vagy nézettábla olyan virtuális tábla, amely az adatbázis egy vagy több
+táblájának mezőiből épül fel. A nézettáblát alkotó táblákat alaptábláknak hívjuk.
+A relációs modell azért tekinti virtuálisnak (látszólagosnak) a nézettáblákat, mert
+azok adatai más táblákból származnak. Maguk a nézettáblák nem tárolnak adatokat;
+az adatbázisban valójában a szerkezetük az egyetlen információ, ami tárolódik róluk.
 
+Sok RDBMS program a nézettáblákat mentett lekérdezésként valósítja meg, és ezen
+a néven vagy egyszerűen lekérdezésként hivatkozik rájuk. A lekérdezések a legtöbb
+esetben rendelkeznek a nézettáblák minden jellemzőjével, vagyis csupán a nevük az
+egyetlen különbség köztük.
+
+Az SQL-szabvány szerit a tábla_neve nézettáblát is takarhat, de kiköti, hogy a
+nézettáblának lehetővé kell tennie a módosítást és a beszúrást. Számos adatbázisrendszer
+lehetővé teszi, hogy nézettáblákba szúrjunk be adatokat, de mindegyiknek saját
+szabályai vannak, amelyek alapján meghatározzák, hogy egy nézettábla módosítható-e,
+illetve beszúrható-e bele új adat. Az esetek többségében egy nézettáblába nem
+szúrhatunk be adatokat, ha az oszlopok valamelyike kifejezés vagy összesítő függvény
+eredményét tartalmazza.<sup id="6">[[6]](#note6)</sup>
+
+Ha a nézettábla tartalmát módosítjuk, akkor a módosítás a megfelelő tárolt táblákon
+hajtódik végre és természetesen megjelenik a nézettáblában is. Ha egy módosítható
+nézettáblába új rekordot veszünk fel, akkor az alaptáblának a nézettáblában nem
+szereplő oszlopaiba szükségképpen NULL kerül.
+
+Nézettáblák alkalmazási lehetőségei:
+* Származtatott adattáblák létrehozása, amelyek a törzsadatok módosításakor
+automatikusan módosulnak (pl. összegzőtáblák).
+* Bizonyos adatok elrejtése egyes felhasználók elől (adatbiztonság vagy egyszerűsítés
+céljából).
+
+**[CREATE VIEW](https://mariadb.com/kb/en/create-view/)**
+
+Létrehoz egy új nézettáblát, vagy – amennyiben az `OR REPLACE` kikötés szerepel a
+kifejezésben – lecseréli a már létezőt. A CREATE VIEW végrehajtásakor a rendszer
+csak letárolja a nézettábla definícióját, és majd csak a rá való hivatkozáskor
+generálja a szükséges adatokat.
+
+Szintaxis
+```sql
+
+  CREATE [OR REPLACE] VIEW [IF NOT EXISTS]
+    <nézettábla_neve> [(<oszloplista>)]
+    AS <select_utasítás>;
+
+  <nézettábla_neve> ::= erre a névre lehet hivatkozni ott, ahol egy SQL parancsban
+                        táblanév adható meg, ott rendszerint nézettábla neve is
+                        szerepelhet.
+      <oszloplista> ::= megadásával a nézettábla oszlopainak új nevet adhatunk,
+                        ennek hiányában a forrástáblák oszlopnevei kerülnek bele.
+  <select_utasítás> ::= ennek a beágyazott (vagy al-) lekérdezésnek az
+                        eredménytáblája alkotja a nézettáblát.
+
+```
+
+Példa
+```sql
+
+  CREATE VIEW `Melosok` (`Családnév`, `keresztnév`, `Állandó lakcím`)
+    AS SELECT `csaladnev`, `keresztnev`, `lakcim`
+    FROM `Dolgozok`
+    WHERE `osztaly_id` = 1234;
+
+```
 
 ### 11.3 [Adatmanipulációs utasítások (DML)](https://mariadb.com/kb/en/data-manipulation/), adattábla aktualizálása
 
@@ -1847,7 +1909,15 @@ vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Na
 metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
 alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
+A DML (Data Manipulation Language, adatmanipulációs nyelv) az SQL adatmanipulációs
+résznyelve. A DML-utasításokkal rekordokat illeszthetünk a létrehozott adatbázis
+tábláiba, módosíthatjuk a tárolt adatokat, vagy törölhetjük a fölöslegessé vált
+rekordokat.
 
+Az adatmanipulációs műveleteknek három típusa van:
+* **INSERT** – adatok beszúrása
+* **UPDATE** – adatok módosítása
+* **DELETE** – adatok törlése
 
 
 ## 12. tétel
@@ -1975,8 +2045,8 @@ Az SQL támogatja azt a lehetőséget, hogy a `WHERE` vagy `HAVING` szelekciós 
 nemcsak létező, letárolt adatelemekre hivatkozzunk, hanem számított kifejezéseket
 is alkalmazhassunk. A számítást egy másik SELECT utasítással tudjuk megadni, tehát
 az egyik lekérdezés szelekciós feltételében hivatkozunk egy másik lekérdezés eredményére.
-Ezt alkérdésnek vagy belső SELECT-nek is nevezzük, formailag megegyezik a normál
-SELECT utasítással.
+Ezt alkérdésnek vagy belső vagy beágyazott SELECT-nek is nevezzük, formailag megegyezik
+a normál SELECT utasítással.
 
 Az alkérdéseket mindig zárójelben kell megadni, hogy elemeik elkülönüljenek. A
 zárójelek e mellett a műveletek végrehajtási sorrendjét is módosítják. Az egymásba
@@ -2075,6 +2145,6 @@ könyve értendő.
 * <span id="note4">[[4]](#4)</span> dr. Halassy Béla:
 [Adatmodellezés](http://mek.oszk.hu/11100/11144/11144.pdf), 29-30. o.
 * <span id="note5">[[5]](#5)</span> Szabó Bálint: [Adatbázis fejlesztés és üzemeltetés I.](https://mek.oszk.hu/14400/14432/pdf/14432.pdf), 138-140. o.
-
+* <span id="note6">[[6]](#6)</span> John L. Viescas, Michael J. Hernandez: [SQL-Iekérdezések földi halandóknak](http://dev.logisztika.bme.hu/logdb/irodalom/SQL.lekerdezesek.foldi.halandoknak.2009.eBOOk-digIT.pdf), 9., 485. o.
 
 [Kezdőlap](README.md)
