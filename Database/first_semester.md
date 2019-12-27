@@ -1453,29 +1453,29 @@ Szintaxis:
 ```sql
 
   CREATE TABLE [IF NOT EXISTS] `<Táblanév>` (
-    `<oszlop_neve>` <adattípus>(<méret>) [<oszlop_megszorítások>],
+    `<oszlopnév>` <adattípus>(<méret>) [<oszlop_megszorítások>],
     [<tábla_megszorítások>]
   )[ENGINE [=] <adatbázismotor> | CHARACTER SET [=] <karakterkészlet>
    | COLLATE [=] <szövegösszevetési_mód>];
 
-  <Táblanév>, <oszlop_neve> ::= max. 64 karakter hosszú, szóköz nélküli ASCII szöveg
-                <adattípus> ::= a relációs adatmodell előírja, hogy egy mező minden
-                                értékének azonos értéktartományba (domain) kell
-                                tartoznia. Ezt az adattípus határozza meg, melyhez
-                                DEFAULT '<érték>' kifejezéssel alapértelmezett
-                                érték is definiálható
-                    <méret> ::= a tárolt adat maximális mérete
-     <oszlop_megszorítások> ::= az oszlopra vonatkozó megszorítások (pl. PRIMARY
-                                KEY = elsődleges kulcs, azonosító; NULL vagy NOT
-                                NULL; REFERENCES = külső kulcs hivatkozás,
-                                UNSIGNED = előjel nélküli).
-      <tábla_megszorítások> ::= az egész táblára vonatkozó megszorítások (a NULL
-                                és a NOT NULL kivételével azonosak az oszlop
-                                megszorításokkal, pl. PRIMARY KEY, REFERENCES)
-           <adatbázismotor> ::= a MySQL saját, eredeti adatbázismotorja a MyISAM
-                                nem támogatja a tranzakció kezelést, és a hivatkozási
-                                integritás megőrzését sem. Ezért általában az InnoDB
-                                motort állítják be alapértelmezettként.
+  <Táblanév>, <oszlopnév> ::= max. 64 karakter hosszú, szóköz nélküli ASCII szöveg
+              <adattípus> ::= a relációs adatmodell előírja, hogy egy mező minden
+                              értékének azonos értéktartományba (domain) kell
+                              tartoznia. Ezt az adattípus határozza meg, melyhez
+                              DEFAULT '<érték>' kifejezéssel alapértelmezett
+                              érték is definiálható
+                  <méret> ::= a tárolt adat maximális mérete
+   <oszlop_megszorítások> ::= az oszlopra vonatkozó megszorítások (pl. PRIMARY
+                              KEY = elsődleges kulcs, azonosító; NULL vagy NOT
+                              NULL; REFERENCES = külső kulcs hivatkozás,
+                              UNSIGNED = előjel nélküli).
+    <tábla_megszorítások> ::= az egész táblára vonatkozó megszorítások (a NULL
+                              és a NOT NULL kivételével azonosak az oszlop
+                              megszorításokkal, pl. PRIMARY KEY, REFERENCES)
+         <adatbázismotor> ::= a MySQL saját, eredeti adatbázismotorja a MyISAM
+                              nem támogatja a tranzakció kezelést, és a hivatkozási
+                              integritás megőrzését sem. Ezért általában az InnoDB
+                              motort állítják be alapértelmezettként.
 
 ```
 
@@ -1590,7 +1590,7 @@ Szintaxis
     <változtatások_meghatározása>;
 
   <változtatások_meghatározása> ::=
-    {ADD | MODIFY} [COLUMN] <oszlop_neve> <oszlop_meghatározása>
+    {ADD | MODIFY} [COLUMN] <oszlopnév> <oszlop_meghatározása>
     | ADD {INDEX|KEY} [IF NOT EXISTS] [<index_neve>]
     | ADD [CONSTRAINT] <index_neve> {PRIMARY KEY | UNIQUE [INDEX|KEY] }
         (<index_oszlop_neve>,...)
@@ -1909,7 +1909,7 @@ vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Na
 metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
 alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
-A DML (Data Manipulation Language, adatmanipulációs nyelv) az SQL adatmanipulációs
+A **DML (Data Manipulation Language, adatmanipulációs nyelv)** az SQL adatmanipulációs
 résznyelve. A DML-utasításokkal rekordokat illeszthetünk a létrehozott adatbázis
 tábláiba, módosíthatjuk a tárolt adatokat, vagy törölhetjük a fölöslegessé vált
 rekordokat.
@@ -1918,6 +1918,123 @@ Az adatmanipulációs nyelv három fő utasítása:
 * **INSERT** – adatok beszúrása
 * **UPDATE** – adatok módosítása
 * **DELETE** – adatok törlése
+
+Az **[INSERT](https://mariadb.com/kb/en/insert/)** utasítás
+
+Szintaxis
+```sql
+
+  INSERT [INTO] <táblanév> [<mezőlista>]
+    VALUES <értéklista>;
+
+     <mezőlista> ::= (<oszlopnév1>, <oszlopnév2>,...<oszlopnévN>,)
+    <értéklista> ::= (<érték1>, <érték2>,...<értékN>)
+
+```
+
+A mezőlistában szereplő mezők számának és az értéklistában szereplő értékek
+számának meg kell egyeznie. A mezőlistát elhagyhatjuk, ha az pontosan megegyezik
+a tábla oszlopaink sorrendjével. Ha el szeretnénk térni az oszlopok eredeti sorrendjétől,
+vagy ki akarunk hagyni az értékadásból oszlopokat, akkor mindenképpen szükséges
+a mezőlista. A mezőlistából kihagyott oszlopok az oszlopra definiált **DEFAULT**
+megszorításbeli értékkel, ennek hiányában **NULL** értékkel szerepelnek majd az
+új sorban. Ha olyan oszlopot hagyunk ki az értékadásból, melyre nincs **DEFAULT**
+megszorítás, és **NOT NULL** záradék van az oszlopon, akkor az új sor beszúrása
+nem történik meg, hibaüzenetet kapunk.
+
+Az értéklistában szerepelhet **NULL** érték, ha az oszlopra NULL engedélyünk van. Ha
+az oszlopra **NOT NULL** megszorítás van érvényben (és az elsődleges kulcs oszlop
+mindig ilyen), akkor hibaüzenetet kapunk, és a sor beszúrása nem történik meg.
+A táblába adatokat tölthetünk át másik táblából is, ha a `VALUES (<értéklista>)`
+helyére egy alkérdést írunk.
+
+A legtöbb SQL implementációban van mód arra, hogy az elsődleges kulcsként definiált
+oszlopban egy automatikusan növekvő számot írjunk be új sor esetén, ne nekünk
+kelljen gondoskodni a megadásáról. De innentől kezdve az elsődleges kulcs oszlopokba
+expliciten nem adhatunk meg értéket (MySQL és MariaDB esetén: AUTO_INCREMENT).
+
+Példa
+```sql
+
+  INSERT INTO `Dolgozok`
+    (`csaladnev`, `keresztnev`, `szul_datum`, `lakcim`, `osztaly_id`)
+  VALUES
+    ('Gipsz', 'Jakab', '1966-12-13', '8491 Karakószörcsök, Fő út 12', 1234);
+
+```
+A példában nem szerepel az `azonosito` mező (elsődleges kulcs), mivel a **10.3**
+tételben szereplő példában ez az attribútum AUTO_INCREMENT-re van állítva.
+
+Az **[UPDATE](https://mariadb.com/kb/en/update/)** utasítás
+
+A megadott tábla **WHERE** záradékban megadott feltételek által kijelölt sorait módosítja.
+Az értékadás minden olyan soron végrehajtódik, amely eleget tesz a WHERE feltételnek.
+Ha a WHERE záradékot elhagyjuk, akkor a tábla összes során megtörténik a módosítás.
+Az esetek többségében egyetlen sor módosítására használjuk, a sort pedig az elsődleges
+kulcsán keresztül érjük el.
+
+A kiválasztott sorokon belül módunk van egyszerre több oszlop értékét is módosítani,
+azokat, amelyeket a **SET** után felsoroltunk. A kifejezés lehet egy konstans érték,
+de hivatkozhatunk benne az adott tábla bármelyik oszlopára is, illetve használhatunk
+az adott adatbázis-kezelő által implementált rendszerfüggvényeket (pl. Substring, Len,
+stb.), valamint alkérdéseket is. Ha a kifejezés helyett a `DEFAULT` kulcsszó áll,
+akkor a mező értékét az alapértelmezettre állítja (ha van ilyen).
+
+Szintaxis
+```sql
+
+  UPDATE <táblanév>
+    SET <oszlopnév1>={<kifejezés1>|DEFAULT} [,
+    <oszlopnév2>={<kifejezés2>|DEFAULT},
+    ....,
+    <oszlopnévN>={<kifejezésN>|DEFAULT}]
+    [WHERE <feltétel>];
+
+    <táblanév> ::= a módosítandó tábla neve
+   <oszlopnév> ::= a módosítandó oszlop neve
+   <kifejezés> ::= lehet konstans, függvényhívás, vagy alkérdés
+    <feltétel> ::= az értékadás minden olyan soron végrehajtódik, amely eleget
+                   tesz a feltételnek
+
+```
+
+Példa
+```sql
+
+  UPDATE `Dolgozok` SET
+    `fizetes` = `fizetes`*1.25,
+    `lakcim`  = 'Kőbánya-alsó'
+  WHERE `azonosito` = 123;
+
+```
+A példában megemeljük az 123 azonosítójú dolgozó fizetését 25%-al és jól elköltöztetjük
+Kőbánya-alsóra.
+
+A **[DELETE](https://mariadb.com/kb/en/delete/)** utasítás
+
+Sor(ok) törlésére szolgál. Ha feltétel nélkül használjuk az utasítást, a tábla
+összes sora törlődik, ezért óvatosan bánjunk vele. A feltétel teljesüléstől függően
+egyszerre több sor is törölhető. Több sor törlése esetén, ha bármelyik sor törlése
+hibára fut (pl. más tábla idegenkulcsként hivatkozik rá), a törlés egy sorra sem
+történik meg.
+
+Szintaxis
+```sql
+
+  DELETE FROM <táblanév>
+    [WHERE <feltétel>]
+
+    <táblanév> ::= a módosítandó tábla neve
+    <feltétel> ::= minden olyan sort töröl, amely eleget tesz a feltételnek
+
+```
+
+Példa
+```sql
+
+  DELETE FROM `Dolgozok`  WHERE `azonosito` = 123;
+
+```
 
 
 ## 12. tétel
