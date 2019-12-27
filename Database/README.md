@@ -25,7 +25,7 @@
 * Wikipédia: [MySQL-szócikk](https://hu.wikipedia.org/wiki/MySQL)
 * Sallai András: [MySQL jegyzet](https://szit.hu/doku.php?id=oktatas:adatb%C3%A1zis-kezel%C3%A9s:mysql:mysql_jegyzet)
 * Andó Mihály: [SQL, MySQL oktatóprogram](http://sql.misi.eu/)
-* [MySQL 8.0 Kézikönyv](https://dev.mysql.com/doc/refman/8.0/en/)
+* [MySQL 8.0 Kézikönyv](https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html)
 * Wikipédia: [MariaDB-szócikk](https://hu.wikipedia.org/wiki/MariaDB)
 * Sallai András: [MariaDB](http://szit.hu/doku.php?id=oktatas:adatbazis-kezeles:mariadb)
 * [MariaDB dokumentáció](https://mariadb.com/kb/en/library/documentation/)

@@ -1284,9 +1284,9 @@ szabványához igazodik).
 
 Az SQL nyelv alapvetően case-insensitive, tehát nem kis-és nagybetű érzékeny. A
 táblák és oszlopok nevének leírásához ajánlatos **csak ASCII (ékezet nélküli) karaktereket
-használni**. A szöveges literálokat, tehát amit aposztrófok közé írunk, azt szó
-szerint (literally) kell érteni, itt tehát lényeges a nagybetűk–kisbetűk különbsége
-(ezek tartalmazhatnak UTF8 karaktereket is).
+használni**. A szöveges literálokat, tehát amit egyszeres, vagy dupla aposztrófok
+közé írunk, szó szerint (literally) kell érteni, itt tehát lényeges a nagybetűk–kisbetűk
+különbsége (ezek tartalmazhatnak UTF8 karaktereket is).
 
 **A nyelv kulcsszavait (parancsait) általában nagybetűvel szokás írni (pl. SELECT),
 a kód jobb olvashatósága és áttekinthetősége érdekében**. A **tábla-, és oszlopneveknél
@@ -1388,7 +1388,8 @@ A végrehajtási sorrend megváltoztatható kerek zárójelek használatával.
 *Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
 vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
-metaszintaxishoz hasonló módon.*
+metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
+alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
 Az adatdefiníciós nyelv segítségével hozhatjuk létre illetve szüntethetjük meg magát
 az adatbázist, illetve a relációkat (táblákat), az indexeket, a nézet táblákat,
@@ -1411,10 +1412,10 @@ Szintaxis:
 
   <létrehozási_feltételek> ::=
     [DEFAULT] CHARACTER SET [=] <karakterkészlet>
-  | [DEFAULT] COLLATE [=] <rendezési_szabályok>
+  | [DEFAULT] COLLATE [=] <szövegösszevetési_mód>
 
-      <karakterkészlet> ::= pl. utf8, alapértelmezett: latin1
-  <rendezési_szabályok> ::= A kis-, és nagybetű érzékenységet és az adott nyelv
+        <karakterkészlet> ::= pl. utf8, alapértelmezett: latin1
+  <szövegösszevetési_mód> ::= A kis-, és nagybetű érzékenységet és az adott nyelv
                             abc-je szerinti sorba rendezésre vonatkozó beállításokat
                             tartalmazzák. Az utf8_hungarian_ci például nem kis-,
                             és nagybetű érzékeny (ci - case insensitive) és a magyar
@@ -1423,8 +1424,8 @@ Szintaxis:
 
 ```
 
-A karakterkészlet és a rendezési szabályok az egyes táblák létrehozásánál is megadhatók
-(akkor az adott táblára fognak csak vonatkozni).
+A karakterkészlet és a szövegösszevetési_mód az egyes táblák létrehozásánál is
+megadhatók (akkor az adott táblára fognak csak vonatkozni).
 
 Példa:
 ```sql
@@ -1455,7 +1456,7 @@ Szintaxis:
     `<oszlop_neve>` <adattípus>(<méret>) [<oszlop_megszorítások>],
     [<tábla_megszorítások>]
   )[ENGINE [=] <adatbázismotor> | CHARACTER SET [=] <karakterkészlet>
-   | COLLATE [=] <rendezési_szabályok>];
+   | COLLATE [=] <szövegösszevetési_mód>];
 
   <Táblanév>, <oszlop_neve> ::= max. 64 karakter hosszú, szóköz nélküli ASCII szöveg
                 <adattípus> ::= a relációs adatmodell előírja, hogy egy mező minden
@@ -1532,7 +1533,7 @@ idő (óó:pp:mm).
 Példa:
 ```sql
 
-  CREATE TABLE `Dolgozo` (
+  CREATE TABLE `Dolgozok` (
     `azonosito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `csaladnev` varchar(30),
     `keresztnev` varchar(20),
@@ -1545,12 +1546,125 @@ Példa:
 
 ```
 
+#### [ALTER](https://mariadb.com/kb/en/alter/) utasítás
 
+**[ALTER DATABASE](https://mariadb.com/kb/en/alter-database/)
 
+Lehetővé teszi az adatbázis általános tulajdonságainak megváltoztatását. Ezeket
+a jellemzőket a `db.opt` fájl tárolja az adatbázis könyvtárban.
 
+Szintaxis
+```sql
+
+  ALTER {DATABASE | SCHEMA} [<adatbázisnév>]
+      <változtatások_meghatározása>;
+
+  <változtatások_meghatározása> ::=
+      [DEFAULT] CHARACTER SET [=] <karakterkészlet>
+    | [DEFAULT] COLLATE [=] <szövegösszevetési_mód>
+
+```
+
+Példa
+```sql
+
+  ALTER DATABASE `adatbazisom`
+  CHARACTER SET = 'utf8'
+  COLLATE = 'utf8_hungarian_ci';
+
+```
+
+**[ALTER TABLE](https://mariadb.com/kb/en/alter-table/)
+
+Lehetővé teszi egy **létező tábla struktúrájának megváltoztatását**. Képes oszlopokat
+vagy indexeket, elsődleges kulcsokat és megszorításokat hozzáadni és törölni, létező
+oszlopok típusát megváltoztatni, vagy oszlopokat és magát a táblát is átnevezni.
+De meg lehet vele változtatni a táblához használt adatbázismotort, karakterkészletet
+és szövegösszevetési módot is. Az ALTER TABLE utasítás szintaxisa és szemantikája
+rendszerenként eltérő, oszlopok törlését nem minden rendszer engedi meg.
+
+Szintaxis
+```sql
+
+  ALTER TABLE <táblanév>
+    <változtatások_meghatározása>;
+
+  <változtatások_meghatározása> ::=
+    {ADD | MODIFY} [COLUMN] <oszlop_neve> <oszlop_meghatározása>
+    | ADD {INDEX|KEY} [IF NOT EXISTS] [<index_neve>]
+    | ADD [CONSTRAINT] <index_neve> {PRIMARY KEY | UNIQUE [INDEX|KEY] }
+        (<index_oszlop_neve>,...)
+    | ADD [CONSTRAINT <megszorítás_elnevezése>]
+        FOREIGN KEY [IF NOT EXISTS] (<hivatkozó_mező_neve>,...)
+        REFERENCES <hivatkozott_tábla_neve>(<hivatkozott_mező_neve>,...)
+    | DROP {COLUMN | PRIMARY KEY | INDEX | KEY | FOREIGN KEY | CONSTRAINT}
+        [IF EXISTS] <törlendő_objektum_neve>
+
+```
+
+Péda
+```sql
+
+  ALTER TABLE `Dolgozok` ADD COLUMN `fizetes` int(8) UNSIGNED NOT NULL;
+
+  ALTER TABLE `Dolgozok` DROP PRIMARY KEY;
+
+```
+
+#### [DROP](https://mariadb.com/kb/en/drop/) utasítás
+
+Törli a kijelölt objektumot.
+
+**[DROP DATABASE](https://mariadb.com/kb/en/drop-database/)**
+
+Törli az összes táblát és az adatbázis szerkezetét is. Az adatbázis törlésével a
+hozzátartozó felhasználói jogosultságok nem törlődnek automatikusan.
+
+Szintaxis
+```sql
+
+  DROP {DATABASE | SCHEMA} [IF EXISTS] <adatbázisnév>;
+
+```
+
+Péda
+```sql
+
+  DROP DATABASE `Adatbazisom`;
+
+```
+
+**[DROP TABLE](https://mariadb.com/kb/en/drop-table/)**
+
+Törli a tábla összes sorát és magát a tábla szerkezetét is. Az tábla törlésével a
+hozzátartozó felhasználói jogosultságok nem törlődnek automatikusan.
+
+Szintaxis
+```sql
+
+  DROP TABLE [IF EXISTS] <táblanév>;
+
+```
+
+Példa
+```sql
+
+  DROP TABLE `Dolgozok`;
+
+```
 
 ### 10.4 Relációsémák, indexek
 
+Az SQL három típusú relációt ismer:
+1. **Táblák (TABLE)**, tárolt relációk. Általában ilyen relációkkal foglalkozunk.
+Benne vannak az adatbázisban, soraik változtatásával megváltoztathatók és
+soraik is lekérdezhetők.
+2. A **Nézetek (VIEW)** vagy virtuális táblák más relációkra vonatkozó lekérdezésekkel
+jönnek létre. Nem valódi táblák az adatbázisban, csak származtatott adatokat
+tartalmaznak. A virtuális tábla nem tárol adatokat.
+3. **Ideiglenes (TEMPORARY) táblák**, amelyeket az SQL nyelvi feldolgozója készít,
+amikor valamilyen lekérdezéseket és adatmódosításokat végez el. Ezeket a relációkat
+eldobja és nem tárolja sehol az SQL feldolgozója.
 
 #### Indexek<sup id="5">[[5]](#note5)</sup>
 
@@ -1595,6 +1709,31 @@ Ha helyesen akarunk eljárni, akkor csak azokat a mezőket indexeljük,
 * a mezőt idegen kulcsként akarjuk használni.
 
 ### 10.5 Hivatkozástípusok relációsémák definiálásakor
+
+Az Objektum-relációs modell (SQL3) a relációs világba átemel objektum-orientált
+elemeket. A reláció továbbra is alapfogalom, amelyet absztrakt adattípusok definiálásával
+bővíthetünk. Az objektum-relációs elv alapján belül minden relációsan működik, egy
+ráépülő rétegként alakítják ki az objektum-orientált felületet.
+
+Az SQL3 támogatja az **absztrakt adattípus (ADT = Abstract Data Type)** alkalmazását
+(ez bizonyos értelemben az osztály fogalomnak felel meg). Az ADT-k a strukturális
+elemek mellett metódusokat is tartalmazhatnak, közöttük öröklési kapcsolat
+létesíthető. Ezek más néven a felhasználó által létrehozott típusok (User Defined Type,
+UDT), melyekben új típusokat (pl. objektumot attribútumokkal, metódusokkal) és
+műveleteket lehet definiálni, majd használni azokat az SQL utasításokban a beépített
+típusokhoz és operátorokhoz hasonlóan. **A MySQL és a MariaDB nem támogatja felhasználói
+adattípusok használatát**, az Oracle, az MS SQL és a PostgreSQL viszont igen.
+
+Egy tábla mezőtípusa lehet objektum, másik tábla, pointer más objektumra (hivatkozás),
+itt a mező csak egy pointert tartalmaz a hivatkozott objektumra. A hivatkozott
+objektum nem része a hivatkozó objektumnak. A fogalom hasonló a [C++-beli mutatóhoz](http://www.mogi.bme.hu/TAMOP/c++programozas/ch01.html#ch-I.6.1). A hivatkozás
+típusú attribútum tehát egy másik objektumtábla adott sorára (objektumazonosítójára)
+hivatkozik.
+
+A hivatkozás kapcsolatok kezelésére alkalmas:
+* Hasonló a külső kulcshoz, de nem egyenértékű vele.
+* Ha hivatkozott sort töröljük, majd azonos tartalommal újra felvesszük, akkor
+új objektumazonosítót kap.
 
 
 ## 11. tétel
@@ -1690,21 +1829,23 @@ szabványához igazodik).
 * [9075-15:2019](https://www.iso.org/standard/67382.html): Többdimenziós tömbök
 (SQL/MDA).
 
-### 11.2 Nézettábla (VIEW) kialakítása és szerepe
+### 11.2 [Nézettábla (VIEW)](https://mariadb.com/kb/en/create-view/) kialakítása és szerepe
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
 vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
-metaszintaxishoz hasonló módon.*
+metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
+alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
 
 
 ### 11.3 [Adatmanipulációs utasítások (DML)](https://mariadb.com/kb/en/data-manipulation/), adattábla aktualizálása
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
 vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
-metaszintaxishoz hasonló módon.*
+metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
+alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
 
 
@@ -1804,10 +1945,19 @@ szabványához igazodik).
 
 ### 12.2 [Lekérdezés relációs adattáblákból (DQL)](https://mariadb.com/kb/en/selecting-data/)
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
 szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
 vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
-metaszintaxishoz hasonló módon.*
+metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
+alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
+
+A DQL (Data Query Language, adatlekérdező nyelv) az SQL névadó résznyelve.
+Használatával az adatbázisok tábláiban tárolt adatok különböző szempontok és összefüggések
+alapján kérdezhetők le. A DQL-ben pontosan megfogalmazhatjuk a megjelenítendő rekordok
+és mezők forrásául szolgáló táblákat, vagy táblakapcsolatokat, és feltételekkel
+szűrhetjük a rekordokat. A kiválasztott adatokkal statisztikai műveleteket végezhetünk,
+vagy egyszerűen megjeleníthetjük őket. Egyes osztályozások DQL-t a DML részének
+tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyelvvel.
 
 
 
