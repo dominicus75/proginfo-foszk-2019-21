@@ -1438,9 +1438,15 @@ Példa:
 #### [CREATE TABLE](https://mariadb.com/kb/en/create-table/)
 
 Relációséma létrehozására a CREATE TABLE utasítás szolgál, amely egyben egy üres
-táblát is létrehoz a sémához, a megadott névvel. Az attribútumok definiálása (név
-és adattípus beállítása) mellett a kulcsok (elsődleges és külső), indexek valamint
-tábla-, és oszlopszintű megszorítások megadására is lehetőséget nyújt.
+táblát is létrehoz a sémához, a megadott névvel. Az utasítás után a tábla neve, majd
+a tábla szerkezetét (mezők, indexek, megszorítások) meghatározó, kerek zárójelek
+közé zárt tábladefiníció következik. Az attribútumok definiálása (név és adattípus
+beállítása) mellett a kulcsok (elsődleges és külső), indexek valamint tábla-, és
+oszlopszintű megszorítások megadására is lehetőséget nyújt.
+
+A kerek zárójelek közé kerülő meződefiníciók egymástól vesszővel elválasztott
+meghatározások. Minden meződefinícióban kötelezően szerepel a mező neve és adattípusa,
+de tartalmazhat további mezőtulajdonságokat is.
 
 Szintaxis:
 ```sql
@@ -1452,12 +1458,16 @@ Szintaxis:
    | COLLATE [=] <rendezési_szabályok>];
 
   <Táblanév>, <oszlop_neve> ::= max. 64 karakter hosszú, szóköz nélküli ASCII szöveg
-                <adattípus> ::= az adattípushoz DEFAULT '<érték>' kifejezéssel
-                                alapértelmezett érték definiálható
+                <adattípus> ::= a relációs adatmodell előírja, hogy egy mező minden
+                                értékének azonos értéktartományba (domain) kell
+                                tartoznia. Ezt az adattípus határozza meg, melyhez
+                                DEFAULT '<érték>' kifejezéssel alapértelmezett
+                                érték is definiálható
                     <méret> ::= a tárolt adat maximális mérete
      <oszlop_megszorítások> ::= az oszlopra vonatkozó megszorítások (pl. PRIMARY
                                 KEY = elsődleges kulcs, azonosító; NULL vagy NOT
-                                NULL; REFERENCES = külső kulcs hivatkozás).
+                                NULL; REFERENCES = külső kulcs hivatkozás,
+                                UNSIGNED = előjel nélküli).
       <tábla_megszorítások> ::= az egész táblára vonatkozó megszorítások (a NULL
                                 és a NOT NULL kivételével azonosak az oszlop
                                 megszorításokkal, pl. PRIMARY KEY, REFERENCES)
@@ -1468,6 +1478,31 @@ Szintaxis:
 
 ```
 
+A **NOT NULL** opció használata esetén a mező kitöltése kötelező, az ilyen mezők nem
+maradhatnak üresen. A kötelező mezőkben bármilyen értéket tárolhatunk, amit a választott
+típus megenged. **A NOT NULL opciónak fontos szerepe van a táblák közötti kapcsolatban,
+a minimális részvétel, azaz a kötelezőség beállításában**.
+
+A tábla módosításakor a definiált kulcsfeltételek automatikusan ellenőrzésre
+kerülnek. **PRIMARY KEY** és **UNIQUE** esetén ez azt jelenti, hogy a rendszer nem
+enged olyan módosítást illetve új sor felvételét, amely egy már meglévő kulccsal
+ütközne.
+
+**REFERENCES** (külső kulcs hivatkozás) esetén **ON**-feltételek megadásával
+szabályozhatjuk a rendszer viselkedését:
+* **Alapértelmezés (ha nincs ON-feltétel):** a hivatkozó táblában nem megengedett
+olyan beszúrás és módosítás, amely a hivatkozott táblában nem létező kulcs értékre
+hivatkozna, továbbá a hivatkozott táblában nem megengedett olyan kulcs módosítása
+vagy sor törlése, amelyre a hivatkozó tábla hivatkozik.
+* **ON UPDATE CASCADE:** ha a hivatkozott tábla egy sorában változik a kulcs értéke,
+akkor a rá való hivatkozások is megfelelően módosulnak (módosítás továbbgyűrűzése).
+* **ON DELETE CASCADE:** Ha a hivatkozott táblában törlünk egy sort, akkor törlődnek
+a rá hivatkozó sorok (törlés továbbgyűrűzése).
+* **ON UPDATE SET NULL:** ha a hivatkozott tábla egy sorában változik a kulcs értéke,
+akkor a rá való külső kulcs hivatkozások értéke NULL lesz.
+* **ON DELETE SET NULL:** ha a hivatkozott táblából törlünk egy sort, akkor a rá
+való külső kulcs hivatkozások értéke NULL lesz.
+
 A MySQL-ben több módszer is létezik a lemezfájlok belső struktúrájának kialakítására
 és kezelésére. Ezeket a DBMS különálló, akár egyenként is telepíthető moduljai,
 az **adatbázismotorok** biztosítják. Az egyes motorok eltérő kiegészítő lehetőségeket
@@ -1475,18 +1510,38 @@ biztosítanak a relációk kezelésének alapvető funkcióin túl. Egy tábla d
 megadhatjuk, hogy melyik adatbázismotort szeretnénk használni, a MySQL pedig mindig
 a kiválasztott módon fogja kezelni a relációt.
 
-A telepített motorok a SHOW ENGINES; paranccsal tekinthetők meg.
+A telepített motorok a **SHOW ENGINES;** paranccsal tekinthetők meg.
 
 A MySQL adatbázisokban az **InnoDB** motorral kezelt táblákban használhatunk
 tranzakciókezelést, **csak az InnoDB relációkban őrizhetjük meg az idegen kulcsok
-helyességét**. A MySQL-szerverek konfigurációjában megadható az alapértelmezett
-táblamotor, karakterkódolás, és a többi táblatulajdonság is.
+helyességét**. A MySQL-szerverek konfigurációjában (*a rendszergazdáknak*) megadható
+az alapértelmezett táblamotor, karakterkódolás, és a többi táblatulajdonság is.
 
-Az [SQL adattípusok](https://webfejlesztes.gtportal.eu/?f0=7_tabla_06).
+**[SQL adattípusok](https://webfejlesztes.gtportal.eu/?f0=7_tabla_06)**
 
+* **CHAR(n):** n hosszúságú karaktersorozat
+* **VARCHAR(n):** legfeljebb n hosszúságú karaktersorozat
+* **INTEGER** vagy **INT:** egész szám
+* **REAL:** valós (lebegőpontos) szám, másnéven FLOAT
+* **DECIMAL(n[,d]):** n jegyű decimális szám, ebből d tizedesjegy
+* **DATE:** az [ISO 8601](https://hu.wikipedia.org/wiki/ISO_8601) szabványnak megfelelő
+dátum (ÉÉÉÉ-HH-NN).
+* **TIME:** az [ISO 8601](https://hu.wikipedia.org/wiki/ISO_8601) szabványnak megfelelő
+idő (óó:pp:mm).
 
 Példa:
 ```sql
+
+  CREATE TABLE `Dolgozo` (
+    `azonosito` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `csaladnev` varchar(30),
+    `keresztnev` varchar(20),
+    `szul_datum` date,
+    `lakcim` varchar(40) DEFAULT 'hajléktalan'
+    `osztaly_id` int(10)
+    PRIMARY KEY (azonosito),
+    FOREIGN KEY (osztaly_id) REFERENCES osztalyok(osztaly_id) ON UPDATE CASCADE
+  )ENGINE = InnoDB;
 
 ```
 
