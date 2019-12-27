@@ -1548,7 +1548,7 @@ Példa:
 
 #### [ALTER](https://mariadb.com/kb/en/alter/) utasítás
 
-**[ALTER DATABASE](https://mariadb.com/kb/en/alter-database/)
+**[ALTER DATABASE](https://mariadb.com/kb/en/alter-database/)**
 
 Lehetővé teszi az adatbázis általános tulajdonságainak megváltoztatását. Ezeket
 a jellemzőket a `db.opt` fájl tárolja az adatbázis könyvtárban.
@@ -1574,7 +1574,7 @@ Példa
 
 ```
 
-**[ALTER TABLE](https://mariadb.com/kb/en/alter-table/)
+**[ALTER TABLE](https://mariadb.com/kb/en/alter-table/)**
 
 Lehetővé teszi egy **létező tábla struktúrájának megváltoztatását**. Képes oszlopokat
 vagy indexeket, elsődleges kulcsokat és megszorításokat hozzáadni és törölni, létező
