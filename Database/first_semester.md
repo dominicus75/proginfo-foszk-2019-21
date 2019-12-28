@@ -1688,7 +1688,7 @@ Példa
 ### 10.4 Relációsémák, indexek
 
 A **relációséma** a reláció nevét és az attribútumok (tulajdonságtípusok) halmazát
-tartalmazza és Relációnév(Tulajdonság>1</sub>,...,tulajdonság<sub>n</sub> ) módon
+tartalmazza és Relációnév(Tulajdonság<sub>1</sub>,...,tulajdonság<sub>n</sub> ) módon
 szokás jelölni. Ez a séma nem más, mint a táblázat alapszerkezetének, az oszlopfejlécek
 sorrendjének leírása. Az adatbázis megvalósításakor ezt a sémát kell táblaként
 leképezni, az SQL nyelv által biztosított eszközökkel.
