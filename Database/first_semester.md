@@ -2609,10 +2609,83 @@ Példa
 
 **Attribútumokra vonatkozó megszorítások**
 
-A CREATE TABLE utasításban valamely attribútum deklarációja után adhatók meg.
+A CREATE TABLE utasításban valamely attribútum deklarációja után adhatók meg, az
+adott attribútumra (oszlopra) vonatkoznak.
 
+* **NOT NULL:** az oszlop mezőinek kitöltése **kötelező**, nem tartalmazhatnak NULL
+értéket.
 
-**Rekordokra vonatkozó megszorítások**
+* **NULL:** az oszlop mezőinek kitöltése **nem kötelező**, tartalmazhatnak NULL
+értéket.
+
+* **DEFAULT:** alapértelmezett érték, mely akkor kerül az új sor adott oszlopába,
+ha nem adunk meg a beszúrás során semmilyen értéket.
+
+* **PRIMARY KEY:** a tábla elsődleges kulcsa lesz, megköveteli a kijelölt oszlopban
+az értékek egyediségét. Oszlop-megszorításokban csak akkor tudunk elsődleges kulcsot
+definiálni, ha az elsődleges kulcs csak egy oszlopból áll. Ilyen oszlop csak egy
+lehet a táblában. Hatására mindig létrejön egy index állomány.
+
+* **UNIQUE:** az adott oszlopban minden érték egyedi. Hatására index állomány jön létre
+
+* **REFERENCES:** az adott oszlop idegen kulcs-hivatkozást tartalmaz a kapcsolótábla
+kapcsoló oszlopára, mely csak elsődleges, vagy egyedi kulcs lehet. Az ilyen megszorítással
+rendelkező oszlopok csak NULL (itt: *nincs kapcsolat*), vagy olyan értékeket vehetnek
+fel, amilyen a kapcsolt tábla kapcsolt oszlopában is megtalálható, kivétel, ha az
+oszlop **NOT NULL** megszorítással rendelkezik.
+
+* **CHECK:** az oszlopra vonatkozó logikai kifejezést adhatunk meg, a feltételben
+csak az oszlop szerepelhet. A beszúrás, módosítás csak akkor történik meg, ha a
+kifejezés értéke igaz lesz.
+
+A felsorolt megkötésekből többnek is létezik táblaszintű változata is. A táblaszintű
+megszorítások **mindig az egész táblára vonatkoznak, szerepelhet bennük a tábla egy
+vagy több oszlopa**.
+
+* **PRIMARY KEY (oszlop1, oszlop2, ….):** a több oszlopból álló elsődleges kulcsokat
+tábla szintű megszorításban kell megadni. Hatására mindig létrejön egy index állomány.
+
+* **UNIQUE (oszlop1, oszlop2, …):** az adott oszlopokban lévő értékek egyediek
+lesznek. Hatására index állomány(ok) jön(nek) létre.
+
+* **FOREIGN KEY (oszlop1, oszlop2, …):** az adott oszlopok idegen kulcs-hivatkozást
+tartalmaznak a kapcsolótábla kapcsoló oszlopaira, melyekre elsődleges, vagy egyedi
+kulcsot kell definiálni. Az oszlopok sorrendje számít.
+
+**Rekordokra vonatkozó (soralapú) megszorítások**
+
+A **CHECK** kulcsszó után tetszőleges feltételt (logikai kifejezést) adhatunk meg,
+melyben csak az adott tábla oszlopai szerepelhetnek. Az erre vonatkozó szabályok
+megegyeznek a SELECT parancsban használt WHERE záradék lehetséges feltételével.
+A feltétel ellenőrzése sor beszúrásakor, vagy az attribútum módosításakor történik.
+Egy rekord beszúrása, módosítása csak akkor történik meg, ha a kifejezés értéke
+igaz. Ha az eredmény hamis lesz, akkor a feltételt megsértő sorra vonatkozó
+beszúrás-, vagy módosításutasítást a rendszer visszautasítja.
+
+A soralapú megszorítás gyakrabban kerül ellenőrzésre, mint az attribútumalapú.
+Ugyanis a soralapú megszorítás esetén a feltétel a sor bármely megfelelő
+attribútumértékének a megváltozásakor ellenőrzésre kerül, míg az attribútumalapúnál
+csak az adott attribútum értékének megváltozásakor történik vizsgálat.
+
+Egy tábla módosításakor a definiált kulcsfeltételek automatikusan ellenőrzésre
+kerülnek. **PRIMARY KEY** és **UNIQUE** esetén ez azt jelenti, hogy a rendszer nem
+enged olyan módosítást illetve új sor felvételét, amely egy már meglévő kulccsal
+ütközne.
+
+**REFERENCES** (külső kulcs hivatkozás) esetén a következő idegenkulcs-megszorítások
+megadásával szabályozhatjuk a rendszer viselkedését:
+* **Alapértelmezés (ha nincs ON-feltétel):** a hivatkozó táblában nem megengedett
+olyan beszúrás és módosítás, amely a hivatkozott táblában nem létező kulcs értékre
+hivatkozna, továbbá a hivatkozott táblában nem megengedett olyan kulcs módosítása
+vagy sor törlése, amelyre a hivatkozó tábla hivatkozik.
+* **ON UPDATE CASCADE:** ha a hivatkozott tábla egy sorában változik a kulcs értéke,
+akkor a rá való hivatkozások is megfelelően módosulnak (módosítás továbbgyűrűzése).
+* **ON DELETE CASCADE:** Ha a hivatkozott táblában törlünk egy sort, akkor törlődnek
+a rá hivatkozó sorok (törlés továbbgyűrűzése).
+* **ON UPDATE SET NULL:** ha a hivatkozott tábla egy sorában változik a kulcs értéke,
+akkor a rá való külső kulcs hivatkozások értéke NULL lesz.
+* **ON DELETE SET NULL:** ha a hivatkozott táblából törlünk egy sort, akkor a rá
+való külső kulcs hivatkozások értéke NULL lesz.
 
 
 ### 13.3 Általános vagy önálló megszorítások (assertions)
