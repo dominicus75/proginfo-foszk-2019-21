@@ -697,7 +697,9 @@ többen is szerepelne, akkor is csak egyszer szerepel az eredmény relációban.
 *Halmazelméleti unió SQL-ben:*
 
 ```sql
+
   (SELECT * FROM table1) UNION (SELECT * FROM table2);
+
 ```
 
 **Metszet (Intersection)**
@@ -709,7 +711,9 @@ relációk közül mindegyikben szerepelnek.
 *Halmazelméleti metszet SQL-ben:*
 
 ```sql
+
   (SELECT * FROM table1) INTERSECT (SELECT * FROM table2);
+
 ```
 
 **Különbség (Difference)**
@@ -721,9 +725,11 @@ de a másodikban nem.
 *Halmazelméleti különbség SQL-ben:*
 
 ```sql
+
   (SELECT * FROM table1) EXCEPT (SELECT * FROM table2);
 
   (SELECT * FROM table1) MINUS (SELECT *FROM table2);
+
 ```
 
 *Tulajdonságok:* az unió és metszet összetevői felcserélhetők, a különbségé nem.
@@ -745,7 +751,9 @@ a gyakorlatban, mert az adathalmaz redundanciáját növeli.
 *Descartes-szorzat SQL-ben:*
 
 ```sql
-SELECT * FROM table1, table2;
+
+  SELECT * FROM table1, table2;
+
 ```
 
 ### 5.3 Multihalmazok
@@ -792,10 +800,6 @@ fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az 
 
 ### 6.2 Kombinációs műveletek
 
-*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható részleteket
-szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` - logikai
-vagy operátor) jelöli.*
-
 **Descartes-szorzat (cross join)**
 
 A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
@@ -809,7 +813,9 @@ a gyakorlatban, mert az adathalmaz redundanciáját növeli.
 *Descartes-szorzat SQL-ben:*
 
 ```sql
-SELECT * FROM table1, table2;
+
+  SELECT * FROM table1, table2;
+
 ```
 
 **Összekapcsolás (illesztés, join)**
@@ -835,7 +841,9 @@ feltétel független a többi keresési feltételtől.
 A JOIN nyelvi elemek egy része kifejezhető a
 
 ```sql
-SELECT <attribútumok> FROM <táblák> WHERE <feltételek>;
+
+  SELECT <attribútumok> FROM <táblák> WHERE <feltételek>;
+
 ```
 
 kifejezés segítségével is.
@@ -849,9 +857,11 @@ kifejezés segítségével is.
   azonos nevű attribútumok közül az ismétlődések elhagyásával nyert relációt eredményezi.
   Ha az azonos nevű oszlopok adattípusa eltérő, akkor hibával tér vissza.
   ```sql
+
     SELECT *
     FROM table1
     NATURAL JOIN table2;
+
   ```
   Az `ON` kikötés nem használható, ezért irányíthatatlan a kapcsolat, minden azonos
   nevű mező kapcsolódik.
@@ -866,6 +876,7 @@ kifejezés segítségével is.
   eredménytáblában.
 
   ```sql
+
     SELECT column_name
     FROM table1
     LEFT JOIN table2
@@ -881,14 +892,17 @@ kifejezés segítségével is.
     FULL [OUTER] JOIN table2
     ON table1.column_name = table2.column_name
     WHERE condition;
+
   ```
 * **Belső-összekapcsolás (Inner join):** a két tábla közös soraival tér vissza.
 
   ```sql
+
     SELECT column_name(s)
     FROM table1
     INNER JOIN table2
     ON table1.column_name = table2.column_name;
+
   ```
 
 * **Théta-összekapcsolás (Theta-join):** nem egyenlőségen alapuló összekapcsolás,
@@ -1736,6 +1750,20 @@ olvassa be a lemezről.
 Egy táblában bármennyi mező indexelhető. Ha több mezőt is indexelünk, akkor
 természetesen mindegyik számára különálló indextábla készül.
 
+Szintaxis
+```sql
+
+  CREATE [OR REPLACE] [UNIQUE] INDEX [IF NOT EXISTS] <index_neve>
+    ON <táblanév> (<index_oszlop_neve>,...);
+
+         <index_neve> ::= ezen a néven lehet rá később hivatkozni
+  <index_oszlop_neve> ::= már létező oszlop neve, amit indexként akarunk használni
+
+```
+Az **UNIQUE** kulcsszó jelzi, hogy egyedi indexet szeretnénk készíteni. Az **INDEX|KEY**
+kulcsszavak kompatibilitási okokból maradtak a nyelvben, egymás szinonimái, de el
+is hagyhatók.
+
 Minden indextábla helyet foglal a lemezen, és ezzel növeli az adatbázis méretét.
 Ráadásul az indexek csak akkor működnek helyesen, ha a DBMS a bázistábla rekordjainak
 változásakor (új rekord, rekordtörlés, mezőérték változtatás) automatikusan frissíti
@@ -2188,6 +2216,171 @@ tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyel
 
 ### 12.3 Relációalgebrai műveletek megvalósítása
 
+A relációalgebra műveletei két csoportra oszthatók. Az egyik csoport a matematikai
+halmazelmélet halmazműveleteiből áll; ezek azért alkalmazhatók, mert **a formális
+relációs modellben a relációt rekordok halmazaként definiáljuk**. A halmazműveletek
+közé tartozik az **unió, a metszet, a (halmaz)különbség és a Descartes-szorzat**.
+A másik csoport olyan műveletekből áll, amelyeket speciálisan a relációs modellhez
+fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az összekapcsolás**.
+
+**A matematikai halmazelmélet műveletei**
+
+Két táblát kompatibilisnek nevezünk, mind az attribútumok száma, mind értéktartománya
+– a tárolt adat típusa – azonos. A halmazműveleteket csak kompatibilis táblákon
+értelmezzük. Minden értelmezett halmazművelethez legalább két operandus szükséges.
+A halmazokon értelmezett hagyományos matematikai műveletek bináris műveletek, azaz
+mindegyiket két halmazra (relációra) alkalmazzuk. Ide tartozik az **unió, a metszet,
+a (halmaz)különbség és a Descartes-szorzat**.
+
+**Unió**
+
+Az unió művelete azonos szerkezetű két vagy több reláció között végezhető el. Az
+eredmény reláció tartalmazza azokat a sorokat, melyek a műveletbe bevont relációk
+közül legalább egyben szerepelnek. Ha ugyanaz a sor az egyesítendő relációk közül
+többen is szerepelne, akkor is csak egyszer szerepel az eredmény relációban.
+
+*Halmazelméleti unió SQL-ben:*
+
+```sql
+
+  (SELECT * FROM table1) UNION (SELECT * FROM table2);
+
+```
+
+**Metszet (Intersection)**
+
+A metszet művelete azonos szerkezetű két vagy több reláció között végezhető el.
+Az eredmény reláció csak azokat a sorokat tartalmazza, melyek a műveletbe bevont
+relációk közül mindegyikben szerepelnek.
+
+*Halmazelméleti metszet SQL-ben:*
+
+```sql
+
+  (SELECT * FROM table1) INTERSECT (SELECT * FROM table2);
+
+```
+
+**Különbség (Difference)**
+
+A különbség művelete azonos szerkezetű két reláció között végezhető el. Az eredmény
+reláció csak azokat a sorokat tartalmazza, melyek a első relációban megtalálhatóak,
+de a másodikban nem.
+
+*Halmazelméleti különbség SQL-ben:*
+
+```sql
+
+  (SELECT * FROM table1) EXCEPT (SELECT * FROM table2);
+
+  (SELECT * FROM table1) MINUS (SELECT *FROM table2);
+
+```
+
+*Tulajdonságok:* az unió és metszet összetevői felcserélhetők, a különbségé nem.
+
+Megállapodás szerint **az unió, a metszet, és a különbség műveletek eredmény relációnak
+ugyanazok lesznek az attribútumnevei, mint amik az első relációnak** voltak. Az átnevezés
+művelet segítségével később át lehet nevezni az eredménybeli attribútumokat.
+
+**Descartes-szorzat (cross join)**
+
+A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
+rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. Ez
+is egy bináris (két operandusú) halmazművelet, azonban azoknak a relációknak,
+amelyekre alkalmazzuk, nem kell kompatibiliseknek lenniük. A Descartes-szorzatot
+általában nem alkalmazzák a gyakorlatban, mert az adathalmaz redundanciáját növeli.
+
+*Descartes-szorzat SQL-ben:*
+
+```sql
+
+  SELECT * FROM table1, table2;
+
+```
+
+**A relációs modellhez kifejlesztett relációalgebrai műveletek (illesztés, join)**
+
+A relációs modell lényegéhez tartozik, hogy két tábla között a megegyező attribútumok
+létesítenek kapcsolatot. Az összekapcsolás művelete két vagy több relációt kapcsol
+össze egy-egy attribútum érték összehasonlításával.
+
+Relációk összekapcsolásakor meg kell adni az összekapcsolás módját (természetes,
+belső vagy külső) és a sorok összekapcsolásának feltételét. Az `ON` kulcsszót
+használhatjuk az összekapcsolás tetszőleges feltételének vagy oszlopainak megadására,
+segítségével különböző nevű oszlopok is összekapcsolhatóak. Az összekapcsolási
+feltétel független a többi keresési feltételtől.
+
+A JOIN nyelvi elemek egy része kifejezhető a
+
+```sql
+
+  SELECT <attribútumok> FROM <táblák> WHERE <feltételek>;
+
+```
+kifejezés segítségével is.
+
+![Imgur](https://i.imgur.com/JE58fcX.png)
+
+*Az összekapcsolás módja szerint lehet:*
+
+* **Természetes-összekapcsolás (Natural join):** két reláció Descartes-szorzatából
+  az azonos nevű attribútumokon megegyező értékű elemek kiválasztásával, illetve az
+  azonos nevű attribútumok közül az ismétlődések elhagyásával nyert relációt eredményezi.
+  Ha az azonos nevű oszlopok adattípusa eltérő, akkor hibával tér vissza.
+  ```sql
+
+    SELECT *
+    FROM table1
+    NATURAL JOIN table2;
+
+  ```
+  Az `ON` kikötés nem használható, ezért irányíthatatlan a kapcsolat, minden azonos
+  nevű mező kapcsolódik.
+* **Külső-összekapcsolás (Outer join):** az összekapcsolt két tábla egyikénél vagy
+  mindkettőnél valamennyi rekord megőrzését garantálja. Az SQL szabvány szerint
+  a `LEFT`, `RIGHT` vagy `FULL OUTER JOIN` kulcsszavakkal adható meg. A *baloldali
+  oldali külső összekapcsolás* (`LEFT JOIN`) azt jelenti, hogy az eredménytáblában
+  a baloldali tábla azon sorai is szerepelnek, melyek a jobboldali tábla egyetlen
+  sorával sem párosíthatók. A *jobboldali oldali külső összekapcsolás* (`RIGHT JOIN`)
+  ugyan ez, csak fordítva. A *teljes külső összekapcsolás* (`FULL OUTER JOIN` vagy
+  egyszerűen: `FULL JOIN`) mindkét tábla nem párosított rekordjait megőrzi az
+  eredménytáblában.
+
+  ```sql
+
+    SELECT column_name
+    FROM table1
+    LEFT JOIN table2
+    ON table1.column_name = table2.column_name;
+
+    SELECT column_name
+    FROM table1
+    RIGHT JOIN table2
+    ON table1.column_name = table2.column_name;
+
+    SELECT column_name
+    FROM table1
+    FULL [OUTER] JOIN table2
+    ON table1.column_name = table2.column_name
+    WHERE condition;
+
+  ```
+* **Belső-összekapcsolás (Inner join):** a két tábla közös soraival tér vissza.
+
+  ```sql
+
+    SELECT column_name(s)
+    FROM table1
+    INNER JOIN table2
+    ON table1.column_name = table2.column_name;
+
+  ```
+
+* **Théta-összekapcsolás (Theta-join):** nem egyenlőségen alapuló összekapcsolás,
+  itt a táblák Descartes-szorzatából tetszőleges feltétel szerint választunk ki
+  sorokat. A théta szó erre a tetszőleges feltételre utal, amit θ jellel szokás
+  jelölni.
 
 
 ### 12.4 Összesítő (aggregáló) függvények alkalmazása
@@ -2217,17 +2410,59 @@ Az egyenlőség vizsgálat esetén a belső lekérdezés csak egy értéket adha
 
 ### 13.1 Az SQL megszorításai
 
+Az aktív elem olyan programrész, amely bizonyos szituációban automatikusan végrehajtódik.
+Ez a szituáció lehet egy esemény bekövetkezése, mint például egy adott relációba
+való beszúrás, vagy lehet az adatbázisnak olyan megváltozása, amikor egy logikai
+értékű feltétel igazzá válik. Az aktív elemek speciális esete a megszorítás. A
+megszorítások olyan előírások, korlátozások, amelyekkel megadhatjuk az adatbázis
+tartalmára vonatkozó kívánságainkat. Ha ezeket az adatbázisrendszerrel egyszer,
+egy helyen közöljük, az mindig gondoskodni fog betartásukról.
 
+A megszorításokat az adatbázisrendszer minden olyan akció során ellenőrzi, amely
+eredményeként az adatbázis tartalma úgy változhat, hogy az a megszorítást már nem
+elégítené ki. A megszorítások megadásuktól kezdve érvényesülnek (nincs visszamenőleges
+hatásuk).
+
+A megszorítások a relációs adatbázisokban lehetnek
+* **Kulcs megszorítások**
+* **Integritási megszorítások**
+* **Attribútumértékekre vonatkozó megszorítások**
+
+A megszorítások szintaktikai elhelyezésük szerint lehetnek **oszlop vagy tábla szintűek**.
+Az egy oszlopot érintő megszorításokat megadhatjuk közvetlenül az oszlop definíciója
+után (vesszőt nem kell tenni közéjük), míg a több oszlopot érintő megszorításokat
+(pl. összetett kulcsok) csak tábla szintű megszorításként írhatjuk elő (vesszőt
+kell tenni közéjük), az oszlopok felsorolása után (pl. **CREATE TABLE** utasítás esetén).
+
+A megszorítások mindegyike a **CONSTRAINT** kulcsszóval kezdődik, amit egy adatbázis
+szintjén egyedi, úgynevezett szimbolikus név követ. Szükség esetén ezzel a névvel
+azonosítható a megszorítás. Ha a felhasználó nem ad meg nevet, a rendszer generál
+egy azonosítót **SYS_Cn** formátumban. Ez hibajelzésekben jelenik meg, valamint
+használhatjuk az ALTER TABLE utasításban is.
+
+A **CONSTRAINT** kulcsszó és a név elhagyható, ha **CREATE TABLE** vagy **ALTER
+TABLE** utasítás keretében kötünk ki oszlop-, vagy táblaszintű megszorításokat.
 
 ### 13.2 Domain-ek, attribútumokra, rekordokra vonatkozó megszorítások
 
+**Domain-megszorítások**
 
 
-### 13.3 Önálló megszorítások
+**Attribútumokra vonatkozó megszorítások**
+
+
+**Rekordokra vonatkozó megszorítások**
+
+
+### 13.3 Általános vagy önálló megszorítások (assertions)
+
+
 
 
 
 ### 13.4 Triggerek
+
+Az aktív elemek másik speciális esete a trigger.
 
 
 ## 14. tétel
