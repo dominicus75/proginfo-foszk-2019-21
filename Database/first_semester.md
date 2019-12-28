@@ -2214,6 +2214,12 @@ tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyel
 
 
 
+
+Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, vetítés,
+összekapcsolás és a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
+
+
+
 ### 12.3 Relációalgebrai műveletek megvalósítása
 
 A relációalgebra műveletei két csoportra oszthatók. Az egyik csoport a matematikai
@@ -2299,7 +2305,45 @@ amelyekre alkalmazzuk, nem kell kompatibiliseknek lenniük. A Descartes-szorzato
 
 ```
 
-**A relációs modellhez kifejlesztett relációalgebrai műveletek (illesztés, join)**
+**A relációs modellhez kifejlesztett relációalgebrai műveletek**
+
+Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, vetítés,
+összekapcsolás és a Descartes-szorzat.
+
+**Szelekció (kiválasztás) és projekció (vetítés)**
+
+A kiválasztás (szelekció) és a vetítés (projekció) két teljesen máshogy viselkedő
+művelet. A kiválasztás feladata elsősorban az, hogy a reláció mint halmaz elemei
+közül emelje ki azokat, amelyek egy megadott logikai feltételt teljesítenek, míg
+a vetítés oszlopok (attribútumok) szerint válogat. A SELECT kiértékelését úgy is
+felfoghatjuk, mintha előszór vennénk a FROM utáni relációk direkt szorzatát és
+aztán azon végeznénk el a kiválasztást vagy a vetítést.
+
+*A kiválasztás általános szintaxisa*
+```sql
+
+  SELECT [DISTINCT] *
+    FROM <táblanév>
+    WHERE <feltétel>;
+
+  <feltétel> ::= logikai kifejezés, amely ha igaz értéked ad vissza, az adott
+                 rekord bekerül az eredmény relációba (kiválasztásra kerül)
+
+```
+A kiválasztás új relációt hoz létre, a FROM záradékban megadott egy vagy több
+relációnak a WHERE záradékban lévő logikai kifejezésnek eleget tévő rekordjaiból.
+
+*A vetítés általános szintaxisa*
+```sql
+
+  SELECT [DISTINCT] <oszloplista>
+    FROM <táblanév>;
+
+```
+A vetítés új relációt hoz létre, a FROM záradékban megadott egy vagy több
+reláció meghatározott oszlopaiból.
+
+**Összekapcsolás (illesztés, join)**
 
 A relációs modell lényegéhez tartozik, hogy két tábla között a megegyező attribútumok
 létesítenek kapcsolatot. Az összekapcsolás művelete két vagy több relációt kapcsol
@@ -2382,9 +2426,65 @@ kifejezés segítségével is.
   sorokat. A théta szó erre a tetszőleges feltételre utal, amit θ jellel szokás
   jelölni.
 
+**Descartes-szorzat**
 
-### 12.4 Összesítő (aggregáló) függvények alkalmazása
+A Descartes-szorzat művelet olyan halmazművelet, amelynek segítségével két reláció
+rekordjait tudjuk párosítani az összes lehetséges kombináció előállításával. Ez
+is egy bináris (két operandusú) halmazművelet, azonban azoknak a relációknak,
+amelyekre alkalmazzuk, nem kell kompatibiliseknek lenniük. A Descartes-szorzatot
+általában nem alkalmazzák a gyakorlatban, mert az adathalmaz redundanciáját növeli.
 
+*Descartes-szorzat SQL-ben:*
+
+```sql
+
+  SELECT * FROM table1, table2;
+
+```
+
+### 12.4 Összesítő (aggregáló) függvények
+
+A lekérdezés eredményeként előálló táblák egyes oszlopaiban lévő értékeken
+végrehajthatunk összesítő műveleteket, amelyek egyetlen értéket adnak vissza.
+
+Ha összesítő függvény segítségével számítunk összeget, átlagot, darabszámot vagy
+más mennyiséget, de a számításnál a **NULL** értékeket tartalmazó rekordok nem számítanak
+bele az eredménybe. Ha például a **COUNT** függvénnyel számoljuk meg a tábla sorainak
+számát, ez a nem NULL értékű rekordok számát adja vissza. Ha a NULL értéket tartalmazókat
+is be szeretnénk venni az eredménybe, a **COUNT** függvényt csillag (*) helyettesítő
+karakterrel kell meghívni.
+
+```sql
+
+  SELECT COUNT(*) FROM <táblanév>;
+
+```
+Ha aritmetikai operátor ( +, -, *, /) is szerepel a **COUNT** kifejezésben és a
+kifejezés mezőinek egyike **NULL** értéket tartalmaz, az egész kifejezés eredménye
+**NULL** lesz.
+
+Szintaxis
+```sql
+
+  <függvénynév> ( [DISTINCT] <oszlopnév> )
+
+```
+Ha **DISTINCT** (»csak KÜLÖNBÖZŐ értékek«) szerepel, akkor az oszlopban szereplő
+azonos értékeket csak egyszer kell figyelembe venni.
+
+Az SQL szabvány az alábbi 5 aggregáló függvényt írja elő:
+* **COUNT (számláló függvény)** – megadja a tábla sorainak számát.
+* **SUM (összegző függvény)** – megadja a paraméterében szereplő oszlop adatainak
+az összegét az összes sorra. Csak numerikus attribútumra alkalmazható.
+* **AVG (átlagoló függvény)** – megadja a paraméterében szereplő oszlop adatainak
+az átlagát az összes sorra. Csak numerikus attribútumra alkalmazható.
+* **MIN (minimum-kiválasztó függvény)** – megadja a paraméterében szereplő oszlop
+adatainak a minimumát az összes sorra.
+* **MAX (maximum-kiválasztó függvény)** – megadja a paraméterében szereplő oszlop
+adatainak a maximumát az összes sorra.
+
+A MIN és MAX függvények argumentuma numerikus, dátum vagy karakteres is lehet
+(olyan típusú, amire van rendezés).
 
 
 ### 12.5 Alkérdések az SQL nyelvben
