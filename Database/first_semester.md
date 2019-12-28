@@ -1529,7 +1529,8 @@ A telepített motorok a **SHOW ENGINES;** paranccsal tekinthetők meg.
 
 A MySQL adatbázisokban az **InnoDB** motorral kezelt táblákban használhatunk
 tranzakciókezelést, **csak az InnoDB relációkban őrizhetjük meg az idegen kulcsok
-helyességét**. A MySQL-szerverek konfigurációjában (*a rendszergazdáknak*) megadható
+helyességét** (mert az InnoDB támogatja az idegen kulcsra vonatkozó megszorítások
+használatát). A MySQL-szerverek konfigurációjában (*a rendszergazdáknak*) megadható
 az alapértelmezett táblamotor, karakterkódolás, és a többi táblatulajdonság is.
 
 **[SQL adattípusok](https://webfejlesztes.gtportal.eu/?f0=7_tabla_06)**
@@ -2532,7 +2533,8 @@ A megszorítások szintaktikai elhelyezésük szerint lehetnek **oszlop vagy tá
 Az egy oszlopot érintő megszorításokat megadhatjuk közvetlenül az oszlop definíciója
 után (vesszőt nem kell tenni közéjük), míg a több oszlopot érintő megszorításokat
 (pl. összetett kulcsok) csak tábla szintű megszorításként írhatjuk elő (vesszőt
-kell tenni közéjük), az oszlopok felsorolása után (pl. **CREATE TABLE** utasítás esetén).
+kell tenni közéjük), az oszlopok felsorolása után (pl. **CREATE TABLE** utasítás
+esetén).
 
 A megszorítások mindegyike a **CONSTRAINT** kulcsszóval kezdődik, amit egy adatbázis
 szintjén egyedi, úgynevezett szimbolikus név követ. Szükség esetén ezzel a névvel
@@ -2541,14 +2543,73 @@ egy azonosítót **SYS_Cn** formátumban. Ez hibajelzésekben jelenik meg, valam
 használhatjuk az ALTER TABLE utasításban is.
 
 A **CONSTRAINT** kulcsszó és a név elhagyható, ha **CREATE TABLE** vagy **ALTER
-TABLE** utasítás keretében kötünk ki oszlop-, vagy táblaszintű megszorításokat.
+TABLE** utasítás keretében kötünk ki oszlop-, vagy táblaszintű megszorításokat és
+nem szeretnénk nevet adni nekik.
 
 ### 13.2 Domain-ek, attribútumokra, rekordokra vonatkozó megszorítások
 
 **Domain-megszorítások**
 
+A tartományok segítségével **a mezők általános megszorításait egy karbantartási helyre
+lehet összegyűjteni**. Például több táblázat tartalmazhat e-mail cím oszlopokat,
+amelyek mindegyikére ugyanazt a CHECK megszorítást igényli a cím szintaxisának
+ellenőrzése. Az egyes táblák külön-külön történő beállítása helyett célszerű
+ezt a megszorítást egy helyen megadni, majd azokban a táblákban, ahol szükséges,
+adattípusként hivatkozni rá. Az önálló értéktartomány (domain) tulajdonképpen egy
+**felhasználó által létrehozott adattípus (User-Defined Data Type, UDT)**, opcionális
+megszorításokkal (az engedélyezett értékkészlet korlátozásaival), ami az egész
+adatbázisra érvényes.
+
+Az SQL szabvány régebbi változatai nem támogatták az oszlopok fentiek szerint
+elkülönített definícióit, ezeket csak a táblák keretében lehetett létrehozni.
+**Több SQL-implementáció a mai napig sem támogatja (pl. MySQL, MariaDB)**.
+
+Értéktartományt a **[CREATE DOMAIN](https://www.postgresql.org/docs/9.1/sql-createdomain.html)**
+utasítás segítségével lehet létrehozni (**PostgreSQL**-ben...). Az oszlopok tárolási
+módját vissza kell vezetni bármely, már létező SQL adattípusra (CHAR(n), DATE stb.).
+Az új oszloptípus örökli az alapadattípus jellemzőit, ezeket lehet egyéni megszorításokkal
+bővíteni. A **DEFAULT** záradékkal megadhatunk egy alapértelmezett értéket is,
+ami azon mezőkbe kerül majd, amelyek nem tartalmaznak saját értéket.
+
+A létrehozott típusra az SQL alapvető adattípusaihoz hasonlóan hivatkozhatunk. Az
+érintett adattáblák szerkezetének definiálásakor, illetve módosításakor az
+oszlopdefiníciók egységessége így már biztosított.
+
+Szintaxis
+```sql
+
+  CREATE DOMAIN <oszloptípus_neve> AS <sql_adattípus>
+  [DEFAULT <alapértelmezett_érték>]
+  CHECK (<kifejezés>);
+
+     <oszloptípus_neve> ::= az új oszloptípus neve, amire az oszlopdefiníciókban
+                            majd hivatkozni lehet
+        <sql_adattípus> ::= létező SQL adattípus, amelyből az új típus származik
+<alapértelmezett_érték> ::= az új oszloptípus alapértelmezett értéke
+            <kifejezés> ::= az új adattípusra vonatkozó megszorítások
+
+```
+Értéktartomány módosítása **ALTER DOMAIN**, törlése **DROP DOMAIN** utasítással
+lehetséges.
+
+Példa
+```sql
+
+  /* Saját adattípus létrehozása */
+
+  CREATE DOMAIN `fizu` AS INT
+  DEFAULT 200000
+  CHECK (VALUE BETWEEN 200000 AND 500000);
+
+  /* Saját adattípus alkalmazása */
+
+  ALTER TABLE `Dolgozok` ALTER COLUMN `fizetes` fizu(6);
+
+```
 
 **Attribútumokra vonatkozó megszorítások**
+
+A CREATE TABLE utasításban valamely attribútum deklarációja után adhatók meg.
 
 
 **Rekordokra vonatkozó megszorítások**
@@ -2556,9 +2617,35 @@ TABLE** utasítás keretében kötünk ki oszlop-, vagy táblaszintű megszorít
 
 ### 13.3 Általános vagy önálló megszorítások (assertions)
 
+Az oszlop vagy tábla szintű megszorításokat a rendszer csak akkor ellenőrzi, ha
+az oszlop vagy tábla, melyre a feltétel vonatkozik, beszúrás vagy módosítás hatására
+változik meg. Ezért, **hogy a több táblát érintő feltétel minden esetben kiértékelődjön,
+önálló megszorításként kell megadni**. Ezek az önálló feltételek elkülönülnek a
+táblák definíciótól, és egy vagy több tábla összefüggéseit szabályozzák; az
+adatbázissémához tartoznak a relációsémákhoz és nézetekhez hasonlóan. E feltételeket
+a rendszer mindannyiszor megvizsgálja, valahányszor beszúrás/módosítás/törlés
+történik az érintett táblák bármelyikében.
 
+Szintaxis
+```sql
 
+  CREATE ASSERTION <megszorítás_elnevezése> CHECK (<feltétel>);
 
+  <megszorítás_elnevezése> ::= ezzel a névvel azonosítható a megszorítás. Ennek
+                               hiányában a rendszer generál egy azonosítót SYS_Cn
+                               formátumban
+                <feltétel> ::= tetszőleges feltétel megadható, az erre vonatkozó
+                               szabályok megegyeznek a SELECT parancsban használt
+                               WHERE záradék lehetséges feltétéivel
+
+```
+
+Az önálló megszorítás törlése
+```sql
+
+  DROP ASSERTION <megszorítás_elnevezése>;
+
+```
 
 ### 13.4 Triggerek
 
