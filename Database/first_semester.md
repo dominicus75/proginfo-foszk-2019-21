@@ -1540,8 +1540,7 @@ Példa:
     `szul_datum` date,
     `lakcim` varchar(40) DEFAULT 'hajléktalan'
     `osztaly_id` int(10)
-    PRIMARY KEY (azonosito),
-    FOREIGN KEY (osztaly_id) REFERENCES osztalyok(osztaly_id) ON UPDATE CASCADE
+    PRIMARY KEY (azonosito)
   )ENGINE = InnoDB;
 
 ```
@@ -1592,13 +1591,35 @@ Szintaxis
   <változtatások_meghatározása> ::=
     {ADD | MODIFY} [COLUMN] <oszlopnév> <oszlop_meghatározása>
     | ADD {INDEX|KEY} [IF NOT EXISTS] [<index_neve>]
-    | ADD [CONSTRAINT] <index_neve> {PRIMARY KEY | UNIQUE [INDEX|KEY] }
+    | ADD [CONSTRAINT] <index_neve> { UNIQUE [INDEX|KEY] }
         (<index_oszlop_neve>,...)
+    | ADD PRIMARY KEY (<index_oszlop_neve>)
     | ADD [CONSTRAINT <megszorítás_elnevezése>]
         FOREIGN KEY [IF NOT EXISTS] (<hivatkozó_mező_neve>,...)
         REFERENCES <hivatkozott_tábla_neve>(<hivatkozott_mező_neve>,...)
     | DROP {COLUMN | PRIMARY KEY | INDEX | KEY | FOREIGN KEY | CONSTRAINT}
         [IF EXISTS] <törlendő_objektum_neve>
+    | ALTER [COLUMN] <oszlopnév> SET DEFAULT (<kifejezés>)
+    | ALTER [COLUMN] <oszlopnév> DROP DEFAULT
+
+               <táblanév> ::= a módosítandó tábla neve
+              <oszlopnév> ::= a módosítandó oszlop neve
+   <oszlop_meghatározása> ::= <adattípus>(<méret>) [<oszlop_megszorítások>]
+              <adattípus> ::= a relációs adatmodell előírja, hogy egy mező minden
+                              értékének azonos értéktartományba (domain) kell
+                              tartoznia. Ezt az adattípus határozza meg, melyhez
+                              DEFAULT '<érték>' kifejezéssel alapértelmezett
+                              érték is definiálható
+                  <méret> ::= a tárolt adat maximális mérete
+   <oszlop_megszorítások> ::= az oszlopra vonatkozó megszorítások (pl. PRIMARY
+                              KEY = elsődleges kulcs, azonosító; NULL vagy NOT
+                              NULL; REFERENCES = külső kulcs hivatkozás,
+                              UNSIGNED = előjel nélküli).
+      <index_oszlop_neve> ::= egy már létező oszlop neve, amit indexként vagy
+                              elsődleges kulcsként akarunk használni
+             <index_neve>,
+ <megszorítás_elnevezése> ::= ezen a néven lehet rá később hivatkozni
+              <kifejezés> ::= lehet konstans, függvényhívás, vagy alkérdés
 
 ```
 
@@ -1608,6 +1629,17 @@ Péda
   ALTER TABLE `Dolgozok` ADD COLUMN `fizetes` int(8) UNSIGNED NOT NULL;
 
   ALTER TABLE `Dolgozok` DROP PRIMARY KEY;
+
+  ALTER TABLE `Dolgozok` ADD PRIMARY KEY (`azonosito`);
+
+  ALTER TABLE `Dolgozok` ALTER `fizetes` SET DEFAULT 300000;
+
+  ALTER TABLE `Dolgozok`
+  ADD FOREIGN KEY (osztaly_id) REFERENCES osztalyok(osztaly_id) ON UPDATE CASCADE;
+
+  ALTER TABLE Orders
+  ADD CONSTRAINT `FK_megszoritas_neve`
+  FOREIGN KEY (osztaly_id) REFERENCES osztalyok(osztaly_id) ON UPDATE CASCADE;
 
 ```
 
@@ -1654,6 +1686,12 @@ Példa
 ```
 
 ### 10.4 Relációsémák, indexek
+
+A **relációséma** a reláció nevét és az attribútumok (tulajdonságtípusok) halmazát
+tartalmazza és Relációnév(Tulajdonság>1</sub>,...,tulajdonság<sub>n</sub> ) módon
+szokás jelölni. Ez a séma nem más, mint a táblázat alapszerkezetének, az oszlopfejlécek
+sorrendjének leírása. Az adatbázis megvalósításakor ezt a sémát kell táblaként
+leképezni, az SQL nyelv által biztosított eszközökkel.
 
 Az SQL három típusú relációt ismer:
 1. **Táblák (TABLE)**, tárolt relációk. Általában ilyen relációkkal foglalkozunk.
