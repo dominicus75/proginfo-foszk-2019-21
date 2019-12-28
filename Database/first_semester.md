@@ -2679,9 +2679,9 @@ Szintaxis
                         vesszővel elválasztva több esemény is megadható
          <táblanév> ::= ezen tábla aktualizálásakor lép működésbe a trigger
      [FOR EACH ROW] ::= opcionális, ha megadjuk, akkor a trigger a tábla minden
-                        egyes sorára lefut, amelyet az kiváltó esemény érint
-                        (sor szintű trigger); egyébként egy kiváltó esemény
-                        esetén csak egyszer fut le a (utasítás szintű trigger)
+                        egyes sorára lefut, amelyet a triggert kiváltó esemény érint
+                        (sor szintű trigger); egyébként egy esemény esetén csak
+                        egyszer fut le a (utasítás szintű trigger)
    <trigger_törzse> ::= ide kerül az a kód, ami az esemény hatására, a beállított
                         időben le fog futni; egy vagy több SQL utasításból álló,
                         vagy valamely programozási nyelven írt blokk
