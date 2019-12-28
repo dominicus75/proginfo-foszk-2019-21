@@ -2470,8 +2470,8 @@ Szintaxis
   <függvénynév> ( [DISTINCT] <oszlopnév> )
 
 ```
-Ha **DISTINCT** (»csak KÜLÖNBÖZŐ értékek«) szerepel, akkor az oszlopban szereplő
-azonos értékeket csak egyszer kell figyelembe venni.
+Ha **DISTINCT** szerepel, akkor az oszlopban szereplő azonos értékeket csak egyszer
+kell figyelembe venni.
 
 Az SQL szabvány az alábbi 5 aggregáló függvényt írja elő:
 * **COUNT (számláló függvény)** – megadja a tábla sorainak számát.
@@ -2649,7 +2649,61 @@ Az önálló megszorítás törlése
 
 ### 13.4 Triggerek
 
-Az aktív elemek másik speciális esete a trigger.
+Az aktív elemek másik speciális esete a trigger. A trigger olyan eljárást definiál
+mely automatikusan lefut, ha egy tábla módosul (ideiglenes táblákhoz és nézetekhez
+nem társítható trigger). A triggereket az **INSERT, UPDATE, DELETE parancsok végrehajtása
+előtt, után vagy helyett (utóbbit nem minden SQL megvalósítás támogatja) hívja meg
+a rendszer**. A trigger vagy engedélyezheti vagy elvetheti az adott táblán történt
+módosításokat, naplózási feladatokat végezhet, járulékos módosításokat hajthat
+végre az adatbázisban.
+
+Egy táblához parancsonként csak egy trigger rendelhető hozzá, vagyis, **egy táblához
+legfeljebb három trigger készíthető el (INSERT, UPDATE, DELETE)**. Lehetőség van arra
+is, hogy egy trigger ne csak egy parancsnál legyen aktiválva. Előfordulhat, hogy
+például az INSERT és UPDATE parancsoknál történő ellenőrzések (szinte) megegyeznek:
+ilyenkor nem szükséges két triggert írni, hiszen az ellenőrzést eggyel is meg lehet
+oldani.
+
+Szintaxis
+```sql
+
+  CREATE TRIGGER
+    <trigger_neve> <trigger_idő> <trigger_esemény>
+    ON <táblanév> [FOR EACH ROW]
+    <trigger_törzse>;
+
+     <trigger_neve> ::= a trigger elnevezése, amire majd lehet hivatkozni
+      <trigger_idő> ::= { BEFORE | AFTER  | INSTEAD OF } - a művelet indításának
+                        ideje (esemény előtt, után vagy helyett)
+  <trigger_esemény> ::= { INSERT | UPDATE | DELETE } - a triggert kiváltó esemény
+                        vesszővel elválasztva több esemény is megadható
+         <táblanév> ::= ezen tábla aktualizálásakor lép működésbe a trigger
+     [FOR EACH ROW] ::= opcionális, ha megadjuk, akkor a trigger a tábla minden
+                        egyes sorára lefut, amelyet az kiváltó esemény érint
+                        (sor szintű trigger); egyébként egy kiváltó esemény
+                        esetén csak egyszer fut le a (utasítás szintű trigger)
+   <trigger_törzse> ::= ide kerül az a kód, ami az esemény hatására, a beállított
+                        időben le fog futni; egy vagy több SQL utasításból álló,
+                        vagy valamely programozási nyelven írt blokk
+
+```
+
+A **SHOW TRIGGERS** utasítással listázhatók az adatbázisban beállított triggerek.
+A **FROM <adatbázis_név>** záradék elhagyásával az összes adatbázis össze triggere
+listázásra kerül.
+```sql
+
+  SHOW TRIGGERS
+  [FROM <adatbázis_név>];
+
+```
+
+Triggerek törlése a **DROP TRIGGER** utasítással lehetséges.
+```sql
+
+  DROP TRIGGER [IF EXISTS] [<adatbázis_név>.]<trigger_neve>;
+
+```
 
 
 ## 14. tétel
