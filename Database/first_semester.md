@@ -2221,18 +2221,53 @@ szűrhetjük a rekordokat. A kiválasztott adatokkal statisztikai műveleteket v
 vagy egyszerűen megjeleníthetjük őket. Egyes osztályozások DQL-t a DML részének
 tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyelvvel.
 
+**[SELECT](https://mariadb.com/kb/en/select/) utasítás**
 
+A **SELECT** a DQL (Data Query Language, adatlekérdező nyelv) egyetlen parancsa,
+mellyel megvalósítható a kiválasztás, vetítés (*az oszlopok felsorolásával végezzük
+el a projekció műveletét, a **WHERE** kulcsszó utáni feltétel kiértékelése alapján
+pedig szelekció történik*), összekapcsolás és a Descartes-szorzat (bővebben lásd:
+**12.3 tétel**).
 
+Szintaxis
+```sql
 
-Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, vetítés
-(*az oszlopok felsorolásával végezzük el a projekció műveletét, a **WHERE** kulcsszó
-utáni feltétel kiértékelése alapján pedig szelekció történik*), összekapcsolás és
-a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
+  SELECT [DISTINCT]
+    <select_kifejezés> [, <select_kifejezés> ...]
+    [FROM <tábla_hivatkozások>
+      [WHERE <where_feltétel>]
+      [GROUP BY <oszlopnév> [, <oszlopnév>,...]]
+      [HAVING <having_feltétel>]
+      [ORDER BY <oszlopnév> [ASC|DESC] [, <oszlopnév> [ASC|DESC],...]]
+    ];
 
+    <select_kifejezés> ::= oszlopneveket, tetszőleges kifejezéseket tartalmazhat,
+                           vagy egy csillag * karaktert (jelentése: mindegyik).
+  <tábla_hivatkozások> ::= egy vagy több tábla neve, ezek Descartes-szorzatából
+                           szelektáljuk a <where_feltétel>-nek eleget tévő sorokat,
+                           vagy ennek hiányában ezekből választjuk ki projekcióval
+                           az eredménytábla oszlopait.
+      <where_feltétel>,
+     <having_feltétel> ::= logikai kifejezés, műveleteket és operátorokat tartalmazhat
+
+```
+A SELECT egyszerűsége abban áll, hogy a parancsot követő számos nyelvi elem jó
+része opcionális, elhagyható. Szinte az összes opciót mellőzhetjük, egyedül a
+SELECT-et követő `<select_kifejezés>` kötelező. Ez nem csak oszlopneveket,
+hanem tetszőleges kifejezéseket (pl. aggregáló függvényeket) is tartalmazhat, és
+itt adhatók meg az eredménytábla oszlopainak átnevezésére szolgáló alias nevek is.
+A **DISTINCT** opciót akkor kell a **SELECT** után írni, ha az eredménytáblában
+az azonos sorokból csak egyet kívánunk megtartani.
 
 **A WHERE záradék**
 
-A WHERE záradékban megadott feltételben használható operátorok:
+A kiválasztást végrehajtó parancs a WHERE <feltétel> záradékot is tartalmazza.
+Az eredménytáblába csak azok a sorok adatai kerülnek, melyekre teljesül a feltétel.
+A feltétel műveleteket és operátorokat tartalmazhat. A műveletekre érvényesek a
+szokásos precedencia szabályok, amelyeket zárójelezéssel felülbírálhatunk. Ügyelnünk
+kell arra, hogy végeredményben a kifejezés mindig logikai értéket kapjon, mivel
+az eredménytáblába azok az előfordulások (sorok) kerülnek be, amelyekre a megadott
+kifejezés igaz (TRUE) értéket kap.
 
 *Az SQL összehasonlító operátorai*
 
@@ -2274,6 +2309,36 @@ eredménye is mindig **NULL**, ezért azt, hogy egy kifejezés értéke **NULL**
 **IS NULL** operátorral tesztelhetjük, illetve ennek ellenkezőjét az **IS NOT NULL**
 operátorral.
 
+**A [GROUP BY](https://mariadb.com/kb/en/group-by/) és a HAVING záradék**
+
+A **GROUP BY** utasítással csoportosítjuk az adatokat a megadott oszloplista szerint.
+A csoportosítás azt jelenti, hogy a rekordokat egy adott mező értékei szerint
+csoportokra bontjuk. Egy csoportba az adott mezőben azonos értékeket felvevő
+rekordok kerülnek. A csoportokhoz tartozó rekordokra különböző műveleteket hajthatunk
+végre, például alkalmazhatjuk az aggregáló függvényeket, vagy a csoportokra
+vonatkozóan kiválasztó műveletet (**HAVING**) alkalmazhatunk.
+
+Az SQL nyelv lehetőséget biztosít arra is, hogy a csoportosított adatokra vonatkozóan
+feltételeket adhassunk meg. Ebben az esetben a feltételt nem a **WHERE**, hanem
+a **HAVING** záradékban kell megadni. Ez a már csoportosított adatokon hajt végre
+egy újabb szelekciót, belőlük választ ki a `<having_feltétel>` alapján újabb sorokat.
+
+Fontos megjegyezni, hogy ha a lekérdezés **GROUP BY** utasítást tartalmaz, akkor a
+**SELECT** utáni oszloplistában (`<select_kifejezés>`) csak ezen oszloplista eleme,
+valamint összesítő függvény szerepelhet.
+
+**Az [ORDER BY](https://mariadb.com/kb/en/order-by/) záradék**
+
+Az SQL lehetőséget biztosít arra, hogy lekérdezéseink eredményét rendezetten jelenítsük
+meg. Az **ORDER BY** kulcsszó után felsorolt oszloplista alapján rendezzük az eredménytábla
+sorait. Ha több oszlopot soroltunk fel, akkor a rendezés először az első, majd a
+második (és így tovább) oszlopok értékei alapján történik. A rendezési szempontként
+megadott oszlopnak szerepelni kell a SELECT parancs után is (`<select_kifejezés>`).
+
+Alapértelmezés szerint a rendezés a növekvő sorrend szerint történik (**ASC**). De
+ha a **DESC** kulcsszót használjuk, akkor a megadott oszlopban a rendezés csökkenő
+lesz.
+
 ### 12.3 Relációalgebrai műveletek megvalósítása
 
 A relációalgebra műveletei két csoportra oszthatók. Az egyik csoport a matematikai
@@ -2282,6 +2347,8 @@ relációs modellben a relációt rekordok halmazaként definiáljuk**. A halmaz
 közé tartozik az **unió, a metszet, a (halmaz)különbség és a Descartes-szorzat**.
 A másik csoport olyan műveletekből áll, amelyeket speciálisan a relációs modellhez
 fejlesztettek ki — ilyen többek között a **szelekció, a projekció és az összekapcsolás**.
+Ezen műveleteket az SQL nyelvben a **SELECT** utasítás valósítja meg (lásd:
+**12.2** tétel).
 
 **A matematikai halmazelmélet műveletei**
 
@@ -2541,7 +2608,7 @@ A MIN és MAX függvények argumentuma numerikus, dátum vagy karakteres is lehe
 (olyan típusú, amire van rendezés).
 
 
-### 12.5 Alkérdések az SQL nyelvben
+### 12.5 [Alkérdések](https://mariadb.com/kb/en/subqueries-and-joins/) az SQL nyelvben
 
 Az SQL támogatja azt a lehetőséget, hogy a `WHERE` vagy `HAVING` szelekciós feltételben
 nemcsak létező, letárolt adatelemekre hivatkozzunk, hanem számított kifejezéseket
