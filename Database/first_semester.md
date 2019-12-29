@@ -1385,7 +1385,7 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 | **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
 | **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
 | **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
-| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. Két speciális karakter adható meg a mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. ` SELECT * FROM Ügyfelek WHERE Város LIKE 'b%'; ` (minden ügyfelet listáz, akinek a városa b-vel kezdődik) |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. A mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. Szögletes zárójelek `[]` között egy karakterre vonatkozó értéktartományt adhatunk meg, pl. `[a-d]` **a** és **d** között bármi lehet. Az értéktartományt a `^` karakterrel negálhatjuk, ekkor arra a mintára illeszkedik, ami **nem tartalmazza a felsoroltakat, pl. `[^a-d]` minden betű, ami nem az **a** és **d** közé esik. |
 | **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
 | **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
 
@@ -2216,9 +2216,10 @@ tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyel
 
 
 
-Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, vetítés,
-összekapcsolás és a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
-
+Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, vetítés
+(*az oszlopok felsorolásával végezzük el a projekció műveletét, a **WHERE** kulcsszó
+utáni feltétel kiértékelése alapján pedig szelekció történik*), összekapcsolás és
+a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
 
 
 ### 12.3 Relációalgebrai műveletek megvalósítása
@@ -2561,11 +2562,11 @@ megszorításokkal (az engedélyezett értékkészlet korlátozásaival), ami az
 adatbázisra érvényes.
 
 Az SQL szabvány régebbi változatai nem támogatták az oszlopok fentiek szerint
-elkülönített definícióit, ezeket csak a táblák keretében lehetett létrehozni.
-**Több SQL-implementáció a mai napig sem támogatja (pl. MySQL, MariaDB)**.
+elkülönített definícióit, ezeket csak a táblák keretében lehetett létrehozni,
+egyenként. **Több SQL-implementáció a mai napig sem támogatja (pl. MySQL, MariaDB)**.
 
 Értéktartományt a **[CREATE DOMAIN](https://www.postgresql.org/docs/9.1/sql-createdomain.html)**
-utasítás segítségével lehet létrehozni (**PostgreSQL**-ben...). Az oszlopok tárolási
+utasítás segítségével lehet létrehozni (**PostgreSQL**-ben). Az oszlopok tárolási
 módját vissza kell vezetni bármely, már létező SQL adattípusra (CHAR(n), DATE stb.).
 Az új oszloptípus örökli az alapadattípus jellemzőit, ezeket lehet egyéni megszorításokkal
 bővíteni. A **DEFAULT** záradékkal megadhatunk egy alapértelmezett értéket is,
@@ -2589,15 +2590,14 @@ Szintaxis
             <kifejezés> ::= az új adattípusra vonatkozó megszorítások
 
 ```
-Értéktartomány módosítása **ALTER DOMAIN**, törlése **DROP DOMAIN** utasítással
-lehetséges.
+A tesztelt értékre a **VALUE** kulcsszóval lehet hivatkozni.
 
 Példa
 ```sql
 
   /* Saját adattípus létrehozása */
 
-  CREATE DOMAIN `fizu` AS INT
+  CREATE DOMAIN `fizu` AS UNSIGNED INT
   DEFAULT 200000
   CHECK (VALUE BETWEEN 200000 AND 500000);
 
@@ -2606,8 +2606,10 @@ Példa
   ALTER TABLE `Dolgozok` ALTER COLUMN `fizetes` fizu(6);
 
 ```
+Értéktartomány módosítása **ALTER DOMAIN**, törlése **DROP DOMAIN** utasítással
+lehetséges.
 
-**Attribútumokra vonatkozó megszorítások**
+**Attribútumokra vonatkozó (oszlopszintű) megszorítások**
 
 A CREATE TABLE utasításban valamely attribútum deklarációja után adhatók meg, az
 adott attribútumra (oszlopra) vonatkoznak.
@@ -2638,26 +2640,33 @@ oszlop **NOT NULL** megszorítással rendelkezik.
 csak az oszlop szerepelhet. A beszúrás, módosítás csak akkor történik meg, ha a
 kifejezés értéke igaz lesz.
 
-A felsorolt megkötésekből többnek is létezik táblaszintű változata is. A táblaszintű
-megszorítások **mindig az egész táblára vonatkoznak, szerepelhet bennük a tábla egy
-vagy több oszlopa**.
+**Táblaszintű megszorítások**
 
-* **PRIMARY KEY (oszlop1, oszlop2, ….):** a több oszlopból álló elsődleges kulcsokat
-tábla szintű megszorításban kell megadni. Hatására mindig létrejön egy index állomány.
+Az oszlopszintű megszorítások közül többet meg lehet adni táblaszinten is. Ezek
+**mindig az egész táblára vonatkoznak, szerepelhet bennük a tábla egy vagy több
+oszlopa**.
 
-* **UNIQUE (oszlop1, oszlop2, …):** az adott oszlopokban lévő értékek egyediek
-lesznek. Hatására index állomány(ok) jön(nek) létre.
+* **PRIMARY KEY (oszlop1, oszlop2,...oszlopN):** a több oszlopból álló elsődleges
+kulcsokat tábla szintű megszorításban kell megadni.
 
-* **FOREIGN KEY (oszlop1, oszlop2, …):** az adott oszlopok idegen kulcs-hivatkozást
+* **UNIQUE (oszlop1, oszlop2,...oszlopN):** az adott oszlopokban lévő értékek
+egyediek lesznek. Hatására index állomány(ok) jön(nek) létre.
+
+* **FOREIGN KEY (oszlop1, oszlop2,...oszlopN):** az adott oszlopok idegen kulcs-hivatkozást
 tartalmaznak a kapcsolótábla kapcsoló oszlopaira, melyekre elsődleges, vagy egyedi
 kulcsot kell definiálni. Az oszlopok sorrendje számít.
 
 **Rekordokra vonatkozó (soralapú) megszorítások**
 
+A **CHECK** megszorításban nemcsak attribútum értékekre vonatkozó kikötéseket
+adhatunk meg, hanem **sorokra vonatkozó megszorítást** is. Ilyenkor a **CHECK**
+feltételt nem egy oszlop definíciójához fűzzük, hanem a táblát definiáló utasítás
+végén adjuk meg.
+
 A **CHECK** kulcsszó után tetszőleges feltételt (logikai kifejezést) adhatunk meg,
 melyben csak az adott tábla oszlopai szerepelhetnek. Az erre vonatkozó szabályok
-megegyeznek a SELECT parancsban használt WHERE záradék lehetséges feltételével.
-A feltétel ellenőrzése sor beszúrásakor, vagy az attribútum módosításakor történik.
+megegyeznek a **SELECT** parancsban használt **WHERE záradék** lehetséges feltételével.
+**A feltétel ellenőrzése sor beszúrásakor, vagy az attribútum módosításakor történik**.
 Egy rekord beszúrása, módosítása csak akkor történik meg, ha a kifejezés értéke
 igaz. Ha az eredmény hamis lesz, akkor a feltételt megsértő sorra vonatkozó
 beszúrás-, vagy módosításutasítást a rendszer visszautasítja.
@@ -2669,15 +2678,15 @@ csak az adott attribútum értékének megváltozásakor történik vizsgálat.
 
 Egy tábla módosításakor a definiált kulcsfeltételek automatikusan ellenőrzésre
 kerülnek. **PRIMARY KEY** és **UNIQUE** esetén ez azt jelenti, hogy a rendszer nem
-enged olyan módosítást illetve új sor felvételét, amely egy már meglévő kulccsal
+enged olyan módosítást illetve olyan új sor felvételét, amely egy már meglévő kulccsal
 ütközne.
 
 **REFERENCES** (külső kulcs hivatkozás) esetén a következő idegenkulcs-megszorítások
 megadásával szabályozhatjuk a rendszer viselkedését:
-* **Alapértelmezés (ha nincs ON-feltétel):** a hivatkozó táblában nem megengedett
-olyan beszúrás és módosítás, amely a hivatkozott táblában nem létező kulcs értékre
-hivatkozna, továbbá a hivatkozott táblában nem megengedett olyan kulcs módosítása
-vagy sor törlése, amelyre a hivatkozó tábla hivatkozik.
+* **Alapértelmezés (ha nincs megadva külön megszorítás):** a hivatkozó táblában
+nem megengedett olyan beszúrás és módosítás, amely a hivatkozott táblában nem létező
+kulcs értékre hivatkozna, továbbá a hivatkozott táblában nem megengedett olyan
+kulcs módosítása vagy sor törlése, amelyre a más tábla hivatkozik.
 * **ON UPDATE CASCADE:** ha a hivatkozott tábla egy sorában változik a kulcs értéke,
 akkor a rá való hivatkozások is megfelelően módosulnak (módosítás továbbgyűrűzése).
 * **ON DELETE CASCADE:** Ha a hivatkozott táblában törlünk egy sort, akkor törlődnek
@@ -2731,7 +2740,7 @@ módosításokat, naplózási feladatokat végezhet, járulékos módosításoka
 végre az adatbázisban.
 
 Egy táblához parancsonként csak egy trigger rendelhető hozzá, vagyis, **egy táblához
-legfeljebb három trigger készíthető el (INSERT, UPDATE, DELETE)**. Lehetőség van arra
+legfeljebb három trigger készíthető (INSERT, UPDATE, DELETE)**. Lehetőség van arra
 is, hogy egy trigger ne csak egy parancsnál legyen aktiválva. Előfordulhat, hogy
 például az INSERT és UPDATE parancsoknál történő ellenőrzések (szinte) megegyeznek:
 ilyenkor nem szükséges két triggert írni, hiszen az ellenőrzést eggyel is meg lehet
