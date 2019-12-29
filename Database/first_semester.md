@@ -1383,11 +1383,19 @@ eleme NULL, akkor a kifejezés értéke is NULL lesz*.
 | **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
 | **ANY** vagy **SOME** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
 | **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
-| **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. |
+| **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. Használható a **SELECT**, **UPDATE**, **INSERT** vagy **DELETE** utasításokban, közvetlenül a **WHERE** kulcsszó után (az alkérdés előtt). |
 | **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
-| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. A mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. Szögletes zárójelek `[]` között egy karakterre vonatkozó értéktartományt adhatunk meg, pl. `[a-d]` **a** és **d** között bármi lehet. Az értéktartományt a `^` karakterrel negálhatjuk, ekkor arra a mintára illeszkedik, ami **nem tartalmazza a felsoroltakat, pl. `[^a-d]` minden betű, ami nem az **a** és **d** közé esik. |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. A mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. Szögletes zárójelek `[]` között egy karakterre vonatkozó értéktartományt adhatunk meg, pl. `[a-d]` **a** és **d** között bármi lehet. Az értéktartományt a `^` karakterrel negálhatjuk, ekkor arra a mintára illeszkedik, ami **nem tartalmazza** a felsoroltakat, pl. `[^a-d]` minden betű, ami nem az **a** és **d** közé esik. |
 | **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
 | **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
+| **IS NULL** | IGAZ, ha a kifejezés értéke **NULL**  |
+| **IS NOT NULL** | IGAZ, ha a kifejezés értéke **NEM NULL** |
+
+Mivel a **NULL** nem tesztelhető a szokványos összehasonlító operátorokkal (az ilyen
+összehasonlítás eredménye mindig ismeretlen) és a **NULL**-t tartalmazó kifejezés
+eredménye is mindig **NULL**, ezért azt, hogy egy kifejezés értéke **NULL**-e, az
+**IS NULL** operátorral tesztelhetjük, illetve ennek ellenkezőjét az **IS NOT NULL**
+operátorral.
 
 **Az operátorok precedenciája (végrehajtási sorrendje) csökkenő sorrendben:**
 1. Összehasonlító operátorok
@@ -2221,6 +2229,50 @@ Az SQL nyelvben a **SELECT** utasítással valósítható meg a kiválasztás, v
 utáni feltétel kiértékelése alapján pedig szelekció történik*), összekapcsolás és
 a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
 
+
+**A WHERE záradék**
+
+A WHERE záradékban megadott feltételben használható operátorok:
+
+*Az SQL összehasonlító operátorai*
+
+Ezek segítségével összehasonlításokat végezhetünk. Számoknál és szöveges adatoknál
+egyaránt használhatók.
+
+|  Operátor  |  Leírás  |
+|------------|----------|
+| = | egyenlő |
+| > | nagyobb, mint |
+| < | kisebb, mint  |
+| >=  | nagyobb vagy egyenlő  |
+| <=  | kisebb vagy egyenlő |
+| <> vagy !=  | nem egyenlő |
+
+*Az SQL logikai operátorai*
+
+Az SQL rendszerek *„háromértékű logikát”* használnak, vagyis a **TRUE** és **FALSE**
+mellett a **NULL (definiálatlan)** érték is felléphet. *Ha egy kifejezés valamelyik
+eleme NULL, akkor a kifejezés értéke is NULL lesz*.
+
+|  Operátor  |  Leírás  |
+|------------|----------|
+| **ALL** | IGAZ, ha az összes alkérdés eredménye megfelel a feltételnek |
+| **AND** | IGAZ, ha mindkét feltétel teljesül (logikai **ÉS**) |
+| **ANY** vagy **SOME** | IGAZ, ha alkérdés bármely eredménye megfelel a feltételnek |
+| **BETWEEN** | IGAZ, ha az operandus a megadott értéktartományon belül van ` SELECT * FROM Termékek WHERE Ár BETWEEN 500 AND 600; ` (minden terméket listáz, aminek az ára 500 és 600 közé esik) |
+| **EXISTS**  | IGAZ, ha beágyazott lekérdezés talál a feltételt kielégítő sort. Előtte a NOT kulcsszó is állhat, így jelezve, hogy a alkérdésnek egy sort sem szabad visszaadnia. Használható a **SELECT**, **UPDATE**, **INSERT** vagy **DELETE** utasításokban, közvetlenül a **WHERE** kulcsszó után (az alkérdés előtt). |
+| **IN**  | IGAZ, ha az operandus a felsorolt értékek között található, segítségével több **OR** (**VAGY**) operátor helyettesíthető  |
+| **LIKE**  | IGAZ, ha az operandus illeszkedik a megadott mintára. A mintában, a `%` jel tetszőleges hosszúságú karakter sorozatot helyettesít, az `_` aláhúzás karakter pedig egy tetszőleges karaktert. Szögletes zárójelek `[]` között egy karakterre vonatkozó értéktartományt adhatunk meg, pl. `[a-d]` **a** és **d** között bármi lehet. Az értéktartományt a `^` karakterrel negálhatjuk, ekkor arra a mintára illeszkedik, ami **nem tartalmazza** a felsoroltakat, pl. `[^a-d]` minden betű, ami nem az **a** és **d** közé esik. |
+| **NOT** | IGAZ, ha a kifejezésben az adott feltétel nem teljesül (tagadás, negáció) |
+| **OR**  | IGAZ, ha bármelyik feltétel teljesül (logikai **VAGY**) |
+| **IS NULL** | IGAZ, ha a kifejezés értéke **NULL**  |
+| **IS NOT NULL** | IGAZ, ha a kifejezés értéke **NEM NULL** |
+
+Mivel a **NULL** nem tesztelhető a szokványos összehasonlító operátorokkal (az ilyen
+összehasonlítás eredménye mindig ismeretlen) és a **NULL**-t tartalmazó kifejezés
+eredménye is mindig **NULL**, ezért azt, hogy egy kifejezés értéke **NULL**-e, az
+**IS NULL** operátorral tesztelhetjük, illetve ennek ellenkezőjét az **IS NOT NULL**
+operátorral.
 
 ### 12.3 Relációalgebrai műveletek megvalósítása
 
