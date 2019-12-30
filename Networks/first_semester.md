@@ -17,7 +17,8 @@ kommunikál. A szegmensek méretét az átviteli közeg elektromos paraméterei 
 meg. Egy szegmens hossza UTP kábellel legfeljebb 500 méter, üvegszálas kábellel
 akár 2000 méter is lehet.
 
-Az Ethernet szegmenseit akár fizikai, akár adatkapcsolati szinten is össze lehet
+Az Ethernet szegmenseit akár fizikai (ekkor az összes állomás egy ütközési tartományt
+alkot; repeater [jelismétlő] segítségével), akár adatkapcsolati szinten is össze lehet
 kapcsolni. A hálózati híd (network bridge) hálózati szegmenseket tud összekötni
 az Adatkapcsolati réteg szintjén, a hardveres MAC-cím alapján irányítva a kereteket.
 A hidak feltérképezik az egyes csomópontok (gépek, HUB-ok, stb.) Ethernet címeit,
@@ -909,6 +910,16 @@ amit az UDP kínál.
 
 ### 6.1 A DNS (körzeti névkezelő rendszer) leírása
 
+Ezeket az alfanumerikus címeket nevezzük tartományneveknek (domain name), vagy röviden DNS neveknek Azt a folyamatot, amellyel
+a tartományneveket IP címekké képezzük le névfeloldásnak (name resolution) nevezzük.
+A fordítás alapjául szolgáló táblázatokat speciális számítógépeken, az úgynevezett névkiszolgálékon (name server) tárolják.
+Az olyan általánosan használt címeket, rnint amelyeket e-mail írása, vagy webböngészés
+során használunk, gyakorlatilag mindig DNS nevek formájában adjuk meg (például
+www.microsoft.com, falcon.ukans.edu, vagy idir.net). A TCP/IP névszolgáltatási rendszere egy logikai hierarchiába rendezi a különböző szintű regisztrált névkiszolgálókat
+Ez a többlépcsős rendszer gondoskodik arról, hogy az egyszerű felhasználónak gyakorlatilag soha ne kelljen kézzel lefordítania egy DNS nevet IP címmé.
+A DNS az egész internet névfeloldási rendszere és ezzel gyakorlatilag a legelterjedtebb
+névfeloldási rendszer is egyben.
+
 ### 6.2 A doménnév szerverek működése, kapcsolat a doménnév szerverek között
 
 ### 6.3 Doménneves azonosítóhoz tartozó IP cím megállapításának menete
@@ -1028,6 +1039,13 @@ szerinti hálózatok, mi ezt csak referenciamodellként használjuk, azaz külö
 hálózatok tárgyalásakor az egyes rétegekben definiált funkciókészletre a réteg
 nevével vagy számával hivatkozunk.
 
+Az OSI modellje a különböző protokollok által nyújtott funkciókat egymásra épülő
+rétegekbe sorolja. Minden réteg csak és kizárólag az alsóbb rétegek által nyújtott
+funkciókra támaszkodhat, és az általa megvalósított funkciókat pedig csak felette
+lévő réteg számára nyújthatja. A rendszert, amelyben a protokollok viselkedését
+az egymásra épülő rétegek valósítják meg, gyakran nevezik protokoll veremnek
+vagy veremnek.
+
 ![Imgur](https://i.imgur.com/RJVjieT.png)
 
 1. A **fizikai réteg (physical layer)** feladata az, hogy továbbítsa a biteket a
@@ -1104,19 +1122,157 @@ anélkül, hogy a felette levő rétegek szoftvereinek működését befolyásol
 
 ### 9.1 Hálózatok összekapcsolása a hálózati rétegben
 
+A hálózatok összekapcsolhatóságának alapfeltétele a közös hálózati réteg. Különböző
+hálózatok összekapcsolásakor tehát először is egy olyan címzési módra van szükség,
+ami hálózati rétegen belül teszi azonosíthatóvá a hosztokat. A forrás hoszt és a
+cél hoszt között a valóságban akár több, különböző paraméterű hálózat is lehet,
+melyen mind keresztül kell juttatni az adatcsomagokat. A forrás és a cél címének
+és elérhetőségének minden érintett hálózatban ugyanazt kell jelentenie, különben
+biztosan meghiúsul az információcsere.
+
+A hálózati réteg feladata a logikai címek alapján történő útvonalválasztás és
+forgalomirányítás. A legfontosabb kérdés itt az, hogy milyen útvonalon kell a
+csomagokat a forrásállomástól a célállomásig eljuttatni. Az útvonalválasztók
+ezen a szinten működnek a hálózatban.
+
+A **router (útválasztó)** a hálózati rétegben működve **szelektív összekapcsolást,
+útvonalválasztást és forgalomirányítást végez**. Olyan hálózati eszköz, amely a
+logikai címek alapján továbbítja az adatforgalmat a megfelelő helyre és amellyel
+egy nagyobb hálózat kisebb forgalmú alhálózatokra bontható. A router működési
+területére tekintettel alapvetően **belső útválasztó**ként működik, amely a saját
+autonóm hálózatán belül oszt meg útválasztási információkat. Az autonóm rendszeren
+belüli forgalomirányításra szolgáló protokollcsalád az **IGP (belső átjáró protokoll)**.
+Az egyes autonóm rendszerek különböző típusú IGP-vel rendelkezhetnek, mint a
+**RIP (Routing Information Protocol – útválasztási információ protokoll)** vagy az
+**OSPF (Open Shortest Path First – nyílt hozzáférésű, a legrövidebb utat előrevevő
+protokoll)**.
+
+Ha egy adatkeretnek több hálózaton kell áthaladnia ahhoz, hogy célba érjen, akkor
+probléma merülhet fel olyan esetekben is, ahol a hálózatok eltérő felépítésűek.
+Az összekapcsolt hálózatok külön ütközési tartományt és külön üzenetszórási
+tartományt alkotnak. A problémát (a heterogén hálózatok összekapcsolását) szintén
+a hálózati réteg oldja meg **átjárók (gateway)** segítségével.
+
+A **gateway (átjáró):** olyan útválasztó, amely egy helyi hálózatot (LAN) kapcsol
+egy nagyobb hálózathoz. Lényegében egy **olyan speciális útválasztó, amely különböző
+protokollok vagy protokollváltozatok között végez átalakítást**. Segítségével teljesen
+különböző felépítésű és megvalósítású hálózatok közötti adatátvitelt lehet megvalósítani.
+A gyakorlatban ezek az átjárók sokkal bonyolultabbak, mint a hagyományos routerek.
+A gateway képes az alapvetően eltérő **TCP/IP**, **IPX/SPX**, illetve az **AppleTalk**
+hálózatok közötti kommunikációra is. Az átjáró tehát egy hálózatokat összekötő
+csomópont, ami saját hálózati címmel rendelkezik, ami általában a hálózat legkisebb
+címe (alapértelmezett átjáró).
+
+Átjárót az egymástól teljes mértékben különböző autonóm hálózatok összekapcsolására
+alkalmaznak. Az autonóm rendszerek közötti forgalomirányításra szolgáló protokollcsalád
+az **Exterior Gateway Protocol (EGP, külső átjáró protokoll)**, melynek legelterjedtebb
+tagja a **BGP (Border Gateway Protocol – határátjáró protokoll)**.
+
 ### 9.2 A forgalomirányító (router) feladata és működése
 
-### 9.3 A router és a híd (kapcsoló) összehasonlítása
+Az **útválasztó (router)** olyan speciális eszköz, amely képes kiolvasni a hálózati
+forgalomban továbbított adatokból a logikai címeket, és ez alapján a megfelelő
+helyre továbbítani a forgalmat.
 
-Bár mindkét eszköz számítógép-hálózatokat kapcsol össze, más módon teszik azt. A
-hálózati híd az OSI modell második, tehát az Adatkapcsolati rétegében operál, míg
-a router az OSI modell 3. más szóval a hálózati rétegében tevékenykedik. Ez azt
-jelenti, hogy a híd a hardveres MAC-cím alapján irányítja a kereteket, a router
-pedig a szoftveresen hozzárendelt IP-címek alapján. Ennek egyik következménye,
-hogy a hidak nem tudnak különbséget tenni alhálózatok között, a routerek viszont
-igen.
+Egy hagyományos hálózati útválasztó az internet rétegben (az OSI modell szerint a
+hálózati rétegben) működik, és az (internet réteg fejlécében található) IP-cím
+információk alapján dolgozik. Az OSI modell szóhasználatával élve (ahol a hálózati
+réteg a 3. réteg) az útválasztót „3. rétegbeli eszköz”-nek is hívják.
 
-Ha az egyes szegmenseket hidakkal kapcsoljuk össze, ezáltal egy nagy hálózatot
+Az internet (és bármilyen nagyobb hálózat) számos útválasztót tartalmazhat, így
+ezek révén egy-egy adatcsomag többféle útvonalon is haladhat kiindulópontja és
+rendeltetési célja között. Az útválasztóknak egymástól függetlenül kell működniük,
+ám a működésük végeredménye nem lehet más, mint hogy az adatcsomagok pontosan és
+hatékonyan célba érjenek a világhálón.
+
+A legegyszerűbb esetben egy útválasztó egy kisebb alhálózatot köt össze egy
+nagyobb hálózattal. Azok az adatok, amelyeket a helyi alhálózat egyik gépe küld
+egy ugyanabban az alhálózatban található másik gépnek, nem jutnak át az útválasztón,
+így nem zavarják fölöslegesen a nagyobb hálózat kommunikációját. Ha ellenben az
+üzenet egy az alhálózaton kívül eső gépnek szól, az útválasztó megfelelően továbbítja
+azt (az alapértelmezett átjárónak).
+
+Többféle útválasztó létezik, és ezek különböző protokollokat és módszereket használnak
+az útválasztó tábla kialakításához. Az útválasztók az alábbi három alapvető típusba
+sorolhatóak:
+* **Gerinc (core) útválasztók:** útválasztó táblájuk alapvetően annak a leképezése, hogy
+az autonóm rendszerek hol csatlakoznak be a gerinchálózatba. A gerinc útválasztók
+nem rendelkeznek részletes információkkal az autonóm hálózatokon belüli útvonalakról.
+Útválasztási protokolljuk a **GGP (Gateway-to-Gateway Protocol)**.
+* **Külső (exterior) útválasztók:** vagy átjárók, az autonóm hálózatok között cserélnek
+forgalomirányítási információkat. Tisztában vannak a saját hálózatuk és a szomszédos
+autonóm hálózatok útválasztási adataival, de nem tárolják a teljes internetre
+vonatkozó szerkezeti információkat. Az autonóm rendszerek közötti forgalomirányításra
+szolgáló protokollcsalád az **Exterior Gateway Protocol (EGP, külső átjáró protokoll)**,
+melynek legelterjedtebb tagja a **BGP (Border Gateway Protocol – határátjáró protokoll)**.
+A külső útválasztók gyakran a saját autonóm rendszerük belső útválasztójaként is
+működnek.
+* **Belső (interior) útválasztók:** vagy belső átjárók, amelyek a saját autonóm
+saját autonóm hálózatukon belül osztanak meg útválasztási információkat. Az autonóm
+rendszeren belüli forgalomirányításra szolgáló protokollcsalád az **IGP (belső
+átjáró protokoll)**. Az egyes autonóm rendszerek különböző típusú IGP-vel rendelkezhetnek,
+mint a **RIP (Routing Information Protocol – útválasztási információ protokoll)**
+vagy az **OSPF (Open Shortest Path First – nyílt hozzáférésű, a legrövidebb utat
+előrevevő protokoll)**.
+
+**Az útválasztó működése**
+
+1. Az útválasztó adatcsomagokat fogad valamelyik alhálózatból (azok közül,
+amelyekhez kapcsolódik).
+2. Eldobja a hálózat-elérési rétegfejléc információkat, és (ha kell) új IP
+adatcsomagot készít.
+3. Megvizsgálja az IP fejlécben található rendeltetési címet. Ha ez abban az
+alhálózatban található, ahonnan a csomag érkezett, akkor az útválasztó eldobja
+az adatcsomagot (ugyanis az adatcsomag már valószínűleg célba ért, hiszen olyan
+hálózatból lett továbbítva, amelyben a célgép található).
+4. Ha a rendeltetési cím egy másik alhálózatba mutat, akkor az útválasztó megnézi
+az útválasztó táblát, amiből kiderül, hogy merre kell továbbítania az adatcsomagot.
+5. Miután eldöntötte, hogy melyik csatolójára fogja küldeni az adatokat, átadja
+az adatcsomagot a megfelelő hálózat-elérési réteg szoftverének, hogy küldje ki a
+kijelölt csatolón keresztül a hálózatra.
+
+Egy útválasztó tábla alapvetően arra szolgál, hogy a rendeltetési hely hálózat-azonosítóját
+összekapcsolja a „következő lépés” (next hop) IP-címével. Ez az a hely, ahová az
+adatcsomagnak (rendeltetési helyére vezető útja során) a következő lépésben el
+kell jutnia.
+
+Az útválasztó táblák kialakítására szolgáló módszereket két alapvető csoportba
+sorolhatjuk:
+* **Statikus útválasztás:** a hálózati adminisztrátornak kézileg kell megadnia
+az útválasztási információkat
+* **Dinamikus útválasztás:** az útválasztó táblához szükséges információkat az
+útválasztó protokollok számítják ki dinamikus módon, működés közben.
+
+Az útválasztók általában a statikus és dinamikus útválasztás valamilyen keverékét
+használják. A rendszergazda előírhat néhány statikus útvonalat, és lehetővé teheti,
+hogy a többit dinamikusan alakítsa ki az útválasztó.
+
+### 9.3 Az útválasztó (router) és a híd (bridge) összehasonlítása
+
+A hidak és az útválasztók nagyjából hasonló feladatokat látnak el, a lényeges
+különbség közöttük az, hogy ezt hol (melyik rétegben) és milyen entitások között
+végzik (szegmensek illetve alhálózatok).
+
+A **híd (bridge)** – fejlettebb változata a **kapcsoló (switch)**, amely lényegében
+egy többportos híd, ahol minden port külön ütközési tartományt hoz létre – **helyi
+Ethernet szegmenseket kapcsol össze** az OSI modell második, adatkapcsolati rétegében,
+a hardveres MAC-cím alapján irányítva a kereteket.
+
+Az **útválasztó (router)** az OSI modell harmadik, hálózati rétegében egy **kisebb
+alhálózatot köt össze egy nagyobb hálózattal**, a szoftveresen hozzárendelt IP-címek
+alapján irányítva a forgalmat.
+
+A hidak tehát alapvetően Ethernet-szegmensekkel dolgoznak, a forgalomirányítók
+viszont alhálózatokkal. Fontos különbség, hogy a híd két azonos típusú szegmens
+adatkapcsolati szinten történő összekapcsolására képes, míg az útválasztó különböző
+típusú hálózatokat is összeköthet. Az olyan hálózati eszközök, mint a kapcsolók
+(switch), hidak (bridge) és okos hub-ok (smart hub) a routerekhez hasonlóan
+szintén képesek szűrni a hálózati forgalmat és ezzel csökkenteni a vonalak
+terheltségét. Ugyanakkor mivel ezek az eszközök fizikai (MAC) és nem a logikai (IP)
+címekkel dolgoznak, nem képesek ellátni azokat az összetett forgalomirányítási
+funkciókat, mint az útválasztók.
+
+Ha az egyes szegmenseket hidakkal kapcsoljuk össze, ezáltal egy helyi hálózatot
 hozunk létre, viszont a ha a szegmenseket routerekkel kötjük össze, azok külön-külön
 alhálózatok lesznek. Ha egy gépet át kell helyezni egyik szegmensből a másikba,
 akkor a routeres megoldás esetén új IP-címet kell hozzárendelni, viszont a hidas
@@ -1124,8 +1280,77 @@ megoldásnál nem kell semmit újrakonfigurálni.
 
 ### 9.4 Különböző típusú hálózatok összekapcsolása
 
+A hálózatok számos paraméterükben térhetnek el egymástól. A fizikai rétegben és az
+adatkapcsolati rétegben elég csak az eltérő átviteli közegekre, jelszintekre,
+modulációs és kódolási eljárásokra, illetve az eltérő keretformátumokra gondolni.
+
+A hálózati réteg különbségei is sokfélék lehetnek:
+* A hálózat jellege (összeköttetés alapú vagy összeköttetés nélküli)
+* A címzés módja (tartalmaz-e hierarchiát vagy nem)
+* Csomagméret (alsó illetve felső értékek, vagy csak fix méretű)
+* Időzítések (a csomagok átviteli időkorlátainak eltérése)
+* Sorrendiség (a csomagok sorrendje lehet szempont is, meg nem is)
+* A szolgáltatás minősége (lehet fontos szempont is, meg nem is)
+* Megbízhatóság (a csomagvesztés, csomagismétlés és hibajavítás, mint faktor)
+* Biztonság (alkalmazható-e titkosítás, vagy nem)
+* Költségek (a felhasználó fizethet például idő vagy adatmennyiség alapon).
+
+A különböző hálózatok összekapcsolásának alapvetően két módja ismert. Az egyik
+megoldás a hardveres út, amikor az egyes hálózatokat összekapcsoló aktív eszközöknek
+ismerni kell az összekapcsolt hálózatok paramétereit, és az adatcsere folyamán
+az egyes hálózatok egyedi igényeit ki kell tudni szolgálni (pl. csomagdarabolás,
+illetve csomagegyesítés).
+
+A másik megoldás a szoftveres út, amikor a modellünkhöz egy átjárást biztosító
+réteget – egy hálózatok feletti közös réteget – adunk hozzá. A mai általánosan
+használt szoftveres megoldás (mely egyébként a hardveres megoldásnak is része)
+egy protokollkészlet: az *átviteli vezérlő protokoll* és az *internet protokoll*
+azaz a **TCP/IP (Transmission Control Protocol/Internet Protocol)**.
+
+Ha egy TCP/IP-alapú számítógépnek egy másik hálózaton található állomással kell
+kommunikálnia, ehhez általában átjárót (gateway) használ. A TCP/IP terminológiájában
+az állomáson megadott, az állomás alhálózatát a többi hálózattal összekapcsoló
+útválasztót alapértelmezett átjárónak nevezik.
+
 ### 9.5 A csomagküldés folyamata különböző típusú, összekapcsolt hálózat esetén
 
+A hálózatközi protokoll alapvető információegysége a közeg-, protokoll- és alkalmazás
+független hálózatközi csomag. A hálózatközi csomag az adatokon kívül vezérlőinformációt,
+valamint a forrás-, és a rendeltetési entitást az összetett hálózaton belül meghatározó
+címeket tartalmaz.
+
+Minden hálózat megszab valamilyen maximális csomagméretet. Ezeknek a határoknak
+különféle okai lehetnek. Néhány ezek közül a következő:
+* Hardver (például egy Ethernet-keret hossza).
+* Operációs rendszer (például minden puffer 512 bájtos).
+* Protokollok (például a csomaghossz mezőben a bitek száma).
+* Igazodás valamilyen nemzeti vagy nemzetközi szabványhoz.
+* Az a kívánság, hogy a hibák által okozott újraadások valamilyen szintre csökkenjenek.
+* Az a kívánság, hogy egyetlen csomag se foglalhassa le a csatornát túl sokáig.
+
+Mindezen tényezők eredménye, hogy a hálózattervezők nem választhatnak tetszésük
+szerinti maximális csomagméretet. A maximális adatmezőhossz Ethernet esetén 1500
+bájt, 802.11 esetén pedig 2272. Az IP nagyvonalúbb, 65 515 bájtos csomagokat
+engedélyez.
+
+A kisebb csomagok átvitele jellemzően több redundáns, illetve többlet információ
+átvitelével jár, mint a nagyobb csomagok átvitele. A hosztok ezért általában nagy
+csomagok átvitelét részesítik előnyben, mivel ez csökkenti a csomag többletterhét,
+mint amilyen például a fejrész bájtjaira pazarolt sávszélesség.
+
+Nyilvánvaló hálózat-összekapcsolási probléma jelentkezik, amikor egy nagy csomag
+olyan hálózaton akar keresztülhaladni, amelynek a maximális csomagmérete túl kicsi.
+A csomagok átvitele darabolás nélkül is megoldható, ha ismerjük azt a **legnagyobb
+átvihető adategységet (MTU – Maximum Transfer Unit)** ami az átvitel során biztosan
+mindvégig használható.
+
+A csomagok átvitele darabolás nélküli és darabolásos eljárásokkal is történhet,
+az igények és a lehetőségek szerint. Az MTU kézi beállításánál létezik dinamikusabb
+megoldás, az útvonal MTU felderítése (Path MTU Discovery). Ez esetben, az átvitelben
+részt vevő aktív eszközök képesek belső kommunikációval meghatározni az MTU aktuális
+értékét. Ez hibacsomagok visszaküldésével történik, melyek jelzik a forrás számára,
+hogy az összeállított csomag nagyobb, mint az MTU. Ez után a forrás az aktuális
+MTU-nak megfelelő méretű csomagot állít elő.
 
 ## 10. tétel
 
