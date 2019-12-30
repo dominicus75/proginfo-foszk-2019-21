@@ -910,22 +910,175 @@ amit az UDP kínál.
 
 ### 6.1 A DNS (körzeti névkezelő rendszer) leírása
 
-Ezeket az alfanumerikus címeket nevezzük tartományneveknek (domain name), vagy röviden DNS neveknek Azt a folyamatot, amellyel
-a tartományneveket IP címekké képezzük le névfeloldásnak (name resolution) nevezzük.
-A fordítás alapjául szolgáló táblázatokat speciális számítógépeken, az úgynevezett névkiszolgálékon (name server) tárolják.
-Az olyan általánosan használt címeket, rnint amelyeket e-mail írása, vagy webböngészés
-során használunk, gyakorlatilag mindig DNS nevek formájában adjuk meg (például
-www.microsoft.com, falcon.ukans.edu, vagy idir.net). A TCP/IP névszolgáltatási rendszere egy logikai hierarchiába rendezi a különböző szintű regisztrált névkiszolgálókat
-Ez a többlépcsős rendszer gondoskodik arról, hogy az egyszerű felhasználónak gyakorlatilag soha ne kelljen kézzel lefordítania egy DNS nevet IP címmé.
-A DNS az egész internet névfeloldási rendszere és ezzel gyakorlatilag a legelterjedtebb
-névfeloldási rendszer is egyben.
+A programok elvileg képesek hivatkozni weboldalakra, levelesládákra és más erőforrásokra
+azoknak a számítógépeknek a hálózati (például IP) címeinek a felhasználásával,
+amelyeken ezek megtalálhatók, de ezeket a címeket az emberek nemigen tudják megjegyezni.
+A DNS lehetővé teszi internetes erőforrások csoportjaihoz nevek hozzárendelését
+olyan módon, hogy az ne függjön az erőforrások fizikai helyétől. Így a világhálós
+hiperlinkek, internetes kapcsolattartási adatok konzisztensek és állandóak maradhatnak
+akkor is, ha az internet útválasztási rendszerében változás történik, vagy a részt
+vevő mobileszközt használ.
+
+Fenti okokból magas szintű, olvasható neveket vezettek be, hogy különválasszák a
+gépek neveit a gépek címeitől. Ezeket az alfanumerikus címeket nevezzük **tartományneveknek
+(domain name)**, vagy röviden **DNS neveknek**. Azt a folyamatot, amellyel a
+tartományneveket IP címekké képezzük le **névfeloldásnak (name resolution)** nevezzük.
+A névfordítás alapjául szolgáló táblázatokat speciális számítógépeken, az úgynevezett
+**névkiszolgálókon (name server)** tárolják.
+
+A **DNS (Domain Name System – körzetnévkezelő rendszer)** lényege egy hierarchikus
+körzetalapú névkiosztási séma, és az azt megvalósító osztott adatbázisrendszer
+kitalálásában rejlik. Elsősorban arra szolgál, hogy hosztneveket feleltessen meg
+IP-címeknek, de más célokra is használható.
+
+Az internet több mint **250 elsődleges körzetre (top-level domain)** van osztva.
+Minden körzet alkörzetekre oszlik, amelyek tovább vannak osztva és így tovább. A
+legfelső szinten levő **legfelső szintű domain-ek (TLD: Top Level Domain)** elsődleges
+tartományok kétfélék lehetnek: általánosak és országra vonatkozóak.
+
+Az általános legfelső szintű tartomány a szervezetek fajtája szerinti csoportosítást
+használja. Kezdetben ez a csoport a **GOV** (kormányzati szerv), **EDU** (oktatási
+intézmény), **COM** (kereskedelmi), **MIL** (katonai), **ORG** (nonprofit szervezet)
+és **NET** (hálózati szolgáltatók, ISP-k) TLD-ket tartalmazta, mára azonban kibővült.
+
+Az országra vonatkozó tartományok esetében minden országhoz tartozik egy az [ISO 3166-1 alpha-2](https://hu.wikipedia.org/wiki/ISO_3166-1) szabványnak megfelelő legfelső
+szintű tartománynév (top-level domain, TLD; pl.*.hu*, *.ro*, stb.).
+
+Az internetes névhierarchia legfelső szintjét az **[ICANN](https://hu.wikipedia.org/wiki/ICANN)
+(Internet Corporation for Assigned Names and Numbers – Internettársaság Kiosztott
+Nevek és Számok Kezelésére)** nevű szervezet kezeli.
+
+Egy számítógép azaz **[teljesen minősített tartománynévét (Fully Qualified Domain
+Name, FQDN)](https://hu.wikipedia.org/wiki/Fully_qualified_domain_name)**, tehát a
+gép nevétől a fa struktúrában felfele haladva olvassuk ki, az egyes mezők közé
+pontot teszünk. A névkomponensek maximum 63 karakter hosszúak lehetnek, és az egész
+útvonalnév nem haladhatja meg a 255 karaktert.
 
 ### 6.2 A doménnév szerverek működése, kapcsolat a doménnév szerverek között
 
+A DNS-ben a doménnevek kiosztásának és az IP-címek hozzárendelésének a felelősségét
+delegálják; minden tartományhoz **mérvadó névkiszolgáló (autoritatív névszerver)**
+tartozik. A mérvadó névkiszolgálók felelősek a saját doménjeikért. Ezt a felelősséget
+tovább delegálhatják, így az al-doménekért más névkiszolgáló felelhet. Ez a mechanizmus
+áll a DNS elosztott és hibatűrő működése mögött, és ezért nem szükséges egyetlen
+központi címtárat fenntartani és állandóan frissíteni.
+
+Egy név megkeresésének és a hozzá tartozó cím meghatározásának folyamatát
+névfeloldásnak (name resolution) nevezik. Ha egy névfeloldó meg szeretne tudni
+valamit egy körzetnévről, akkor elküldi a lekérdezést egy helyi névszervernek. Ha
+a keresett körzet a névszerver hatáskörébe tartozik, akkor az visszaküldi a hiteles
+erőforrás-bejegyzéseket. A **hiteles bejegyzés (authoritative record)** azt jelenti,
+hogy a bejegyzés attól a szervtől származik, amelyik azt a bejegyzést kezeli, tehát
+mindig helyes. A hiteles bejegyzésekkel ellentétben a **gyorstárban levő bejegyzések
+(cached records)** esetleg idejétmúltak lehetnek (minden válasz a gyorstárakba kerül,
+így ha egy másik hoszt lekérdezi ugyan azt címét, a válasz már ismert lesz).
+
+A DNS-üzeneteket, amelyek lekérdezéseket, válaszokat és a névfeloldás folytatásához
+használható névszervereket tartalmaznak, egyszerű formátumú UDP-csomagokban
+(**5.3 tétel**) küldik. Ha rövid időn belül nem érkezik válasz, a DNS-ügyfél megismétli
+a lekérdezést, majd néhány ismételt próbálkozást követően a körzet más szerverénél
+próbálkozik. Ezt az eljárást úgy tervezték meg, hogy boldoguljon akkor is, ha a szerver
+leállt, vagy a lekérdezés-, vagy válaszcsomagok elvesztek. Minden lekérdezés tartalmaz
+egy 16 bites azonosítót, amely átmásolódik a válaszba, és így a névszerver illeszteni
+tudja a válaszokat a kérésekhez még abban az esetben is, ha több lekérdezés van
+folyamatban egyszerre.
+
 ### 6.3 Doménneves azonosítóhoz tartozó IP cím megállapításának menete
+
+A felhasználók jellemzően nem közvetlenül egy DNS-resolverrel lépnek kapcsolatba.
+A DNS-névfeloldást ehelyett transzparens módon végzik az alkalmazások (webböngészők,
+e-mail-kliensek stb.). Ha egy alkalmazásnak névfeloldásra van szüksége, kérelmet
+küld a helyi gép operációs rendszerének **névfeloldó (name resolver)** entitásához,
+ami a további szükséges kommunikáció végrehajtásáért felel.
+
+A névfeloldó entitás szinte minden esetben rendelkezik a legutóbbi lekérdezéseket
+tartalmazó gyorsítótárral. Ha a válasz nem található meg a gyorsítótárban, továbbküldi
+a kérést az erre kijelölt DNS-kiszolgálóhoz. Otthoni felhasználás esetén általában
+az internetszolgáltató adja a DNS-kiszolgálót, és DHCP-n keresztül automatikusan
+történik a beállítás; de természetesen beállítható manuálisan más DNS-szerver is.
+Vállalati környezetben nagy valószínűséggel a hálózati rendszergazdák által
+központilag beállított, céges DNS-kiszolgálót használják a számítógépek.
+
+A hálózati gép gyorsítótárában be vannak állítva a gyökér-névkiszolgálók ismert
+címei („hint”-ek). A „hint fájlt” a rendszergazda időközönként megbízható forrásból
+frissíti. A gyökér-névszerverek tárolják mindegyik legfelső szintű domain (TLD)
+adatait, legfőképpen azt, hogy melyik szervertől kell lekérdezni az abba tartozó
+domaineket.
+
+A névfeloldónak a tartománynév feloldásához meg kell keresnie a kérdéses tartományhoz
+tartozó mérvadó névkiszolgálókat, amit a legfelső szintű névkiszolgálóktól kezdve
+lefelé haladva, az alábbi lekérések láncolatával ér el:
+
+1. Lekérdezi a gyökérkiszolgálók egyikétől, hogy mi a legfelső szintű tartomány
+mérvadó névkiszolgálója.
+2. Lekérdezi az imént visszakapott névkiszolgálótól, hogy mi a második szintű
+tartomány mérvadó névkiszolgálója.
+3. Az előző lépést megismétli a tartománynév minden címkéjére, míg a legutolsó
+lépésben megkapja a keresett név IP-címét.
+
+A lekérdezett DNS-kiszolgáló ezt a ciklust fogja ismételni, amíg eredményesen
+vagy eredménytelenül le nem zárul a lekérdezési folyamat. Ezután visszaadja az
+eredményt a névfeloldónak; ha pozitív eredménnyel járt a lekérdezés, a névfeloldó
+visszaadja a névfeloldást igénylő alkalmazásnak, valamint a gyorsítótárában is
+elhelyezi azt.
 
 ### 6.4 Hálózati védelem lehetséges esetei tűzfal, proxy használatával
 
+A tűzfal az illetéktelen hálózati hozzáféréseket megakadályozó szoftveres vagy
+hardveres eszköz, amely a kommunikáció folyamatába beépülve figyeli és szabályozza
+az átáramló forgalmat. Általában az Internetre kapcsolt számítógépek és helyi
+hálózatok védelmére alkalmazzák, hogy illetéktelenek ne férhessenek hozzá a hálózathoz
+és a számítógépeken tárolt adatokhoz.
+
+A tűzfalak általában folyamatosan jegyzik a forgalom bizonyos adatait, a bejelentkező
+gépek és felhasználók azonosítóit, a rendkívüli és kétes eseményeket, továbbá riasztásokat
+is adhatnak. A tűzfalnak figyelnie kell az egyes portokon folyó forgalomra is. Érzékelnie
+kell, ha valaki végigpásztázza a nyitott portokat (port scanning), képesnek kell
+lennie az egyes portok lezárására, valamint fel kell tudni figyelnie az egyes portokon
+jelentkező „gyanús” forgalomra is.
+
+Bármilyen tűzfalmegoldást alkalmazunk is, a szakma által elfogadott alapmódszer a
+következő: **minden tilos, kivéve, amit szabad („fehér lista”)**.
+
+*A tűzfalak főbb típusai:*
+* **csomagszűrő tűzfal:** a csomagok fejlécét ellenőrzi, és különböző szabályok
+alapján eldönti, hogy mi legyen a csomagok további sorsa (pl. csak egy adott IP-címről
+érkező csomagot enged be egy bizonyos interfész bizonyos portjára). Csak a csomagok
+fejlécét vizsgálja, tartalmukat nem. Linux és UNIX operációs rendszer alatt a kernel
+része, más operációs rendszereknél, mint például a Windowsnál, különálló alkalmazás
+végzi a csomagszűrést. Három altípusa van:
+    * *statikus:* a szűrési szabályokat egyszerűen a forrás és célállomás adatai
+    alapján határozza meg (cím, protokoll, portszám, egyéb csomagfejléc jellemzők).
+    * *dinamikus:* amikor egy számítógép kommunikálni akar a tűzfal által védett
+    hálózattal, akkor a tűzfal tárolja a távoli gép IP-címét és a port számát, melyen
+    keresztül várja a választ, és megnyit egy véletlenszerűen kiválasztott portot,
+    amelyen keresztül csak a tárolt IP-címről fogad csomagokat.
+    * *állapotfüggő:* olyan tűzfal-architektúra, amely értelmezi a csomagok egymásutániságát,
+    és „követi” az összetartozó csomagok által alkotott logikai adatfolyamok állapotát,
+    így azokat egy magasabb absztrakciós szinten képes ellenőrizni (pl. észlelni
+    az adatfolyamokba logikailag nem illeszkedő adatcsomagokat).
+* **alkalmazás szintű tűzfal:** kontrollál minden hálózati forgalmat minden OSI
+rétegen egészen az alkalmazás rétegig. Így a bemenetet, a kimenetet és/vagy a hozzáférést
+egy alkalmazáshoz vagy szolgáltatáshoz. Felügyeli és ha kell blokkolja a kimenetet,
+bemenetet vagy a rendszerszolgáltatás-hívást ha nem egyezik a tűzfal kialakított
+politikájával.
+* **címfordító szerver:** lehetővé teszi a belső hálózatra kötött gépek közvetlen
+kommunikációját tetszőleges protokollokon keresztül külső gépekkel anélkül, hogy
+azoknak saját nyilvános IP-címmel kellene rendelkezniük. A belső gépekről érkező
+csomagok feladójaként saját magát tünteti fel a tűzfal (így elrejthető a védett
+host igazi címe), a válaszcsomagok is hozzá kerülnek továbbításra, amiket – a célállomás
+címének módosítása után – a belső hálózaton elhelyezkedő eredeti feladó részére
+továbbít.
+* **proxy szerver:** („helyettes”, „megbízott”, „közvetítő”) olyan szerver (számítógép
+vagy szerveralkalmazás), amely a kliensek kéréseit köztes elemként más szerverekhez
+továbbítja. A kliens csatlakozik a proxyhoz, majd valamilyen szolgáltatást (fájlt,
+csatlakozást, weboldalt vagy más erőforrást) igényel, ami egy másik szerveren található.
+A proxy szerver a kliens nevében eljárva csatlakozik a megadott szerverhez, és igényli
+az erőforrást a számára. Előnye, hogy a hálózat felől csak a proxy IP-címe lesz látható
+mint feladó, nem pedig a kliensé. Így a helyi hálózat struktúrája nem lesz felismerhető
+az internet felől. Megakadályozza a közvetlen kommunikációt a külső és a védett
+hálózat között. Vállalati környezetben alapvető elvárás a proxyk felé a különböző
+hálózati protokollokon alkalmazott tartalomszűrési lehetőség is.
 
 ## 7. tétel
 
