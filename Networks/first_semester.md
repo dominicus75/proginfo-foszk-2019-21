@@ -948,7 +948,7 @@ Az internetes névhierarchia legfelső szintjét az **[ICANN](https://hu.wikiped
 (Internet Corporation for Assigned Names and Numbers – Internettársaság Kiosztott
 Nevek és Számok Kezelésére)** nevű szervezet kezeli.
 
-Egy számítógép azaz **[teljesen minősített tartománynévét (Fully Qualified Domain
+Egy számítógép **[teljesen minősített tartománynévét (Fully Qualified Domain
 Name, FQDN)](https://hu.wikipedia.org/wiki/Fully_qualified_domain_name)**, tehát a
 gép nevétől a fa struktúrában felfele haladva olvassuk ki, az egyes mezők közé
 pontot teszünk. A névkomponensek maximum 63 karakter hosszúak lehetnek, és az egész
