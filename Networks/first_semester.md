@@ -1084,11 +1084,60 @@ hálózati protokollokon alkalmazott tartalomszűrési lehetőség is.
 
 ### 7.1 Vezeték nélküli átviteli szabványok
 
+A **WLAN (wireless LAN)** rádióhullámot használó vezeték nélküli helyi hálózat, ami
+lehetővé teszi a közeli számítógépek összekapcsolódását. Számítógépek vezetékes
+hálózathoz kapcsolására és önálló ad hoc hálózatok létrehozására egyaránt alkalmas.
+
+
+
 ### 7.2 Vezeték nélküli hálózatok osztályozása
+
+
 
 ### 7.3 WLAN hálózatok szabványai
 
+A legnépszerűbb WLAN szabványcsalád a Wi-Fi (IEEE 802.11), a technológiai alapját
+adó szórt spektrumú technikát [Hedy Lamarr](https://hu.wikipedia.org/wiki/Hedy_Lamarr)
+színésznő és George Antheil zeneszerző 1942-ben szabadalmaztatta. Sokáig csak az
+amerikai haditengerészet használta, amíg 1985-ben el nem készültek a civilek által
+is használható vezeték nélküli hálózatok.
+
+Legelterjedtebb szabványok:
+
+| Szabvány neve | Működési frekvencia (GHz) | Jellemző sebesség (Mbit/s) | Maximális sebesség (Mbit/s) | Hatótávolság beltéren – kültéren (méter) | Megjelenés éve |
+|:-------------:|---------------------------|----------------------------|----------------------------:|-------------------------------------------------|:--------------:|
+| **802.11**   | 2,4   | 0,9 | 2    | 20-100  | 1997 |
+| **802.11a**  | 5     | 23  | 54   | 35-120  | 1999 |
+| **802.11b**  | 2,4   | 4,3 | 11   | 38-140  | 1999 |
+| **802.11g**  | 2,4   | 19  | 54   | 38-140  | 2003 |
+| **802.11y**  | 3,7   | 23  | 54   | 50-5000 | 2008 |
+| **802.11n**  | 2,4/5 | 74  | 600  | 70-250  | 2009 |
+| **802.11ac** | 5     | 500 | 1300 | 140-350 | 2013 |
+| **802.11ax** | 2,4/5 |     | 9600 |         | 2018 |
+
+A kezdeti (1997-es) szabvány olyan vezeték nélküli LAN-t definiált, mely azáltal
+tudott elérni 1 vagy 2 Mb/s sebességet, hogy a különböző frekvenciák között ugrásokat
+végzett vagy szétszórta a jelet a teljes engedélyezett spektrumban. Az emberek
+szinte azonnal panaszkodni kezdtek, hogy túl lassú, így további munka kezdődött
+a gyorsabb változatok kidolgozására. A szórt spektrumú működést kiegészítették,
+és ebből lett az (1999-es) 802.11b szabvány, mely akár 11 Mb/s sebességre is képes.
+A 802.11a (1999) és a 802.11g (2003) szabványok egy másik, **OFDM-nek (Orthogonal
+Frequency Division Multiplexing – ortogonális frekvenciaosztásos multiplexelés)**
+nevezett modulációs eljárásra váltottak. Ez a spektrum egy széles sávját sok kis
+szeletre bontja fel, melyeken keresztül párhuzamosan küldi az egyes biteket.
+
 ### 7.4 Add-Hoc és infrastruktúrált hálózatok
+
+A 802.11 hálózatok alkotóelemei a kliensek, például noteszgépek és mobiltelefonok,
+valamint az épületben elhelyezett infrastruktúra, mely **AP-kból (Access Point
+– hozzáférési pont)** áll. A hozzáférési pontokat gyakran nevezik **bázisállomásnak
+(base station)** is. **A hozzáférési pont a vezetékes hálózathoz csatlakozik, és
+a kliensek közötti összes kommunikáció egy-egy hozzáférési ponton keresztül zajlik**.
+
+Az is lehetséges, hogy két, egymás hatósugarában levő kliens közvetlenül kommunikáljon
+egymással, például két számítógép egy hozzáférési pont nélküli irodában. Ezt a
+felállást **alkalmi vagy ad hoc hálózatnak (ad hoc network)** nevezzük. Sokkal
+ritkábban használt, mint a hozzáférési pont által vezérelt mód.
 
 ### 7.5 Vezeték nélküli hálózatok adatvédelmi lehetőségei
 
