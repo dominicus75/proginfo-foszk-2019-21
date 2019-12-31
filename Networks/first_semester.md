@@ -1084,15 +1084,68 @@ hálózati protokollokon alkalmazott tartalomszűrési lehetőség is.
 
 ### 7.1 Vezeték nélküli átviteli szabványok
 
-A **WLAN (wireless LAN)** rádióhullámot használó vezeték nélküli helyi hálózat, ami
-lehetővé teszi a közeli számítógépek összekapcsolódását. Számítógépek vezetékes
+A vezeték nélküli közeg rádió- vagy mikrohullámok használatával továbbítja az
+elektromágneses jeleket, amelyek az adatkommunikáció bináris számjegyeinek felelnek
+meg. A **WLAN (wireless LAN)** rádióhullámot használó vezeték nélküli helyi hálózat,
+ami lehetővé teszi a közeli számítógépek összekapcsolódását. Számítógépek vezetékes
 hálózathoz kapcsolására és önálló ad hoc hálózatok létrehozására egyaránt alkalmas.
 
+A vezeték nélküli átvitelre vonatkozó IEEE és ipari távközlési szabványok mind az
+adatkapcsolati, mind pedig a fizikai rétegre kiterjednek.
 
+A vezeték nélküli átvitelre a következő adatátviteli szabványok vonatkoznak:
+
+**IEEE 802.11 (Wi-Fi):** vezeték nélküli LAN (WLAN) technológia, közismertebb nevén **Wi-Fi**,
+egy versengés alapú vagy nem determinisztikus rendszer, amely az ütközést elkerülő,
+**vivőérzékeléses, többszörös hozzáférésű (Carrier Sense Multiple Access with Collision
+Avoidance, CSMA/CA)** rendszert használja a közeghozzáférés vezérlésére.
+**IEEE 802.15 (Bluetooth):** vezeték nélküli személyes hálózatok **(Wireless Personal
+Area Network, WPAN)** szabványa, amely egy eszközpárosítási folyamatot használ
+az 1 és 100 méter közötti kommunikáció lebonyolítására. A koncepció egyik sarokpontja,
+az alkalomszerű összekapcsolhatóság (ad hoc connectivity).
+**IEEE 802.16 (Worldwide Interoperability for Microwave Access, WiMAX):** pont-multipont
+topológiát használ a szélessávú vezeték nélküli hozzáférés biztosításához.
+
+Ezen szabványok mindegyikének fizikai rétegre vonatkozó specifikációja a következő
+területeket foglalja magában:
+* az adatok rádiójelekké történő átalakítása,
+* átviteli frekvencia és teljesítmény,
+* a jel vételére és dekódolására vonatkozó követelmények,
+* antennák tervezése és kivitelezése.
 
 ### 7.2 Vezeték nélküli hálózatok osztályozása
 
+A vezeték nélküli eszközök elektromágneses hullámokat használva cserélik az
+információkat egymás közt. **A rádióhullám, a mikrohullám, az infravörös hullám
+és a látható fény az [elektromágneses spektrumnak](https://hu.wikipedia.org/wiki/Elektrom%C3%A1gneses_sug%C3%A1rz%C3%A1s#Az_elektrom%C3%A1gneses_spektrum) az a része, amely alkalmas információtovábbításra**. Az ultraibolya, a röntgen-,
+és a gamma-sugarak a nagyobb frekvencia miatt még jobbak lennének, de ezeket nehéz
+előállítani és modulálni, nem terjednek jól az épületekben, és veszélyesek az
+élővilágra.
 
+A nyilvános vezeték nélküli kommunikációra használt leggyakoribb hullámhosszok:
+* **Infravörös (IR) tartomány:** alacsony energiaszintű, jelei nem képesek áthatolni
+falakon vagy egyéb akadályokon. Csak pont-pont típusú kapcsolatot tesz lehetővé.
+Elsősorban a kis hatótávolságú kommunikációra alkalmas, ezt használják a távirányítók,
+a vezeték nélküli egerek és a billentyűzetek is.
+* **Rádiófrekvenciás (RF) tartomány:** mivel a rádióhullámok egyszerűen előállíthatók,
+nagy távolságra jutnak el, és az infravörös hullámokkal szemben könnyen áthatolnak
+az épületek falain, így széles körben használják ezeket mind kültéri, mind beltéri
+alkalmazásokban. E mellett minden irányba terjednek, így az adót és a vevőt nem
+kell fizikailag precízen egymáshoz illeszteni. A vezeték nélküli telefonok, helyi-hálózatok
+és egyéb számítógépes perifériák a 900 MHz, 2.4 és 5 GHz-es sávokat használják.
+
+A vezeték nélküli hálózatok kiterjedésük szerint három csoportba sorolhatók:
+* **vezeték nélküli személyi hálózatok (WPAN):** segítségével a felhasználók személyes
+működési környezetükben használt eszközei (pl. személyi digitális asszisztensek,
+mobiltelefonok és laptopok) **ad hoc** vezeték nélküli kommunikációra képesek.
+* **vezeték nélküli helyi hálózatok (WLAN):** segítségével a felhasználók vezeték
+nélkül köthetők össze helyi hálózatban, olyan helyeken ahol kiterjedt kábelezés
+nem oldható meg, vagy ahol egy meglévő LAN-t kell kiegészíteni.
+* **vezeték nélküli nagy kiterjedésű hálózatok (WWAN):** lehetővé teszik a távoli
+nyilvános és magán hálózatokon történő vezeték nélküli kommunikációt. Nagy földrajzi
+távolságokra terjedhetnek ki, például városokra vagy országokra, vezeték nélküli
+szolgáltatók több antennaállomása vagy műholdas rendszere segítségével. Ilyenek pl.
+a mobiltelefon hálózatok (GSM).
 
 ### 7.3 WLAN hálózatok szabványai
 
@@ -1141,6 +1194,25 @@ ritkábban használt, mint a hozzáférési pont által vezérelt mód.
 
 ### 7.5 Vezeték nélküli hálózatok adatvédelmi lehetőségei
 
+Mivel a vezeték nélküli adás adatszórással történik, a közelben levő számítógépek
+könnyen megkapják a nem nekik szánt csomagokat. Ennek megelőzésére a 802.11
+szabvány egy titkosító eljárást is tartalmazott, melyet **WEP (Wired Equivalent
+Privacy – vezetékessel egyenértékű titkosság)** néven ismerhetünk. A cél az volt,
+hogy a vezeték nélküli biztonsági szint összemérhető legyen a vezetékessel. A
+titkosító eljárás azonban hibás volt, és hamarosan fel is törték (Borisov és mások,
+2001).
+
+A WEP hiányosságait a WiFi Alliance a **Wi-Fi védett hozzáférés (Wi-Fi Protected
+Access, WPA)** ajánlás kiadásával próbálta meg kiküszöbölni. Ez kötelezővé tette
+a felhasználó **hitelesítését**, törekedett az **erősebb titkosításra**, a kulcs
+menedzsment megvalósítására és a visszajátszás elleni védekezésre. A WPA tartalmazza
+az **IEEE 802.11i** szabvány főbb szabályait, és egy átmeneti megoldásnak szánták,
+amíg a 802.11i szabványt véglegesítik. A **WPA** úgy lett kialakítva, hogy együttműködjön
+az összes vezeték nélküli hálózati illesztővel, de az első generációs vezeték nélküli
+elérési pontokkal nem minden esetben működik. A **WPA2** a teljes szabványt tartalmazza,
+de emiatt nem működik néhány régebbi hálózat kártyával sem. 2006-ban a WPA2
+kötelező ajánlássá vált, a WiFi Certified logót csak olyan termék viselhette,
+amely a támogatta a WPA2-t.
 
 ## 8. tétel
 
