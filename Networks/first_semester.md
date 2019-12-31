@@ -1086,12 +1086,8 @@ hálózati protokollokon alkalmazott tartalomszűrési lehetőség is.
 
 A vezeték nélküli közeg rádió- vagy mikrohullámok használatával továbbítja az
 elektromágneses jeleket, amelyek az adatkommunikáció bináris számjegyeinek felelnek
-meg. A **WLAN (wireless LAN)** rádióhullámot használó vezeték nélküli helyi hálózat,
-ami lehetővé teszi a közeli számítógépek összekapcsolódását. Számítógépek vezetékes
-hálózathoz kapcsolására és önálló ad hoc hálózatok létrehozására egyaránt alkalmas.
-
-A vezeték nélküli átvitelre vonatkozó IEEE és ipari távközlési szabványok mind az
-adatkapcsolati, mind pedig a fizikai rétegre kiterjednek.
+meg. A vezeték nélküli átvitelre vonatkozó IEEE és ipari távközlési szabványok
+mind az adatkapcsolati, mind pedig a fizikai rétegre kiterjednek.
 
 A vezeték nélküli átvitelre a következő adatátviteli szabványok vonatkoznak:
 
@@ -1148,6 +1144,10 @@ szolgáltatók több antennaállomása vagy műholdas rendszere segítségével.
 a mobiltelefon hálózatok (GSM).
 
 ### 7.3 WLAN hálózatok szabványai
+
+A **WLAN (wireless LAN)** rádióhullámot használó vezeték nélküli helyi hálózat,
+ami lehetővé teszi a közeli számítógépek összekapcsolódását. Számítógépek vezetékes
+hálózathoz kapcsolására és önálló ad hoc hálózatok létrehozására egyaránt alkalmas.
 
 A legnépszerűbb WLAN szabványcsalád a Wi-Fi (IEEE 802.11), a technológiai alapját
 adó szórt spektrumú technikát [Hedy Lamarr](https://hu.wikipedia.org/wiki/Hedy_Lamarr)
