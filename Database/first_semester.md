@@ -1138,7 +1138,7 @@ van:
 * minden, nem kulcs mező csak a kulcstól függjön,
 * összetett kulcs esetén, minden nem kulcs mező függjön a kulcs minden elemétől.
 
-**Részleges funkcionális függés** a teljes funkcionális függés egyik akadálya. Akkor
+A **részleges funkcionális függés** a teljes funkcionális függés egyik akadálya. Akkor
 fordulhat elő egy táblában, ha abban van összetett kulcs és nem teljesül a teljes
 funkcionális függés azon feltétele, miszerint *„minden nem kulcs mező függjön a
 kulcs minden elemétől”*, vagyis ha **az összetett kulcs egyik részét eltávolítva a
@@ -1207,7 +1207,7 @@ függőség mentén.
 
 ### 10.1 Az SQL nyelv általános jellemzői
 
-A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+Az **SQL (Structured Query Language – strukturált lekérdezőnyelv)** relációsadatbázis-kezelők
 szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
 SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
 ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
@@ -1817,7 +1817,7 @@ A hivatkozás kapcsolatok kezelésére alkalmas:
 
 ### 11.1 Az SQL nyelv általános jellemzői
 
-A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+Az **SQL (Structured Query Language – strukturált lekérdezőnyelv)** relációsadatbázis-kezelők
 szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
 SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
 ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
@@ -1912,8 +1912,8 @@ vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Na
 metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
 alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
-A nézet vagy nézettábla olyan virtuális tábla, amely az adatbázis egy vagy több
-táblájának mezőiből épül fel. A nézettáblát alkotó táblákat alaptábláknak hívjuk.
+**A nézet vagy nézettábla olyan virtuális tábla, amely az adatbázis egy vagy több
+táblájának mezőiből épül fel**. A nézettáblát alkotó táblákat alaptábláknak hívjuk.
 A relációs modell azért tekinti virtuálisnak (látszólagosnak) a nézettáblákat, mert
 azok adatai más táblákból származnak. Maguk a nézettáblák nem tárolnak adatokat;
 az adatbázisban valójában a szerkezetük az egyetlen információ, ami tárolódik róluk.
@@ -1923,7 +1923,7 @@ a néven vagy egyszerűen lekérdezésként hivatkozik rájuk. A lekérdezések 
 esetben rendelkeznek a nézettáblák minden jellemzőjével, vagyis csupán a nevük az
 egyetlen különbség köztük.
 
-Az SQL-szabvány szerit a tábla_neve nézettáblát is takarhat, de kiköti, hogy a
+Az SQL-szabvány szerit a `<tábla_neve>` nézettáblát is takarhat, de kiköti, hogy a
 nézettáblának lehetővé kell tennie a módosítást és a beszúrást. Számos adatbázisrendszer
 lehetővé teszi, hogy nézettáblákba szúrjunk be adatokat, de mindegyiknek saját
 szabályai vannak, amelyek alapján meghatározzák, hogy egy nézettábla módosítható-e,
@@ -2118,7 +2118,7 @@ Példa
 
 ### 12.1 Az SQL nyelv általános jellemzői
 
-A SQL (Structured Query Language – strukturált lekérdezőnyelv) relációsadatbázis-kezelők
+Az **SQL (Structured Query Language – strukturált lekérdezőnyelv)** relációsadatbázis-kezelők
 szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
 SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
 ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
@@ -2213,7 +2213,7 @@ vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Na
 metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
 alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
 
-A DQL (Data Query Language, adatlekérdező nyelv) az SQL névadó résznyelve.
+A **DQL (Data Query Language, adatlekérdező nyelv)** az SQL névadó résznyelve.
 Használatával az adatbázisok tábláiban tárolt adatok különböző szempontok és összefüggések
 alapján kérdezhetők le. A DQL-ben pontosan megfogalmazhatjuk a megjelenítendő rekordok
 és mezők forrásául szolgáló táblákat, vagy táblakapcsolatokat, és feltételekkel
@@ -2223,11 +2223,10 @@ tekintik, így számos irodalomban nem is találkozunk külön ezzel a résznyel
 
 **[SELECT](https://mariadb.com/kb/en/select/) utasítás**
 
-A **SELECT** a DQL (Data Query Language, adatlekérdező nyelv) egyetlen parancsa,
-mellyel megvalósítható a kiválasztás, vetítés (*az oszlopok felsorolásával végezzük
-el a projekció műveletét, a **WHERE** kulcsszó utáni feltétel kiértékelése alapján
-pedig szelekció történik*), összekapcsolás és a Descartes-szorzat (bővebben lásd:
-**12.3 tétel**).
+A **SELECT** az adatlekérdező nyelv egyetlen parancsa, mellyel megvalósítható a
+kiválasztás, vetítés (*az oszlopok felsorolásával végezzük el a projekció műveletét,
+a **WHERE** kulcsszó utáni feltétel kiértékelése alapján pedig szelekció történik*),
+összekapcsolás és a Descartes-szorzat (bővebben lásd: **12.3 tétel**).
 
 Szintaxis
 ```sql
@@ -2631,12 +2630,12 @@ Az egyenlőség vizsgálat esetén a belső lekérdezés csak egy értéket adha
 
 ### 13.1 Az SQL megszorításai
 
-Az aktív elem olyan programrész, amely bizonyos szituációban automatikusan végrehajtódik.
+**Az aktív elem olyan programrész, amely bizonyos szituációban automatikusan végrehajtódik**.
 Ez a szituáció lehet egy esemény bekövetkezése, mint például egy adott relációba
 való beszúrás, vagy lehet az adatbázisnak olyan megváltozása, amikor egy logikai
-értékű feltétel igazzá válik. Az aktív elemek speciális esete a megszorítás. A
+értékű feltétel igazzá válik. Az aktív elemek speciális esete a megszorítás. **A
 megszorítások olyan előírások, korlátozások, amelyekkel megadhatjuk az adatbázis
-tartalmára vonatkozó kívánságainkat. Ha ezeket az adatbázisrendszerrel egyszer,
+tartalmára vonatkozó kívánságainkat**. Ha ezeket az adatbázisrendszerrel egyszer,
 egy helyen közöljük, az mindig gondoskodni fog betartásukról.
 
 A megszorításokat az adatbázisrendszer minden olyan akció során ellenőrzi, amely
@@ -2850,8 +2849,8 @@ Az önálló megszorítás törlése
 
 ### 13.4 Triggerek
 
-Az aktív elemek másik speciális esete a trigger. A trigger olyan eljárást definiál
-mely automatikusan lefut, ha egy tábla módosul (ideiglenes táblákhoz és nézetekhez
+Az aktív elemek másik speciális esete a trigger. **A trigger olyan eljárást definiál
+mely automatikusan lefut, ha egy tábla módosul** (ideiglenes táblákhoz és nézetekhez
 nem társítható trigger). A triggereket az **INSERT, UPDATE, DELETE parancsok végrehajtása
 előtt, után vagy helyett (utóbbit nem minden SQL megvalósítás támogatja) hívja meg
 a rendszer**. A trigger vagy engedélyezheti vagy elvetheti az adott táblán történt
