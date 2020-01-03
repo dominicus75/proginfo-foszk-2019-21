@@ -1010,7 +1010,7 @@ szereplő attribútum-halmazokat egyesíthetjük (ha teljesül egy **A → B** �
 **A → C** függőség, akkor teljesül az **A → {B, C}** függőség is).
 * **Dekompozíció – Szétvághatósági szabály:** az additivitás ellentéte. A funkcionális
 függőség jobb oldalán szereplő attribútum-halmaz minden részhalmaza is függ a
-baloldaltól (vagyis: ha **A → {B, C}** függőség teljesül, akkor **A → B** és A → C**
+baloldaltól (vagyis: ha **A → {B, C}** függőség teljesül, akkor **A → B** és **A → C**
 is fennáll).
 
 A lezárt képzésénél kiindulunk az adott attribútumhalmazból, és többször ismételten
