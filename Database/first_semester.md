@@ -2950,22 +2950,77 @@ Minden adatbázishoz szükséges saját ODBC-meghajtó
 
 **PDO (PHP Data Objects)**
 
-A PHP Adat Objektum kiterjesztése egy pehelysúlyú, következetes programozási felületet
-kínál a különféle adatbázisokhoz való hozzáféréshez a PHP kódból. Minden adatbázis-meghajtó,
-amely implementálja a PDO interfészt, képes adatbázis-specifikus funkciók szabályos
+A [PHP Adat Objektum](http://ade.web.elte.hu/wabp/lecke6_lap1.html#hiv8)
+kiterjesztése egy pehelysúlyú, következetes programozási felületet kínál a különféle
+adatbázisokhoz való hozzáféréshez a PHP kódból. Minden adatbázis-meghajtó, amely
+implementálja a PDO interfészt, képes adatbázis-specifikus funkciók szabályos
 függvényként való végrehajtására. Megjegyzendő, hogy **önmagában a PDO használatával nem
 lehet bármilyen adatbázis-funkciót végrehajtani; az adatbázis szerverhez való hozzáféréshez
 a megfelelő adatbázis-specifikus PDO-meghajtó használata is szükséges**.
 
-A PDO egy adatbázis-független adathozzáférési absztrakciós réteget biztosít, ami
-azt jelenti, hogy ugyanazokat a függvényeket lehet alkalmazni, függetlenül attól,
-hogy milyen adatbázisból kérünk le adatokat. A PDO nem egy új adatbázis-absztrakciót
-kínál, nem írja újra az SQL-t vagy emulálja az esetleg hiányzó funkcióit. (Forrás:
+A PDO egy adatbázis-független adathozzáférési absztrakciós réteget biztosít, egy
+olyan absztrakt programozói felületet, mely utasításkészletében nem függ a mögötte
+álló adatbázis-kezelőtől. Ez azt jelenti, hogy ugyanazokat a függvényeket lehet
+alkalmazni, függetlenül attól, hogy milyen adatbázisból kérünk le adatokat. A PDO
+nem egy új adatbázis-absztrakciót kínál, nem írja újra az SQL-t vagy emulálja az
+esetleg hiányzó funkcióit. (Forrás:
 [PHP Kézikönyv](https://www.php.net/manual/en/intro.pdo.php))
 
-A PDO számos driverrel rendelkezik, melyek közül a legismertebbek a PostgreSQL,
-Oracle, MS SQL, SQLite és a MySQL. Az ezzel készített PHP-s alkalmazások mögött
-könnyedén – a kód jelentős módosítása nélkül – cserélhető az adatbázis rendszer.
+A PDO [számos driverrel rendelkezik](https://www.php.net/manual/en/pdo.drivers.php),
+melyek közül a legismertebbek a PostgreSQL, Oracle, MS SQL, SQLite és a MySQL. Az
+ezzel készített PHP-s alkalmazások mögött könnyedén – a kód jelentős módosítása
+nélkül – cserélhető az adatbázis rendszer.
+
+A PDO előnye az adatbáziskezelő-független kód, az ebből fakadó hordozhatósága,
+valamint az egységes és egyszerű programozói felület. Hátránya az, hogy nem használhatja
+ki az egyes adatbázis-kezelők és azok speciális függvényei által nyújtott többletszolgáltatásokat.
+
+A PDO interfész utasításai funkcionálisan az alábbiak szerint csoportosíthatók:
+
+* kapcsolatkezelés,
+* tranzakciókezelés,
+* paraméterezett SQL utasítások és tárolt eljárások kezelése,
+* hibakezelés.
+
+A PDO ezeket a funkcionalitásokat három osztályon keresztül biztosítja:
+* **[PDO](https://www.php.net/manual/en/class.pdo.php):** a PHP-kód és az adatbázis-kiszolgáló
+közötti kapcsolatot reprezentálja. A PDO osztály egy példánya minden esetben a
+kiindulási pont. Ennek konstruktora végzi el a kapcsolódást az adatbázishoz, majd
+lekérdezések esetében ezen keresztül hívhatjuk meg az SQL utasítást (`PDO::query()`),
+vagy adatkötés esetén ezzel készíttethetjük elő az adatbázissal utasításunkat
+(`PDO::prepare()`). Mindkét függvény a `PDOStatement` osztály egy példányával tér
+vissza, vagy sikertelenség esetén dob egy `PDOException` típusú kivételt.
+```php
+
+  <?php
+
+  /* Kapcsolódás MySQL adatbázishoz driver hívással */
+  $dsn = 'mysql:dbname=testdb;host=127.0.0.1';
+  $user = 'felhasznalonev';
+  $password = 'jelszo';
+
+  try {
+      $dbh = new PDO($dsn, $user, $password);
+  } catch (PDOException $e) {
+      echo 'Kapcsolódás meghiúsult: ' . $e->getMessage();
+  }
+
+  ?>
+
+```
+A kapcsolódáskor fellépő esetleges hibát mindenképpen érdemes elkapni, ugyanis
+amennyiben be van kapcsolva a szerveren a hibák kiírása, akkor sikertelenség esetén
+az összes adatbázis kapcsolódási információ, beleérte a felhasználó név és jelszó
+párost is, kiírásra kerül!
+* **[PDOStatement](https://www.php.net/manual/en/class.pdostatement.php):** előkészített
+utasításunk esetén ezzel az objektummal történhetnek meg az adatkötések (`PDOStatement::bindParam()`
+vagy `PDOStatement::bindValue()`), és ezzel hajthatjuk végre az utasításunkat
+(`PDOStatement::execute()`). Végül ezen keresztül érhetőek el az eredményhalmaz
+adatai (`PDOStatement::fetch()`, `PDOStatement::fetchAll()`, `PDOStatement::fetchColumn()`)
+tetszőleges formátumban (tömbként vagy objektumként).
+* **[PDOException](https://www.php.net/manual/en/class.pdoexception.php):** ha egy
+művelet közben hiba lép fel, `PDOException` típusú kivételt dob, amit a szkriptünkben
+kell kezelni.
 
 
 ### Jegyzetek:
