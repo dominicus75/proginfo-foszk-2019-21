@@ -3008,10 +3008,10 @@ vissza, vagy sikertelenség esetén dob egy `PDOException` típusú kivételt.
   ?>
 
 ```
-A kapcsolódáskor fellépő esetleges hibát mindenképpen érdemes elkapni, ugyanis
-amennyiben be van kapcsolva a szerveren a hibák kiírása, akkor sikertelenség esetén
-az összes adatbázis kapcsolódási információ, beleérte a felhasználó név és jelszó
-párost is, kiírásra kerül!
+  A kapcsolódáskor fellépő esetleges hibát mindenképpen érdemes elkapni, ugyanis
+  amennyiben be van kapcsolva a szerveren a hibák kiírása, akkor sikertelenség esetén
+  az összes adatbázis kapcsolódási információ, beleérte a felhasználó név és jelszó
+  párost is, kiírásra kerül!
 * **[PDOStatement](https://www.php.net/manual/en/class.pdostatement.php):** előkészített
 utasításunk esetén ezzel az objektummal történhetnek meg az adatkötések (`PDOStatement::bindParam()`
 vagy `PDOStatement::bindValue()`), és ezzel hajthatjuk végre az utasításunkat
