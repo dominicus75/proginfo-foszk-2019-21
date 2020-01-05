@@ -1561,8 +1561,8 @@ Példa:
     `csaladnev` varchar(30),
     `keresztnev` varchar(20),
     `szul_datum` date,
-    `lakcim` varchar(40) DEFAULT 'hajléktalan'
-    `osztaly_id` int(10)
+    `lakcim` varchar(40) DEFAULT 'hajléktalan',
+    `osztaly_id` int(10),
     PRIMARY KEY (azonosito)
   )ENGINE = InnoDB;
 
