@@ -1,4 +1,4 @@
-[Kezdőlap](README.md)
+[Kezdőlap](../README.md)
 
 # 2019/20 I. félév szóbeli tételek
 
