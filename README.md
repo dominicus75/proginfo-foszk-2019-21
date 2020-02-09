@@ -1,13 +1,17 @@
 # Kidolgozott tételek az NJE-GAMF Programtervező informatikus felsőoktatási szakképzéshez (2019-21)
 
-## [Adatbázisok](Database/README.md)
+## Első félév
 
-* [Első félév](Database/first_semester.md)
+* [Adatbázisok](first_semester/database.md)
 
-## [Közgazdaságtan](Economics/README.md)
+* [Közgazdaságtan](first_semester/economics.md)
 
-* [Első félév](Economics/first_semester.md)
+* [Hálózatok](first_semester/networks.md)
 
-## [Hálózatok](Networks/README.md)
+## Második félév
 
-* [Első félév](Networks/first_semester.md)
+* [Algoritmusok és adatstruktúrák](second_semester/algorithms.md)
+
+* [Informatikai biztonság](second_semester/security.md)
+
+* [Jogi ismeretek](second_semester/law.md)
