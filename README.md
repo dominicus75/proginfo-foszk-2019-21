@@ -15,3 +15,5 @@
 * [Informatikai biztonság](second_semester/security.md)
 
 * [Jogi ismeretek](second_semester/law.md)
+
+* [Java alkalmazások, ZH kérdéssor](second_semester/java.md)
