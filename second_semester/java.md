@@ -29,10 +29,52 @@ futtatható, míg a java bájtkódot a JVM értelmezi és a futtató gép saját
 megfelelő utasítások sorozatává alakítja át, majd ezeket futtatja.
 
 ### 2. Soroljon fel a Java magas szintű nyelvre vonatkozó jellemzőket!
+
+
 ### 3. Mik a Java platform fő komponensei?
+
+
 ### 4. Mit jelent a JVM?
 
-Java Virtual Machine – Java Virtuális Gép.
+Java Virtual Machine – Java Virtuális Gép. A JVM alapvető feladata a platformfüggetlen
+Java bájtkód futtatása (értelmezése). Minden operációs rendszerre létezik egy a
+rendszertől függő Java virtuális gép.
+
+Amikor egy Java alkalmazás elindul, egyetlen futásidejű virtuális gép jön létre,
+vagyis minden Java alkalmazás saját külön JVM-ben fut.
+
+Főbb elemei:
+
+* **[Osztálybetöltő (classloader)](https://hu.wikipedia.org/wiki/Java_Classloader):**
+dinamikusan tölti be a Java osztályokat a Java virtuális gépbe. A Java futtatható
+környezetnek nem kell ismernie a fájlok elhelyezkedését vagy fájl rendszert, mivel
+ezek felderítését a classloader végzi.
+* **Method area**: a JVM többek közt itt tárolja a metódusok kódjait
+* **[Heap (kupac)](https://hu.wikipedia.org/wiki/Kupac_(adatszerkezet))**: az a
+memóriaterület, ahol a referenciatípusokat tárolja a virtuális gép. A program futása
+során minden objektumpéldány erre a területre kerül, vagyis egy tulajdonképpeni
+referencia ezen a területen mutat valahová. A szemétgyűjtő (garbage collector) ezt
+a területet is kezeli. Mivel a tömbök is Java objektumok, ezek is itt tárolódnak.
+* **[Stack (verem)] (https://hu.wikipedia.org/wiki/Verem_(adatszerkezet))**: a stack-en
+a primitív típusok kerülnek tárolásra. Miden programszálban minden Java metódushívás
+állapota egy-egy verembe kerül. Az állapot tartalmazza a lokális változókat, a
+metódus paramétereit, esetleges visszatérési értékét és a belső számítások átmeneti
+adatait.
+* **Program counter regiszterek**: minden szálnak egy külön PC (*utasításszámláló,
+Program Counter*) regisztere van, ami megmutatja, hogy a bájtkódban épp melyik
+utasítást kell következőként végrehajtani. Külön regiszter mutatja a verem aktuális
+tetejét is.
+* **Native method stack**: a natív (vagyis nem Java bájtkód, hanem többnyire C-ben
+vagy C++–ban megírt) metódushívások adatai itt tárolódnak.
+* **Végrehajtó motor (execution engine):** a tulajdonképpeni végrehajtást végzi. A
+következő elemeket tartalmazza:
+  * *Virtuális processzor*
+  * *Interpreter*: értelmezi, és végrehajtja a byte code-ból kiolvasott instrukciókat
+  * *JIT compiler (Just-In-Time fordító):* a byte code-ból gépi kódot generál.
+  * *Java Native Interface*
+* **[Szemétgyűjtő (garbage collector)](https://hu.wikipedia.org/wiki/Szem%C3%A9tgy%C5%B1jt%C3%A9s):**
+működés közben a nem használt objektumokat eltávolítja a memóriából, ezzel helyet
+szabadít fel.
 
 ### 5. Mi a JVM lényege?
 ### 6. Mit jelent az, hogy egy változó deklarációja, illetve változó definíciója?
@@ -98,8 +140,7 @@ Java Virtual Machine – Java Virtuális Gép.
 ### 15. Mit jelent az interface? Mire használhatjuk?
 ### 16. Az interface metódusait mikor kötelező megvalósítani?
 ### 17. Interface-ek között lehetséges az öröklődés?
-### 18. Hogyan néz ki egy interface és az azt tartalmazó törzs? Írjon rá példát! (Interface típusként való
-használata)
+### 18. Hogyan néz ki egy interface és az azt tartalmazó törzs? Írjon rá példát! (Interface típusként való használata)
 ### 19. Írjon példát öröklődésre. Készítsen egy ősosztályt, amely konstruktora legalább egy paramétert átvesz, valamint két leszármazott osztályt. A leszármazottak legalább egy adattaggal és egy függvénnyel többet tartalmazzanak, mint az ős.
 ### 20. Írjon példát interface megvalósításra. Hozzon létre két interface-t legalább egy-egy függvénnyel, továbbá készítsen egy osztályt, amely mindkét interface-től örököl és megvalósítja azok függvényeit.
 
@@ -114,8 +155,7 @@ használata)
 ### 7. Sorolja fel a Collection interface metódusait!
 ### 8. Melyik gyűjtemény interfész engedélyezi a duplikált tárolást?
 ### 9. Kulcs-érték párok tárolására melyik gyűjteményt interface-t használná?
-### 10. Soroljon fel gyűjtemény implementációkat (osztályokat, amelyek megvalósítják a gyűjtemény
-interface-eket)!
+### 10. Soroljon fel gyűjtemény implementációkat (osztályokat, amelyek megvalósítják a gyűjtemény interface-eket)!
 ### 11. Hogyan járhatók be a gyűjtemények? Írjon minden lehetőségre 1-1 példát.
 ### 12. Milyen implementált algoritmusok vannak a Java programozási nyelvben?
 ### 13. Mire jó a Comperator interface?
@@ -153,8 +193,7 @@ interface-eket)!
 ### 1. Java-ban milyen API-n keresztül tudjuk kezelni a relációs adatbázisokat?
 ### 2. Sorolja fel a JDBC driverek típusait!
 ### 3. Melyek a JDBC driver típusok előnyei és hátrányai?
-### 4. Adatbázis kapcsolat mely osztállyal tudjuk kezelni? Melyik osztály mely függvényével tudunk példány
-létrehozni belőle?
+### 4. Adatbázis kapcsolat mely osztállyal tudjuk kezelni? Melyik osztály mely függvényével tudunk példány létrehozni belőle?
 ### 5. Adatbázissal kapcsolat metaadatok mely interface segítségével tudunk lekérdezni?
 ### 6. Mire való a Statement?
 ### 7. Hogyan tudunk létrehozni egy Statement objektumot?
