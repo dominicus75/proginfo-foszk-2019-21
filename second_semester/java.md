@@ -30,8 +30,29 @@ megfelelő utasítások sorozatává alakítja át, majd ezeket futtatja.
 
 ### 2. Soroljon fel a Java magas szintű nyelvre vonatkozó jellemzőket!
 
+* egyszerű
+* objektumorientált
+* előfordított
+* értelmezett (implementált)
+* robusztus
+* biztonságos
+* semleges architektúrájú
+* hordozható
+* nagy teljesítményű
+* többszálú
+* dinamikus
 
 ### 3. Mik a Java platform fő komponensei?
+
+A platform hardver vagy szoftverkörnyezet, ahol a programok futnak. A legtöbb platform
+a hardvert és az operációs rendszert jelenti. A Java platform nem egy konkrét hardvert
+vagy operációs rendszert jelöl, hanem egy virtuális gépnek nevezett futtató programot
+és szabványos osztálykönyvtárak gyűjteményét, amik egységes működést biztosítanak.
+
+A Java platform két komponensből áll:
+* **Java VM (virtuális gép)**
+* **Java API (alkalmazásprogramozási felület)**: több ezer használatra kész szoftverkomponenst
+tartalmaz, csomagokba szervezett osztályokat és interfészeket
 
 
 ### 4. Mit jelent a JVM?
@@ -83,6 +104,9 @@ szabadít fel.
 ### 9. Mit jelent a final kulcsszó egy változó esetén?
 ### 10. Mi a különbség a Java értékadó utasítása és a matematikai egyenlőség között?
 ### 11. Milyen értékeket vehet fel a logikai kifejezés?
+
+True (igaz) vagy False (hamis).
+
 ### 12. Ismertesse az operátorok precedencia szintjeit!
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
 ### 14. Mit jelent a függvény aláírása?
