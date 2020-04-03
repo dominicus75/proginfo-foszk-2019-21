@@ -55,7 +55,7 @@ memóriaterület, ahol a referenciatípusokat tárolja a virtuális gép. A prog
 során minden objektumpéldány erre a területre kerül, vagyis egy tulajdonképpeni
 referencia ezen a területen mutat valahová. A szemétgyűjtő (garbage collector) ezt
 a területet is kezeli. Mivel a tömbök is Java objektumok, ezek is itt tárolódnak.
-* **[Stack (verem)] (https://hu.wikipedia.org/wiki/Verem_(adatszerkezet))**: a stack-en
+* **[Stack (verem)](https://hu.wikipedia.org/wiki/Verem_(adatszerkezet))**: a stack-en
 a primitív típusok kerülnek tárolásra. Miden programszálban minden Java metódushívás
 állapota egy-egy verembe kerül. Az állapot tartalmazza a lokális változókat, a
 metódus paramétereit, esetleges visszatérési értékét és a belső számítások átmeneti
