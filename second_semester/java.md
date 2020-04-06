@@ -157,13 +157,53 @@ final int VALTOZO = 200;
 ```
 
 ### 10. Mi a különbség a Java értékadó utasítása és a matematikai egyenlőség között?
+
+Az értékadó utasítás bal oldalán egy változó neve szerepel, jobb oldalán egy
+kifejezés, amely értékét a számítógép kiszámolja, majd a kapott értéket elhelyezi
+a változó által lefoglalt memóriaterületen. Értékadáskor tehát a jobb oldalon
+található értéket hozzárendeljük a bal oldali azonosítóhoz. A matematikai egyenlőség
+ellenben azt jelenti, hogy az egyenlőségjel két oldalán található kifejezések értéke
+azonos.
+
 ### 11. Milyen értékeket vehet fel a logikai kifejezés?
 
 True (igaz) vagy False (hamis).
 
 ### 12. Ismertesse az operátorok precedencia szintjeit!
+
+A különböző precedencia szintű operátorok esetén mindig a magasabb precedenciájú
+hajtódik végre először. Az azonos precedencia szintű operátorok közül a leírás
+sorrendisége dönt. A legtöbb precedencia szint esetén a leírás sorrendjében, azaz
+balról-jobbra hajtódnak végre. Egyes precedencia szinteknél előfordul, hogy jobbról-balra.
+
+Az értékadó operátorok jobbról balra hajtódnak végre. A precedencia nagyrészt megegyezik
+a matematikai műveletek sorrendjével, valamint itt is igaz az, hogy zárójelezéssel
+felül lehet bírálni azt.
+
+| Prioritás | Operátor | Elnevezés | Végrehajtási irány (azonos precedencia esetén) | Példa |
+|----------:|----------|-----------|:----------------------------------------------:|
+| 1 | `++ --` | Egyoperandusú postfix | balról jobbra | `valtozo++;` |
+| 2 | `++ -- ~ !` | Egyoperandusú prefix | jobbról balra | `++valtozo;` |
+| 3 | `new (<típus>)<kifejezés>` | Példányosítás, típuskényszerítés | balról jobbra | `(int)valtozo;` |
+| 4 | `* / %` | Multiplikatív operátorok | balról jobbra | `a*b;` |
+| 5 | `+ -` | Additív operátorok | balról jobbra | `a+b` |
+| 6 | `<< >> >>>` | Bitenkénti léptető operátorok | balról jobbra | `int b = a >>> 1;` |
+| 7 | `< <= > >= instanceof` | Hasonlító operátorok | balról jobbra | `if (e instanceof ArithmeticException) { //... }` |
+| 8 | `== !=` | Egyenlőségvizsgáló operátorok | balról jobbra | `valtozo1 != valtozo2` |
+| 9 | `&` | Bitenkénti és (AND) | balról jobbra | `(a & b)` |
+| 10 | `^` | Bitenkénti kizáró vagy (XOR) | balról jobbra | `(a ^ b)` |
+| 11 | `|` | Bitenkénti vagy (OR) | balról jobbra | `(a | b)` |
+| 12 | `&&` | Logikai és (AND) | balról jobbra | `(a && b)` |
+| 13 | `||` | Logikai vagy (OR) | balról jobbra | `(a || b)` |
+| 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
+| 15 | `= += -= *= /= %= &= ^= |= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
+
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
+
+
 ### 14. Mit jelent a függvény aláírása?
+
+
 
 ## Kifejezések, utasítások, blokkok, ciklusok, vezérlési szerkezetek, kivételkezelés, burkoló osztályok
 
