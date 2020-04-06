@@ -98,8 +98,37 @@ működés közben a nem használt objektumokat eltávolítja a memóriából, e
 szabadít fel.
 
 ### 5. Mi a JVM lényege?
+
+A JVM alapvető feladata a platformfüggetlen Java bájtkód futtatása (értelmezése).
+A JVM biztosítja a java programok platformfüggetlenségét azzal, hogy köztes rétegként
+ékelődik az adott platform (operációs rendszer) és a java program közé.
+
 ### 6. Mit jelent az, hogy egy változó deklarációja, illetve változó definíciója?
+
+A definíció és deklaráció szinte teljesen azonos fogalmak. Változók esetében
+**a deklaráció általában a név és a típus rögzítéséből áll**. Ha változó definiálását
+emlegetjük változó deklarálása helyett, akkor azzal azt hangsúlyozzuk ki, hogy
+a név és a típus rögzítése mellett a szükséges tárhely is lefoglalásra kerül a
+változó számára (hogy mekkora hely, azt a típus határozza meg). **Inicializálás**nak
+nevezzük, amikor egy változó definiálásával egyidejűleg kezdőértéket is adunk a
+változónak.
+
 ### 7. Soroljon fel a Java primitív típusait!
+
+A primitív adattípusok egy egyszerű értéket képesek tárolni: számot, karaktert
+vagy logikai értéket. A változó neve így közvetlenül egy értéket jelent.
+
+| Típus | Tárolt érték típusa | Alapértelmezett érték | Méret (bit) | Értéktartomány |
+|-------|---------------------|-----------------------|-------------|----------------|
+| byte  | előjeles egész | 0  | 8  | -128 – 127   |
+| short  | előjeles egész  | 0  | 16  | -32768 – 32767   |
+| int  | előjeles egész  | 0  | 32  | -2147483648 – 2147483647   |
+| long  | előjeles egész  | 0  | 64  | -9223372036854775808 – 9223372036854775807  |
+| float  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |   | 32  | 7 tizedesjegy pontosság  |
+| double  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |   | 64  | 15 tizedesjegy pontosság  |
+| char  | [Unicode karakter](https://hu.wikipedia.org/wiki/Unicode)  | \u0000  | 16  | \u0000 - \uFFFF  |
+| boolean  | logikai érték  | false  | 1  | true, false  |
+
 ### 8. Soroljon fel példákat referencia típusokra!
 ### 9. Mit jelent a final kulcsszó egy változó esetén?
 ### 10. Mi a különbség a Java értékadó utasítása és a matematikai egyenlőség között?
