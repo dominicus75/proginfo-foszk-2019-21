@@ -124,8 +124,8 @@ vagy logikai értéket. A változó neve így közvetlenül egy értéket jelent
 | short  | előjeles egész  | 0  | 16  | -32768 – 32767   |
 | int  | előjeles egész  | 0  | 32  | -2147483648 – 2147483647   |
 | long  | előjeles egész  | 0  | 64  | -9223372036854775808 – 9223372036854775807  |
-| float  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |   | 32  | 7 tizedesjegy pontosság  |
-| double  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |   | 64  | 15 tizedesjegy pontosság  |
+| float  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |  32 | 7 tizedesjegy pontosság  |
+| double  | [IEEE 754 lebegő pontos](https://hu.wikipedia.org/wiki/IEEE_lebeg%C5%91pontos_sz%C3%A1mform%C3%A1tum)  | 0.0  |   64  | 15 tizedesjegy pontosság  |
 | char  | [Unicode karakter](https://hu.wikipedia.org/wiki/Unicode)  | \u0000  | 16  | \u0000 - \uFFFF  |
 | boolean  | logikai érték  | false  | 1  | true, false  |
 
