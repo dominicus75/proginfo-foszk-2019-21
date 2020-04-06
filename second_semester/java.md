@@ -176,10 +176,6 @@ hajtódik végre először. Az azonos precedencia szintű operátorok közül a 
 sorrendisége dönt. A legtöbb precedencia szint esetén a leírás sorrendjében, azaz
 balról-jobbra hajtódnak végre. Egyes precedencia szinteknél előfordul, hogy jobbról-balra.
 
-Az értékadó operátorok jobbról balra hajtódnak végre. A precedencia nagyrészt megegyezik
-a matematikai műveletek sorrendjével, valamint itt is igaz az, hogy zárójelezéssel
-felül lehet bírálni azt.
-
 | Prioritás | Operátor | Elnevezés | Végrehajtási irány (azonos precedencia esetén) | Példa |
 |----------:|----------|-----------|:----------------------------------------------:|-------|
 | 1 | `++ --` | Egyoperandusú postfix | balról jobbra | `valtozo++;` |
@@ -197,6 +193,10 @@ felül lehet bírálni azt.
 | 13 | `\|\|` | Logikai vagy (OR) | balról jobbra | `(a \|\| b)` |
 | 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
 | 15 | `= += -= *= /= %= &= ^= \|= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
+
+Az értékadó operátorok jobbról balra hajtódnak végre. A precedencia nagyrészt megegyezik
+a matematikai műveletek sorrendjével, valamint itt is igaz az, hogy zárójelezéssel
+felül lehet bírálni azt.
 
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
 
