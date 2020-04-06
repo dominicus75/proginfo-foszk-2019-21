@@ -200,10 +200,19 @@ felül lehet bírálni azt.
 
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
 
+Függvények esetén a deklaráció általában a függvény nevének, argumentumainak és
+visszatérési értékének (vagyis: szignatúrájának) leírásából áll. Ez általában interfészekben
+és absztrakt osztályokban fordul elő. Az interfészt implementáló osztályban történik
+a függvénydefiniálás, vagyis a szignatúrához függvénytörzset készítünk. Azokban az
+esetekben, amikor egy függvénynévhez több törzs is tartozik, fontos ismerni az argumentumok
+pontos típusát, mert a törzs kiválasztása gyakran az aktuális paraméterek típusától
+függ. Ha a szignatúrához függvénytörzs is tartozik (a függvény által végrehajtandó
+utasítások), akkor definícióról beszélünk.
 
 ### 14. Mit jelent a függvény aláírása?
 
-
+Egy metódus/függvény szignatúrája a nevéből, visszatérési értékéből, valamint paramétereinek
+számából és típusából áll.
 
 ## Kifejezések, utasítások, blokkok, ciklusok, vezérlési szerkezetek, kivételkezelés, burkoló osztályok
 
