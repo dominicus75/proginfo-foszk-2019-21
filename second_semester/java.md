@@ -129,8 +129,33 @@ vagy logikai értéket. A változó neve így közvetlenül egy értéket jelent
 | char  | [Unicode karakter](https://hu.wikipedia.org/wiki/Unicode)  | \u0000  | 16  | \u0000 - \uFFFF  |
 | boolean  | logikai érték  | false  | 1  | true, false  |
 
+A Java nyelvben minden típus előjeles (signed), azaz nincs előjel nélküli
+(unsigned) típus!
+
 ### 8. Soroljon fel példákat referencia típusokra!
+
+Míg az egyszerű adattípusok csakis 1 db elemet tárolnak (például egy számot: int
+a = 23), addig az összetett adattípusok képesek több elemet is, még pedig rendszerezetten
+és könnyen visszakereshető módon.
+
+Referenciatípusok esetén a létrehozott példány (objektum) által lefoglalt
+memóriaterület nem a létrehozás helyén fog elhelyezkedni, hanem egy külön
+tárterületet fog elfoglalni a memória egy másik területén (a heap-ben). A befogadó
+területen csak egy hivatkozás, más szóval referencia lesz eltárolva.
+
+Referenciatípusok a javában a **string**, a **tömb** és az **objektum**.
+
 ### 9. Mit jelent a final kulcsszó egy változó esetén?
+
+Primitív adattípusú változó esetén az érték **megváltoztathatatlan (immutable)** lesz,
+míg a referenciatípusok esetén a referencia lesz az (maga az objektum nem). A **final**
+kulcsszó tulajdonképpen a más nyelvekben előforduló **állandók (konstansok)** javás
+megfelelője, ezért a változó neve csupa nagybetűvel írandó.
+
+```
+final int VALTOZO = 200;
+```
+
 ### 10. Mi a különbség a Java értékadó utasítása és a matematikai egyenlőség között?
 ### 11. Milyen értékeket vehet fel a logikai kifejezés?
 
