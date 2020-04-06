@@ -181,7 +181,7 @@ a matematikai műveletek sorrendjével, valamint itt is igaz az, hogy zárójele
 felül lehet bírálni azt.
 
 | Prioritás | Operátor | Elnevezés | Végrehajtási irány (azonos precedencia esetén) | Példa |
-|----------:|----------|-----------|:----------------------------------------------:|
+|----------:|----------|-----------|:----------------------------------------------:|-------|
 | 1 | `++ --` | Egyoperandusú postfix | balról jobbra | `valtozo++;` |
 | 2 | `++ -- ~ !` | Egyoperandusú prefix | jobbról balra | `++valtozo;` |
 | 3 | `new (<típus>)<kifejezés>` | Példányosítás, típuskényszerítés | balról jobbra | `(int)valtozo;` |
