@@ -194,7 +194,7 @@ felül lehet bírálni azt.
 | 10 | `^` | Bitenkénti kizáró vagy (XOR) | balról jobbra | `(a ^ b)` |
 | 11 | `\|` | Bitenkénti vagy (OR) | balról jobbra | `(a \| b)` |
 | 12 | `&&` | Logikai és (AND) | balról jobbra | `(a && b)` |
-| 13 | `||` | Logikai vagy (OR) | balról jobbra | `(a || b)` |
+| 13 | `\|\|` | Logikai vagy (OR) | balról jobbra | `(a \|\| b)` |
 | 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
 | 15 | `= += -= *= /= %= &= ^= |= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
 
