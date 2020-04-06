@@ -206,8 +206,7 @@ visszatérési értékének (vagyis: szignatúrájának) leírásából áll. Ez
 a függvénydefiniálás, vagyis a szignatúrához függvénytörzset készítünk. Azokban az
 esetekben, amikor egy függvénynévhez több törzs is tartozik, fontos ismerni az argumentumok
 pontos típusát, mert a törzs kiválasztása gyakran az aktuális paraméterek típusától
-függ. Ha a szignatúrához függvénytörzs is tartozik (a függvény által végrehajtandó
-utasítások), akkor definícióról beszélünk.
+függ.
 
 ### 14. Mit jelent a függvény aláírása?
 
