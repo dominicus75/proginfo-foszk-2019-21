@@ -192,7 +192,7 @@ felül lehet bírálni azt.
 | 8 | `== !=` | Egyenlőségvizsgáló operátorok | balról jobbra | `valtozo1 != valtozo2` |
 | 9 | `&` | Bitenkénti és (AND) | balról jobbra | `(a & b)` |
 | 10 | `^` | Bitenkénti kizáró vagy (XOR) | balról jobbra | `(a ^ b)` |
-| 11 | `|` | Bitenkénti vagy (OR) | balról jobbra | `(a | b)` |
+| 11 | `\|` | Bitenkénti vagy (OR) | balról jobbra | `(a \| b)` |
 | 12 | `&&` | Logikai és (AND) | balról jobbra | `(a && b)` |
 | 13 | `||` | Logikai vagy (OR) | balról jobbra | `(a || b)` |
 | 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
