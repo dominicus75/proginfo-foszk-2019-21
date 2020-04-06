@@ -196,7 +196,7 @@ felül lehet bírálni azt.
 | 12 | `&&` | Logikai és (AND) | balról jobbra | `(a && b)` |
 | 13 | `\|\|` | Logikai vagy (OR) | balról jobbra | `(a \|\| b)` |
 | 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
-| 15 | `= += -= *= /= %= &= ^= |= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
+| 15 | `= += -= *= /= %= &= ^= \|= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
 
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
 
