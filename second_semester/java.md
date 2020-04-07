@@ -2,7 +2,14 @@
 
 # Java alkalmazások – elméleti ZH kérdéssor
 
-## Java bevezető, változók, operátorok
+*Megjegyzés: az utasítások szintaxisának leírásánál az elhagyható (opcionális) részleteket
+szögletes zárójel, a több lehetőség közüli választást függőleges vonal (`|` logikai
+vagy operátor) jelöli, a [BNF](https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma)
+metaszintaxishoz hasonló módon. A {kapcsos zárójelbe zárt szöveg} logikai egységet
+alkotó nyelvi elemeket jelöl a szintaxis leírásában.*
+
+## I. Java bevezető, változók, operátorok
+
 
 ### 1. Mi a különbség a gépi kód és a Java bájtkód között?
 
@@ -175,6 +182,8 @@ A különböző precedencia szintű operátorok esetén mindig a magasabb preced
 hajtódik végre először. Az azonos precedencia szintű operátorok közül a leírás
 sorrendisége dönt. A legtöbb precedencia szint esetén a leírás sorrendjében, azaz
 balról-jobbra hajtódnak végre. Egyes precedencia szinteknél előfordul, hogy jobbról-balra.
+A precedencia nagyrészt megegyezik a matematikai műveletek sorrendjével, valamint
+itt is igaz az, hogy zárójelezéssel felül lehet bírálni azt.
 
 | Prioritás | Operátor | Elnevezés | Végrehajtási irány (azonos precedencia esetén) | Példa |
 |----------:|----------|-----------|:----------------------------------------------:|-------|
@@ -194,9 +203,8 @@ balról-jobbra hajtódnak végre. Egyes precedencia szinteknél előfordul, hogy
 | 14 | `?:` | Feltételes értékadás | balról jobbra | `b = (a == 1) ? 20 : 30;` |
 | 15 | `= += -= *= /= %= &= ^= \|= <<= >>= >>>=` | Értékadó operátorok | jobbról balra | `valtozo1 += valtozo2` |
 
-Az értékadó operátorok jobbról balra hajtódnak végre. A precedencia nagyrészt megegyezik
-a matematikai műveletek sorrendjével, valamint itt is igaz az, hogy zárójelezéssel
-felül lehet bírálni azt.
+Értékadásnál először mindig a jobb oldalon álló kifejezés értéke kerül kiszámításra,
+majd a kiszámított érték bekerül a bal oldalon álló változóba.
 
 ### 13. Mit jelent a függvény deklaráció és függvény definíció?
 
@@ -213,126 +221,439 @@ függ.
 Egy metódus/függvény szignatúrája a nevéből, visszatérési értékéből, valamint paramétereinek
 számából és típusából áll.
 
-## Kifejezések, utasítások, blokkok, ciklusok, vezérlési szerkezetek, kivételkezelés, burkoló osztályok
+
+
+## II. Kifejezések, utasítások, blokkok, ciklusok, vezérlési szerkezetek, kivételkezelés, burkoló osztályok
+
 
 ### 1. Mit jelent a programblokk?
+
+A **blokk nulla vagy több utasítás kapcsos zárójelek között**, amely használható bárhol,
+ahol az önálló utasítások megengedettek. A blokkon belül bárhová írható
+deklaráció és végrehajtható utasítás is. A blokkon belüli deklarációra annyi megkötés van,
+hogy **minden változót az előtt kell deklarálni, hogy értéket adnánk neki**, illetve a
+**blokkon belül deklarált változó hatóköre a blokk végéig tart**. Ez azt jelenti, hogy
+a blokkot lezáró kapcsos zárójel után a blokkon belül deklarált változók számára
+lefoglalt memóriaterület felszabadul, és a változó innentől fogva már nem
+használható.
+
+Habár nem szükséges, az áttekinthetőség és egyértelműség miatt a kapcsos zárójelek
+alkalmazása akkor is ajánlott, ha a blokk csak egy utasítást tartalmaz.
+
 ### 2. Ismertesse a kifejezés definícióját! Írjon rá példát.
+
+A kifejezések változókból, literálokból, operandusokból és operátorokból (műveleti
+jelekből) állnak, értéküket a program futás közben számolja ki.
+
+```
+int c = (a + b) * 5;
+```
+
 ### 3. Ismertesse az utasítás definícióját!
+
+Az utasítások nagyjából a beszélt nyelv mondatainak felelnek meg. Az utasítás egy
+konkrét futási egységet hoz létre, amelyet pontosvesszővel (`;`) kell lezárni. Az
+utasítások fajtái:
+1. **kifejezés utasítások**
+  * értékadó kifejezések
+  * ++ és -- használata
+  * metódushívások
+  * objektumot létrehozó kifejezések.
+2. **deklarációs utasítások:** változókat hoznak létre
+3. **végrehajtás-vezérlő utasítások:** azt szabályozzák, hogy az utasítások milyen
+sorrendben hajtódnak végre. A `for` ciklus és az `if` utasítás jó példák a
+végrehajtás-vezérlő szerkezetre.
+
 ### 4. Hogyan kell egy programblokkot leírni Java-ban?
+
+Kapcsos zárójelek között. Habár nem szükséges, az áttekinthetőség és egyértelműség
+miatt a kapcsos zárójelek alkalmazása akkor is ajánlott, ha a blokk csak egy utasítást
+tartalmaz.
+
+```
+if (<logikai kifejezés>) {
+  <első programblokk>
+} else {
+  <második programblokk>
+}
+```
+
 ### 5. Java-ban milyen ciklusok érhetők el?
-### 6. Mit jelent, hogy egy while ciklus elöltesztelő ciklus?
+
+Az iteráció olyan alapstruktúra, amelynek során egy vagy több lépést többször megismételve
+hajtunk végre. Az ismétlések száma függhet egy feltételtől, de lehet előírt lépésszámú
+is. Az iterációt a programozási nyelvekben ciklusszervező utasításokkal valósítjuk meg.
+
+A javában használható ciklusok:
+* **előltesztelő:** először megvizsgálja a feltételt (logikai kifejezés), majd annak
+  függvényében hajtja végre a ciklusmagot (0 vagy több alkalommal).
+  ```
+    [<számláló inicializálása>;]
+    while(<feltétel>){
+      <ciklusmag>;
+      [<számláló léptetése>;]
+    }
+  ```
+* **hátultesztelő:** először végrehajtja a ciklusmagot, majd megvizsgálja a feltételt,
+  s annak függvényében fut vagy nem fut le ismét. Legalább egyszer biztosan lefut
+  (jellemző használata: ellenőrzött adatbekérés).
+  ```
+    do {
+      <ciklusmag>
+    } while(<feltétel>)
+  ```
+* **számlálós:** a ciklusmag végrehajtásának száma előre ismert
+  ```
+    for(<számláló inicializálása>; <feltétel>; <számláló léptetése>){
+      <ciklusmag>
+    }
+  ```
+* **iteráló ciklus:** a Java 5.0 változata egy újfajta **for** utasítást vezetett
+  be, kifejezetten gyűjteményekhez (osztályok, amik a Collection interfészt
+  implementálják) és tömbökhöz.
+  ```
+    for (<típus> <elem_neve> : <tömb_neve>) {
+      <ciklusmag> // pl: System.out.println(<elem_neve>);
+    }
+  ```
+
+
+### 6. Mit jelent, hogy egy while ciklus elöltesztelős ciklus?
+
+Az elöltesztelő ciklus először megvizsgálja, hogy a feltétel igaz-e. Ha igen, akkor
+lefuttatja a ciklusmagot, és újból kezdődik; ha nem, akkor a program a ciklus utáni
+ponton folytatódik, azaz a ciklusmag kimarad. Lehetséges tehát, hogy az elöltesztelő
+ciklus egyszer sem fog lefutni (ha a feltétel nem igaz).
+
 ### 7. Írjon példát egymásba ágyazott ciklusra!
+
+
 ### 8. Ismertesse a „foreach” ciklust! Írjon rá egy példát!
+
+
+```
+  public class MyClass {
+
+    public static void main(String[] args) {
+
+      String[] autok = {"Volvo", "BMW", "Ford", "Mazda"};
+
+      for (String tipus : autok) { System.out.println(tipus); }
+
+    }
+
+  }
+```
+
 ### 9. Ismertesse a Java vezérlési szerkezeteit! Sorolja fel őket!
+
+
 ### 10. Milyen feltétel nélküli vezérlésátadás létezik a Java programozási nyelvben?
+
+
 ### 11. Mire szolgál a try-catch szerkezet? Mire használható a finally ág? Írjon egy példát.
+
+
 ### 12. Hogyan tudunk saját kivételt létrehozni? Lehetséges-e ez a Java-ban egyáltalán?
+
+
 ### 13. Kivétel osztályoknál melyik osztály az osztályhierarchiájában csúcsán (nem az Object)?
+
+
 ### 14. Milyen kulcsszóval lehetséges a kivételek továbbadása?
+
+
 ### 15. Sorolja fel a Java burkoló osztályait!
+
+
 ### 16. Soroljon fel néhány burkoló osztály metódust és adattagot!
 
-## Adattípusok, String műveletek
+
+
+## III. Adattípusok, String műveletek
+
 
 ### 1. Sorolja fel az egész számokat reprezentáló primitív típusokat!
+
+
 ### 2. Sorolja fel a valós számokat reprezentáló primitív típusokat!
+
+
 ### 3. Mit valósít meg a String pool?
+
+
 ### 4. Melyik függvénnyel segítségével kerülnek bele manuálisan a String-ek a String pool-ba?
+
+
 ### 5. Index alapján melyik függvénnyel tudunk kiolvasni egy karaktert (String-ből)?
+
+
 ### 6. Két String értékét mivel hasonlítjuk össze?
+
+
 ### 7. Mely függvény teszi lehetővé, hogy egy String részletét megkapjuk index-ek alapján?
+
+
 ### 8. Whitespace karaktereket hogyan törlünk a String elejéről és végéről?
+
+
 ### 9. String felbontása (egy általunk megadott elválasztó szöveg mentén) melyik függvénnyel valósítható meg?
+
+
 ### 10. switch-case szerkezetnél a feltétel a switch-ben megadott változó lehet String típusú?
+
+
 ### 11. Mire jó a StringBuilder és a StringBuffer?
+
+
 ### 12. Mi a különbség a StringBuilder, a StringBuffer és a String között?
 
-## Objektumorientáltság, osztályok, interface-ek
+
+
+## IV. Objektumorientáltság, osztályok, interface-ek
+
 
 ### 1. Mi az objektum, mi az osztály és milyen viszonyban vannak egymással?
+
+
 ### 2. Mi az objektumorientált programozás főbb alapelvei?
+
+
 ### 3. Mit jelent a konstruktor? Milyen láthatósága lehet?
+
+
 ### 4. Mire használjuk a new kulcsszót?
+
+
 ### 5. Sorolja fel a Java-ban elérhető hozzáférhetőségi szinteket!
+
+
 ### 6. Mit jelent az automatikus szemétgyűjtés?
+
+
 ### 7. Egy osztálynak hány konstruktora lehet?
+
+
 ### 8. Írjon példát saját osztály és objektum létrehozására!
+
+
 ### 9. Írjon példát beágyazott osztályra!
+
+
 ### 10. Mit jelent a statikus változó/metódus? Mikor alkalmazható?
+
+
 ### 11. Mit jelent a this, super kulcsszó? Mikor használjuk?
+
+
 ### 12. Mit jelent az öröklődés? Egy osztálynak hány szülőosztálya lehet?
+
+
 ### 13. Osztályhierarchia csúcsán milyen osztály van?
+
+
 ### 14. Object osztálytól milyen metódusokat kapunk?
+
+
 ### 15. Mit jelent az interface? Mire használhatjuk?
+
+
 ### 16. Az interface metódusait mikor kötelező megvalósítani?
+
+
 ### 17. Interface-ek között lehetséges az öröklődés?
+
+
 ### 18. Hogyan néz ki egy interface és az azt tartalmazó törzs? Írjon rá példát! (Interface típusként való használata)
+
+
 ### 19. Írjon példát öröklődésre. Készítsen egy ősosztályt, amely konstruktora legalább egy paramétert átvesz, valamint két leszármazott osztályt. A leszármazottak legalább egy adattaggal és egy függvénnyel többet tartalmazzanak, mint az ős.
+
+
 ### 20. Írjon példát interface megvalósításra. Hozzon létre két interface-t legalább egy-egy függvénnyel, továbbá készítsen egy osztályt, amely mindkét interface-től örököl és megvalósítja azok függvényeit.
 
-## Tömbök, gyűjtemények, algoritmusok, generikus típusok
+
+
+## V. Tömbök, gyűjtemények, algoritmusok, generikus típusok
+
 
 ### 1. Jellemezze a Java tömböket?
+
+
 ### 2. Java-ban milyen típusok a tömbök?
+
+
 ### 3. Írjon példát tömb használatára!
+
+
 ### 4. Tömbök másolására milyen megoldásokat ismer?
+
+
 ### 5. Mi a gyűjtemény?
+
+
 ### 6. Mit támogat a gyűjtemény keretrendszer a Java-ban?
+
+
 ### 7. Sorolja fel a Collection interface metódusait!
+
+
 ### 8. Melyik gyűjtemény interfész engedélyezi a duplikált tárolást?
+
+
 ### 9. Kulcs-érték párok tárolására melyik gyűjteményt interface-t használná?
+
+
 ### 10. Soroljon fel gyűjtemény implementációkat (osztályokat, amelyek megvalósítják a gyűjtemény interface-eket)!
+
+
 ### 11. Hogyan járhatók be a gyűjtemények? Írjon minden lehetőségre 1-1 példát.
+
+
 ### 12. Milyen implementált algoritmusok vannak a Java programozási nyelvben?
+
+
 ### 13. Mire jó a Comperator interface?
+
+
 ### 14. Írjon példát Comparable<T> interface megvalósítására (saját osztályt is)!
 
-## Fájlműveletek, adatfolyamok
+
+
+## VI. Fájlműveletek, adatfolyamok
+
 
 ### 1. Melyik osztály fér hozzá direkt módon (nem adatfolyamként) a fájlokhoz és fájlrendszerhez?
+
+
 ### 2. Mire jó a File osztály?
+
+
 ### 3. Soroljon fel a File osztály metódusait!
+
+
 ### 4. Hogyan lehet könyvtárakat létrehozni Java-ban?
+
+
 ### 5. Mit jelent az adatfolyam Java-ban?
+
+
 ### 6. Adatfolyamoknál mely két interface a legfontosabb?
+
+
 ### 7. Soroljon fel Stream osztályokat!
+
+
 ### 8. Soroljon fel a byte adatfolyamot megvalósító osztályokat!
+
+
 ### 9. Soroljon fel a karakter adatfolyamot megvalósító osztályokat!
+
+
 ### 10. Mely két fontos szűrő osztály létezik Java-ban?
+
+
 ### 11. Mire való a Console osztály?
 
-## Lambda kifejezések, Stream API, dátumkezelés
+
+
+## VII. Lambda kifejezések, Stream API, dátumkezelés
+
 
 ### 1. Mi a felsorolási típus? Milyen kulcsszóval tudjuk létrehozni?
+
+
 ### 2. Mikortól jelent meg Java-ban a lamda kifejezések?
+
+
 ### 3. Mire használhatóak a lambda kifejezések?
+
+
 ### 4. Hogyan működnek a lambda kifejezések? Írjon egy példát!
+
+
 ### 5. Mire való a default kulcsszó?
+
+
 ### 6. Mire használhatjuk a Stream API-t?
+
+
 ### 7. Sorolja fel a Stream API fontosabb függvényeit! Jellemezze ezeket!
+
+
 ### 8. Milyen „végső műveleteket” ismer?
+
+
 ### 9. Mire jó az Optional osztály?
+
+
 ### 10. Jellemezze a Java 8 új „Date and Time API”-ját!
 
-## Adatbáziskezelés JDBC-vel
+
+
+## VIII. Adatbáziskezelés JDBC-vel
+
 
 ### 1. Java-ban milyen API-n keresztül tudjuk kezelni a relációs adatbázisokat?
+
+
 ### 2. Sorolja fel a JDBC driverek típusait!
+
+
 ### 3. Melyek a JDBC driver típusok előnyei és hátrányai?
+
+
 ### 4. Adatbázis kapcsolat mely osztállyal tudjuk kezelni? Melyik osztály mely függvényével tudunk példány létrehozni belőle?
+
+
 ### 5. Adatbázissal kapcsolat metaadatok mely interface segítségével tudunk lekérdezni?
+
+
 ### 6. Mire való a Statement?
+
+
 ### 7. Hogyan tudunk létrehozni egy Statement objektumot?
+
+
 ### 8. Sorolja fel a Statement SQL parancs végrehajtó függvényeit!
+
+
 ### 9. Írjon példát executeQuery() függvény használatára!
+
+
 ### 10. Írjon példát executeUpdate() függvény használatára!
+
+
 ### 11. Lekérdezés eredményét milyen típusban tároljuk?
+
+
 ### 12. Mire használjuk a PreparedStatement-et? Milyen előnye van a Statement-tel szemben?
+
+
 ### 13. Írjon példát PreparedStatement használatára!
+
+
 ### 14. Soroljon fel néhány JDBC adattípust!
+
+
 ### 15. Milyen ResultSet tulajdonságok léteznek?
+
+
 ### 16. Milyen metódusok léteznek az adatok módosítására ResultSet-ben?
+
+
 ### 17. JDBC-ben hogyan valósíthatjuk meg a tranzakció kezelést?
+
+
 ### 18. JDBC-ben hogyan kérdezhetőek le a hibák és a figyelmeztetések?
+
+
+### Felhasznált (ajánlott) irodalom:
+
+* Nagy Gusztáv: [Java programozás](https://nagygusztav.hu/sites/default/files/csatol/java_programozas_1.3.pdf)
+* Tömösközi Péter: [Programozás javában](https://mek.oszk.hu/14200/14282/pdf/14282.pdf)
+* Sallai András: [Java](https://szit.hu/doku.php?id=oktatas:programozas:java)
+* Wikipedia: [Java-szócikk](https://hu.wikipedia.org/wiki/Java_(programoz%C3%A1si_nyelv))
+* W3Scholls: [Java tutorial](https://www.w3schools.com/java/)
 
 [Kezdőlap](../README.md)
