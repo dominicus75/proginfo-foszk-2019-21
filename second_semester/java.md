@@ -481,13 +481,13 @@ adattípuson.
 | char | Character | java.lang |
 | short | Short | java.lang |
 | int | Integer | java.lang |
-| int | BigInteger* | java.math |
+| int | BigInteger | java.math |
 | long | Long | java.lang |
 | float | Float | java.lang |
-| float | BigDecimal* | java.math |
+| float | BigDecimal | java.math |
 | double | Double | java.lang |
 
-* A `BigInteger` és `BigDecimal` kiterjeszti a hagyományos adattípusokat, és tetszőleges
+A `BigInteger` és `BigDecimal` kiterjeszti a hagyományos adattípusokat, és tetszőleges
 pontosság alkalmazását engedi meg.
 
 ### 16. Soroljon fel néhány burkoló osztály metódust és adattagot!
@@ -495,7 +495,7 @@ pontosság alkalmazását engedi meg.
 A Number osztály összes leszármazott osztálya által tartalmazott metódusok:
 | Metódus | Működés |
 | `<tipus> <tipus>Value()` | Konvertálja a szám objektum értékét egy egyszerű adattípussá (short, long, float, doube) |
-| `<típus> compareTo(<Integer|Object>)` | Összehasonlítja a szám objektumot a paraméterrel. |
+| `<típus> compareTo(<Integer\|Object>)` | Összehasonlítja a szám objektumot a paraméterrel. |
 | `<típus> equals(Object)` | Meghatározza, hogy a szám objektum egyenlő-e a paraméterrel. Különböző típusú szám objektumok – a matematikai értéküktől függetlenül – sosem egyenlőek. |
 
 A Float és a Double osztály néhány konstansa:
