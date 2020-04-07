@@ -327,6 +327,21 @@ ciklus egyszer sem fog lefutni (ha a feltétel nem igaz).
 
 ### 7. Írjon példát egymásba ágyazott ciklusra!
 
+Rendezési algoritmus megvalósítása java nyelven:
+
+```
+  int csere;
+
+  for(int i = 0; i < tomb.length-1; i++) {
+    for(int j = i+1; j < tomb.length; j++) {
+      if(tomb[i] > tomb[j]) {
+        csere = tomb[i];
+        tomb[i] = tomb[j];
+        tomb[j] = csere;
+      }
+    }
+  }
+```
 
 ### 8. Ismertesse a „foreach” ciklust! Írjon rá egy példát!
 
