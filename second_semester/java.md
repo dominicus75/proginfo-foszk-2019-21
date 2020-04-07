@@ -476,6 +476,7 @@ vagy egy másik szám típussá), vagy különböző műveleteket hajtanak végr
 adattípuson.
 
 | Elemi típus | Burkoló osztály | Csomag |
+|-------------|-----------------|:------:|
 | boolean | Boolean | java.lang |
 | byte | Byte | java.lang |
 | char | Character | java.lang |
@@ -494,11 +495,14 @@ pontosság alkalmazását engedi meg.
 
 A Number osztály összes leszármazott osztálya által tartalmazott metódusok:
 | Metódus | Működés |
+|---------|---------|
 | `<tipus> <tipus>Value()` | Konvertálja a szám objektum értékét egy egyszerű adattípussá (short, long, float, doube) |
 | `<típus> compareTo(<Integer\|Object>)` | Összehasonlítja a szám objektumot a paraméterrel. |
 | `<típus> equals(Object)` | Meghatározza, hogy a szám objektum egyenlő-e a paraméterrel. Különböző típusú szám objektumok – a matematikai értéküktől függetlenül – sosem egyenlőek. |
 
 A Float és a Double osztály néhány konstansa:
+| Konstans | Jelentés |
+|----------|----------|
 | `<osztály>.NaN` | Nem szám |
 | `<osztály>.NEGATIVE_INFINITY` | Negatív végtelen |
 | `<osztály>.POSITIVE_INFINITY` | Pozitív végtelen |
