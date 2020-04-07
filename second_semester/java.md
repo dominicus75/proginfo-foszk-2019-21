@@ -255,10 +255,10 @@ Az utasítások nagyjából a beszélt nyelv mondatainak felelnek meg. Az utasí
 konkrét futási egységet hoz létre, amelyet pontosvesszővel (`;`) kell lezárni. Az
 utasítások fajtái:
 1. **kifejezés utasítások**
-  * értékadó kifejezések
-  * ++ és -- használata
-  * metódushívások
-  * objektumot létrehozó kifejezések.
+    * értékadó kifejezések
+    * ++ és -- használata
+    * metódushívások
+    * objektumot létrehozó kifejezések.
 2. **deklarációs utasítások:** változókat hoznak létre
 3. **végrehajtás-vezérlő utasítások:** azt szabályozzák, hogy az utasítások milyen
 sorrendben hajtódnak végre. A `for` ciklus és az `if` utasítás jó példák a
