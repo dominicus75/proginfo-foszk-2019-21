@@ -242,8 +242,8 @@ alkalmazása akkor is ajánlott, ha a blokk csak egy utasítást tartalmaz.
 
 ### 2. Ismertesse a kifejezés definícióját! Írjon rá példát.
 
-A kifejezések változókból, literálokból, operandusokból és operátorokból (műveleti
-jelekből) állnak, értéküket a program futás közben számolja ki.
+A kifejezés változók, literálok, operátorok és metódushívások olyan sorozata, amely
+figyelembe veszi a nyelv szintaxisát és egy értéket ad vissza.
 
 ```
 int c = (a + b) * 5;
@@ -345,6 +345,13 @@ Rendezési algoritmus megvalósítása java nyelven:
 
 ### 8. Ismertesse a „foreach” ciklust! Írjon rá egy példát!
 
+A Java 5.0 változata egy újfajta **for** utasítást vezetett be, kifejezetten
+gyűjteményekhez (osztályok, amik a Collection interfészt implementálják) és tömbökhöz,
+amely működésében nagyban hasonlít a más programnyelvekben használt foreach ciklushoz.
+Lényege, hogy nem kell sem kezdőértéket, sem feltételt megadni, ahogy a számlálót
+léptetni sem. A ciklus három paramétert vár: az adatelem típusát, egy tetszőlegesen
+választott nevet az egyes adatelemekhez (ezen a néven lehet hivatkozni rájuk a
+ciklusmagban) és a bejárandó adatszerkezet nevét.
 
 ```
   public class MyClass {
@@ -362,27 +369,140 @@ Rendezési algoritmus megvalósítása java nyelven:
 
 ### 9. Ismertesse a Java vezérlési szerkezeteit! Sorolja fel őket!
 
+A java vezérlési szerkezeteit három fő csoportba sorolhatjuk:
+1. **szekvencia:** egyes utasítások (vagy blokkok) egymás után történő végrehajtása.
+A Neumann-elvű számítógépek processzorai ugyanis úgy működnek, hogy a memóriában
+található utasításokat a memóriabeli sorrendjüknek megfelelő sorrendben (szekvenciálisan)
+hajtják végre.
+2. **szelekció:** olyan struktúra, amelynek során egy feltételtől függően két
+vagy több végrehajtható lépés közül választunk ki és hajtunk végre egyet. A
+programozási nyelvek ezeket a vezérlési szerkezeteket **feltételes elágazás**nak
+nevezik. Ide tartoznak az **if-else** és a **switch-case** szerkezetek.
+3. **iteráció:** olyan alapstruktúra, amelynek során **egy vagy több lépést többször
+megismételve hajtunk végre**. Az ismétlések száma függhet egy feltételtől, de lehet
+előírt lépésszámú is. Az iterációt a programozási nyelvekben ciklusszervező
+utasításokkal valósítjuk meg. Ilyenek az elől-, és hátultesztelő (**while**, **do-while**)
+és számláló ciklusok (**for**) valamint a **forech**.
+
+Az 1966-ban Corrado Böhm és Giuseppe Jacopini olasz matematikusok által megalkotott
+tétel szerint minden algoritmus megvalósítható a fenti 3 programozási alapszerkezet
+segítségével.
 
 ### 10. Milyen feltétel nélküli vezérlésátadás létezik a Java programozási nyelvben?
+
+A legelső magas szintű programozási nyelvekben (FORTRAN, COBOL) már létezett a `GOTO`
+utasítás a feltétel nélküli vezérlésátadásra. A `GOTO` utasítás használata széles
+körben vitatott a mai napig. Az általános nézet mára az, hogy a használata egyáltalán
+nem javasolt, mivel előnye szinte nincs, hátránya viszont rengeteg.
+
+A `goto` ugyan kulcsszava a Java nyelvnek, viszont az utasítást nem implementálták.
+Ez azt jelenti, hogy létezik `goto` kulcsszó a Javában, de nem csinál semmit. A
+feltétel nélküli vezérlésátadásnak ugyanakkor létezik három utasítása a Java nyelvben:
+ezek:
+* `break` (azonnal megszakítja a ciklus futását, a program a ciklus utáni utasítás
+végrehajtásával folytatódik)
+* `continue` (átugorja a ciklusmag hátralevő részét és újraindítja a ciklust)
+* `return` (az aktuális metódusból/függvényből való kilépésre használják, lehet
+visszatérési értéke is, amit a függvényt hívó kódnak ad át).
+
+A break és a continue utasításokat használhatjuk címkével vagy anélkül. A címke egy
+azonosító, ami az utasítás előtt helyezkedik el. A címkét egy kettőspont (:) követi.
 
 
 ### 11. Mire szolgál a try-catch szerkezet? Mire használható a finally ág? Írjon egy példát.
 
+A Java programokban a kivételektől védendő részt a `try` kulcsszóval bevezetett
+blokkban kell elhatárolni. Ezt követően kell elhelyezni a kivételeket kezelő
+(tetszőleges számú) `catch` blokkot. Amikor a védett részben kivétel keletkezik,
+azt a védett rész eldobja, és valamelyik catch-szerkezet kapja el. **Minden `catch`
+blokk egy kivételkezelő, és azt a típusú kivételt kezeli, amilyet a paraméter
+tartalmaz**. A paraméter típusa (ExceptionType) deklarálja a kivétel típusát, amit
+a kezelő lekezel. Ha több catch-ágat használunk egy blokkban, akkor mindig a speciálisabb
+típust kell korábban feltüntetni, mert a `catch` ágak kiértékelése fentről lefelé
+halad.
+
+A `finally` blokkban mondjuk meg, hogy mi az az utasítás, amelyet
+mindenképpen végre kell hajtani a `try` blokk után, függetlenül attól, hogy az dobott-e
+kivételt vagy sem. Jellemzően ilyenek lehetnek az erőforrások lezárása. Egy `try`
+után kötelező legalább egy `catch` vagy egy `finally` ágat tenni. A `catch`
+ágakból több is lehet, de egy `try` blokk végén csak egy `finally` lehet.
+
+```
+  try {
+    <utasítás(ok)>
+  } catch (<kivételtípus>) {
+    <utasítás(ok)>
+  } catch (<kivételtípus>) {
+    <utasítás(ok)>
+  } finally {
+    <utasítás(ok)>
+  }
+```
 
 ### 12. Hogyan tudunk saját kivételt létrehozni? Lehetséges-e ez a Java-ban egyáltalán?
 
+A Java kivételkezelésének célja a programfutás során keletkezett hibák kiszűrése
+és megfelelő kezelése. Az ilyen hibákat a Java platformon **Exception**-nek (kivételnek)
+nevezik. Két fő csoportjuk van: a **futásidejű** (pl. aritmetikai [0-val osztás:
+`ArithmeticException`], indexeléssel kapcsolatos [nem létező indexre hivatkozás]) és
+a **nem futásidejű** (I/O műveletek során keletkező hibák [pl. a fájl nem található])
+**kivételek**.
+
+A Java kivételkezelése nyitott, bárki létrehozhat saját névvel és funkcionalitással
+ellátott kivételosztályokat, amelyeket az Exception osztályból (vagy valamely leszármazottjából)
+kell származtatni. A saját kivételosztálynak – hacsak nem akarjuk felüldefiniálni
+az őszosztály valamely metódusát – célszerű üresnek lennie. Az üres kivételosztály
+ugyanis örökli az ős metódusait (funkcionalitását), a létrehozás tulajdonképpeni
+célja és értelme az osztály neve (új kivételtípus, amit a catch ágban el lehet kapni).
 
 ### 13. Kivétel osztályoknál melyik osztály az osztályhierarchiájában csúcsán (nem az Object)?
 
+A Throwable (minden további specializált kivétel-osztály ebből származik, kezdve az
+Exception-nel).
 
 ### 14. Milyen kulcsszóval lehetséges a kivételek továbbadása?
 
+`throw` (`throw new Exception`).
 
 ### 15. Sorolja fel a Java burkoló osztályait!
 
+A primitív típusok rendelkeznek egy nekik megfelelő (azonos, de nagybetűvel kezdődő
+nevű) csomagoló (vagy burkoló) osztállyal. A szám csomagoló osztályok több hasznos
+publikus és statikus konstanst tartalmaznak. Ezekre úgy tudunk hivatkozni kifejezésekben,
+hogy az osztály nevét és a konstanst egy ponttal választjuk el, pl. Integer.MIN_VALUE.
+Ezek biztosítják az általános információt az adattípusról. Tartalmaznak ezen felül
+hasznos metódusokat, amelyek pl. értéket konvertálnak más típussá (például String-gé,
+vagy egy másik szám típussá), vagy különböző műveleteket hajtanak végre az adott
+adattípuson.
+
+| Elemi típus | Burkoló osztály | Csomag |
+| boolean | Boolean | java.lang |
+| byte | Byte | java.lang |
+| char | Character | java.lang |
+| short | Short | java.lang |
+| int | Integer | java.lang |
+| int | BigInteger* | java.math |
+| long | Long | java.lang |
+| float | Float | java.lang |
+| float | BigDecimal* | java.math |
+| double | Double | java.lang |
+
+* A `BigInteger` és `BigDecimal` kiterjeszti a hagyományos adattípusokat, és tetszőleges
+pontosság alkalmazását engedi meg.
 
 ### 16. Soroljon fel néhány burkoló osztály metódust és adattagot!
 
+A Number osztály összes leszármazott osztálya által tartalmazott metódusok:
+| Metódus | Működés |
+| `<tipus> <tipus>Value()` | Konvertálja a szám objektum értékét egy egyszerű adattípussá (short, long, float, doube) |
+| `<típus> compareTo(<Integer|Object>)` | Összehasonlítja a szám objektumot a paraméterrel. |
+| `<típus> equals(Object)` | Meghatározza, hogy a szám objektum egyenlő-e a paraméterrel. Különböző típusú szám objektumok – a matematikai értéküktől függetlenül – sosem egyenlőek. |
+
+A Float és a Double osztály néhány konstansa:
+| `<osztály>.NaN` | Nem szám |
+| `<osztály>.NEGATIVE_INFINITY` | Negatív végtelen |
+| `<osztály>.POSITIVE_INFINITY` | Pozitív végtelen |
+| `<osztály>.SIZE` | Az adat bitben kifejezett mérete |
 
 
 ## III. Adattípusok, String műveletek
