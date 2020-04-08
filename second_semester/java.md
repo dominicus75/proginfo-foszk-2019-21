@@ -600,9 +600,9 @@ ugyan ezt teszi, de nem tesz különbséget a kis-és nagybetűk között.
 
 ### 7. Mely függvény teszi lehetővé, hogy egy String részletét megkapjuk index-ek alapján?
 
-A `substring(<eleje>[, <vége>])` metódus rész-karakterláncot hoz létre az <eleje>
-indexű karaktertől az (elhagyható) <vége>–1 pozíción álló karakterig. Ha a <vége>
-paraméter hiányzik, akkor az <eleje> indextől az eredeti szöveg végéig.
+A `substring(<eleje>[, <vége>])` metódus rész-karakterláncot hoz létre az `<eleje>`
+indexű karaktertől az (elhagyható) `<vége>`–1 pozíción álló karakterig. Ha a `<vége>`
+paraméter hiányzik, akkor az `<eleje>` indextől az eredeti szöveg végéig.
 
 ### 8. Whitespace karaktereket hogyan törlünk a String elejéről és végéről?
 
