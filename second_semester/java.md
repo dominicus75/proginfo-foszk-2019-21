@@ -514,38 +514,141 @@ A Float és a Double osztály néhány konstansa:
 
 ### 1. Sorolja fel az egész számokat reprezentáló primitív típusokat!
 
+`byte`, `short`, `int`, `long`.
+
 
 ### 2. Sorolja fel a valós számokat reprezentáló primitív típusokat!
+
+`float`, `double`.
 
 
 ### 3. Mit valósít meg a String pool?
 
+A létrehozott `String` típusú objektum egy különálló, csakis a `String` osztály által
+használható memóriaterületre kerül a **heap**-be (ez a **String pool**). Amikor
+egy új példány jön létre, a JVM ellenőrzi a String pool-ban, hogy létezik-e ugyanolyan
+string érték az ott tárolt objektumokban. Ha igen, létrehoz rá egy újabb referenciát
+(az újonnan létrehozott objektum is a már létező, azonos tartalmúra fog mutatni),
+ha nem, akkor létrehoz egyet.
+
+Tehát a következő két `String` objektum valójában egy objektum két alias-a (ugyanarra
+a String pool-béli memóriacímre mutat):
+
+```
+  String st1 = "Java";
+
+  String st2 = "Java";
+```
 
 ### 4. Melyik függvénnyel segítségével kerülnek bele manuálisan a String-ek a String pool-ba?
+
+Konstruktor.
 
 
 ### 5. Index alapján melyik függvénnyel tudunk kiolvasni egy karaktert (String-ből)?
 
+Habár a sztring karaktereit tömb segítségével tárolja a Java, a karakterek mégsem
+érhetők el a tömböknél megszokott módon. E helyett a `charAt(<pozíció>)` metódus
+használható, amely visszaadja a megadott pozíción található karaktert. A sztring
+első karakterének pozíciója – a tömbindexekhez hasonlóan – a 0.
+
+```
+  String hónap = "május";
+  char betű = hónap.charAt(2); // a betű változó értéke ’j’ lesz
+```
 
 ### 6. Két String értékét mivel hasonlítjuk össze?
 
+**Egyenlőségvizsgálat**
+
+A nyelv a könnyebb kezelés érdekében lehetővé teszi, hogy két sztring egyenlőségét
+megvizsgáljuk az `==` operátorral. Két sztringliterál csak akkor egyenlő, ha kis-
+és nagybetűk szerint tartalmazzák ugyanazokat a karaktereket, ugyanabban a sorrendben.
+A **sztringek összehasonlításakor a Java a sztringeket tároló karaktertömbök azonos
+indexű pozícióin álló karaktereit hasonlítja össze**. Mivel az azonos betűk kis-
+és nagybetűs változatának kódja különbözik (pl. A – 65, a – 97), a csak kis- és
+nagybetűkben eltérő sztringek sem lesznek egyenlők. De ez csak akkor igaz, ha az
+összehasonlítást az `==` operátorral végezzük.
+
+A String osztály használatával van módunk arra, hogy két sztring egyezőségét megvizsgáljuk
+a kis- és nagybetűk figyelmen kívül hagyása mellett. Az `equals(szöveg)` metódus
+összehasonlítja a hívó sztringet a paraméterként átadott sztringgel. A visszaadott
+érték true, ha a sztringek megegyeznek, false, ha különböznek. Ez a metódus
+különbséget tesz a kis- és nagybetűk között. Az `equalsIgnoreCase(szöveg)` metórus
+nem tesz különbséget a kis- és nagybetűk között.
+
+Nem csak teljes karakterláncok összehasonlításra van lehetőség. Az `endsWith(<String>)`
+és a `startsWith(<String>)` metódusok segítségével megvizsgálható, hogy a paraméterként
+átadott szöveg szerepel-e a vizsgált karakterlánc elején vagy végén, illetve a
+`startsWith(<String>, <int>)`-ben az int paraméterben az eltolási értéket adhatjuk
+meg, hogy az eredeti String-ben hanyadik indextől kezdődjön a keresés.
+
+**Összehasonlítás**
+
+A `compareTo({<String|Object>})` metódus két String-et hasonlít össze ABC szerint, és
+egy egész számmal tér vissza, jelezve, hogy ez a String nagyobb (eredmény>0), egyenlő
+(eredmény=0), illetve kisebb (eredmény<0), mint a paraméter. A `CompareToIgnoreCase()`
+ugyan ezt teszi, de nem tesz különbséget a kis-és nagybetűk között.
+
+```
+  String szoveg = "alma";
+
+  System.out.println(szoveg.equals("almaa")); // true, ha egyezik, amúgy false
+  System.out.println(szoveg.compareTo("alma")); // 0-át kapunk, ha egyezik
+
+```
 
 ### 7. Mely függvény teszi lehetővé, hogy egy String részletét megkapjuk index-ek alapján?
 
+A `substring(<eleje>[, <vége>])` metódus rész-karakterláncot hoz létre az <eleje>
+indexű karaktertől az (elhagyható) <vége>–1 pozíción álló karakterig. Ha a <vége>
+paraméter hiányzik, akkor az <eleje> indextől az eredeti szöveg végéig.
 
 ### 8. Whitespace karaktereket hogyan törlünk a String elejéről és végéről?
 
+A `trim()` metódussal. A metódus visszatérési értéke tartalmazza a megtisztított
+sztringet, az eredeti nem változik.
 
 ### 9. String felbontása (egy általunk megadott elválasztó szöveg mentén) melyik függvénnyel valósítható meg?
 
+A `split()` függvény a megadott elválasztó mentén feldarabolja a paraméterként átadott
+szöveget és az eredményt egy string típusú tömbben adja vissza.
+
+```
+  //Szöveg darabolása
+  String sor ="alma:körte:barack:szilva";
+  String[] tomb = sor.split(":");
+  System.out.println(tomb[1]);  // Kimenet: körte
+```
 
 ### 10. switch-case szerkezetnél a feltétel a switch-ben megadott változó lehet String típusú?
 
+A Java 7-es változatának megjelenése óta igen, azelőtt csak egész szám lehetett.
 
 ### 11. Mire jó a StringBuilder és a StringBuffer?
 
+A `StringBuilder` és `Stringbuffer` osztály hivatott kiküszöbölni a `String` osztály
+egyik kevésbé előnyös tulajdonságát: egy létrehozott String objektum megváltoztathatatlan,
+ha pedig ezt megkíséreljük, akkor róla másolatok fognak keletkezni, amelyek processzoridőt
+és további memóriát foglalnak le. Ezek az osztályok tehát nagy és gyakran változó
+karakterfüzérek gyors elérését és manipulációját teszik lehetővé. A két osztály
+szintén karaktertömbben (char tomb[]) tárolja az információt, ám ezen tömb mérete
+már változtatható. A karakterek tömbindexe szintén 0-nál kezdődik.
+
+A két osztály lényegében azonos funkcionalitású, azzal a nem elhanyagolható különbséggel,
+hogy míg a `StringBuffer` képes együtt dolgozni több programszálon futó, szinkronizált
+metódusokkal, addig a `StringBuilder` osztály nem.
 
 ### 12. Mi a különbség a StringBuilder, a StringBuffer és a String között?
+
+1. `String` osztály: immutable (megváltoztathatatlan) típusú, ezért olyan stringeket
+tárolunk benne, melyek értéke nem fog változni. Ha a tárolt értéken módosítást végzünk,
+az eredeti nem módosul, új példány fog létrejönni.
+2. `StringBuffer` osztály: akkor használjuk, ha a szövegen szeretnénk változtatni,
+elsősorban dinamikus karakterlánc készítésekor (pl. fájlból olvasás); használata
+biztonságos több szálas környezetben is.
+3. `StringBuilder` osztály: gyorsabb, mint a `StringBuffer`, de csak egy szálon
+használható biztonságosan.
 
 
 
