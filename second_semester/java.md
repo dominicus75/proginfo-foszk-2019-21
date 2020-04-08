@@ -896,6 +896,7 @@ használható biztonságosan.
 * Tömösközi Péter: [Programozás javában](https://mek.oszk.hu/14200/14282/pdf/14282.pdf)
 * Sallai András: [Java](https://szit.hu/doku.php?id=oktatas:programozas:java)
 * Wikipedia: [Java-szócikk](https://hu.wikipedia.org/wiki/Java_(programoz%C3%A1si_nyelv))
+* Pénzes László: [Tanuld meg a Java javát!](http://www.informatika-programozas.hu/informatika_java_programozas_bevezetes.html)
 * W3Schools: [Java tutorial](https://www.w3schools.com/java/)
 
 [Kezdőlap](../README.md)
