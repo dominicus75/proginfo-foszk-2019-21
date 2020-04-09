@@ -943,12 +943,155 @@ sem írhatók ki.). Amikor új interfészt definiálunk, referenciát definiálu
 adattípushoz. Az interfész nevét akárhol lehet használni, ahol egyéb adattípus is
 előfordulhat.
 
+```
+
+  // Interface
+  interface Állat {
+    public void állatiHang();
+    public void alvás();
+  }
+
+  // Malac megvalósítja ("implements") az Állat interfészt
+  class Malac implements Állat {
+    public void állatiHang() {
+      // ...
+      System.out.println("röf-röf");
+    }
+    public void alvás() {
+      // ...
+      System.out.println("Zzz");
+    }
+  }
+
+  class MyMainClass {
+    public static void main(String[] args) {
+      Malac malacom = new Malac();  // Malac objektum létrehozása
+      malacom.állatiHang();         // Kiment: "röf-röf"
+      malacom.alvás();              // Kiment: "Zzz"
+    }
+  }
+
+
+```
+
 
 ### 19. Írjon példát öröklődésre. Készítsen egy ősosztályt, amely konstruktora legalább egy paramétert átvesz, valamint két leszármazott osztályt. A leszármazottak legalább egy adattaggal és egy függvénnyel többet tartalmazzanak, mint az ős.
+
+```
+
+  public class Teglalap {
+
+    protected int a, b;
+
+    public Teglalap(int a, int b){
+      a = a;
+      b = b;
+    }
+
+    // terület
+    public int terulet(){
+      return a * b;
+    }
+
+    // kerület
+    public int kerulet(){
+      return 2 * (a + b);
+    }
+
+    // toString
+    @Override
+    public String toString(){
+      return "Téglalap adatai: a = " + this.a + " méter, b = " + this.b + " méter "
+      + "\n\tTerület = " + this.terulet() + " négyzetméter"
+      + "\n\tKerület = " + this.kerulet() + " méter";
+    }
+
+  }
+
+
+  public class Teglatest extends Teglalap{
+
+    protected int c;
+
+    public Teglatest(int a, int b, int c){
+
+      super(a, b); // hívja az ős osztály konstruktorát
+
+      c = c;        // az ősben nem lévő adatot a saját konstruktor állítja be
+
+    }
+
+    // térfogat
+    public int terfogat(){
+      return a * b * c;
+    }
+
+    // felszín
+    public int felszin(){
+      return 2 * (a*b + a*c + b*c);
+    }
+
+    // toString
+    @Override
+    public String toString(){
+      return "Téglatest adatai: a = " + this.a + " méter, b = " + this.b
+      + " méter, c = " +this.c +" méter"
+      + "\n\ttérfogat = " + this.terfogat() + " köbméter"
+      + "\n\tfelszín  = " + this.felszin() + " négyzetméter";
+    }
+
+  }
+
+
+
+  public class TomorTeglatest extends Teglatest{
+
+    protected double suruseg; // adat [kg/m3]
+
+    public TomorTeglatest(int a, int b, int c, double suruseg){
+
+      super(a_, b_, c_);  // Teglatest konstruktort hívása
+
+      suruseg = suruseg;  // saját adatok beállítása
+
+    }
+
+    public double suly(){
+      return this.suruseg * this.terfogat();
+    }
+
+    // toString, felhasználva az ős metódusát
+    @Override
+    public String toString(){
+      return super.toString() + "\n\tsúly = " + this.suly() +" kg";
+    }
+
+  }
+
+
+  public static void main(String[] args) {
+
+    Teglalap tl = new Teglalap(5, 8);
+    int c = 10;
+    Teglatest tt = new Teglatest(a, b, c);
+    double suruseg = 5.01;
+    TomorTeglatest ttt = new TomorTeglatest(a, b, c, suruseg);
+
+    System.out.println("Alakzatok");
+    System.out.println(tl.toString());
+    System.out.println(tt.toString());
+    System.out.println(ttt.toString());
+
+  }
+
+
+```
 
 
 ### 20. Írjon példát interface megvalósításra. Hozzon létre két interface-t legalább egy-egy függvénnyel, továbbá készítsen egy osztályt, amely mindkét interface-től örököl és megvalósítja azok függvényeit.
 
+```
+```
 
 
 ## V. Tömbök, gyűjtemények, algoritmusok, generikus típusok
