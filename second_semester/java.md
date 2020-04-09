@@ -657,56 +657,291 @@ használható biztonságosan.
 
 ### 1. Mi az objektum, mi az osztály és milyen viszonyban vannak egymással?
 
+Az osztály egy absztrakt típusdeklaráció, amely meghatározza, hogy az adott entitás
+milyen adattagokkal (tulajdonságokkal) rendelkezzen és ezeken milyen műveleteket
+(metódusokat) lehessen végrehajtani. Az objektum az osztály egy konkrét példánya,
+nagyjából olyan viszonyban van vele, mint az egyed a fajjal. Az objektum egy rendszer
+egyedileg azonosítható szereplője, amelyet a külvilág felé mutatott viselkedésével,
+belső struktúrájával és állapotával jellemezhetünk. Az egy osztályba tartozó
+objektumoknak a "viselkedése" tehát hasonló, de az "adattartalmuk" eltér.
 
 ### 2. Mi az objektumorientált programozás főbb alapelvei?
+
+Az objektumorientált programozás (Object-Oriented Programming = OOP) a természetes
+gondolkodást, cselekvést közelítő programozási mód. A problémát (rendszert) a való
+világ tárgyaihoz (objektumaihoz) hasonlatosan önálló, önmagukban zárt, de egymással
+interakcióra képes elemekre bontva oldja meg. Az objektumorientált nyelvekben a
+feladat megfogalmazásában és a megoldásában részt vevő egységek - az objektumok -
+osztályokba sorolhatók.
+
+Alapelvei:
+* **Egységbezárás (Encapsulation):** az adott struktúrájú adatokat és az azokat
+  kezelő függvényeket (metódusokat) egy egységként kezeljük. Az objektum állapotát
+  így csak a műveletein keresztül lehet módosítani (publikus interfész).
+* **Öröklés (Inheritance):** egy általánosabb típusból (ősosztály) egy sajátosabb
+  típust tudunk létrehozni (utódosztály). Az utódosztály adatokat és műveleteket
+  (viselkedésmódot) örököl, kiegészíti ezeket saját adatokkal és műveletekkel, illetve
+  felülírhat bizonyos műveleteket. A kód újrafelhasználásának egyik módja.
+* **Többrétűség/többalakúság (Polymorphism):** lehetővé teszi, hogy egy objektum
+  egy adott üzenetre egymástól eltérő műveletek végrehajtásával válaszoljon. A legegyszerűbb
+  esetben **a tagfüggvény paramétereinek számától függ, hogy az objektum az üzenetre
+  melyik műveletsor elvégzésével reagál**. Ezt a lehetőséget arra használhatjuk, hogy a
+  származtatás során a gyerek osztályban az ős osztály egy tagfüggvényét a gyerek saját,
+  specifikus igénye szerint átírjuk.
 
 
 ### 3. Mit jelent a konstruktor? Milyen láthatósága lehet?
 
+Az a művelet, amely inicializálja az objektumot. Automatikusan hívódik. Egy
+osztályhoz annyiféle konstruktort készítünk, ahányféleképpen lehetővé tesszük a
+példányok inicializálását. Ha egy osztálynak több konstruktora van, mindnek ugyanaz
+a neve (megegyezik az osztály nevével), de különböző számú vagy különböző típusú
+paraméterekkel rendelkezik. A Java platform a konstruktort a paraméterek száma és
+típusa alapján különbözteti meg. Ha egy osztály nem deklarál egy konstruktort se,
+akkor a Java platform automatikusan szolgáltat egy paraméter nélküli (alapértelmezett,
+default) konstruktort, ami „nem csinál semmit”. Így minden osztálynak van legalább
+egy konstruktora.
+
+A konstruktor nem metódus, így nincs visszatérő típusa. A konstruktor a `new` operátor
+hatására hívódik meg, majd visszaadja a létrejött objektumot.
+
+A konstruktor deklarációjánál használhatjuk a következő hozzáférési szinteket:
+* **private:** csak ez az osztály használhatja ezt a konstruktort. Ha minden konstruktor
+privát, akkor az osztályban lehet egy publikus osztály metódus, mely létrehoz és inicializál
+egy példányt (pl. `getInstance()`). Ez a **Sigleton design pattern (egyke tervezési minta)**
+szerint készült osztályoknál használatos.
+* **protected:** az osztály és leszármazott osztályai használhatják ezt a konstruktort.
+* **public:** minden osztály használhatja ezt a konstruktort.
+* **nincs megadva:** csak az osztállyal azonos csomagban elhelyezkedő osztályokból
+lesz elérhető ez a konstruktor.
+
 
 ### 4. Mire használjuk a new kulcsszót?
+
+Új osztálypéldány létrehozására. A `new` operátor meghívja az adott osztály konstruktorát
+(ennek neve adja meg, hogy melyik osztályból kell példányt létrehozni) és egy
+példányt hoz létre egy osztályból, memóriaterületet foglal az új objektumnak, végül
+egy hivatkozást ad vissza a létrehozott objektumra. Gyakran ezt a hivatkozást
+hozzárendeljük egy változóhoz. Ha a hivatkozás nincs hozzárendelve változóhoz, az
+objektumot nem lehet majd elérni, miután a `new` operátort tartalmazó utasítás
+végrehajtódott.
 
 
 ### 5. Sorolja fel a Java-ban elérhető hozzáférhetőségi szinteket!
 
+Egy elérési szint meghatározza, hogy lehetséges-e más osztályok számára használni
+egy adott tagváltozót, illetve meghívni egy adott metódust. A Java programozási
+nyelv négy elérési szintet biztosít a tagváltozók és a metódusok számára. Ezek a
+következők:
+* **private:** rejtett, csak a definiáló osztály belsejében látható
+* **protected:** védett, a definiáló osztály leszármazottaiból látható.
+* **public:** nyilvános, azaz mindenhol látható
+* **nincs megadva:** (default vagy package-private) félnyilvános, azaz a definiáló
+  csomag belsejében látható.
 
-### 6. Mit jelent az automatikus szemétgyűjtés?
 
+### 6. Mit jelent az automatikus [szemétgyűjtés](https://hu.wikipedia.org/wiki/Szem%C3%A9tgy%C5%B1jt%C3%A9s)?
+
+Az ún. **garbage collection (szemétgyűjtögetés)** lényege az, hogy a Java-értelmező
+tartalmaz egy belső memória-ellenőrző eljárást, amely az értelmezővel párhuzamosan
+fut, és időről időre felszabadítja azokat a memóriaterületeket, amelyekre már semmi
+sem hivatkozik. Automatikusan végzi a dolgát, bár néha szükség lehet rá, hogy közvetlen
+meghívjuk. Ezt a `System` osztály `gc` metódusával tehetjük meg.
 
 ### 7. Egy osztálynak hány konstruktora lehet?
+
+Egy osztálynak tetszőleges számú, azonos nevű (megegyezik az osztály nevével), de
+különböző számú vagy típusú paraméterekkel rendelkező konstruktora lehet. A Java
+platform a konstruktort a paraméterek száma és típusa alapján különbözteti meg.
 
 
 ### 8. Írjon példát saját osztály és objektum létrehozására!
 
+```
+  public class Négyzet {
+
+    int szelesseg, magassag;
+
+    // Téglalap-konstruktor
+    public Negyzet(int a, int b) {
+      this.szelesseg = a;
+      this.magassag  = b;
+    }
+
+    // Négyzet-konstruktor
+    public Negyzet(int a) {
+      this.szelesseg = a;
+      this.magassag  = a;
+    }
+
+    // Alapértelmezett konstruktor
+    public Negyzet() {
+      this.szelesseg = 10;
+      this.magassag  = 8;
+    }
+
+    public int getKerulet() {
+      return (szelesseg + magassag) * 2;
+    }
+
+    public int getTerulet() {
+      return szelesseg * magassag;
+    }
+
+  }
+
+  public static void main(String[] args) {
+
+    Negyzet teglalap  = new Negyzet ();
+    Negyzet teglalap2 = new Negyzet (5, 10);
+
+    System.out.println(teglalap.getKerulet());  // 36
+    System.out.println(teglalap.getTerulet());  // 80
+
+    System.out.println(teglalap2.getKerulet()); // 30
+    System.out.println(teglalap2.getTerulet()); // 50
+
+  }
+
+```
+
 
 ### 9. Írjon példát beágyazott osztályra!
+
+A **beágyazott osztályokat(nested class)** arra használjuk, hogy kifejezzük és
+érvényesítsük két osztály között a kapcsolatot. Megadhatunk egy osztályt egy másik
+osztályon belül, hogyha a beágyazott osztálynak a magába foglaló osztályon belüli
+környezetben van értelme. Például ha egy osztály csak egyetlen másik osztály számára
+hasznos, így a két osztályt szorosan együtt tarthatjuk
+
+A beágyazott osztályok lehetnek **statikusak** (ezeket egyszerűen statikus beágyazott
+osztályoknak nevezzük) és lehetnek **nem statikusak** (ezek neve **belső osztály**).
+A belső osztályok elérik a „körülvevő” osztály adattagjait és metódusait, a statikus
+beágyazott osztályok viszont – hasonlóan a statikus metódusokhoz – nem.
+
+```
+
+  Public class Alaplap {
+
+    String model;
+
+    public Alaplap(String model) {
+      this.model = model;
+    }
+
+    static class USB {
+
+      int usb2 = 2;
+      int usb3 = 1;
+
+      int getTotalPorts(){
+        return usb2 + usb3;
+      }
+
+    }
+
+  }
+
+  public class Main {
+
+    public static void main(String[] args) {
+
+      Alaplap.USB usb = new Alaplap.USB();
+      System.out.println("Összes USB-port: " + usb.getTotalPorts());
+
+    }
+
+  }
+
+```
 
 
 ### 10. Mit jelent a statikus változó/metódus? Mikor alkalmazható?
 
+Az adattagok (változók) és a metódusok is lehetnek osztály- vagy példányszintűek.
+Ha egy metódus vagy mező statikus, akkor anélkül is lehet használni, hogy példányosítanánk
+azt az osztályt, amelyben le van írva. Tehát a statikus metódusok és mezők az osztályhoz
+kötődnek, és nem az osztályból létrehozott objektumpéldányhoz.
+
 
 ### 11. Mit jelent a this, super kulcsszó? Mikor használjuk?
+
+A `this` az aktuális objektumpéldányra való hivatkozást (referenciát) jelenti –
+azaz arra az objektumra, amelynek a metódusa vagy a konstruktora meghívásra kerül.
+Az aktuális objektumpéldány bármelyik tagja hivatkozható egy példány metódusból,
+vagy egy konstruktorból a `this` használatával.
+
+A `super` kulcsszóval a leszármazott osztályból hivatkozhatunk az ősre, annak (`public`
+vagy `protected` láthatóságú) adattagjaira és metódusaira is. A szülő konstruktora
+pedig egyszerűen a `super` kulcsszó metódusként való használatával érhető el.
 
 
 ### 12. Mit jelent az öröklődés? Egy osztálynak hány szülőosztálya lehet?
 
+Az öröklődés segítségével létező ősosztályból származtathatunk tetszőleges számú
+leszármazott osztályt, annak továbbfejlesztése, kibővítése céljából. Az utódosztály
+további osztályok őse lehet, így egész osztályhierarchiák építhetők fel. A Java-ban
+**minden osztálynak szigorúan csak egy közvetlen szülőosztálya van**. Fontos tudni,
+hogy **egy leszármazott osztály minden olyan üzenetre tud reagálni, amelyre az őse
+is tudna**. Az utódosztály örökli összes ősének minden olyan adattagját és metódusát,
+amely nem `private` minősítésű.
+
 
 ### 13. Osztályhierarchia csúcsán milyen osztály van?
+
+Javában az `Object` osztály az osztályhierarchia legfelső eleme, minden más osztály
+belőle származik (közvetlenül vagy közvetve). Az `Object` típusú változó bármilyen
+objektumra tud hivatkozni.
 
 
 ### 14. Object osztálytól milyen metódusokat kapunk?
 
+* **clone:** az adott osztállyal megegyező típusú új példányt hoz létre
+* **equals:** két objektumot hasonlít össze és dönti el, hogy egyenlők-e vagy sem
+(ha egyenlők, true-val tér vissza)
+* **hashCode:** hasításhoz alkalmazható, feladata megadni az adott példányhoz
+rendelhető hasítókódot, amely lényegében egy 32 bites egész szám.
+* **finalize:** a szemétgyűjtő meghívja, ha már nincs egyetlen hivatkozás sem az
+objektumra
+* **toString:** visszaadja az objektumpéldány szöveges reprezentációját. Hasznos
+minden új osztály definíciója során felülírni, hogy a megfelelő értékeket reprezentálhassa.
+* **getClass:** visszaadja a futásidejű osztályát az objektumnak. Az Object osztály
+nem engedi meg a getClass metódus felüldefiniálását (final).
+
 
 ### 15. Mit jelent az interface? Mire használhatjuk?
+
+**Az interfész implementáció nélküli metódusok névvel ellátott halmaza**. Mivel az
+interfész a megvalósítás nélküli, vagyis absztrakt metódusok listája, alig különbözik
+az absztrakt osztálytól. A különbségek:
+* Az interfész egyetlen metódust sem implementálhat, az absztrakt osztály igen.
+* Az osztály megvalósíthat több interfészt, de csak egy ősosztálya lehet.
+* Az interfész nem része az osztályhierarchiának. Egymástól "független" osztályok is
+megvalósíthatják ugyanazt az interfészt.
 
 
 ### 16. Az interface metódusait mikor kötelező megvalósítani?
 
+Amikor egy osztály megvalósít egy interfészt, akkor az osztálynak implementálni
+kell az interfészben és szülőinterfészeiben deklarált összes metódust, vagy az
+osztályt absztraktként kell deklarálni.
+
 
 ### 17. Interface-ek között lehetséges az öröklődés?
 
+Az interfészek között megengedett a többszörös öröklődés is.
+
 
 ### 18. Hogyan néz ki egy interface és az azt tartalmazó törzs? Írjon rá példát! (Interface típusként való használata)
+
+Az interfész deklarációban két elem kötelező: az `interface` kulcsszó és az interfész
+neve. Az interfész törzs metódus deklarációkat tartalmaz pontosvesszővel (`;`)
+lezárva. Minden deklarált metódus értelemszerűen publikus és absztrakt (bár maguk a
+kulcsszavak nem írhatók ki). Az interfész tartalmazhat konstans deklarációt is.
+Minden konstans értelemszerűen publikus, statikus és végleges (a kulcsszavak itt
+sem írhatók ki.). Amikor új interfészt definiálunk, referenciát definiálunk egy új
+adattípushoz. Az interfész nevét akárhol lehet használni, ahol egyéb adattípus is
+előfordulhat.
 
 
 ### 19. Írjon példát öröklődésre. Készítsen egy ősosztályt, amely konstruktora legalább egy paramétert átvesz, valamint két leszármazott osztályt. A leszármazottak legalább egy adattaggal és egy függvénnyel többet tartalmazzanak, mint az ős.
