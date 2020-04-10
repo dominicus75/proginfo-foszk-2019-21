@@ -1090,7 +1090,7 @@ előfordulhat.
 
 ### 20. Írjon példát interface megvalósításra. Hozzon létre két interface-t legalább egy-egy függvénnyel, továbbá készítsen egy osztályt, amely mindkét interface-től örököl és megvalósítja azok függvényeit.
 
-```
+```java
 
   interface Repülhető {
     void repül();
@@ -1132,8 +1132,59 @@ előfordulhat.
 
 ### 1. Jellemezze a Java tömböket?
 
+A tömb statikus, homogén adatszerkezet, tehát minden elemének azonos típusúnak kell
+lennie, és az elemszám az adatszerkezet létrehozásakor (vagyis a deklaráció pillanatában)
+eldől. A tömb elemeire azok sorszámaival tudunk hivatkozni, az elemek sorszámát
+tömbindexnek nevezzük. A tömbök létrehozásakor az elemszámukat kell megmondanunk,
+a sorszámozás azonban mindig 0-tól kezdődik (ezért egy n elemű tömbnek sosincs
+n-edik indexű eleme, a legnagyobb index minden esetben (n–1)).
+
+Ha különböző típusú adatokat akarunk tarolni egy szerkezeten belül, vagy olyan
+szerkezetre van szükség, melynek mérete dinamikusan módosítható, akkor használjunk
+a tömb helyett olyan gyűjtemény implementációkat, mint az ArrayList. Fontos megjegyezni,
+hogy a tömbök objektumok, eltérően a C nyelvtől.
+
+A tömbök deklarálása hasonlít az elemi adattípusú változók deklarálására, mert itt
+is azonosítót használunk a tömb megnevezéséhez, és meg kell adnunk a tömb bázistípusát,
+azaz azt, hogy milyen típusú elemeket fog tárolni. Az eltérés az, hogy jelölnünk
+kell, hogy nem egyetlen adatot tároló változót deklarálunk, hanem több adatot
+tároló tömböt. Ezt szögletes zárójelekkel jelöljük. A Java két féle szintaxist is
+ismer tömbök deklarálására:
+
+```java
+<típus>[] <azonosító> = new <típus>[<elemszám>];
+// vagy
+<típus> <azonosító>[] = new <típus>[<elemszám>];
+
+```
+
+Amikor egy tömb elemeit egyetlen index is egyértelműen azonosítja, vagyis minden
+elemet egyetlen sorszámon keresztül el tudunk érni, egydimenziós tömbről beszélünk.
+
+**Többdimenziós tömbök**
+
+Azokat a tömböket, amelyekben az egyes elemek eléréséhez két indexet kell megadnunk,
+kétdimenziós tömbnek (hagyományos elnevezéssel mátrixnak) nevezzük. A kétdimenziós
+tömböket úgy is elképzelhetjük, mint egy n×m méretű táblázatot.
+
+Amikor egy tömb elemeit egyenként három indexszel érhetjük el, háromdimenziós
+tömbről beszélünk. Egy háromdimenziós tömböt úgy képzelhetünk el, mint egy olyan
+struktúrát, amely lapokból áll, minden lapon azonos méretű n×m-es kétdimenziós
+tömbökkel.
+
+Ritka az olyan probléma, amely nem oldható meg legfeljebb háromdimenziós tömbbel.
+Ha nem elegendő három dimenzió, lehetséges, hogy nem is tömböt kellene használnunk
+a megoldás során. A Java egyébként nem ismeri a többdimenziós tömb fogalmát, azaz
+minden Java-tömb egydimenziós. A **többdimenziós tömb úgy áll elő, hogy deklaráljuk
+a tömbök tömbjét, vagyis olyan tömböt, amelynek az elemei maguk is tömbök**. Ez –
+kicsit leegyszerűsítve a dolgot – tulajdonképpen annyit jelent, hogy nem B[2,5] módon
+hivatkozunk egy kétdimenziós tömb egyik elemére, hanem B[2][5] formában.
 
 ### 2. Java-ban milyen típusok a tömbök?
+
+A javában a tömbök objektumok, vagyis referencia típusúak. Ezért egy egyszerű értékadás
+esetén csak a referenciát (azaz a tömb címét) másoljuk át egy másik változóba, a konkrét,
+memóriában létező tömböt nem.
 
 
 ### 3. Írjon példát tömb használatára!
