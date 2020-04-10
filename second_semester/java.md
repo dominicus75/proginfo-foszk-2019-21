@@ -1158,6 +1158,18 @@ ismer tömbök deklarálására:
 
 ```
 
+Ha a tömbelemek értéke nem számítható ki a tömbindexekből (ez a gyakoribb eset),
+akkor az egyenkénti értékadásnál kényelemesebb, ha felsoroljuk őket kapcsos zárójelek
+között:
+
+```java
+  int[] c = new int[] {7, 7, 23, 1, 92, –4, 6};
+
+```
+
+Ha a tömb elemeit felsorolással (kapcsos zárójelek között) adjuk meg, akkor az elemszám
+külön megadása nem szükséges.
+
 Amikor egy tömb elemeit egyetlen index is egyértelműen azonosítja, vagyis minden
 elemet egyetlen sorszámon keresztül el tudunk érni, egydimenziós tömbről beszélünk.
 
@@ -1182,15 +1194,100 @@ hivatkozunk egy kétdimenziós tömb egyik elemére, hanem B[2][5] formában.
 
 ### 2. Java-ban milyen típusok a tömbök?
 
-A javában a tömbök objektumok, vagyis referencia típusúak. Ezért egy egyszerű értékadás
-esetén csak a referenciát (azaz a tömb címét) másoljuk át egy másik változóba, a konkrét,
-memóriában létező tömböt nem.
+A javában a tömbök objektumok, vagyis referencia típusúak. A létrehozott példány
+(objektum) által lefoglalt memóriaterület nem a létrehozás helyén fog elhelyezkedni,
+hanem egy külön tárterületet fog elfoglalni a memória egy másik területén (a heap-ben).
+A változóban csak egy hivatkozás, más szóval referencia lesz eltárolva, ami erre
+a területre mutat. A referencia segítségével ugyanazt az adatszerkezetet az adatok
+tényleges lemásolása nélkül több helyről is elérhetjük.
 
 
 ### 3. Írjon példát tömb használatára!
 
+```java
+
+  String autok[] = new String[] {"Mercedes", "BMW", "Audi", "Volkswagen", "Skoda", "Lada"};
+
+  for (int i = 0; i < autok.Length; i++) {
+    System.out.println("A(z) " + i + " autómárka: " + autok[i] + "\n");
+  }
+
 
 ### 4. Tömbök másolására milyen megoldásokat ismer?
+
+**System.arraycopy() metódus**
+
+A `System.arraycopy()` metódus lehetővé teszi, hogy adatokat másoljunk egyik tömbből
+a másikba. Az `arraycopy()` metódus szintaxisa:
+
+```java
+  arraycopy(Object forrás, int forrásIndex, Object cél, int célIndex, int hossz)
+```
+
+A két Object típusú paraméter rámutat a forrás és a cél tömbre. A `forrásIndex`
+a másolandó elemek kezdőindexét jelöli a forrástömbben (honnan kezdjük a másolást),
+a `célIndex` ugyanezt a céltömbön belül (hová kerüljenek az adatok), míg a `hossz`
+paraméter azt adja meg, hány elemet kell másolni. Tehát az első két paraméter azt
+mondja meg, hogy honnan, a harmadik és negyedik azt, hogy hová, az ötödik pedig azt,
+hogy mennyit kell másolni.
+
+A céltömböt létre kell hozni, mielőtt meghívódik az `arraycopy()` metódus, és elég
+nagy méretűnek kell lennie, hogy beleférjenek a másolandó elemek.
+
+**Object.clone() metódus**
+
+Az objektumklónozás az eredeti objektum pontos másolatának létrehozását jelenti.
+A `Object.clone()` metódust minden osztály örökli, így az `Array`-ben is megtalálható.
+
+```java
+  int a[] = {1, 8, 3};  // Másolandó tömb
+
+  int b[] = a.clone();  // b tömb a pontos másolata (klónja) lesz
+```
+
+**util.Arrays.copyOf()**
+
+A `util.Arrays.copyOf()` statikus metódus létrehoz a második paraméterben megadott
+elemszámú új tömböt, majd belemásolja az első paraméterben megadott tömb elemeit.
+Ha az új tömb nagyobb, mint az eredeti, a plusz tömbelemek üresek lesznek, ezeknek
+később külön lehet értéket adni. Szintaxisa:
+
+```java
+  copyOf(<típus>[] eredeti, int újElemszám)
+```
+
+Példa:
+
+```java
+
+  // eredeti tömb létrehozása:
+  int[] eredeti = new int[] {1, 2 ,3};
+
+  // Új tömb létrehozása és az eredeti átmásolása ebbe:
+  int[] masolat = Arrays.copyOf(eredeti, 5);
+
+  // Az új tömb üres elemeinek feltöltése:
+  masolat[3] = 11;
+  masolat[4] = 55;
+
+```
+
+**for ciklussal**
+
+```java
+
+  // Másolandó tömb
+  int a[] = {1, 8, 3};
+
+  // Az eredetivel egyező méretű üres tömb létrehozása:
+  int b[] = new int[a.length];
+
+  // Az eredeti tömb elemeinek bemásolása az új tömbbe:
+  for (int i=0; i<a.length; i++) {
+    b[i] = a[i];
+  }
+
+```
 
 
 ### 5. Mi a gyűjtemény?
@@ -1359,6 +1456,7 @@ memóriában létező tömböt nem.
 * Sallai András: [Java](https://szit.hu/doku.php?id=oktatas:programozas:java)
 * Wikipedia: [Java-szócikk](https://hu.wikipedia.org/wiki/Java_(programoz%C3%A1si_nyelv))
 * Pénzes László: [Tanuld meg a Java javát!](http://www.informatika-programozas.hu/informatika_java_programozas_bevezetes.html)
-* W3Schools: [Java tutorial](https://www.w3schools.com/java/)
+* W3Schools: [Java tutorial (en)](https://www.w3schools.com/java/)
+* Geeks for geeks: [Java (en)](https://www.geeksforgeeks.org/java/)
 
 [Kezdőlap](../README.md)
