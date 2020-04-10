@@ -159,7 +159,7 @@ míg a referenciatípusok esetén a referencia lesz az (maga az objektum nem). A
 kulcsszó tulajdonképpen a más nyelvekben előforduló **állandók (konstansok)** javás
 megfelelője, ezért a változó neve csupa nagybetűvel írandó.
 
-```
+```java
 final int VALTOZO = 200;
 ```
 
@@ -245,7 +245,7 @@ alkalmazása akkor is ajánlott, ha a blokk csak egy utasítást tartalmaz.
 A kifejezés változók, literálok, operátorok és metódushívások olyan sorozata, amely
 figyelembe veszi a nyelv szintaxisát és egy értéket ad vissza.
 
-```
+```java
 int c = (a + b) * 5;
 ```
 
@@ -270,7 +270,7 @@ Kapcsos zárójelek között. Habár nem szükséges, az áttekinthetőség és 
 miatt a kapcsos zárójelek alkalmazása akkor is ajánlott, ha a blokk csak egy utasítást
 tartalmaz.
 
-```
+```java
 if (<logikai kifejezés>) {
   <első programblokk>
 } else {
@@ -287,7 +287,7 @@ is. Az iterációt a programozási nyelvekben ciklusszervező utasításokkal va
 A javában használható ciklusok:
 * **előltesztelő:** először megvizsgálja a feltételt (logikai kifejezés), majd annak
   függvényében hajtja végre a ciklusmagot (0 vagy több alkalommal).
-  ```
+  ```java
     [<számláló inicializálása>;]
     while(<feltétel>){
       <ciklusmag>;
@@ -297,13 +297,13 @@ A javában használható ciklusok:
 * **hátultesztelő:** először végrehajtja a ciklusmagot, majd megvizsgálja a feltételt,
   s annak függvényében fut vagy nem fut le ismét. Legalább egyszer biztosan lefut
   (jellemző használata: ellenőrzött adatbekérés).
-  ```
+  ```java
     do {
       <ciklusmag>
     } while(<feltétel>)
   ```
 * **számlálós:** a ciklusmag végrehajtásának száma előre ismert
-  ```
+  ```java
     for(<számláló inicializálása>; <feltétel>; <számláló léptetése>){
       <ciklusmag>
     }
@@ -311,7 +311,7 @@ A javában használható ciklusok:
 * **iteráló ciklus:** a Java 5.0 változata egy újfajta **for** utasítást vezetett
   be, kifejezetten gyűjteményekhez (osztályok, amik a Collection interfészt
   implementálják) és tömbökhöz.
-  ```
+  ```java
     for (<típus> <elem_neve> : <tömb_neve>) {
       <ciklusmag> // pl: System.out.println(<elem_neve>);
     }
@@ -329,7 +329,7 @@ ciklus egyszer sem fog lefutni (ha a feltétel nem igaz).
 
 Rendezési algoritmus megvalósítása java nyelven:
 
-```
+```java
   int csere;
 
   for(int i = 0; i < tomb.length-1; i++) {
@@ -353,7 +353,7 @@ léptetni sem. A ciklus három paramétert vár: az adatelem típusát, egy tets
 választott nevet az egyes adatelemekhez (ezen a néven lehet hivatkozni rájuk a
 ciklusmagban) és a bejárandó adatszerkezet nevét.
 
-```
+```java
   public class MyClass {
 
     public static void main(String[] args) {
@@ -427,7 +427,7 @@ kivételt vagy sem. Jellemzően ilyenek lehetnek az erőforrások lezárása. Eg
 után kötelező legalább egy `catch` vagy egy `finally` ágat tenni. A `catch`
 ágakból több is lehet, de egy `try` blokk végén csak egy `finally` lehet.
 
-```
+```java
   try {
     <utasítás(ok)>
   } catch (<kivételtípus>) {
@@ -534,7 +534,7 @@ ha nem, akkor létrehoz egyet.
 Tehát a következő két `String` objektum valójában egy objektum két alias-a (ugyanarra
 a String pool-béli memóriacímre mutat):
 
-```
+```java
   String st1 = "Java";
 
   String st2 = "Java";
@@ -552,7 +552,7 @@ Habár a sztring karaktereit tömb segítségével tárolja a Java, a karakterek
 használható, amely visszaadja a megadott pozíción található karaktert. A sztring
 első karakterének pozíciója – a tömbindexekhez hasonlóan – a 0.
 
-```
+```java
   String hónap = "május";
   char betű = hónap.charAt(2); // a betű változó értéke ’j’ lesz
 ```
@@ -590,7 +590,7 @@ egy egész számmal tér vissza, jelezve, hogy ez a String nagyobb (eredmény>0)
 (eredmény=0), illetve kisebb (eredmény<0), mint a paraméter. A `CompareToIgnoreCase()`
 ugyan ezt teszi, de nem tesz különbséget a kis-és nagybetűk között.
 
-```
+```java
   String szoveg = "alma";
 
   System.out.println(szoveg.equals("almaa")); // true, ha egyezik, amúgy false
@@ -614,7 +614,7 @@ sztringet, az eredeti nem változik.
 A `split()` függvény a megadott elválasztó mentén feldarabolja a paraméterként átadott
 szöveget és az eredményt egy string típusú tömbben adja vissza.
 
-```
+```java
   //Szöveg darabolása
   String sor ="alma:körte:barack:szilva";
   String[] tomb = sor.split(":");
@@ -757,7 +757,7 @@ platform a konstruktort a paraméterek száma és típusa alapján különbözte
 
 ### 8. Írjon példát saját osztály és objektum létrehozására!
 
-```
+```java
   public class Négyzet {
 
     int szelesseg, magassag;
@@ -819,7 +819,7 @@ osztályoknak nevezzük) és lehetnek **nem statikusak** (ezek neve **belső osz
 A belső osztályok elérik a „körülvevő” osztály adattagjait és metódusait, a statikus
 beágyazott osztályok viszont – hasonlóan a statikus metódusokhoz – nem.
 
-```
+```java
 
   Public class Alaplap {
 
@@ -943,7 +943,7 @@ sem írhatók ki.). Amikor új interfészt definiálunk, referenciát definiálu
 adattípushoz. Az interfész nevét akárhol lehet használni, ahol egyéb adattípus is
 előfordulhat.
 
-```
+```java
 
   // Interface
   interface Állat {
@@ -977,7 +977,7 @@ előfordulhat.
 
 ### 19. Írjon példát öröklődésre. Készítsen egy ősosztályt, amely konstruktora legalább egy paramétert átvesz, valamint két leszármazott osztályt. A leszármazottak legalább egy adattaggal és egy függvénnyel többet tartalmazzanak, mint az ős.
 
-```
+```java
 
   public class Teglalap {
 
