@@ -1050,7 +1050,7 @@ előfordulhat.
 
     public TomorTeglatest(int a, int b, int c, double suruseg){
 
-      super(a_, b_, c_);  // Teglatest konstruktort hívása
+      super(a, b, c);  // Teglatest konstruktort hívása
 
       suruseg = suruseg;  // saját adatok beállítása
 
@@ -1091,6 +1091,39 @@ előfordulhat.
 ### 20. Írjon példát interface megvalósításra. Hozzon létre két interface-t legalább egy-egy függvénnyel, továbbá készítsen egy osztályt, amely mindkét interface-től örököl és megvalósítja azok függvényeit.
 
 ```
+
+  interface Repülhető {
+    void repül();
+  }
+
+  interface Ehető {
+    void eszik();
+  }
+
+  class Madár implements Repülhető, Ehető {
+
+    public void repül() {
+      System.out.println("A madár éppen repül");
+    }
+
+    public void eszik() {
+      System.out.println("A madár eszik");
+    }
+
+  }
+
+
+  public class Program {
+
+    public static void main(String[] args) {
+
+      Madár b = new Madár();
+      b.eszik();  // Kimenet: "A madár eszik"
+      b.repül();  // Kimenet: "A madár éppen repül"
+    }
+
+  }
+
 ```
 
 
