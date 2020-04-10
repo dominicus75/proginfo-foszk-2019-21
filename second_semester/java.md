@@ -1212,6 +1212,8 @@ tényleges lemásolása nélkül több helyről is elérhetjük.
     System.out.println("A(z) " + i + " autómárka: " + autok[i] + "\n");
   }
 
+```
+
 
 ### 4. Tömbök másolására milyen megoldásokat ismer?
 
