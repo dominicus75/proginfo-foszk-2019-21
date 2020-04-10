@@ -1303,7 +1303,7 @@ A **gyűjtemény keretrendszer (Java Collections Framework, JCF)** egy egységes
 architektúra, ami a gyűjtemények használatára és manipulálására szolgál.
 
 Elemei:
-* **interfészek**: különböző típusú gyűjtemények leírását teszik lehetővé, lehetővé
+* **interfészek**: különböző típusú gyűjtemények leírását tartalmazzák, lehetővé
 teszik a különböző gyűjtemény-reprezentációk egységes kezelését.
 * **implementációk**: a gyűjtemény interfészek konkrét implementációi,
 újrafelhasználható adatstruktúrák.
@@ -1370,8 +1370,71 @@ kulcsokat, egy kulcshoz csak egy érték rendelhető.
 
 ### 10. Soroljon fel gyűjtemény implementációkat (osztályokat, amelyek megvalósítják a gyűjtemény interface-eket)!
 
+A **Set interfészt** halmazok tárolására szokták használni, nem tartalmazhat duplikált
+elemeket. Három általános célú `Set` implementáció létezik: `HashSet`, `TreeSet`, és `LinkedHashSet`.
+
+A **List interfész** rendezettséget biztosító gyűjtemény. Tartalmazhat duplikált
+elemeket. Mivel az elempozíciók indexelve vannak, bármelyik listaelem kiválasztható,
+módosítható. Két általános célú `List` implementáció létezik: `ArrayList` és `LinkedList`.
+
+A **Map interfész** kulcs-érték párok tárolását írja le. A Map nem tud tárolni duplikált
+kulcsokat, egy kulcshoz csak egy érték rendelhető. A három általános célú `Map`
+implementáció a `HashMap`, a `TreeMap` és a `LinkedHashMap`.
+
+A **Queue interfész** a FIFO (first-in-first-out) rendezőelv optimális adatszerkezete,
+ez a gyűjtemény szokta tárolni a feldolgozásra váró elemeket. A `Queue` implementációja
+a `PriorityQueue` (és a `LinkedList`, ami a `List` interfészt is megvalósítja).
+
 
 ### 11. Hogyan járhatók be a gyűjtemények? Írjon minden lehetőségre 1-1 példát.
+
+**foreach ciklus**
+
+A ciklus három paramétert vár: az adatelem típusát, egy tetszőlegesen választott
+nevet az egyes adatelemekhez (ezen a néven lehet hivatkozni rájuk a ciklusmagban)
+és a bejárandó adatszerkezet nevét.
+
+```java
+
+  ArrayList nevek = new ArrayList();
+  nevek.add("Gipsz Jakab");
+  nevek.add("Ló Jenő");
+  nevek.add("Kukri Pál");
+
+  for(Object elem : nevek) {
+    System.out.println(elem);
+  }
+
+```
+
+**Iterátor**
+
+Az Iterátor egy olyan objektum, ami megengedi, hogy bejárjuk a gyűjteményt és
+eltávolítsuk az elemeket a gyűjteményből, ha akarjuk. Az Iterator interfész három
+metódust ír elő az implementáló osztályoknak: a `hasNext()` visszatérési értéke `true`,
+ha az iterációnak van még be nem járt eleme; a `remove()` eltávolítja a gyűjteményből
+az utolsó elemet, amit a `next()` hívására kaptunk.
+
+A Iterátor használata célszerű a for-each ciklus helyett a következő esetekben:
+* Törölni szeretnénk a bejárás közben.
+* Ki szeretnénk cserélni az elemeket.
+* Egyszerre többféle bejárásra is szükség van.
+
+```java
+
+  ArrayList nevek = new ArrayList();
+  nevek.add("Gipsz Jakab");
+  nevek.add("Ló Jenő");
+  nevek.add("Kukri Pál");
+
+  Iterator bejaro = nevek.iterator();
+
+  while(bejaro.hasNext()) {
+    String obj = (String)bejaro.next();
+    System.out.println(obj);
+  }
+
+```
 
 
 ### 12. Milyen implementált algoritmusok vannak a Java programozási nyelvben?
@@ -1379,9 +1442,88 @@ kulcsokat, egy kulcshoz csak egy érték rendelhető.
 
 ### 13. Mire jó a Comperator interface?
 
+A `util.Comparator` interfész rendezések (pl. ABC sorrendben) megvalósításánál hasznos.
+Kettő metódust tartalmaz:
+
+```java
+
+  interface Comparator<Típus> {
+    int compare(Típus objektum1, Típus objektum2);
+    boolean equals(Object obj);
+  }
+
+```
+
+A `compare()` metódus összehasonlítja a két paramétert, visszatérési értéke negatív egész,
+nulla, vagy pozitív egész, ha az első paraméter kisebb, egyelő vagy nagyobb, mint a
+második. Ha valamelyik paraméter helytelen típusú a Comparator számára, a `compare()`
+metódus `ClassCastException`-t dob.
+
 
 ### 14. Írjon példát Comparable<T> interface megvalósítására (saját osztályt is)!
 
+```java
+
+  public class Ember implements Comparable {
+
+    private String neve;
+    private int kora;
+
+    public Ember(String neve, int kora) {
+      this.neve = neve;
+      this.kora = kora;
+    }
+
+    public int getKora() {
+      return this.kora;
+    }
+
+    public String getNeve() {
+      return this.neve;
+    }
+
+    @Override
+    public String toString() { return ""; }
+
+    @Override
+    public int compareTo(Ember masik) {
+      if(this.kora == masik.kora) {
+        return 0;
+      } else {
+        return this.kora > masik.kora ? 1 : -1;
+      }
+    }
+
+    @Override
+    public int compareTo(Object t) {
+      throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+  }
+
+  public static void main(String[] args) {
+
+    Ember e1 = new Ember("Gipsz Jakab", 45);
+    Ember e2 = new Ember("Ló jenő", 60);
+
+    int eredmeny = e1.compareTo(e2);
+
+    switch(eredmeny) {
+      case -1:
+        System.out.println(e2.getNeve() + " idősebb, mint " + e1.getNeve());
+        break;
+      case 1:
+        System.out.println(e1.getNeve() + " idősebb, mint " + e2.getNeve());
+        break;
+      default:
+        System.out.println("A két figura egykorú!");
+        break;
+    }
+
+  }
+
+
+```
 
 
 ## VI. Fájlműveletek, adatfolyamok
