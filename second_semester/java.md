@@ -1294,17 +1294,78 @@ Példa:
 
 ### 5. Mi a gyűjtemény?
 
+A gyűjtemények (vagy más néven tárolók, konténerek, kollekciók) olyan típuskonstrukciós
+eszközök, melynek célja egy vagy több típusba tartozó objektumok memóriában történő
+összefoglaló jellegű tárolása, manipulálása és lekérdezése. A `Collection` interfész
+tehát objektumok csoportját zárja egységes adatszerkezetbe.
+
+A **gyűjtemény keretrendszer (Java Collections Framework, JCF)** egy egységes
+architektúra, ami a gyűjtemények használatára és manipulálására szolgál.
+
+Elemei:
+* **interfészek**: különböző típusú gyűjtemények leírását teszik lehetővé, lehetővé
+teszik a különböző gyűjtemény-reprezentációk egységes kezelését.
+* **implementációk**: a gyűjtemény interfészek konkrét implementációi,
+újrafelhasználható adatstruktúrák.
+* **algoritmusok**: azok a metódusok, amelyek hasznos műveleteket valósítanak meg.
+Mindegyikük a `Collections` osztály statikus metódusa.
+
 
 ### 6. Mit támogat a gyűjtemény keretrendszer a Java-ban?
 
+* Csökkenti a fejlesztési időt
+* Növeli a programozás sebességét és minőségét
+* Megengedi az együttműködést a nem kapcsolódó API-k között
+* Elősegíti a szoftver újrafelhasználhatóságát
 
 ### 7. Sorolja fel a Collection interface metódusait!
+
+`boolean add(Object obj)` – új elemet ad a gyűjteményhez.
+
+`boolean addAll(Collection c)` – minden elemet hozzáad a meghatározott gyűjteményhez (unió).
+
+`void clear( )` – eltávolítja az összes elemet a gyűjteményből.
+
+`boolean contains(Object obj)` – leellenőrzi, hogy az adott objektum benne van-e a gyűjteményben.
+
+`boolean containsAll(Collection c)` – `true` a visszatérési értéke, ha a cél gyűjtemény
+tartalmaz minden elemet a meghatározott gyűjteményben (részhalmaz).
+
+`boolean equals(Object obj)` – ellenőrzi, hogy a hívó és a paraméterként megadott
+objektum egyenlő-e.
+
+`int hashCode( )` – egy hasítókódot ad vissza a hívó kollekcióhoz
+
+`boolean isEmpty( )` – `true` értéket ad vissza, ha a hívó gyűjtemény üres, egyébként `false`-t.
+
+`Iterator iterator( )` – bejárót (más néven iterátort) szolgáltat a bejáráshoz.
+
+`boolean remove(Object obj)` – törli a megadott elemet a gyűjteményből.
+
+`boolean removeAll(Collection c)` – eltávolítja a paraméterül kapott gyűjtemény
+elemeit a hívó gyűjteményből (a kettő különbségét adja).
+
+`boolean retainAll(Collection c)` – a paraméterül kapott kollekció elemeinek kivételével
+az összes elemet eltávolítja a hívó gyűjteményből (metszetképzés).
+
+`int size( )` – megmondja hány elem van a gyűjteményben.
+
+`Object[ ] toArray( )` – a hívó gyűjtemény elemeit tömbként adja vissza.
+
+`Object[ ] toArray(Object array[ ])` – olyan tömböt ad vissza, amely csak azokat
+a gyűjteményelemeket tartalmazza, amelyek típusa megegyezik a paraméterként kapott
+tömb típusával.
 
 
 ### 8. Melyik gyűjtemény interfész engedélyezi a duplikált tárolást?
 
+A `List` tartalmazhat többszörös elemeket.
+
 
 ### 9. Kulcs-érték párok tárolására melyik gyűjteményt interface-t használná?
+
+A `Map` olyan tároló, ami kulcs-érték párokat tartalmaz. A Map nem tud tárolni duplikált
+kulcsokat, egy kulcshoz csak egy érték rendelhető.
 
 
 ### 10. Soroljon fel gyűjtemény implementációkat (osztályokat, amelyek megvalósítják a gyűjtemény interface-eket)!
@@ -1458,6 +1519,7 @@ Példa:
 * Sallai András: [Java](https://szit.hu/doku.php?id=oktatas:programozas:java)
 * Wikipedia: [Java-szócikk](https://hu.wikipedia.org/wiki/Java_(programoz%C3%A1si_nyelv))
 * Pénzes László: [Tanuld meg a Java javát!](http://www.informatika-programozas.hu/informatika_java_programozas_bevezetes.html)
+* Faragó Csaba, Phd: [Java](http://faragocsaba.hu/java)
 * W3Schools: [Java tutorial (en)](https://www.w3schools.com/java/)
 * Geeks for geeks: [Java (en)](https://www.geeksforgeeks.org/java/)
 
