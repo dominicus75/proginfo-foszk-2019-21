@@ -469,7 +469,7 @@ Exception-nel).
 A primitív típusok rendelkeznek egy nekik megfelelő (azonos, de nagybetűvel kezdődő
 nevű) csomagoló (vagy burkoló) osztállyal. A szám csomagoló osztályok több hasznos
 publikus és statikus konstanst tartalmaznak. Ezekre úgy tudunk hivatkozni kifejezésekben,
-hogy az osztály nevét és a konstanst egy ponttal választjuk el, pl. Integer.MIN_VALUE.
+hogy az osztály nevét és a konstanst egy ponttal választjuk el, pl. `Integer.MIN_VALUE`.
 Ezek biztosítják az általános információt az adattípusról. Tartalmaznak ezen felül
 hasznos metódusokat, amelyek pl. értéket konvertálnak más típussá (például String-gé,
 vagy egy másik szám típussá), vagy különböző műveleteket hajtanak végre az adott
@@ -1439,6 +1439,14 @@ A Iterátor használata célszerű a for-each ciklus helyett a következő esete
 
 ### 12. Milyen implementált algoritmusok vannak a Java programozási nyelvben?
 
+Mindegyikük a Collections osztály statikus metódusa.
+
+* A **sort** algoritmus újrarendezi a listát.
+* A **keverés** algoritmusa lerombol bármilyen rendezést, ami esetleg található a
+listában, újrarendezi a listát.
+* A **bináris keresés** algoritmus (binarySearch metódus) elemeket keres a rendezett
+listában.
+
 
 ### 13. Mire jó a Comperator interface?
 
@@ -1531,35 +1539,153 @@ metódus `ClassCastException`-t dob.
 
 ### 1. Melyik osztály fér hozzá direkt módon (nem adatfolyamként) a fájlokhoz és fájlrendszerhez?
 
+A legtöbb osztály adatfolyamokat használ, viszont a `File` osztály ez alól kivétel,
+direkt módon fér hozzá a fájlokhoz és a fájlrendszerhez.
 
 ### 2. Mire jó a File osztály?
 
+A File osztály egy fájlrendszerbeli objektumot képvisel az elérési útjának ismeretében.
+Tud róla információkat adni (pl. mérete, módosítás ideje, jogosultságok, stb.),
+illetve bizonyos műveleteket végezni rajta (előbbi tulajdonságok módosítása, átnevezés,
+üres fájl létrehozása, mappa létrehozása, törlés, stb.). Nevével ellentétben
+könyvtárakat is tudunk vele kezelni.
 
-### 3. Soroljon fel a File osztály metódusait!
+
+### 3. Sorolja fel a File osztály metódusait!
+
+| Szintaxis | Tevékenység |
+|---------|-------------|
+| `boolean canRead()` | a file olvasható-e |
+| `boolean canWrite()` | a file írható-e |
+| `boolean exists()` | a file létezik-e |
+| `boolean isDirectory()` | a file könyvtár-e  |
+| `boolean isFile()` | a file valóban file-e |
+| `boolean isHidden()` | a file rejtett-e |
+| `boolean isAbsolute()` | Az útvonal abszolút-e |
+| `String getName()` | A file/directory neve |
+| `String getPath()` | A file/directory elérési útja |
+| `String toString()` | A teljes név |
+| `String getParent()` | A szülő könyvtár (`null`, ha nincs ilyen) |
+| `File getParentFile()` | A szülő könyvtár (`null`, ha nincs ilyen) |
+| `long lastModified()` | Az utolsó módosítás ideje |
+| `long length()` | A file hossza |
+| `boolean createNewFile()` | file létrehozása, ha még nem létezik |
+| `int compareTo(File pathname)` | file nevének összehasonlítása egy másikkal |
+| `int compareTo(Object o)` | file nevének összehasonlítása egy másikkal |
+| `boolean equals(Object obj)` | file nevének összehasonlítása egy másikkal |
+| `boolean delete()` | file törlése |
+| `void deleteOnExit()` | file törlése kilépéskor |
+| `boolean mkdir()` | Directory létrehozása |
+| `boolean renameTo(File dest)` | Átnevezés |
+| `String[] list()` | Directory lista |
+| `File[] listFiles()` | Directory lista, File objektumok tömbjével tér vissza |
+| `String[] list(FilenameFilter filter)` | Adott feltételeknek eleget tevő file-ok listája |
+| `File[] listFiles(FileFilter filter)` | Adott feltételeknek eleget tevő file-ok listája, File objektumok tömbjével tér vissza |
+| `File[] listFiles(FilenameFilter filter)` | Adott feltételeknek eleget tevő file-ok listája, File objektumok tömbjével tér vissza |
+| `boolean setReadOnly()` | Csak olvashatóvá tétel |
+| `boolean setLastModified(long time)` | Utolsó módosítás idejének beállítása |
+
+
+**Osztályszintű metódusok**
+
+| Szintaxis | Viselkedés |
+|-----------|------------|
+| `static File createTempFile(String prefix, String suffix)` | Temp file készítés |
+| `static File createTempFile(String prefix, String suffix, File directory)` | temp file készítés a megadott directory-ban |
 
 
 ### 4. Hogyan lehet könyvtárakat létrehozni Java-ban?
 
+A könyvtár Java-ban egy olyan File, amely további fájlokat vagy könyvtárakat is tartalmazhat.
+* `mkdir()`: létrehoz egy könyvtárat, amennyiben ez sikeres volt igaz értékkel tér
+vissza. Hamis értéknél előfordulhat, hogy a könyvtár már létezik vagy hiba van a
+megadott elérési útban.
+* `mkdirs()`: létrehozza a könyvtárat akkor is ha a szülőkönyvtárak még nem léteznek.
+
 
 ### 5. Mit jelent az adatfolyam Java-ban?
+
+Az adatfolyam (datastream) változó méretű adatok összefüggő, nem strukturált, de
+az elemek sorrendjét megtartó (FIFO jellegű, azaz „first in, first out”
+„első be, első ki”) halmaza. Lehetővé teszi az adatok kisebb egységekben, egyenként
+történő folyamatos feldolgozását, így nem kell a teljes adathalmazt egyetlen nagy
+csomagban kezelni (pl. az egész fájlt beolvasni).
+
+Irányuk szempontjából kétféle adatfolyam létezik:
+
+* **bemeneti adatfolyam** (input stream – az adatforrástól): csakis a legelejéről
+tudunk adatokat leolvasni
+
+* **kimeneti adatfolyam** (output stream – az adatnyelő felé): csakis a legvégéhez
+tudunk további adatokat hozzáilleszteni (írni).
+
+A `java.io` csomag tartalmazza azon osztályokat, melyek lehetővé teszik az írást
+és olvasást. Az adatfolyam osztályok adattípus szerint két főbb csoportba sorolhatók
+attól függően, hogy milyen jellegű adat áramlik át rajtuk:
+
+* **bináris folyamok:** az `InputStream` és `OutputStream` leszármazottai, a legkisebb
+adategység a byte (8 bit). Ezek a folyamok jellemzően **bináris adatok olvasására
+és írására alkalmasak, mint egy kép vagy hang**.
+
+* **karakter folyamok:** a `Reader` és a `Writer` a `java.io` absztrakt ősosztályai.
+A 16 bites Unicode-szabványú karakterekkel való műveleteket teszik lehetővé.
 
 
 ### 6. Adatfolyamoknál mely két interface a legfontosabb?
 
+A java.io (5-ös verziótól kezdve) két fontos interface-t tartalmaz. Ezeket több
+Java I/O osztály is implementálja. Feladatuk, hogy egységes használati módot
+definiáljanak az adatfolyamok lezárásához.
+* **Closeable interfész:** a `close()` metódus bezárja az adatfolyamot és felszabadítja az
+erőforrásokat.
+* **Flushable interfész:** a `flush()` metódus a pufferben található adatok kiírását
+kényszeríti ki az adott adatfolyamon (kiüríti a puffert).
+
+Hiba esetén mindkettőnek `IOException`-t kell dobnia.
+
 
 ### 7. Soroljon fel Stream osztályokat!
+
+`java.io.InputStream`, `java.io.OutputStream`, `java.io.Reader`, `java.io.Writer`.
 
 
 ### 8. Soroljon fel a byte adatfolyamot megvalósító osztályokat!
 
+Az osztály hierarchia csúcsán két absztrakt osztály helyezkedik el:
+
+`java.io.InputStream`, `java.io.OutputStream`.
+
+Több leszármazott, konkrét típus tartozik hozzájuk, amelyek speciálisabb
+funkcionalitással rendelkeznek. Pl. a `FileInputStream` az `InputStream` leszármazott
+osztálya, metódusai a fájlok byte-onkénti feldolgozásához használhatók. A `FileOutputStream`
+osztályt pedig fájlok byte alapú írására használhatjuk. OutputStream osztálytól örököl.
+
 
 ### 9. Soroljon fel a karakter adatfolyamot megvalósító osztályokat!
+
+Az osztály hierarchia csúcsán két absztrakt osztály helyezkedik el:
+
+`java.io.Reader`, `java.io.Writer`.
+
+Több leszármazott, konkrét típus tartozik hozzájuk, amelyek speciálisabb
+funkcionalitással rendelkeznek. Ilyen a fájlok karakter alapú írására használt
+`FileWriter`, ami a `Writer` osztály leszármazottja, illetve a `Reader` osztályból
+származó `FileReader` amit fájlok karakter alapú olvasására használhatunk.
 
 
 ### 10. Mely két fontos szűrő osztály létezik Java-ban?
 
+A szűrőosztályok két őse: a`FilterInputStream` és a `FilterOutputStream`.
+
 
 ### 11. Mire való a Console osztály?
+
+Java 6-tól létezik egy `Console` osztály is, amely a konzolról való olvasást és az
+oda való kiírást valósítja meg. Kényelmi szempontból jelent meg, viszont a legtöbb
+funkcionalitását a `System.in` és `System.out` már tudja. Megvalósítja a `Flushable`
+interface-t. Nincs konstruktora csak a statikus `console()` függvénye, amellyel
+megkapjuk az aktuális `Console` objektumot. Ha nem elérhető a konzol akkor null-t
+kapunk vissza.
 
 
 
