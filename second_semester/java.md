@@ -1694,33 +1694,198 @@ kapunk vissza.
 
 ### 1. Mi a felsorolási típus? Milyen kulcsszóval tudjuk létrehozni?
 
+A felsorolás típus egy olyan típus, melynek megengedett értékei fix konstansokból
+állnak (konvencionálisan a nevek nagy betűkkel írandók). Javában a felsorolás
+típust `enum` kulcsszóval definiáljuk. Legegyszerűbb alakjukban ezek a felsorolók
+ugyan úgy néznek ki mint a C, C++ vagy C# megfelelőjük:
+
+```java
+  enum Season { WINTER, SPRING, SUMMER, FALL };
+```
+
+A Java nyelvben a felsorolási típus nem csak nevesített egész számokat takar. **Az
+`enum` deklaráció egy teljesen önálló osztályt (egy enum típust) definiál**. Lehetővé
+teszi, hogy tetszőleges metódusokat, adat mezőket adjunk egy felsoroló típusnak,
+tetszőleges interfészeket implementáljunk. A felsoroló típusok magas szintű implementációt
+biztosítanak az összes `Object` metódusnak. Összehasonlíthatók (`Comperable`) és
+szerializálhatók (`Serializable`). Habár a felsorolás típusok osztályok, nem definiálható
+hierarchia számukra. Más szavakkal: **nem lehet leszármazottjuk.**
+
+Mindegyik felsoroló típusnak van egy statikus `values()` metódusa, amely egy olyan
+tömböt ad vissza, ami tartalmazza az összes felsoroló típus értékét a deklarálásuk
+sorrendjében (a `toString()` metódus a konstans nevével megegyező string-et ad vissza,
+nem értéket, tehát a `System.out.println(Season.WINTER)` eredménye `WINTER` és nem
+`0`).
 
 ### 2. Mikortól jelent meg Java-ban a lamda kifejezések?
+
+A Java 8. változatában. Ettől a változattól minden `Collection` kiegészült lambdát
+is fogadó  `forEach` metódussal.
 
 
 ### 3. Mire használhatóak a lambda kifejezések?
 
+A **lambda-kifejezés**sel (néha *closure* néven is emlegetik) függvények definiálását és
+referenciaként való átadását valósíthatjuk meg, tehát **lehetővé teszik, hogy függvényeket
+használjunk metódusparaméterként vagy kódot kezeljünk adatként**. Korábban csak
+objektumok referenciáit lehetett továbbadni.
+
 
 ### 4. Hogyan működnek a lambda kifejezések? Írjon egy példát!
 
+A lambda-kifejezés bal oldala a paraméterek vesszővel elválasztott felsorolása
+(mint bármely másik függvénynél, a zárójel lehet üres is, ha nincsenek paraméterek).
+A jobb oldal pedig az a kód, amit a Java lefuttat. A kettőt egy nyíl token (`->`)
+választja el egymástól. Általános szintaxisa:
+
+```java
+  ([<paraméterlista>]) -> <törzs>;
+```
+
+A kifejezés törzse a végrehajtáskor egyszerűen kiértékelődik és visszaadódik az
+értéke. Kódblokk esetén a blokk egy metódustörzshöz hasonlóan lefut és a vezérlés
+egy `return` kifejezéssel visszatér a hívóhoz.
+
+```java
+
+  (int x, int y) -> x + y;  //Összeadja a két egész paramétert
+  () -> 42;                 //Visszadja a 42-t
+  (String s) -> {
+    System.out.println(s);  //a kapott Stringet kiírja a konzolra, nem ad vissza semmit
+  };
+
+```
 
 ### 5. Mire való a default kulcsszó?
+
+Egy alapértelmezett metódus egy interfészben a `default` módosítóval deklarált
+példánymetódus. A metódustörzs a metódus implementációját szolgáltatja az interfészt
+a metódus felülírása nélkül implementáló osztályok számára.
+
+Java 8 előtt ha egy új metódus került egy már használatban lévő interfészbe, akkor
+az összes az interfészt implementáló nem absztrakt osztálynak implementálnia kellett
+az új metódust is. Ha tehát lett egy új `babarozsa()` nevű metódus az interfészben,
+akkor a használó alkalmazásnak is implementálnia kellett ezt még akkor is, ha amúgy
+nem is használta ki.
+
+A default metódusok lehetővé teszik új metódusok hozzáadását létező interfészekhez
+anélkül, hogy megtörné azon interfészek régebbi verzióihoz készült kóddal való
+kompatibilitást. **A default és absztrakt metódusok közötti különbség az, hogy az
+absztrakt metódusokat kötelező implementálni, de a default metódusokat nem**. Ehelyett
+minden interfésznek biztosítania kell egy ún. alapértelmezett implementációt és
+az összes implementáló alapból azt örökli.
+
+Amikor egy interfész kiterjeszt egy alapértelmezett metódust tartalmazó interfészt,
+akkor a következőket teheti:
+* Egyáltalán nem említi az alapértelmezett metódust, így változatlan formában örökli azt.
+* Újradefiniálhatja a metódust, felülírva azt.
+* Absztraktként deklarálhatja újra a metódust, mely a felülírására kényszeríti az
+implementáló osztályokat.
+
+Amikor egy osztály implementál egy alapértelmezett metódust tartalmazó interfészt,
+akkor a következőket teheti:
+* Egyáltalán nem említi az alapértelmezett metódust, így változatlan formában örökli azt.
+* Újradefiniálhatja a metódust, felülírva azt.
+* Absztraktként deklarálhatja újra a metódust, mely a felülírására kényszeríti az
+alosztályokat (ez a lehetőség csak akkor adott, ha az osztály absztrakt).
 
 
 ### 6. Mire használhatjuk a Stream API-t?
 
+A Stream API (`java.util.stream.Stream`) egyszerűbbé és hatékonyabbá teszi a Java egyik
+legfontosabb összetevőjének, a gyűjtemények (collection) feldolgozását a feladatokat
+deklaratív módon leírhatóvá téve. Ezt minden Java collectionon tudjuk használni,
+mivel a `Collection` interéfsz megköveteli az ehhez tartozó metódust, ami lehetővé
+teszi tömeges (aggregált) műveletek elvégzését collection-ökön. Akármilyen
+Collection osztályból létre tudunk hozni egy streamet. Ezt leginkább úgy lehet
+elképzelni, hogy ez a stream kezdetben az összes elemét tartalmazza a collectionnek,
+majd ezen a Stream objektumon végezhetjük el a különböző műveleteinket. Segítségével
+az adatokat tudjuk szűrni, azokon transzformációkat végrehajtani.
+
 
 ### 7. Sorolja fel a Stream API fontosabb függvényeit! Jellemezze ezeket!
+
+A Stream műveletek három nagyobb csoportba sorolhatók:
+* **Létrehozó műveletek:** soros vagy párhuzamos stream-ek létrehozása Collection-ből
+  vagy már létező stream-ből.
+* **Közbülső műveletek (intermediate operation):** két altípusuk van:
+    * *állapotmentes (stateless)*: ilyen például a `filter()` (*visszaad egy új
+    stream-et ami olyan elemeket tartalmaz, amik megfelelnek a metódus paramétereként á
+    tadott predikátumnak*) és a `map()` (*új streamet ad vissza ami az eredeti
+    stream elemeire alkalmazott mapper eredményeit tartalmazza*), amelyek nem tartanak
+    meg állapotot az előzőleg megvizsgált elemről amikor új elemet dolgoznak fel;
+    minden elem az egyéb elemeken elvégzett műveletektől függetlenül feldolgozható.
+    * *állapottartó (stateful)*: ilyen például a `distinct()` (*az ugyanolyan elemeket
+    szűri*), a `sorted()` (*az elemek természetes sorrendje szerint sorbarendezett
+    stream-et ad vissza*), vagy a `limit(n)` (*az első n db elemet engedi tovább*) amelyek
+    felhasználhatnak állapotot az előzőleg feldolgozott elemről amikor új elemet
+    dolgoznak fel. Nem lehet például sorba rendezni egy stream elemeit amíg mindegyik
+    elemet nem láttuk.
+* **Lezáró (vagy végső) műveletek (terminal operation):** egy lezáró művelet, mint
+  amilyen például a `forEach()` vagy a `count()`, egy nem-stream végeredményt ad.
+  Ez lehet egy primitív érték (például double), egy collection, vagy semmi (void).
+  Miután a lezáró művelet lefutott, a stream feldolgozottnak számít és többé nem
+  használható. Ha ugyanazon a forráson szeretnénk további stream műveleteket használni
+  akkor új stream létrehozása szükséges.
 
 
 ### 8. Milyen „végső műveleteket” ismer?
 
+Egy lezáró (végső) művelet, nem-stream végeredményt ad. Ez lehet primitív érték (például
+double), egy collection, vagy semmi (void). Azokat a lezáró műveleteket, amelyek
+valamilyen értéket vagy collection-t adnak vissza (`average()`, `sum()`, `min()`,
+`max()`, `count()`) *redukciós műveleteknek (reduction operation)* nevezzük.
+
+
+| Szintaxis | Viselkedés |
+|-----------|------------|
+| `Stream.count()` | A stream elemeinek száma |
+| `Stream.max(Comparator<? super T> comparator)` | a stream elemei közül a legnagyobb az adott comparator szerint |
+| `Stream.min(Comparator<? super T> comparator)` | a stream elemei közül a legkisebb az adott comparator szerint |
+| `findFirst()` | egy `Optional` típusú objektumot ad vissza, ami a stream első elemét tartalmazza vagy üres ha a stream is |
+| `IntStream.average()`, `LongStream.average()`, `DoubleStream.average()` | a stream elemeinek átlaga |
+
+Miután a lezáró (végső) művelet lefutott, a stream feldolgozottnak számít és többé
+nem használható. Ha ugyanazon a forráson szeretnénk további stream műveleteket
+használni akkor új stream létrehozása szükséges.
+
 
 ### 9. Mire jó az Optional osztály?
+
+Az Optional valójában csak egy konténer. Burkolóként működik a referencia és primitív
+típusokhoz, bármilyen T típusú értéket vagy null-t tud tárolni. Számos hasznos
+metódusa van, így az explicit nullvizsgálat már nem föltétlenül szükséges többé.
+Segítségével csökkenthetjük a programunkban keletkezett `NullPointerException`-ök
+számát. Ha van Optional példányunk akkor a metódusain keresztül közvetlenül tudjuk
+kezelni érték jelenlétét vagy hiányát. Az `isPresent()` metódussal megvizsgálhatjuk,
+hogy van-e az `Optional` objektumpéldányunkban érték, a `get()` metódus vissza is
+adja azt (ha nincs, akkor meg `NoSuchElementException` kivételt dob). Az `Optional`
+`orElse()` metódusa pedig visszaad egy alapértelmezett értéket ha az Optional null-t
+tartalmaz.
 
 
 ### 10. Jellemezze a Java 8 új „Date and Time API”-ját!
 
+A dátum és idő kezelés a javában kezdetben nehézkes volt. 2002-ben megindult a
+[Joda-Time](https://www.joda.org/joda-time/) könyvtár fejlesztése, amely könnyen
+kezelhető és rugalmas megoldást ígért a korábbi megoldásokkal szemben. Gyorsan
+nagyon népszerű lett és de-facto szabvány lett az iparban. A Java SE 8-ban megjelent,
+a korábbi hibákat kiküszöbölő és a Joda-Time megoldásaira nagyban építő `java.time`
+csomag azonban feleslegessé tette.
+
+A Date and Time API az [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+dátum és időformátumot használja, az IANA által ajánlott [időzónákhoz](https://www.iana.org/time-zones)
+igazodik és használja az [Unicode Common Locale Data Repository-t (CLDR)](http://cldr.unicode.org/)
+is az I18n és L10n támogatáshoz (lokalizáció).
+
+A megvalósítás új csomagba került (`java.time`), ahol a típusok elnevezése is sokkal
+beszédesebb (pl.: YearMonth, MonthDay, LocalDate, LocalTime, LocalDateTime, stb.).
+Milliszekundum helyett nanoszekundum pontosságú tárolást tesz lehetővé. Minden osztály
+megváltoztathatatlan (immutable) és szálbiztos és támogatja az objektumok sztringekből
+való létrehozását és formázását.
+
+A hét napjai (`DayOfWeek`) és a hónapok (`Month`) most már enumerációval vannak
+kezelve a int konstansok helyett (a január ekkor 0 (nulla) értéket vett fel).
 
 
 ## VIII. Adatbáziskezelés JDBC-vel
@@ -1788,6 +1953,8 @@ kapunk vissza.
 * Wikipedia: [Java-szócikk](https://hu.wikipedia.org/wiki/Java_(programoz%C3%A1si_nyelv))
 * Pénzes László: [Tanuld meg a Java javát!](http://www.informatika-programozas.hu/informatika_java_programozas_bevezetes.html)
 * Faragó Csaba, Phd: [Java](http://faragocsaba.hu/java)
+* Sípos Róbert: [A Java 8 újdonságai](http://www.egalizer.hu/informatika/essze/java/java8.htm)
+* Jeszenszky Péter: [Dátum és időkezelés javában](https://arato.inf.unideb.hu/jeszenszky.peter/download/prt/presentations/old/datetime.pdf)
 * W3Schools: [Java tutorial (en)](https://www.w3schools.com/java/)
 * Geeks for geeks: [Java (en)](https://www.geeksforgeeks.org/java/)
 
