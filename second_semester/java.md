@@ -1893,8 +1893,60 @@ kezelve a int konstansok helyett (a január ekkor 0 (nulla) értéket vett fel).
 
 ### 1. Java-ban milyen API-n keresztül tudjuk kezelni a relációs adatbázisokat?
 
+A Java nyelvben az adatbázis-kapcsolatok kezelésére a **Java Database Connectivity
+(JDBC) API** áll rendelkezésre. Ez adatbáziskezelőrendszergyártó-független összeköttetést
+biztosít az adatok Java kódból történő elérésére és kezelésére. Minden gyártó saját
+implementációt ad a Java JDBC API-jához. **A JDBC feladata tehát az adatbázisokból
+adódó különbségek elrejtése és egységes felület biztosítása a programozó számára**.
+Nem kell minden adatbázisszerverre külön programot írni, hanem ugyanaz a kód működni
+fog bármely adatbázisszerverrel.
+
+A JDBC a következő lépésekhez nyújt támogatást:
+* Kapcsolódás adatbázishoz
+* Olvasási és írási (azaz lekérdezések és módosítási) műveletek végrehajtása
+* A visszakapott adatok feldolgozása.
+
+A JDBC négy részből épül fel:
+
+1. A **JDBC API** segítségével SQL utasításokat hajthatunk végre, a kapott eredményeket
+feldolgozhatjuk, valamint módosításokat kezdeményezhetünk az adatforráson. A JDBC API
+a Java platform részeként két csomagból áll, a `java.sql`-ből és a `javax.sql`-ből.
+
+2. A `DriverManager` osztály képezi a JDBC architektúra gerincét. **A meghajtókezelő
+felelőssége, hogy minden adatforráshoz a megfelelő meghajtót vegye használatba**.
+Képes arra, hogy egy időben több meghajtót kezeljen, amelyek több (különböző) adatbázishoz
+kapcsolódnak. **A meghajtó (driver) egy olyan adapter, amely a Java alkalmazás utasításait
+alakítja át az adatbázis-kezelő rendszer által értelmezhető formára**.
+
+3. Egy **JDBC-driver** tesztkészlet is rendelkezésre áll, amely a JDBC-meghajtóprogramok
+fejlesztői számára biztosítanak teszteseteket annak ellenőrzésére, hogy az általuk
+fejlesztett meghajtóprogramok megfelelnek-e a követelményeknek.
+
+4. A **JDBC-ODBC híd** feladata a JDBC elérés biztosítása ODBC-meghajtókon keresztül.
+Ezzel a híddal tulajdonképpen **olyan adatforrásokat is el lehet érni, amelyekhez
+nem készült JDBC-meghajtó, de van hozzájuk ODBC-driver**.
+
+![Imgur](https://i.imgur.com/wfDrQ6i.jpg)
+
 
 ### 2. Sorolja fel a JDBC driverek típusait!
+
+Egy JDBC-meghajtóprogram az a szoftverkomponens, amely lehetővé teszi, hogy egy
+Java alkalmazás kapcsolatot létesítsen egy adatbázissal. A meghajtóprogramoknak
+a JDBC specifikáció szerint négy típusa van:
+1. JDBC–ODBC híd (meglévő ODBC driver használatát teszi lehetővé, átalakítja a
+  JDBC hívásokat ODBC hívásokká);
+2. Natív–API meghajtó (az adatbázis típusától függő, az adatbázis készítői által
+  írt driver, amely a JDBC hívásokat közvetlenül átalakítja az adott típusú adatbázis
+  API hívásaira);
+3. Hálózati–protokoll meghajtó (Javában írt, hordozható köztesréteg driver, ami
+  nem közvetlenül az adatbázissal, hanem egy külön szerverprogrammal kommunikál úgy,
+  hogy a JDBC hívásokat adatbázis-független hálózati protokollhívásokká alakítja, melyeket
+  egy szerverprogram értelmez és alakít át az adott adatbázis-kezelő API-jának
+  hívásaivá);
+4. Direkt adatbázis meghajtó (Javában írt meghajtó program, amely a JDBC hívásokat
+  közvetlenül az adott adatbázis-kezelő adatmanipulációs protokolljának hívásaivá
+  alakítja át. Nincs szükség közbenső szerverprogramra, a leggyorsabb driver típus).
 
 
 ### 3. Melyek a JDBC driver típusok előnyei és hátrányai?
@@ -1955,6 +2007,7 @@ kezelve a int konstansok helyett (a január ekkor 0 (nulla) értéket vett fel).
 * Faragó Csaba, Phd: [Java](http://faragocsaba.hu/java)
 * Sípos Róbert: [A Java 8 újdonságai](http://www.egalizer.hu/informatika/essze/java/java8.htm)
 * Jeszenszky Péter: [Dátum és időkezelés javában](https://arato.inf.unideb.hu/jeszenszky.peter/download/prt/presentations/old/datetime.pdf)
+* Kollár Lajos, Sterbinszky Nóra: [Programozási technológiák, 6. Adatbázis-kapcsolatok kezelése](https://gyires.inf.unideb.hu/GyBITT/21/ch06s02.html)
 * W3Schools: [Java tutorial (en)](https://www.w3schools.com/java/)
 * Geeks for geeks: [Java (en)](https://www.geeksforgeeks.org/java/)
 
