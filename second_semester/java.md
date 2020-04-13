@@ -1934,46 +1934,174 @@ nem készült JDBC-meghajtó, de van hozzájuk ODBC-driver**.
 Egy JDBC-meghajtóprogram az a szoftverkomponens, amely lehetővé teszi, hogy egy
 Java alkalmazás kapcsolatot létesítsen egy adatbázissal. A meghajtóprogramoknak
 a JDBC specifikáció szerint négy típusa van:
-1. JDBC–ODBC híd (meglévő ODBC driver használatát teszi lehetővé, átalakítja a
+1. **JDBC–ODBC híd** (meglévő ODBC driver használatát teszi lehetővé, átalakítja a
   JDBC hívásokat ODBC hívásokká);
-2. Natív–API meghajtó (az adatbázis típusától függő, az adatbázis készítői által
+2. **Natív–API meghajtó** (az adatbázis típusától függő, az adatbázis készítői által
   írt driver, amely a JDBC hívásokat közvetlenül átalakítja az adott típusú adatbázis
   API hívásaira);
-3. Hálózati–protokoll meghajtó (Javában írt, hordozható köztesréteg driver, ami
+3. **Hálózati–protokoll meghajtó** (Javában írt, hordozható *köztesréteg driver*, ami
   nem közvetlenül az adatbázissal, hanem egy külön szerverprogrammal kommunikál úgy,
   hogy a JDBC hívásokat adatbázis-független hálózati protokollhívásokká alakítja, melyeket
   egy szerverprogram értelmez és alakít át az adott adatbázis-kezelő API-jának
   hívásaivá);
-4. Direkt adatbázis meghajtó (Javában írt meghajtó program, amely a JDBC hívásokat
+4. **Direkt adatbázis meghajtó** (Javában írt meghajtó program, amely a JDBC hívásokat
   közvetlenül az adott adatbázis-kezelő adatmanipulációs protokolljának hívásaivá
   alakítja át. Nincs szükség közbenső szerverprogramra, a leggyorsabb driver típus).
 
 
 ### 3. Melyek a JDBC driver típusok előnyei és hátrányai?
 
+| Meghajtó típus | Előny | Hátrány |
+|----------------|-------|---------|
+| JDBC–ODBC híd | A Java nyelvű programunk minden olyan adatbázishoz tud kapcsolódni, amelyhez van ODBC driver | Lassabb, mint a többi |
+| Natív–API meghajtó | Jó teljesítmény | platformfüggő |
+| Hálózati–protokoll meghajtó | Platformfüggetlen | Kliens és szerveroldali alkalmazásra is szükség van, két alkalmazást is implementálni kell |
+| Direkt adatbázis meghajtó | Platformfüggetlen, gyors | ? |
 
-### 4. Adatbázis kapcsolat mely osztállyal tudjuk kezelni? Melyik osztály mely függvényével tudunk példány létrehozni belőle?
+
+### 4. Adatbázis kapcsolat mely osztállyal tudjuk kezelni? Melyik osztály mely függvényével tudunk példányt létrehozni belőle?
+
+A `DriverManager` az objektumorientált programozás tervezési mintái szerint egy
+factory amely adatbázis kapcsolatokat gyárt. Az adatbáziskapcsolatot a `java.sql`
+csomag `Connection` osztálya reprezentálja. Az adatbáziskapcsolatot a `DriverManager.getConnection()`
+metódus segítségével lehet létrehozni, ami egy `Connection` típusú objektumot ad
+vissza.
+
+```java
+
+  // Általános szintaxis:
+  public static Connection getConnection(
+    String url,
+    String user,
+    String password) throws SQLException
+
+  //Példa:
+  Connection conn = DriverManager.getConnection(
+   "jdbc:valamijdbcforgalmazo:további adatok a jdbc forgalmazótól függően",
+   "felhasznalonev",
+   "jelszo"
+  );
+
+```
+
+Az URL mindig a „jdbc:” karaktersorozattal kezdődik, a többi része a gyártótól függ.
 
 
-### 5. Adatbázissal kapcsolat metaadatok mely interface segítségével tudunk lekérdezni?
+### 5. Adatbáziskapcsolat metaadatait mely interface segítségével tudunk lekérdezni?
 
+Az adatbázis-kezelő rendszerek nemcsak a felhasználók adatait tárolják, de többek
+között információt nyújtanak az adatok szerkezetéről, tárolási és hozzáférési módjáról
+is. Ez utóbbi adatok nevezzük **metaadatoknak (adatokról szóló adatok)**. A metaadatbázisban
+(vagy katalógusban) tárolt információk, azok szervezési és kinyerési módja adatbázis-kezelőről
+adatbázis-kezelőre változhat. Éppen ezért **a JDBC biztosítja a `DatabaseMetaData`
+interfészt, amelyet a meghajtó írójának (vagyis az adatbázis-kezelő gyártójának)
+kötelezően implementálnia kell, így szabványos módon férhetünk hozzá az adatbázis
+metaadataihoz**.
+
+Séma és táblák lekérdezése a `DatabaseMetaData.getSchemas()` és `DatabaseMetaData.getTables()`
+függvényekkel történik. A `supportsOuterJoins()` megmondja, hogy az adatbázis támogatja-e
+a külső kapcsolást, a `getMaxConnections()` elárulja, hogy egyszerre mennyi a maximálisan
+megengedett kapcsolatok száma.
 
 ### 6. Mire való a Statement?
+
+A Statement objektum küldi el az SQL utasításunkat az adatbázis-kezelőnek. A `Statement`
+és leszármazottjai segítségével több SQL-utasítást is végrehajthatunk egy ütemben.
+A `Statement`, `PreparedStatement`, és `CallableStatement` olyan interfészek,
+amelyek egy-egy végrehajtandó SQL-utasítás absztrakciói (utasításobjektumok). A
+felírás sorrendjében szülő-gyermek viszonyban állnak egymással.
+
+* `Statement`, amellyel egyszerű SQL-utasításokat hajthatunk végre, olyanokat, amelyek
+teljes szövege ismert,
+
+* `PreparedStatement`, a `Statement` altípusa (leszármazottja), paraméterezhető
+SQL-utasítások létrehozását teszi lehetővé
+
+* `CallableStatement`, a `PreparedStatement` altípusaként adatbázisban tárolt
+alprogramok hívását (amelyeknek természetesen paraméterek is átadhatók) végezhetjük
+vele.
 
 
 ### 7. Hogyan tudunk létrehozni egy Statement objektumot?
 
+Az SQL-utasításokat reprezentáló `Statement` objektumok létrehozásához szükségünk
+van egy kapcsolatobjektumra (`Connection`), vagyis egy utasítást csakis egy kapcsolathoz
+kötődően lehet létrehozni (a kapcsolatobjektum hozza létre az utasításobjektumot).
+
+```java
+
+  final String query = "SELECT * FROM ADDRESSES"; //SQL parancs szöveges változóban
+  Statement stmt = conn.createStatement();        //Statement objektum létrehozása
+  ResultSet rs = stmt.executeQuery(query);        //Lekérdezés futtatása
+
+```
+
+Miután befejeztük munkánkat a Statement objektummal, célszerű azonnal bezárni a
+kapcsolatot a `Connection.close()` metódus meghívásával, hogy az erőforrásokat,
+amelyeket magához köt, engedje el.
+
 
 ### 8. Sorolja fel a Statement SQL parancs végrehajtó függvényeit!
 
+Egy lekérdezés végrehajtására a `Statement` interfész `execute` metóduscsaládját
+használhatjuk, az SQL utasítás típusától függően.
+
+* `execute()`: több `ResultSet`-et eredményező SQL-utasítás végrehajtásakor (amennyiben
+a driver enged ilyet), vagy olyankor használatos, ha nem tudjuk fordítási időben
+meghatározni, milyen jellegű utasítás végrehajtása történik meg.
+* `executeUpdate()`: akkor használatos, ha nem jön vissza eredményhalmaz (DML-típusú
+utasításoknál). Egy egész értékkel tér vissza, amely az SQL-utasítás által
+érintett sorok számát tartalmazza (INSERT, DELETE és UPDATE utasítások esetében),
+vagy 0-val, ha nem volt érintett sor, illetve ha az SQL-utasítás DDL-utasítás
+(például CREATE TABLE)
+* `executeQuery()`: egyetlen `ResultSet` objektummal tér vissza (DQL-típusú, vagyis
+SELECT utasítások esetében használhatjuk)
+* `executeBatch()`: kötegelt adatbázis-műveletek végrehajtása. Egy `Statement` objektum
+kezdetben üres, amelyhez az `addBatch()` metódus segítségével újabb SQL-utasításokat
+adhatunk. Az `executeBatch()` metódus hatására a teljes kötegelt módosítás egy egységként
+hajtódik végre.
+
+A `Statement`-tel szemben a `PreparedStatement` `execute` metódusai nem vesznek
+át paramétert, mivel az SQL-utasítás már az objektum létrehozásakor átadódik.
 
 ### 9. Írjon példát executeQuery() függvény használatára!
+
+```java
+
+  final String query = "SELECT * FROM ADDRESSES";
+  Statement stmt = conn.createStatement();
+  ResultSet rs = stmt.executeQuery(query);
+
+```
 
 
 ### 10. Írjon példát executeUpdate() függvény használatára!
 
+```java
+
+  conn = DriverManager.getConnection(url + db, user, pass);
+  stmt = con.createStatement();
+
+  String sql = "update person set name='Gipsz Jakab' where id=4";
+  stmt.executeUpdate(sql);
+
+  System.out.println("Table updated.");
+
+```
+
 
 ### 11. Lekérdezés eredményét milyen típusban tároljuk?
+
+A `ResultSet` interfész tartalmazza az utasításobjektumok segítségével végrehajtott
+lekérdezés eredményrelációját (vagyis a lekérdezés eredményhalmazának absztrakciójáról
+van szó), amelynek tetszőleges számú sora (nulla, egy vagy több) lehet, attól függően,
+hogy a lekérdezés feltételeinek hány rekord felelt meg. **A `ResultSet` objektum
+iterátorként viselkedik az eredményhalmaz sorainak bejárásakor**. Egy időben csak
+egy sort dolgozhatunk fel, amelyre egy kurzor mutat. **A kurzor egy olyan mutató,
+amely az aktuális sort azonosítja**. Közvetlenül a lekérdezés végrehajtását követően
+a létrejövő kurzor az első sor elé mutat, függetlenül a eredményreláció számosságától.
+**Az eredményhalmazt az elejétől a végéig bejárhatjuk a kurzor segítségével**, vagyis
+az API metódust biztosít a kurzor léptetésére.
 
 
 ### 12. Mire használjuk a PreparedStatement-et? Milyen előnye van a Statement-tel szemben?
