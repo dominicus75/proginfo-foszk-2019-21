@@ -2106,24 +2106,224 @@ az API metódust biztosít a kurzor léptetésére.
 
 ### 12. Mire használjuk a PreparedStatement-et? Milyen előnye van a Statement-tel szemben?
 
+A `PreparedStatement` az előfordított SQL-utasítások absztrakciója, a `Statement`
+típus altípusa (leszármazottja). Az ilyen utasítások paraméterekkel is rendelkezhetnek,
+amelyekhez nem a fordításkor, hanem csak közvetlenül a végrehajtás előtt rendelődik
+érték (pl. felhasználói adatbevitel eredményeként). A `PreparedStatement` típust
+akkor célszerű használni, ha ugyanazt az SQL-utasítást többször is végre szeretnénk
+hajtani, vagy ha az SQL-utasítás szövege (különösképpen a WHERE feltételé) dinamikusan
+áll elő. Előbbire példa, ha egy beszúró (INSERT) vagy módosító (UPDATE) utasítás
+esetén az SQL-utasítás törzse ugyanaz, csak a beszúrandó vagy módosítandó értékek
+változhatnak.
+
+A `PreparedStatement` előnye a `Statement`-tel szemben, hogy már létrehozásakor
+megkapja az SQL-utasítást, amely azonnal továbbítódik az adatbázis-kezelő rendszerhez,
+amely lefordítja azt. Így az utasítás végrehajtása során az adatbázis-kezelőnek nem
+kell újra és újra elvégezni a nagyon hasonló szövegű (egymástól csak paraméterértékekben
+eltérő) utasítások értelmezését és az az alapján történő végrehajtási terv-készítést,
+mivel mindezek már rendelkezésre állnak. **Ezzel az adatbázis műveletek gyorsulását
+érhetjük el nagy mennyiségű adatmanipuláció esetén**.
+
+**Segítségével az SQL-befecskendezéses támadások ellen is védekezünk**, hiszen az
+utasítás szövege nem ellenőrizetlen sztringkonkatenáció eredményeként áll elő,
+hanem egy úgynevezett kötési fázis (binding) során rögzül, amely nagyobb kontrollt
+biztosít az utasítások paraméterei fölött.
+
+A String kezelésén túl a dátum formátumok és bináris adatok megadására megoldást
+jelent a `PreparedStatement`. Ezen kívül még a típusosságra is figyelhetünk, számos
+set-tel kezdődő függvénnyel tudjuk beállítani az adatokat.
+
 
 ### 13. Írjon példát PreparedStatement használatára!
+
+```java
+
+  // felhasználói felületről érkező érték:
+  String custID = "Valami szöveg";
+
+  // A kérdőjelek az SQL-utasítás paramétereit jelölik. A paraméter csak literál lehet,
+  // vagyis sem az SQL-utasítás kulcsszavaival, sem a tábla- és oszlopnevekkel nem lehet
+  // paraméterezni.
+  PreparedStatement stmt = conn.prepareStatement("SELECT * FROM customers WHERE customer_id = ?");
+
+  //az első, kérdőjellel jelölt paraméter értékeként beállítjuk a custID változó értékét
+  stmt.setString(1, custID);
+
+  //Végrehajtjuk a lekérdezést:
+  ResultSet rset = stmt.excuteQuery();
+
+```
 
 
 ### 14. Soroljon fel néhány JDBC adattípust!
 
+Az SQL számos adattípust definiál. Ezeket a Java integer konstansként tárolja a
+[`java.sql.Types`](https://docs.oracle.com/javase/8/docs/api/java/sql/Types.html)
+osztályban, vagyis minden típushoz egy azonosítószám van rendelve (pl. `java.sql.Types.INTEGER`
+konstans értéke `4`). A konstansok neve megegyezik a reprezentált SQL-adattípusok
+nevével. A JDBC feladata a leképezés/megfeleltetés megvalósítása az SQL adattípusok
+és a Java-ban található típusok között.
+
+| SQL adattípus | `java.sql.Types` konstans értéke | Hozzárendelt java adattípus |
+|--------------:|---------------------------------:|-----------------------------|
+| BOOLEAN | 16 | boolean |
+| INTEGER | 4 | int |
+| FLOAT | 6 | Double |
+| DATE | 91 | java.sql.Date |
+| TIME | 92 | java.sql.Time |
+| CHAR | 1 | String |
+| VARCHAR | 12 | String |
+| DOUBLE | 8 | double |
+
 
 ### 15. Milyen ResultSet tulajdonságok léteznek?
+
+A `ResultSet` objektumokat jellemzi kurzorkezelésük módja, párhuzamos feldolgozási
+képességük és az, hogy milyen tartósságú kurzorokat kezelnek.
+
+**A kurzor kezelése szerint három típust különböztetünk meg**:
+
+* `TYPE_FORWARD_ONLY`: az eredményhalmaz nem görgethető. Kurzora csak elölről hátrafelé
+mozgatható, az első előtti sortól indulva végig az eredményhalmazon, az utolsó utáni sorig.
+
+* `TYPE_SCROLL_INSENSITIVE`: az eredményhalmaz görgethető. **Kurzora léptethető előre-,
+és hátrafelé is, vagy akár egy abszolút pozícióra**. Az eredményhalmaz nem érzékeny
+az adatforrásban bekövetkező változásokra, mialatt nyitva van, vagyis **az adatok
+változása a már megnyitott eredményhalmazokat nem érinti**.
+
+* `TYPE_SCROLL_SENSITIVE`: az eredményhalmaz görgethető. Kurzora léptethető előre-,
+és hátrafelé is, vagy akár egy abszolút pozícióra. **Az eredményhalmaz „élővé” válik,
+a háttérben lévő adatforrásban bekövetkező változások hatására automatikusan frissül**.
+
+Az alapértelmezett típus a `TYPE_FORWARD_ONLY`.
+
+**Konkurencia kezelés szerint:**
+
+Amíg az alkalmazásunk a `ResultSet` adatait olvassa ki előfordulhat, hogy más
+felhasználók módosítják az éppen használt sorokat/rekordokat az adatbázisban.
+A `ResultSet` párhuzamossága határozza meg a módosítási műveletek támogatottsági
+szintjét. Két párhuzamossági szintet különböztetünk meg:
+
+* `CONCUR_READ_ONLY`: a `ResultSet` objektum nem módosítható.
+
+* `CONCUR_UPDATABLE`: a `ResultSet` objektum módosítható.
+
+Az alapértelmezett párhuzamos elérési szint a `CONCUR_READ_ONLY`.
+
+**Egy kurzor tartóssága az alábbi értékek valamelyike lehet:**
+
+* `HOLD_CURSORS_OVER_COMMIT`: a kurzor nem záródik be véglegesítéskor, vagyis tartós.
+A tartós kurzorok használata olyan alkalmazás esetében ideális, amely csak olvasható
+`ResultSet` objektumokat tartalmaz.
+
+* `CLOSE_CURSORS_AT_COMMIT`: a kurzor (vagyis a `ResultSet` objektum) bezáródik a
+véglegesítéskor.
+
+Az alapértelmezett kurzortartóssági szint adatbáziskezelőrendszer-specifikus.
+
+Az előbb felsorolt tulajdonságokat a `createStatement()` függvényben adhatjuk meg.
+
+```java
+
+  createStatement(<kurzorkezelés>, <párhuzamosság>, <tartósság>);
+
+```
 
 
 ### 16. Milyen metódusok léteznek az adatok módosítására ResultSet-ben?
 
+Ha az eredményhalmaz módosítható (`CONCUR_UPDATABLE`), frissíthetjük az egyes sorok
+oszlopaiban tárolt értékeket. Ezt az `update<Típus>()` metódusok meghívásával érhetjük
+el, amelyek első paraméterként `String` vagy `int` alakban a módosítandó sor azonosítóját
+(nevét vagy indexét) várják, második paraméterként pedig az új értéket (pl.
+`rst.updateInt(1245, 888)`). A módosítások azonnal nem történnek meg a függvényhívások
+hatására. Az `updateRow()` metódus meghívásakor a kurzor által mutatott sor értékeivel megtörténik
+az adatbázis frissítése. **Ha ezt a metódust nem hívjuk meg, akkor az `update<Típus>()`
+metódusok által elért hatás csak lokális lesz (az aktuális `ResultSet` objektumpéldányra
+korlátozódik), az adatbázis tartalma nem frissül!**
+
+Ezen kívül létezik az `insertRow()` és a `deleteRow()` függvény is egy sor beszúrására
+és egy meghatározott sor törlésére.
+
+Új sort is felvihetünk, az alábbi módon:
+
+1. egy `ResultSet.moveToInsertRow()` hívással egy speciális sorra, az úgynevezett
+puffersorra lépünk, amelyet addig használhatunk, amíg a sor összes oszlopának adatai
+nem ismertek;
+
+2. az `update<Típus>()` metódusok hívásával beállítjuk a puffersor tartalmát;
+
+3. végül a `ResultSet.insertRow()` metódus meghívásával elvégezzük a beszúrást,
+majd a kurzort egy érvényes állapotba visszük.
+
+A lokális (csak az adott objektumpéldányra vonatkozó, tehát az adatbázisban még nem
+rögzített) módosítások két metódussal is felülbírálhatók (visszacsinálhatók). Mindkettő
+elveti a nem mentett módosításokat, de
+* a `refreshRow()` az adatbázisban található aktuális értéket olvassa ki újra, míg
+* a `cancelRowUpdates()` a korábban kiolvasott adatot állítja vissza.
+
 
 ### 17. JDBC-ben hogyan valósíthatjuk meg a tranzakció kezelést?
+
+Az adatbázisban tárolt adatok manipulálása során előfordulnak olyan helyzetek, amikor
+nem szeretnénk, ha egy SQL-utasítás hatása véglegesítésre kerülne, amíg további
+utasítások végrehajtása meg nem történik. Ezek olyan, logikailag összetartozó, de
+több kisebb utasításra széttördelt utasítások, amelyek együttes hatását akarjuk
+véglegesíteni, vagy egyiket sem közülük. Ezek **az összetartozó, egy egységként
+végrehajtandó utasítások képeznek egy tranzakciót. Egy tranzakciónak vagy minden
+utasítása véglegesítésre kerül, vagy egyikük sem**.
+
+JDBC-ben nem kell explicit módon megmondani hol kezdődik a tranzakció, mert minden
+módosítás műveletet egy tranzakció részeként kezel. A kapcsolatobjektum létrehozásakor
+alapértelmezés szerint úgynevezett `autocommit` mód van érvényben, amely azt jelenti,
+hogy minden egyes utasítás különálló tranzakcióban fut, és ha sikeres, akkor véglegesítésre
+kerül.
+
+A legtöbb esetben szükségünk lesz arra, hogy az alapértelmezett `autocommit`
+módot felülírjuk. Ezt a kapcsolatobjektumra meghívott `setAutoCommit(false);` metódushívással
+tehetjük meg. Ezzel letiltjuk a minden SQL-utasítás végrehajtása után történő
+véglegesítést, így a tranzakciók véglegesítése majd igény szerint fog megtörténni,
+vagyis explicit módon kell majd meghívnunk a kapcsolatobjektum tranzakcióvezérlő
+utasításokat reprezentáló metódusait. A véglegesítésre a `Connection` objektum `commit()`
+metódusa, a visszagörgetésre pedig a `rollback()` metódus szolgál. **Egy `Connection`
+objektumhoz egyszerre csak egy aktív tranzakció tartozhat**.
 
 
 ### 18. JDBC-ben hogyan kérdezhetőek le a hibák és a figyelmeztetések?
 
+A `java.sql` csomagban definiált függvények `SQLException`-t dobnak hiba esetén.
+Egy `SQLException` objektum a következő információkat tartalmazza:
+
+* **A hiba leírása**, amelyet az `SQLException.getMessage()` metódussal kérdezhetünk le.
+* **Egy SQL állapotkód** (szabványos, öt alfanumerikus karakterből álló szting), amelyet
+az `SQLException.getSQLState()` metódus ad vissza.
+* **Egy hibakód** (annak a hibának az azonosítója, amely az `SQLException`-t kiváltotta). A
+hibakódot az `SQLException.getErrorCode()` metódus hívásával kaphatjuk meg.
+* **Egy ok:** az `SQLException` ok-okozati kapcsolatban lehet más kivételekkel.
+A teljes ok-okozati láncot végigjárhatjuk az `SQLException.getCause()` metódus ismételt
+hívásával, egészen amíg az null-t nem ad vissza.
+* **Hivatkozás láncolt kivételekre:** ha nem csak egy hiba lép fel, e lánc mentén
+végiglépkedhetünk a kivételeken. Az `SQLException.getNextException()` metódusán
+keresztül érhetjük el.
+
+Az `SQLWarning` objektumok az `SQLException` leszármazottai, amelyek adatbázis
+elérési figyelmeztetéseket reprezentálnak. A figyelmeztetések nem szakítják meg az
+alkalmazás futását úgy, mint a kivételek, mindössze azt tudatják a felhasználóval,
+hogy valami nem a terv szerint alakult.
+
+Egy figyelmeztetés megjelenhet egy `Connection`, egy `Statement` vagy egy `ResultSet`
+objektumon. E típusok mindegyike rendelkezik egy `getWarnings()` metódussal, amelyet
+meghívva visszakapjuk az első figyelmeztetést. Ha a `getWarnings()` egy újabb
+figyelmeztetéssel tér vissza, az `SQLWarning` osztály `getNextWarning()` metódusának
+segítségével végigiterálhatunk a további figyelmeztetéseken. Egy `Statement` végrehajtása
+automatikusan törli az előző utasítás figyelmeztetéseit, tehát azok nem gyűlnek fel, így
+ha szükségünk van a figyelmeztetésekre, akkor egy új SQL-utasítás végrehajtása előtt
+kell lekérdeznünk azokat. Miután lekérdeztük a figyelmeztetéseket a `clearWarnings()`
+metódussal törölhetjük őket.
+
+A `BatchUpdateException` kivétel akkor dobódik, ha kötegelt módosítás feldolgozása
+közben lép fel hiba. Egy `BatchUpdateException` objektum egyebek mellett a módosítások
+által érintett sorok számait is eltárolja egy egész típusú tömbben.
 
 ### Felhasznált (ajánlott) irodalom:
 
