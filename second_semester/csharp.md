@@ -311,7 +311,8 @@ lépésszámait:
 
   //A nyertes sorszámának és lépésszámának kiíratása:
   int nyertes = verseny.Nyertes();
-  Console.WriteLine("A nyertes szalamandra sorszáma: {0}, lépéseinek száma pedig: {1}\n",  nyertes, verseny[nyertes]);
+  Console.WriteLine("A nyertes szalamandra sorszáma: {0}, lépéseinek száma pedig: {1}\n",
+  nyertes, verseny[nyertes]);
 
 ```
 
