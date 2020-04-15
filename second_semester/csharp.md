@@ -37,7 +37,7 @@ A `Program.cs` állomány valami ilyesmi lesz:
 
 ### 1. feladat
 *Definiáljon egy `Verseny` nevű osztályt, amelynek privát adattagja a következő:
-* **lepesek** int típusú tömb tárolására alkalmas referencia, ez tárolja a szalamandrák
+**lepesek** int típusú tömb tárolására alkalmas referencia, ez tárolja a szalamandrák
 lépéseinek számát (a tömb i-edik eleme az i-edik szalamandra lépéseinek száma).*
 
 **Megoldás:** Hozzuk létre a `Verseny` nevű osztályt. Ezt megtehetjük a `Program.cs` állományban
@@ -89,7 +89,7 @@ hány lépésben teljesítette a távot. Vagyis minden szalamandrához generálj
 
 
 ### 3. feladat
-* **VersenyzokSzama():** adja vissza, hány szalamandra vett részt a versenyben.*
+***VersenyzokSzama():** adja vissza, hány szalamandra vett részt a versenyben.*
 
 **Megoldás:**
 
@@ -220,9 +220,10 @@ szalamandrák sorszámait is lépéseit!*
 
 ```
 
+### Forráskódok:
 
-[Program.cs](../src/Program.cs)
-[Verseny.cs](../src/Verseny.cs)
+* [Program.cs](../src/Program.cs)
+* [Verseny.cs](../src/Verseny.cs)
 
 
 [Kezdőlap](../README.md)

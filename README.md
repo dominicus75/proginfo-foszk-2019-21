@@ -17,3 +17,5 @@
 * [Jogi ismeretek](second_semester/law.md)
 
 * [Java alkalmazások, ZH kérdéssor](second_semester/java.md)
+
+* [Programozási technikák (C#), ZH feladat](second_semester/csharp.md)
