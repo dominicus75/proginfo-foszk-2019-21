@@ -4,6 +4,28 @@
 
 ## 1. tétel: Az informatikai biztonság fogalma, feladata.
 
+Az informatikai biztonság az informatikai rendszer olyan – az érintett számára
+kielégítő mértékű – állapota, amelyben annak védelme az informatikai rendszerben
+kezelt adatok bizalmassága, sértetlensége és rendelkezésre állása, valamint a rendszer
+elemeinek sértetlensége és rendelkezésre állása szempontjából zárt, teljes körű,
+folytonos és a kockázatokkal arányos.
+
+* **bizalmasság**: az adatot csak az arra jogosultak és csak a jogosultságuk szerint
+ismerhetik meg, használhatják fel, illetve rendelkezhetnek a felhasználásáról
+* **sértetlenség:** az adat tartalma és tulajdonságai az elvárttal megegyeznek,
+ideértve a bizonyosságot abban, hogy az elvárt forrásból származik (hitelesség)
+és a származás megtörténtének bizonyosságát (letagadhatatlanság) is, illetve a
+rendszerelem tulajdonsága, amely arra vonatkozik, hogy a rendszerelem rendeltetésének
+megfelelően használható
+* **rendelkezésre állás:** az arra jogosultak által a szükséges időben és időtartamra
+használható
+* **zárt védelem:** olyan védelem, amely az összes releváns fenyegetést figyelembe veszi
+* **teljes körű:** a védelmi intézkedések a rendszer összes elemére kiterjednek
+* **folytonosság:** a védelem az időben változó körülmények és viszonyok ellenére
+is folyamatosan megvalósul
+* **kockázatokkal arányosság:** egy kellően nagy intervallumban a védelem költségei
+arányosak a potenciális kárértékkel
+
 ### 1.1 Mely területeken alkalmazható és milyen biztonsági módszerek vannak.
 ### 1.2 A biztonsági stratégia meghatározása, biztonsági követelmények, IBSZ.
 ### 1.3 A kár jellege, kár érték szintek.
