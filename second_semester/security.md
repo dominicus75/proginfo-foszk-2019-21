@@ -46,7 +46,7 @@
 
 ### 9.1 Adatok megsemmisítésének lehetőségei.
 
-### Informatikával kapcsolatos törvények.
+### 9.2 Informatikával kapcsolatos törvények.
 
 ## 10. tétel: Tűzfalak ismertetése, fajtái, kategóriái.
 
