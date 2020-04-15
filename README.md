@@ -18,4 +18,4 @@
 
 * [Java alkalmazások, ZH kérdéssor](second_semester/java.md)
 
-* [Programozási technikák (C#), ZH feladat](second_semester/csharp.md)
+* [Programozási technikák (C#), ZH-mintafeladat](second_semester/csharp.md)
