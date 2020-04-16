@@ -106,12 +106,14 @@ alatt.
 * társadalmi-politikai hatás: nincs bizalomvesztés, a probléma a szervezeti egységen belül marad
 * testi épség jelentéktelen sérülése 1-2 embernél
 * nem védett adat bizalmassága vagy hitelessége sérül
+
 **1: csekély kár**
 * közvetlen anyagi kár 100 000 Ft-ig
 * közvetett anyagi kár 1 emberhónappal állítható helyre
 * társadalmi-politikai hatás: kínos helyzet a szervezeten belül
 * könnyű személyi sérülés 1-2 embernél
 * hivatali, belső intézményi szabályozóval védett adat bizalmassága vagy hitelessége sérül
+
 **2: közepes kár**
 * közvetlen anyagi kár 1 000 000 Ft-ig
 * közvetett anyagi kár 1 emberévvel állítható helyre
@@ -119,6 +121,7 @@ alatt.
 * több könnyű, vagy 1-2 súlyos emberi sérülés
 * személyes adatok bizalmassága vagy hitelessége sérül
 * egyéb jogszabállyal védett (üzleti, orvosi, stb.) titok bizalmassága vagy hitelessége sérül
+
 **3: nagy kár**
 * közvetett anyagi kár 10 000 000 Ft-ig
 * közvetett anyagi kár 1-10 emberévvel állítható helyre
@@ -128,6 +131,7 @@ szervezet jó hírneve súlyosan sérül
 * szolgálati titok bizalmassága vagy hitelessége sérül
 * szenzitív személyes adatok, nagy tömegű személyes adat bizalmassága vagy hitelessége sérül
 * banktitok, közepes értékű üzleti titok bizalmassága vagy hitelessége sérül
+
 **4: kiemelkedően nagy kár**
 * közvetlen anyagi kár 100 000 000 Ft-ig
 * közvetett anyagi kár 10-100 emberévvel állítható helyre
@@ -137,6 +141,7 @@ a szervezet működésbeli és/vagy gazdaságbeli helyzete súlyos veszélybe ke
 * államtitok, katonai, szolgálati titok bizalmassága vagy hitelessége sérül
 * nagy tömegű szenzitív személyes adat bizalmassága vagy hitelessége sérül
 * nagy értékű üzleti titok bizalmassága vagy hitelessége sérül
+
 **4+: katasztrofális kár**
 * közvetlen anyagi kár 100 000 000 Ft felett
 * közvetett anyagi kár több, mint 100 emberévvel állítható helyre
