@@ -153,8 +153,81 @@ kormányzati szinten, személyi konzekvenciákkal
 
 ## 2. tétel: A megbízható működés és a rendelkezésre állás.
 
-### 2.1 Rendelkezésre állás menedzsment.
+Az **informatikai rendszer megbízható működtetése**, az adatok rendelkezésre állását
+és a hozzájuk kapcsolódó alkalmazói rendszerek funkcionalitását hivatott biztosítani.
+Az ITB 12. számú ajánlás a megbízható működés területekre 3 biztonsági osztályt
+határoz meg. Az osztályba sorolás alapja az adott osztályban tárolandó adatok
+érzékenysége. A három osztály a következő:
+* **megbízható működési alapbiztonsági (MM-A) osztály**: 95,5%-nál alacsonyabb
+rendelkezésre állású rendszerek
+* **megbízható működési fokozott biztonsági (MM-F) osztály**: 99,5%-nál alacsonyabb
+rendelkezésre állású rendszerek
+* **megbízható működési kiemelt biztonsági (MM-K) osztály**: 99,95%-nál magasabb
+rendelkezésre állású rendszerek.
 
+**Rendelkezésre állás = (Összes szolgáltatási idő – Leállás) / Összes szolgáltatási idő * 100**
+
+A rendelkezésreállás javítására két fő lehetőség van:
+* csökkenteni kell a hibánkénti állásidőt,
+* csökkenteni kell az adott időtartamon belüli hibák számát.
+
+Problémát jelenthet a külső szolgáltatóktól való függés, mivel az általuk vállalt
+elhárítási idők meghatározzák a vállalható szolgáltatási szint célokat.
+
+### 2.1 Rendelkezésreállás menedzsment.
+
+A rendelkezésreállás az informatikai elem vagy szolgáltatás egy adott időpontban
+vagy időintervallumban normál működésre kész állapotát jelenti. Ez a jellemző adott
+időintervallumra vonatkoztatva a rendelkezésreállás tényleges és előírt értékének
+hányadosával jellemezhető. A rendelkezésreállás menedzsment célja az üzleti igényeknek
+megfelelő rendelkezésreállás tervezése, figyelése és a szolgáltatások, informatikai
+infrastruktúra ilyen jellegű képességeinek folyamatos javítása.
+
+Az informatikai rendszerek és szolgáltatások főbb tervezési szempontjai, melyeknek
+teljes életciklusuk során, a tervezéstől, a megszüntetésükig meg kell felelniük:
+
+* **Megbízhatóság (reliability)**: egy információtechnológiai összetevő azon képessége,
+hogy ellásson egy megkívánt funkciót meghatározott körülmények között, egy meghatározott
+időtartamra (jellemzi az informatikaszolgáltatás hibatűrő képességét).
+* **Karbantarthatóság (maintainability)**: egy számítógépes komponens vagy szolgáltatás
+azon képessége, hogy meg lehet tartani egy olyan állapotban, vagy vissza lehet állítani
+egy olyan állapotba, amelyben képes ellátni a megkívánt funkciót.
+* **Szolgáltatási képesség (serviceability)**:  külső fél által biztosított szolgáltatásokra
+vonatkozó, szerződés keretén belül biztosított rendelkezésreállási, megbízhatósági
+és karbantarthatósági jellemzők.
+* **Biztonság (security)**: lehetővé teszi a számítógépes komponensek vagy informatikai
+szolgáltatások elérését biztonságos körülmények között.
+
+A rendelkezésreállás menedzsment tevékenységek két fő részre bonthatók. A kockázatok
+felmérését végző **kockázat analízisre** és a bekövetkező negatív hatások kezelését
+végző **kockázat menedzsmentre**.
+
+A **kockázat analízis** során felmérjük az informatikai erőforrásokat, meghatározzuk
+az őket érintő szándékos és véletlen jellegű veszélyeket, és megállapítjuk az
+erőforrások sebezhetőségi szintjét. Az informatikai erőforrásokba a hardver és
+szoftver elemeken kívül az adatok és a személyzet is bele tartozik.
+
+A kockázat kezelése (**kockázat menedzsment**) során intézkedéseket teszünk az eszközök
+sebezhetőségének csökkentésére. A kockázat számításakor figyelembe vesszük az esemény
+hatását és a bekövetkezés valószínűségét. A kockázatok kezelése olyan intézkedésekben
+nyilvánul meg, amely a tervezést és az infrastruktúra kialakítást is magában foglalja.
+
+A fizikai környezet kialakításánál a számítástechnikai központok elhelyezkedését,
+az infrastruktúra elrendezését és a környezeti paramétereket meghatározó tényezőket
+(klíma, áramellátás) vesszük figyelembe. Az elhelyezkedésnél a szabotázs, árvíz,
+robbanásveszély és egyéb katasztrófákat igyekezünk elkerülni, illetve készülünk
+fel a hatás csökkentésére. Elrendezést tekintve a hardver egységek több helyszínen
+történő elhelyezésével készülünk fel. A kritikus hardver egységeknek megfelelő
+környezeti tényezőket biztosíthatunk klíma berendezés, szünetmentes tápegység,
+generátor alkalmazásával.
+
+A rendelkezésreállás menedzsment tevékenységek sikeres megvalósításával elérhető,
+hogy kevesebb megszakítás történjen az informatikaszolgáltatásban. Amennyiben mégis
+bekövetkezik a leállás, a gyors helyreállítással minimalizálható az üzletmenetre
+gyakorolt kedvezőtlen hatás. A leállási idők csökkentésével közvetlen a pénzügyi
+veszteségek csökkenthetők, vagy elkerülhetők. A karbantarthatósági és a szervizelhetőségi
+tevékenységek menedzselésével a kitűzött célok elérése mellett kézben tarthatók a
+kiadások is.
 
 ## 3. tétel: Vállalati biztonság.
 
@@ -229,5 +302,6 @@ kormányzati szinten, személyi konzekvenciákkal
 * dr. Haig Zsolt: [Az információbiztonság szabályzói és szervezeti keretei](http://hadmernok.hu/kulonszamok/robothadviseles7/haig_rw7.pdf)
 * Muha Lajos, Krasznay Csaba: [Az elektronikus információs rendszerek biztonságának menedzselése](http://m.ludita.uni-nke.hu/repozitorium/bitstream/handle/11410/11173/Az%20elektronikus%20inform%C3%A1ci%C3%B3s%20rendszerek%20biztons%C3%A1g%C3%A1nak%20menedzsel%C3%A9se_2018.pdf?sequence=1&isAllowed=y)
 * Muha lajos: [Informatikai biztonsági szabványok és irányelvek](http://real.mtak.hu/11149/1/1228885.pdf)
+* KFKI: [ITIL - az informatikaszolgáltatás módszertana](http://www.itsmf.hu/documents/itil2modszertan_osszefoglalo_v3.1.pdf)
 
 [Kezdőlap](../README.md)
