@@ -43,11 +43,107 @@ hitelességének és bizalmasságának elvesztését hivatott megakadályozni.
 rendelkezésre állását és a hozzájuk kapcsolódó alkalmazói rendszerek funkcionalitását
 hivatott biztosítani.
 
-
-
 ### 1.2 A biztonsági stratégia meghatározása, biztonsági követelmények, IBSZ (Információbiztonsági szabályzat).
 
+Az informatikai biztonság tervezéséhez, a stratégia kialakításához szükséges, hogy
+ismerjük a rendszer különböző területeinek kockázatát. Az informatikai kockázatelemzés
+nem védelmi intézkedés, elvégzése önmagában nem erősíti a védelmet, de segít hogy
+létrejöjjön a biztonságos informatikai rendszer.
+
+Főbb összetevői:
+* Eszközgazdálkodási audit eredménye.
+* Fenyegetések felmérése.
+* Informatikai sérülékenység felmérése.
+
+Az **Informatikai Biztonsági Szabályzat** az Informatikai Biztonsági Irányelvek
+lebontását és a vállalkozás informatikai rendszereire specifikált részletes szabályozást
+tartalmazza. Az Informatikai Biztonsági Szabályzat még tovább finomítható, és ennek
+kapcsán elkészíthetők az egyes rendszerek informatikai biztonság specifikus beállításait
+részletesen szabályozó Biztonsági Konfigurációs Szabályzatok.
+
+Az Informatikai Biztonsági Szabályzat (IBSZ) célja, hogy az adott szervezet által
+működtetett informatikai rendszerre vonatkozóan a biztonsági intézkedéseket szabályozza,
+meghatározza a számítástechnikai eszközök beszerzésének és használatának, a szoftverkészítés
+és alkalmazás, az adatkezelés folyamatának biztonsági szabályait, továbbá az informatikai
+szerepköröket, és előírja az egyes szereplők informatikai biztonságot érintő feladatait.
+
+**Az IBSZ által biztosítható:**
+
+* A titok-, vagyon- és tűzvédelemre vonatkozó előírások betartása.
+* A személyiségi jogok kellő védelme.
+* Az üzemeltetett számítástechnikai eszközök, hardverek, szoftverek, hálózatok,
+rendeltetésszerű használata és megfelelő üzemvitele.
+* Az üzembiztonságot szolgáló műszaki fenntartási és karbantartási teendők elvégzése.
+* Az illetéktelen hozzáférésből és felhasználásból eredő károk megelőzése,
+illetve minimális mértékűre való csökkentése.
+* Az adatállományok formai és tartalmi helyességének és épségének megőrzése.
+* Az alkalmazott szoftverek sértetlenségének, megbízható működésének biztosítása.
+* Az adatállományok biztonságos mentése.
+* A felhasznált és keletkezett írásos dokumentumok megfelelő kezelésének biztosítása.
+* A szervezet vezető beosztású és az informatikai feladatokat irányító dolgozóinak
+feladatai, felelőssége és a jogköre az informatikai biztonság tekintetében.
+* A jogosultság és a hozzáférés rendszerének dokumentált kialakítása.
+
+A célok elérése érdekében a védelemnek működnie kell az egyes rendszerelemek fennállásának
+teljes ciklusa alatt – a megtervezéstől az alkalmazáson (üzemeltetésen) keresztül
+a felszámolásukig, és azt követően az elévülés, illetve a selejtezhetőség időtartama
+alatt.
+
 ### 1.3 A kár jellege, kár érték szintek.
+
+**A károk csoportosítása:**
+* közvetlen anyagi (pl. a mindenkori amortizált értékkel vagy az elmaradt haszonnal arányos),
+* közvetett anyagi (pl. a helyreállítási költségekkel, perköltségekkel arányos),
+* társadalmi-politikai, humán,
+* személyi sérülés, haláleset,
+* jogszabály által védett adatokkal történő visszaélés vagy azok sérülése (jogsértés).
+
+**Kár érték szintek**
+
+**0: jelentéktelen kár**
+* közvetlen anyagi kár 10 000 Ft-ig
+* közvetett anyagi kár 1 embernappal állítható helyre
+* társadalmi-politikai hatás: nincs bizalomvesztés, a probléma a szervezeti egységen belül marad
+* testi épség jelentéktelen sérülése 1-2 embernél
+* nem védett adat bizalmassága vagy hitelessége sérül
+**1: csekély kár**
+* közvetlen anyagi kár 100 000 Ft-ig
+* közvetett anyagi kár 1 emberhónappal állítható helyre
+* társadalmi-politikai hatás: kínos helyzet a szervezeten belül
+* könnyű személyi sérülés 1-2 embernél
+* hivatali, belső intézményi szabályozóval védett adat bizalmassága vagy hitelessége sérül
+**2: közepes kár**
+* közvetlen anyagi kár 1 000 000 Ft-ig
+* közvetett anyagi kár 1 emberévvel állítható helyre
+* társadalmi-politikai hatás: bizalomvesztés a szervezet középvezetésében, a szervezet jó hírneve sérül
+* több könnyű, vagy 1-2 súlyos emberi sérülés
+* személyes adatok bizalmassága vagy hitelessége sérül
+* egyéb jogszabállyal védett (üzleti, orvosi, stb.) titok bizalmassága vagy hitelessége sérül
+**3: nagy kár**
+* közvetett anyagi kár 10 000 000 Ft-ig
+* közvetett anyagi kár 1-10 emberévvel állítható helyre
+* társadalmi-politikai hatás: bizalomvesztés a szervezet felső vezetésével szemben, a
+szervezet jó hírneve súlyosan sérül
+* több súlyos, vagy tömeges könnyű sérülés
+* szolgálati titok bizalmassága vagy hitelessége sérül
+* szenzitív személyes adatok, nagy tömegű személyes adat bizalmassága vagy hitelessége sérül
+* banktitok, közepes értékű üzleti titok bizalmassága vagy hitelessége sérül
+**4: kiemelkedően nagy kár**
+* közvetlen anyagi kár 100 000 000 Ft-ig
+* közvetett anyagi kár 10-100 emberévvel állítható helyre
+* társadalmi-politikai hatás: súlyos bizalomvesztés a szervezet felső vezetésével szemben,
+a szervezet működésbeli és/vagy gazdaságbeli helyzete súlyos veszélybe kerül
+* 1-2 ember halála, vagy tömeges sérülések
+* államtitok, katonai, szolgálati titok bizalmassága vagy hitelessége sérül
+* nagy tömegű szenzitív személyes adat bizalmassága vagy hitelessége sérül
+* nagy értékű üzleti titok bizalmassága vagy hitelessége sérül
+**4+: katasztrofális kár**
+* közvetlen anyagi kár 100 000 000 Ft felett
+* közvetett anyagi kár több, mint 100 emberévvel állítható helyre
+* társadalmi-politikai hatás: súlyos bizalomvesztés a szervezet felső vezetésében és
+kormányzati szinten, személyi konzekvenciákkal
+* tömeges halálesetek
+* különösen fontos államtitok bizalmassága vagy hitelessége sérül
 
 
 ## 2. tétel: A megbízható működés és a rendelkezésre állás.
