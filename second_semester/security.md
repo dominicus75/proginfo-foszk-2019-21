@@ -231,7 +231,41 @@ kiadások is.
 
 ## 3. tétel: Vállalati biztonság.
 
+Ma már a vállalatok is egyre inkább belátják, hogy nem lehet csak informatikai
+biztonsággal, és elkülönítve a vagyonbiztonság egyes elemeivel foglalkozni, hanem
+**a vállalat biztonsága integrált biztonságirányítást, és rendszert, kíván meg a
+vállalatirányításon belül**. A a biztonságszervezésnek a problémákat rendszerszemlélettel
+kell megközelíteni. Ennek kifejezője a vállalat minden pontján az egyenszilárdságú
+biztonság követelménye.
+
+Az informatikai biztonságmenedzsment az [MSZ ISO/IEC 17799:2002](http://mszt.hu/web/guest/ingyenes-szabvanylista;jsessionid=2BF6D7C231411A8839E92975F6FB740E?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=122644&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search) *„Az informatikai biztonság
+menedzselésének eljárás rendje”*, és az [MSZ ISO/IEC 27001:2014] (http://www.mszt.hu/web/guest/ingyenes-szabvanylista?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=157993&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search)
+*„Informatika. Biztonságtechnika. Információbiztonság-irányítási rendszerek. Követelmények”*,
+szabványokon, a [COBIT](https://hopet.hu/index.php?menu=cobit) 3, és 4-en, és egyéb
+[ISACA](https://engage.isaca.org/budapestchapter/aboutchapter/about) anyagokon alapul.
+
+A biztonság egy vállalat esetében üzleti követelmény. A vállalati biztonság elfogadható,
+ha a vállalat (a vállalatot alkotó rendszerek) erőforrásainak bizalmasságának, sértetlenségének
+és rendelkezésre állásának fenyegetettsége, azaz a kockázatok (belső, és külső)
+megfelelnek a stratégiában meghatározott biztonsági szintnek. **A vállalati biztonság
+elemi feltétele, hogy a menedzsment felismerje ennek szükségességét, és gondoskodjon
+a megfelelő védelmi intézkedésekről**. Ez azonban nem tartozik a könnyen megoldható
+kérdések közé, mivel egy évben a szükséges költségek elérhetik a vállalati költségek
+akár 5%-át is.
+
+A vállalati biztonsági rendszer a vagyonbiztonság, üzembiztonság és az informatikai
+biztonsági alrendszerekből áll, amelyek hivatottak az erőforrások (üzleti, termelési
+és informatikai) fenyegetettségét, a kockázatokat az üzleti célkitűzések megvalósításához
+szükséges mértékűre csökkenteni.
+
 ### 3.1 A központi menedzsment lehetőségei.
+
+A védelmi rendszer kiépítése a vállalat, mint rendszer megközelítését, azaz **rendszerszemléletet
+kíván meg**. Ez nem kevesebbet jelent, mint azt, hogy a védelmi rendszert az egész
+vállalatra kiterjedően, *az elemek kapcsolatait figyelembe véve, egységesen kell
+kiépíteni*. Nem lehetséges a biztonsági kockázatokat megfelelően csökkenteni, ha
+egyes kiragadott problémákat oldunk meg, csak további védelmi intézkedésekkel
+együtt. **Az informatikai védelem vagyonvédelem nélkül nem hozhatja a kívánt eredményt**.
 
 ### 3.2 Adatbiztonság, adatvédelem a vállalati környezetben.
 
@@ -301,19 +335,26 @@ két fő csoportba szervezte:
 * Kiadáskezelés
 
 
-### 3.4 Az [ISO 27001](https://www.iso27001security.com/html/27001.html) jellemzői.
+### 3.4 Az [MSZ ISO/IEC 27001:2014](http://www.mszt.hu/web/guest/ingyenes-szabvanylista?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=157993&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search) jellemzői.
 
 Az ISO 27001 a 27000-es szabványcsalád tagja. A 27000-es szám a nemzetközi szabványosítás
 területén az információbiztonság és annak menedzselése témakörének van fenntartva,
 több mint egy tucat szabvány tartozik ide. 2005-ben tették közzé, legutóbbi verziója
 2013-ban jelent meg.
 
-Az ISO 27001 szabvány egy adott szervezeten belüli információbiztonsági rendszer
-létrehozására, megvalósítására, karbantartására és folyamatos javítására vonatkozóan
-határoz meg követelményeket. Megfogalmazza továbbá azokat a követelményeket, melyek a
-szervezet információbiztonsági irányítási rendszerének külső szakértő általi ellenőrzését,
+Az MSZ ISO/IEC 27001:2014 szabvány követelményeket ad meg egy információbiztonság-irányítási
+rendszer kialakítására, bevezetésére, fenntartására és folyamatos fejlesztésére az
+érintett szervezet környezetében. Követelményeket tartalmaz az információbiztonsági
+kockázatoknak a szervezet igényeihez igazodó felmérésére és kezelésére is. Az ezen
+szabványban felállított követelmények általános érvényűek, és szándék szerint minden
+szervezetre alkalmazandók – tekintet nélkül azok típusára, méretére vagy jellegére.
+
+A szabvány megfogalmazza továbbá azokat a követelményeket, melyek a szervezet
+információbiztonsági irányítási rendszerének külső szakértő általi ellenőrzését,
 illetve tanúsíthatóságát teszik lehetővé. Vagyis **egy szervezet auditálásához
-szükséges (megfelelőségi) előírásokat tartalmazza**.
+szükséges (megfelelőségi) előírásokat tartalmazza**. Így a 4-10. fejezetben megadott
+egyetlen követelmény kizárása sem fogadható el, amikor egy szervezet e nemzetközi
+szabványnak való megfelelést állítja.
 
 
 ## 4. tétel: Felhasználó azonosítás.
@@ -381,5 +422,6 @@ szükséges (megfelelőségi) előírásokat tartalmazza**.
 * Muha Lajos, Krasznay Csaba: [Az elektronikus információs rendszerek biztonságának menedzselése](http://m.ludita.uni-nke.hu/repozitorium/bitstream/handle/11410/11173/Az%20elektronikus%20inform%C3%A1ci%C3%B3s%20rendszerek%20biztons%C3%A1g%C3%A1nak%20menedzsel%C3%A9se_2018.pdf?sequence=1&isAllowed=y)
 * Muha lajos: [Informatikai biztonsági szabványok és irányelvek](http://real.mtak.hu/11149/1/1228885.pdf)
 * KFKI: [ITIL - az informatikaszolgáltatás módszertana](http://www.itsmf.hu/documents/itil2modszertan_osszefoglalo_v3.1.pdf)
+* Vasvári György: [Vállalati biztonságirányítás](http://www.tiphaz.hu/partner/vasware/Vallalati_Biztonsagiranyitas_Szakkonyv.pdf)
 
 [Kezdőlap](../README.md)
