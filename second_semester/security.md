@@ -235,7 +235,85 @@ kiadások is.
 
 ### 3.2 Adatbiztonság, adatvédelem a vállalati környezetben.
 
-### 3.3 AZ ITIL, a ISO 27001 jellemzői.
+### 3.3 AZ [ITIL](https://hu.wikipedia.org/wiki/ITIL)
+
+Az **ITIL (Information Technology Infrastructure Library – informatikai infrastruktúra
+könyvtár)** az Informatikai Szolgáltatás Módszertana. Eredetileg az angol
+*CCTA (Central Computing and Telecommunications Agency – Központi Számítástechnikai
+és Távközlési Ügynökség)* ajánlása volt. Mivel a gyakorlati alkalmazás tapasztalatai
+kedvezőek voltak, a módszertant a piaci környezetben is egyre inkább használni kezdték,
+majd elterjedt a szigetországon kívül is. Az ITIL-hez kapcsolódó brit szabvány, a
+**BS 15000 ISO/IEC 20000** számon mára szintén nemzetközi szabvány lett, meghatározó
+módszertanná vált az informatikai infrastruktúra és informatikaszolgáltatás irányítása
+területén. Az ITIL harmadik változatát 1996-ban az Informatikai Tárcaközi Bizottság
+Infrastruktúra menedzsment címen [15. számú
+ajánlásaként kiadta](https://dsd.sztaki.hu/mockups/itb/ajanlasok/a15/index.html)
+adta ki.
+
+Az ITIL-t jó minőségű, költséghatékony informatikai szolgáltatások támogatása céljából
+fejlesztették ki, mely kiterjed azok teljes életciklusára, így a tervezésre, bevezetésre,
+működtetésre és újabb szolgáltatások bevezetésére. Tartalmazza az informatikai iparágban
+elfogadott eljárások és a legjobb gyakorlati módszertanok gyűjteményét az informatikai
+szolgáltatások menedzselésének területén. Leírja és definiálja a kulcsfolyamatokat
+és egy keretet ad az informatikai szolgáltatás irányítására.
+
+Az ITIL definíciója 5 fő kötetből illetve az ezekhez kapcsolódó kiegészítő anyagokból
+áll. A kötetek az alábbi folyamatokat ismertetik:
+
+* A **szolgáltatásstratégia (Service Strategy):** azonosítja azokat a (piaci) lehetőségeket,
+amelyeket új szolgáltatások bevezetésével ki lehetne aknázni. Az eredmény egy stratégiai
+dokumentum, amely felvázolja az új szolgáltatás tervezésének, megvalósításának, üzembe
+helyezésének és folyamatosan javuló minőségben történő nyújtásának folyamatát. A kötet
+legfontosabb fejezetei a *Szolgáltatás-portfólió kezelése* és *Pénzügyi menedzsmentje*.
+* A **szolgáltatástervezés (Service Design):** eredményeként projekt-terv készül
+az előző lépésben keletkezett stratégia által felvázolt szolgáltatás konkrét
+megvalósítására. A terv részletezi az új szolgáltatás bevezetésének minden vonatkozását,
+a bevezetéshez és üzemeltetéshez szükséges támogató folyamatokkal együtt. A kötet
+legfontosabb fejezetei az *Üzemeltetés és üzemvitel biztosítása*, *Kapacitástervezés*
+valamint az *Informatikai- és üzembiztonság*.
+* A **szolgáltatáslétesítés és -változtatás (Service Transition):** a megtervezett
+szolgáltatás létesítéséhez és a környezet módosításához szükséges folyamatok leírása.
+Fontos fejezetek a *Változás- és verziókezelés*, *Konfigurációmenedzsment* és *Dokumentációkezelés*.
+* A **szolgáltatásüzemeltetés (Service Operation):** kötet tárgyalja a szolgáltatás
+folyamatos és hibamentes üzemeltetéséhez szükséges folyamatokat és szervezési kérdéseket.
+Legfontosabb fejezetek a *Hiba- és igény- és incidenskezelés*.
+* Az **állandó szolgáltatásfejlesztés (Continual Service Improvement):** c. kötet
+tárgyalja a szolgáltatás folyamatosan javuló minőségben nyújtásának feltételeit.
+Kiemelt fejezetek a *Szolgáltatási szint mérése, riportolása (jelentése) és menedzsmentje*
+c. fejezetek.
+
+Az informatikai szolgáltatásmenedzsment az összefoglaló neve azoknak a folyamatoknak
+és eljárásoknak, amelyek egy szervezet üzleti, működési igényeit jó minőségben
+kielégítik és támogatják. Az ITIL a szolgáltatásmenedzsmenthez tartozó témaköröket
+két fő csoportba szervezte:
+#### Szolgáltatásbiztosítás
+* Szolgáltatási szint menedzsment
+* Rendelkezésreállás menedzsment (lásd 2.1 tétel)
+* Informatikaszolgáltatás-folytonosság menedzsment
+* Kapacitásmenedzsment
+* Informatikaszolgáltatás pénzügyi irányítása
+#### Szolgáltatástámogatás
+* Ügyfélszolgálat
+* Incidensmenedzsment
+* Problémamenedzsment
+* Változáskezelés
+* Konfigurációkezelés
+* Kiadáskezelés
+
+
+### 3.4 Az [ISO 27001](https://www.iso27001security.com/html/27001.html) jellemzői.
+
+Az ISO 27001 a 27000-es szabványcsalád tagja. A 27000-es szám a nemzetközi szabványosítás
+területén az információbiztonság és annak menedzselése témakörének van fenntartva,
+több mint egy tucat szabvány tartozik ide. 2005-ben tették közzé, legutóbbi verziója
+2013-ban jelent meg.
+
+Az ISO 27001 szabvány egy adott szervezeten belüli információbiztonsági rendszer
+létrehozására, megvalósítására, karbantartására és folyamatos javítására vonatkozóan
+határoz meg követelményeket. Megfogalmazza továbbá azokat a követelményeket, melyek a
+szervezet információbiztonsági irányítási rendszerének külső szakértő általi ellenőrzését,
+illetve tanúsíthatóságát teszik lehetővé. Vagyis **egy szervezet auditálásához
+szükséges (megfelelőségi) előírásokat tartalmazza**.
 
 
 ## 4. tétel: Felhasználó azonosítás.
