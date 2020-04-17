@@ -414,7 +414,7 @@ egyértelműen igazolható legyen.
 
 Az adattörlésre alkalmazott megoldással kapcsolatban megfogalmazott követelmények:
 
-a) Annak érdekében, hogy az adattörlések követhetőek és ellen- őrizhetőek legyenek,
+a) Annak érdekében, hogy az adattörlések követhetőek és ellenőrizhetőek legyenek,
 az egyes törlésekről kiállított jegyzőkönyveket visszakereshető módon szükséges tárolni.
 
 b) Azért, hogy a jegyzőkönyveket ne lehessen meghamisítani vagy utólag módosítani,
