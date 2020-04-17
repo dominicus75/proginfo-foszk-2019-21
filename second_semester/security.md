@@ -598,5 +598,6 @@ szabványnak való megfelelést állítja.
 * Muha lajos: [Informatikai biztonsági szabványok és irányelvek](http://real.mtak.hu/11149/1/1228885.pdf)
 * KFKI: [ITIL - az informatikaszolgáltatás módszertana](http://www.itsmf.hu/documents/itil2modszertan_osszefoglalo_v3.1.pdf)
 * Vasvári György: [Vállalati biztonságirányítás](http://www.tiphaz.hu/partner/vasware/Vallalati_Biztonsagiranyitas_Szakkonyv.pdf)
+* Petrányi-Széll András: [Legjobb gyakorlatok az adattörlési rendszer bevezetéséhez](https://blancco.hu/esettanulmany/legjobb-gyakorlatok-az-adattorlesi-rendszer-bevezetesehez/)
 
 [Kezdőlap](../README.md)
