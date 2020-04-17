@@ -233,8 +233,8 @@ kiadások is.
 
 Ma már a vállalatok is egyre inkább belátják, hogy nem lehet csak informatikai
 biztonsággal, és elkülönítve a vagyonbiztonság egyes elemeivel foglalkozni, hanem
-**a vállalat biztonsága integrált biztonságirányítást, és rendszert, kíván meg a
-vállalatirányításon belül**. A a biztonságszervezésnek a problémákat rendszerszemlélettel
+**a vállalat biztonsága integrált biztonságirányítást és rendszert kíván meg a
+vállalatirányításon belül**. A biztonságszervezésnek a problémákat rendszerszemlélettel
 kell megközelíteni. Ennek kifejezője a vállalat minden pontján az egyenszilárdságú
 biztonság követelménye.
 
@@ -266,8 +266,183 @@ vállalatra kiterjedően, *az elemek kapcsolatait figyelembe véve, egységesen 
 kiépíteni*. Nem lehetséges a biztonsági kockázatokat megfelelően csökkenteni, ha
 egyes kiragadott problémákat oldunk meg, csak további védelmi intézkedésekkel
 együtt. **Az informatikai védelem vagyonvédelem nélkül nem hozhatja a kívánt eredményt**.
+A biztonsági szabályozási és kontroll rendszert tehát integrált módon, bevált
+szabványok és ajánlások felhasználásával kell megvalósítani. Az így kialakított
+védelmi rendszert *információbiztonság irányítási rendszernek (IBIR)* nevezzük.
+
+Az információbiztonsági szabályozási rendszer felépítése háromszintű:
+1. a szervezet vezetése által megfogalmazott **irányelvek, magas szintű elvárások**
+  (információbiztonsági irányelv/politika, IBP);
+2. az információbiztonsági irányelvek megvalósítását meghatározó **operatív szabályozás**,
+  (információbiztonsági szabályzat);
+3. az egyes gyakorlati kérdések részletes szabályozását tartalmazó **eljárásrendek,
+munkautasítások, ellenőrző listák**, amelyek az IBSZ részeként lehetnek kötelezőek,
+vagy ajánlottak.
+
+A kontroll rendszer megvalósítása során, a kockázatok ismeretében három alapvető
+kontroll típus kombinációját kell alkalmazni:
+*  **megelőző kontroll**: megelőzi, vagy korlátozza egy hiba bekövetkezését, mint
+például a fizikai hozzáférés megakadályozása, vagy a szoftverek jogosultságainak
+korlátozása;
+*  **feltáró kontroll**: lehetőség szerint mielőbb feltárja a bekövetkezett hibákat,
+hiányosságot, mint például az ellenőrző összeg a számítási műveleteknél;
+*  **helyesbítő kontroll**: a bekövetkezett hibákat, hiányosságokat segít megszüntetni,
+hatásukat csökkenteni, az *informatikai katasztrófa-helyreállítási terv* alapján.
+
+A központosított menedzsment célja az, hogy mind a rendszerek működését, mind a
+bekövetkezett biztonsági eseményeket figyelemmel kísérjük. Erre egyrészt a hagyományos
+rendszer- és hálózatfelügyeleti szoftverek használata, másrészt a biztonsági események
+elemzéséhez központi naplógyűjtő rendszer és naplóelemzési jelentések kialakítása
+szükséges, amely a lényeges kockázatok szoros felügyeletét teszi lehetővé. A fejlett
+biztonsági monitoring része ma már az automatikus sérülékenység vizsgáló eszközök
+alkalmazása, amelyek segítik a rendszerek naprakész frissítését, és javaslatot
+tesznek a szükséges változtatások telepítésére.
 
 ### 3.2 Adatbiztonság, adatvédelem a vállalati környezetben.
+
+Az adatvédelem és az adatbiztonság NEM szinonimái egymásnak! Az adatok kezelését,
+gyűjtését, továbbítását jogszabályok határozzák meg. A hazai adatvédelmi szabályozás
+egyike a legszigorúbbaknak nemzetközi szinten, alapjait az információs önrendelkezési
+jogról és az információszabadságról szóló [2011. évi CXII. törvény](https://net.jogtar.hu/jogszabaly?docid=a1100112.tv)
+fekteti le, különös tekintettel a [GDPR](https://eur-lex.europa.eu/legal-content/HU/TXT/HTML/?uri=CELEX:02016R0679-20160504&from=HU)
+vonatkozó rendelkezéseire. Adatvédelem alatt tehát a személyes és érzékeny adatok
+jogszabályi (GDPR, Infotv) védelmét érti a jogalkotó, adatbiztonság alatt pedig a
+számítógépes rendszerekben tárolt, feldolgozott, vagy továbbított adatok biztonságának
+fenntartására kell gondolnunk.
+
+Az adatbiztonság az adatok sérülését megakadályozó, a használhatóságát és bizalmas
+kezelését lehetővé tévő technológiák és módszerek összessége. A berendezések, adathordozók,
+a kommunikációs hálózat és a hozzáférések védelme kiemelt fontosságú az információs
+technológia területén.
+
+Az információs rendszerek védelmi intézkedéseit annak megfelelően kell meghatározni,
+hogy azokban tárolt, feldolgozott vagy közvetített adatokat milyen biztonsági osztályba
+sorolták az adatgazdák. A biztonsági osztályba sorolás során meghatározzák, hogy milyen
+kategóriába (pl. alacsony, fokozott, kiemelt) kerülnek bizalmasság, sértetlenség,
+és rendelkezésre állás szempontjából.
+
+#### Adatbiztonsági technológiák, módszerek
+
+* **RAID (Redundant Array of Independent Disks):** az adatokat nem egy, hanem a
+RAID szintektől függően 2-5 fizikailag független merevlemezen tároljuk, amelyek egy
+logikai lemezt alkotnak. Minden RAID szint alapjában véve vagy az adatbiztonság
+növelését vagy az adatátviteli sebesség növelését szolgálja.
+
+* **Időzített biztonsági mentés (Backup):** szerver beállításairól, megosztott mappákról
+időzített mentés. Típusai:
+    * Teljes (Full Backup): a rendszer minden adata válogatás nélkül mentésre kerül.
+    A mentési folyamat ezért egyszerű, ellenben sok ideig tart. Amennyiben adataink
+    olyanok, hogy nem változnak túl sűrűn, a gyakori teljes mentés sok fölösleges
+    adat tárolását okozza. Előnye azonban, hogy a visszaállítás viszonylag gyors.
+    * Napi (Daily Backup): csak a biztonsági mentés napján módosult fájlokat archiválja,
+    nem módosítja az archiválási bitet.
+    * Különbségi (Differencial Backup): a legutolsó normál vagy növekményes biztonsági
+    mentés óta létrehozott vagy módosított fájlokról készít biztonsági másolatot,
+    a mentést a rendszer nem jelöli a fájlokon (nem törli az archiválandó attribútumot).
+    * Növekményes (Incremental Backup): csak a legutolsó normál vagy növekményes
+    biztonsági mentés óta létrehozott vagy módosított fájlokról készít biztonsági
+    mentést. A biztonsági mentés végrehajtását a rendszer jelöli a fájlokon (törli
+    az archiválandó attribútumot).
+
+* **Replikáció:** a védendő és a biztonsági rendszer gyakorlatilag folyamatosan
+kapcsolatban áll egymással, és tükrözéssel mindig egyforma állapotban vannak. Ez
+a megoldás szinte azonnali helyreállítást kínál.
+
+* **Tükrözés:** egy adathalmaz valós-idejű redundáns tárolása. A különbség a tükrözés
+és a másolás vagy biztonsági mentés között az, hogy utóbbiak csak a rendszer egy
+adott pillanatban érvényes állapotát rögzítik, míg előbbi folyamatosan követi azt,
+így a tükör tartalma minden időpillanatban pontosan egyezik a mintául szolgáló adathalmazéval.
+A tükrözésnek elsősorban a hibatűrő rendszerek megvalósításában van szerepe, ahol
+lehetővé teszi, hogy az elsődleges tároló egység meghibásodása esetén a másodlagos
+eszköz transzparens módon, adatvesztés nélkül vegye át annak feladatait.
+
+Míg a replikáció azonos gépen zajlik (másik partícióra vagy merevlemezre), addig a
+tükrözés egy másik gépre történik.
+
+#### Szerverhelység megfelelő kialakítása
+
+A szerverszobák és az adatközpontok áramellátása és általános fizikai infrastruktúrája
+különleges figyelmet igényel, hiszen az IT biztonságos működésének alapjait jelenti.
+A megbízható fizikai infrastruktúra rendszer alapvető részei:
+* a biztonságos áramellátás (szünetmentes tápellátó berendezések, túlfeszültség-, és
+  zavarvédelmi megoldások),
+* érintésvédelem (üzemszerűen feszültség alatt nem álló, de meghibásodás esetén
+feszültség alá kerülő vezető részek érintéséből származó balesetek elkerülésére
+szolgáló műszaki intézkedések összessége)
+* szabályozott, állandó páratartalom és hőmérséklet,
+* a tűzvédelem külső és belső tüzek esetén egyaránt,
+* a felügyeleti és menedzsment rendszer,
+* a biztonságtechnikai-, beléptető-, vagyonvédelmi rendszerek kialakítása.
+
+#### Adatmegsemmisítés
+
+Az adatmegsemmisítés célja lehet:
+* lemezterület felszabadítása
+* ismétlődő vagy szükségtelen adatok eltávolítása
+* érzékeny információk elérhetetlenné tevése mások számára.
+
+Az adatok minősített törlésére az adatszivárgás megelőzése érdekében van szükség,
+mivel az operációs rendszerekbe épített törlési és formázási parancsok magukat az
+adatokat a legtöbb esetben érintetlenül hagyják, így pedig azok bármikor visszaállíthatóak.
+A **formázás során az operációs rendszer az adatokhoz vezető útvonalakat törli,
+nem magukat az adatokat**. Ezért az adatok fizikailag még ott maradnak az adathordozón, és
+egy egyszerűen kezelhető, ingyenes visszaállító szoftver segítségével a legtöbb
+esetben visszaállíthatóak. Az operációs rendszer jellemzően csupán a merevlemez 1% és
+10% közötti területét foglalja el, ezért újratelepítéskor csupán ekkora terület kerül
+felülírásra, a merevlemez többi területén tárolt adatok érintetlenül maradnak.
+
+**A biztonságos adattörlés az adatok felismerhetetlenné tétele oly módon, hogy a
+helyreállításuk nem lehetséges**. A biztonságos adattörlés célja az **adatszivárgás**
+megelőzése. A rendszertől elvárt alapvető követelmény annak biztosítása, hogy a leselejtezni
+kívánt adathordozókon, valamint a szervezeten belül tulajdonost váltó eszközökön a
+leselejtezéskor, illetve tulajdonosváltáskor **ne maradjon semmilyen adat**. Fontos az
+adattörlést kiterjeszteni a PC-k mellett a mobileszközökre (okostelefonokra, tabletekre),
+valamint a flash adathordozókra (memóriakártyákra, USB kulcsokra) is.
+
+A szoftveres adattörlési megoldások nullákkal, egyesekkel vagy véletlen karakterekkel írják
+felül a törlendő területet. Amennyiben a szoftveres adattörlési megoldások nem elégségesek,
+mert elkerülhetetlen a sérült, használhatatlan eszköz leselejtezése, akkor a **megfelelő
+fizikai adatmegsemmisítés a merevlemezek esetében az adathordozó teljes megsemmisítésével
+történik**. Ennek során olyan erős mágneses mezők hatásának tesszük ki a merevlemezt –
+például a Blancco Degausser segítségével –, hogy arról fizikailag eltűnik az adathordozó
+felület.
+
+A minősített megsemmisítés alapelvei szerint minden esetben gondoskodni kell arról, hogy
+a megsemmisítés megfelelő fizikai eljárással, lehetőleg a szervezeten belül történjen
+meg az adatgazda vagy megbízható kezelőszemélyzet által, és jól dokumentálható,
+egyértelműen igazolható legyen.
+
+Az adattörlésre alkalmazott megoldással kapcsolatban megfogalmazott követelmények:
+
+a) Annak érdekében, hogy az adattörlések követhetőek és ellen- őrizhetőek legyenek,
+az egyes törlésekről kiállított jegyzőkönyveket visszakereshető módon szükséges tárolni.
+
+b) Azért, hogy a jegyzőkönyveket ne lehessen meghamisítani vagy utólag módosítani,
+a jegyzőkönyveket elektronikus aláírással érdemes lepecsételni.
+
+c) Annak érdekében, hogy az adattörlések megbízható módon történjenek meg, kizárólag
+olyan minősített adattörlési megoldást lehet használni, mely a legszigorúbb biztonsági
+előírásoknak is megfelel, és melynek forráskódját független, megbízható szervezetek tanúsították.
+
+d) A **mechanikai hibával rendelkező merevlemezek leselejtezhetőségének érdekében
+ezeket a merevlemezeket meg kell semmisíteni**. A megsemmisítésről kiállított
+jegyzőkönyvet ugyanabban a rendszerben, visszakereshető módon célszerű tárolni,
+mint a törlésről kiállított jegyzőkönyveket. A meghamisítás elkerülése érdekében
+a megsemmisítéséről is egyértelmű bizonyítékot kell tárolni.
+
+e) A törlésre alkalmazott szoftveres megoldásnak a merevlemezek törlése mellett
+támogatnia érdemes az okostelefonok törlését, a flash meghajtók és memóriakártyák
+törlését, a fájlok törlését, valamint a logikai meghajtók törlését
+
+f) A törlésre alkalmazott szoftveres megoldásnak több minősített algoritmust érdemes támogatnia.
+
+g) A törlésre alkalmazott megoldásnak képesnek kell lennie arra, hogy a törölt
+adathordozóra vonatkozó azonosítási adatokat a törlési jegyzőkönyvben rögzítse.
+
+h) A törlésre alkalmazott megoldásnak képesnek kell lennie a vállalati környezetek
+támogatására, különös tekintettel a szoftver disztribúciójának elősegítésére a hálózatban
+lévő kliensekre.
+
 
 ### 3.3 AZ [ITIL](https://hu.wikipedia.org/wiki/ITIL)
 
