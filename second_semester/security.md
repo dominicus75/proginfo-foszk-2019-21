@@ -239,7 +239,7 @@ kell megközelíteni. Ennek kifejezője a vállalat minden pontján az egyenszil
 biztonság követelménye.
 
 Az informatikai biztonságmenedzsment az [MSZ ISO/IEC 17799:2002](http://mszt.hu/web/guest/ingyenes-szabvanylista;jsessionid=2BF6D7C231411A8839E92975F6FB740E?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=122644&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search) *„Az informatikai biztonság
-menedzselésének eljárás rendje”*, és az [MSZ ISO/IEC 27001:2014] (http://www.mszt.hu/web/guest/ingyenes-szabvanylista?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=157993&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search)
+menedzselésének eljárás rendje”*, és az [MSZ ISO/IEC 27001:2014](http://www.mszt.hu/web/guest/ingyenes-szabvanylista?p_p_id=msztwebshop_WAR_MsztWAportlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_msztwebshop_WAR_MsztWAportlet_ref=157993&_msztwebshop_WAR_MsztWAportlet_javax.portlet.action=search)
 *„Informatika. Biztonságtechnika. Információbiztonság-irányítási rendszerek. Követelmények”*,
 szabványokon, a [COBIT](https://hopet.hu/index.php?menu=cobit) 3, és 4-en, és egyéb
 [ISACA](https://engage.isaca.org/budapestchapter/aboutchapter/about) anyagokon alapul.
