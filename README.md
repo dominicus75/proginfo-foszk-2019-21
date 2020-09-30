@@ -14,8 +14,10 @@
 
 * [Informatikai biztonság](second_semester/security.md)
 
-* [Jogi ismeretek](second_semester/law.md)
-
 * [Java alkalmazások, ZH kérdéssor](second_semester/java.md)
 
 * [Programozási technikák (C#), ZH-mintafeladat](second_semester/csharp.md)
+
+## Harmadik félév
+
+* [Szoftvertechnológia](third_semester/softwaretechnology.md)
