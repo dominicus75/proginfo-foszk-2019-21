@@ -99,15 +99,38 @@
 ## Szervezetek
 
 ### 1. Sorolja fel a szervezeti formákat meghatározó tényezőket!
+A szervezeti formákat konkrétan meghatározó tényezők közé a szervezeti munkamegosztás,
+a hatáskör, a koordináció, és a konfiguráció tartoznak.
 ### 2. Értelmezze a szervezeti munkamegosztás fogalmát!
+A szervezeti munkamegosztás a feladatok részfeladatokra való bontását és ezeknek
+az egyes szervezeti egységekhez való telepítését jelenti.
 ### 3. Milyen elvek szerint történhet a szervezeti munka megosztása?
+A munkamegosztás a funkcionális elv; a tárgy (termék, termékcsoport) szerinti elv,
+és a regionális (régió szerinti) elv szerint történhet.
 ### 4. Hogyan kategorizálhatjuk a szervezeteket a munkamegosztás alapján?
+A munkamegosztás alapján a szervezetek egy-, két- vagy többdimenziósak lehetnek
+(annak megfelelően, hogy a munkamegosztás egy vagy több elv szerint történik).
 ### 5. Mit jelent a szervezeti hatáskör?
+A szervezeti hatáskör a szervezeti hierarchiában elhelyezkedő szervezeti egységek,
+illetve személyek kompetenciájának terjedelmét, döntési, utasítási jogkörét jelenti.
 ### 6. Milyen struktúrájú szervezeteket különböztethetünk meg a szervezeti hatáskör alapján?
+A hatáskör alapján egy- és többvonalas szervezeteket lehet megkülönböztetni.
 ### 7. Milyen hatásköri viszonyok jellemzőek az egyvonalas szervezetekre?
+Az egyvonalas szervezet egységei csak egy felsőbb szervezeti egységtől (személytől)
+kaphatnak utasítást (pl.: ilyenek a lineáris és a divizionális szervezetek).
 ### 8. Milyen hatásköri viszonyok jellemzőek a többvonalas szervezetekre?
+A többvonalas szervezeteknél az alárendelt egységeket két vagy több felsőbb szerv
+is utasíthatja (a funkcionális és a mátrix típusú szervezetek).
 ### 9. Mit jelent a szervezeti koordináció?
+A szervezeti koordináció a szervezeti működés összehangoltságának kérdését jelenti
+(amelynek során az eltérő hatáskörökkel és feladatokkal rendelkező szervezeti egységek
+működését összehangolják).
 ### 10. Milyen formái lehetnek a szervezeti koordinációnak?
+A felhasznált eszközök alapján:
+- technokratikus típusú (tervezési, pénzügyi, költségvetési, belső elszámolási rendszer stb.),
+- a strukturális típusú (szervezeti egységek, teamek, bizottságok, projektek stb.)
+- és személyorientált típusú (ösztönző, kényszerítő eszközök felhasználása a célokkal
+való azonosulás érdekében) koordinációs formákat lehet megkülönböztetni.
 ### 11. Hogyan lehet a koordinációs formákat alkalmazni a különböző szervezetfejlesztési feladatok kapcsán?
 
 
