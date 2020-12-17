@@ -264,6 +264,19 @@ használja a projektmenedzsment módszereit!**
 ### 24. Milyen típusú beszállítókat ismer?
 
 
+## Innovációmenedzsment
+
+### 1. Milyen különbségeket és összefüggéseket lehet megfogalmazni a változás és az innováció között?
+### 2. Magyarázza meg az innováció komplex jelentését!
+### 3. Értelmezze a szervezeti innováció fogalmát!
+### 5. A szervezet szerkezete miképpen befolyásolja a szervezeti innovációs folyamatokat?
+### 5. Az innováció, mint dinamikus folyamat, hogyan érvényesül a szervezetekben.
+
+**6. A cégétől feladatot kap arra vonatkozóan, hogy adjon tájékoztatást a munkatársainak a
+változás és az innováció összevetéséről, a szervezeti innováció céljáról és egy
+szervezetfejlesztés esetén a strukturális és a dinamikai innovációs feladatok
+tárgyában szükséges javaslatokról.**
+
 ### Felhasznált (ajánlott) irodalom:
 
 
