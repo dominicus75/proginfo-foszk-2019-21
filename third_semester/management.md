@@ -78,16 +78,20 @@
 ### 57. Mit jelent a szervezeti nagyság a „nagyság iskola” szerint?
 ### 58. Mi jellemző a mechanikus szervezeti formára?
 ### 59. Mi jellemző az organikus szervezeti formára?
-### 60. Feladat az, hogy tájékoztatást adjon a cég vezetőinek az adaptációmenedzsment irányzatai felhasználásának lehetőségeiről.
-### 61. Ismertesse az intézményi (institucionalista) menedzsment főbb tételeit!
-### 62. Milyen körülmények váltották ki az institucionalista menedzsment kialakulását?
-### 63. Milyen hatásai vannak a gazdasági szervezetekre az állam jelenlétének?
-### 64. Feladat az, hogy tájékoztatást, illetve magyarázatot adjon a cég vezetőinek az intézményi menedzsment szerepének felerősödéséről.
-### 65. Melyek az interakció-menedzsment alapvető elvei és irányzatai?
-### 66. Ismertesse a stratégiai választás menedzsment lényegét!
-### 67. Ismertesse a szervezeti ökológia menedzsment lényegét!
-### 68. Hogyan lehet felhasználni a szervezeti ökológia menedzsmentjét a modern bővített ellátási láncok modellezésére?
-### 69. Ismertesse a politikai gazdaságtan menedzsment lényegét!
+
+### Feladat az, hogy tájékoztatást adjon a cég vezetőinek az adaptációmenedzsment irányzatai felhasználásának lehetőségeiről.
+
+### 60. Ismertesse az intézményi (institucionalista) menedzsment főbb tételeit!
+### 61. Milyen körülmények váltották ki az institucionalista menedzsment kialakulását?
+### 62. Milyen hatásai vannak a gazdasági szervezetekre az állam jelenlétének?
+
+### Feladat az, hogy tájékoztatást, illetve magyarázatot adjon a cég vezetőinek az intézményi menedzsment szerepének felerősödéséről.
+
+### 63. Melyek az interakció-menedzsment alapvető elvei és irányzatai?
+### 64. Ismertesse a stratégiai választás menedzsment lényegét!
+### 65. Ismertesse a szervezeti ökológia menedzsment lényegét!
+### 66. Hogyan lehet felhasználni a szervezeti ökológia menedzsmentjét a modern bővített ellátási láncok modellezésére?
+### 67. Ismertesse a politikai gazdaságtan menedzsment lényegét!
 
 ### Feladat az, hogy tájékoztatást adjon a cég vezetőinek az interakciómenedzsment lényegéről és jelentőségéről.
 
