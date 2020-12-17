@@ -93,7 +93,7 @@
 
 ### 40. Ismertesse a Template method tervezési mintát részletesen C# nyelv használatával.
 
-Második rész
+## Második rész
 
 ### 1. Mi a szoftver? Milyen fajtái vannak?
 
