@@ -21,3 +21,5 @@
 ## Harmadik félév
 
 * [Szoftvertechnológia](third_semester/softwaretechnology.md)
+
+* [Menedzsment](third_semester/management.md)
