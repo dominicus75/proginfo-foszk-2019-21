@@ -6,8 +6,33 @@
 
 ### 1. Vázolja fel a menedzsment modelljét és mutassa be röviden a modell elemeit!
 ### 2. Értelmezze a menedzsment fogalmi körét!
+A menedzsment tehát szervezeti célok és rendelkezésre álló erőforrások függvényében
+végzett tevékenységek összessége, melyek a tervezés, szervezés, vezetés, ellenőrzés
+feladataira irányulnak.
+*„A menedzsment egy adott (gazdasági) szervezet emberi, pénzügyi, fizikai és információs
+erőforrásainak tervezése, irányítása a szervezet céljainak eredményes megvalósítása
+érdekében.”* (Griffin, 1987)
 ### 3. Vázolja fel a menedzsment történeti folyamatának főbb elemeit!
 ### 4. Mi a menedzsment funkciója?
+- **Tervezés**: az elérendő teljesítmény kitűzésének s az ahhoz elvezető tevékenységek
+meghatározásának folyamata. A tervezés során a menedzser megszabja, hogy milyen eredményt
+várnak a munkafolyamatoktól, és kijelöli az eszközöket, amelyekkel az adott célt el lehet érni.
+- **Szervezés**: a konkrét feladatok meghatározását, a végrehajtók kijelölését,
+az erőforrások hozzárendelését, és a csoportok és egyének tevékenységének összehangolását
+foglalja magában. A szervezés során a menedzserek az elfogadott terveket előkészítik
+megvalósításra: meghatározzák az elvégzendő feladatokat, és előteremtik a kellő
+technológiai hátteret, az emberi és egyéb erőforrásokat.
+- **Vezetés**: az a folyamat, amely során az emberek törekvéseit a tervek megvalósításának
+és a célkitűzések elérésének irányába terelik, és lelkiismeretes munkára motiválják őket.
+A vezetés során a menedzserek azon dolgoznak, hogy a beosztottak elkötelezetté váljanak
+a szervezet iránt, s arra ösztönöznek, hogy a lehető legjobb munkát végezzék a célok
+elérése érdekében.
+- **Ellenőrzés**: a teljesítmény mérésének, a kitűzött célok és az eredmények összehasonlításának,
+valamint a megfelelő korrekciós lépések megtételének folyamata. Az ellenőrzés során a
+menedzserek aktív kapcsolatba kerülnek a munkájukat végző beosztottakkal, teljesítményükről
+beszámolókat kapnak, készítenek és adnak tovább, majd az így nyert információval
+hozzájárulnak a szükséges változtatások megtervezéséhez.
+
 ### 5. Mit jelent a hatékonyság?
 ### 6. Mit jelent az eredményesség?
 ### 7. Mit jelent a nyereségesség?
@@ -279,5 +304,11 @@ tárgyában szükséges javaslatokról.**
 
 ### Felhasznált (ajánlott) irodalom:
 
+* Szerző nélkül: [Menedzsment](http://inyt.pte.hu/migkomm/munkaanyag/menedzsment.html)
+* Dr. Roóz József, Dr. Heidrich Balázs: [Vállalati gazdaságtan és menedzsment alapjai](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/0007_c1_1054_1055_1057_vallalatigazdtan_scorm/adatok.html)
+* Imreh Szabolcs – Kürtösi Zsófia – Majó Zoltán – Vilmányi Márton: [Menedzsment I.](http://eco.oldportal.u-szeged.hu/download.php?docID=9350)
+* VIK WIKI (szerző nélkül): [Menedzsment és vállalkozásgazdaságtan](https://vik.wiki/images/9/9e/Menval_2zh_jegyzet.pdf)
+* VIK WIKI (szerző nélkül): [A menedzsment alapjai – Felkészítő kérdések](https://vik.wiki/images/d/d9/Vallgazd_tesztkerdesek_2015-16-2_2.pdf)
+* Baráth Mihály – Finta Ferenc – dr. Tóth József: Menedzsment (Egyetemi jegyzet, Neumann János Egytem, Kecskemét 2018.)
 
 [Kezdőlap](../README.md)
