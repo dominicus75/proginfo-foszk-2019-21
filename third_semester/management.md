@@ -95,11 +95,60 @@ hat negatívan.
 ### Problémamegoldó kérdéstípusok: feladat az, hogy tájékoztatást adjon a hatékonyság kényszeréről és indokairól.
 
 ### 12. Definiálja a rendszer fogalmát!
+A rendszer egymással strukturális és funkcionális kapcsolatban és szoros kölcsönhatásban
+lévő rendszerelemek önszerveződő vagy mesterségesen létrehozott együttese, amely
+- a környezetétől elkülönül és azzal meghatározott viszonyban áll,
+- meghatározott feltételek esetén egységes egészként létezik.
 ### 13. Definiálja a modell fogalmát!
+„A modell a valóság – a vizsgált jelenség, objektum, rendszer – leegyszerűsített
+mása, amely tükrözi annak lényeges vonásait.” (Bodnár Pál, Benkőné Dr. Deák Ibolya,
+Gyurkó György: Gazdasági informatika alapjai, 56. oldal.)
+A modellezés során a valóság egy meghatározott szeletéből kiemeljük a számunkra
+adott szituációban fontos, ismert vagy feltételezett elemeket és azokat hipotézisünknek
+megfelelően kapcsolatba hozzuk egymással.
 ### 14. Definiálja az ideáltípus fogalmát
+Az ideáltípus - webrei értelemben - egy dolog elvont gondolati modellje, etalonja,
+ami a maga teljes valójában nem létezik (ahogy Platón ideális lova vagy egyebe sem),
+viszonyítási alapként használatos.
 ### 15. Vázolja fel, hogy milyen tulajdonságokkal rendelkező szervezeti rendszer kialakítására törekszik a klasszikus menedzsment!
-### 16. Vázolja fel, hogy milyen rendszert terem a klasszikus menedzsment!
+A klasszikus menedzsment által kiépített szervezet „ideáltipikus” működési rendszerére
+az alábbiak jellemzők:
+* A szervezetben érvényesülő jogok és kötelességek világos szabályok szerint fogalmazódnak meg,
+* A részlegekhez és a munkatársak státuszpozícióihoz rögzített feladatkörök és
+hatáskörök (az egyének szintjén meghatározott szerepelőírások) rendelődnek;
+* A munkatársak a munkát, előre kiszámítható szabályok szerint végzik;
+* A szervezeti eljárások és a módszerek pontosan és írásban is lefektetett módon
+meghatározottak;
+* A rendszerben a funkcionális munkamegosztás (a munka feladat szerinti
+szétosztása) jellemző;
+* A működési hatékonyság a szervezeti tagok szakképzettségének foka erőteljesen
+befolyásolja.
+
+### 16. Vázolja fel, hogy milyen rendszert teremt a klasszikus menedzsment!
+* szigorú és merev szervezeti hierarchia,
+* szervezeti centralizáció,
+* egyszemélyi vezetés,
+* egységes irányítás,
+* az egycsatornás, egyvonalas szervezeti struktúra,
+* részérdekek alárendelése az egész érdekeinek,
+* szervezeti egység,
+* a tekintély-felelősség elvének érvényesülése,
+* a fegyelem és a rend elvének érvényesülése,
+* a racionális munkamegosztás.
+
 ### 17. Vázolja fel, hogy milyen főbb jellemzőkkel bír a klasszikus menedzsment vezetési rendszere!
+* A hivatali ügyek intézését a személytelenség és a tárgyilagosság (elfogulatlanság)
+jellemzi;
+* A szervezeti tevékenységet szakképzett emberek („hivatalnokok”) végzik, akiket
+szakmai hozzáértés, hivatástudat jellemez;
+* A „hivatalnokokat” kinevezik, tehát a feladatok elvégzésére vonatkozó felhatalmazást
+a felsőbb szintektől kapják;
+* A szervezetet szigorú hivatali hierarchia (szervezeti hatalmi-döntési rendszer)
+jellemzi;
+* A hierarchiában a szolgálati út betartása kötelező. A szolgálati út olyan rendszerelv,
+amelynek alapján a rendszerben, a hierarchikus szintek között felfelé és lefelé
+„közlekedni”, az ügyeket bonyolítani csak „lépcsőzetesen”, minden szint
+figyelembe vételével és érintésével lehet.
 
 ### Feladat az, hogy tájékoztatást adjon a klasszikus menedzsment alapján működő rendszer jellemzőiről.
 
@@ -392,5 +441,6 @@ tárgyában szükséges javaslatokról.**
 * VIK WIKI (szerző nélkül): [Menedzsment és vállalkozásgazdaságtan](https://vik.wiki/images/9/9e/Menval_2zh_jegyzet.pdf)
 * VIK WIKI (szerző nélkül): [A menedzsment alapjai – Felkészítő kérdések](https://vik.wiki/images/d/d9/Vallgazd_tesztkerdesek_2015-16-2_2.pdf)
 * Baráth Mihály – Finta Ferenc – dr. Tóth József: Menedzsment (Egyetemi jegyzet, Neumann János Egytem, Kecskemét 2018.)
+* Dr. Kerényi Attila, Dr. Kiss Tímea, Dr. Szabó György: [Környezeti rendszerek](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2011_0025_geo_1/ch02.html)
 
 [Kezdőlap](../README.md)
