@@ -153,6 +153,7 @@ is természetesebben fognak viszonyulni a munkához. Ha a dolgozó volt munkahel
 tapasztalt, azt áthozza új munkahelyére.
 * A dolgozók olyan szükségletekkel is ösztönözhetőek, mint önállóság, önmegvalósítás, elismertség.
 * A dolgozó szívesen vállal nagyobb felelősséget az előbbiek elérése érdekében.
+
 Az X elmélet autokrata vezetőt, míg az Y elmélet demokratikus vezetőt jelenít meg.
 McGregor X és Y elmélete azért volt alapvető mérföldkő a vezetési elméletek között,
 mert rámutatott arra, hogy milyen operatív feltételezésekkel hathatnak a dolgozók
