@@ -143,6 +143,7 @@ Az X elmélet a következő felételezéseket veszi alapul:
 * A dolgozók számára közömbösek a szervezeti célok;
 * A dolgozókat csak fiziológiai és biztonsági szükségleteik ösztönzik.
 Ez a nézet azonban mind a dolgozókat, mind pedig a vezetőket negatívan jellemzi.
+
 McGregor szerint túlhaladott és elavult ez a megközelítés. Szerinte a dolgozók akkor
 nyújtanak nagyobb teljesítményt és akkor szolgálják a szervezet célját, ha másféle,
 pozitívabb feltételezések alapján kezelik őket. Ezen feltételezéseket az Y elméletben
