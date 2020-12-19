@@ -5,15 +5,26 @@
 ## Alapok
 
 ### 1. Vázolja fel a menedzsment modelljét és mutassa be röviden a modell elemeit!
+![Imgur](https://i.imgur.com/RBJ6YLp.png)
 ### 2. Értelmezze a menedzsment fogalmi körét!
-A menedzsment tehát szervezeti célok és rendelkezésre álló erőforrások függvényében
+A menedzsment a szervezeti célok és a rendelkezésre álló erőforrások függvényében
 végzett tevékenységek összessége, melyek a tervezés, szervezés, vezetés, ellenőrzés
 feladataira irányulnak.
 *„A menedzsment egy adott (gazdasági) szervezet emberi, pénzügyi, fizikai és információs
 erőforrásainak tervezése, irányítása a szervezet céljainak eredményes megvalósítása
 érdekében.”* (Griffin, 1987)
 ### 3. Vázolja fel a menedzsment történeti folyamatának főbb elemeit!
+A menedzsment történetének alakulása több fő szakaszra bontható:
+* a korai (tudományosság előtti),
+* a tudományos menedzsmentelmélet (klasszikus irányzat),
+* az emberközpontú irányzatok,
+* a menedzsmenttudományi megközelítés
+* a szintézis (integratív irányzatok) időszakaira.
 ### 4. Mi a menedzsment funkciója?
+A menedzsment azon tevékenységek összessége, amelyek szabályozott viszonyok kialakításával
+biztosítják, hogy a kitűzött szervezeti célok elérése érdekében a rendelkezésre álló
+erőforrások nyereségesen és hatékonyan hasznosuljanak.
+Funkciói:
 - **Tervezés**: az elérendő teljesítmény kitűzésének s az ahhoz elvezető tevékenységek
 meghatározásának folyamata. A tervezés során a menedzser megszabja, hogy milyen eredményt
 várnak a munkafolyamatoktól, és kijelöli az eszközöket, amelyekkel az adott célt el lehet érni.
@@ -32,7 +43,6 @@ valamint a megfelelő korrekciós lépések megtételének folyamata. Az ellenő
 menedzserek aktív kapcsolatba kerülnek a munkájukat végző beosztottakkal, teljesítményükről
 beszámolókat kapnak, készítenek és adnak tovább, majd az így nyert információval
 hozzájárulnak a szükséges változtatások megtervezéséhez.
-
 ### 5. Mit jelent a hatékonyság?
 ### 6. Mit jelent az eredményesség?
 ### 7. Mit jelent a nyereségesség?
