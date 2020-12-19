@@ -135,13 +135,21 @@ hat negatívan.
 ### 41. Hogyan lehet a változást menedzselni az emberközpontú menedzsment (Kurt Lewin) szerint?
 ### 42. Milyen szempontokat vet fel az emberközpontú menedzsment a döntések tekintetében (Herbert Simon)?
 ### 43. Vázolja fel az „x” és az „y” elmélet lényegét!
-Mindkettő Douglas Murray McGregor (1906-1964) amerikai ipari mérnök és pszichológus
-nevéhez fűződik.
-Az X elmélet a következő felételezéseket veszi alapul:
+Douglas Murray McGregor (1906-1964) amerikai ipari mérnök és pszichológus két
+egymástól jól elkülöníthető álláspontot vetett fel az 50-es évek elején, az emberi
+léttel kapcsolatban: az egyik alapvetően negatív, és X elméletnek nevezett, a
+másik alapvetően pozitív és Y elméletként ismerhető.
+
+McGregor elméletét Maslow munkásságára alapozta és Maslow-hoz hasonlóan őt is az
+érdekelte, hogy mi ösztönzi az embereket önmaguk képzésére, teljesítményük tökéletesítésére.
+McGregor úgy érvelt, hogy a hagyományos vezetői magatartás nem megfelelő, mivel
+kétségbe vonható feltételezésekből indul ki a dolgozókra vonatkozóan. Ezek a feltételezések
+az alábbiak (X elmélet):
 * A dolgozók alapvetően lusták, ellenőrzés és kényszerítés nélkül kerülik a munkát;
 * A dolgozók jobban szeretik az irányítást, ambícióik nincsenek, felelősségre nem vágynak;
 * A dolgozók számára közömbösek a szervezeti célok;
 * A dolgozókat csak fiziológiai és biztonsági szükségleteik ösztönzik.
+
 Ez a nézet azonban mind a dolgozókat, mind pedig a vezetőket negatívan jellemzi.
 
 McGregor szerint túlhaladott és elavult ez a megközelítés. Szerinte a dolgozók akkor
