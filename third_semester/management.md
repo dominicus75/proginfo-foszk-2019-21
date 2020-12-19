@@ -6,6 +6,15 @@
 
 ### 1. Vázolja fel a menedzsment modelljét és mutassa be röviden a modell elemeit!
 ![Imgur](https://i.imgur.com/RBJ6YLp.png)
+Az egyes menedzsment tevékenységek egymásra épülnek. A tervezés és az
+ellenőrzés teremti meg a külső és belső környezettel létrehozandó összhangot, míg
+a szervezés és a vezetés befolyásolja a környezeti tényezőket, erőforrásokat. A 
+szervezés, mint tevékenység feladata az erőforrások rendelkezésre bocsátása, a
+szervezeti keretek módosítása az erőforrások optimális felhasználása érdekében,
+míg a vezetéssel embereket befolyásolunk, mozgósítunk, és irányítunk az
+erőforrások felhasználására, átalakítására. A rendszer működésének, eredményének
+és a kitűzött céloknak az esetleges eltérései az újratermelődési folyamatban a
+menedzsment kontrollmechanizmusai révén korrigálódnak.
 ### 2. Értelmezze a menedzsment fogalmi körét!
 A menedzsment a szervezeti célok és a rendelkezésre álló erőforrások függvényében
 végzett tevékenységek összessége, melyek a tervezés, szervezés, vezetés, ellenőrzés
@@ -15,11 +24,15 @@ erőforrásainak tervezése, irányítása a szervezet céljainak eredményes me
 érdekében.”* (Griffin, 1987)
 ### 3. Vázolja fel a menedzsment történeti folyamatának főbb elemeit!
 A menedzsment történetének alakulása több fő szakaszra bontható:
-* a korai (tudományosság előtti),
-* a tudományos menedzsmentelmélet (klasszikus irányzat),
-* az emberközpontú irányzatok,
-* a menedzsmenttudományi megközelítés
-* a szintézis (integratív irányzatok) időszakaira.
+* korai (tudományosság előtti),
+* tudományos menedzsmentelmélet (klasszikus irányzat),
+* emberközpontú irányzatok,
+* menedzsmenttudományi megközelítés (adaptáció és interakció menedzsment),
+* szintézis (integratív irányzatok) időszakaira.
+A klasszikus menedzsment, a humán reláció menedzsment, az adaptáció menedzsment és
+az interakció menedzsment együttesen jól szervezett, organikus jellegű és összetett humán
+szerkezetekkel rendelkező, környezethez való alkalmazkodásra alkalmas, valamint azt
+befolyásolni, formálni képes rendszerek kialakítását és működtetését eredményezi.
 ### 4. Mi a menedzsment funkciója?
 A menedzsment azon tevékenységek összessége, amelyek szabályozott viszonyok kialakításával
 biztosítják, hogy a kitűzött szervezeti célok elérése érdekében a rendelkezésre álló
@@ -44,12 +57,40 @@ menedzserek aktív kapcsolatba kerülnek a munkájukat végző beosztottakkal, t
 beszámolókat kapnak, készítenek és adnak tovább, majd az így nyert információval
 hozzájárulnak a szükséges változtatások megtervezéséhez.
 ### 5. Mit jelent a hatékonyság?
+A hatékonyság a szervezet előtt álló célok megvalósítását, feladatok teljesítését jelenti úgy,
+hogy mindeközben a rendszer kiépülése, illetve működése a lehető legkevesebb erőforrást
+használja fel. A hatékonyság a kibocsátás és a ráfordítás viszonyszáma. Egy adott tevékenység során
+előállított, termékek, szolgáltatások és egyéb eredmények, valamint az előállításukhoz
+felhasznált források közötti kapcsolat. A hatékonyság fogalmát két oldalról vizsgálhatjuk:
+a meghatározott cél elérése a lehető legkisebb ráfordítással, vagy az adott ráfordítással
+a lehető legjobb eredmény elérése. 
 ### 6. Mit jelent az eredményesség?
+Az eredményesség azt jelenti, hogy a szervezet előtt álló célok, feladatok úgy
+teljesüljenek, hogy minél nagyobb nyereség, profit keletkezzen.
 ### 7. Mit jelent a nyereségesség?
+A szervezeti célok teljesülése nagyobb haszonnal, profittal jár (kevesebb ráfordítással
+több bevétel).
 ### 8. Hogyan függ össze az eredményesség és a nyereségesség?
 ### 9. Hogyan függ össze a hatékonyság és az eredményesség?
+A hatékonyság és az eredményesség szorosan összefügg, mert az a rendszer lehet igazán
+nyereséges, amelynek működése során a célok teljesüléséhez, a feladatok ellátásához
+szükséges erőforrások felhasználását és ezzel a működési költségeket a legtakarékosabban
+menedzselik.
 ### 10. Miért volt lényeges kérdés a menedzsment történetében a hatékonyság?
+A szervezet fennmaradásához feltétlenül szükséges, hogy
+* versenyképes legyen (a konkurenciánál jobb minőségben, vagy alacsonybb ráfordítással
+állítsa elő, amit előállít),
+* megfelelően gazdálkodjon a szűkösen rendelkezésre álló erőforrásokkal (ide értve a
+természeti erőforrásoktól kezdve az energián át a munkaerőig mindent),
+* fenntarthatóan gazdálkodjon (ami az erőforrások szűkösséégből adódó követelmény).
+Ha egy szervezet nem képes hatékonyan működni, akkor külső (pl. állami) segítség
+nélkül nem képes hosszú távon fennmaradni (ti. ha többe kerül a létezése, mint amit előállít).
+Mindez együttesen a szervezeteket a hatékony - a fenti kritériumoknak megfelelő -
+működésre kényszeríti.
 ### 11. Miért meghatározó jelentőségű érték napjainkban a hatékonyság érvényesítése?
+Mert egyre inkább nyilvánvalóvá válik, hogy az erőforrásaink végesek, nem vagy
+nem az felhasználás ütemében újulnak meg, így pazarlásuk nem csak a pazarló szervezetre
+hat negatívan.
 
 ### Problémamegoldó kérdéstípusok: feladat az, hogy tájékoztatást adjon a hatékonyság kényszeréről és indokairól.
 
@@ -94,6 +135,27 @@ hozzájárulnak a szükséges változtatások megtervezéséhez.
 ### 41. Hogyan lehet a változást menedzselni az emberközpontú menedzsment (Kurt Lewin) szerint?
 ### 42. Milyen szempontokat vet fel az emberközpontú menedzsment a döntések tekintetében (Herbert Simon)?
 ### 43. Vázolja fel az „x” és az „y” elmélet lényegét!
+Mindkettő Douglas Murray McGregor (1906-1964) amerikai ipari mérnök és pszichológus
+nevéhez fűződik.
+Az X elmélet a következő felételezéseket veszi alapul:
+* A dolgozók alapvetően lusták, ellenőrzés és kényszerítés nélkül kerülik a munkát;
+* A dolgozók jobban szeretik az irányítást, ambícióik nincsenek, felelősségre nem vágynak;
+* A dolgozók számára közömbösek a szervezeti célok;
+* A dolgozókat csak fiziológiai és biztonsági szükségleteik ösztönzik.
+Ez a nézet azonban mind a dolgozókat, mind pedig a vezetőket negatívan jellemzi.
+McGregor szerint túlhaladott és elavult ez a megközelítés. Szerinte a dolgozók akkor
+nyújtanak nagyobb teljesítményt és akkor szolgálják a szervezet célját, ha másféle,
+pozitívabb feltételezések alapján kezelik őket. Ezen feltételezéseket az Y elméletben
+gyűjtötte össze:
+* A szervezetben a munkához megfelelő feltételeket kell teremteni, s ez esetben a dolgozók
+is természetesebben fognak viszonyulni a munkához. Ha a dolgozó volt munkahelyén rosszat
+tapasztalt, azt áthozza új munkahelyére.
+* A dolgozók olyan szükségletekkel is ösztönözhetőek, mint önállóság, önmegvalósítás, elismertség.
+* A dolgozó szívesen vállal nagyobb felelősséget az előbbiek elérése érdekében.
+Az X elmélet autokrata vezetőt, míg az Y elmélet demokratikus vezetőt jelenít meg.
+McGregor X és Y elmélete azért volt alapvető mérföldkő a vezetési elméletek között,
+mert rámutatott arra, hogy milyen operatív feltételezésekkel hathatnak a dolgozók
+közösségének szellemére, s ezáltal fokozhatják a szervezet működésének hatékonyságát.
 ### 44. A szervezetfejlesztési feladat az, hogy az emberközpontú menedzsment különböző összetevői, megállapításainak felhasználásával fejlessze a céget.
 ### 45. Miért kell a menedzsmentnek törekedni az „y” elmélet állapotára?
 ### 46. Hogyan függ össze az „y” elmélet az identitással és a megelégedettséggel?
