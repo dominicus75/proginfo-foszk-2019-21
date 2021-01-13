@@ -34,14 +34,14 @@ teljesítette feladatát.
 
 A menedzsment fejlődése négy fő szakaszra bontható, ezek:
 
-#### korai (tudományosság előtti) korszak** (1880 előtt)
+#### I. Korai (tudományosság előtti) korszak (1880 előtt)
 E korszakban ahhoz,
 hogy valakiből menedzser váljon, nem kellett más, csak autoritás, így ezt az időszakot
 a megkérdőjelezhetetlen tekintélyre való erőteljes támaszkodás jellemzi. Az iparosodás
 és a gyári termelés hajnala hozta magával a tudományosan megalapozott vezetéselméletre
 és a vezetéshez szükséges készségek tudatos fejleszésére való igényt.
 
-#### tudományos vezetéselmélet időszaka (1880-1927)
+#### II. Tudományos vezetéselmélet időszaka (1880-1927)
  A menedzsment tant a XX. század
 elején Friedrich Winslow Taylor (1856–1915) öntötte tudományos formába. Taylor kutatásai során
 felfigyelt arra, hogy a megszerzett tudományos ismereteket jól hasznosítják a
@@ -68,7 +68,7 @@ weberi bürokrácia egyfajta ideál. E szerint a vállalat vezetőinek kiválasz
 azok munkája racionális, üzleti megfontolások mentén szerveződik, ennek elméleti
 hátterét alapozta meg Weber. 
 
-#### neoklasszikus (emberközpontú) korszak (1927-1950)
+#### III. Neoklasszikus (emberközpontú) korszak (1927-1950)
  A tudományos vezetéselmélet
 alapvető célja, hogy minél több munkát hatékonyan végeztessen el. A figyelem középpontjában
 a termelés, a gazdaságosság és a selejt kiküszöbölése áll. Ezért Taylort már kortársai
@@ -114,7 +114,7 @@ célok akkor érhetőek el, ha e közös célt mindenki elismeri és hajlandó a
 tevékenykedni. A menedzsment feladata szerinte az, hogy a dolgozók megteremtsék a
 szervezeti cél elérésének feltételeit.
 
-#### szintézis (1950-től):
+#### IV. Szintézis (1950-től):
 Az 1950-es évek elejétől a vezetéselméleti vizsgálódások a Taylor és Mayo által
 kidolgozott elméletek finomítását szolgálták, és azt célozták, hogy a két iskola
 elemeit más területekről vett ötletekkel ötvözzék. Ahogyan a magatartástudományok
