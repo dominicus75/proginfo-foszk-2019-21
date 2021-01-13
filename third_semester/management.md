@@ -16,24 +16,139 @@ erőforrások felhasználására, átalakítására. A rendszer működésének,
 és a kitűzött céloknak az esetleges eltérései az újratermelődési folyamatban a
 menedzsment kontrollmechanizmusai révén korrigálódnak.
 ### 2. Értelmezze a menedzsment fogalmi körét!
+A menedzsment „rendszerszervezési technológia” (módszertan, elmélet és gyakorlat),
+amely versenyképes, piacképes rendszer (szervezet) kialakítására törekedik (ez a menedzsment
+funkciója). A menedzsment tárgya maga a szervezet.
+
 A menedzsment a szervezeti célok és a rendelkezésre álló erőforrások függvényében
 végzett tevékenységek összessége, melyek a tervezés, szervezés, vezetés, ellenőrzés
 feladataira irányulnak.
+
 *„A menedzsment egy adott (gazdasági) szervezet emberi, pénzügyi, fizikai és információs
 erőforrásainak tervezése, irányítása a szervezet céljainak eredményes megvalósítása
 érdekében.”* (Griffin, 1987)
 ### 3. Vázolja fel a menedzsment történeti folyamatának főbb elemeit!
-A menedzsment történetének alakulása több fő szakaszra bontható:
-* korai (tudományosság előtti),
-* tudományos menedzsmentelmélet (klasszikus irányzat),
-* emberközpontú irányzatok,
-* menedzsmenttudományi megközelítés (adaptáció és interakció menedzsment),
-* szintézis (integratív irányzatok) időszakaira.
+A menedzsment koronként változó módon (a rendszerhez, a rendszert hordozó emberhez
+és a szervezet környezetéhez fűződő viszony tekintetében) és eszközöket felhasználva
+teljesítette feladatát.
+
+A menedzsment fejlődése négy fő szakaszra bontható, ezek:
+
+* **korai (tudományosság előtti) korszak** (1880 előtt): e korszakban ahhoz,
+hogy valakiből menedzser váljon, nem kellett más, csak autoritás, így ezt az időszakot
+a megkérdőjelezhetetlen tekintélyre való erőteljes támaszkodás jellemzi. Az iparosodás
+és a gyári termelés hajnala hozta magával a tudományosan megalapozott vezetéselméletre
+és a vezetéshez szükséges készségek tudatos fejleszésére való igényt.
+
+* **tudományos vezetéselmélet időszaka** (1880-1927): a menedzsment tant a XX. század
+elején Friedrich Winslow Taylor (1856–1915) öntötte tudományos formába. Taylor kutatásai során
+felfigyelt arra, hogy a megszerzett tudományos ismereteket jól hasznosítják a
+gépesítés területén, de nem használják a munkavégzésben és az irányításban.
+
+A tudományos vezetés elvei Taylor kísérletei és munkássága alapján a következő 4 pontban
+foglalhatók össze: 
+	1. A vezetésnek olyan új rendszert kell kialakítania, ami tudományos alapokon szabályozza
+	az egyes munkaelemek végzését.
+	2. A vezetők tudományos alapon válasszák ki a munkavégzésre leginkább megfelelő
+	alkalmazottakat, biztosítsák betanításukat és továbbképzésüket.
+	3. Dolgozzanak a vezetők a munkásokkal szívélyes egyetértésben.
+	4. A feladatokat és a felelősséget egyenlően kell megosztani a vezető és munkás között.
+
+A klasszikus irányzat kiemelkedő képviselő:
+* **Henry Fayol** (francia bányamérnök, 1841-1925). Taylornál a munkafolyamat, annak
+hatékonysága állt a középpontban, Fayol a szervezetet, illetve a vezetői tevékenységet
+vizsgálata. Taylor a munkások felől közelítette meg a hatékonyság problémáját,
+Fayol pedig a vezetők felől. Elsőként definiálta a menedzseri funkciókat - máig ezt használjuk.
+* **Max Weber** (német közgazdász, szociológus, 1864-1920). Munkásságának fontos
+része a bürokratikus szervezeti modell. Weber többek között az igazgatás általános
+kérdéseivel foglalkozott. A bürokrácia fogalmát nem a mai értelemben használta, a
+weberi bürokrácia egyfajta ideál. E szerint a vállalat vezetőinek kiválasztása,
+azok munkája racionális, üzleti megfontolások mentén szerveződik, ennek elméleti
+hátterét alapozta meg Weber. 
+
+* **neoklasszikus (emberközpontú) korszak** (1927-1950): a tudományos vezetéselmélet
+alapvető célja, hogy minél több munkát hatékonyan végeztessen el. A figyelem középpontjában
+a termelés, a gazdaságosság és a selejt kiküszöbölése áll. Ezért Taylort már kortársai
+is erős kritikával illették, mivel a racionalizálás (a taylori elvek bevezetése)
+sok munkás elbocsátáshoz vezetett. Robert F. Hoxie amerikai közgazdász, a
+Chicagoi Egyetem tanára, Taylor kortársa szerint Taylor *„figyelmen kívül hagyja a
+dolgozók karakterét, jogait, jólétét... a munkást eszköznek tekinti és a gép
+félautomata szerszámává degradálja”*.
+
+A neoklasszikus (vagy emberközpontú, más forrásokban: behaviorista) irányzat tekinthető
+a klasszikus - taylori - menedzsment antitézisének is. Alaptétele, hogy a menedzseri
+munka középpontjába az emberi magatartást kell helyezni. A munkást többé nem érzék- és
+érzéstelen, azonosítatlan eszköznek („humán erőforrás”) tekintették.
+
+A neoklasszikus korszak főbb irányzatai:
+
+* **Emberi kapcsolatok irányzata**: **Elton Mayo** (1880-1949) volt a legnagyobb hatású
+képviselője. Kutatásai szerint a növekvő teljesítmény alapja a jó csoportmunka, a motiváció,
+a felügyelet módja; a munkateljesítmény függ a dolgozók érzelmi beállítottságától;
+a munkacsoportok belső informális struktúrája és normája szintén meghatározó tényező.
+Az irányzat alapja: a Hawthorne-i kísérletek, melynek során megállapították a pszichológiai
+és szociológiai tényezők fontosságát a munkahelyen.
+
+**Douglas McGregor** (szociológus, 1906–1964) X és Y elméletében a klasszikus (X) és az emberközpontú
+iskola (Y) munkavállalókkal kapcsolatos szemléletét vetette egybe. A két elmélet
+**Abraham Maslow** (1908-70) munkája alapján, az emberek motivációja és szükségleteik
+feltárása és a munkavégzés befolyásolhatósága céljából jött létre. McGregor X/Y
+elmélete segített annak a ténynek az elfogadásában, hogy a beosztottak is gondolkodó,
+cselekvő céltudatos individuumok, akik mozgósíthatók a vállalati célok elérése érdekében. 
+
+* **Magatartástudományi irányzat**: a 30-as, 40-es években látványos eredmények
+születtek az emberi viselkedés megértése, a csoportdinamika és a szervezeti személyközi
+viszonyok leírása területén. **Kurt Lewin** (1890–1947) azt vizsgálta, hogy
+a formális vezető vezetési stílusa hogyan befolyásolja a vezetett csoport
+magatartását és teljesítményét. Három vezetési stílust különített el: az autokratikus,
+a demokratikus és a laissez faire stílusokat. Kutatásokat végzett az egyének magatartásváltozásával
+kapcsolatban is.
+
+**Chester I. Barnard** (1887–1961) a szervezetet szociális, társas rendszernek tekinti,
+melyben a résztvevők együttműködnek egymással, és kooperációjuk eredményeként létrejön
+a kívánatos működés. A szervezeti együttműködés alapjául szolgáló közös szervezeti
+célok akkor érhetőek el, ha e közös célt mindenki elismeri és hajlandó annak érdekében
+tevékenykedni. A menedzsment feladata szerinte az, hogy a dolgozók megteremtsék a
+szervezeti cél elérésének feltételeit.
+
+* **szintézis** (1950-től):
+Az 1950-es évek elejétől a vezetéselméleti vizsgálódások a Taylor és Mayo által
+kidolgozott elméletek finomítását szolgálták, és azt célozták, hogy a két iskola
+elemeit más területekről vett ötletekkel ötvözzék. Ahogyan a magatartástudományok
+új fogalmai és elméletei bekerültek a vezetéselméletbe, sokan kezdtek
+a menedzsment tudományra ezek egyfajta szintéziseként tekinteni. Úgy gondolták ahhoz, hogy
+valaki jó vezető legyen, nemcsak a szervezet termékéről kell elég sokat tudnia,
+nemcsak a vonatkozó vezetéselméleti ismereteknek kell birtokában lennie, hanem
+valamennyire jártasnak kell lennie a gazdaságtanban, a statisztikában, a
+szociológiában, a politológiában és számos más társadalom- és természettudományban.
+
+Főbb irányzatai:
+* **adaptáció-menedzsment**: célja olyan szervezeti rendszer kialakítása és működtetése,
+amely a környezeti hatásokhoz minél tökéletesebben képes alkalmazkodni. Ezért a rendszerépítés
+során döntően a szervezet-környezet viszonyra koncentrál és olyan szervezeti struktúrákat
+keres és preferál, amelyek képesek a környezeti hatásokat megfelelő mértékben érzékelni,
+illetve ehhez az érzékelt környezethez képesek rendszerjellemzőikben (strukturálisan, funkcionálisan
+és dinamikailag) alkalmazkodni.
+
+Az *adaptáció-menedzsment* legjellegzetesebb irányzata a **kontingencia (szituáció) menedzsment**.
+A menedzsment szakirodalomban, az 50-es évektől kezdve egyre elterjedtebb az a nézet,
+hogy nem léteznek általános érvényű szervezési, szervezetalakítási alapelvek. A
+kontingencia kutatások azt feltételezték, hogy eltérő helyzetben, más-más megoldás
+lehet sikeres. A kontingencia elmélet az vizsgálja, hogy adott szituációk (külső környezet,
+vállalat belső adottságai), hogyan befolyásolják az szervezeti struktúra egyes jellemzőit.
+
+* **interakciómenedzsment** (a környezet befolyásolása a szervezet által): a szervezet-környezet
+viszony tekintetében a kölcsönhatás szerepét hangsúlyozza, tehát nem pusztán alkalmazkodni akar
+a környezetéhez, hanem igyekszik alakítani is azt. A szervezet-környezet interakcióra épülő
+szervezetek elterjedése a stratégiai-menedzsment kiteljesedését is elősegítette.
+
 A klasszikus menedzsment, a humán reláció menedzsment, az adaptáció menedzsment és
 az interakció menedzsment együttesen jól szervezett, organikus jellegű és összetett humán
 szerkezetekkel rendelkező, környezethez való alkalmazkodásra alkalmas, valamint azt
 befolyásolni, formálni képes rendszerek kialakítását és működtetését eredményezi.
+
 ### 4. Mi a menedzsment funkciója?
+Versenyképes, piacképes rendszer (szervezet) kialakítása (ez a menedzsment funkciója).
 A menedzsment azon tevékenységek összessége, amelyek szabályozott viszonyok kialakításával
 biztosítják, hogy a kitűzött szervezeti célok elérése érdekében a rendelkezésre álló
 erőforrások nyereségesen és hatékonyan hasznosuljanak.
@@ -71,6 +186,8 @@ teljesüljenek, hogy minél nagyobb nyereség, profit keletkezzen.
 A szervezeti célok teljesülése nagyobb haszonnal, profittal jár (kevesebb ráfordítással
 több bevétel).
 ### 8. Hogyan függ össze az eredményesség és a nyereségesség?
+A versenyképesség a hatékonyságot (kevesebb erőforrás felhasználása) és eredményességet/nyereségességet
+(több érték termelése) jelenti.
 ### 9. Hogyan függ össze a hatékonyság és az eredményesség?
 A hatékonyság és az eredményesség szorosan összefügg, mert az a rendszer lehet igazán
 nyereséges, amelynek működése során a célok teljesüléséhez, a feladatok ellátásához
@@ -88,9 +205,11 @@ nélkül nem képes hosszú távon fennmaradni (ti. ha többe kerül a létezés
 Mindez együttesen a szervezeteket a hatékony - a fenti kritériumoknak megfelelő -
 működésre kényszeríti.
 ### 11. Miért meghatározó jelentőségű érték napjainkban a hatékonyság érvényesítése?
-Mert egyre inkább nyilvánvalóvá válik, hogy az erőforrásaink végesek, nem vagy
+A hatékonyságot a verseny (több nyereség, profit realizálása), az erőforrások korlátozott
+rendelkezésre állása és a fenntartható fejlődés kényszeríti ki. Ez a hatékonyság törvénye.
+Egyre inkább nyilvánvalóvá válik, hogy az erőforrásaink végesek, nem vagy
 nem az felhasználás ütemében újulnak meg, így pazarlásuk nem csak a pazarló szervezetre
-hat negatívan.
+hat negatívan. 
 
 ### Problémamegoldó kérdéstípusok: feladat az, hogy tájékoztatást adjon a hatékonyság kényszeréről és indokairól.
 
@@ -153,6 +272,7 @@ figyelembe vételével és érintésével lehet.
 ### Feladat az, hogy tájékoztatást adjon a klasszikus menedzsment alapján működő rendszer jellemzőiről.
 
 ### 18. Hogyan határozná meg a társadalmi csoport és a szervezet fogalmát!
+
 ### 19. Hogyan viszonyul a klasszikus menedzsment az emberhez, az emberi tényezőhöz?
 ### 20. Sorolja fel a klasszikus menedzsment legfontosabb elveit!
 ### 21. Mit jelent a teljesítményelv klasszikus menedzsmentnél?
@@ -293,11 +413,25 @@ való azonosulás érdekében) koordinációs formákat lehet megkülönböztetn
 ## A lineáris szervezeti forma
 
 ### 1. Miért praktikus a lineáris szervezeti forma?
+- egyértelmű felelőssági viszonyok, mindeki tudja, mia dolga
+- egységes irányítás
+- szabványosítható munkafolyamat
+- könnyen áttekinthető
+- könnyű bővíthetőség
 ### 2. Miért nem elég adaptív a lineáris szervezeti forma?
 ### 3. Milyen a szervezeti kommunikáció a lineáris szervezeti forma esetén?
+A szervezeti egységek közvetlenül nem kommunikálnak, csak a szolgálati út betartásával
+így az információáramlás lassú.
 ### 4. Vázolja fel a lineáris szervezeti forma ábráját!
 ### 5. Miben különbözik a funkcionális és a lineáris-funkcionális szervezeti forma egymástól?
-
+A lineáris-funkcionális szervezetek egydimenziósak, az elsődleges munkamegosztási
+elv a funkcionális. A szervezet növekedésével erősen specializált szervezeti egységek
+és munkakörök alakulhatnak ki. Hatáskörmegosztás szempontjából továbbra is centralizált,
+bár kevésbé, mint a tisztán lineáris forma. Fontos eltérés továbbá, hogy e többvonalas
+szervezetben a függelmi és a szakmai irányítás szétválik, míg a lineáris erősen
+centralizált, egyvonalas struktúra. A koordinációt elsősorban
+technokratikus (pl. szabályzatok, tervek) és strukturális (pl. értekezletek, bizottságok)
+eszközök biztosítják, míg a tisztán lineáris szervezeteknél főként a hierarchia .
 
 ## A funkcionális szervezeti forma
 
@@ -442,5 +576,6 @@ tárgyában szükséges javaslatokról.**
 * VIK WIKI (szerző nélkül): [A menedzsment alapjai – Felkészítő kérdések](https://vik.wiki/images/d/d9/Vallgazd_tesztkerdesek_2015-16-2_2.pdf)
 * Baráth Mihály – Finta Ferenc – dr. Tóth József: Menedzsment (Egyetemi jegyzet, Neumann János Egytem, Kecskemét 2018.)
 * Dr. Kerényi Attila, Dr. Kiss Tímea, Dr. Szabó György: [Környezeti rendszerek](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2011_0025_geo_1/ch02.html)
+* Kis-Tóth Roland: [Menedzsment](http://p2014-26.palyazat.ektf.hu/public/uploads/05-menedzsment_55e9c27be7468.pdf)
 
 [Kezdőlap](../README.md)
