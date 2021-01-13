@@ -133,12 +133,12 @@ keres és preferál, amelyek képesek a környezeti hatásokat megfelelő mért�
 illetve ehhez az érzékelt környezethez képesek rendszerjellemzőikben (strukturálisan, funkcionálisan
 és dinamikailag) alkalmazkodni.
 
-Az *adaptáció-menedzsment* legjellegzetesebb irányzata a **kontingencia (szituáció) menedzsment**.
-A menedzsment szakirodalomban, az 50-es évektől kezdve egyre elterjedtebb az a nézet,
-hogy nem léteznek általános érvényű szervezési, szervezetalakítási alapelvek. A
-kontingencia kutatások azt feltételezték, hogy eltérő helyzetben, más-más megoldás
-lehet sikeres. A kontingencia elmélet az vizsgálja, hogy adott szituációk (külső környezet,
-vállalat belső adottságai), hogyan befolyásolják az szervezeti struktúra egyes jellemzőit.
+	Az *adaptáció-menedzsment* legjellegzetesebb irányzata a **kontingencia (szituáció) menedzsment**.
+	A menedzsment szakirodalomban, az 50-es évektől kezdve egyre elterjedtebb az a nézet,
+	hogy nem léteznek általános érvényű szervezési, szervezetalakítási alapelvek. A
+	kontingencia kutatások azt feltételezték, hogy eltérő helyzetben, más-más megoldás
+	lehet sikeres. A kontingencia elmélet az vizsgálja, hogy adott szituációk (külső környezet,
+	vállalat belső adottságai), hogyan befolyásolják az szervezeti struktúra egyes jellemzőit.
 
 * **interakciómenedzsment** (a környezet befolyásolása a szervezet által): a szervezet-környezet
 viszony tekintetében a kölcsönhatás szerepét hangsúlyozza, tehát nem pusztán alkalmazkodni akar
