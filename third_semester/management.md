@@ -92,12 +92,12 @@ a munkacsoportok belső informális struktúrája és normája szintén meghatá
 Az irányzat alapja: a Hawthorne-i kísérletek, melynek során megállapították a pszichológiai
 és szociológiai tényezők fontosságát a munkahelyen.
 
-**Douglas McGregor** (szociológus, 1906–1964) X és Y elméletében a klasszikus (X) és az emberközpontú
-iskola (Y) munkavállalókkal kapcsolatos szemléletét vetette egybe. A két elmélet
-**Abraham Maslow** (1908-70) munkája alapján, az emberek motivációja és szükségleteik
-feltárása és a munkavégzés befolyásolhatósága céljából jött létre. McGregor X/Y
-elmélete segített annak a ténynek az elfogadásában, hogy a beosztottak is gondolkodó,
-cselekvő céltudatos individuumok, akik mozgósíthatók a vállalati célok elérése érdekében. 
+	**Douglas McGregor** (szociológus, 1906–1964) X és Y elméletében a klasszikus (X) és az emberközpontú
+	iskola (Y) munkavállalókkal kapcsolatos szemléletét vetette egybe. A két elmélet
+	**Abraham Maslow** (1908-70) munkája alapján, az emberek motivációja és szükségleteik
+	feltárása és a munkavégzés befolyásolhatósága céljából jött létre. McGregor X/Y
+	elmélete segített annak a ténynek az elfogadásában, hogy a beosztottak is gondolkodó,
+	cselekvő céltudatos individuumok, akik mozgósíthatók a vállalati célok elérése érdekében. 
 
 * **Magatartástudományi irányzat**: a 30-as, 40-es években látványos eredmények
 születtek az emberi viselkedés megértése, a csoportdinamika és a szervezeti személyközi
@@ -107,12 +107,12 @@ magatartását és teljesítményét. Három vezetési stílust különített el
 a demokratikus és a laissez faire stílusokat. Kutatásokat végzett az egyének magatartásváltozásával
 kapcsolatban is.
 
-**Chester I. Barnard** (1887–1961) a szervezetet szociális, társas rendszernek tekinti,
-melyben a résztvevők együttműködnek egymással, és kooperációjuk eredményeként létrejön
-a kívánatos működés. A szervezeti együttműködés alapjául szolgáló közös szervezeti
-célok akkor érhetőek el, ha e közös célt mindenki elismeri és hajlandó annak érdekében
-tevékenykedni. A menedzsment feladata szerinte az, hogy a dolgozók megteremtsék a
-szervezeti cél elérésének feltételeit.
+	**Chester I. Barnard** (1887–1961) a szervezetet szociális, társas rendszernek tekinti,
+	melyben a résztvevők együttműködnek egymással, és kooperációjuk eredményeként létrejön
+	a kívánatos működés. A szervezeti együttműködés alapjául szolgáló közös szervezeti
+	célok akkor érhetőek el, ha e közös célt mindenki elismeri és hajlandó annak érdekében
+	tevékenykedni. A menedzsment feladata szerinte az, hogy a dolgozók megteremtsék a
+	szervezeti cél elérésének feltételeit.
 
 #### IV. Szintézis (1950-től):
 Az 1950-es évek elejétől a vezetéselméleti vizsgálódások a Taylor és Mayo által
