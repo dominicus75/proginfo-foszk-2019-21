@@ -27,8 +27,9 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=0
-FILE_NAME_0=8438;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fdomi%2Fdata%2Fdevel%2Fproginfo-foszk-2019-21%2Fthird_semester%2Fmanagement.md;0;4
+current_page=1
+FILE_NAME_0=32205;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fdomi%2Fdata%2Fdevel%2Fproginfo-foszk-2019-21%2Fthird_semester%2Fmanagement.md;0;4
+FILE_NAME_1=0;None;0;EUTF-8;1;1;0;%2Fhome%2Fdomi%2Fdata%2Fdevel%2Fproginfo-foszk-2019-21%2F.gitignore;0;4
 
 [VTE]
-last_dir=/home/domi/data/devel/proginfo-foszk-2019-21/third_semester
+last_dir=/home/domi/data/devel/proginfo-foszk-2019-21

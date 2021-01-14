@@ -231,8 +231,8 @@ megfelelően kapcsolatba hozzuk egymással.
 ### 14. Definiálja az ideáltípus fogalmát
 Az ideáltípus - webrei értelemben - egy dolog elvont gondolati modellje, etalonja,
 ami a maga teljes valójában nem létezik (ahogy Platón ideális lova vagy egyebe sem),
-viszonyítási alapként használatos. Olyan, mint az absztrakt osztály: közvetlenül
-nem példányosítható.
+egyedi, kivételes jelenségek által nem torzított viszonyítási alapként használatos.
+Olyan, mint az absztrakt osztály: közvetlenül nem példányosítható.
 ### 15. Vázolja fel, hogy milyen tulajdonságokkal rendelkező szervezeti rendszer kialakítására törekszik a klasszikus menedzsment!
 A klasszikus menedzsment által kiépített szervezet „ideáltipikus” működési rendszerére
 az alábbiak jellemzők:
@@ -276,17 +276,45 @@ figyelembe vételével és érintésével lehet.
 ### Feladat az, hogy tájékoztatást adjon a klasszikus menedzsment alapján működő rendszer jellemzőiről.
 
 ### 18. Hogyan határozná meg a társadalmi csoport és a szervezet fogalmát!
+Mindkettő az emberek egy csoportja (az egyének olyan együttese, amelyeket bizonyos
+közös ismérvek jellemeznek, kötnek össze), azzal a különbséggel, hogy 
+* a **társadalmi csoport**: informális (vagy elsődleges) csoport, melyet nem formális
+szabályok definiálnak, hanem személyes kapcsolatok, szimpátiák, közös érdekek és azok
+képviselete tart össze. Az informális csoportokat az jellemzi, hogy spontán jönnek
+létre, kis taglétszámmal rendelkeznek. E csoportok kialakulásában különösen nagy
+szerepük van az érzelmi tényezőknek.
+* a **szervezet**:  formális (vagy másodlagos) csoport, amelyet szabályok definiálnak.
+A szervezetek (mint formális csoportok) létesülése többnyire a csoporton kívüli
+tényezőktől, külső akaratelhatározástól függ. Ilyenek például a különféle intézmények.
+Mivel azonban a formalizált vagy intézményesült struktúrával rendelkező másodlagos
+csoportokban is kialakulnak a nem formalizált kapcsolatok, ezeken a csoportokon
+belül is megfigyelhető az elsődleges informális csoportok létrejötte.
+
+A csoport szerkezete, működésének módja határozza meg, hogy egy adott közösséget
+formálisnak vagy informálisnak tekintünk-e. 
 
 ### 19. Hogyan viszonyul a klasszikus menedzsment az emberhez, az emberi tényezőhöz?
+A klasszikus menedzsment a technológiára és a szervezeti kérdésekre fókuszál, így
+- kritiikusai szerint - az emberi tényezőre érzéketlen, "humán erőforrásként", a reendszer
+elemeként tekint rá (nagyjából úgy, ahogy McGregor leírja az X elméletben). Robert F.
+Hoxie (amerikai közgazdász, 1868-1916) szerint „figyelmen kívül hagyja a dolgozók karakterét,
+jogait, jólétét a munkást eszköznek tekinti és a gép félautomata szerszámává degradálja”.
 
 ### 20. Sorolja fel a klasszikus menedzsment legfontosabb elveit!
+* teljesítményelv
+* szabványosítás
+* munkamegosztás
+* központosítás (cenralizáció)
 
 ### 21. Mit jelent a teljesítményelv klasszikus menedzsmentnél?
+A teljesítményelv a folyamatos teljesítménymérést, a (mennyiségi és minőségi)
+többletteljesítményre való ösztönzést és a teljesítménytől függő preferációs rendszer
+kiépítettségét jelenti.
 
 ### Feladat az, hogy építsen teljesítményösztönző rendszert a cégnél.
 
 ### 22. Mit jelent a szabványosítás a klasszikus menedzsment szerint?
-
+Egységesítik a szerszámokat, a készülékeket, a munka előírásokat (mit, mivel és hogyan kell csinálni).
 ### 23. Mit jelent a technika?
 
 ### 24. Mit jelent a technológia?
@@ -296,18 +324,49 @@ figyelembe vételével és érintésével lehet.
 ### 26. Mit jelentett a klasszikus menedzsment gondolatkörében a centralizáció és a hierarchia fogalma?
 
 ### 27. Magyarázza meg, hogy mit jelent a szolgálati út fogalma!
+A szolgálati út olyan rendszerelv, amelynek alapján a rendszerben, a hierarchikus
+szintek között felfelé és lefelé „közlekedni”, az ügyeket bonyolítani csak „lépcsőzetesen”,
+minden szint figyelembe vételével és érintésével lehet.
 
 ### 28. Mennyire elterjedt jelenség manapság a bürokrácia?
 
 ### 29. Értelmezze a pejoratív értelmű bürokratizmus fogalmát és sorolja fel az ilyen rendszer jellemzőit!
+A bürokratizmus a weberi bürokrácia kisiklott, eltorzult formája.
+− A szabályok és az ellenőrző rendszerek saját magukért válhatnak fontossá, a szervezet
+így öncélúvá válhat.
+− A bürokratikus szervezet nehezen és lassan, vagy egyáltalán nem alkalmazkodik a
+változó igényekhez és a változó környezethez.
+− A bürokratikus szervezetben a szabályok egységének és betartásának következménye,
+hogy a munkateljesítményt is szabályozzák, azaz megállapítják a minimális teljesítmény
+szintet. Így elképzelhető, hogy az egyéni teljesítmények ehhez a minimális
+teljesítményhez igazodnak majd, ami a munkatársak teljesítményének romlásához vezethet.
 
 ### 30. Mit jelent a hierarchia?
 
 ### 31. Mennyiben lényeges kérdés a szakértelem a bürokrácia felfogásában?
+A munkamegosztáshoz kapcsolódó rendszerelv a szakképzettség, amely szervezeti
+munkamegosztás szerinti munkatevékenység végzésére szakmailag képzett, „igazolt
+tudással rendelkező” munkatársakat, a munkavégzést meghatározó szakszerű
+eljárásmódokat és szakszerű munkavégzést jelent.
+
+A bürokratikus szervezet tagjai szakképzett hivatalnokok, akik kinevezés útján
+kerülnek beosztásukba. A kinevezés – a kompetencia elve szerint – a megkívánt technikai
+képzettségen vagy a diploma felmutatásán alapul, egyéb szempontok nem jöhetnek szóba.
 
 ### 32. Soroljon fel a bürokrácia jellemzői közül legalább nyolc jellemzőt!
+* munkamegosztás (specializáció)
+* szabályozottság (pontos előírások feladat-, hatáskörökre)
+* hierarchia (szigorú ellenőrzés a felsőbb szintekről)
+* írásbeliség (akták, dokumentációk, mint a kommunikáció eszközei)
+* hivatástudat (kiválasztás csak szaktudás alapján)
+* személytelenség és tárgyilagosság
 
 ### 33. Milyen értelmezési lehetőségei vannak a „személytelenség és tárgyilagosság” fogalmának?
+A szabályok és az ellenőrzés személytelen, azokat mindenkire egységesen alkalmazzák, a
+részrehajlás kizárt (elméletben). Weber gondolatkörében ezen elv betartása biztosította
+a feladat-orientációt. A munkavégzés megítélésére a személytelenség (nem a munkát
+végző személy, hanem az elvégzett munka mennyisége, minősége az értékelés alapja)
+és a tárgyilagosság (nincs részrehajlás a munka megítélésében) jellemző.
 
 ### 34. Milyen általános szerveződési szabályok jellemzik a bürokráciát?
 
