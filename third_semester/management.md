@@ -332,11 +332,11 @@ minden szint figyelembe vételével és érintésével lehet.
 
 ### 29. Értelmezze a pejoratív értelmű bürokratizmus fogalmát és sorolja fel az ilyen rendszer jellemzőit!
 A bürokratizmus a weberi bürokrácia kisiklott, eltorzult formája.
-− A szabályok és az ellenőrző rendszerek saját magukért válhatnak fontossá, a szervezet
+* A szabályok és az ellenőrző rendszerek saját magukért válhatnak fontossá, a szervezet
 így öncélúvá válhat.
-− A bürokratikus szervezet nehezen és lassan, vagy egyáltalán nem alkalmazkodik a
+* A bürokratikus szervezet nehezen és lassan, vagy egyáltalán nem alkalmazkodik a
 változó igényekhez és a változó környezethez.
-− A bürokratikus szervezetben a szabályok egységének és betartásának következménye,
+* A bürokratikus szervezetben a szabályok egységének és betartásának következménye,
 hogy a munkateljesítményt is szabályozzák, azaz megállapítják a minimális teljesítmény
 szintet. Így elképzelhető, hogy az egyéni teljesítmények ehhez a minimális
 teljesítményhez igazodnak majd, ami a munkatársak teljesítményének romlásához vezethet.
