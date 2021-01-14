@@ -294,8 +294,8 @@ A csoport szerkezete, működésének módja határozza meg, hogy egy adott köz
 formálisnak vagy informálisnak tekintünk-e. 
 
 ### 19. Hogyan viszonyul a klasszikus menedzsment az emberhez, az emberi tényezőhöz?
-A klasszikus menedzsment a technológiára és a szervezeti kérdésekre fókuszál, így
-- kritiikusai szerint - az emberi tényezőre érzéketlen, "humán erőforrásként", a reendszer
+A klasszikus menedzsment a technológiára és a szervezeti kérdésekre fókuszál, így - kritiikusai
+szerint - az emberi tényezőre érzéketlen, "humán erőforrásként", a reendszer
 elemeként tekint rá (nagyjából úgy, ahogy McGregor leírja az X elméletben). Robert F.
 Hoxie (amerikai közgazdász, 1868-1916) szerint „figyelmen kívül hagyja a dolgozók karakterét,
 jogait, jólétét a munkást eszköznek tekinti és a gép félautomata szerszámává degradálja”.
