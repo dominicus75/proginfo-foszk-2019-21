@@ -432,7 +432,7 @@ hanem éppen az a megnövekedett figyelem, amit a kutatóktól kapnak (az elneve
 Western Electric Company Hawthorne-i részlegére utal, ahol 1924 és 27 között
 a munkahelyi világítás és a munkások termelékenysége közötti kapcsolatot, valamint a
 pihenőidő megváltoztatásának termelékenységre gyakorolt hatásait vizsgálták, Elton Mayot
-- akinek neve összefort a vizsgálattal - csak 1927-ben, az első ellentmondásos
+csak 1927-ben, az első ellentmondásos
 eredmények hatására vonták be a kutatásba).
 
 A Hawthorne-kísérlet célja az volt, hogy termelékenység növekedést érjenek el
