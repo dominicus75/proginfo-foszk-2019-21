@@ -312,16 +312,49 @@ többletteljesítményre való ösztönzést és a teljesítménytől függő pr
 kiépítettségét jelenti.
 
 ### Feladat az, hogy építsen teljesítményösztönző rendszert a cégnél.
+"Az ösztönző rendszerek elégtelenségének legfőbb oka az, hogy rengetegen úgy próbálják
+meg az eredmények elérésére sarkallni a beosztottaikat, hogy a jutalmazást első helyre
+teszik az ösztönzési rendszer megtervezésekor. Ha ösztönözni szeretné a munkatársait,
+először a belső elégedettségükről kell gondoskodni. Másodsorban szociális támogatást
+kell adni a számukra. Egy kiegyensúlyozott ösztönzési rendszerben a külső ösztönzők
+csak a 3. helyen jutnak szóhoz. A jól működő, valódi üzleti eredményeket hozó rendszerek
+megalkotói először az első két tényezőt biztosítják, mielőtt a pénzügyi ösztönzőkhöz nyúlnak.
+Ha nem ezt a logikát követjük, valószínűleg csalódni fogunk. [...] Amikor úgy döntünk,
+hogy megjutalmazunk valakit gyakran a szándék többet számít, mint maga a jutalom.
+Ez azért van, mert a szándéknak gyakran szimbolikus jelentése van, szociális
+kapcsolatot létesít, mely sokkal nagyobb súlyú, mint az ösztönző eszköz. Engedjük,
+hogy a szándék elvégezze a motiváció jelentős részét!" (Forrás: [HR portál](https://www.hrportal.hu/hr/hogyan-epitsunk-jo-osztonzesi-rendszert-20100107.html))
 
 ### 22. Mit jelent a szabványosítás a klasszikus menedzsment szerint?
 Egységesítik a szerszámokat, a készülékeket, a munka előírásokat (mit, mivel és hogyan kell csinálni).
+A szabványosítás eszközrendszere a technika, módszertana pedig a technológia
+fogalomkörébe épül be.
 ### 23. Mit jelent a technika?
-
+A technika az alap- („mag”) tevékenység eszközrendszerét jelenti (vagyis,
+hogy „milyen eszközök felhasználásával folyik a tevékenység”). Ide tartoznak a
+tevékenységhez használt gépek, berendezések, szerszámok, készülékek, műszerek.
 ### 24. Mit jelent a technológia?
-
+A technológia az alap- („mag”) tevékenység metodikáját (módszertanát) jelenti
+(„milyen módszerek alkalmazásával folyik a tevékenység”). Ebbe a kategóriába
+sorolható a tevékenységhez tartozó szakmai ismeretek köre, az alkalmazott eljárások,
+módszerek összessége, áttételesen az automatizáltság foka, a tevékenység folyamatossága és
+tömegszerűsége (egyedi gyártástól a sorozatgyártáson át a tömeggyártásig), valamint az
+innovativitás mértéke is.
 ### 25. Milyen összefüggéseket fejez ki a „technitechnológia” fogalma?
 
 ### 26. Mit jelentett a klasszikus menedzsment gondolatkörében a centralizáció és a hierarchia fogalma?
+A centralizáció a szervezeti döntéseknek, hatásköröknek a szervezet centrumába való
+központosítását kifejező fogalom. A centralizáció erősíti a centripetális (befelé
+húzó) tényezőket és kompenzálja (ellensúlyozza) a szervezeti egységek önállósulási törekvéseit.
+
+A hatalommegosztás a rendszer vertikális differenciálódása, amely „ideáltipikus” (egyedi,
+kivételes jelenségek által nem torzított) esetben hivatali hierarchiát (alá-fölé rendelt hatalmi
+rendszert) jelent. A szervezeti hatalom (hatáskör) megosztása a szervezeti hierarchiában
+elhelyezkedő szervezeti egységek, illetve személyek döntési, utasítási jogkörének
+vertikálisan kiépülő rendjét eredményezi. A szervezeti hatalommegosztás alapja az autoritás
+(a szervezeti hierarchia adott szintjéhez kapcsolódó „hatalmi nyomaték”). A
+hatalommegosztás alapján meghatározásra kerülnek a hierarchikus szintek, és rögzítésre
+kerülnek a vezetői és ellenőri hatáskörök.
 
 ### 27. Magyarázza meg, hogy mit jelent a szolgálati út fogalma!
 A szolgálati út olyan rendszerelv, amelynek alapján a rendszerben, a hierarchikus
@@ -329,11 +362,12 @@ szintek között felfelé és lefelé „közlekedni”, az ügyeket bonyolítan
 minden szint figyelembe vételével és érintésével lehet.
 
 ### 28. Mennyire elterjedt jelenség manapság a bürokrácia?
+Nagyon.
 
 ### 29. Értelmezze a pejoratív értelmű bürokratizmus fogalmát és sorolja fel az ilyen rendszer jellemzőit!
 A bürokratizmus a weberi bürokrácia kisiklott, eltorzult formája.
 * A szabályok és az ellenőrző rendszerek saját magukért válhatnak fontossá, a szervezet
-így öncélúvá válhat.
+így öncélúvá válhat (azért van, hogy legyen).
 * A bürokratikus szervezet nehezen és lassan, vagy egyáltalán nem alkalmazkodik a
 változó igényekhez és a változó környezethez.
 * A bürokratikus szervezetben a szabályok egységének és betartásának következménye,
@@ -342,6 +376,9 @@ szintet. Így elképzelhető, hogy az egyéni teljesítmények ehhez a minimáli
 teljesítményhez igazodnak majd, ami a munkatársak teljesítményének romlásához vezethet.
 
 ### 30. Mit jelent a hierarchia?
+Függelmi viszonyok, a fölé- és alárendeltségek rendszere, amiben az emberek
+vagy dolgok valamilyen szempont (pl. fontosság, képesség, pozíció, hatáskör, utasíthatóság,
+befolyás) alapján vannak elrendezve, kategorizálva.
 
 ### 31. Mennyiben lényeges kérdés a szakértelem a bürokrácia felfogásában?
 A munkamegosztáshoz kapcsolódó rendszerelv a szakképzettség, amely szervezeti
@@ -369,13 +406,63 @@ végző személy, hanem az elvégzett munka mennyisége, minősége az értékel
 és a tárgyilagosság (nincs részrehajlás a munka megítélésében) jellemző.
 
 ### 34. Milyen általános szerveződési szabályok jellemzik a bürokráciát?
+* A szervezeti rendszerben érvényesülő jogok és kötelességek világos szervezeti-
+működési szabályok szerint fogalmazódnak meg.
+* A részlegekhez és a munkatársak státuszpozícióihoz rögzített feladatkörök és
+hatáskörök (az egyének szintjén meghatározott szerepelőírások) rendelődnek.
+* A szervezeti eljárások és a módszerek pontosan és írásban is lefektetett módon
+meghatározottak. A hierarchia mellett a szabályok nagy szerepe a bürokratikus szervezet
+két talán legfontosabb megkülönböztető ismérve.
+* A **szakosodás (specializáció)**, a hatáskörökbe foglalt munkamegosztást és a
+szakszerűséget jelenti. Egy-egy szakterülettel egy-egy szervezeti egység (osztály,
+csoport, ügyintéző) foglalkozik. A specializációból eleve következik, hogy a munkavégzéshez
+megfelelő szakképzettség kívántatik meg.
+* Az **aktaszerűség** lényege, hogy az eljárási cselekményeket, az eljárás során szerzett
+információkat, a hozott határozatokat írásos formában (irat, akta) rögzítik, hosszabb
+ideig tárolják, és biztosítják visszakereshetőségét.
+* A hivatali ügyek intézését a személytelenség és a tárgyilagosság (elfogulatlanság)
+jellemzi.
 
 ### Feladat az, hogy tájékoztatást adjon a bürokrácia értelmezéséről, előnyeiről, hátrányairól, lényegéről, problémáiról stb. jellemzőiről.
 
 ### 35. Írja le, hogy mit eredményezett a menedzsment történetében a „Hawthorne-effektus”!
+A **Hawthorne-hatás**: a megfigyelés ténye hatni fog a megfigyelt személyek viselkedésére.
+A magatartásuk változását sok esetben nem a kísérleti feltételek manipulációja okozza,
+hanem éppen az a megnövekedett figyelem, amit a kutatóktól kapnak (az elnevezés a
+Western Electric Company Hawthorne-i részlegére utal, ahol 1924 és 27 között
+a munkahelyi világítás és a munkások termelékenysége közötti kapcsolatot, valamint a
+pihenőidő megváltoztatásának termelékenységre gyakorolt hatásait vizsgálták, Elton Mayot
+- akinek neve összefort a vizsgálattal - csak 1927-ben, az első ellentmondásos
+eredmények hatására vonták be a kutatásba).
+
+A Hawthorne-kísérlet célja az volt, hogy termelékenység növekedést érjenek el
+taylori alapokon, ennek ellenére fordulópontot jelentett a menedzser tudományban
+(ezért is számítják egyes szerzők 1927-től a neoklasszikus korszakot).
+
+Mayo a kísérletek eredményeit elemezve arra jutott, hogy a technikai
+szervezettség mellett a teljesítményre a „társadalmi szervezettség” is nagy
+hatással van. A teljesítményt többek között befolyásolja a felügyelet stílusa, az
+ellenőrzés módszere, a vállalaton belül kialakult informális csoportok szerkezete és
+a munkahelyi morál. Világossá vált, hogy **a munkásokat nem egyedül a pénz
+motiválja, a személyes és társas tényezők komoly szerepet töltenek be a
+teljesítmény változásában**. A másik ehhez kapcsolódó megállapítás az volt, hogy
+maguk a kísérlet lebonyolítói is befolyásolják az eredményeket, hiszen pusztán
+azáltal, hogy meghallgatták a munkásokat, partnerként kezelték őket, hatással
+voltak teljesítményükre (*Hawthorne-hatás*). 
 
 ### 36. Röviden ismertesse, hogy milyen alapvető szempontok fontosságát hangsúlyozza humán reláció menedzsmentje!
-
+* Az irányzat hangsúlyozza a személyiség - mint komplex (összetett) „pszichofizikai”
+(lelki és testi) rendszer, a tudat hordozója a cselekvés alanya - fontosságát és az egyéni
+adottságok képességek, attitűdök (bizonyos értékek mentén való beállítódások),
+jelentőségét a szervezeti rendszerben.
+* A humán reláció menedzsment előtérbe helyezi a tudat és a tudat által „hordozott”
+szellemi és érzelmi tényezők, erkölcsi normák és a motiváció kérdését.
+* Az irányzat ráirányítja a figyelmet a szervezetek informális szféráinak fontosságára,
+és így a menedzselési folyamatban hangsúlyossá válnak a formalizált (szabályozott)
+szerkezet „alatti” informális szféra viszonyai
+* A teljesítményt többek között befolyásolja a felügyelet stílusa, az ellenőrzés
+módszere, a vállalaton belül kialakult informális csoportok szerkezete és
+a munkahelyi morál is
 
 ### 37. Írja le, hogy milyen szempontokat vesz figyelembe a személyiség és az informális csoportviszonyok tekintetében a „humán reláció (emberközpontú) menedzsmentje”!
 
@@ -428,13 +515,16 @@ közösségének szellemére, s ezáltal fokozhatják a szervezet működéséne
 
 ### 46. Hogyan függ össze az „y” elmélet az identitással és a megelégedettséggel?
 
-### 47. A menedzsment elméletek („a klasszikus menedzsmenttől az interakció menedzsment elméletéig) a szervezet és környezet viszonyát tekintve milyen „fejlődési ívet” mutattak?z
+### 47. A menedzsment elméletek („a klasszikus menedzsmenttől az interakció menedzsment elméletéig”) a szervezet és környezet viszonyát tekintve milyen „fejlődési ívet” mutattak?
 
-### 48. A menedzsment elméletek („a klasszikus menedzsmenttől a tudásmenedzsmentig) a szervezet és az ember viszonyát tekintve milyen „fejlődési ívet” mutattak?
+### 48. A menedzsment elméletek („a klasszikus menedzsmenttől a tudásmenedzsmentig”) a szervezet és az ember viszonyát tekintve milyen „fejlődési ívet” mutattak?
 
 ### Feladat az, hogy tájékoztatást adjon a munkatársainak a menedzsment története során tapasztalható fejlődési folyamatokról.
 
 ### 49. Sorolja fel, milyen „kritikai” szempontokat fogalmazott meg a humán reláció menedzsmentje a klasszikus irányzattal szemben!
+* A klasszikus irányzat leszűkíti a szervezet a formális szervezeti tényezőkre.
+* A racionális, természettudományos szemléletmód eluralkodása.
+* Az ember szerepének alulértékelése.
 
 ### 50. Vázolja fel az adaptációmenedzsment alapvető elveit és irányzatait!
 
