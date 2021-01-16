@@ -630,11 +630,11 @@ megfelelő irányba kívánja befolyásolni a vállalat környezetét.
 
 ### 47. A menedzsment elméletek („a klasszikus menedzsmenttől a tudásmenedzsmentig”) a szervezet és az ember viszonyát tekintve milyen „fejlődési ívet” mutattak?
 * a klasszikus menedzsment eszközként szemléli az embert, mint a szervezet alkotóelemét.
-* az emberi kapcsolatok irányzata az emberre (személyiségére, szükségleteire, motivációira) fókuszál
-* 
-
-
-
+* az emberi kapcsolatok irányzata az emberre (személyiségére, szükségleteire, motivációira, kapcsolataira) fókuszál
+* a tudásmenedzsment az előbbiek eredményeit felhasználva igyekszik gyarapítani és
+megőrizni a szervezet szellemi tőkéjét és olyan szervezeti kultúrát kialakítani,
+ahol a tudás megosztása, a folyamatos tanulás és ismeretszerzés, a szervezet tudásbázisának
+állandó építése a napi munkafolyamatok szerves részét képezik.
 
 ### Feladat az, hogy tájékoztatást adjon a munkatársainak a menedzsment története során tapasztalható fejlődési folyamatokról.
 
