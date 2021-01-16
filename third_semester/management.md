@@ -283,7 +283,8 @@ szabályok definiálnak, hanem személyes kapcsolatok, szimpátiák, közös ér
 képviselete tart össze. Az informális csoportokat az jellemzi, hogy spontán jönnek
 létre, kis taglétszámmal rendelkeznek. E csoportok kialakulásában különösen nagy
 szerepük van az érzelmi tényezőknek.
-* a **szervezet**:  formális (vagy másodlagos) csoport, amelyet szabályok definiálnak.
+* a **társadalmi szervezet**:  formális (vagy másodlagos) csoport, amelyet szabályok definiálnak.
+A társadalmi szervezetek tulajdonképpen formalizált társadalmi csoportok.
 A szervezetek (mint formális csoportok) létesülése többnyire a csoporton kívüli
 tényezőktől, külső akaratelhatározástól függ. Ilyenek például a különféle intézmények.
 Mivel azonban a formalizált vagy intézményesült struktúrával rendelkező másodlagos
@@ -374,6 +375,13 @@ változó igényekhez és a változó környezethez.
 hogy a munkateljesítményt is szabályozzák, azaz megállapítják a minimális teljesítmény
 szintet. Így elképzelhető, hogy az egyéni teljesítmények ehhez a minimális
 teljesítményhez igazodnak majd, ami a munkatársak teljesítményének romlásához vezethet.
+* Az előléptetési szabályok oda vezethetnek, hogy mindenki addig emelkedik a hierarchiában,
+míg olyan szintre nem jut, ahol már nem tud megfelelni a feladatnak (a „Peter elv”)
+* A szervezeti növekedésre törekvés (Parkinson törvénye).
+* A bürokratikus szervezetben a döntésekért való egyéni felelősség eltűnhet.
+* A szükséges írásbeli ügyintézésből fakadó túlzó formaságok elszaporodása.
+* A döntés minden elemének utasítással, szakvéleménnyel stb. történő „fedezésére” való törekvés.
+* Az ügyféllel hatalmi pozícióból való tárgyalás.
 
 ### 30. Mit jelent a hierarchia?
 Függelmi viszonyok, a fölé- és alárendeltségek rendszere, amiben az emberek
@@ -460,21 +468,107 @@ szellemi és érzelmi tényezők, erkölcsi normák és a motiváció kérdésé
 * Az irányzat ráirányítja a figyelmet a szervezetek informális szféráinak fontosságára,
 és így a menedzselési folyamatban hangsúlyossá válnak a formalizált (szabályozott)
 szerkezet „alatti” informális szféra viszonyai
+* A részvételen alapuló (participatív) kapcsolatrendszer és működés viszonyait helyezi előtérbe
 * A teljesítményt többek között befolyásolja a felügyelet stílusa, az ellenőrzés
 módszere, a vállalaton belül kialakult informális csoportok szerkezete és
 a munkahelyi morál is
 
 ### 37. Írja le, hogy milyen szempontokat vesz figyelembe a személyiség és az informális csoportviszonyok tekintetében a „humán reláció (emberközpontú) menedzsmentje”!
+* A munkateljesítmény erősen függ a munkások érzelmi beállítottságától, ezért az
+egyéneket nemcsak gazdasági ösztönzőkkel, hanem különböző társas és pszichológiai
+tényezőkkel is motiválni lehet.
+* Az informális munkacsoport szervezeti tényező, meghatározza a csoporttagokra
+vonatkozó teljesítményelvárásokat, kialakítva egy csoportnormát a „tisztességes napi munka”
+mennyiségére.
+* A menedzseri módszereket a pszichoszociális megfontolások bekapcsolásával
+jelentősen át kell alakítani, a menedzsmentnek technikai és szociális képzettségre egyaránt
+szüksége van.
 
 ### 38. Miért fontos eleme a „humán reláció (emberközpontú)menedzsmentjének” a „participáció” modellje és hogyan érvényesíthető a szervezetben?
+A participáció egy olyan intézményesen biztosított részvételi lehetőség a munkavállalók
+számára, amellyel a munkavállalók képviselői jogot szereznek a vállalat döntési
+folyamatainak meghatározásához: már a döntés-előkészítés folyamatában beleszólásuk
+van a szervezet működésébe, hogy közvetlenül biztosítsák a munkavállalói érdekek
+érvényesülését. A részvétel, vagyis a participáció segíti a szervezet vezetését,
+ösztönzi az innovációs folyamatokat. A participáció miatt a menedzsment nem tekinthet
+egyszerű alárendeltként az alkalmazottakra, úgy kell meghoznia döntéseit, hogy ismeri
+és mérlegeli azok érdekeit is.
+
+A participáció a következő alapelveket mondja magáénak:
+
+* **autonómia**: a participáció nem közvetlen részvételt jelent a döntési helyzetekben,
+hanem érdekképviseletet. A munkavállalókat képviselők viszont felelősséggel tartoznak
+választóiknak, különösen, mivel nem megfelelő képviselet esetén akár vissza is hívhatják őket.
+* **együttműködés**: szervezet eredményessége érdekében kooperációra törekszenek mind a
+vezetők, mind a munkavállalók, mindenkori céljuk a mielőbbi kompromisszum meghozatala.
+* **bizalom**: a felek bizalommal vannak egymás iránt, éppen ezért a konfliktust minden
+esetben tisztességes eszközökkel próbálják megoldani, kölcsönösen kizárva a harci
+eszközök használatát.
+
+(Forrás: [HR Portal](https://www.hrportal.hu/jelentese/a-participacio-fogalma.html))
 
 ### 39. Vázolja fel, hogy az emberközpontú menedzsment irányzatánál milyen vezetési típusokat tartalmaz a vezetési stílus alapvető modellje (Kurt Lewin)!
+Lewin azt vizsgálta, hogy a formális vezető vezetési stílusa hogyan befolyásolja a
+vezetett csoport magatartását és teljesítményét. Három vezetési stílust különített el:
+* az **autokratikus** (mindenről a vezető dönt, ő írja elő a feladatokat, a bírálatban
+személyes és szubjektív),
+* a **demokratikus** (a teendőkről a csoport dönt a vezető támogatásával, közösen
+határozzák meg a feladatokat, a bírálatban objektív),
+* és a **laissez faire** (egyáltalán nem vesz részt a döntésekben és a részfeladatok
+elosztásában, ellátja a csoportot a szükséges anyagokkal, ritkán kommentálja a csoporttagok
+feladatvégzését, csak ha külön erre kérik)
 
+stílusokat.
+ 
 ### 40. Hogyan magyarázza a „mezőelmélet” (Kurt Lewin) az emberi cselekvés determinációját.
+Lewin személyiségelmélete a személyiség kialakulását és fejlődését nem pusztán belső,
+pszichikus tényezők eredményének, hanem az individuum és a környezet aktív kölcsönhatása
+következményének tekinti. A mezőelmélet a személyt és környezetét együttesen kezeli.
+A *„mező”* az egyén szükségleteit, motivációit, hangulatait, céljait, szorongásait,
+eszményeit foglalja magába, miáltal dinamikus, feszültségteli, társas és instrumentális
+cselekvésre egyaránt inspiráló térként jelenik meg. A mező úgy definiálható, mint
+*„egymás mellett létező tények teljessége, melyek egymástól kölcsönösen függenek”*
+(Lewin, 1951).
+
+Lewin mezőelméletének alapvető jellemzői:
+1. a viselkedés a mező függvénye, amely akkor létezik, ha a viselkedés megjelenik;
+2. az elemzés a szituációval, mint egésszel kezdődik, melytől az alkotórészek különböznek; 
+3. egy konkrét egyén egy konkrét szituációban matematikailag reprezentálható.
+
+Lewin úgy látja, hogy a személyiség nem konstans, nem állandó és változatlan egység,
+hanem a környezet feléje irányuló motívumainak és saját igényeinek dinamikus
+kölcsönhatásaként érvényesülő, a külső és belső feltételek módosulásával változó tényező. 
 
 ### 41. Hogyan lehet a változást menedzselni az emberközpontú menedzsment (Kurt Lewin) szerint?
+A szervezeti változás – változtatás, Lewinnél három szakaszból álló folyamatként jelenik meg,
+amely az alábbi szakaszokat foglalja magába:
+1. felengedés - unfreezing (a régi állapottól, gyakorlattól való elszakadás feltételeinek és motivációjának
+megteremtése, a változással szembeni ellenállás csökkentése)
+2. változtatás - change (a szükséges átalakítások megvalósítása, melynek során kialakul az új status quo)
+3. megszilárdítás - refreezing (annak biztosítása, hogy a változás tartós maradjon, ez akkor valósul meg,
+ha az új állapot a rendszer és a szereplők működésének természetes részévé, rutinná válik).
 
 ### 42. Milyen szempontokat vet fel az emberközpontú menedzsment a döntések tekintetében (Herbert Simon)?
+A közgazdász végzettségű Herbert Simon 1978-ban kapta meg a svéd akadémia elismerését,
+mert feltárta a döntéshozatalban a korlátozott racionalitás mechanizmusát, leírta a
+racionális alapokon nyugvó, szisztematikus és módszeres döntési folyamat modelljét
+és a hozzá kapcsolódó metodikákat.
+
+A modell:
+1. a döntés tárgyának, az ennek kapcsán felmerülő és megoldandó problémának, problémáknak
+a meghatározása;
+2. adatok és információk gyűjtése, tájékozódás a döntés tárgyával kapcsolatban;
+3. a célállapothoz való eljutás (az ezzel kapcsolatos problémák) lehetséges módjainak,
+változatainak, alternatíváinak felvázolása;
+4. a döntési alternatívák súlyozása, előnyeik és hátrányaik, kockázataik és következményeik
+mérlegelése, ezek alapján a legkedvezőbbnek ítélt alternatíva kiválasztása,
+a döntés meghozatala.
+
+Simon bizonyította be, hogy a döntéshozó egyfelől koránt sincs minden lehetséges információ
+birtokában, másfelől az emberi agy információtárolási és -feldolgozó kapacitása is
+elégtelen ahhoz, hogy mindent figyelembe véve, optimális döntést hozhasson. A
+döntéshozatal kapcsán tehát csak korlátozott racionalitásról, az eredményt illetően
+pedig optimális (legjobb) döntés helyett csak megfelelő, kielégítő döntésről beszélhetünk.
 
 ### 43. Vázolja fel az „x” és az „y” elmélet lényegét!
 Douglas Murray McGregor (1906-1964) amerikai ipari mérnök és pszichológus két
@@ -509,65 +603,92 @@ McGregor X és Y elmélete azért volt alapvető mérföldkő a vezetési elmél
 mert rámutatott arra, hogy milyen operatív feltételezésekkel hathatnak a dolgozók
 közösségének szellemére, s ezáltal fokozhatják a szervezet működésének hatékonyságát.
 
-### 44. A szervezetfejlesztési feladat az, hogy az emberközpontú menedzsment különböző összetevői, megállapításainak felhasználásával fejlessze a céget.
+###A szervezetfejlesztési feladat az, hogy az emberközpontú menedzsment különböző összetevői, megállapításainak felhasználásával fejlessze a céget.
 
-### 45. Miért kell a menedzsmentnek törekedni az „y” elmélet állapotára?
+### 44. Miért kell a menedzsmentnek törekedni az „y” elmélet állapotára?
+McGregor elmélete arra világít rá, hogy a munka világában dolgozók nagyon sokfélék lehetnek,
+és a vezetőknek ezt a sokféleséget el kell fogadniuk. Nem szabad tehát előítéletek,
+vagy logikusnak tűnő, ám hiedelmeken alapuló modell szerint megközelíteni a vezetési problémákat.
+Az alkalmazottak személyes céljai összhangba hozhatóak a szervezet céljaival, erre
+lehet és kell építeni. Ezért 
+* a szervezetben a munkához megfelelő feltételeket kell teremteni, s ez esetben a dolgozók
+is természetesebben fognak viszonyulni a munkához;
+* a dolgozók olyan szükségletekkel is ösztönözhetőek, mint önállóság, önmegvalósítás, elismertség;
+* a dolgozó szívesen vállal nagyobb felelősséget az előbbiek elérése érdekében.
 
-### 46. Hogyan függ össze az „y” elmélet az identitással és a megelégedettséggel?
+### 45. Hogyan függ össze az „y” elmélet az identitással és a megelégedettséggel?
 
-### 47. A menedzsment elméletek („a klasszikus menedzsmenttől az interakció menedzsment elméletéig”) a szervezet és környezet viszonyát tekintve milyen „fejlődési ívet” mutattak?
+### 46. A menedzsment elméletek („a klasszikus menedzsmenttől az interakció menedzsment elméletéig”) a szervezet és környezet viszonyát tekintve milyen „fejlődési ívet” mutattak?
+* a klasszikus menedzsment és az emberi kapcsolatok irányzata zárt rendszerként kezelte a
+szervezetet, megállapításaik a vállalaton belüli folyamatok vizsgálatára épültek, a
+környezet hatásait figyelmen kívül hagyták;
+* az adaptáció menedzsment foglalkozott először a szervezet és a környezet (piaci, természeti,
+társadalmi, jogi, stb környezet) kapcsolatával, a környezethez való alkalmazkodással;
+* az interakció menedzsment az adaptáció menedzsment megállapításait továbbgondolva
+már nem elégszik meg a környezethez való alkalmazkodással, hanem a szervezet céljainak
+megfelelő irányba kívánja befolyásolni a vállalat környezetét.
 
-### 48. A menedzsment elméletek („a klasszikus menedzsmenttől a tudásmenedzsmentig”) a szervezet és az ember viszonyát tekintve milyen „fejlődési ívet” mutattak?
+### 47. A menedzsment elméletek („a klasszikus menedzsmenttől a tudásmenedzsmentig”) a szervezet és az ember viszonyát tekintve milyen „fejlődési ívet” mutattak?
+* a klasszikus menedzsment eszközként szemléli az embert, mint a szervezet alkotóelemét.
+* az emberi kapcsolatok irányzata az emberre (személyiségére, szükségleteire, motivációira) fókuszál
+* 
+
+
+
 
 ### Feladat az, hogy tájékoztatást adjon a munkatársainak a menedzsment története során tapasztalható fejlődési folyamatokról.
 
-### 49. Sorolja fel, milyen „kritikai” szempontokat fogalmazott meg a humán reláció menedzsmentje a klasszikus irányzattal szemben!
-* A klasszikus irányzat leszűkíti a szervezet a formális szervezeti tényezőkre.
+### 48. Sorolja fel, milyen „kritikai” szempontokat fogalmazott meg a humán reláció menedzsmentje a klasszikus irányzattal szemben!
+* A klasszikus irányzat leszűkíti a szervezetet a formális szervezeti tényezőkre.
 * A racionális, természettudományos szemléletmód eluralkodása.
 * Az ember szerepének alulértékelése.
 
-### 50. Vázolja fel az adaptációmenedzsment alapvető elveit és irányzatait!
+### 49. Vázolja fel az adaptációmenedzsment alapvető elveit és irányzatait!
+Habár az eddigi elméletek újabb és újabb hipotéziseket, menedzsment területeket
+vizsgáltak, egy közös vonásuk mégis van, mindannyian zárt rendszerként kezelték a
+szervezetet, megállapításaik a vállalaton belüli folyamatok vizsgálatára épültek, a
+környezet hatásait figyelmen kívül hagyták. 
 
-### 51. Ismertesse a kontingencia (szituáció) menedzsment főbb elemeit!
+### 50. Ismertesse a kontingencia (szituáció) menedzsment főbb elemeit!
 
-### 52. Hogyan, milyen feltételek, milyen lépések alapján képes adaptálódni a szervezet?
+### 51. Hogyan, milyen feltételek, milyen lépések alapján képes adaptálódni a szervezet?
 
-### 53. Sorolja fel a kontingencia menedzsment főbb irányzatait!
+### 52. Sorolja fel a kontingencia menedzsment főbb irányzatait!
 
-### 54. Ismertesse a külső környezeti irányzat főbb tételeit!
+### 53. Ismertesse a külső környezeti irányzat főbb tételeit!
 
-### 55. Mit jelent a kontingencia fogalma?
+### 54. Mit jelent a kontingencia fogalma?
 
-### 56. Mit jelent a szervezeti adaptáció?
+### 55. Mit jelent a szervezeti adaptáció?
 
-### 57. Melyik tényező determinálja a szervezeti felépítés jellemzőit a technológiai irányzat szerint?
+### 56. Melyik tényező determinálja a szervezeti felépítés jellemzőit a technológiai irányzat szerint?
 
-### 58. Mit jelent a szervezeti nagyság a „nagyság iskola” szerint?
+### 57. Mit jelent a szervezeti nagyság a „nagyság iskola” szerint?
 
-### 59. Mi jellemző a mechanikus szervezeti formára?
+### 58. Mi jellemző a mechanikus szervezeti formára?
 
-### 60. Mi jellemző az organikus szervezeti formára?
+### 59. Mi jellemző az organikus szervezeti formára?
 
 ### Feladat az, hogy tájékoztatást adjon a cég vezetőinek az adaptációmenedzsment irányzatai felhasználásának lehetőségeiről.
 
-### 61. Ismertesse az intézményi (institucionalista) menedzsment főbb tételeit!
+### 60. Ismertesse az intézményi (institucionalista) menedzsment főbb tételeit!
 
-### 62. Milyen körülmények váltották ki az institucionalista menedzsment kialakulását?
+### 61. Milyen körülmények váltották ki az institucionalista menedzsment kialakulását?
 
-### 63. Milyen hatásai vannak a gazdasági szervezetekre az állam jelenlétének?
+### 62. Milyen hatásai vannak a gazdasági szervezetekre az állam jelenlétének?
 
 
 ### Feladat az, hogy tájékoztatást, illetve magyarázatot adjon a cég vezetőinek az intézményi menedzsment szerepének felerősödéséről.
 
-### 64. Melyek az interakció-menedzsment alapvető elvei és irányzatai?
+### 63. Melyek az interakció-menedzsment alapvető elvei és irányzatai?
 
-### 65. Ismertesse a stratégiai választás menedzsment lényegét!
+### 64. Ismertesse a stratégiai választás menedzsment lényegét!
 
-### 66. Ismertesse a szervezeti ökológia menedzsment lényegét!
+### 65. Ismertesse a szervezeti ökológia menedzsment lényegét!
 
-### 67. Hogyan lehet felhasználni a szervezeti ökológia menedzsmentjét a modern bővített ellátási láncok modellezésére?
+### 66. Hogyan lehet felhasználni a szervezeti ökológia menedzsmentjét a modern bővített ellátási láncok modellezésére?
 
-### 68. Ismertesse a politikai gazdaságtan menedzsment lényegét!
+### 67. Ismertesse a politikai gazdaságtan menedzsment lényegét!
 
 ### Feladat az, hogy tájékoztatást adjon a cég vezetőinek az interakciómenedzsment lényegéről és jelentőségéről.
 
@@ -825,5 +946,6 @@ tárgyában szükséges javaslatokról.**
 * Baráth Mihály – Finta Ferenc – dr. Tóth József: Menedzsment (Egyetemi jegyzet, Neumann János Egytem, Kecskemét 2018.)
 * Dr. Kerényi Attila, Dr. Kiss Tímea, Dr. Szabó György: [Környezeti rendszerek](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2011_0025_geo_1/ch02.html)
 * Kis-Tóth Roland: [Menedzsment](http://p2014-26.palyazat.ektf.hu/public/uploads/05-menedzsment_55e9c27be7468.pdf)
+* Brand & Standard Capital: [HR portál](https://www.hrportal.hu/)
 
 [Kezdőlap](../README.md)
