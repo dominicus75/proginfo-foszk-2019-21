@@ -30,4 +30,4 @@
 
 * [Szoftvertechnológia](zv/softwaretechnology.md)
 
-. [Web-fejlesztés](zv/web.md)
+* [Web-fejlesztés](zv/web.md)
