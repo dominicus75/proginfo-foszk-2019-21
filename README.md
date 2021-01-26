@@ -20,6 +20,14 @@
 
 ## Harmadik félév
 
-* [Szoftvertechnológia](third_semester/softwaretechnology.md)
-
 * [Menedzsment](third_semester/management.md)
+
+## Záróvizsga tételek
+
+* [Adatbázisok](zv/database.md)
+
+* [Android](zv/android.md)
+
+* [Szoftvertechnológia](zv/softwaretechnology.md)
+
+. [Web-fejlesztés](zv/web.md)
