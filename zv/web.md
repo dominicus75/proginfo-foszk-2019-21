@@ -4,11 +4,51 @@
 
 ## 1. HTML nyelv alapjai
 
-### 1.1 Nyelvtani szabályok, fontosabb elemcsoportok és elemek
+### 1.1 A HTML fontosabb verziói
 
-### 1.2 Tulajdonságok
+A HTML egy általános leírónyelvből, az [SGML (Standard Generalized MarkUp Language)](https://hu.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
+dokumentumszabványból jött létre. Az SGML 1986-ban lett ISO szabvány, dokumentumok
+általános leírására szolgált, ennek elődje volt a GML (Generalized MarkUp Language),
+amelyet az 1960-as években fejlesztettek ki az IBM-nél.
 
-### 1.3 A HTML fontosabb verziói
+**HTML 1.0 (1990)**: a dokumentum tartalmára vonatkozó címkék a fejléchez és a
+törzsrészhez. Ekkor jelentek meg a headingek, a hiperhivatkozások, a bekezdések
+és a listák jelölői. Képek megjelenítésére még nem volt mód, de a dokumentum
+típusdeklarációját (**DTD**) már ekkor is meg lehetett adni a dokumentum
+legelején, a ```<head>``` jelölő előtt.
+
+**HTML 2.0 (1995)**: képek, szövegformászás (félkövér és dölt). Az űrlapok bevezetésével
+a HTML dokumentum interaktívvá vált (adatküldési lehetőség a szerver felé).
+
+**HTML 3.0 (1996)**: java appletek és scriptek beillesztése, melyekkel le lehetett
+kérdezni, hogy milyen böngészőt és mekkora felbontást használ a felhasználó.
+Megjelent a ```<style>``` jelölő és megadhatóvá vált a karakterek betűtípusa;
+továbbá megjelent a táblázat készítés eleme is.
+
+**HTML 4.0 (1997)**: a W3C **1998 áprilisában hivatalos szabványnak mondta ki**.
+Ez a verzió már megfelelt az ISO 8879 előírásnak és az SGML szabványnak egyaránt.
+Megjelent a nemzetközi karakterkészletek és a balról jobbra olvasás támogatása is.
+Hivatalossá tették a keretek (frame-k) használatát, továbbfejlesztették a táblázatok
+és űrlapok használatát is. A HTML változatai közül az 1999 decemberében kijött
+**HTML 4.01** volt az utolsó SGML-en alapuló verzió.
+
+A HTML 4.01 után egy ideig az XML alapú XHTML szabvány volt használatban, de annak
+2.0-ás verzójának fejlesztését felfüggesztették, pedig nagyon sok remény fűződött
+hozzá a szigorítások révén. AZ **XHTML 1.0** 2000 januárjában, az **XHTML 1.1**
+pedig 2001 májusában vált hivatalos W3C ajánlássá.<sup id="1">[[1]](#note1)</sup>
+
+**HTML 5.0 (2014)**: kompatibilis a korábbi HTML és XHTML verziókkal, támogatják
+a mobileszközök is. A HTML korábbi verzióihoz képest a HTML5 egy erősen átdolgozott
+változat, kifejlesztésének célja az volt, hogy a weboldalak működéséhez ne legyen
+szükség pluginek telepítésére (pl. Adobe Flash). 2004-ben alakult meg a **WHATWG
+(Web Hypertext Application Technology Working Group)** − függetlenül a W3C-től −, akik
+nem az XHTML-t, hanem a HTML-t kezdték továbbfejleszteni. 2007-ben a W3C hivatalosan
+bejelentette, hogy a következő HTML-szabvány a HTML5 lesz és nem dolgozott tovább
+az XHTML2-n.
+
+### 1.2 Nyelvtani szabályok, fontosabb elemcsoportok és elemek
+
+### 1.3 Tulajdonságok
 
 ## 2. A HTML5 újdonságai
 
@@ -24,7 +64,9 @@
 
 ### 2.6 Hang és video, geolokáció
 
-### 2.7 Fogd és vidd (drag and dropp), canvas
+### 2.7 Fogd és vidd (drag and dropp)
+
+### 2.8 Canvas
 
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
 
@@ -90,18 +132,27 @@
 
 ### 10.2 Alapvető szabványok: SOAP, WSDL, UDDI
 
+
+### Jegyzetek:
+* <span id="note1">[[1]](#1)</span> Kvaszingerné Prantner Csilla – Nagy Dénes: Weblapfejlesztés, 36-37. oldal
+
+
 ### Felhasznált (ajánlott) irodalom
 
 #### HTML:
 * Wikipedia: [HTML](https://hu.wikipedia.org/wiki/HTML)
 * Nagy Gusztáv: [Web-programozás, 2.1 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
-* Nagy Gusztáv: [Webes szabványok, 2, 3 és 4. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
+* Nagy Gusztáv: [Webes szabványok, 2-6. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
+* Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 3, 4. és 5. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
 * Abonyi-Tóth Andor: [A weblapkészítés technikája (HTML5, CSS3) és ergonómiája](http://tamop412.elte.hu/tananyagok/weblapkeszites/index.html)
 * Gál Tamás: [HTML5 weboldalak készítése](https://webfejlesztes.gtportal.eu/index.php?f0=HTML5)
 * Tamás Ferenc: [Weblapkészítés HTMl alapokon](https://tferi.hu/weblapkeszites-html-alapokon-1)
 * Mark Pilgrim: [HTML5 - az új szabvány](https://people.inf.elte.hu/zirtaai/html_ebooks/HTML5.az.uj.szabvany.2011.eBOOk-AnAhTaR.pdf)
 * Aurora: [Szabványkövető statikus honlapok készítése, 2. fejezet](https://www.tutorial.hu/webszerkesztes/html5-css3-osszefoglalo/html5-css3-osszefoglalo-v12.pdf)
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
+* [Web forms 2.0](https://html.spec.whatwg.org/multipage/forms.html#forms)
+* Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
+* Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
 * Java T Point: [HTML Tutorial](https://www.javatpoint.com/html-tutorial)
 
 #### CSS:
@@ -110,6 +161,7 @@
 * Nagy Gusztáv: [Web-programozás, 2.2 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Nagy Gusztáv: [Webes szabványok, 6. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
 * Bártházi András: [A CSS alapjai I-VII.](http://weblabor.hu/cikkek/cssalapjai1)
+* Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 7-9. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
 * Sallai András: [CSS](http://szit.hu/doku.php?id=oktatas:web:css)
 * Aurora: [Szabványkövető statikus honlapok készítése, 3. fejezet](https://www.tutorial.hu/webszerkesztes/html5-css3-osszefoglalo/html5-css3-osszefoglalo-v12.pdf)
 * Gremmedia: [A CSS3 alapjai-példákkal bemutatva](https://gremmedia.hu/edukacio/bejegyzes/css-alapjai-peldakkal-bemutatva)
@@ -125,7 +177,8 @@
 * Nagy Gusztáv: [Web-programozás, 4. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Nagy Gusztáv: [Webes szabványok, 7. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
 * Sallai András: [Javascript](http://szit.hu/doku.php?id=oktatas:web:javascript)
-* Tari Balázs: [JavaSript](http://www.inf.u-szeged.hu/~tarib/javascript/)
+* Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 10. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
+* Tari Balázs: [JavaScript](http://www.inf.u-szeged.hu/~tarib/javascript/)
 * Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
 * MDN: [JavaScript](https://developer.mozilla.org/hu/docs/Web/JavaScript)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
@@ -146,6 +199,7 @@
 * Wikipedia: [PHP](https://hu.wikipedia.org/wiki/PHP)
 * Nagy Gusztáv: [Web-programozás, 3. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Több szerző: [A PHP programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=1)
+* Sallai András: [A PHP nyelv](https://szit.hu/doku.php?id=oktatas:programozas:php:php_nyelv)
 * Bundi: [Készülj fel a PHP 7-re](http://webmestertanfolyam.hu/webmester-blog/keszulj-fel-a-php-7-re)
 * W3Schools: [PHP Tutorial](https://www.w3schools.com/php/)
 
