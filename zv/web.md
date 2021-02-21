@@ -4,12 +4,18 @@
 
 ## 1. HTML nyelv alapjai
 
-### 1.1 A HTML fontosabb verziói
-
-A HTML egy általános leírónyelvből, az [SGML (Standard Generalized MarkUp Language)](https://hu.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
+A HTML (Hypertext MarkUp Language) egy szöveges jelölőnyelv, más néven leírónyelv, amelyet weboldalak készítéséhez fejlesztettek ki, mára egyes
+változatai internetes szabvánnyá váltak a W3C (World Wide Web Consorcium)
+jóvoltából. A HTML leírónyelv egy általános leírónyelvből, az [SGML (Standard Generalized MarkUp Language)](https://hu.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
 dokumentumszabványból jött létre. Az SGML 1986-ban lett ISO szabvány, dokumentumok
 általános leírására szolgált, ennek elődje volt a GML (Generalized MarkUp Language),
 amelyet az 1960-as években fejlesztettek ki az IBM-nél.
+
+A HTML nem programozási nyelv, azaz nem valósíthatunk meg vele szelekciót (feltételektől
+függő elágazást), sem iterációt (ismétlődést, ciklusokat). A három vezérlési szerkezet
+közül csakis a szekvencia (parancsok egymásutáni végrehajtása) valósítható meg vele.
+
+### 1.1 A HTML fontosabb verziói
 
 **HTML 1.0 (1990)**: a dokumentum tartalmára vonatkozó címkék a fejléchez és a
 törzsrészhez. Ekkor jelentek meg a headingek, a hiperhivatkozások, a bekezdések
@@ -26,7 +32,9 @@ Megjelent a ```<style>``` jelölő és megadhatóvá vált a karakterek betűtí
 továbbá megjelent a táblázat készítés eleme is.
 
 **HTML 4.0 (1997)**: a W3C **1998 áprilisában hivatalos szabványnak mondta ki**.
-Ez a verzió már megfelelt az ISO 8879 előírásnak és az SGML szabványnak egyaránt.
+A HTML nyelv szabályai sokáig nem voltak teljesen egyértelműek, számos verziószámot élt
+meg a leírónyelv, amely fokozatos szigorításokon ment keresztül, mégis a HTML csak a 4.0-
+ás verziótól kezdődően tesz eleget az ISO 8879 előírásnak és az SGML szabványnak egyaránt.
 Megjelent a nemzetközi karakterkészletek és a balról jobbra olvasás támogatása is.
 Hivatalossá tették a keretek (frame-k) használatát, továbbfejlesztették a táblázatok
 és űrlapok használatát is. A HTML változatai közül az 1999 decemberében kijött
@@ -48,11 +56,47 @@ az XHTML2-n.
 
 ### 1.2 Nyelvtani szabályok, fontosabb elemcsoportok és elemek
 
+A HTML dokumentumok alapvetően formázatlan szövegeket tartalmaznak, szerepelnek bennük:
+* a weboldalon megjelenő szövegrészek,
+* objektumhivatkozások (más állományokra való hivatkozások, elérési utak),
+* szöveges utasítások.
+
+A szöveges utasításokat a HTML-ben kisebb és nagyobb jelek (kacsacsőr) közé tesszük
+és tageknek, magyarul jelölőknek vagy HTML elemeknek nevezzünk (pl: ```<img>```,
+```<table>```). Szokás címkéknek is nevezni őket, mert a jelentéstartalmukon
+túl egyben címkét is jelentenek, amellyel a HTML egyes részeit jelöljük meg. A címkék
+elvileg kis-, és nagybetű érzéketlenek, viszont célszerű őket csupa kisbetűvel írni (XHTML
+hagyomány).
+
+Léteznek páros (nyitó és záró elemmel is rendelkező) és páratlan címkék. Egy tartalom
+elejét és végét jelölheti a páros tag, például egy címet, vagy bekezdést a szövegben, esetleg
+egy táblázatot. A címkék egymásba is ágyazhatók (a matemaikában szokásos zárójelezési
+szabályok szerint).
+
+A HTML állományok három fő részre bonthatóak:
+1. a kód a dokumentum típusát megadó (doctype) elemmel kezdődik, ezt a ```<html>```
+gyökérelem követi, amely az alábbi két főrészt foglalja magában:
+2. a HTML fejléce, amelyet ```<head>``` és ```</head>``` elemek
+közé írunk, ide kerülnak a technikai és dokumentációs (meta) adatok
+3. a HTML törzsrésze ```<body>``` és ```</body>``` elemek között megadva, amely a
+böngészőben megjelenítendő információkat és azok szerkezetét tartalmazza
+
+
 ### 1.3 Tulajdonságok
+
+Az egyes elemekhez meg lehet adni tulajdonságokat/jellemzőket, ezeket attribútumoknak
+nevezzük. Legtöbb attribútumnak a megadása opcionális, azaz nem kötelező. A tulajdonságok
+név-érték párokkal (attributum="érték") adhatók meg, egymástól szóközzel elválasztva
+akár több is.
+
+A HTML tagoknak különböző tulajdonságaik lehetnek. 
 
 ## 2. A HTML5 újdonságai
 
 ### 2.1 Új szemantikus elemek
+
+A szemantikus HTML nem más, mint a HTML tagok jelentésének betartása, rendeltetésszerű
+használata. Például, egy bekezdést nem használunk fel menü kialakításához.
 
 ### 2.2 Forms 2.0
 
@@ -69,6 +113,13 @@ az XHTML2-n.
 ### 2.8 Canvas
 
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
+
+A HTML leírónyelvvel határozzuk meg a weboldalak tartalmát és struktúráját. A weboldalak
+megjelenítéséért a CSS állományok felelnek. Az a helyes, ha a tartalom és a forma
+egymástól élesen elkülönül, a HTML (strukturált tartalom) és a CSS (formázás, megjelenés, elrendezés)
+állományokkal ez professzionálisan megvalósítható, ez azért fontos, mert így a tartalom és
+a megjelenés egymástól függetlenül is változtatható.
+
 
 ### 3.1 CSS nyelvtan, kiválasztók és tulajdonságok, mértékegységek.
 
@@ -145,6 +196,7 @@ az XHTML2-n.
 * Nagy Gusztáv: [Webes szabványok, 2-6. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
 * Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 3, 4. és 5. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
 * Abonyi-Tóth Andor: [A weblapkészítés technikája (HTML5, CSS3) és ergonómiája](http://tamop412.elte.hu/tananyagok/weblapkeszites/index.html)
+* Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
 * Gál Tamás: [HTML5 weboldalak készítése](https://webfejlesztes.gtportal.eu/index.php?f0=HTML5)
 * Tamás Ferenc: [Weblapkészítés HTMl alapokon](https://tferi.hu/weblapkeszites-html-alapokon-1)
 * Mark Pilgrim: [HTML5 - az új szabvány](https://people.inf.elte.hu/zirtaai/html_ebooks/HTML5.az.uj.szabvany.2011.eBOOk-AnAhTaR.pdf)
@@ -153,6 +205,9 @@ az XHTML2-n.
 * [Web forms 2.0](https://html.spec.whatwg.org/multipage/forms.html#forms)
 * Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
 * Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
+* Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
+* MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+* Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
 * Java T Point: [HTML Tutorial](https://www.javatpoint.com/html-tutorial)
 
 #### CSS:
