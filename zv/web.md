@@ -73,6 +73,9 @@ elejét és végét jelölheti a páros tag, például egy címet, vagy bekezdé
 egy táblázatot. A címkék egymásba is ágyazhatók (a matemaikában szokásos zárójelezési
 szabályok szerint).
 
+Léteznek blokkszintű és soron belüli elemek is. A blokkszintű elemek (mint a div vagy a p)
+után a böngésző egy térközt hagy, a sorszintű elemek (span, strong, b) után nem.
+
 A HTML állományok három fő részre bonthatóak:
 1. a kód a dokumentum típusát megadó (doctype) elemmel kezdődik, ezt a ```<html>```
 gyökérelem követi, amely az alábbi két főrészt foglalja magában:
@@ -89,7 +92,30 @@ nevezzük. Legtöbb attribútumnak a megadása opcionális, azaz nem kötelező.
 név-érték párokkal (attributum="érték") adhatók meg, egymástól szóközzel elválasztva
 akár több is.
 
-A HTML tagoknak különböző tulajdonságaik lehetnek. 
+Léteznek globális (minden tagnél használható) és elemspecifikus (csak bizonyos elemeknél
+alkalmazható) tualajdonságok is. A globális attribútumok a következők:
+
+* **accesskey**: gyorsbillentyű megadására szolgál. Bármilyen (1 karakter hosszú) karaktert megadhatunk. A kis- és nagybetűk különböznek.
+* **class**: az elemhez CSS-osztályt társíthatunk.
+* **contenteditable**: true (igaz) és false (hamis) értéket vehet fel. Ezzel jelezhetjük, hogy az adott elem szerkeszthető-e.
+* **contextmenu**: helyi menü létrehozására szolgál. Értéke egy menü elem egyedi azonosítója kell, hogy legyen.
+* **dir**: arra szolgál, hogy megadhassuk, az adott nyelvet balról jobbra (ltr), vagy jobbról balra kell-e olvasni (rtl). "auto" érték esetén automatikusan kerül meghatározásra.
+* **draggable**: true (igaz), false (hamis) és auto (automatikus) értéket vehet fel. Ezzel jelezhetjük, hogy az adott elem vonszolható-e. Az "auto" megadás esetén a böngésző alapértelmezett beállítása szerint történik a működés.
+* **dropzone**: az adott elemet olyan területté alakíthatjuk, amely képes vonszolt elemeket kezelni. Ha "copy" az értéke (vagyis másolás), akkor a vonszolt elem másolásra kerül. Ez egyébként az alap beállítás is. Ha "move" az értéke, akkor a vonszolt elem az új helyre lesz áthelyezve. A "link" érték esetén a vonszolt elemre történő hivatkozás lesz feldolgozva. Ezen kívül stringet (karakterláncot) is megadhatunk, ami a string: vagy file: karakterlánccal kezdődhet. Ezzel befolyásolhatjuk, hogy a területre milyen elemeket lehet ráhúzni. Pl. dropzone="copy file:image/png file:image/jpeg"
+* **hidden**: logikai attribútum. Ha szerepel, akkor az adott elem rejtetté válik.
+* **id**: az elemet egyedi azonosítóval láthatjuk el.
+* **inert**: logikai attribútum. Ezzel jelezhetjük, hogy az adott terület érzéketlen, ami azt jelenti, hogy a böngésző ugyan megjeleníti, de a tartalmára nem lehet rákeresni a lapon belül, nem lehet kijelölni a tartalmát, nem működnek rajta az interakciót támogató események sem (pl. mouseover – amikor az egeret a terület fölé visszük.)
+* **lang**: segítségével megadhatjuk az adott elem nyelvét. (pl. hu, en, en-us, stb.)
+* **spellcheck**: azt adhatjuk meg, hogy az elem tartalmát ellenőrizze-e helyesírási szempontból a böngésző, vagy sem. True (igaz) esetén megtörténik az ellenőrzés, false (hamis) esetén nem.
+* **style**: az elemhez beágyazott stílust rendelhetünk.
+* **tabindex**: megadhatjuk, hogy a tab billentyű hatására milyen sorrendben kapjanak fókuszt az elemek. Nullát és pozitív egész számokat adhatunk meg:0,1,2,3.
+* **title**: az elemhez tartozó feliratot adhatjuk meg, amely legtöbbször akkor jelenik meg, ha az elem fölé visszük az egeret, de speciális jelentése is lehet.
+* **translate**: logikai attribútum, yes (igen) illetve no (nem) értékkel. Azt jelezhetjük vele, hogy az elemet szükséges-e lefordítani, ha más nyelvre fordítjuk az oldalt, vagy sem.
+
+A globális attribútumok közé tartozik még az itemid, itemprop, itemref, itemscope,
+itemtype is, amelyek lehetővé teszik, hogy az úgynevezett [microdata](https://schema.org/docs/schemas.html) formátum segítségével
+további információkat rendeljünk az elemeinkhez, amelyeket például a keresőprogramok
+fel tudnak használni.
 
 ## 2. A HTML5 újdonságai
 
