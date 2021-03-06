@@ -121,8 +121,55 @@ fel tudnak használni.
 
 ### 2.1 Új szemantikus elemek
 
-A szemantikus HTML nem más, mint a HTML tagok jelentésének betartása, rendeltetésszerű
-használata. Például, egy bekezdést nem használunk fel menü kialakításához.
+Bármilyen nyelv szerkezetileg három részből áll: ábécé, szintaktika, szemantika.
+Az ábécé a nyelv jelkészlete. A HTML esetén ez azok a karakterek, amelyekkel elkészíthetünk
+egy weboldalt. A szintaktika a helyesírási szabályok. A HTML esetén a weblap leírásának
+szabályai. A szemantika a nyelv jelentéstana. A formális nyelvek elméletében a szemantika
+az adott formális nyelv szintaxisa által meghatározott szavak jelentését definiáló
+szabályok összessége. Így a szemantikus HTML nem más, mint a HTML tagok jelentésének
+betartása, rendeltetésszerű használata. Például, egy bekezdést nem használunk fel
+menü kialakításához.
+
+A HTML 5 szabványban új, szemantikus jelentéssel bíró strukturális elemeket vezettek be:
+
+* ```<header>...</header>```: az oldal vagy egy tartalmi egység fejléce. Nemcsak az
+oldal egészére, de akár egy különálló részre (article, section) vonatkozóan is. Ebből kifolyólag akár
+többször is használható egy oldalon belül.
+* ```<footer>...</footer>```: az oldal vagy egy tartalmi egység lábléce. Nemcsak az
+oldal egészére, de akár egy különálló részre (article, section) vonatkozóan is. Ebből kifolyólag akár
+többször is használható egy oldalon belül.
+* ```<nav>...</nav>```: navigációs menü, tipikus tartalma linkek listája
+* ```<aside>...</aside>```: érintőlegesen kapcsolódó tartalom. Általában oldalsáv
+formájában jelenik meg, ami olyan elemeket tartalmaz, mint kapcsolódó kommentek/linkek
+vagy címkefelhők. Jól használható idézetek megjelenítésére, vagy szószedet készítésére.
+* ```<main>...</main>```: az oldal fő tartalmi egységének megjelölésére szolgál.
+Csak egy ilyen elemet helyezhetünk el a dokumentumban, és ez az elem nem lehet gyerekeleme
+más oldalszerkezet elemeknek
+* ```<section>...</section>```: logikai egység, az azonos témakörbe tartozó elemeket foglalja egy csoportba
+* ```<article>...</article>```: önálló tartalom, ez lehet egy fórumbejegyzés, újságcikk,
+blogbejegyzés, vagy bármilyen más független tartalom
+* ```<address>...</address>```: kontakt információ megadására használható, amely a
+legközelebbi ```<article>```, vagy ```<body>``` elemre vonatkozik. Általában a
+```<footer>``` elemben kerül elhelyezésre.
+
+A HTML 5 előtt is használt szemantikus jelentéssel bíró elemek:
+
+* ```<head>...</head>```: a dokumentumfej (fejléc) a weboldalra vonatkozó információk megadását teszi lehetővé.
+Ezek nem lesznek megjelenítve, de befolyásolják a tartalom megjelenítését. Lehetőség van
+itt külső erőforrások illesztésére (pl. CSS, Java, JavaScript, ikon), a böngésző vagy
+a keresők számára szükséges információk (meta adatok) megadására  
+* ```<body>...</body>```: a html dokumentum törzse, az oldalon megjelenő tartalmakat
+(szöveg, kép, táblázat stb.) leíró jelölőket tartalmazza
+* ```<h1>...</h1>```, ```<h2>...</h2>```, ...```<h6>...</h6>```: a címsorok (heading)
+a szövegszerkesztő alkalmazásokban az oldalak logikai felosztását, a fejezetek meghatározását
+teszik lehetővé.
+
+A fenti tagek kivétel nélkül blokkszintű (block) elemek, a ```<div>```-hez hasonlóan.
+
+Ezek a tagek - az általános célú ```<div>``` és ```<span>``` tagekkel ellentétben - szemantikai
+jelentéssel bírnak, tehát egyértelműen meghatározzák a tartalmuk jelentését (pl.
+egy ```<header>```-ről tudjuk, hogy egy fejlécet jelöl). Szokás őket oldalszerkezet elemeknek is
+nevezni, amelyekkel precízen megadható az oldalrészek szemantikus jelentése.
 
 ### 2.2 Forms 2.0
 
@@ -225,6 +272,8 @@ a megjelenés egymástól függetlenül is változtatható.
 * Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
 * Gál Tamás: [HTML5 weboldalak készítése](https://webfejlesztes.gtportal.eu/index.php?f0=HTML5)
 * Tamás Ferenc: [Weblapkészítés HTMl alapokon](https://tferi.hu/weblapkeszites-html-alapokon-1)
+* Sallai András: [A HTML 5 nyelv](https://szit.hu/doku.php?id=oktatas:web:html:html5_nyelv)
+* Cservenák Bence: [Webtervezés jegyzet](https://okt.sed.hu/webtervezes/)
 * Mark Pilgrim: [HTML5 - az új szabvány](https://people.inf.elte.hu/zirtaai/html_ebooks/HTML5.az.uj.szabvany.2011.eBOOk-AnAhTaR.pdf)
 * Aurora: [Szabványkövető statikus honlapok készítése, 2. fejezet](https://www.tutorial.hu/webszerkesztes/html5-css3-osszefoglalo/html5-css3-osszefoglalo-v12.pdf)
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
