@@ -199,9 +199,17 @@ az adatokat a szervernek:
 	* *post*: ekkor a HTTP kérés törzsében továbbítódnak az adatok. Ha e-mailben akarunk
 	küldeni adatokat, akkor ezt a beállítást kell használnunk
 
-* **enctype**:
-* **name**:
-* **target**:
+* **enctype**: az elküldött adatok kódolási típusát állíthatjuk be:
+
+	* *application/x-www-form-urlencoded*: az űrlap egyes mezőinek nevei és az értékei közé = jelet rak,
+	a szóközöket lecseréli + jelekre, a speciális karaktereket %xx alakú jelekké konvertálja,
+	ahol az xx az adott karakter hexadecimális ASCII-kódja. 
+	* *multipart/form-data*: fájlok küldését is lehetővé teszi post metódussal.
+	* *text/plain*: egyszerű szöveges kódolás. Ha az adott űrlap tartalmát e-mailen keresztül
+	küldjük el, célszerű a text/plain kódolást beállítani, így olvasható marad a szöveg.
+
+* **name**: az űrlapnak egyedi nevet adhatunk a segítségével, amely alapján a
+feldolgozóprogram azonosítja a bevitt adatot
 
 ### 2.3 Perzisztens helyi tárolás
 
