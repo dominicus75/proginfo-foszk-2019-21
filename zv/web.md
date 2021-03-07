@@ -179,6 +179,30 @@ W3C, mint a HTML 4.01 verzó [űrlapokról szóló fejezetének](https://www.w3.
 kiterjesztését, ami a HTML 5 megjelenésével már a [HTML szabvány szerves részévé](https://html.spec.whatwg.org/multipage/forms.html#forms)
 vált.
 
+Az űrlapok összes eleme a ```<form>``` és ```</form>``` tageken belül helyezkedik el,
+ahol az egyes űrlapelemeket más-más tagekkel definiálhatjuk. Az űrlap (alapesetben)
+akkor kerül elküldésre, ha egy megfelelő (úgynevezett submit) gombot is elhelyezünk
+az űrlapban, és azt a felhasználó a kitöltés végén meg is nyomja (esetleg más módon
+aktiválódik a gomb).
+
+A ```<form>``` elem attribútumai:
+
+* **action**: ez határozza meg a szerveroldali feldolgozást végző programot (php vagy asp),
+de e-mail cím (pl. ```mailto:akarmi@example.com```) is megadható itt, ekkor a bekért
+adatokat egyszerűen elküldi a megadott címre. A mailto: protokollt használva az üzenet
+a számítógép alapértelmezett levelezőprogramjával kerül továbbításra.
+* **method**: ezzel adható meg, hogy a kliens milyen (HTTP) metódussal küldje át
+az adatokat a szervernek:
+
+	* *get*: ekkor az űrlap adatai (űrlapelemek neve és értékei) az action paraméterben
+	megadott URI után kerülnek paraméterként, a ? jellel elválasztva. Ez az alapértelmezett beállítás.
+	* *post*: ekkor a HTTP kérés törzsében továbbítódnak az adatok. Ha e-mailben akarunk
+	küldeni adatokat, akkor ezt a beállítást kell használnunk
+
+* **enctype**:
+* **name**:
+* **target**:
+
 ### 2.3 Perzisztens helyi tárolás
 
 ### 2.4 Web workers, websocket
