@@ -173,6 +173,12 @@ nevezni, amelyekkel precízen megadható az oldalrészek szemantikus jelentése.
 
 ### 2.2 Forms 2.0
 
+A HTML űrlapok (from) a nyelv második főverziójában jelentek meg, 1995-ben. A
+[Web forms 2.0](https://www.w3.org/Submission/web-forms2/) szabványt 2005-ben adta ki a
+W3C, mint a HTML 4.01 verzó [űrlapokról szóló fejezetének](https://www.w3.org/TR/html4/interact/forms.html)
+kiterjesztését, ami a HTML 5 megjelenésével már a [HTML szabvány szerves részévé](https://html.spec.whatwg.org/multipage/forms.html#forms)
+vált.
+
 ### 2.3 Perzisztens helyi tárolás
 
 ### 2.4 Web workers, websocket
@@ -277,7 +283,8 @@ a megjelenés egymástól függetlenül is változtatható.
 * Mark Pilgrim: [HTML5 - az új szabvány](https://people.inf.elte.hu/zirtaai/html_ebooks/HTML5.az.uj.szabvany.2011.eBOOk-AnAhTaR.pdf)
 * Aurora: [Szabványkövető statikus honlapok készítése, 2. fejezet](https://www.tutorial.hu/webszerkesztes/html5-css3-osszefoglalo/html5-css3-osszefoglalo-v12.pdf)
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
-* [Web forms 2.0](https://html.spec.whatwg.org/multipage/forms.html#forms)
+* [Web forms 2.0 szabvány](https://www.w3.org/Submission/web-forms2/)
+* A HTML 5 szabvány [webes űrlapokról szóló fejezete](https://html.spec.whatwg.org/multipage/forms.html#forms)
 * Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
 * Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
 * Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
