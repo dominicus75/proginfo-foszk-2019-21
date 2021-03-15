@@ -242,7 +242,11 @@ ahol nincsenek sortörések (a password esetében a bevitt szöveg nem látszik)
 * **file**: nulla, vagy több fájl feltöltésére mime típussal és opcionálisan a fájl
 nevének megadásával
 * **image**: kép típusú gomb, az img elemhez hasonló módon meg kell adni a helyettesítő
-szöveget (alt), valamint megadható a kép mérete is (width és height).
+szöveget (alt), valamint megadható a kép mérete is (width és height). A mező különlegessége
+az, hogy azt is elküldi, hogy a kattintás a kép melyik koordinátájú pontján történt.
+Ezt a koordinátát név.x, illetve név.y formában kapjuk meg. Ezzel lehetőségünk van
+olyan tesztek készítésére is, ahol az a cél, hogy a kép megfelelő részére kattintson
+rá a látogató.
 
 Az input elem a type és a globális attribútumok mellett a következő tulajdonságokkal
 rendelkezhetett:
@@ -265,9 +269,11 @@ ha nem, az az alapértelmezett hamis)
 érték is megadható (nincs külön értéke, ha szerepel az attribútum neve, az képviseli
 az igaz értéket, ha nem, az az alapértelmezett hamis)
 * **pattern**: [reguláris kifejezés](https://hu.wikipedia.org/wiki/Regul%C3%A1ris_kifejez%C3%A9s),
-amellyel megadhatjuk, hogy milyen formátumú adatot várunk az adott mezőben
+amellyel megadhatjuk, hogy milyen formátumú adatot várunk az adott mezőben (a következő
+típusú input attribútumokkal használható: text, password, url, tel, email, és search)
 * **min** és **max**: numerikus beviteli mezők esetén a minimum és maximum értékek
-megadására szolgálnak
+megadására szolgálnak (a következő input típusokkal használható: number, range, date
+datetime, datetime-local, month, time, week)
 * **list**: egy olyan listaelem azonosítója, amit a felhasználónak fel kívánunk kínálni
 választási lehetőségként. Ezen listát ```<datalist>``` és ```</datalist>``` elemek között
 kell elhelyezni, úgy hogy az egyes választási lehetőségek ```<option>``` és ```</option>```
@@ -279,18 +285,60 @@ A Web forms 2.0 a fentebb felsorolt type értékeket az alábbi új típusokkal
 (a HTML 5. szabvány összesen [21 lehetséges értéket sorol fel](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute)
 a type attribútumhoz) egészítette ki:
 
-* **tel**:
-* **url**:
-* **email**:
-* **date**:
-* **month**:
-* **week**:
-* **time**:
-* **datetiem-local**:
-* **number**:
-* **range**:
-* **color**:
+* **tel**: telefonszám bekérésére használatos űrlapmező. Az url és email típusú
+mezőkkel ellentétben itt nincs alapértelmezett szintaxis elemzés, mivel számos telefonszám
+formátum létezik. Ezért érdemes a pattern paraméterrel megadni azt a reguláris kifejezést,
+ami az adott bevitelnél releváns
+* **url**: abszolút webcím (url) bekérésére szolgáló űrlapmező
+* **email**: email cím, vagy címek bekérésére szolgál. Amennyiben a multiple paramétert
+szerepeltetjük, akkor több e-mail cím is megadható vesszővel elválasztva.
+* **date**: időpont (dátum) megadására szolgáló elem
+* **month**: időpont (hónap) megadására szolgáló elem
+* **week**: időpont (hét) megadására szolgáló elem
+* **time**: időpont (idő) megadására szolgáló elem
+* **datetime-local**: időpont (lokalizált dátum) megadására szolgáló elem
+* **number**: olyan beviteli mezők esetén használjuk, ahol számot kell megadnia a felhasználónak
+* **range**: olyan beviteli mezők esetén használjuk, ahol számot kell megadnia a felhasználónak,
+amelynek egy megadott intervallumba kell esnie (csúszkaként jelenik meg a böngészőben)
+* **color**: szín megadására szolgál, a mező értéke a kiválasztott szín hexa kódját adja vissza
 
+**További űrlapelemek**
+
+#### label
+
+Az űrlapelemhez tartozó szöveg (címke) megadására szolgál. A globális attribútumok melett
+a következő tulajdonságai lehetnek:
+* **for**: azon űrlapmező azonosítóját (id) írjuk ide, amelyhez a címke tartozik.
+Fontos, hogy **nem az űrlapmező name paraméterét kell megadni**, hanem id paramétert
+is kell adni a mezőnek, de az értékük akár lehet ugyanaz. Ha az oldalon az űrlapmező
+előtti címkére kattintunk, akkor a hozzá tartozó űrlapmező automatikusan fókuszba kerül,
+vagyis a kurzor megjelenik benne.
+
+#### fieldset és legend
+
+Az űrlapok esetén érdemes lehet az egyes elemeket valamiképpen strukturálni, az
+azonos témához tartozó mezőket összefogni. A csoportosítani kívánt mezőket a ```<fieldset>```
+és ```</fieldset>``` páros tag-ek közé kell zárni. Minden ilyen csoportnak lehet
+felirata is, amelyet a ```<legend>``` és ```</legend>``` páros tag-ek között kell megadni.
+
+#### meter és progress
+
+A ```<meter>``` páros tag valamilyen mérési eredmény kijelzésére szolgál. Egy ismert
+tartományon belüli skalár érték megmutatására alkalmas. A tag paraméterei a globális
+attribútumok mellett:
+
+* *value*: az aktuális érték beállítására szolgál
+* *min*: az intervallum minimum értéke
+* *max*: az intervallum maximum értéke
+* *low*: az alacsony tartomány megadására szolgál
+* *high*: a magas tartomány megadására szolgál
+* *optimum*: az optimális tartományt adhatjuk meg
+
+A ```<progress>``` tag egy folyamat állapotának jelzésére alkalmas. A tag paraméterei
+a globális attribútumok mellett:
+
+* *value*: az aktuális érték beállítására szolgál, értéke lehet egész és törtszám is.
+* *max*: az elérhető maximális érték.
 
 ### 2.3 Perzisztens helyi tárolás
 
