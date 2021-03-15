@@ -313,6 +313,7 @@ Fontos, hogy **nem az űrlapmező name paraméterét kell megadni**, hanem id pa
 is kell adni a mezőnek, de az értékük akár lehet ugyanaz. Ha az oldalon az űrlapmező
 előtti címkére kattintunk, akkor a hozzá tartozó űrlapmező automatikusan fókuszba kerül,
 vagyis a kurzor megjelenik benne.
+* **form**: ezzel explicít módon rendelhetjük hozzá egy adott formhoz az elemet
 
 #### fieldset és legend
 
