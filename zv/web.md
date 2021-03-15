@@ -177,7 +177,7 @@ A HTML űrlapok (from) a nyelv második főverziójában jelentek meg, 1995-ben.
 [Web forms 2.0](https://www.w3.org/Submission/web-forms2/) szabványt 2005-ben adta ki a
 W3C, mint a HTML 4.01 verzó [űrlapokról szóló fejezetének](https://www.w3.org/TR/html4/interact/forms.html)
 kiterjesztését, ami a HTML 5 megjelenésével már a [HTML szabvány szerves részévé](https://html.spec.whatwg.org/multipage/forms.html#forms)
-vált.
+vált. 
 
 Az űrlapok összes eleme a ```<form>``` és ```</form>``` tageken belül helyezkedik el,
 ahol az egyes űrlapelemeket más-más tagekkel definiálhatjuk. Az űrlap (alapesetben)
@@ -185,7 +185,7 @@ akkor kerül elküldésre, ha egy megfelelő (úgynevezett submit) gombot is elh
 az űrlapban, és azt a felhasználó a kitöltés végén meg is nyomja (esetleg más módon
 aktiválódik a gomb).
 
-A ```<form>``` elem attribútumai:
+A ```<form>``` elem attribútumai (az itt is alkalmazható globális attribútumokon felül):
 
 * **action**: ez határozza meg a szerveroldali feldolgozást végző programot (php vagy asp),
 de e-mail cím (pl. ```mailto:akarmi@example.com```) is megadható itt, ekkor a bekért
@@ -209,7 +209,88 @@ az adatokat a szervernek:
 	küldjük el, célszerű a text/plain kódolást beállítani, így olvasható marad a szöveg.
 
 * **name**: az űrlapnak egyedi nevet adhatunk a segítségével, amely alapján a
-feldolgozóprogram azonosítja a bevitt adatot
+feldolgozóprogram azonosítja a bevitt adatot.
+
+Az űrlap vezérlőelemei (control) információbeviteli (input) mezők vagy választást
+lehetővé tevő alakzatok (select, radio, checkbox, datalist). Az űrlapokhoz háromféle
+beviteli mező tartozhat:
+
+* a ```<textarea></textarea>``` több soros, páros címke,
+* az ```<input>``` páratlan (zárótaggel nem rendelkező) elem, a type (típus) attribútum
+értéke határozza meg az űrlapelem típusát (pl. beviteli mező, jelölőnégyzet, választókapcsoló,
+dátum, fájlfeltöltő stb.),
+* a ```<select></select>``` lenyíló lista nyitó és záró címkéje között elhelyezett ```<option>```
+címkékben megadott értékek közül lehet kiválasztani alapesetben egyet, de a multiple
+jellemző megadása esetén akár többet is.
+
+A (később a HTML 5 szabványba integrált) Web forms 2.0 előtt az input elem type
+attribútuma a következő értékeket vehette fel:
+
+* **submit**: az űrlap elküldésére szolgáló gomb, a rajta szereplő szöveget a value
+tulajdonság segítségével lehet beállítani.
+* **reset**: az űrlap kiinduló helyzetbe állítására szolgál, megnyomásakor az összes
+űrlapelem felveszi az alapértelmezett értékét (ha van neki). A rajta szereplő szöveget
+a value tulajdonság segítségével lehet beállítani.
+* **button**: nyomógomb
+* **hidden**: rejtett űrlapmező, amelynek egy karakterláncot adhatunk értékül (pl. [CSRF támadások](https://hu.wikipedia.org/wiki/Cross-site_request_forgery)
+kivédéséhez ebbe a mezőbe szoktak egy egyedi tokent rakni, amit a felhasználó nem lát,
+a szerver felé viszont jelzi, hogy onnan jött az űrlap, ahová az ki lett küldve) 
+* **text**, **search** és **password**: egyszerű szöveg bevitelére szolgáló mező,
+ahol nincsenek sortörések (a password esetében a bevitt szöveg nem látszik)
+* **checkbox**: jelölőnégyzet (azonos jelölőnégyzet-csoportból nulla, egy vagy több elem jelölhető ki)
+* **radio**: választókapcsoló (több lehetőség közül csak egy választható)
+* **file**: nulla, vagy több fájl feltöltésére mime típussal és opcionálisan a fájl
+nevének megadásával
+* **image**: kép típusú gomb, az img elemhez hasonló módon meg kell adni a helyettesítő
+szöveget (alt), valamint megadható a kép mérete is (width és height).
+
+Az input elem a type és a globális attribútumok mellett a következő tulajdonságokkal
+rendelkezhetett:
+
+* **value**: lehetőséget ad kezdőérték beállítására, az űrlap elküldésekor, tartalma
+az elem nevével együtt érkezik az adatok feldolgozását végző scripthez
+* **size**: a beviteli mező szélessége, karakterben megadva (int)
+* **maxlength**: az űrlapelebe írható szöveg maximális hossza (int)
+
+Ezek a Web forms 2.0/HTML 5 megjelenése óta a következő tulajdonságokkal gazdagodtak:
+
+* **minlength**: az űrlapelebe írható szöveg minimális hossza (int)
+* **readonly**: logikai tulajdonság, ha be van állítva, az elem csak olvasható lesz
+(nincs külön értéke, ha szerepel az attribútum neve, az képviseli az igaz értéket,
+ha nem, az az alapértelmezett hamis)
+* **required**: logikai attribútum, amely kötelezővé teszi az űrlapelem kitöltését
+(nincs külön értéke, ha szerepel az attribútum neve, az képviseli az igaz értéket,
+ha nem, az az alapértelmezett hamis)
+* **multiple**: logikai attribútum, amely ha szerepel akkor az adott mezőben több
+érték is megadható (nincs külön értéke, ha szerepel az attribútum neve, az képviseli
+az igaz értéket, ha nem, az az alapértelmezett hamis)
+* **pattern**: [reguláris kifejezés](https://hu.wikipedia.org/wiki/Regul%C3%A1ris_kifejez%C3%A9s),
+amellyel megadhatjuk, hogy milyen formátumú adatot várunk az adott mezőben
+* **min** és **max**: numerikus beviteli mezők esetén a minimum és maximum értékek
+megadására szolgálnak
+* **list**: egy olyan listaelem azonosítója, amit a felhasználónak fel kívánunk kínálni
+választási lehetőségként. Ezen listát ```<datalist>``` és ```</datalist>``` elemek között
+kell elhelyezni, úgy hogy az egyes választási lehetőségek ```<option>``` és ```</option>```
+tag-ek között helyezkedjenek el. A ```<datalist>``` elemnek adott egyedi azonosító (id)
+lesz a list paraméter értéke.
+* **placeholder**: helyőrző szöveg, ami eltűnik, ha a felhasználó gépelni kezd a mezőbe
+
+A Web forms 2.0 a fentebb felsorolt type értékeket az alábbi új típusokkal
+(a HTML 5. szabvány összesen [21 lehetséges értéket sorol fel](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute)
+a type attribútumhoz) egészítette ki:
+
+* **tel**:
+* **url**:
+* **email**:
+* **date**:
+* **month**:
+* **week**:
+* **time**:
+* **datetiem-local**:
+* **number**:
+* **range**:
+* **color**:
+
 
 ### 2.3 Perzisztens helyi tárolás
 
@@ -380,6 +461,7 @@ a megjelenés egymástól függetlenül is változtatható.
 * Több szerző: [PHP keretrendszerek](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=19)
 * Nagy Gusztáv: [Web-programozás, 3.11 fejezet: Sablonrendszerek](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Webshark: [Mi az a cms?](https://webshark.hu/gyik/cms-tartalomkezelo-rendszer-wordpress/)
+* Horváth Győző, Tarcsi Ádám: [Webadatbázis-programozás](http://ade.web.elte.hu/wabp/index.html)
 * W3Schools: [PHP OOP](https://www.w3schools.com/php/php_oop_what_is.asp)
 
 #### Webszolgáltatások:
