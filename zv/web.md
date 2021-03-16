@@ -302,6 +302,13 @@ szerepeltetjük, akkor több e-mail cím is megadható vesszővel elválasztva.
 amelynek egy megadott intervallumba kell esnie (csúszkaként jelenik meg a böngészőben)
 * **color**: szín megadására szolgál, a mező értéke a kiválasztott szín hexa kódját adja vissza
 
+Megjegyzendő, hogy a bekért adatok kliensoldali ellenőrzése (html vagy javascript)
+csak a jóhiszemű felhasználók esetleges elgépelései ellen nyújt védelmet (nem engedi
+elküldeni a nem megfelelő típusú, vagy a reguláris kifejezésre nem illeszkedő bemenetet),
+rosszindulatú támadás ellen nem (a javascript kikapcsolható a böngészőben, a letöltött
+html űrlap kódját pedig át lehet írni, kivéve belőle az ellenőzést), így nem
+helyettesítheti a bejövő adatok szerveroldali vizsgálatát.
+
 **További űrlapelemek**
 
 #### label
@@ -447,6 +454,8 @@ a megjelenés egymástól függetlenül is változtatható.
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
 * [Web forms 2.0 szabvány](https://www.w3.org/Submission/web-forms2/)
 * A HTML 5 szabvány [webes űrlapokról szóló fejezete](https://html.spec.whatwg.org/multipage/forms.html#forms)
+* Szabó Viktor: [HTML5 Web Storage – Tároljuk okosan](https://html5.ugyesen.com/2012/04/html5-web-storage-taroljuk-okosan/)
+* W3schools: [HTML Web Storage API](https://www.w3schools.com/html/html5_webstorage.asp)
 * Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
 * Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
 * Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
