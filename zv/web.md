@@ -454,16 +454,6 @@ a megjelenés egymástól függetlenül is változtatható.
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
 * [Web forms 2.0 szabvány](https://www.w3.org/Submission/web-forms2/)
 * A HTML 5 szabvány [webes űrlapokról szóló fejezete](https://html.spec.whatwg.org/multipage/forms.html#forms)
-* Szabó Viktor: [HTML5 Web Storage – Tároljuk okosan](https://html5.ugyesen.com/2012/04/html5-web-storage-taroljuk-okosan/)
-* W3schools: [HTML Web Storage API](https://www.w3schools.com/html/html5_webstorage.asp)
-* Laki Ádám: [HTML5 Web Storage](https://adamlaki.com/hu/html5-web-storage/)
-* Sallai András: [Adattárolás](https://szit.hu/doku.php?id=oktatas:web:javascript:javascript_adattarolas)
-* Tari Balázs: [Programozás és algoritmizálás JavaScript nyelven](http://eta.bibl.u-szeged.hu/3093/6/dist/javascript/lokalistarolok.html)
-* Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
-* Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
-* Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
-* MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
-* Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
 * Java T Point: [HTML Tutorial](https://www.javatpoint.com/html-tutorial)
 
 #### CSS:
@@ -492,6 +482,16 @@ a megjelenés egymástól függetlenül is változtatható.
 * Tari Balázs: [JavaScript](http://www.inf.u-szeged.hu/~tarib/javascript/)
 * Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
 * MDN: [JavaScript](https://developer.mozilla.org/hu/docs/Web/JavaScript)
+* Szabó Viktor: [HTML5 Web Storage – Tároljuk okosan](https://html5.ugyesen.com/2012/04/html5-web-storage-taroljuk-okosan/)
+* W3schools: [HTML Web Storage API](https://www.w3schools.com/html/html5_webstorage.asp)
+* Laki Ádám: [HTML5 Web Storage](https://adamlaki.com/hu/html5-web-storage/)
+* Sallai András: [Adattárolás](https://szit.hu/doku.php?id=oktatas:web:javascript:javascript_adattarolas)
+* Tari Balázs: [Programozás és algoritmizálás JavaScript nyelven](http://eta.bibl.u-szeged.hu/3093/6/dist/javascript/lokalistarolok.html)
+* Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
+* Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
+* Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
+* MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+* Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 
 #### JSON:
