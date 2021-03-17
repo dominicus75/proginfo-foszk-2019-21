@@ -350,6 +350,44 @@ a globális attribútumok mellett:
 
 ### 2.3 Perzisztens helyi tárolás
 
+A HTML5 Web Storage API segítségével szabványos módon tárolhatunk adatot a felhasználók
+gépén. Mivel a megoldás a [HTML5 része](https://html.spec.whatwg.org/multipage/webstorage.html#webstorage),
+így nagyon jól támogatott, vagyis gond nélkül használhatjuk a legtöbb böngészőben.
+
+Az adatokat a sütik esetében megszokott kulcs – érték párok segítségével tárolhatjuk.
+A kulcs típusa szöveges, míg az érték típusa bármi lehet. Fontos különbség a sütikhez
+képest, hogy a Web Storage tároló, csak kliens oldalról érhető el. Amíg a sütik az
+adatforgalmat növelve minden egyes HTTP lekérés során együtt utaznak a lekért fájlokkal,
+a Storage-ban tárolt adatok nem. További lényeges különbség a tárolható adatmennyiség
+(sütik esetében 4 KB, Web Storage esetében ez akár 5 MB).
+
+A HTML Web Storage API két objektumot biztosít az adatok kliensgépen történő tárolásához
+(ugyanazokkal a függvényekkel és tulajdonságokkal rendelkeznek, az adatok tárolásának
+és elérésnek a módja is megegyezik, csak a lejárati időben térnek el):
+
+* ```window.localStorage```: lejárati dátum nélküli adatokat tárol
+* ```window.sessionStorage```: egy munkamenet adatait tárolja (az adatok törlődnek,
+amikor a felhasználó bezárja az adott böngésző lapot).
+
+A Web Storage használatához szükséges függvények:
+
+* ```clear()```: a Storage tartalmát tudjuk kiüríteni vele
+* ```getItem(key)```: visszaadja a paraméterbe kapott kulcshoz tartozó értéket.
+* ```key(index)```: visszaadja a megadott index-hez tartozó kulcsot.
+* ```length()```: visszaadja a tárolt kulcs-érték párok számát.
+* ```removeItem(key)```: a Storage-ben lévő adott kulcsú adat eltávolítására szolgál.
+* ```setItem(key,value)```: ezen függvénnyel tudunk adatot tárolni a Storage-ban.
+
+Ha új adatot tárolunk (setItem), adatot távolítunk el (removeItem) vagy töröljük
+a Storage tartalmát (clear) kiváltunk egy ```StorageEvent```-et, ami a következő
+tulajdonságokkal rendelkezik:
+
+* event.**storageArea**: Session vagy Local
+* event.**key**: a kulcs ami változik
+* event.**oldValue**: régi értéke
+* event.**newValue**: az új értéke
+* event.**url**: az oldal URL-je, melynek a kulcsa megváltozott
+
 ### 2.4 Web workers, websocket
 
 ### 2.5 Szerver által küldött események (Server-Sent Events, SSE)
