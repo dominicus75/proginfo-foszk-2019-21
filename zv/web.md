@@ -388,15 +388,17 @@ tulajdonságokkal rendelkezik:
 * event.**newValue**: az új értéke
 * event.**url**: az oldal URL-je, melynek a kulcsa megváltozott
 
-### 2.4 Web workers, websocket
+### 2.4 Web workers
 
-### 2.5 Szerver által küldött események (Server-Sent Events, SSE)
+### 2.5 Websocket
 
-### 2.6 Hang és video, geolokáció
+### 2.6 Szerver által küldött események (Server-Sent Events, SSE)
 
-### 2.7 Fogd és vidd (drag and dropp)
+### 2.7 Hang és video, geolokáció
 
-### 2.8 Canvas
+### 2.8 Fogd és vidd (drag and dropp)
+
+### 2.9 Canvas
 
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
 
@@ -527,6 +529,7 @@ a megjelenés egymástól függetlenül is változtatható.
 * Tari Balázs: [Programozás és algoritmizálás JavaScript nyelven](http://eta.bibl.u-szeged.hu/3093/6/dist/javascript/lokalistarolok.html)
 * Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
 * Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
+* BME AUT: [Mi is a Websocket](http://bmeaut.github.io/snippets/snippets/AlkFejlHfTanulsagok/51/)
 * Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
 * MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
 * Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
