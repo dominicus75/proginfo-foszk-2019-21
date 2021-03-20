@@ -350,8 +350,11 @@ a globális attribútumok mellett:
 
 ### 2.3 Perzisztens helyi tárolás
 
-A HTML5 Web Storage API segítségével szabványos módon tárolhatunk adatot a felhasználók
-gépén. Mivel a megoldás a [HTML5 része](https://html.spec.whatwg.org/multipage/webstorage.html#webstorage),
+A felhasználói beállítások és a számítások köztes eredményeinek tárolásához a HTML5 Local
+Storage szabványa nyújt lehetőséget. A HTML5 Web Storage API segítségével szabványos
+módon tárolhatunk adatot a felhasználók gépén. A szabvány egy domainhez kötött perzisztens
+tárhelyet specifikál, melyben kulcs-érték párok formájában tárolhatunk adatokat.
+Mivel a megoldás a [HTML5 része](https://html.spec.whatwg.org/multipage/webstorage.html#webstorage),
 így nagyon jól támogatott, vagyis gond nélkül használhatjuk a legtöbb böngészőben.
 
 Az adatokat a sütik esetében megszokott kulcs – érték párok segítségével tárolhatjuk.
@@ -389,6 +392,38 @@ tulajdonságokkal rendelkezik:
 * event.**url**: az oldal URL-je, melynek a kulcsa megváltozott
 
 ### 2.4 Web workers
+
+Régebben a böngészők egy szálon hajtották végre kódjukat, és ugyanezen
+a szálon futtatták a szkripteket is. Ez ahhoz vezetett, hogy amennyiben egy szkript
+egy tömbben nagy mennyiségű számítást tartalmazott, a megjelenített honlap kezelőeszközei,
+sőt rosszabb esetben magának a böngészőnek a felülete is „megfagyott”,
+a felhasználó parancsaira érzéketlenné vált. Erre a problémára a Web Workers szabvány
+nyújt megoldást.
+
+A szabványban leírt worker-ek külön szálon végrehajtott, a böngészőben futó fő
+programtól elszigetelt objektumok, amelyek JavaScript kód futtatását teszik lehetővé a
+„háttérben”. A worker a honlap DOM-jához nem fér hozzá (nem lehet vele módosítani a HTML kódot),
+a főablakbeli kóddal csak üzenetek formájában tud kommunikálni (postMessage() metódus),
+amely a benne futó számításoknak már nemcsak az operációs rendszertől, de a böngésző
+más részeitől való teljes elválasztását is jelenti. Ennek köszönhetően a biztonság
+terén sem kell csupán a böngészőt fejlesztő csapat hozzáértésére hagyatkoznunk, hanem
+a worker-ek következetes alkalmazásával magunk is gondoskodhatunk arról, hogy a
+szerverről letöltött kód ne tehessen kárt a rendszer más részeiben.
+
+A külön szálon való futásnak köszönhetően a böngésző és a főablakban futó
+felhasználói felület fennakadásmentesen működik. Többmagos processzorok esetén több
+worker indításával minden rendelkezésre álló erőforrást kihasználhatunk.
+
+Worker objektumot úgy lehet létrehozni, hogy a forrásfájl elérési útját paraméterként átadjuk
+a Worker konstruktorának:
+
+```javascript
+
+	var worker = new Worker('hello.js'); 
+
+```
+
+
 
 ### 2.5 Websocket
 
@@ -532,6 +567,8 @@ a megjelenés egymástól függetlenül is változtatható.
 * BME AUT: [Mi is a Websocket](http://bmeaut.github.io/snippets/snippets/AlkFejlHfTanulsagok/51/)
 * Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
 * MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+* W3C: a HTML 5 szabvány [Web workers](https://html.spec.whatwg.org/multipage/workers.html#workers) fejezete
+* Farkas Máté: [Web Worker – Számolni? Böngészőben?!](http://weblabor.hu/cikkek/web-worker)
 * Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 

@@ -125,7 +125,7 @@ Az üzenet hatására a végrehajtandó műveletet az adott BroadcastReceiver os
 
 ### Felhasznált (ajánlott) irodalom:
 
-[Hivatalos Android fejlesztői oldal - angol](https://developer.android.com/index.html)
-Eszéki Dániel - Bolla Kálmán Milán [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
+* [Hivatalos Android fejlesztői oldal - angol](https://developer.android.com/index.html)
+* Eszéki Dániel - Bolla Kálmán Milán [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
 
 [Kezdőlap](../README.md)
