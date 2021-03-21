@@ -446,15 +446,46 @@ hozzáfér. Lehetővé teszi további scriptek importálását a workerbe.
 #### Eseménykezelők
 
 * ```onerror```: egy olyan eseménykezelő metódust reprezentál, amit akkor kell
-meghívni, amikor valamilyen hiba történeik. Szintaxisa: ```javascript myWorker.onerror = function() { ... }; ```
+meghívni, amikor valamilyen hiba történeik. Szintaxisa: ```myWorker.onerror = function() { ... }; ```
 * ```onmessage```: egy olyan eseménykezelő metódust reprezentál, amit akkor kell
-meghívni, amikor message esemény történik. Szintaxisa: ```javascript myWorker.onmessage = function(event) { ... }; ```
+meghívni, amikor message esemény történik. Szintaxisa: ```myWorker.onmessage = function(event) { ... }; ```
 * ```onmessageerror```: olyan eseménykezelő metódust reprezentál, amit akkor kell
 meghívni, amikor hívodik meg, ha az üzenet nem deszerializálható. Szintaxisa:
-```javascript myWorker.onmessageerror = function() { ... }; ```
+```myWorker.onmessageerror = function() { ... }; ```
 
 
 ### 2.5 Websocket
+
+A HTML5 WebSocket szabvány egy olyan alkalmazásprogramozási felületet (API) határoz meg,
+amely lehetővé teszi a weboldalak számára, hogy a WebSocket protokoll segítségével
+valódi kétirányú (full duplex) kommunikációt folytassanak egy távoli géppel. Ennek
+érdekében bevezeti a WebSocket interfészt és meghatároz egy full-duplex kommunikációs
+csatornát, amely egyetlen socketen keresztül működik, TCP protokollon keresztül.
+A WebSocket API-t a W3C szabványosította, míg a WebSocket protokollt az IETF az
+[RFC 6455](https://tools.ietf.org/html/rfc6455)-ben írta le. Kifejlesztésének fő motivációja az
+volt, hogy a webböngészőben futó alkalmazás képes legyen a szerverrel való kétirányú
+kommunikációra barkácsmegoldások (pl. több HTTP-kapcsolat nyitva tartása) nélkül.
+
+A WebSocket protokollt úgy tervezték, hogy jól működjön a meglévő webes infrastruktúrával.
+Ennek a tervezési elvnek a részeként a protokollspecifikáció meghatározza, hogy a
+WebSocket kapcsolat HTTP-kapcsolatként kezdi az életét, garantálva ezzel a teljes
+visszafelé való kompatibilitást. A kapcsolat kiépítéséhez HTTP kommunikációra van
+szükség, ahol a két fél megegyezik arról, hogy „felfejlesztik” a kommunikációt
+WebSocketre. Ezért a kliens egy kézfogási kérelmet küld (handshake request), amire
+a szerver kézfogási válasszal (handshake response) felel. Ha kiépült a kapcsolat
+a WebSocket adatkereteket full duplex módon lehet a kliens és a szerver között
+továbbítani. Innentől már csak TCP fölött kommunikának, amit nagyon kis overheaddel
+tud a szerver és a kliens megvalósítani. Maga a kapcsolat a WebSocket
+interfész által definiált "onmessage" és "send" metódusok révén valósul meg.
+
+A WebSocket protokoll specifikációja két új URI sémát határoz meg: **ws**: és **wss**:,
+a nyílt, illetve a titkosított kommunikációhoz. A séma nevén túl a használt URI
+komponensek az URI általános szintaxisának [RFC 3986](https://github.com/dominicus75/fig-standards/blob/master/related-rfcs/3986.md) megfelelnek.
+
+Adatok átviteléhez érdemes az üzeneteket valamilyen struktúrába becsomagolni. Erre
+az egyik legegyszerűbb lehetőség a JSON használta. Az XML-hez képest sokkal kisebb
+a mérete, sokkal kevesebb memóriát igényel és egyszerűbb a szerializálása, egyetlen
+hátránya, hogy nem lehet benne kommentet használni. 
 
 ### 2.6 Szerver által küldött események (Server-Sent Events, SSE)
 
@@ -594,6 +625,8 @@ a megjelenés egymástól függetlenül is változtatható.
 * Wikipedia: [Websocket](https://hu.wikipedia.org/wiki/WebSocket)
 * Fejlesztő lány: [Websocket, websocket mindenhol...](https://fejlesztolany.hu/2019/03/26/websocket-websocket-mindenhol/)
 * BME AUT: [Mi is a Websocket](http://bmeaut.github.io/snippets/snippets/AlkFejlHfTanulsagok/51/)
+* websocket.org: [About HTML5 WebSocket](http://websocket.org/aboutwebsocket.html)
+* W3C: a HTML 5 szabvány [Websocket](https://html.spec.whatwg.org/multipage/web-sockets.html#network) fejezete
 * Papp Krisztián: [Web workerek](https://app.letscode.hu/videos/js-workerek/web-workerek)
 * MDN: [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
 * W3C: a HTML 5 szabvány [Web workers](https://html.spec.whatwg.org/multipage/workers.html#workers) fejezete
