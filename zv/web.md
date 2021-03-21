@@ -402,27 +402,56 @@ nyújt megoldást.
 
 A szabványban leírt worker-ek külön szálon végrehajtott, a böngészőben futó fő
 programtól elszigetelt objektumok, amelyek JavaScript kód futtatását teszik lehetővé a
-„háttérben”. A worker a honlap DOM-jához nem fér hozzá (nem lehet vele módosítani a HTML kódot),
-a főablakbeli kóddal csak üzenetek formájában tud kommunikálni (postMessage() metódus),
-amely a benne futó számításoknak már nemcsak az operációs rendszertől, de a böngésző
-más részeitől való teljes elválasztását is jelenti. Ennek köszönhetően a biztonság
-terén sem kell csupán a böngészőt fejlesztő csapat hozzáértésére hagyatkoznunk, hanem
-a worker-ek következetes alkalmazásával magunk is gondoskodhatunk arról, hogy a
-szerverről letöltött kód ne tehessen kárt a rendszer más részeiben.
+„háttérben”. A worker nem látja a szülő folyamatban betöltött más javascript modulokat,
+a honlap DOM-jához sem fér hozzá (nem lehet vele módosítani a HTML kódot, nem áll
+rendelkezésre a *window* és *document* objektum, viszont az *XMLHttpRequest* igen,
+így a hálózati kommunikáció lehetséges), a főablakbeli kóddal csak üzenetek formájában
+tud kommunikálni (postMessage() metódus), amely a benne futó számításoknak már nemcsak
+az operációs rendszertől, de a böngésző más részeitől való teljes elválasztását is
+jelenti. Ennek köszönhetően a biztonság terén sem kell csupán a böngészőt fejlesztő
+csapat hozzáértésére hagyatkoznunk, hanem a worker-ek következetes alkalmazásával
+magunk is gondoskodhatunk arról, hogy a szerverről letöltött kód ne tehessen kárt
+a rendszer más részeiben.
 
 A külön szálon való futásnak köszönhetően a böngésző és a főablakban futó
 felhasználói felület fennakadásmentesen működik. Többmagos processzorok esetén több
-worker indításával minden rendelkezésre álló erőforrást kihasználhatunk.
+worker indításával minden rendelkezésre álló erőforrást kihasználhatunk. Workereket,
+és a workeren belül újabb workereket elméletileg korlátlan számban indíthatunk. Ezek
+a „háttérszálak” bonyolult matematikai számításokat végezhetnek, hálózati kérelmeket
+adhatnak ki, vagy műveleteket végezhetnek a helyi tárolón, miközben a fő weboldal
+arra reagál, ahogy a felhasználó görget, kattint vagy szöveget gépel be. 
 
-Worker objektumot úgy lehet létrehozni, hogy a forrásfájl elérési útját paraméterként átadjuk
-a Worker konstruktorának:
+Dedikált (egyetlen hívó script által használt) Worker objektumot úgy lehet
+létrehozni, hogy a forrásfájl elérési útját paraméterként átadjuk a Worker konstruktorának:
 
 ```javascript
 
-	var worker = new Worker('hello.js'); 
+var worker = new Worker('hello.js'); 
 
 ```
 
+A dedikált workerek mellett léteznek megosztott, több hívó által is használható
+[SharedWorker objektumok](https://html.spec.whatwg.org/multipage/workers.html#shared-workers) is.
+
+#### Metódusok
+
+* ```worker.postMessage()```: a hívó scriptből küld adatot a (hivatkozott) Worker-nek,
+amihez az az onmessage eseménykezelőn keresztül fér hozzá (```event.data```)
+* ```postMessage()```: a Worker-ből küld adatot a hívó scriptnek (mivel csak oda küldhet,
+ezért nincs előtte objektum hivatkozás)
+* ```worker.terminate()```: leállítja a Worker futását
+* ```importScripts('<script_url>')```: globális metódus, amihez a worker is
+hozzáfér. Lehetővé teszi további scriptek importálását a workerbe.
+
+#### Eseménykezelők
+
+* ```onerror```: egy olyan eseménykezelő metódust reprezentál, amit akkor kell
+meghívni, amikor valamilyen hiba történeik. Szintaxisa: ```javascript myWorker.onerror = function() { ... }; ```
+* ```onmessage```: egy olyan eseménykezelő metódust reprezentál, amit akkor kell
+meghívni, amikor message esemény történik. Szintaxisa: ```javascript myWorker.onmessage = function(event) { ... }; ```
+* ```onmessageerror```: olyan eseménykezelő metódust reprezentál, amit akkor kell
+meghívni, amikor hívodik meg, ha az üzenet nem deszerializálható. Szintaxisa:
+```javascript myWorker.onmessageerror = function() { ... }; ```
 
 
 ### 2.5 Websocket
