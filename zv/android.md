@@ -115,6 +115,105 @@ Az üzenetek létrejöhetnek valamilyen rendszeresemény hatására, de az alkal
 Az üzenet hatására a végrehajtandó műveletet az adott BroadcastReceiver osztály határozza meg.
 
 ## 3. Erőforrás-állományok. Manifest állomány.
+
+**Erőforrások**
+Az Android platformra való fejlesztésnél alapvető szempont, hogy egy alkalmazás módosítás nélkül képes legyen futni különböző méretű, hardverű és Android verziójú eszközökön.
+Ez megoldható lehetne például fordítási variánsok használatával, azonban ekkor minden konfigurációra külön telepítőre lenne szükség, ami egy valós projekt esetében fenntarthatatlan.
+A probléma megoldására egy olyan rendszert hoztak létre, amelyben az alkalmazás a futtató hardver és rendszer tulajdonságaitól függően tud különböző elemeket betölteni.
+Az alkalmazás ezen „változó” részeit ún. erőforrás-állományoknak hívjuk.
+Az erőforrások között találhatóak meg a felhasználói felületek, szövegek, képek és animációk is.
+Lehetőség van statikus tartalmak hozzáadására is, viszont a legtöbb erőforrást XML fájlokban definiálhatjuk.
+Az erőforrás fájlok a *res* könyvtárban találhatóak, azon belül pedig tartalmuk alapján további mappákra vannak csoportosítva. 
+A legfontosabb könyvtárak:
+
+* `anim/` - animációk
+* `color/` - színek
+* `drawable/` - képek és vektorgrafikus tartalmak
+* `mipmap/` - alkalmazás ikon
+* `layout/` - felhasználó felületek
+* `menu/` - menük
+* `raw/` - statikus fájlok
+* `values/` - egyszerű értékek:
+  | Könyvtár   | Erőforrás típusa  | Példa                                          |
+  |------------|-------------------|------------------------------------------------|
+  | arrays.xml | erőforrás tömbök  |                                                |
+  | styles.xml | stílusok és témák |                                                |
+  | colors.xml | szín értékek      | `<color name="white">#FFFFFF</color>`          |
+  | dimens.xml | dimenzió értékek  | `<dimen name="padding_size_small">8dp</dimen>` |
+  | string.xml | szöveges értékek  | `<string name="ok_button">OK</string>`         |
+
+Ezekben a mappákban található fájlok lesznek az ún. alapértelmezett erőforrások.
+Ezek az erőforrások nem rendelkeznek [minősítővel](##-4.-Minősítők,-mértékegységek.), így ha a rendszer nem talál az eszköz és rendszer tulajdonságaihoz megfelelő erőforrást, akkor az alapértelmezettet használja fel.
+
+A rendszer fordítás során minden erőforráshoz egy egyedi azonosítót rendel, majd ezeket az erőforrások típusai szerint különböző osztályokba sorolja.
+Minden erőforráshoz generálódik egy static int típusú változó, mely az erőforrás azonosítóját tartalmazza.
+Az azonosítókat az *R* osztály tartalmazza, majd ezen belül további osztályok találhatóak az erőforrás típusoknak megfelelően.
+A megfelelő erőforrás kiválasztását a rendszer teljesen automatikusan végzi, így a rájuk való hivatkozáskor csak az erőforrás azonosítóját kell megadni.
+Az erőforrásokra a következőképpen hivatkozhatunk a kódban vagy az XML fájlokban:
+
+| Kód                 | XML                                |
+|---------------------|------------------------------------|
+| `R.string.app_name` | `android:label="@string/app_name"` |
+
+Statikus (nem módosítható) fájlok elérésére két lehetőséget biztosít a rendszer.
+Ha az adott fájlok tartalmát csak szimplán be szeretnénk tölteni (például hang, videó fájlok) akkor a *raw* könyvtár használata javasolt.
+Ha viszont ennél komplexebb megoldásra van szükségünk, akkor érdemes az *assets* könyvtárat használni.
+Ebben tetszőlegesen hozhatunk létre könyvtárakat és fájlokat, és a tartalmát az *AssetManager* osztály segítségével tudjuk olvasni.
+
+A lokalizáció megvalósításához fel tudjuk használni az [erőforrás](##-4.-Minősítők,-mértékegységek.) minősítőket.
+Ennek megvalósításához viszont feltétlen szükséges, hogy az alkalmazásban a felhasználó számára megjelenő összes szöveg string erőforrásként legyen rögzítve.
+Így ha az alkalmazásban található a rendszer nyelvi beállításainak megfelelő minősítővel ellátott erőforrás, akkor azok kerülnek megjelenítésre.
+Előfordulhatnak olyan szövegek, amelyeket nem szeretnénk vagy nem szükséges fordítani, ezeket a `<string>` tag-en használható `translatable="false"` tulajdonsággal adhatjuk meg.
+
+| /values/strings.xml                                         | /values-hu/strings.xml                    | /values-de/strings.xml                  |
+|-------------------------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `<string name="yes_button">Yes</string>`                    | `<string name="yes_button">Igen</string>` | `<string name="yes_button">Ja</string>` |
+| `<string name="ok_button" translatable="false">Ok</string>` |                                           |                                         |
+
+**Manifest állomány**
+Minden Android alkalmazás vagy könyvtár modulnak elengedhetetlen eleme az *AndroidManifest.xml* állomány, amely információt szolgáltat az alkalmazásról és a benne lévő komponensekről a fordító eszközök, az operációs rendszer és az alkalmazás-áruházak számára.
+A végleges állomány a fordítás során készül el, ahol a függőségekben lévő AndroidManifest fájlok tartalma is összefésülésre kerül az alkalmazáshoz tartozó adatokkal.
+Végeredményképp egy olyan fájlt kapunk, amely tartalmazza az alkalmazás és az összes függőség komponensét, jogosultságát, és tulajdonságát.
+Harmadik féltől származó komponensek használatakor érdemes megnézni, hogy pontosan miket tartalmaz a Manifest állomány.
+Előfordulhat, hogy például olyan jogosultságokat kér, amelyek miatt a felhasználók nem telepítik az alkalmazást.
+A Manifest fájl gyökér eleme a `<manifest>` tag, melynek tartalmaznia kell az alkalmazás csomagnevét, valamint a verziókódot és verziónevet.
+A csomagnév általában megegyezik a projektben használt Java névtérrel, és a package tulajdonsággal állíthatjuk be.
+A verziókódot és a verziószámot nem kell külön feltüntetni, a végleges Manifest fájlban a Gradle állítja be a megfelelő értékeket.
+Az alkalmazáshoz tartozó tulajdonságok beállítására az `<application>` tagot kell használni, ezen megadhatjuk az alkalmazás nevét (`android:label`), ikonját (`android:icon`) vagy akár a használt témát (`android:theme`).
+
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.app">
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:theme="@style/AppTheme">
+  </application>
+</manifest>
+```
+
+Az `<application>` tagon belül kell felsorolni az egyes alkalmazás komponenseket, mégpedig a következő elemekkel:
+| Komponens         | XML tag      |
+|-------------------|--------------|
+| Activity          | `<activity>` |
+| Service           | `<service>`  |
+| BroadcastReceiver | `<receiver>` |
+| ContentProvider   | `<provider>` |
+
+Az operációs rendszer egyes funkcióihoz és bizonyos hardveres eszközök használatához az alkalmazásunknak engedélyekre van szüksége.
+Ezek az engedélyek telepítés előtt a felhasználó számára fel vannak tüntetve, valamint az Android 6.0 verziótól kezdve bizonyos jogosultságokat már az alkalmazás futása közben külön jóvá kell hagynia a felhasználónak.
+Az Android rendszerben meghatározott jogosultságokon kívül készíthetünk saját jogosultságokat, valamint használhatunk más alkalmazások által létrehozottakat.
+Egy jogosultság használatához a `<uses-permission>`, létrehozáshoz pedig a `<permission>` tagot használhatjuk.
+
+```
+<manifest>
+   <uses-permission android:name="android.permission.CAMERA" />
+   <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
+```
+
+A példában megadott szabályok alapján az alkalmazás nem lesz telepíthető olyan eszközökre, amelyek nem rendelkeznek Bluetooth hardverrel. Az alkalmazás viszont rendelkezik olyan funkciókkal, amelyek a kamerát is használatba vennék, viszont megléte nem feltétlen szükséges az alkalmazás használatához.
+
 ## 4. Minősítők, mértékegységek.
 ## 5. Activity életciklusmodellje.
 ## 6. Felület létrehozása. Vezérlőelemek. View. Felugró értesítések.
