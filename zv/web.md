@@ -487,6 +487,35 @@ az egyik legegyszerűbb lehetőség a JSON használta. Az XML-hez képest sokkal
 a mérete, sokkal kevesebb memóriát igényel és egyszerűbb a szerializálása, egyetlen
 hátránya, hogy nem lehet benne kommentet használni. 
 
+#### Metódusok
+
+A konstruktor új WebSocket objektumot hoz létre, a társított WebSocket kapcsolattal.
+Paraméterként egy URL-t vár, amely a szerver oldali rész elérhetőségét adja meg.
+Az URL-ben csak "ws" vagy "wss" sémák engedélyezettek. Az URl a létrejövő objektum
+(csak olvasható) url attribútumában lesz eltárolva.
+
+* ```send(adat)```: adatot küld a Websocket kapcsolaton keresztül (az adat lehet
+szöveg, tömb illetve bináris [blob] vagy ArrayBuffer objektum)
+* ```close([kód] [, indoklás])```: lezárja a kapcsolatot, a HTTP üzenetekhez hasonlóan opcionálisan
+megadható hozzá [lezárókód](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#Status_codes) és
+indoklás (amelyben ki lehet fejteni a lezárás okát)
+
+#### Eseménykezelők
+
+* ```onopen```: ha a kapcsolat felépült
+* ```onerror```: ha valamilyen hiba történt
+* ```onmessage```: ha üzenet érkezett, tartalmazza a szerver által küldött üzenetet
+is, ami MessageEvent típusú, amiből a konkrét üzenetet a data property segítségével
+érhetjő el.
+* ```onclose```: ha valamilyen hiba miatt megszakad a kapcsolat
+
+A kapcsolat állapotát a csak olvasható ```readyState``` property tárolja, amely
+4 különböző (short integer) értéket vehet fel (ezek konstansokhoz vannak rendelve):
+* **CONNECTING** (0),
+* **OPEN** (1),
+* **CLOSING** (2),
+* **CLOSED** (3).
+
 ### 2.6 Szerver által küldött események (Server-Sent Events, SSE)
 
 ### 2.7 Hang és video, geolokáció
