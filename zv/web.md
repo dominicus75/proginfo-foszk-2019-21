@@ -661,6 +661,11 @@ a megjelenés egymástól függetlenül is változtatható.
 * W3C: a HTML 5 szabvány [Web workers](https://html.spec.whatwg.org/multipage/workers.html#workers) fejezete
 * Farkas Máté: [Web Worker – Számolni? Böngészőben?!](http://weblabor.hu/cikkek/web-worker)
 * Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
+* Wikipedia: [Server-sent events](https://en.wikipedia.org/wiki/Server-sent_events)
+* W3C: [Server-Sent Events](https://www.w3.org/TR/eventsource/) szabvány
+* MDN: [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
+* W3Schools: [HTML SSE API](https://www.w3schools.com/html/html5_serversentevents.asp)
+* JavaScript.info: [Server Sent Events](https://javascript.info/server-sent-events)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 
 #### JSON:
