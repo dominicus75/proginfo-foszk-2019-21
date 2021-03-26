@@ -518,6 +518,16 @@ A kapcsolat állapotát a csak olvasható ```readyState``` property tárolja, am
 
 ### 2.6 Szerver által küldött események (Server-Sent Events, SSE)
 
+**Néhány fontosabb különbség a WebSocket és az EventSource között:**
+
+| WebSocket | EventSource (SSE) |
+|-----------|-------------------|
+| Kétirányú, a szerver és a kliens is küldhet üzeneteket | Egyirányú, csak a szerver küldhet adatokat |
+| Bináris és szöveges típusú adat | Csak szöveges adat |
+| [WebSocket protokoll](https://tools.ietf.org/html/rfc6455) | HTTP protokoll |
+
+
+
 ### 2.7 Hang és video, geolokáció
 
 ### 2.8 Fogd és vidd (drag and dropp)
@@ -662,7 +672,7 @@ a megjelenés egymástól függetlenül is változtatható.
 * Farkas Máté: [Web Worker – Számolni? Böngészőben?!](http://weblabor.hu/cikkek/web-worker)
 * Molnár Gábor, Schnell Henrik, Szarvas Attila, Szeberényi Imre: [Munkában a böngészők](https://nws.niif.hu/ncd2011/docs/ehu/063.pdf)
 * Wikipedia: [Server-sent events](https://en.wikipedia.org/wiki/Server-sent_events)
-* W3C: [Server-Sent Events](https://www.w3.org/TR/eventsource/) szabvány
+* W3C: a HTML 5 szabvány [Server-sent Events](https://html.spec.whatwg.org/multipage/server-sent-events.html) fejezete
 * MDN: [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
 * W3Schools: [HTML SSE API](https://www.w3schools.com/html/html5_serversentevents.asp)
 * JavaScript.info: [Server Sent Events](https://javascript.info/server-sent-events)
