@@ -570,6 +570,16 @@ hitelesítés is kell).
 
 ### 2.9 Canvas
 
+A ```<canvas>``` tag segítségével egy rajzvásznat lehet beilleszteni az oldalba. A rajzvászon
+tartalma JavaScript segítségével módosítható. Ezáltal dinamikusan jeleníthető meg
+rajta bármilyen kép, vagy grafika.
+
+Minden vászonhoz célszerű egy azonosítót rendelni és előre megadni a méretét. Az
+azonosítóra azért van szükség, mert a vászon tartalmát utólag JavaScript segítségével
+tudjuk módosítani, és a vászon elérése az azonosító (id) segítségével lehetséges.
+A vászon szélessége és magassága a width és a height attribútumok segítségével adható
+meg.
+
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
 
 A HTML leírónyelvvel határozzuk meg a weboldalak tartalmát és struktúráját. A weboldalak
@@ -664,6 +674,17 @@ a megjelenés egymástól függetlenül is változtatható.
 * W3schools: [HTML5 útmutató](https://www.w3schools.com/html/default.asp)
 * [Web forms 2.0 szabvány](https://www.w3.org/Submission/web-forms2/)
 * A HTML 5 szabvány [webes űrlapokról szóló fejezete](https://html.spec.whatwg.org/multipage/forms.html#forms)
+* W3schools: [HTML Audio](https://www.w3schools.com/html/html5_audio.asp)
+* W3schools: [HTML Video](https://www.w3schools.com/html/html5_video.asp)
+* W3schools: [HTML Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp)
+* MDN: [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+* W3C: [Geolocation API Specification 2nd Edition](https://www.w3.org/TR/geolocation-API/)
+* W3schools: [HTML Drag and Drop API](https://www.w3schools.com/html/html5_draganddrop.asp)
+* Tutorialspoint: [HTML5 - Drag & drop](https://www.tutorialspoint.com/html5/html5_drag_drop.htm)
+* Wikipedia: [Canvas](https://hu.wikipedia.org/wiki/Canvas)
+* W3schools: [HTML Canvas Graphics](https://www.w3schools.com/html/html5_canvas.asp)
+* W3schools: [HTML Canvas Reference](https://www.w3schools.com/tags/ref_canvas.asp)
+* W3C: [The canvas element](https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element)
 * Java T Point: [HTML Tutorial](https://www.javatpoint.com/html-tutorial)
 
 #### CSS:
