@@ -487,13 +487,19 @@ az egyik legegyszerűbb lehetőség a JSON használta. Az XML-hez képest sokkal
 a mérete, sokkal kevesebb memóriát igényel és egyszerűbb a szerializálása, egyetlen
 hátránya, hogy nem lehet benne kommentet használni. 
 
+#### Tulajdonságok
+
+* ```WebSocket.readyState``` (unsigned int): az aktuális kapcsolat állapota, amely
+a következő osztálykonstansok értékeit veheti föl: ```WebSocket.CONNECTING``` (0, kapcsolódás vagy
+újrakapcsolódás folyamatban), ```WebSocket.OPEN``` (1, kapcsolat nyiva), ```WebSocket.CLOSING```
+(2, kapcsolat lezárása folyamatban), ```WebSocket.CLOSED``` (3, kapcsolat lezárva).
+
 #### Metódusok
 
-A konstruktor új WebSocket objektumot hoz létre, a társított WebSocket kapcsolattal.
-Paraméterként egy URL-t vár, amely a szerver oldali rész elérhetőségét adja meg.
-Az URL-ben csak "ws" vagy "wss" sémák engedélyezettek. Az URl a létrejövő objektum
-(csak olvasható) url attribútumában lesz eltárolva.
-
+* ```WebSocket.WebSocket(url)``` (konstruktor): új WebSocket objektumot hoz létre, a
+társított WebSocket kapcsolattal. Paraméterként egy URL-t vár, amely a szerver oldali
+rész elérhetőségét adja meg. Az URL-ben csak "ws" vagy "wss" sémák engedélyezettek.
+Az URl a létrejövő objektum (csak olvasható) url attribútumában lesz eltárolva.
 * ```send(adat)```: adatot küld a Websocket kapcsolaton keresztül (az adat lehet
 szöveg, tömb illetve bináris [blob] vagy ArrayBuffer objektum)
 * ```close([kód] [, indoklás])```: lezárja a kapcsolatot, a HTTP üzenetekhez hasonlóan opcionálisan
@@ -506,27 +512,57 @@ indoklás (amelyben ki lehet fejteni a lezárás okát)
 * ```onerror```: ha valamilyen hiba történt
 * ```onmessage```: ha üzenet érkezett, tartalmazza a szerver által küldött üzenetet
 is, ami MessageEvent típusú, amiből a konkrét üzenetet a data property segítségével
-érhetjő el.
+érhető el.
 * ```onclose```: ha valamilyen hiba miatt megszakad a kapcsolat
-
-A kapcsolat állapotát a csak olvasható ```readyState``` property tárolja, amely
-4 különböző (short integer) értéket vehet fel (ezek konstansokhoz vannak rendelve):
-* **CONNECTING** (0),
-* **OPEN** (1),
-* **CLOSING** (2),
-* **CLOSED** (3).
 
 ### 2.6 Szerver által küldött események (Server-Sent Events, SSE)
 
-**Néhány fontosabb különbség a WebSocket és az EventSource között:**
+A HTML5 szabvány *Server-Sent Events*-el foglalkozó [9.2 fejezete](https://html.spec.whatwg.org/multipage/server-sent-events.html)
+egy olyan beépített interfészt határoz meg, amely tartósan fenntartja a kapcsolatot
+a szerverrel és lehetővé teszi, hogy a kliens eseményeket (automatikus frissítéseket)
+fogadjon tőle. Hagyományosan egy weblapnak az adatokat le kell kérnie a szervertől
+(HTTP-kérés formájában), így viszont a kiszolgáló bármikor küldhet újabb adatokat
+a kliensnek. Hasonlóan a WebSocket-hez a kapcsolat itt is tartós, viszont van néhány **fontos
+különbség is a WebSocket és az EventSource között:**
 
 | WebSocket | EventSource (SSE) |
 |-----------|-------------------|
 | Kétirányú, a szerver és a kliens is küldhet üzeneteket | Egyirányú, csak a szerver küldhet adatokat |
 | Bináris és szöveges típusú adat | Csak szöveges adat |
-| [WebSocket protokoll](https://tools.ietf.org/html/rfc6455) | HTTP protokoll |
+| [WebSocket (ws:// vagy wss://) protokoll](https://tools.ietf.org/html/rfc6455) | HTTP protokoll |
 
+Alkalmazási területek: Facebook/Twitter frissítések, részvényárfolyam-frissítések,
+hírcsatornák, sporteredmények stb.
 
+Az **EventSource** interfész meghatározza az összes olyan metódust, amely kezeli
+a kiszolgálóhoz való csatlakozást, események vagy adatok fogadását, a felmerülő
+hibákat, illetve a kapcsolat bezárását. 
+
+#### Tulajdonságok
+
+* ```EventSource.readyState``` (unsigned int): az aktuális kapcsolat állapota, amely
+a következő osztálykonstansok értékeit veheti föl: ```EventSource.CONNECTING``` (0, kapcsolódás vagy
+újrakapcsolódás folyamatban), ```EventSource.OPEN``` (1, kapcsolat nyiva), ```EventSource.CLOSED```
+(2, kapcsolat lezárva).
+* ```EventSource.lastEventId``` (string): az utolsó elküldött elem azonosítója. A
+böngésző újracsatlakozás után a ```Last-Event-ID``` header mezőben küldi el.
+* ```EventSource.url``` (string): a szerver által küldött adatokat biztosító script
+URL-je.
+* ```EventSource.withCredentials``` (bool): true, ha a hitelesítés aktív, egyébként false
+
+#### Metódusok
+
+* ```EventSource.EventSource(url[, { withCredentials: true } ])``` (konstruktor): az
+első paraméter megadja az adat/eseményfolyamot biztosító program URL-jét, a második
+(opcionális) paraméter értéke kizárólag ``` { withCredentials: true }``` lehet (ha
+hitelesítés is kell).
+* ```EventSource.close()```: lezárja a kapcsolatot
+
+#### Eseménykezelők
+
+* ```EventSource.onopen```: ha megnyílik a kapcsolat a szerverhez
+* ```EventSource.onmessage```: ha üzenet érkezik a szervertől
+* ```EventSource.onerror```: ha valamilyen hiba történik
 
 ### 2.7 Hang és video, geolokáció
 
