@@ -450,7 +450,7 @@ meghívni, amikor valamilyen hiba történeik. Szintaxisa: ```myWorker.onerror =
 * ```onmessage```: egy olyan eseménykezelő metódust reprezentál, amit akkor kell
 meghívni, amikor message esemény történik. Szintaxisa: ```myWorker.onmessage = function(event) { ... }; ```
 * ```onmessageerror```: olyan eseménykezelő metódust reprezentál, amit akkor kell
-meghívni, amikor hívodik meg, ha az üzenet nem deszerializálható. Szintaxisa:
+meghívni, ha az üzenet nem deszerializálható. Szintaxisa:
 ```myWorker.onmessageerror = function() { ... }; ```
 
 
@@ -570,15 +570,44 @@ hitelesítés is kell).
 
 ### 2.9 Canvas
 
-A ```<canvas>``` tag segítségével egy rajzvásznat lehet beilleszteni az oldalba. A rajzvászon
-tartalma JavaScript segítségével módosítható. Ezáltal dinamikusan jeleníthető meg
-rajta bármilyen kép, vagy grafika.
+A ```<canvas>``` tag segítségével egy rajzvásznat lehet beilleszteni az oldalba.
+A rajzvászon tartalma JavaScript segítségével módosítható. Ezáltal dinamikusan
+jeleníthető meg rajta bármilyen kép, vagy grafika.
 
-Minden vászonhoz célszerű egy azonosítót rendelni és előre megadni a méretét. Az
-azonosítóra azért van szükség, mert a vászon tartalmát utólag JavaScript segítségével
+Minden vászonhoz célszerű egy azonosítót rendelni és előre megadni a méretét. Erre
+azért van szükség, mert a vászon tartalmát utólag JavaScript segítségével
 tudjuk módosítani, és a vászon elérése az azonosító (id) segítségével lehetséges.
-A vászon szélessége és magassága a width és a height attribútumok segítségével adható
-meg.
+
+A ```<canvas>``` HTML elem a globális attribútumokon felül csak a *width* (vászon szélessége)
+és *height* (vászon magassága) tulajdonságokkal rendelkezik.
+
+
+```html
+
+<canvas id="myCanvas" width="200" height="100"></canvas>
+
+```
+
+Ha létrehoztuk a vásznat, akkor máris rajzolhatunk rá JavaScript segítségével. Ehhez
+először is keressük meg a vásznat:
+
+```javascript
+var canvas = document.getElementById("myCanvas");
+```
+
+A canvas nevű változónk egy HTMLCanvasElement típusú objektumot fog tartalmazni,
+ennek ```getContext()``` nevű metódusával lehet rajzoló objektumot létrehozni,
+a szükséges kontextus megadásával (ez lehet 2d, webgl, webgl2 vagy bitmaprenderer):
+
+```javascript
+var ctx = canvas.getContext("2d");
+```
+
+A ```HTMLCanvasElement.getContext()``` metódus egy beépített HTML objektummal tér
+vissza, amely a rajzoláshoz szükséges tulajdonságokkal és metódusokkal is rendelkezik.
+A vászon bal felső sarka a kiindulópont (origó), minden más pont helyezetét ehhez
+viszonyítva kell megadni (képpontban).
+ 
 
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
 
@@ -733,6 +762,7 @@ a megjelenés egymástól függetlenül is változtatható.
 * MDN: [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
 * W3Schools: [HTML SSE API](https://www.w3schools.com/html/html5_serversentevents.asp)
 * JavaScript.info: [Server Sent Events](https://javascript.info/server-sent-events)
+* MDN: [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 
 #### JSON:
