@@ -564,11 +564,71 @@ hitelesítés is kell).
 * ```EventSource.onmessage```: ha üzenet érkezik a szervertől
 * ```EventSource.onerror```: ha valamilyen hiba történik
 
-### 2.7 Hang és video, geolokáció
+### 2.7 Hang és video
 
-### 2.8 Fogd és vidd (drag and dropp)
+A HTML5 megalkotásának egyik fő célja az volt, hogy a böngészőbe kényszerből telepítendő
+plug-inek számát csökkenteni lehessen. Ebből következően a HTML5 képes hang- és
+mozgóképtartalmak lejátszására is. Ezeket a ```<audio>``` illetve ```<video>```
+html elemek segítségével lehet beágyazni a weboldalba.
 
-### 2.9 Canvas
+Bár mindkét elemhez megadható *src* tulajdonság is, ennek használata nem javallott,
+mert az egyes webböngészők más-más formátumokat támogatnak, ezért ugyanazt a médiaállományt
+többféle formátumban is meg kell adnunk forrásként. Erre szolgál a ```<source>``` elem,
+amelyet az ```<audio>``` illetve a ```<video>``` elembe is be lehet ágyazni. A ```<source>```
+a globális attribútumokon felül rendelkezik még az *src* (a médiaállomány forrása) és
+a *type* (a médiaállomány típusa) tulajdonságokkal is. Érdemes megadni egy type jellemzővel,
+hogy milyen médiafájlokra hivatkozunk, elkerülve ezzel azt, hogy a böngésző az összes
+hivatkozott fájlt elkezdje letölteni, és ezzel hatalmas erőforrásokat és sávszélességet
+emésszünk fel. A type jellemző három információt tartalmaz: a tárolóformátumot (mime-típust),
+a video- és az audiokodeket (utóbbi kettő opcionális, a mime-típus megadása általában
+elég). A böngésző végigmegy a ```<source>``` elemekből álló listán, és megvizsgálja,
+hogy milyen formátumot tud lejtászani a felsoroltak közül és azt a formátumot tölti
+le, majd játssza le.
+
+```html
+<video>
+	<source type='video/mp4; codecs="avc1.42E01E, mp4a.40.2" src="pelda.mp4">
+	<source type='video/ogg; codecs="theora, vorbis"' src="pelda.ogv">
+</video>
+```
+
+Az ```<audio>``` és a ```<video>``` elemek a globális attribútumok (és a már tárgyalt
+src) mellett a következő tulajdonságokkal rendelkezhetnek:
+
+* **autoplay**: logikai attribútum, amely lehetővé teszi, hogy a médiaállomány
+lejátszása automatikusan elinduljon letöltés után
+* **preload**: ezzel adhatjuk meg a böngészőnek, hogy a felhasználó számára melyik
+pufferelési technika lenne az ideális. Ha az autoplay attribútum használatban van,
+akkor a preload attribútumot figyelmen kívül hagyja a böngésző. A preload értékei:
+
+	*auto*: a hanganyag letöltése fontos, még akkor is, ha a felhasználó nem kattint
+	rá a lejátszás gombra.
+	*metadata*: nem szükséges pufferelni a hanganyagot, elég a metaadatok (pl. hang hossza)
+	lekérése.
+	*none*: ezzel jelezhetjük, hogy az audio állományt nem szükséges pufferelni.
+
+* **loop**: logikai attribútum, amely végtelenített lejátszást engedélyez.
+* **muted**: logikai attribútum, alapesetben némítja a lejátszót
+* **controls**: logikai attribútum. Akkor érdemes használni, ha a böngészőprogram
+által biztosított vezérlő eszköztárat szeretnénk megjeleníteni, nem pedig mi
+oldjuk meg ezt scriptek segítségével.
+* **mediagroup**: lehetővé teszi több hang- illetve videósáv egyszerre történő,
+szinkronizált lejátszását.
+
+A ```<video>``` tag további paraméterei:
+
+* **poster**: kezdőkép beállítása (ha nem indul el a videó automatikusan és csak
+egy fekete négyzet látszik a helyén vagy a videó legelső képe semmitmondó és egy
+másik kép megfelelőbb)
+* **width**: a videó elem szélessége
+* **height**: a videó elem magassága
+
+
+### 2.8 Geolokáció
+
+### 2.9 Fogd és vidd (drag and dropp)
+
+### 2.10 Canvas
 
 A ```<canvas>``` tag segítségével egy rajzvásznat lehet beilleszteni az oldalba.
 A rajzvászon tartalma JavaScript segítségével módosítható. Ezáltal dinamikusan
@@ -589,7 +649,7 @@ A ```<canvas>``` HTML elem a globális attribútumokon felül csak a *width* (v�
 ```
 
 Ha létrehoztuk a vásznat, akkor máris rajzolhatunk rá JavaScript segítségével. Ehhez
-először is keressük meg a vásznat:
+először is keressük meg a vásznat az azonosítója segítségével:
 
 ```javascript
 var canvas = document.getElementById("myCanvas");
