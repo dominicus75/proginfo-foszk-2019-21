@@ -601,11 +601,11 @@ lejátszása automatikusan elinduljon letöltés után
 pufferelési technika lenne az ideális. Ha az autoplay attribútum használatban van,
 akkor a preload attribútumot figyelmen kívül hagyja a böngésző. A preload értékei:
 
-	*auto*: a hanganyag letöltése fontos, még akkor is, ha a felhasználó nem kattint
+	* *auto*: a hanganyag letöltése fontos, még akkor is, ha a felhasználó nem kattint
 	rá a lejátszás gombra.
-	*metadata*: nem szükséges pufferelni a hanganyagot, elég a metaadatok (pl. hang hossza)
+	* *metadata*: nem szükséges pufferelni a hanganyagot, elég a metaadatok (pl. hang hossza)
 	lekérése.
-	*none*: ezzel jelezhetjük, hogy az audio állományt nem szükséges pufferelni.
+	* *none*: ezzel jelezhetjük, hogy az audio állományt nem szükséges pufferelni.
 
 * **loop**: logikai attribútum, amely végtelenített lejátszást engedélyez.
 * **muted**: logikai attribútum, alapesetben némítja a lejátszót
