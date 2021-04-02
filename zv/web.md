@@ -119,6 +119,10 @@ fel tudnak használni.
 
 ## 2. A HTML5 újdonságai
 
+A HTML5 sok nyelvi elemet és struktúrát leegyszerűsít, ami a számos új funkció
+ellenére könnyebben írható - és még egyszerűbben olvasható - kódot eredményez. A
+HTML5-tagek és attribútumaik kevésbé terjengősek, és a szintaktika is egyértelműbb.
+
 ### 2.1 Új szemantikus elemek
 
 Bármilyen nyelv szerkezetileg három részből áll: ábécé, szintaktika, szemantika.
@@ -623,8 +627,37 @@ másik kép megfelelőbb)
 * **width**: a videó elem szélessége
 * **height**: a videó elem magassága
 
+### 2.8 Geolokáció (földrajzi helymeghatározás)
 
-### 2.8 Geolokáció
+A felhasználó földrajzi helyzetének meghatározása a W3C által kiadott [Geolocation API](https://www.w3.org/TR/geolocation-API/)
+szabványában meghatározott API segítségével lehetséges. A [Geolocation](https://www.w3.org/TR/geolocation-API/#geolocation),
+objektum a HTML szabványban leírt, a kliens azonosítására és aktuális állapotának
+leírására használt [Navigator](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object)
+objektum (csak olvasható) *geolocation* tulajdonságában található (a *Navigator*
+objektum pedig a **Window.navigator** szintén csak olvasható tulajdonságban érhető el).
+
+A Geolocation objektum nem rendelkezik sem saját, sem örökölt tulajdonságokkal,
+viszont van három metódusa:
+
+* ```Geolocation.getCurrentPosition()```: meghatározza a kliens eszköz aktuális
+helyzetét és visszaadja azt egy koordinátákat (coords) és egy időbélyeget (timestamp)
+tartalmazó [GeolocationPosition](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPosition)
+objektumban. Kötelező paraméterként egy visszahívó (callback) függvényt vár,
+amely siker esetén hajtódik végre, egyetlen bemenete pedig az ereményül kapott *GeolocationPosition*
+objektum. A callback függvényben azt lehet meghatározni, hogy milyen műveleteket
+kell végrehajtani a kapott *GeolocationPosition* objektumon (pl. kiírni az adatokat,
+logolni az eredményt, stb.)
+* ```Geolocation.watchPosition()```: regisztrál egy olyan függvényt, amely mindig
+automatikusan meghívódik, amikor az eszköz helyzete megváltozik. Egy egész számmal
+tér vissza, amely a regisztrált metódust azonosítja. Paraméterezése megegyezik a
+```Geolocation.getCurrentPosition()``` metóduséval.
+* ```Geolocation.clearWatch()```: paraméterként a ```Geolocation.watchPosition()```
+metódus által visszaadott (egész szám) azonosítót várja, melynek segítségével
+törli a regisztrált helyváltoztatás-figyelő függvényt.
+
+A földrajzi helymeghatározás csak biztonságos kapcsolaton (HTTPS) keresztül érhető el,
+úgy, hogy a felhasználó mindig értesítést kap, ha a webhely a helyadatait próbálja
+lekérdezni. Ehhez minden esetben külön hozzá kell járulnia.
 
 ### 2.9 Fogd és vidd (drag and dropp)
 
