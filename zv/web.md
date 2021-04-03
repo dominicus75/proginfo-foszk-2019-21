@@ -770,7 +770,13 @@ viszonyítva kell megadni (képpontban).
 A CSS (Cascading Style Sheets, magyarul: lépcsőzetes stíluslapok) egy stílusleíró
 nyelv, mely a HTML vagy XHTML típusú strukturált dokumentumok megjelenését írja le.
 Ezenkívül használható bármilyen XML alapú dokumentum stílusának leírására is, mint
-például az SVG, XUL stb. A CSS specifikációját a World Wide Web Consortium felügyeli.
+például az SVG, XUL stb.
+
+A CSS specifikációját a World Wide Web Consortium felügyeli. Nincsenek hagyományos
+értelemben vett verziói; viszont vannak szintjei. A CSS minden szintje az előzőekre
+épít, finomítja ezek definícióit és funkciókat ad hozzájuk. Jelenleg a 3. szint
+(CSS3) van használatban, ami a 2. szintre (megjelent: 1998.) épül és a CSS 2.1
+specifikációt (2011.) használja alapul.
 
 A CSS előtt a HTML dokumentumok csaknem minden megjelenéshez kapcsolódó része a
 HTML kódon belül volt; a betűtípusok, színek, háttérstílusok, elrendezések, dobozok,
@@ -787,11 +793,41 @@ jelentősen csökkenhet. A CSS használatának legfontosabb előnyei:
 * Különböző felhasználókhoz különböző stílusokat lehet rendelni
 * A dokumentum mérete és komplexitása csökken, mivel nem tartalmaz információkat a megjelenítéshez
 
-A stíluslapokat külön ```.css``` kiterjesztésű állományban szokás elhelyezni. Így
-könnyedén lehet ugyanazt a megjelenítést adni a honlap összes oldalához, mindössze
-egyetlen CSS állomány szerkesztésével. Ha bármit változtatni kell a dizájnon, lényegében
-csak ezt az egyetlen állományt kell módosítani.
+A stílus információkat háromféle módon rendelhetjük hozzá a HTML dokumentumunkhoz:
 
+* **Külső (external) stíluslap**: ez a legideálisabb eset. Ekkor a HTML állomány
+az oldal informatív részét tartalmazza, a külső CSS állomány pedig összegyűjtve
+a megjelenítésre vonatkozó formázásokat. A HTML oldalhoz a head elemben elhelyezett
+```<link>``` tag vagy az ```@import``` segítségével csatolhatunk külső CSS állományt.
+Ha bármit változtatni kell a dizájnon, lényegében csak ezt az egyetlen .css állományt
+kell módosítani.
+* **Beágyazott (internal) stíluslap**: akkor szokás alkalmazni, ha az oldal egyedi
+(a külső stíluslapot nem lehetne másik oldalhoz felhasználni), vagy nagyon egyszerű
+stílusról van szó. De ez lehet a megfelelő módszer a HTTP kérések számának csökkentésre
+is (SEO megfontolás, kevesebb szál, gyorsabb oldal). A CSS-szabályainkat itt az oldal
+```<head>``` elemében található ```<style type="text/css"></style>``` páros elem által
+határolt blokkban kell elhelyezni.
+* **Soron belüli (inline) stílus**: alkalmazásához a kiválasztott HTML elemet kell
+style tulajdonsággal ellátni és ebben megadni a szükséges szabályokat. Az ily módon
+elkészített weblapok hátránya, hogy nehézkessé válik az arculatuk illetve a tartalmuk
+módosítása, mivel a HTML és a CSS keverve helyezkedik el a forrásban. Az inline
+stíluslap használatának másik hátránya, hogy nem tudjuk megfelelően kihasználni a
+CSS azon lehetőségeit, hogy különböző média típusokra (pl. képernyő, mobil eszköz,
+nyomtatási nézet, képernyőolvasó) más-más stílust rendelhessünk. Alkalmazása nem
+igazán javasolt.
+
+A CSS elnevezésénél a Cascade szó rangsorolásra utal, tehát nem mindegy, hogy az
+adott stílus hol helyezkedik el a rangsorban. Az öröklés az XHTML elemek egymásba
+ágyazottságán alapul, így az egymásba ágyazott elemek öröklik az őket tartalmazó
+elem beállításait. A stílusok elhelyezkedésüktől függően fontossági sorrendben
+állnak (ütközés esetén a későbbi felülírja az előzőt):
+
+1. Böngészőstílus
+2. Felhasználói stílus
+3. Külső stíluslap
+4. A ```head``` elemben definiált beágyazott stíluslap
+5. Soron belüli stílus (a legmagasabb prioritású, felülír minden alacsonyabb szintű
+formázást).
 
 ### 3.1 CSS nyelvtan, kiválasztók és tulajdonságok, mértékegységek.
 
@@ -801,14 +837,14 @@ szabályhoz tartozik egy szelektor (kiválasztó) és egy deklarációs szakasz.
 (lánc, mivel több szelektor is megadható, vesszővel elválasztva) tartalmazza a
 formázandó HTML-elem(ek)et. A deklaráció kapcsos zárójelek között pontosvesszővel
 elválasztott tulajdonság/érték párokat tartalmaz a következő formában: a tulajdonság
-neve, kettőspont, majd az adott tulajdonság értéke, végül egy pontosvessző zárja a
-sort az alább látható módon.
+neve, kettőspont, majd az adott tulajdonság értéke (ha az érték több szóból áll,
+idézőjelbe kell tenni), végül egy pontosvessző zárja a sort az alább látható módon.
 
 ```css
 
 szelektor1, szelektor2,...szelektroN {
 	tulajdonság1: érték1;
-	tulajdonság2: érték2;
+	tulajdonság2: "több szavas érték";
 	....
 	tulajdonságN: értékN;
 }
