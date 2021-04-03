@@ -630,7 +630,7 @@ másik kép megfelelőbb)
 ### 2.8 Geolokáció (földrajzi helymeghatározás)
 
 A felhasználó földrajzi helyzetének meghatározása a W3C által kiadott [Geolocation API](https://www.w3.org/TR/geolocation-API/)
-szabványában meghatározott API segítségével lehetséges. A [Geolocation](https://www.w3.org/TR/geolocation-API/#geolocation),
+szabványában meghatározott API segítségével lehetséges. A [Geolocation](https://www.w3.org/TR/geolocation-API/#geolocation)
 objektum a HTML szabványban leírt, a kliens azonosítására és aktuális állapotának
 leírására használt [Navigator](https://html.spec.whatwg.org/multipage/system-state.html#the-navigator-object)
 objektum (csak olvasható) *geolocation* tulajdonságában található (a *Navigator*
@@ -660,6 +660,62 @@ A földrajzi helymeghatározás csak biztonságos kapcsolaton (HTTPS) keresztül
 lekérdezni. Ehhez minden esetben külön hozzá kell járulnia.
 
 ### 2.9 Fogd és vidd (drag and dropp)
+
+„A „*fogd és vidd”*, *„húzd és ejtsd”* (angolul **drag and drop**) a számítógép grafikus
+felhasználói felületén használatos funkció, melynek segítségével a képernyőn lévő
+valamely absztrakt objektumra egérrel kattintva, majd azt egy másik helyre vagy
+objektum fölé húzva valamilyen feladatot tudunk végrehajtani.”<sup id="2">[[2]](#note2)</sup>
+Ilyen feladat lehet például fájlok feltöltése, másolása, a kinézet elemeinek átrendezése.
+A HTML5 megjelenése előtt ezt a funkcionalitást JQuery vagy más JavaScript függvénykönyvtár
+segítségével lehetett megvalósítani. A HTML5 szabvány viszont már natív támogatást
+biztosít hozzá (HTML5 szabvány, [6.9 fejezet](https://html.spec.whatwg.org/multipage/dnd.html#dnd)).
+
+Ahhoz, hogy egy HTML elemet húzhatóvá tegyünk, egy (globális, bármely elemhez rendelhető)
+```draggable``` logikai attribútumot kell hozzáadni, amely háromféle értéket vehet
+fel: ```true``` (húzható), ```false``` (nem húzható) illetve az alapértelmezett
+```auto``` (a böngésző alapértelmezett viselkedését alkalmazza), ezt az értéket nem
+kell külön feltüntetni. 
+
+Az elemhez eseményfigyelőket is létre kell hozni. A drag and dropp műveletek **DragEvent**
+típusú eseményeket válthatnak ki. A szabványos DragEvent eseményobjektum a **MouseEvent**
+leszármazottja, egyetlen (csak olvasható) tulajdonsággal rendelkezik, ez a
+```DragEvent.dataTransfer```, amely egy **DataTransfer** objektumban tárolja a
+húzott adatokat.
+
+#### Minden DragEvent típusú esemény egy globális eseménykezelőhöz van rendelve:
+
+| DragEvent esemény | HTML eseménykezelő | Eseményt kiváltó elem | Bekövetkezik, ha |
+|-------------------|--------------------|-----------------------|------------------|
+| ```drag``` | ```ondrag``` | húzható elem | a húzható elemet (HTML elem, vagy kijelölt szöveg) mozgatják |
+| ```dragend``` | ```ondragend``` | húzható elem | egy húzási művelet véget ér (egérgomb felengedése vagy esc billentyű lenyomása) |
+| ```dragenter``` | ```ondragenter``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A
+legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő
+két módon jelölhető ki: ```ondragenter="return false"``` vagy ```ondragenter="event.preventDefault()"``` |
+| ```dragleave``` | ```ondragleave``` | fogadó elem (ahová a húzható elem lerakható) | amikor egy húzható elem elhagyja az érvényes ejtési célelemet |
+| ```dragover``` | ```ondragover``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A
+legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő
+két módon jelölhető ki: ```ondragover="return false"``` vagy ```ondragover="event.preventDefault()"``` |
+| ```dragstart``` | ```ondragstart``` | húzható elem | a felhasználó elkezdi húzni az elemet |
+| ```drop``` | ```ondrop``` | fogadó elem (ahová a húzható elem lerakható) | egy húzható elem egy érvényes ejtési célra esik |
+
+
+#### Tulajdonságok
+
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+
+#### Metódusok
+
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+* ```DataTransfer.```:
+
+
+
+
 
 ### 2.10 Canvas
 
@@ -776,6 +832,7 @@ a megjelenés egymástól függetlenül is változtatható.
 
 ### Jegyzetek:
 * <span id="note1">[[1]](#1)</span> Kvaszingerné Prantner Csilla – Nagy Dénes: Weblapfejlesztés, 36-37. oldal
+* <span id="note2">[[2]](#2)</span> Wikipedia: [Fogd és vidd](https://hu.wikipedia.org/wiki/Fogd_%C3%A9s_vidd) szócikk
 
 
 ### Felhasznált (ajánlott) irodalom
@@ -801,8 +858,10 @@ a megjelenés egymástól függetlenül is változtatható.
 * W3schools: [HTML Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp)
 * MDN: [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 * W3C: [Geolocation API Specification 2nd Edition](https://www.w3.org/TR/geolocation-API/)
+* A HTML 5 szabvány [Drag and drop fejezete](https://html.spec.whatwg.org/multipage/dnd.html#dnd)
 * W3schools: [HTML Drag and Drop API](https://www.w3schools.com/html/html5_draganddrop.asp)
 * Tutorialspoint: [HTML5 - Drag & drop](https://www.tutorialspoint.com/html5/html5_drag_drop.htm)
+* MDN: [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
 * Wikipedia: [Canvas](https://hu.wikipedia.org/wiki/Canvas)
 * W3schools: [HTML Canvas Graphics](https://www.w3schools.com/html/html5_canvas.asp)
 * W3schools: [HTML Canvas Reference](https://www.w3schools.com/tags/ref_canvas.asp)
