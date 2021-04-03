@@ -695,20 +695,31 @@ amely egy **DataTransfer** objektumban tárolja a húzott adatokat.
 
 #### Tulajdonságok
 
-* ```DataTransfer.```:
-* ```DataTransfer.```:
-* ```DataTransfer.```:
-* ```DataTransfer.```:
+* ```DataTransfer.dropEffect```: visszaadja az aktuális művelet típusát. Lehtséges
+értékei: *none*, *copy*, *link*, és *move*.
+* ```DataTransfer.effectAllowed```: beállítja húzható elemhez engedélyezett húzási
+művelet típusát. A *dropEffect* attribútum inicializálására szolgál, a *dragenter*
+és *dragover* események során. Lehtséges értékei: *none* (az elem nem húzható),
+*copy* (a forráselem másolata kerül az célelembe), *copyLink* (másolási vagy linkelési
+művelet engedélyezése), *copyMove* (másolási vagy mozgatási művelet engedélyezése),
+*link* (hivatkozás az új helyen lévő forrásra), *linkMove* (mozgatási vagy linkelési
+művelet engedélyezése), *move* (elem áthelyezése a célelembe), *all* (minden művelet
+engedélyezése) és *uninitialized* (alapértelmezett érték, ha a művelet nincs megadva,
+egyenértékű az *all* értékkel).
+* ```DataTransfer.files```: az adatátvitelhez elérhető helyi fájlok listája, ha nincs
+ilyen fájl, akkor a tulajdonság egy üres listát tartalmaz.
+* ```DataTransfer.items```: az egyes húzott elemeket reperezentáló **DataTransferItem**
+objektumokat tartalmazó **DataTransferItemList** objektum. A ```DataTransferItemList.length```
+tulajdonság tárolja a listaelemek számát.
+* ```DataTransfer.types```: string tömb, amely a *dragstart* eseményhez társított
+formátumokat tárolja.
 
 #### Metódusok
 
-* ```DataTransfer.```:
-* ```DataTransfer.```:
-* ```DataTransfer.```:
-* ```DataTransfer.```:
-
-
-
+* ```DataTransfer.clearData(format)```:
+* ```DataTransfer.setData(format, data)```:
+* ```DataTransfer.getData(format)```:
+* ```DataTransfer.setDragImage(element, x, y)```:
 
 
 ### 2.10 Canvas
