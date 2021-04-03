@@ -708,18 +708,20 @@ engedélyezése) és *uninitialized* (alapértelmezett érték, ha a művelet ni
 egyenértékű az *all* értékkel).
 * ```DataTransfer.files```: az adatátvitelhez elérhető helyi fájlok listája, ha nincs
 ilyen fájl, akkor a tulajdonság egy üres listát tartalmaz.
-* ```DataTransfer.items```: az egyes húzott elemeket reperezentáló **DataTransferItem**
+* ```DataTransfer.items``` (csak olvasható): az egyes húzott elemeket reperezentáló **DataTransferItem**
 objektumokat tartalmazó **DataTransferItemList** objektum. A ```DataTransferItemList.length```
 tulajdonság tárolja a listaelemek számát.
-* ```DataTransfer.types```: string tömb, amely a *dragstart* eseményhez társított
-formátumokat tárolja.
+* ```DataTransfer.types``` (csak olvasható): string tömb, amely a *dragstart* eseményhez
+társított formátumokat tárolja.
 
 #### Metódusok
 
-* ```DataTransfer.clearData(format)```:
-* ```DataTransfer.setData(format, data)```:
-* ```DataTransfer.getData(format)```:
-* ```DataTransfer.setDragImage(element, x, y)```:
+* ```DataTransfer.clearData(format)```: eltávolítja a megadott formátumhoz társított
+adatokat (ha nincs formátum megadva, az összes adatot törli).
+* ```DataTransfer.setData(format, data)```: beállítja a megadott adatot a megadott típushoz
+* ```DataTransfer.getData(format)```: visszaadja a megadott típushoz tartozó adatot
+* ```DataTransfer.setDragImage(element, x, y)```: adott elem segítségével frissíti
+a húzási visszajelzéseket.
 
 
 ### 2.10 Canvas
