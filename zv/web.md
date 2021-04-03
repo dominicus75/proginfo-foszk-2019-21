@@ -688,13 +688,9 @@ húzott adatokat.
 |-------------------|--------------------|-----------------------|------------------|
 | ```drag``` | ```ondrag``` | húzható elem | a húzható elemet (HTML elem, vagy kijelölt szöveg) mozgatják |
 | ```dragend``` | ```ondragend``` | húzható elem | egy húzási művelet véget ér (egérgomb felengedése vagy esc billentyű lenyomása) |
-| ```dragenter``` | ```ondragenter``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A
-legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő
-két módon jelölhető ki: ```ondragenter="return false"``` vagy ```ondragenter="event.preventDefault()"``` |
+| ```dragenter``` | ```ondragenter``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő két módon jelölhető ki: ```ondragenter="return false"``` vagy ```ondragenter="event.preventDefault()"``` |
 | ```dragleave``` | ```ondragleave``` | fogadó elem (ahová a húzható elem lerakható) | amikor egy húzható elem elhagyja az érvényes ejtési célelemet |
-| ```dragover``` | ```ondragover``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A
-legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő
-két módon jelölhető ki: ```ondragover="return false"``` vagy ```ondragover="event.preventDefault()"``` |
+| ```dragover``` | ```ondragover``` | fogadó elem (ahová a húzható elem lerakható) | érvényes ejtési célok megjelölésére szolgál, ahol a húzott elemek eldobhatók. A legtöbb HTML elem nem alkalmas húzott elemek fogadására, ezért alapértelmezés szerint nem is engedélyezi azt. Érvényes célelem a következő két módon jelölhető ki: ```ondragover="return false"``` vagy ```ondragover="event.preventDefault()"``` |
 | ```dragstart``` | ```ondragstart``` | húzható elem | a felhasználó elkezdi húzni az elemet |
 | ```drop``` | ```ondrop``` | fogadó elem (ahová a húzható elem lerakható) | egy húzható elem egy érvényes ejtési célra esik |
 
