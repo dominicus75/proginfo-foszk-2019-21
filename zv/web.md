@@ -767,14 +767,53 @@ viszonyítva kell megadni (képpontban).
 
 ## 3. Weboldalak információtartalmának és kinézetének szétválasztása
 
-A HTML leírónyelvvel határozzuk meg a weboldalak tartalmát és struktúráját. A weboldalak
-megjelenítéséért a CSS állományok felelnek. Az a helyes, ha a tartalom és a forma
-egymástól élesen elkülönül, a HTML (strukturált tartalom) és a CSS (formázás, megjelenés, elrendezés)
-állományokkal ez professzionálisan megvalósítható, ez azért fontos, mert így a tartalom és
-a megjelenés egymástól függetlenül is változtatható.
+A CSS (Cascading Style Sheets, magyarul: lépcsőzetes stíluslapok) egy stílusleíró
+nyelv, mely a HTML vagy XHTML típusú strukturált dokumentumok megjelenését írja le.
+Ezenkívül használható bármilyen XML alapú dokumentum stílusának leírására is, mint
+például az SVG, XUL stb. A CSS specifikációját a World Wide Web Consortium felügyeli.
+
+A CSS előtt a HTML dokumentumok csaknem minden megjelenéshez kapcsolódó része a
+HTML kódon belül volt; a betűtípusok, színek, háttérstílusok, elrendezések, dobozok,
+keretek és méretek külön meg voltak adva, gyakran ismétlődően, a HTML kód közepén.
+A CSS használatával a tartalom és a forma egymástól élesen elkülönül, a HTML (strukturált
+tartalom) és a CSS (formázás, megjelenés, elrendezés) állományokkal ez professzionálisan
+megvalósítható. Ez azért fontos, mert így a tartalom és a megjelenés egymástól
+függetlenül is változtatható, ez pedig egy sokkal egyszerűbb, kevésbé redundáns
+HTML kódot eredményez. A HTML dokumentumok kisebbek lesznek, és mivel a webböngészők
+gyakran tárolják a CSS stíluslapokat a gyorsítótárban, a hálózati forgalom is
+jelentősen csökkenhet. A CSS használatának legfontosabb előnyei:
+
+* Több lap vagy akár egy teljes webhely stílusait egy helyen lehet tárolni, így gyorsan és könnyen frissíthető
+* Különböző felhasználókhoz különböző stílusokat lehet rendelni
+* A dokumentum mérete és komplexitása csökken, mivel nem tartalmaz információkat a megjelenítéshez
+
+A stíluslapokat külön ```.css``` kiterjesztésű állományban szokás elhelyezni. Így
+könnyedén lehet ugyanazt a megjelenítést adni a honlap összes oldalához, mindössze
+egyetlen CSS állomány szerkesztésével. Ha bármit változtatni kell a dizájnon, lényegében
+csak ezt az egyetlen állományt kell módosítani.
 
 
 ### 3.1 CSS nyelvtan, kiválasztók és tulajdonságok, mértékegységek.
+
+A CSS egyszerű szintaxissal rendelkezik, csak néhány angol nyelvű kulcsszót használ
+a stílusok tulajdonságaihoz. A stíluslap maga a stílust leíró szabályok sora. Minden
+szabályhoz tartozik egy szelektor (kiválasztó) és egy deklarációs szakasz. A szelektor
+(lánc, mivel több szelektor is megadható, vesszővel elválasztva) tartalmazza a
+formázandó HTML-elem(ek)et. A deklaráció kapcsos zárójelek között pontosvesszővel
+elválasztott tulajdonság/érték párokat tartalmaz a következő formában: a tulajdonság
+neve, kettőspont, majd az adott tulajdonság értéke, végül egy pontosvessző zárja a
+sort az alább látható módon.
+
+```css
+
+szelektor1, szelektor2,...szelektroN {
+	tulajdonság1: érték1;
+	tulajdonság2: érték2;
+	....
+	tulajdonságN: értékN;
+}
+
+```
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
 
