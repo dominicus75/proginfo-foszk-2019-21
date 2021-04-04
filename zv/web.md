@@ -863,6 +863,8 @@ idézőjelbe kell tenni), végül egy pontosvessző zárja a sort az alább lát
 
 ```css
 
+/* Ez itt egy megjegyzés */
+
 szelektor1, szelektor2,...szelektroN {
 	tulajdonság1: érték1;
 	tulajdonság2: "több szavas érték";
@@ -871,6 +873,9 @@ szelektor1, szelektor2,...szelektroN {
 }
 
 ```
+
+A CSS stíluslapok is tartalmazhatnak megjegyzéseket, amelyeket ```/*``` és ```*/```
+jelek közé kell tenni.
 
 #### Kiválasztók (szelektorok)
 
@@ -886,19 +891,40 @@ A szelektorokat a következő csoportokba sorolhatjuk:
 
 * **egyszerű kijelölők** (*simple selector*):
 
-| Típus | Kijelölő | Példa | Leírás |
+| Típus | Jelölés | Példa | Leírás |
 |-------|----------|-------|--------|
-| Univerzális kijelölő | * | * { margin: 0; } | Az összes elemet kijelöli |
-| Csoportos kijelölő | elem,elem2,...elemN | div, p { margin: 0; } | A felsorolt elemeket választja ki |
-| Elem kijelölő | elem_neve | header { padding: 1em; } | Csak egy konkrét elemet (típust) jelöl ki |
-| Osztály kijelölő | .class | .left { text-align: left; } | Azonos osztályba sorolt elemekre vonatkozik |
-| Elem-osztály kijelölő | elem.class | p.left { text-align: left; } | Adott típuson belül a megadott osztályba tartozó elemeket jelöli ki |
-| Azonosító kijelölő | #id | #name { font-family: "Times New Roman"; } | A megadott egyedi azonosítóval rendelkező elemet jelöli |
+| Univerzális kijelölő | ```*``` | ```* { margin: 0; }``` | Az összes elemet kijelöli |
+| Csoportos kijelölő | elem,elem2,...elemN | ```div, p { margin: 0; }``` | A felsorolt elemeket választja ki |
+| Elem kijelölő | elem_neve | ```header { padding: 1em; }``` | Csak egy konkrét elemet (típust) jelöl ki |
+| Osztály kijelölő | .class | ```.left { text-align: left; }``` | Azonos osztályba sorolt elemekre vonatkozik |
+| Elem-osztály kijelölő | elem.class | ```p.left { text-align: left; }``` | Adott típuson belül a megadott osztályba tartozó elemeket jelöli ki |
+| Azonosító kijelölő | #id | ```#name { font-family: "Times New Roman"; }``` | A megadott egyedi azonosítóval rendelkező elemet jelöli |
 * **kombinátorok** (*combinator selector*): az öröklései viszonyok (a dokumentumfa) alapján
 történő kijelölést teszik lehetővé.
-* **pszeudo-osztály kijelölők** (*pseudo-class selector*):
-* **pszeudo-elem kijelölők** (*pseudo-element selector*):
-* **attribútum kijelelölők** (*attribute-selector selector*):
+
+| Típus | Jelölés | Példa | Leírás |
+|-------|----------|-------|--------|
+| Származtatott kombinátor | szóköz az ős és a leszármazott elem között | ```div p { margin: 0; }``` | Olyan elem jelölhető ki vele, ami egy másik leszármazottja |
+| Gyermek kombinátor | ```>``` |  ```div > p { margin: 0; }``` | Két elem közötti szülő-gyermek viszonyt ír le (közvetlen leszármazás) |
+| Közeli testvér | ```+``` |  ```div + p { margin: 0; }``` | Közös szülő a dokumentumfában, az első elem közvetlenül megelőzi a másodikat |
+| Általános testvér | ```~``` |  ```div ~ p { margin: 0; }``` | Közös szülő a dokumentumfában, az első elem nem közvetlenül a második előtt található (lehetnek a kettő között más elemek) |
+* **pszeudo-osztály kijelölők** (*pseudo-class selector*): segítségükkel az elemeket
+tulajdonságaik, állapotuk vagy relatív elhelyezkedésük alapján tudjuk kiválasztani.
+Az elemek állapotára történő hivatkozás például a ```:hover``` (egér ráhúzása az
+adott elemre), a ```:focus``` (mikor egy elemre kattintunk, és végül elkattintunk),
+a ```:visited``` (linkek esetén, ha már látogattuk őket). A pszeudo-osztály neve
+előtt egy kettőspontnak kell állni, némelyiket elláthatjuk paraméterrel is, például
+ha egy elemet az elhelyezkedése alapján szeretnénk kiválasztani, akkor azt megtehetjük
+egy (n) egészszám paraméter átadásával (```:pszeudo-osztály(n) {}```). Az (n) érték
+az elem relatív pozícióját határozza meg a dokumentumfában. 
+* **pszeudo-elem kijelölők** (*pseudo-element selector*): egy elem meghatározott
+részének kijelölésére alkalmasak, az elem és a pszuedo-elem két darab kettősponttal
+van elválasztva (```elem::pszeudo-elem```). Ilyen rész lehet a (blokkszintű) elem
+első sora (```p::first-line```), első betűje (```p::first-letter```). Más pszeudo
+elemekkel a HTML forrásban nem szereplő tartalmat lehet beilleszteni, a kiválasztott
+elem elé (```div::before```) vagy után (```div::after```).
+* **attribútum kijelelölők** (*attribute-selector selector*): egy HTML elem jellemzője,
+vagy annak meghatározott értéke alapján jelöl ki
 
 #### Tulajdonságok
 
