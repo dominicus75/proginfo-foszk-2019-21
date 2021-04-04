@@ -930,6 +930,40 @@ vagy annak meghatározott értéke alapján jelöl ki
 
 #### Mértékegységek
 
+Sok CSS tulajdonság vehet fel valamilyen hosszméretet (width, margin, padding,
+font-size, stb.). Ezeket kétféleképpen is meg lehet adni: abszolút és relatív
+hosszúságmértékekben.
+
+*Abszolút hosszmértékek*
+
+Az abszolút hosszúságértékekhez hozzátartozik az a mértékegység, amiben értelmezendő.
+
+| Mértékegység jele | Leírás |
+|-------------------|--------|
+| ```cm``` | centiméter |
+| ```mm``` | milliméter |
+| ```in``` | hüvelyk (1in = 96px = 2.54cm) |
+| ```px``` | pixel/képpont (1px = 1/96in = ~0,26mm) |
+| ```pt``` | pont (nyomdaipari mértékegység, 1pt = 1/72in = ~0,352mm) |
+| ```pc``` | pica vagy cicero (nyomdaipari mértékegység, 1pc = 12pt = ~4,23mm) |
+
+*Relatív hosszmértékek*
+
+A relatív hosszúságértékek önmagukban sosem fejeznek ki semmit, mivel értékük más
+értékektől függ. A segítségükkel megváltoztathatjuk egy tulajdonság aktuális vagy
+megörökölt értékét.
+
+| Mértékegység jele | Leírás |
+|-------------------|--------|
+| ```em``` | Az aktuális elem betűmérete (az em elé írt szám jelképezi azt a szorzót ahány szorosára kívánjuk változtatni az aktuális (vagy megöröklött) értéket) |
+| ```ex``` | Relatív érték az adott betűtípus kis x betűjének magasságához képest |
+| ```ch``` | Relatív érték az adott betűtípus „0” (zero) karakterének szélességhez képest |
+| ```rem``` | A gyökérelem betűmérete (a rem elé írt szám jelképezi azt a szorzót ahány szorosára kívánjuk változtatni a gyökérelemből örökölt értéket) |
+| ```vw``` | A viewport szélességének 1%-a |
+| ```vh``` | A viewport magasságának 1%-a |
+| ```vmin``` | A viewport kisebb dimenziójának 1%-a |
+| ```vmax``` | A viewport nagyobb dimenziójának 1%-a |
+| ```%``` | A százalékos értékek relatívak, azaz értékük más értékekből számolódik ki. Ez általában a szülő elemtől örökölt érték. |
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
 
