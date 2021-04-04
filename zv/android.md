@@ -280,6 +280,74 @@ Ha ezek egyike sem felel meg, akkor az alapértelmezett erőforrásokat használ
 Az Android Studio IDE segítségével az erőforrások és azok minősítői könnyedén kezelhetőek.
 
 ## 5. Activity életciklusmodellje.
+
+Minden felülettel rendelkező alkalmazásnak tartalmaznia kell legalább egy Activity osztályt.
+Ezek a komponensek felelnek a felhasználói interakciók fogadásáért valamint a felületek megjelenítéséért. 
+Az Activity komponens saját életciklussal rendelkezik, amelyben változás bekövetkezhet felhasználó interakció vagy rendszerművelet hatására.
+
+Az alkalmazások használata során az Activity példányok különböző állapotokon mennek keresztül, például amikor egy alkalmazás előtérbe, vagy éppen megsemmisítésre kerül.
+Ha egy új Activity-t indítunk el, akkor az éppen előtérben lévő szüneteltetésre kerül, majd ha újra előtérbe került, akkor működése folytatódik.
+Amíg az Activity példány szüneteltetett állapotban van, addig nagyobb esély van rá, hogy a rendszer erőforrás felszabadítás céljából leállítsa azt.
+
+Az Activity példányok létrehozásáért és leállításáért az Android rendszer felel, viszont minden új állapotba lépéskor a rendszer meghívja az állapothoz tartozó úgynevezett „callback” függvényt.
+Ezen függvények felüldefiniálásával tudunk az egyes eseményekre reagálni, például ezekben szükséges elvégezni a használt erőforrások felszabadítását vagy az Activity aktuális állapotának mentését.
+Tehát ezeken a függvényeken keresztül határozzuk meg azt, hogyan viselkedjen az Activity példányunk, ha életciklusában változás történik.
+Ezeket az állapot változásokat nem csak a felhasználó válthatja ki, például egy telefonhívás hatására az éppen futó Activity szüneteltetésre kerül, majd a hívás befejezése után működése folytatódik.
+Ilyenkor nem garantált, hogy a felhasználó a hívás után visszatér az alkalmazásunkba, viszont a jó felhasználói élmény érdekében biztosítanunk kell, hogyha visszatér, akkor az alkalmazás állapotát pontosan olyanra állítsuk vissza, mint amikor elhagyta az alkalmazást.
+Tehát biztosítanunk kell, ha valaki például egy üzenet vagy SMS írása közben hívást kap, és fogadja azt, a hívás befejezésével ne vesszen el az addig már begépelt üzenete.
+Ez elsőre egyszerűnek tűnik, hiszen a hívás idejére az Activity osztályunk működése szüneteltetésre kerül, majd a hívás befejezése után folytatódik.
+Viszont előfordulhat az, hogy a készülék akkumulátora merülni kezd, és a rendszer a hosszabb üzemidő elérésének érdekében visszafogja a teljesítményt, amihez a háttérben lévő alkalmazások futását leállítja.
+Az ilyen esetek kezelésére mindenképpen szükséges az aktuális állapot mentése, majd visszaállítása.
+
+A következő ábrán láthatjuk egy Activity példány életciklusát, és az állapotváltozások során meghívott „callback” függvényeket.
+
+![Activity életciklus állapotai és függvényei](./android-src/activity_lifecycle.png "Activity életciklus állapotai és függvényei.")
+
+**onCreate()**
+Ez az első „callback” függvény, ami az Activity létrehozásakor kerül meghívásra, itt a *Created* állapotba lép.
+A komponens életciklusa során pontosan csak egyszer kerül ebbe az állapotba, és ilyenkor kell a megjelenítendő felületet beállítani (`setContentView()`), vagy akár egy ViewModel-t hozzárendelni az Acitivity példányunkhoz.
+Továbbá ha szükségünk van a felhasználói felületet alkotó komponensek referenciáira, akkor azok beállítását is itt kell megtenni, a jól ismert `findViewById()` metódussal.
+A függvény egy *Bundle* típusú paraméterrel rendelkezik, amely az Activity legutóbbi mentett állapotát tartalmazza, ha van ilyen.
+Activity állapotának mentését az `onSaveInstanceState()` metódus felüldefiniálásával lehet megtenni.
+A metódus befejeztével az `onStart()` függvény kerül meghívásra.
+
+**onStart()**
+A Created állapot után az Activity a *Started* állapotra vált, és megjelenítésre kerül a felület a felhasználó számára.
+Az alkalmazás előkészíti az Activity példányt az előtérbe lépésre, valamint a felhasználói interakciók kezelésére.
+A metódus befejeztével az `onResume()` függvény kerül meghívásra.
+
+**onResume()**
+Amikor az Activity előtérbe kerül, a rendszer meghívja az `onResume()` metódust.
+Fontos kiemelni, hogy az Activity többféleképpen kerülhet ebbe az állapotba, hiszen ha az Activity szüneteltetett állapot után újra előtérbe kerül, akkor is felveszi ezt az állapotot.
+Az Activity egészen addig ebben az állapotban marad, amíg előtérben van, viszont külső események hatására ez megváltozhat, mint például egy telefonhívás fogadása, vagy az eszköz kijelzőjének kikapcsolása.
+Ilyen események során az Activity *Paused* állapotba lép, majd az esemény befejeztével újra *Resumed* állapotra vált.
+Ez a két állapot szoros összefüggésben vagy egymással, mert minden olyan erőforrást, amit *Resumed* állapotba lépéskor kezdünk el használni, azt a *Paused* állapotban kell felszabadítani.
+Ezek alapján feltételezhetnénk azt is, hogy az alkalmazás felülete csak akkor látható a felhasználó számára, amikor az *Resumed* állapotban van.
+Vannak viszont kivételes esetek, mint például a több ablakos mód.
+Ebben az esetben az Activity továbbra is látható marad, viszont *Paused* állapotba kerül.
+Ha olyan tartalmat jelenítünk meg, amelynek frissítése ilyen helyzetben is szükséges lehet (pl.: videó lejátszás, kamerakép mutatása), akkor a *Started* és *Stopped* állapotot szükséges használni.
+
+**onPause()**
+Ha valamilyen esemény hatására az Activity háttérbe kerül, akkor ez az első metódus, amely meghívásra kerül.
+Ebben az állapotban az Activity még mindig látható a felhasználó számára, viszont egy másik Activity került előtérbe.
+Ez lehet több ablakos módban egy másik Activity-re váltás, vagy egy nem teljes képernyőt kitöltő Activity előtérbe kerülésének eredménye.
+Az esemény lefutása nagyon rövid, ami általában nem elegendő az aktuális állapot mentéséhez, hálózati kérések vagy adatbázis tranzakciók futtatásához.
+Az ilyen műveletek elvégzéséhez az `onStop()` metódus biztosít lehetőséget.
+A metódus befejeztével az Activity továbbra is *Paused* állapotban marad mindaddig, amíg nem kerül újra előtérbe vagy nem tűnik el teljesen a képernyőről.
+
+**onStop()**
+Az Activity `Stopped` állapotba kerül, amikor teljesen eltűnik a képernyőről, vagyis a felhasználó számára nem lesz látható.
+Ebben az állapotban érdemes elvégezni az erőforrásigényes műveleteket, amelyek az aktuális állapot mentéséért felelnek.
+Az Activity továbbra is a memóriában marad, valamint a megjelenített nézetek állapotai is mentésre kerülnek, így azok tulajdonságainak, adatainak mentésére külön nincsen szükség.
+Ha az Activity újra megjelenítésre kerül, akkor a rendszer meghívja az `onRestart()` metódust, vagy befejezése esetén az `onDestroy()` metódust.
+
+**onRestart()**
+Ha az Activity *Stopped* állapotban van, és a felhasználó újra az Activity-re navigál, akkor mielőtt az *Started* állapotba lépne, meghívásra kerül az `onRestart()` metódus.
+
+**onDestroy()**
+Az Activity megszűntetése előtti utolsó „callback” metódus, amely bekövetkezhet az Activity befejezése, bezárása vagy akár egy orientáció változás hatására.
+Ezen a ponton az Activity által birtokolt minden erőforrást fel kell szabadítani, ha ez még nem történt meg az előző állapotokban.
+
 ## 6. Felület létrehozása. Vezérlőelemek. View. Felugró értesítések.
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
