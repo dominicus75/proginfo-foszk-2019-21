@@ -834,17 +834,19 @@ megfelelően olvashassa az adott oldalt.
 2. **HTML-kódba beágyazott (inline) stílusdefiníciók**. A HTML elemek ```style```
 attribútuma tartalmazza az elemre vonatkozó szabályokat. Használatuk nem túl szép
 és nem is praktikus, ezért csak korlátozottan ajánlott.
-3. **!important kulcsszóval ellátott CSS szabályok**. Egy CSS-deklarációt fontossá
+3. **Média típusokhoz rendelt stíluselemek** (Media Query). Segítségükkel különböző
+kimenetekhez különböző megjelenések társíthatók.
+4. **!important kulcsszóval ellátott CSS szabályok**. Egy CSS-deklarációt fontossá
 tehetünk, azaz felülbírálhatjuk vele a többi stílusutasítást. Így az eredeti kiértékelési
 sorrendet felülbírálva adhatunk meg stílusszabályokat. Ehhez a deklarációban az
 érték és a deklarációt záró pontosvessző közzé helyezzük el az *!important* kulcsszót.
-4. A CSS szabályokhoz **prioritás** van rendelve. Az ID-szelektorokhoz 100,
+5. A CSS szabályokhoz **prioritás** van rendelve. Az ID-szelektorokhoz 100,
 az osztályszelektorokhoz 10, míg a HTML-szelektorok 1-es értékkel rendelkeznek. A
 szelektorlistákban ezek az értékek összeadódnak. **A magasabb prioritással rendelkező
 CSS szabályok felülbírálják az alacsonyabb prioritásúakat.**
-5. **Belinkelt és beimportált (external, külső) stíluslapok**.
-6. **Szülő elemtől örökölt stílusértékek**.
-7. **Böngésző alapértelmezett stílusbeállításai**. Ezek böngészőnként különbözőek
+6. **Belinkelt és beimportált (external, külső) stíluslapok**.
+7. **Szülő elemtől örökölt stílusértékek**.
+8. **Böngésző alapértelmezett stílusbeállításai**. Ezek böngészőnként különbözőek
 lehetnek, ezért érdemes ezen alapbeállításokat lenullázni a stíluslap elején
 ([reset.css](https://meyerweb.com/eric/tools/css/reset/)).
 
@@ -869,6 +871,33 @@ szelektor1, szelektor2,...szelektroN {
 }
 
 ```
+
+#### Kiválasztók (szelektorok)
+
+A kiválasztók (kijelölők vagy szelektorok) azt definiálják, hogy a deklarációs blokkban
+található stílusdeklaráció mely HTML elemre vagy elemekre vonatkozzon. Ha több elemre
+is szeretnénk ugyanazt a CSS-szabályt alkalmazni, akkor szelektor-csoportot
+kell létrehoznunk. Azaz a deklarációs blokk előtt vesszővel elválasztva felsoroljuk
+a kívánt szelektorokat, így az összes szelektorra vonatkozik majd a stílusdeklaráció.
+Tehát egy szelektorhoz több meghatározás is tartozhat, illetve több elemre is érvényesíthetők
+ugyanazok a szabályok.
+
+A szelektorokat a következő csoportokba sorolhatjuk:
+
+* **egyszerű kijelölők** (*simple selector*):
+| Típus | Kijelölő | Példa | Leírás |
+|-------|----------|-------|--------|
+|  |  |  |  |
+* **kombinátorok** (*combinator selector*): az öröklései viszonyok (a dokumentumfa) alapján
+történő kijelölést teszik lehetővé.
+* **pszeudo-osztály kijelölők** (*pseudo-class selector*):
+* **pszeudo-elem kijelölők** (*pseudo-element selector*):
+* **attribútum kijelelölők** (*attribute-selector selector*):
+
+#### Tulajdonságok
+
+#### Mértékegységek
+
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
 
