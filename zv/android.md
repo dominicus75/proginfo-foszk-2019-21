@@ -215,6 +215,70 @@ Egy jogosultság használatához a `<uses-permission>`, létrehozáshoz pedig a 
 A példában megadott szabályok alapján az alkalmazás nem lesz telepíthető olyan eszközökre, amelyek nem rendelkeznek Bluetooth hardverrel. Az alkalmazás viszont rendelkezik olyan funkciókkal, amelyek a kamerát is használatba vennék, viszont megléte nem feltétlen szükséges az alkalmazás használatához.
 
 ## 4. Minősítők, mértékegységek.
+
+Mivel az Android-os eszközök több különböző felbontásban és képernyőméretetben jelennek meg, az alkalmazásunknak is támogatnia kell ezeknek a készülékeknek legalább egy részhalmazát.
+A támogatott megjelenítéseket úgy érdemes kiválasztani, hogy a lehető legtöbb felhasználót érjük el.
+Annak érdekében, hogy tovább tudjunk lépni, tekintsük meg az alábbi fogalmakat:
+* Képernyőméret: Eszköz fizikai képátlóját jelenti. Értékei: small, normal, large, extra large.
+* Képernyősűrűség: Pixelek száma egy adott fizikai területen (általában dpi-ben, azaz dots per inch-ben). Értékei: low, medium, high és extra high
+* Orientáció: Eszköz elhelyezkedése lehet álló (portait) vagy fekvő (landscape), amely orientáció futási időben is megváltozhat.
+* Felbontás: A képernyőn található fizikai pixelek száma. A felület létrehozásában a felbontás helyett a képernyőmérettel és a pixelsűrűséggel dolgozunk.
+
+**Mértékegységek**
+Nem csak az Androidos eszközök képernyőinek mérete, de a felbontása is eltérhet, vagyik míg az egyik eszköz 160 DPI (dots per inch) pontsűrűségű, addig egy másik eszköz lehet 480 DPI.
+Ha nem vesszük figyelembe az eszközök ezen tulajdonságait, akkor a rendszer például átméretezheti a képet, ami homályos lesz, vagy a kép teljesen rossz méretben jelenik meg.
+Ezek elkerülése érdekében érdemes bevezetni két mértékegységet:
+* sűrűségfüggetlen pixel: dp (density-independent pixels)
+* skálafüggetlen pixel: sp (scale-independent pixels)
+
+Android természetesen támogat más mértékegységeket is, a vezérlők méretét például pixelben (px), inch-ben (in), milliméterben (mm) vagy pontban (pt) is megadhatjuk.
+A sűrűségfüggetlen mértékegységek abban nyújtanak segítséget, hogy a különböző felbontású készülékeken egységes méretben jelenjenek meg a vezérlők.
+Szövegmegjelenítésnél használatos a skálafüggetlen pixel (sp), ami azért fontos, mert a felhasználó az Android készülék beállításainál megváltoztatja a betűméretet, így az alkalmazásunkon belül is a szövegek mérete ez alapján fog változni.
+Összegezve az előbbieket, vezérlők méreténél, margin és padding tulajdonságnál a dp-t, szövegméreteknél pedig az sp-t használjuk.
+
+**Minősítők**
+Annak érdekében, hogy egy alkalmazás módosítás nélkül képes legyen futni különböző méretű, hardverű és Android verziójú eszközökön, erőforrásminősítőket kell használnunk.
+Egy erőforráshoz több minősítőt is megadhatunk, ilyenkor a használathoz minden feltételnek meg kell felelnie.
+A minősítők kezelését a rendszer a mappák elnevezéseivel oldja meg, mégpedig a következőképpen:
+
+| Könyvtár neve     | Elérési út              | Minősítők   | Jelentése                                  |
+|-------------------|-------------------------|-------------|--------------------------------------------|
+| layout            | /res/layout/            | -           | "default" kinézet                          |
+| layout-large      | /res/layout-large/      | large       | kinézet nagy képernyőkre                   |
+| layout-large-land | /res/layout-large-land/ | large, land | kinézet nagy képernyőkre, fekvő helyzetben |
+
+A `layout/` könyvtárban elhelyezett felületek támogatják a portait és a landscape nézeteket egyaránt.
+Képernyőméretekhez is tartoznak minősítők, a fogalmaknál felsorolt képernyőméret azonosítók az alábbiak:
+* xlarge: legalább 960dp x 720dp
+* large: legalább 640dp x 480dp
+* normal: legalább 470dp x 320dp
+* small: legalább 426dp x 320dp
+
+Az így létrehozott mappákban az adott erőforrásnak ugyanazzal a fájlnévvel kell szerepelnie, a rendszer innen tudja, hogy több változat is elérhető.
+A minősítők felsorolásánál a sorrend kötött, tehát rossz sorrend alkalmazása esetén az adott erőforrás nem lesz figyelembe véve.
+A rendszer futásidőben választja ki a megfelelő erőforrást az alapján, hogy milyen eszközön fut.
+
+Ahhoz, hogy a grafikai elemek jól jelenjenek meg minden méretű és felbontású eszközön, 2 lehetőségünk van:
+* Használjunk vektorgrafikus grafikai elemeket
+* Raszteres grafikai elemek esetén biztosítsuk több verziót az adott elemből, egyet-egyet minden sűrűség-tartományhoz, megfelelő felbontással, a megfelelő mappába elhelyezve (`drawable/mdpi`, `drawable/hdpi`, `drawable/xhdpi`, stb). A rendszer a minősítő alapján fogja eldönteni, hogy az adott eszközön melyik verziót töltse be.
+
+![Képernyősűrűségek és minősítői](./android-src/devices-density.png "Képernyősűrűségek és minősítői.")
+
+A lokalizáció megvalósításához is fel tudjuk használni az erőforrás minősítőket.
+Ennek megvalósításához viszont feltétlen szükséges, hogy az alkalmazásban a felhasználó számára megjelenő összes szöveg string erőforrásként legyen rögzítve.
+Így ha az alkalmazásban található a rendszer nyelvi beállításainak megfelelő minősítővel ellátott erőforrás, akkor azok kerülnek megjelenítésre.
+Előfordulhatnak olyan szövegek, amelyeket nem szeretnénk vagy nem szükséges fordítani, ezeket a `<string>` tag-en használható `translatable="false"` tulajdonsággal adhatjuk meg.
+
+| /values/strings.xml                                         | /values-hu/strings.xml                    | /values-de/strings.xml                  |
+|-------------------------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `<string name="yes_button">Yes</string>`                    | `<string name="yes_button">Igen</string>` | `<string name="yes_button">Ja</string>` |
+| `<string name="ok_button" translatable="false">Ok</string>` |                                           |                                         |
+
+A rendszer először megpróbálja megtalálni a megfelelő erőforrásminősítővel rendelkező erőforrást.
+Ha ezek egyike sem felel meg, akkor az alapértelmezett erőforrásokat használja a megfelelő mappából:
+`layout/`, `drawable/`, `values/`, stb.
+Az Android Studio IDE segítségével az erőforrások és azok minősítői könnyedén kezelhetőek.
+
 ## 5. Activity életciklusmodellje.
 ## 6. Felület létrehozása. Vezérlőelemek. View. Felugró értesítések.
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
