@@ -816,18 +816,37 @@ CSS azon lehetőségeit, hogy különböző média típusokra (pl. képernyő, m
 nyomtatási nézet, képernyőolvasó) más-más stílust rendelhessünk. Alkalmazása nem
 igazán javasolt.
 
-A CSS elnevezésénél a Cascade szó rangsorolásra utal, tehát nem mindegy, hogy az
-adott stílus hol helyezkedik el a rangsorban. Az öröklés az XHTML elemek egymásba
+Az egymásba ágyazhatóság (kaszkádolás) arra utal, hogy több stíluslapot, meghatározást
+is megadhatunk egyszerre, illetve egy stílus lehet több elemre is érvényes, amit
+egy másik stílussal felüldefiniálhatunk. Az öröklés az XHTML elemek egymásba
 ágyazottságán alapul, így az egymásba ágyazott elemek öröklik az őket tartalmazó
-elem beállításait. A stílusok elhelyezkedésüktől függően fontossági sorrendben
-állnak (ütközés esetén a későbbi felülírja az előzőt):
+elem beállításait. Ha például a gyökér elemre definiálunk egy stílust, akkor az
+többnyire az oldal összes elemére érvényes (a tulajdonságok örökölhetőségétől függően).
 
-1. Böngészőstílus
-2. Felhasználói stílus
-3. Külső stíluslap
-4. A ```head``` elemben definiált beágyazott stíluslap
-5. Soron belüli stílus (a legmagasabb prioritású, felülír minden alacsonyabb szintű
-formázást).
+Amennyiben több CSS definíció érint egy elemet, akkor azok érvényességi sorrendjét
+egy pontosan meghatározott forgatókönyv fogja eldönteni. A kiértékelési sorrend
+– ami alapján a böngészők hozzárendelik a stílust a HTML-elemeinkhez – a következő:
+
+1. **Felhasználó áldal definiált stílusok**. Segítségükkel minden stílusutasítást
+felülbírálhatunk. A felhasználói stíluslappal például egy gyengén látó felhasználó
+megteheti, hogy egyéni, a saját igényeinek megfelelő stíluslapot állít be, hogy
+megfelelően olvashassa az adott oldalt. 
+2. **HTML-kódba beágyazott (inline) stílusdefiníciók**. A HTML elemek ```style```
+attribútuma tartalmazza az elemre vonatkozó szabályokat. Használatuk nem túl szép
+és nem is praktikus, ezért csak korlátozottan ajánlott.
+3. **!important kulcsszóval ellátott CSS szabályok**. Egy CSS-deklarációt fontossá
+tehetünk, azaz felülbírálhatjuk vele a többi stílusutasítást. Így az eredeti kiértékelési
+sorrendet felülbírálva adhatunk meg stílusszabályokat. Ehhez a deklarációban az
+érték és a deklarációt záró pontosvessző közzé helyezzük el az *!important* kulcsszót.
+4. A CSS szabályokhoz **prioritás** van rendelve. Az ID-szelektorokhoz 100,
+az osztályszelektorokhoz 10, míg a HTML-szelektorok 1-es értékkel rendelkeznek. A
+szelektorlistákban ezek az értékek összeadódnak. **A magasabb prioritással rendelkező
+CSS szabályok felülbírálják az alacsonyabb prioritásúakat.**
+5. **Belinkelt és beimportált (external, külső) stíluslapok**.
+6. **Szülő elemtől örökölt stílusértékek**.
+7. **Böngésző alapértelmezett stílusbeállításai**. Ezek böngészőnként különbözőek
+lehetnek, ezért érdemes ezen alapbeállításokat lenullázni a stíluslap elején
+([reset.css](https://meyerweb.com/eric/tools/css/reset/)).
 
 ### 3.1 CSS nyelvtan, kiválasztók és tulajdonságok, mértékegységek.
 
