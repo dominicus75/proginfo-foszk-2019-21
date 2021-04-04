@@ -887,7 +887,12 @@ A szelektorokat a következő csoportokba sorolhatjuk:
 * **egyszerű kijelölők** (*simple selector*):
 | Típus | Kijelölő | Példa | Leírás |
 |-------|----------|-------|--------|
-|  |  |  |  |
+| Univerzális kijelölő | * | * { margin: 0; } | Az összes elemet kijelöli |
+| Csoportos kijelölő | elem,elem2,...elemN | div, p { margin: 0; } | A felsorolt elemeket választja ki |
+| Elem kijelölő | elem_neve | header { padding: 1em; } | Csak egy konkrét elemet (típust) jelöl ki |
+| Osztály kijelölő | .class | .left { text-align: left; } | Azonos osztályba sorolt elemekre vonatkozik |
+| Elem-osztály kijelölő | elem.class | p.left { text-align: left; } | Adott típuson belül a megadott osztályba tartozó elemeket jelöli ki |
+| Azonosító kijelölő | #id | #name { font-family: "Times New Roman"; } | A megadott egyedi azonosítóval rendelkező elemet jelöli |
 * **kombinátorok** (*combinator selector*): az öröklései viszonyok (a dokumentumfa) alapján
 történő kijelölést teszik lehetővé.
 * **pszeudo-osztály kijelölők** (*pseudo-class selector*):
