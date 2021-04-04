@@ -885,6 +885,7 @@ ugyanazok a szabályok.
 A szelektorokat a következő csoportokba sorolhatjuk:
 
 * **egyszerű kijelölők** (*simple selector*):
+
 | Típus | Kijelölő | Példa | Leírás |
 |-------|----------|-------|--------|
 | Univerzális kijelölő | * | * { margin: 0; } | Az összes elemet kijelöli |
