@@ -1171,7 +1171,7 @@ A média típusok különböző szempontok szerint csoportosíthatóak is, és a
 megadásánál ezen médiacsoportok nevét is megadhatjuk. Ilyen csoport például a
 * *continuous* (folyamatos, mint a monitor, a képernyő vagy a beszédszintetizátor),
 * *paged* (lapozható, pl. a hagyományos nyomtató vagy a braille-nyomtató),
-* *visual*/*audio* (képernyú, tv)
+* *visual*/*audio* (képernyő, tv)
 * *interactive* (projektor)
 * *static* (pl. a hagyományos nyomtató vagy a braille-nyomtató).
 
