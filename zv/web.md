@@ -1092,8 +1092,7 @@ tulajdonságok).
 * ```inline-table```:
 * ```list-item```:
 * ```run-in```:
-* ```table, table-caption, table-column-group, table-header-group, table-footer-group, 
-table-row-group, table-cell, table-column, table-row```: a nevükből következő
+* ```table, table-caption, table-column-group, table-header-group, table-footer-group, table-row-group, table-cell, table-column, table-row```: a nevükből következő
 táblázatelemnek megfelelő kinézetet biztosítanak elemnek.
 * ```initial```:
 * ```inherit```: hatására a szülő elemtől öröklődik a tulajdonság értéke
