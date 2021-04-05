@@ -1152,11 +1152,28 @@ média típusával, és az összes kifejezés értéke igaz.
 
 A médialekérdezés használatával a stílusszabályok már a stíluslapon csoportosíthatók
 médiaelemek szerint. Így akár egyetlen stíluslapon definiálhatók a különböző kimenetekhez
-tartozó CSS-szabályok. A média típusok különböző szempontok szerint csoportosíthatóak
-is, és a stíluslap megadásánál ezen médiacsoportok nevét is megadhatjuk.
+tartozó CSS-szabályok.
 
-**Média típusok**
+**Fontosabb média típusok**
 
+* **All**: összes eszköz
+* **Speech**: beszédszintetizátor
+* **Braille**: braille-kijelzők számára
+* **Embossed**: braille-nyomtató számára
+* **Handheld**: kézi, mobil eszközök (kis képernyő)
+* **Print**: nyomtatás
+* **Projection**: kivetítő
+* **Screen**: képernyők
+* **Tty**: fix szélességű karakteres megjelenítők
+* **Tv**: televízió jellegű eszközök
+
+A média típusok különböző szempontok szerint csoportosíthatóak is, és a stíluslap
+megadásánál ezen médiacsoportok nevét is megadhatjuk. Ilyen csoport például a
+* *continuous* (folyamatos, mint a monitor, a képernyő vagy a beszédszintetizátor),
+* *paged* (lapozható, pl. a hagyományos nyomtató vagy a braille-nyomtató),
+* *visual*/*audio* (képernyú, tv)
+* *interactive* (projektor)
+* *static* (pl. a hagyományos nyomtató vagy a braille-nyomtató).
 
 **Leggyakrabban használt média tulajdonságok**
 
