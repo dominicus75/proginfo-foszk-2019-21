@@ -974,7 +974,7 @@ megörökölt értékét.
 | ```vmax``` | A viewport nagyobb dimenziójának 1%-a |
 | ```%``` | A százalékos értékek relatívak, azaz értékük más értékekből számolódik ki. Ez általában a szülő elemtől örökölt érték. |
 
-### 3.2 Doboz modell, pozicionálás, megjelenítés
+### 3.2 Doboz modell
 
 A doboz-modell írja le minden weboldalon elhelyezett objektum megjelenését. Ebben
 a megközelítésben minden elem egy téglalapon belül helyezkedik el, amely különböző
@@ -1023,7 +1023,95 @@ a margó igazából az elemek közötti távolságot fejezi ki.
 
 A box-sizing értéket érdemes a gyökérelemben vagy (ha van) a reset.css-ben beállítani.
 
-### 3.3 Fontosabb média típusok
+### 3.3 Pozicionálás (position)
+
+A position tulajdonság segítségével beállíthatjuk egy elem pozícionálásának típusát.
+
+A position lehetséges értékei:
+
+* **static**: az elemek nincsenek pozícionálva, eredeti helyükre kerülnek. Ilyen
+elemet nem lehet máshova pozícionálni, nem lehet elvágni, és a láthatósága sem
+változtatható. Ebben az esetben az elemek a számukra előre meghatározott
+módon viselkednek. Ilyenkor a blokk-szintű elemek függőlegesen egymás alatt
+helyezkednek el. A soron belüli elemek egy adott sorban maradnak, ezért szokták
+azokat sordoboz-nak is nevezni. Tehát: oda kerülnek, ahova amúgy is kerülnének, a
+böngésző számítja ki a pozíciójukat a megjelenítő méreteit figyelembe véve (képernyő
+szélessége, magassága, felbontása, ablak mérete stb.).
+* **relative**: az elemek ugyanúgy követik egymást, mint a statikus értéknél, itt
+azonban az elem eredeti helyéhez képpest újrapozícionálható (lásd: left, right,
+bottom, top paraméter az eltoláshoz). Ilyenkor az elem eredeti helye üresen marad.
+* **absolute**: az elem teljesen kikerül a megjelenítés folyamából (A böngésző
+nem hagyja ki az eredeti helyét), és a nem statikus pozícionálású szülő elem
+helyzetéhez képest pozícionálható.
+* **fixed**: az absolute-hoz hasonlóan az elem teljesen kikerül a megjelenítés
+folyamából, azonban itt a képernyő adott pontjára pozícionálhatjuk. Azaz az elem
+a dokumentum gördítése esetén is a képernyőhöz képest egy helyben marad. Gyakran
+használják ezt a felhasználói élmény javítására, például a visszajelzést biztosító
+vezérlő elemeket, mindig látható és könnyen elérhető helyen tartják.
+* **sticky** ("ragadós"): az elem folyamatosan a böngésző ablakban látható: relativ
+a pozicionálás érvényes rá, amíg el nem éri a kijelölt pontot. Ekkor a pozicionálás
+átvált fixed-re (a helyére "tapad"). Navigációs menüknél szokták alkalmazni.
+* **inherit**: érték esetén a tulajdonság értéke a szülő elemtől öröklődik.
+
+A position tulajdonság értékei **nem öröklődnek**.
+
+A *top*, *bottom*, *left* és *right* tulajdonságokkal – ha a pozícionálás típusa megengedi –
+pozícionálhatjuk elemeinket. Megadhatunk tetszőleges hosszúságértékeket. Ekkor az elem
+a megadott irányból ennyivel lesz eltolva. Megadhatunk százalékos értéket, ekkor az
+eltolás nagysága a szülő elemhez lesz viszonyítva. Negatív érték az ellentétes irányba
+mozgatja az elemet. A top, bottom, left és right tulajdonságok értékei nem öröklődnek.
+
+### 3.4 Megjelenítés (display)
+
+A **display** tulajdonság határozza meg a HTML elemhez generált doboz típusát, ezen
+keresztül pedig más elemekhez viszonyított megjelenítésének módját. Nem összekeverendő
+a *visibility* tulajdonsággal, ami az adott elem láthatóságát befolyásolja. A display
+segítségével blokkszintű elemeket is megjeleníthetünk inline (soron belüli) elemként
+és fordítva, de számos más beállítási mód is lehetséges. Minden HTML elem rendelkezik
+alapértelmezett display értékkel, amely függ az elem típusától (a legtöbb esetben
+```block``` vagy ```inline```). Ezeket azonban felül is lehet írni.
+
+**A display lehetséges értékei**:
+
+* ```inline```: az elem és a testvérei vízszintesen balról jobbra lesznek elrendezve,
+amíg el nem fogy a vízszintes hely a szülő elemben. Sem előtte sem utána nem jön
+létre sortörés. Figyelmen kívül hagyja a szélesség és a magasság tulajdonságokat.
+Figyelembe veszi a vízszintes igazítást (vertical-align).
+* ```block``: az elem előtt és után sortörés illesztődik be. A blokk elemere alkalmazhatók
+a dobozmodellben megismert tulajdonságok (margin, padding), viszont a vízszintes
+igazítás (vertical-align) nem. 
+* ```contents```:
+* ```flex```:
+* ```grid```:
+* ```inline-block```: blokk dobozt generál. Blokk dobozként formázható de inline
+dobozként kerül elhelyezésre az oldalon (nem tölti ki a rendelkezésre álló helyet,
+viszont használhatók vele blokk elemekre jellemező a width, height, margin és padding
+tulajdonságok). 
+* ```inline-flex```:
+* ```inline-grid```:
+* ```inline-table```:
+* ```list-item```:
+* ```run-in```:
+* ```css
+
+table
+table-caption
+table-column-group
+table-header-group
+table-footer-group
+table-row-group
+table-cell
+table-column
+table-row
+
+```: a nevükből következő táblázatelemnek megfelelő kinézetet biztosítanak elemnek.
+* ```initial```:
+* ```inherit```: hatására a szülő elemtől öröklődik a tulajdonság értéke
+* ```none```: nem generál dobozt. Kikapcsolja a HTML elem és valamennyi gyermekelemének
+megjelenítését. Nem csupán láthatatlanná teszi az elemet, de számára helyet sem
+foglal le az oldalon.
+
+### 3.5 Fontosabb média típusok
 
 ## 4. JavaScript szerepe a weboldalakon
 
