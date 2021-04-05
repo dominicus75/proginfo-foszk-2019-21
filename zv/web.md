@@ -981,9 +981,7 @@ a megközelítésben minden elem egy téglalapon belül helyezkedik el, amely k�
 rétegekből áll. A weboldalakon sok esetben ebből a dobozból semmit nem látunk
 legfeljebb a benne foglalt szöveget, de ettől függetlenül a többi része is jelen
 van. Ezek a dobozok egymásba ágyazhatóak, korlátlan mélységben és mennyiségben,
-de a befoglaló elem limitálja a benne foglaltak kiterjedését. Abban az esetben,
-ha egy elemben több másik helyezkedik el, azok hatással vannak a másik méreteire
-is.
+de a befoglaló elem limitálja a benne foglaltak kiterjedését.
 
 A modell vonatkozásában háromféle elemtípust különböztetünk meg egymástól:
 1. **Blokk-szintű (block-level)** elemekhez önálló doboz tartozik, amely rendelkezik
@@ -1077,7 +1075,7 @@ alapértelmezett display értékkel, amely függ az elem típusától (a legtöb
 amíg el nem fogy a vízszintes hely a szülő elemben. Sem előtte sem utána nem jön
 létre sortörés. Figyelmen kívül hagyja a szélesség és a magasság tulajdonságokat.
 Figyelembe veszi a vízszintes igazítást (vertical-align).
-* ```block``: az elem előtt és után sortörés illesztődik be. A blokk elemere alkalmazhatók
+* ```block```: az elem előtt és után sortörés illesztődik be. A blokk elemere alkalmazhatók
 a dobozmodellben megismert tulajdonságok (margin, padding), viszont a vízszintes
 igazítás (vertical-align) nem. 
 * ```contents```: az elem önmaga nem generál külön dobozt, de a gyerekei és pszeudo-elemei
@@ -1111,6 +1109,72 @@ megjelenítését. Nem csupán láthatatlanná teszi az elemet, de számára hel
 foglal le az oldalon.
 
 ### 3.5 Fontosabb média típusok
+
+A mobil eszközök böngészőprogramjai az oldalakat virtuális ablakokban jelenítik
+meg (ezt nevezzük viewportnak), amely általában szélesebb, mint a képernyő. Tehát
+**a viewport nem más mint a böngésző azon területe, ahol a weboldalak megjelennek**.
+A **viewport (nézetablak)** meta elem segítségével felülírhatjuk a böngésző (user
+agent) által deklarált nézetablakot. A meta elemen belül a content tulajdonság
+értékadásával szabályozhatjuk a fő tulajdonságait és azok értékét. A tulajdonság –
+érték párokat vesszővel elválasztva kapcsolhatjuk össze.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+Érdekességként megjegyzendő, hogy a W3C elkezdte készíteni a [hivatalos viewport szabványt](https://www.w3.org/TR/css-device-adapt-1/). Mivel a viewport lényegében
+a megjelenésért felel, így a CSS-ben van a helye. A viewport-ot CSS-ben ugyanazokkal
+a tulajdonságokkal használhatjuk, mint HTML-ben a meta tag-et. Főbb eltérés, hogy
+az initial-scale tulajdonság helyett itt zoom-ot kell használnunk.  
+
+```css
+@viewport {
+  zoom: 1.0;
+  width: device-width;
+  min-zoom: 1;
+  max-zoom: 3;
+  zoom: fixed;
+}
+
+```
+
+A szabvány jelenleg még vázlat stádiumban van, így egyelőre a meta elem használata
+javallott.
+
+Ahhoz, hogy az általunk készített weboldalon többféle platform, eszközön is jól
+használható legyen, törekednünk kell arra, hogy az oldalunk reszponzív legyen.
+Ezt viewport meta elem használata mellett a médialekérdezés (media query) segítségével
+valósíthatjuk meg. Egy médialekérdezés egy média típus megadásból áll valamint nulla
+vagy több kifejezésből, amelyek lekérdezik az aktuális média egyes tulajdonságait.
+Egy médialekérdezés egy logikai kifejezésnek tekinthető, ami igaz vagy hamis
+értékkel tér vissza. A lekérdezés igaz, ha a megadott média típus megegyezik az eszköz
+média típusával, és az összes kifejezés értéke igaz.
+
+A médialekérdezés használatával a stílusszabályok már a stíluslapon csoportosíthatók
+médiaelemek szerint. Így akár egyetlen stíluslapon definiálhatók a különböző kimenetekhez
+tartozó CSS-szabályok. A média típusok különböző szempontok szerint csoportosíthatóak
+is, és a stíluslap megadásánál ezen médiacsoportok nevét is megadhatjuk.
+
+**Média típusok**
+
+
+**Leggyakrabban használt média tulajdonságok**
+
+| Tulajdonság | Értéke | Leírás | ```min/max``` előtag használata | Példakód |
+|-------------|--------|--------|---------------------------------|----------|
+| ```width``` | hosszúság érték (pl. 300px) | Folytonos média esetén a viewport szélességét jelenti a gördítősávot (ha van) is beleértve. Lapozható média esetén ez az oldal doboz szélességét jelenti. | igen | ```@media screen and (max-width: 992px) {...}``` |
+| ```height``` | hosszúság érték (pl. 300px) | Folytonos média esetén a viewport magasságát jelenti a gördítősávot (ha van) is beleértve. Lapozható média esetén ez az oldal doboz magasságát jelenti. | igen | ```@media screen and (min-height: 600px) {...}``` |
+| ```device-width``` | hosszúság érték (pl. 300px) | Folyamatos média esetén a képernyő szélességét jelenti, lapozható média esetén az oldallap szélességét. | igen | ```<link rel="stylesheet" media="screen and (device-width: 600px)" href="pelda.css">``` |
+| ```device-height``` | hosszúság érték (pl. 300px) | Folyamatos média esetén a képernyő magasságát jelenti, lapozható média esetén az oldallap magasságát. | igen | ```<link rel="stylesheet" media="screen and (device-height: 400px)" href="pelda.css">``` |
+| ```orientation``` | portrait|landscape | Elrendezés. Akkor álló (portrait), ha a magasság nagyobb vagy egyenlő a szélességgel, ellenkező esetben landscape (fekvő). | nem | ```@media screen and (orientation: landscape) { ... }``` |
+| ```aspect-ratio``` | tört (pl. 16/9) | Viewport méretarány. A szélesség osztva a magassággal | igen | ```<link rel="stylesheet" media="screen and (aspect-ratio: 4/3)" href="pelda.css">``` |
+| ```device-aspect-ratio``` | tört (pl. 16/9) | Eszköz méretarány. A device-width szélesség osztva a device-height magassággal. | igen | ```<link rel="stylesheet" media="screen and (device-aspect-ratio: 16/9)" href="pelda.css">``` |
+| ```color``` | egész szám | Színmélység. A megjelenítő eszköz színmélységére jellemző szám (bitek száma színkomponensenként). | igen | ```<link rel="stylesheet" media="screen and (min-color: 1)" href="pelda.css">``` |
+| ```resolution``` | felbontás érték (pl. 100dpi) | A megjelenítő eszköz felbontása | igen | ```<link rel="stylesheet" media="screen and (min-resolution: 300dpi)" href="pelda.css">``` |
+
+A kifejezésekben különböző operátorokat használhatunk, ilyen az ```and``` (és),
+```not``` (tagadás), illetve a ```,``` (vessző, logikai vagy operátor).
+
 
 ## 4. JavaScript szerepe a weboldalakon
 
@@ -1219,6 +1283,7 @@ foglal le az oldalon.
 * Gremmedia: [A CSS3 alapjai-példákkal bemutatva](https://gremmedia.hu/edukacio/bejegyzes/css-alapjai-peldakkal-bemutatva)
 * Dynamicart: [CSS3 újdonságok, amiket használni kell](http://dynamicart.hu/blog/css3-ujdonsagok-amiket-hasznalni-kell)
 * Dynamicart: [CSS3 szelektorok: szerkezeti pszeudo-osztályok](http://dynamicart.hu/blog/css3-szelektorok-szerkezeti-pszeudo-osztalyok)
+* Laki Ádám: [Bevezetés a reszponzív tervezésbe](https://adamlaki.com/hu/bevezetes-responsive-tervezesbe-viewport/)
 * W3schools: [CSS Tutorial](https://www.w3schools.com/css/default.asp)
 
 #### Javascript, DOM:
