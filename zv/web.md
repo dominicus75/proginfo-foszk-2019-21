@@ -928,6 +928,15 @@ vagy annak meghatározott értéke alapján jelöl ki
 
 #### Tulajdonságok
 
+A CSS tulajdonságok a HTML elemek azon paraméterei, melyeket a stíluslapok segítségével
+lehet meghatározni. Rendeltetésük szerint a stíluslapok a karakterek térközének,
+a szövegek igazításának, az elemek elhelyezésének, az audió fájlok lejátszásának,
+a betűtípusok jellemzőinek és még sok egyébnek nagyon pontos beállítását teszik
+lehetővé. A CSS több mint 300 különféle tulajdonságot ölel fel, a különböző értékek
+száma pedig végtelen. Nem kombinálható minden tulajdonság minden értékkel — minden
+tulajdonságnak megvannak a specifikus értékei.A tulajdonság és az érték kombinációja
+a CSS-deklaráció.
+
 #### Mértékegységek
 
 Sok CSS tulajdonság vehet fel valamilyen hosszméretet (width, margin, padding,
@@ -966,6 +975,8 @@ megörökölt értékét.
 | ```%``` | A százalékos értékek relatívak, azaz értékük más értékekből számolódik ki. Ez általában a szülő elemtől örökölt érték. |
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
+
+![Imgur](https://imgur.com/WrqY7Fb)
 
 ### 3.3 Fontosabb média típusok
 
