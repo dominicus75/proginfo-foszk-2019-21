@@ -976,7 +976,7 @@ megörökölt értékét.
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
 
-![Imgur](https://imgur.com/WrqY7Fb)
+![Imgur](https://imgur.com/WrqY7Fb.png)
 
 ### 3.3 Fontosabb média típusok
 
