@@ -1080,21 +1080,31 @@ Figyelembe veszi a vízszintes igazítást (vertical-align).
 * ```block``: az elem előtt és után sortörés illesztődik be. A blokk elemere alkalmazhatók
 a dobozmodellben megismert tulajdonságok (margin, padding), viszont a vízszintes
 igazítás (vertical-align) nem. 
-* ```contents```:
-* ```flex```:
-* ```grid```:
+* ```contents```: az elem önmaga nem generál külön dobozt, de a gyerekei és pszeudo-elemei
+már igen. Ezek a leszármazottak így egy szinttel feljebb kerülnek a dokumentumfán.
+* ```flex```: létrehoz egy rugalmas konténert, amelynek mérete a rendelkezésre álló
+képernyő mérethez igazodik. Gyermek elemei elrendezhetők bármilyen haladási irányban
+(jobbra, balra, lefelé, felfelé), elhelyezhetők egy vagy több sorban, a rugalmas
+konténerhez és egymáshoz képest is többféleképpen igazíthatók, a konténer méretének
+változásakor automatikusan változtathatják méretüket.
+* ```grid```:  létrehoz egy Grid konténert, amelynek elemeit sorokba és oszlopokba
+rendezhetjük. A rácsos elrendezés megjelenítésének logikája nagyban hasonlít a táblázatos
+elrendezésre. A megvalósítás azonban teljesen másként működik, a gyermekelemek
+pozíciói a HTML kód módosítása nélkül csupán CSS jellemzők változtatásával módosíthatók.
 * ```inline-block```: blokk dobozt generál. Blokk dobozként formázható de inline
 dobozként kerül elhelyezésre az oldalon (nem tölti ki a rendelkezésre álló helyet,
 viszont használhatók vele blokk elemekre jellemező a width, height, margin és padding
 tulajdonságok). 
-* ```inline-flex```:
-* ```inline-grid```:
-* ```inline-table```:
-* ```list-item```:
-* ```run-in```:
+* ```inline-flex```: az elemet sorszintű felx-konténerként jeleníti meg.
+* ```inline-grid```: az elemet sorszintű grid-konténerként jeleníti meg.
+* ```inline-table```: az elemet sorszintű táblázatként jeleníti meg.
+* ```list-item```: listaelem megjelenést kölcsönöz az elemnek
+* ```run-in```: az elemet blokkként vagy inline-ként jeleníti meg, a kontextustól
+függően. Ha az elemet blokk elem követi, akkor annak inline eleme lesz. Ha nem blokk
+típusú a következő elem, akkor blokként jelenik meg.
 * ```table, table-caption, table-column-group, table-header-group, table-footer-group, table-row-group, table-cell, table-column, table-row```: a nevükből következő
 táblázatelemnek megfelelő kinézetet biztosítanak elemnek.
-* ```initial```:
+* ```initial```: az alapértelmezett érték használata
 * ```inherit```: hatására a szülő elemtől öröklődik a tulajdonság értéke
 * ```none```: nem generál dobozt. Kikapcsolja a HTML elem és valamennyi gyermekelemének
 megjelenítését. Nem csupán láthatatlanná teszi az elemet, de számára helyet sem
