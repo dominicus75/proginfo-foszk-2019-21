@@ -215,7 +215,139 @@ Egy jogosultság használatához a `<uses-permission>`, létrehozáshoz pedig a 
 A példában megadott szabályok alapján az alkalmazás nem lesz telepíthető olyan eszközökre, amelyek nem rendelkeznek Bluetooth hardverrel. Az alkalmazás viszont rendelkezik olyan funkciókkal, amelyek a kamerát is használatba vennék, viszont megléte nem feltétlen szükséges az alkalmazás használatához.
 
 ## 4. Minősítők, mértékegységek.
+
+Mivel az Android-os eszközök több különböző felbontásban és képernyőméretetben jelennek meg, az alkalmazásunknak is támogatnia kell ezeknek a készülékeknek legalább egy részhalmazát.
+A támogatott megjelenítéseket úgy érdemes kiválasztani, hogy a lehető legtöbb felhasználót érjük el.
+Annak érdekében, hogy tovább tudjunk lépni, tekintsük meg az alábbi fogalmakat:
+* Képernyőméret: Eszköz fizikai képátlóját jelenti. Értékei: small, normal, large, extra large.
+* Képernyősűrűség: Pixelek száma egy adott fizikai területen (általában dpi-ben, azaz dots per inch-ben). Értékei: low, medium, high és extra high
+* Orientáció: Eszköz elhelyezkedése lehet álló (portait) vagy fekvő (landscape), amely orientáció futási időben is megváltozhat.
+* Felbontás: A képernyőn található fizikai pixelek száma. A felület létrehozásában a felbontás helyett a képernyőmérettel és a pixelsűrűséggel dolgozunk.
+
+**Mértékegységek**
+Nem csak az Androidos eszközök képernyőinek mérete, de a felbontása is eltérhet, vagyik míg az egyik eszköz 160 DPI (dots per inch) pontsűrűségű, addig egy másik eszköz lehet 480 DPI.
+Ha nem vesszük figyelembe az eszközök ezen tulajdonságait, akkor a rendszer például átméretezheti a képet, ami homályos lesz, vagy a kép teljesen rossz méretben jelenik meg.
+Ezek elkerülése érdekében érdemes bevezetni két mértékegységet:
+* sűrűségfüggetlen pixel: dp (density-independent pixels)
+* skálafüggetlen pixel: sp (scale-independent pixels)
+
+Android természetesen támogat más mértékegységeket is, a vezérlők méretét például pixelben (px), inch-ben (in), milliméterben (mm) vagy pontban (pt) is megadhatjuk.
+A sűrűségfüggetlen mértékegységek abban nyújtanak segítséget, hogy a különböző felbontású készülékeken egységes méretben jelenjenek meg a vezérlők.
+Szövegmegjelenítésnél használatos a skálafüggetlen pixel (sp), ami azért fontos, mert a felhasználó az Android készülék beállításainál megváltoztatja a betűméretet, így az alkalmazásunkon belül is a szövegek mérete ez alapján fog változni.
+Összegezve az előbbieket, vezérlők méreténél, margin és padding tulajdonságnál a dp-t, szövegméreteknél pedig az sp-t használjuk.
+
+**Minősítők**
+Annak érdekében, hogy egy alkalmazás módosítás nélkül képes legyen futni különböző méretű, hardverű és Android verziójú eszközökön, erőforrásminősítőket kell használnunk.
+Egy erőforráshoz több minősítőt is megadhatunk, ilyenkor a használathoz minden feltételnek meg kell felelnie.
+A minősítők kezelését a rendszer a mappák elnevezéseivel oldja meg, mégpedig a következőképpen:
+
+| Könyvtár neve     | Elérési út              | Minősítők   | Jelentése                                  |
+|-------------------|-------------------------|-------------|--------------------------------------------|
+| layout            | /res/layout/            | -           | "default" kinézet                          |
+| layout-large      | /res/layout-large/      | large       | kinézet nagy képernyőkre                   |
+| layout-large-land | /res/layout-large-land/ | large, land | kinézet nagy képernyőkre, fekvő helyzetben |
+
+A `layout/` könyvtárban elhelyezett felületek támogatják a portait és a landscape nézeteket egyaránt.
+Képernyőméretekhez is tartoznak minősítők, a fogalmaknál felsorolt képernyőméret azonosítók az alábbiak:
+* xlarge: legalább 960dp x 720dp
+* large: legalább 640dp x 480dp
+* normal: legalább 470dp x 320dp
+* small: legalább 426dp x 320dp
+
+Az így létrehozott mappákban az adott erőforrásnak ugyanazzal a fájlnévvel kell szerepelnie, a rendszer innen tudja, hogy több változat is elérhető.
+A minősítők felsorolásánál a sorrend kötött, tehát rossz sorrend alkalmazása esetén az adott erőforrás nem lesz figyelembe véve.
+A rendszer futásidőben választja ki a megfelelő erőforrást az alapján, hogy milyen eszközön fut.
+
+Ahhoz, hogy a grafikai elemek jól jelenjenek meg minden méretű és felbontású eszközön, 2 lehetőségünk van:
+* Használjunk vektorgrafikus grafikai elemeket
+* Raszteres grafikai elemek esetén biztosítsuk több verziót az adott elemből, egyet-egyet minden sűrűség-tartományhoz, megfelelő felbontással, a megfelelő mappába elhelyezve (`drawable/mdpi`, `drawable/hdpi`, `drawable/xhdpi`, stb). A rendszer a minősítő alapján fogja eldönteni, hogy az adott eszközön melyik verziót töltse be.
+
+![Képernyősűrűségek és minősítői](./android-src/devices-density.png "Képernyősűrűségek és minősítői.")
+
+A lokalizáció megvalósításához is fel tudjuk használni az erőforrás minősítőket.
+Ennek megvalósításához viszont feltétlen szükséges, hogy az alkalmazásban a felhasználó számára megjelenő összes szöveg string erőforrásként legyen rögzítve.
+Így ha az alkalmazásban található a rendszer nyelvi beállításainak megfelelő minősítővel ellátott erőforrás, akkor azok kerülnek megjelenítésre.
+Előfordulhatnak olyan szövegek, amelyeket nem szeretnénk vagy nem szükséges fordítani, ezeket a `<string>` tag-en használható `translatable="false"` tulajdonsággal adhatjuk meg.
+
+| /values/strings.xml                                         | /values-hu/strings.xml                    | /values-de/strings.xml                  |
+|-------------------------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `<string name="yes_button">Yes</string>`                    | `<string name="yes_button">Igen</string>` | `<string name="yes_button">Ja</string>` |
+| `<string name="ok_button" translatable="false">Ok</string>` |                                           |                                         |
+
+A rendszer először megpróbálja megtalálni a megfelelő erőforrásminősítővel rendelkező erőforrást.
+Ha ezek egyike sem felel meg, akkor az alapértelmezett erőforrásokat használja a megfelelő mappából:
+`layout/`, `drawable/`, `values/`, stb.
+Az Android Studio IDE segítségével az erőforrások és azok minősítői könnyedén kezelhetőek.
+
 ## 5. Activity életciklusmodellje.
+
+Minden felülettel rendelkező alkalmazásnak tartalmaznia kell legalább egy Activity osztályt.
+Ezek a komponensek felelnek a felhasználói interakciók fogadásáért valamint a felületek megjelenítéséért. 
+Az Activity komponens saját életciklussal rendelkezik, amelyben változás bekövetkezhet felhasználó interakció vagy rendszerművelet hatására.
+
+Az alkalmazások használata során az Activity példányok különböző állapotokon mennek keresztül, például amikor egy alkalmazás előtérbe, vagy éppen megsemmisítésre kerül.
+Ha egy új Activity-t indítunk el, akkor az éppen előtérben lévő szüneteltetésre kerül, majd ha újra előtérbe került, akkor működése folytatódik.
+Amíg az Activity példány szüneteltetett állapotban van, addig nagyobb esély van rá, hogy a rendszer erőforrás felszabadítás céljából leállítsa azt.
+
+Az Activity példányok létrehozásáért és leállításáért az Android rendszer felel, viszont minden új állapotba lépéskor a rendszer meghívja az állapothoz tartozó úgynevezett „callback” függvényt.
+Ezen függvények felüldefiniálásával tudunk az egyes eseményekre reagálni, például ezekben szükséges elvégezni a használt erőforrások felszabadítását vagy az Activity aktuális állapotának mentését.
+Tehát ezeken a függvényeken keresztül határozzuk meg azt, hogyan viselkedjen az Activity példányunk, ha életciklusában változás történik.
+Ezeket az állapot változásokat nem csak a felhasználó válthatja ki, például egy telefonhívás hatására az éppen futó Activity szüneteltetésre kerül, majd a hívás befejezése után működése folytatódik.
+Ilyenkor nem garantált, hogy a felhasználó a hívás után visszatér az alkalmazásunkba, viszont a jó felhasználói élmény érdekében biztosítanunk kell, hogyha visszatér, akkor az alkalmazás állapotát pontosan olyanra állítsuk vissza, mint amikor elhagyta az alkalmazást.
+Tehát biztosítanunk kell, ha valaki például egy üzenet vagy SMS írása közben hívást kap, és fogadja azt, a hívás befejezésével ne vesszen el az addig már begépelt üzenete.
+Ez elsőre egyszerűnek tűnik, hiszen a hívás idejére az Activity osztályunk működése szüneteltetésre kerül, majd a hívás befejezése után folytatódik.
+Viszont előfordulhat az, hogy a készülék akkumulátora merülni kezd, és a rendszer a hosszabb üzemidő elérésének érdekében visszafogja a teljesítményt, amihez a háttérben lévő alkalmazások futását leállítja.
+Az ilyen esetek kezelésére mindenképpen szükséges az aktuális állapot mentése, majd visszaállítása.
+
+A következő ábrán láthatjuk egy Activity példány életciklusát, és az állapotváltozások során meghívott „callback” függvényeket.
+
+![Activity életciklus állapotai és függvényei](./android-src/activity_lifecycle.png "Activity életciklus állapotai és függvényei.")
+
+**onCreate()**
+Ez az első „callback” függvény, ami az Activity létrehozásakor kerül meghívásra, itt a *Created* állapotba lép.
+A komponens életciklusa során pontosan csak egyszer kerül ebbe az állapotba, és ilyenkor kell a megjelenítendő felületet beállítani (`setContentView()`), vagy akár egy ViewModel-t hozzárendelni az Acitivity példányunkhoz.
+Továbbá ha szükségünk van a felhasználói felületet alkotó komponensek referenciáira, akkor azok beállítását is itt kell megtenni, a jól ismert `findViewById()` metódussal.
+A függvény egy *Bundle* típusú paraméterrel rendelkezik, amely az Activity legutóbbi mentett állapotát tartalmazza, ha van ilyen.
+Activity állapotának mentését az `onSaveInstanceState()` metódus felüldefiniálásával lehet megtenni.
+A metódus befejeztével az `onStart()` függvény kerül meghívásra.
+
+**onStart()**
+A Created állapot után az Activity a *Started* állapotra vált, és megjelenítésre kerül a felület a felhasználó számára.
+Az alkalmazás előkészíti az Activity példányt az előtérbe lépésre, valamint a felhasználói interakciók kezelésére.
+A metódus befejeztével az `onResume()` függvény kerül meghívásra.
+
+**onResume()**
+Amikor az Activity előtérbe kerül, a rendszer meghívja az `onResume()` metódust.
+Fontos kiemelni, hogy az Activity többféleképpen kerülhet ebbe az állapotba, hiszen ha az Activity szüneteltetett állapot után újra előtérbe kerül, akkor is felveszi ezt az állapotot.
+Az Activity egészen addig ebben az állapotban marad, amíg előtérben van, viszont külső események hatására ez megváltozhat, mint például egy telefonhívás fogadása, vagy az eszköz kijelzőjének kikapcsolása.
+Ilyen események során az Activity *Paused* állapotba lép, majd az esemény befejeztével újra *Resumed* állapotra vált.
+Ez a két állapot szoros összefüggésben vagy egymással, mert minden olyan erőforrást, amit *Resumed* állapotba lépéskor kezdünk el használni, azt a *Paused* állapotban kell felszabadítani.
+Ezek alapján feltételezhetnénk azt is, hogy az alkalmazás felülete csak akkor látható a felhasználó számára, amikor az *Resumed* állapotban van.
+Vannak viszont kivételes esetek, mint például a több ablakos mód.
+Ebben az esetben az Activity továbbra is látható marad, viszont *Paused* állapotba kerül.
+Ha olyan tartalmat jelenítünk meg, amelynek frissítése ilyen helyzetben is szükséges lehet (pl.: videó lejátszás, kamerakép mutatása), akkor a *Started* és *Stopped* állapotot szükséges használni.
+
+**onPause()**
+Ha valamilyen esemény hatására az Activity háttérbe kerül, akkor ez az első metódus, amely meghívásra kerül.
+Ebben az állapotban az Activity még mindig látható a felhasználó számára, viszont egy másik Activity került előtérbe.
+Ez lehet több ablakos módban egy másik Activity-re váltás, vagy egy nem teljes képernyőt kitöltő Activity előtérbe kerülésének eredménye.
+Az esemény lefutása nagyon rövid, ami általában nem elegendő az aktuális állapot mentéséhez, hálózati kérések vagy adatbázis tranzakciók futtatásához.
+Az ilyen műveletek elvégzéséhez az `onStop()` metódus biztosít lehetőséget.
+A metódus befejeztével az Activity továbbra is *Paused* állapotban marad mindaddig, amíg nem kerül újra előtérbe vagy nem tűnik el teljesen a képernyőről.
+
+**onStop()**
+Az Activity `Stopped` állapotba kerül, amikor teljesen eltűnik a képernyőről, vagyis a felhasználó számára nem lesz látható.
+Ebben az állapotban érdemes elvégezni az erőforrásigényes műveleteket, amelyek az aktuális állapot mentéséért felelnek.
+Az Activity továbbra is a memóriában marad, valamint a megjelenített nézetek állapotai is mentésre kerülnek, így azok tulajdonságainak, adatainak mentésére külön nincsen szükség.
+Ha az Activity újra megjelenítésre kerül, akkor a rendszer meghívja az `onRestart()` metódust, vagy befejezése esetén az `onDestroy()` metódust.
+
+**onRestart()**
+Ha az Activity *Stopped* állapotban van, és a felhasználó újra az Activity-re navigál, akkor mielőtt az *Started* állapotba lépne, meghívásra kerül az `onRestart()` metódus.
+
+**onDestroy()**
+Az Activity megszűntetése előtti utolsó „callback” metódus, amely bekövetkezhet az Activity befejezése, bezárása vagy akár egy orientáció változás hatására.
+Ezen a ponton az Activity által birtokolt minden erőforrást fel kell szabadítani, ha ez még nem történt meg az előző állapotokban.
+
 ## 6. Felület létrehozása. Vezérlőelemek. View. Felugró értesítések.
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
