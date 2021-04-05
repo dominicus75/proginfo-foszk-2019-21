@@ -976,7 +976,52 @@ megörökölt értékét.
 
 ### 3.2 Doboz modell, pozicionálás, megjelenítés
 
+A doboz-modell írja le minden weboldalon elhelyezett objektum megjelenését. Ebben
+a megközelítésben minden elem egy téglalapon belül helyezkedik el, amely különböző
+rétegekből áll. A weboldalakon sok esetben ebből a dobozból semmit nem látunk
+legfeljebb a benne foglalt szöveget, de ettől függetlenül a többi része is jelen
+van. Ezek a dobozok egymásba ágyazhatóak, korlátlan mélységben és mennyiségben,
+de a befoglaló elem limitálja a benne foglaltak kiterjedését. Abban az esetben,
+ha egy elemben több másik helyezkedik el, azok hatással vannak a másik méreteire
+is.
+
+A modell vonatkozásában háromféle elemtípust különböztetünk meg egymástól:
+1. **Blokk-szintű (block-level)** elemekhez önálló doboz tartozik, amely rendelkezik
+margóval, kerettel, és a kereten belüli belső margóval. Amenynyiben az elem tartalma
+szöveg, az sordobozokba rendeződik.
+2. A **sordobozok** nem rendelkeznek sem belső sem külső margóval. Ezek tulajdonképpen
+a bekezdés sorait jelentik: egymás alá kerülnek a dobozon belül, annak teljes szélességét
+kitöltve a doboz belső margóján belül.
+3. A **sorbeli elemek (inline-level elements)** rendelkezhetnek önálló dobozzal, amely
+kerettel is ellátható, azonban ez a doboz mindig egy sordobozba kerül.
+
 ![Imgur](https://imgur.com/WrqY7Fb.png)
+
+A dobozok jól elkülönülő, CSS által stílussal felruházható részei a következők:
+
+* Legbelül a **tartalom (content)** helyezkedik el. Ez az, amiért az elemünket
+létrehoztuk. Mérete a megjelenített tartalomtól függ, de a pontos méreteket is
+beállíthatjuk a *width (szélesség)* és *height (magasság)* paraméterekkel.
+* A tartalmat egy **belső térköz (padding)** öleli körbe.
+* A belső térköz (padding) határán helyezkedik el a **doboz szegélye (border)**.
+* A szegélyt az **outline (körvonal)** veszi körbe, amire a szegély szegélyeként
+tekinthetünk. Például ez a körvonal jelzi, ha fókuszba került egy elem.
+* A dobozok külső határát, azok **margója (margin)** alkotja. Ez határozza meg,
+hogy a doboz milyen távolságra legyen a szomszédos elemektől.
+
+A **box-sizing** CSS3 tulajdonsággal tudjuk megadni, hogy az adott elem szélessége hogyan
+kerüljön kiszámításra. **Ha a box-sizing-nak nem adunk meg értéket, akkor a HTML elem
+magasságába és szélességébe beleszámít minden**. Vagyis a tartalom szélessége, a jobb
+és bal oldali belső térköz mérete, a jobb és bal oldali szegély mérete valamint a
+jobb és bal oldali margó mérete is. Ugyanez vonatkozik a doboz magassága is.
+
+```box-sizing: border-box;``` beállítás esetén a HTML elem renderelt mérete
+mindig pontosan annyi lesz, mint a width és height tulajdonság értéke. És ebbe bele
+fog számítani a padding és a border is (de nem hozzáadódik, hanem levonódik, tehát
+a content mérete ennyivel kisebb lesz). A margin viszont megmarad ezen kívül, mivel
+a margó igazából az elemek közötti távolságot fejezi ki.
+
+A box-sizing értéket érdemes a gyökérelemben vagy (ha van) a reset.css-ben beállítani.
 
 ### 3.3 Fontosabb média típusok
 
