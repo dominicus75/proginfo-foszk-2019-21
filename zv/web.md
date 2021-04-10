@@ -1192,10 +1192,43 @@ megadásánál ezen médiacsoportok nevét is megadhatjuk. Ilyen csoport példá
 A kifejezésekben különböző operátorokat használhatunk, ilyen az ```and``` (és),
 ```not``` (tagadás), illetve a ```,``` (vessző, logikai vagy operátor).
 
-
 ## 4. JavaScript szerepe a weboldalakon
 
+A Netscape cég szerette volna, ha böngészőjében a weboldalak interaktívabbá tehetők
+egy programozási nyelv által. Felmerült, hogy a Java nyelvet használnák az oldalak
+szkriptelésére is, de a nyelvet túl professzionálisnak és nehéznek találták, ezért
+inkább egy könnyebben tanulható és alkalmazható szkriptnyelv kidolgozása mellett
+döntöttek. Így az új nyelv a Java szintaxisát örökölte, de szkriptnyelv lett. Eredetileg
+**Brendan Eich**, a *Netscape Communications* mérnöke fejlesztette ki; neve először
+**Mocha**, majd **LiveScript** volt, de a bejelentésekor (1995 decemberében) –
+valószínűleg marketinges – okokból **JavaScript**ként hivatkoztak rá. 
+
+A hatalmas sikert meglovagolva a Microsoft is elkészítette Internet Explorer nevű
+böngészőjében a JavaScript támogatást, a nevét pedig később szabadalmi okokból
+JScriptre változtatta. A Netscape cég a nyelv diverzifikálódását megelőzendő aktív
+szabványosítási kampányba kezdett, végül 1997-ben az Európai Számítógépgyártók
+Szövetsége (European Computer Manufacturers Association, ECMA) nevű cég szabványosította
+ECMAScript néven ([ECMA-262](https://262.ecma-international.org/11.0/)). Az ECMAScript
+a JavaScript (Netscape) és a JScript (Microsoft) által létrehozott nyelvekből alkotott szabvány,
+amelyet az ISO is elfogadott, jelenlegi változata a **[ISO/IEC 22275:2018 szabvány](https://www.iso.org/standard/73002.html)**.
+Az ECMA-szabványnak jelenleg a 11.0 verzója hatályos, de a kiadásokat évszámmal is
+szokták jelölni, tehát a 11. változat ECMAScript 2020. néven is ismert.
+
 ### 4.1 Nyelvtani sajátosságok
+
+A szabvány meghatározása szerint a JavaScript egy [általános célú programozási nyelv](https://hu.wikipedia.org/wiki/%C3%81ltal%C3%A1nos_c%C3%A9l%C3%BA_programoz%C3%A1si_nyelv),
+amelyet eredetileg webes scriptnyelvnek terveztek (a célból, hogy némi interaktivitást
+vigyenek a weboldalakba és tehermetesítsék a kiszolgálókat), de mára egy teljes
+funkcionalitású általános programozási nyelvé vált, amely a programozási feladatok
+széles skálájára alkalmazható.
+
+A JavaScript C típusú nyelv, szintaxisa nagyban hasonlít a C vagy a Java szintaxisához.
+Több C nyelvbeli strukturális programozási szintaxist is támogat, mint például: ```if```
+és ```switch``` kifejezések, ```for``` és ```while``` ciklusok, stb. A JavaScript
+gyengén típusos nyelv, vagyis a változók típusát dinamikusan, az értékadásnál használt
+típus határozza meg.
+
+
 
 ### 4.2 Eseményvezérelt programozás
 
@@ -1307,6 +1340,8 @@ A kifejezésekben különböző operátorokat használhatunk, ilyen az ```and```
 * Wikipedia: [Javascript](https://hu.wikipedia.org/wiki/JavaScript)
 * Wikipedia: [Document Object Model](https://hu.wikipedia.org/wiki/Document_Object_Model)
 * Több szerző: [DOM és HTML](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=21)
+* Filep Levente: [JavaScript alapok helyesen, I.](http://epa.oszk.hu/00200/00220/00146/pdf/EPA00220_firka_2017-2018_4_022-028.pdf)
+* Filep Levente: [JavaScript alapok helyesen, II.](http://epa.hu/00200/00220/00147/pdf/EPA00220_firka_2018-2019_01_16-20.pdf)
 * Több szerző: [A Javascript programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=1)
 * Nagy Gusztáv: [Web-programozás, 4. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Nagy Gusztáv: [Webes szabványok, 7. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
