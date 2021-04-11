@@ -1243,8 +1243,7 @@ A JavaScript nyelv néhány jellemzője:
 el (nem kötelező, de zavart okozhat az elhagyása),
 * Biztonsági okokból a nyelvben nincsen fájlkezelés,
 * Megjegyzéseket ugyanúgy lehet írni JavaScriptben, mint más C típusú nyelvben: az
-egysoros megjegyzést ```//``` után, a többsorost a ```/* */``` jelek közé,
-* 
+egysoros megjegyzést ```//``` után, a többsorost a ```/* */``` jelek közé.
 
 A JavaScript gyengén típusos nyelv, vagyis a változó értékének megadásával automatikusan
 hozzárendelődik a változóhoz a neki megfelelő adattípus. Amennyiben egy adott változó
@@ -1294,6 +1293,103 @@ történő létrehozását. Innentől a más nyelveken megszokott módon lehet o
 deklarálni.
 
 ### 4.2 Eseményvezérelt programozás
+
+A JavaScript programok nem feltétlenül sorról sorra hajtódnak végre. Eseményeket
+is észlelhetnek és válaszolhatnak ezekre. Az események a böngészőben következnek be,
+például ha egy felhasználó egy gombra kattint, mozgatja az egérmutatót, vagy a
+kiszolgálóról egy weboldalt, vagy képet tölt le. Minden eseménynek van egy társított
+objektuma. Az event objektum olyan információkkal szolgál az eseményről, mint
+* az esemény típusa (type),
+* az egér pozíciója a DOM dokumentumhoz képest (clientX, clientY),
+* az egér pozíciója a képernyő bal felső sarkához képest (screenX, screenY),
+* az eseményben érintett DOM elemek (target, currentTarget).
+
+Az eseményobjektum konkrét adatai az esemény jellegétől is függenek (pl. egy egéresemény
+nem ad információt a lenyomott billentyűzetgomb kódjáról).
+
+Mikor egy esemény bekövetkezik, valamint van eseménykezelője (vagy eseményfigyelője)
+az esemény lekezelésére, az eseményobjektum az eseménykezelő függvény első paramétereként
+érhető el. Az eseménykezelő függvényt úgy kell meghatározni, hogy az eseményt paraméterként
+vegye át. Az eseménykezelők a document vagy más, események fogadására képes objektum
+tulajdonságaként tárolódnak.
+
+Eseménykezelőknek adott elem adott eseményéhez történő hozzárendelési folyamatát
+az eseménykezelők hozzáadásának, feliratkozásának vagy regisztrálásának nevezik.
+**Ez több módon is nyélbe üthető:**
+
+1. A kívánt HTML elemet kell bővíteni egy eseménykezelő attribútummal, amelyben
+JavaScript utasításokat vagy eseménykezelő-függvény hívást lehet elhelyezni, idézőjelek
+között. Az elem képes az attribútumban kapott JS kód direkt futtatására:
+
+```html
+<button onclick="this.innerHTML = Date()">Mennyi az idő?</button>
+
+<!-- vagypedig: -->
+
+<button onclick="displayDate(event)">Mennyi az idő?</button>
+
+<script>
+function displayDate(event) {
+  document.getElementById("demo").innerHTML = Date() + " A kattintott elem: " + event.target;
+}
+</script>
+<p id="demo"></p>
+
+```
+
+2. Ahelyett, hogy az eseménykezelőt a HTML dokumentumban (valamely elem tulajdonságakét)
+határoznánk meg, azt is megtehetjük, hogy egy függvénynek adjuk az eseménykezelő szerepét.
+Ehhez szükséges, hogy a HTML elem rendelkezzen egyedi azonosítóval (id tulajdonság),
+ami alapján ```document.getElementById()``` függvény segítségével megkereshető, hogy
+hozzárendelhessük a megfelelő eseményfigyíelőt.
+
+```html
+
+<button id="gomb">Mennyi az idő?</button>
+<p id="demo"></p>
+
+<script>
+
+function displayDate(event) {
+  document.getElementById("demo").innerHTML = Date() + " A kattintott elem: " + event.target;
+}
+
+obj = document.getElementById("gomb");
+obj.onclick = displayDate;
+
+</script>
+
+```
+
+3. A szabványos módszer az ```EventTarget.addEventListener()``` metódus használata.
+Az ```addEventListener()``` első várt paramétere az eseménytípus (az alábbi példában:
+"click"), amire fel akarunk iratkozni, második paramétere pedig az eseménykezelő
+függvény neve, amit tulajdonságként hozzá szeretnénk adni a kiválasztott DOM elemhez
+(esetünkben a "gomb" azonosítóval rendelkező button elem). Harmadik (opcionális)
+paramétere egy objektum, amely a következő (boolean típusú) tulajdonságokat tartalmazhatja:
+* capture (elkapás iránya)
+* once (egyszeri hívás majd eltávolítás)
+* passive (nincs preventDefault() hívás)
+
+```html
+
+<button id="gomb">Mennyi az idő?</button>
+<p id="demo"></p>
+
+<script>
+
+document.getElementById("gomb").addEventListener("click", displayDate);
+
+function displayDate(event) {
+  document.getElementById("demo").innerHTML = Date() + " A kattintott elem: " + event.target;
+}
+
+</script>
+
+```
+
+Az eseményről a ```EventTarget.removeEventListener()``` metódus segítségével lehet
+leiratkozni.
 
 ### 4.3 DOM
 
