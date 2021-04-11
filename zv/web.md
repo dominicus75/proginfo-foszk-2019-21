@@ -1214,21 +1214,84 @@ amelyet az ISO is elfogadott, jelenlegi változata a **[ISO/IEC 22275:2018 szabv
 Az ECMA-szabványnak jelenleg a 11.0 verzója hatályos, de a kiadásokat évszámmal is
 szokták jelölni, tehát a 11. változat ECMAScript 2020. néven is ismert.
 
+A szabvány meghatározása szerint a JavaScript egy [általános célú programozási nyelv](https://hu.wikipedia.org/wiki/%C3%81ltal%C3%A1nos_c%C3%A9l%C3%BA_programoz%C3%A1si_nyelv),
+amelyet eredetileg webes scriptnyelvnek terveztek, de mára egy teljes funkcionalitású
+általános programozási nyelvé vált, amely a programozási feladatok széles skálájára
+alkalmazható. A JavaScript egy [többparadigmás](https://hu.wikipedia.org/wiki/Programoz%C3%A1si_paradigma)
+programozási nyelv, a szoftver tervezők és programozók eldönthetik hogyan használják
+ezen paradigmák elemeit.
+
+
 ### 4.1 Nyelvtani sajátosságok
 
-A szabvány meghatározása szerint a JavaScript egy [általános célú programozási nyelv](https://hu.wikipedia.org/wiki/%C3%81ltal%C3%A1nos_c%C3%A9l%C3%BA_programoz%C3%A1si_nyelv),
-amelyet eredetileg webes scriptnyelvnek terveztek (a célból, hogy némi interaktivitást
-vigyenek a weboldalakba és tehermetesítsék a kiszolgálókat), de mára egy teljes
-funkcionalitású általános programozási nyelvé vált, amely a programozási feladatok
-széles skálájára alkalmazható.
+A JavaScript egy **scriptnyelv**, ami egy adott (web)alkalmazás vagy működési környezet
+vezérlését teszi lehetővé. A JavaScript a böngésző és a betöltött dokumentum
+állapotát változtatja meg. A kódot a böngészőbe épített JavaScript **értelmező
+(interpreter)** értelmezi sorról sorra. Az **értelmezett nyelvekben ugyanis nincsen fordítási
+fázis**, nem a lefordított kód fut, hanem az első lehetőségnél az értelmező elkezdi a
+program végrehajtását. Az **értelmezett nyelveknél a forrás maga a program**. A böngésző
+a HTML oldalt sorfolytonosan tölti be és jeleníti meg. Ha script blokkal találkozik,
+akkor az abban lévő JavaScript kódot futtatja. A forrásállomány beolvasása balról
+jobbra, a végrehajtás pedig sorrol sorra történik.
 
 A JavaScript C típusú nyelv, szintaxisa nagyban hasonlít a C vagy a Java szintaxisához.
-Több C nyelvbeli strukturális programozási szintaxist is támogat, mint például: ```if```
-és ```switch``` kifejezések, ```for``` és ```while``` ciklusok, stb. A JavaScript
-gyengén típusos nyelv, vagyis a változók típusát dinamikusan, az értékadásnál használt
-típus határozza meg.
+A JavaScript nyelv néhány jellemzője:
 
+* A nyelv kis- és nagybetű érzékeny,
+* Az Unicode karakterkódolási szabványt támogatja,
+* Az utasításokat (sorokat) konvenció szerint pontosvesszővel (```;```) választjuk
+el (nem kötelező, de zavart okozhat az elhagyása),
+* Biztonsági okokból a nyelvben nincsen fájlkezelés,
+* Megjegyzéseket ugyanúgy lehet írni JavaScriptben, mint más C típusú nyelvben: az
+egysoros megjegyzést ```//``` után, a többsorost a ```/* */``` jelek közé,
+* 
 
+A JavaScript gyengén típusos nyelv, vagyis a változó értékének megadásával automatikusan
+hozzárendelődik a változóhoz a neki megfelelő adattípus. Amennyiben egy adott változó
+típusát szeretnénk lekérdezni, ehhez a ```typeof``` unáris operátort használhatjuk, melynek
+visszatérési értéke string típusú szöveg lesz, ami a típust megnevezését tartalmazza.
+(**A typeof „object”-et ad vissza mind az objektumokra, mind a tömbökre, és a „null” értékre is**.
+Ez utóbbit nyelvi hibának lehet tekinteni, amit kompatibilitási okokból nem lehet
+javítani, ugyanis számos régebb írt kód nem működne többet helyesen, ha ez nem objektum
+típus volna).
+
+A JavaScript nyelv típusait két kategóriába lehet sorolni: primitív és összetett.
+A primitív típusok érték szerint, míg az összetettek referencia szerint adódnak át,
+vagyis a primitívek értéke átmásolódik, míg az összetett adattípusnak a memóriacíme
+tárolódik el.
+
+JavaScriptben a primitív típusok az *undefined* és a *null* kivételével automatikusan
+objektummá alakulnak, amikor meghívjuk egy metódusukat, majd automatikusan vissza
+is alakulnak primitívvé.
+
+| Primitív típus | Burkoló objektum | 
+|----------------|------------------|
+| ```string``` | ```String``` |
+| ```number``` | ```Number``` |
+| ```boolean``` | ```Boolean``` |
+| ```undefined``` | nincs |
+| ```null``` | nincs |
+
+Tehát minden primitív típusnak létezik egy burkoló (wrapper) objektum megfelelője.
+A primitív érték **alakíthatatlan (immutable)**, ugyanakkor becsomagolhatjuk egy
+burkoló objektumba, azonban nincs olyan eset, ahol az explicit csomagolás indokolt
+volna, ellenben a futtatókörnyezet a primitív értéket automatikusan be- és kicsomagolja.
+
+Két komplex (összetett) adattípus létezik: **függvény (function)**, **objektum (Object)**.
+A JavaScriptben a tömb is objektum, így a ```typof``` függvény ez esetben is ```Object```
+értékkel fog visszatérni. Az objektum JavaScriptben nem más, mint név-érték (vagy
+kulcs-érték) párok gyűjteménye. Leginkább egy asszociatív tömbhöz hasonlít, amelynek
+lényege, hogy az egyes elemeket a nevük (vagy kulcsuk) alapján érünk el.
+
+A nyelv prototípus alapú ami azt jelenti, hogy az öröklődést prototípusok (és nem
+osztályok) segítségével valósítja meg. JavaScriptben minden objektum rendelkezik
+prototípussal, ami alapértelmezetten az ```Object.prototype``` lesz. Új objektum
+létrehozásakor a prototípus lánc végéhez adunk egy új elemet, ami rökli a felmenői
+tulajdonságait és metódusait.
+
+Az ECMAScript 2015, más néven ES6 bevezette az osztályok ```class``` kulcsszóval
+történő létrehozását. Innentől a más nyelveken megszokott módon lehet osztályokat
+deklarálni.
 
 ### 4.2 Eseményvezérelt programozás
 
