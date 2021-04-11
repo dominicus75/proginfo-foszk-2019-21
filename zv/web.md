@@ -1367,9 +1367,9 @@ Az ```addEventListener()``` első várt paramétere az eseménytípus (az alább
 függvény neve, amit tulajdonságként hozzá szeretnénk adni a kiválasztott DOM elemhez
 (esetünkben a "gomb" azonosítóval rendelkező button elem). Harmadik (opcionális)
 paramétere egy objektum, amely a következő (boolean típusú) tulajdonságokat tartalmazhatja:
-* capture (elkapás iránya)
-* once (egyszeri hívás majd eltávolítás)
-* passive (nincs preventDefault() hívás)
+	* capture (elkapás iránya)
+	* once (egyszeri hívás majd eltávolítás)
+	* passive (nincs preventDefault() hívás)
 
 ```html
 
