@@ -1393,6 +1393,111 @@ leiratkozni.
 
 ### 4.3 DOM
 
+A Dokumentum Objektum Modell (Document Object Model / DOM) egy platform- és nyelvfüggetlen
+szabványos objektummodell amely a HTML, XHTML, XML valamint rokon formátumaiknak
+a szerkezetét és az objektumaikkal történő interakciókat modellezi. A DOM egymással
+gyerek-szülő kapcsolatban álló objektumok rendszere. A dokumentum tartalmát, illetve
+a dokumentum valamennyi összetevőjét magában foglalja. A DOM tehát nem más, mint
+az oldal szerkezetéért felelős HTML elemek JavaScript objektum megfelelői, amik
+ugyanolyan fastruktúrába szervezve a megjelenítés alapját képezik, és amin keresztül
+a dokumentum programozhatóvá válik. Tömören: **a DOM az oldal szerkezetének programozási
+felülete**, az a mód, ahogyan a JavaScript látja a webböngésző állapotait és az
+általa megjelenített HTML oldalt.
+
+A webböngészők rendszerint a DOM-hoz hasonló belső modellt használnak a dokumentumok
+(például egy HTML oldal) megjelenítéséhez. A DOM API-kat weboldalak, illetve egyes
+részeik JavaScript kódból történő vizsgálására, vagy módosítására is használják.
+
+A DOM alapját a **[DOM Core szabvány](https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/)**
+jelenti, amelyben egy csomópontokból álló általános fastruktúra ábrázolásához és
+működtetéséhez szükséges információk és műveletek vannak leírva. A HTML dokumentum
+egy speciális elemekből álló fastruktúra, speciális többletfunkcionalitását a
+**[HTML DOM szabvány](https://dom.spec.whatwg.org/)** határozza meg.
+
+A DOM nem más, mint csomópontok fája. Sokféle típusú csomópont létezik, és ez meghatározza
+lehetséges tulajdonságaikat és metódusaikat is. Némelyik típusú csomópontnak lehetnek
+további gyerekei, mások csak levélelemként szerepelhetnek. A fontosabb csomóponttípusok:
+
+* **dokumentum**: a dokumentumfa gyökere, ez reprezentálja az egész HTML dokumentumot
+és biztosítja az elsődleges hozzáférést bármilyen dokumentumbeli adathoz. Mivel minden
+további csomóponttípus csak a dokumentumon belül létezhet, ezért biztosít néhány
+metódust az elemek elérésére és létrehozására. JavaScriptben ```window.document```
+vagy rövidebben ```document``` kulcsszóval hivatkozunk rá.
+* **elem**: minden dokumentum egy vagy több elemből áll. Az elemek határát a nyitó
+és záró tagek jelölik ki, illetve léteznek üres elemek is, amelyek önmagukban
+tekinthetők lezártnak. Minden elemnek lehetnek attribútumai is. Elem például a
+```<html>```, ```<p>```, stb.
+* **attribútum**: elemhez kapcsolt további információ leírására szolgál. Minden
+attribútumnak van neve és értéke.
+* **szöveges csomópont**: szöveges adatot tartalmazó csomópont, az oldalakon megjelenő
+szövegek ábrázolására szolgál. A DOM feldolgozását nehezíti, hogy az egyes elemek
+elválasztására beírt karakterek (pl. újsor karakter) is szöveges csomópontként
+jelennek meg.
+
+A DOM egy alkalmazásprogramozási felület (API), ami JavaScripten keresztül érhető
+el. Itt **az egyes HTML elemeket objektumok reprezentálják, amelyek különböző tulajdonságokkal**
+(ezek zömében megegyeznek az adott HTML elem attribútumaival, amelyeket tetszőlegesen
+lehet változtatni) **és metódusokkal** (olyan operációk, amelyek HTML elemeken hajtódnak
+végre) **rendelkeznek**. Ezek a metódusok és tulajdonságok alkotják együttesen ezt az
+alkalmazásprogramozási felületet.
+
+Amikor a böngésző betölti a kívánt oldalt, akkor ezzel egy időben létrejön az oldalt
+leíró dokumentum objektum modell. JavaScriptből ezt a modellt elérve és felhasználva
+a következőkre van lehetőségünk egy weboldalon:
+
+* bármelyik HTML elemet és attribútumot szabadon változtathatjuk, ebbe beletartozik
+az eltávolításuk, vagy akár új elem, attribútum hozzáadása is
+* bármelyik CSS szabályt tetszőlegesen változtathatjuk
+* események kezelése, hozzáadása a weblaphoz.
+
+Fentiek végrehajtásához először ki kell választani azokat az elemeket, amelyekkel
+valamilyen módon dolgozni szeretnénk. Erre szolgálnak a dokumentumszintű kiválasztó
+metódusok:
+
+* ```getElementById(id)```: egy elem kiválasztása az id attribútuma alapján.
+* ```getElementsByName(név)```: több elem kiválasztása a name attribútum értéke alapján.
+Az elemeket tömbszerű objektumban (NodeList) adja vissza.
+
+**Ezek mellett léteznek dokumentum- és elemszintű kiválasztó metódusok is:**
+
+* ```getElementsByTagName(elemnév)```: az adott elem alá tartozó elemek közül a
+megadott nevű elemeket adja vissza.
+* ```getElementsByClassName(stílusosztály)```: az adott elem alá tartozó elemek
+közül a megadott stílusosztályú elemek kiválasztása.
+* ```querySelector(css_szelektor)```: kiválasztás CSS szelektorral. A szelektor
+által meghatározott elemek közül az elsőt adja vissza.
+* ```querySelectorAll(css_szelektor)```: a CSS szelektor által meghatározott elemeket
+adja vissza tömbszerű objektumként.
+
+A több elemet visszaadó metódusok ún. **NodeList** gyűjteményt adnak vissza, amely
+úgy viselkedik, mint egy tömb, de a tömbmetódusok nem érhetők el rajta, csupán ```length```
+tulajdonságuk van. Feldolgozásuk csak a sima for ciklussal ajánlott.
+
+Elemek kiválasztásával közvetlenül érhetjük el a keresett elemeket. Mivel azonban
+a dokumentum egy fa, lehetőség van a dokumentum gyökerétől elindulva elérni az
+egyes csomópontokat. Ezt nevezzük a fa bejárásának.
+
+Gyerekelemek lekérdezésére a ```childNodes``` tulajdonság szolgál. Ez az adott elem
+alá tartozó összes csomópontot (elemeket és szöveges csomópontot egyaránt) visszaadja.
+Az első gyerekelemet a ```firstChild``` tulajdonsággal, az utolsót a ```lastChild```
+tulajdonsággal kérhetjük le. A szülőelemre egy adott csomópont ```parentNode```
+tulajdonsága mutat. A testvércsomópontok között a ```nextSibling``` és ```previousSibling```
+tulajdonsággal tudunk előre, illetve visszafele haladni. A fentiek ```null``` értéket
+adnak vissza, ha nincs megfelelő elem.
+
+A bejárás során zavaró lehet, hogy a csomópontok között a szöveges csomópontok is
+megjelennek. Ezeket a csomópontok ```nodeType``` attribútuma alapján lehet kiszűrni.
+Az elemeknél ez a tulajdonság 1-es, míg szöveges csomópontoknál 3-as értékű.
+
+A kiválasztott elemnek lehetnek HTML attribútumai. Ezeknek a kezelésére a szabvány
+a következő műveleteket definiálja:
+
+* ```getAttribute(név)```: adott nevű attribútum értékének lekérdezése.
+* ```setAttribute(név, érték)```: adott nevű attribútum értékének beállítása.
+* ```hasAttribute(név)```: adott nevű attribútum létezésének vizsgálata.
+* ```removeAttribute(név)```: adott nevű attribútum eltávolítása.
+* ```attributes```: elem összes attribútumának gyűjteménye.
+
 ## 5. JSON.
 
 ### 5.1 Az JSON adattípusai, szintaxisa.
