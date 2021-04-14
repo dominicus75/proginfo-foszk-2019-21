@@ -1500,7 +1500,41 @@ a következő műveleteket definiálja:
 
 ## 5. JSON.
 
+A JSON (JavaScript Object Notation, JavaScript objektumjelölés) emberek számára is
+olvasható–írható, programozottan pedig könnyen feldolgozható és előállítható, pehelysúlyú
+adatcsere-formátum. A JavaScript programozási nyelv egy részén alapul. A JavaScripttel
+való kapcsolata ellenére nyelvfüggetlen, több nyelvhez is van értelmezője. Formátuma
+a C családú nyelvekben ismert konvenciókhoz igazodik.
+
+A JSON-t legtöbbször egy szerver és egy kliens számítógép közti adatátvitelre használják
+(jellemzően AJAX technológiával), az XML egyik alternatívájaként. Általánosságban
+strukturált adatok tárolására, továbbítására szolgál. A téradatok leírására és tárolására
+szolgáló változata a [GeoJSON](https://geojson.org/).
+
+A formátumot Douglas Crockford (1955-) specifikálta az [RFC4627](https://tools.ietf.org/html/rfc4627) számú
+dokumentumban, amelyet 2006-ban tett közzé. Az ECMA 2013-ban adta ki a JSON szabvány
+[első változatát](https://www.ecma-international.org/wp-content/uploads/ECMA-404_1st_edition_october_2013.pdf),
+(jelenleg a [2. kiadás](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/) hatályos)
+majd 2017-ben az **Internet Engineering Task Force (IETF)** is Internetes Szabványnak
+ismerte el [STD 90](https://tools.ietf.org/html/std90), ugyan ebben az évben az ISO/IEC is
+kiadott egy JSON szabványt, [ISO/IEC 21778:2017](https://www.iso.org/standard/71616.html)
+szám alatt.
+
+A JSON hivatalos mime-típusa az ```application/json```, fájlkiterjesztése pedig
+a ```.json```.
+
 ### 5.1 Az JSON adattípusai, szintaxisa.
+
+A JSON-nak két típusú felépítése lehetséges:
+* **Név–érték párok halmaza**: ennek megvalósításai az *objektum, rekord, struktúra,
+szótár, hasítótábla, kulcsos lista* vagy *asszociatív tömb* lehetnek a különféle
+nyelvekben.
+* **Értékek rendezett listája**: a legtöbb nyelvben ez *tömb, vektor, lista* vagy
+*szekvencia*.
+
+Ezek olyan univerzális adatszerkezetek, amiket gyakorlatilag minden programozási
+nyelv támogat valamilyen formában. Ezért a programozási nyelvek kommunikációjához
+használatos JSON formátum szintén ezekre az adatszerkezetekre épül.
 
 ### 5.2 JSON-formázott szöveg értelmezése JavaScript-ben (eval(), JSON.parse()).
 
@@ -1638,6 +1672,8 @@ a következő műveleteket definiálja:
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 
 #### JSON:
+* [ISO/IEC 21778:2017](https://www.iso.org/standard/71616.html)
+* [JSON bevezető](https://www.json.org/json-hu.html)
 * Wikipedia: [JSON](https://hu.wikipedia.org/wiki/JSON)
 * Több szerző: [JSON](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=19)
 * BME Wiki: [JSON](http://static.hlt.bme.hu/semantics/external/pages/JSON-objektum/hu.wikipedia.org/wiki/JSON.html)
