@@ -1512,11 +1512,14 @@ strukturált adatok tárolására, továbbítására szolgál. A téradatok leí
 szolgáló változata a [GeoJSON](https://geojson.org/).
 
 A formátumot Douglas Crockford (1955-) specifikálta az [RFC4627](https://tools.ietf.org/html/rfc4627) számú
-dokumentumban, amelyet 2006-ban tett közzé. Az ECMA 2013-ban adta ki a JSON szabvány
+dokumentumban és először a State Software, egy általa alapított cég használta körülbelül
+2001-től. A [json.org](https://www.json.org/json-en.html) honlap 2002-ben indult el.
+2005 decemberében a Yahoo! elkezdte némely webes szolgáltatásait JSON-ban kínálni,
+majd 2006-tól a Google is használni kezdte. Az ECMA 2013-ban adta ki a JSON szabvány
 [első változatát](https://www.ecma-international.org/wp-content/uploads/ECMA-404_1st_edition_october_2013.pdf),
 (jelenleg a [2. kiadás](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/) hatályos)
-majd 2017-ben az **Internet Engineering Task Force (IETF)** is Internetes Szabványnak
-ismerte el [STD 90](https://tools.ietf.org/html/std90), ugyan ebben az évben az ISO/IEC is
+majd 2017-ben az **[Internet Engineering Task Force (IETF)](https://hu.wikipedia.org/wiki/IETF)** is Internetes Szabványnak
+ismerte el ([STD 90](https://tools.ietf.org/html/std90)), ugyan ebben az évben az ISO/IEC is
 kiadott egy JSON szabványt, [ISO/IEC 21778:2017](https://www.iso.org/standard/71616.html)
 szám alatt.
 
@@ -1534,7 +1537,97 @@ nyelvekben.
 
 Ezek olyan univerzális adatszerkezetek, amiket gyakorlatilag minden programozási
 nyelv támogat valamilyen formában. Ezért a programozási nyelvek kommunikációjához
-használatos JSON formátum szintén ezekre az adatszerkezetekre épül.
+használatos JSON formátum szintén ezekre az adatszerkezetekre épül, melyek JSON-ban
+az alábbi formákban jelennek meg:
+
+* **objektum (object)**: kulcs:érték-párok rendezetlen gyűjteménye, amelyben ```:``` (kettőspont)
+karakter választja el a kulcsot és az értéket, a párok egymástól vesszőkkel vannak
+elválasztva, a lista pedig kapcsos zárójelek között van; a kulcsok mindig string
+típusúak, és különbözniük kell egymástól.
+* **tömb (array)**: értékek sorrendhelyes felsorolása vesszővel elválasztva, szögletes
+zárójelek között; az értékeknek nem kell azonos típusúnak lennie
+* **szöveg (string)**: nulla vagy több, idézőjelek közé zárt Unicode karakter, szükség
+szerint balra dőlő törtvonallal (backslash, \) escape-elve
+* **szám (number)**:  a C és Java számaihoz hasonló, a különbség az, hogy oktális
+és hexadecimális formátum itt nem használható.
+* **logikai (boolean)**: ```true``` (igaz) vagy ```false``` (hamis)
+* **null**: (szándékosan) üres érték
+
+**Érték lehet idézőjelek közé írt karakterlánc, szám, logikai igaz (true), logikai
+hamis (false), null, objektum vagy tömb. A struktúrák egymásba ágyazhatók**.
+
+A feldolgozó által ignorált térköz hozzáadható a „strukturáló karakterek”
+(pl. ```[]```, ```{}```, ```:```, ```,```) elé vagy után.
+
+Szemléltetés gyanánt a Laminas Framework [psr7bridge](https://github.com/laminas/laminas-psr7bridge)
+csomagjának composer.json állománya:
+
+```json
+
+{
+    "name": "laminas/laminas-psr7bridge",
+    "description": "Bidirectional conversions between PSR-7 and laminas-http messages",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "laminas",
+        "http",
+        "psr",
+        "psr-7"
+    ],
+    "homepage": "https://laminas.dev",
+    "support": {
+        "docs": "https://docs.laminas.dev/laminas-psr7bridge/",
+        "issues": "https://github.com/laminas/laminas-psr7bridge/issues",
+        "source": "https://github.com/laminas/laminas-psr7bridge",
+        "rss": "https://github.com/laminas/laminas-psr7bridge/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+    },
+    "require": {
+        "php": "^7.3 || ~8.0.0",
+        "laminas/laminas-diactoros": "^1.7 || ^2.0",
+        "laminas/laminas-http": "^2.11",
+        "laminas/laminas-zendframework-bridge": "^1.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "laminas/laminas-coding-standard": "~1.0.0",
+        "phpunit/phpunit": "^9.4.1"
+    },
+    "conflict": {
+        "laminas/laminas-stdlib": "< 3.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laminas\\Psr7Bridge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaminasTest\\Psr7Bridge\\": "test/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    },
+    "replace": {
+        "zendframework/zend-psr7bridge": "^1.2.0"
+    }
+}
+
+```
 
 ### 5.2 JSON-formázott szöveg értelmezése JavaScript-ben (eval(), JSON.parse()).
 
