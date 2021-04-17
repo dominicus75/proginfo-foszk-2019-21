@@ -1697,7 +1697,7 @@ var text = JSON.stringify(text, function (key, value) {
 });
 
 /* A második paraméter null, tehát nem lesz átalakítás az eredményen, a harmadik
-paraméter pedig 10 db szóközös behúzást alkalmaz minden egyes tulajdonság elé */
+paraméter pedig 10 szóközös behúzást alkalmaz minden egyes tulajdonság elé */
 
 var text = JSON.stringify(obj, null, 10);
 
@@ -1713,6 +1713,56 @@ var text = JSON.stringify(obj, null, 10);
 
 
 ### 5.3 JSON objektumok kódolása és dekódolása PHP-ben (json_encode(), json_decode())
+
+JSON objektumok kezelésére a PHP a következő két beépített függvényt biztosítja:
+
+* ```json_encode(mixed $value[, int $flags = 0, int $depth = 512]) : string|false```
+
+* ```json_decode(string $json[, bool|null $associative = null, int $depth = 512, int $flags = 0]) : mixed```
+Az első paraméterként megkapott JSON formátumú szöveget PHP változóvá alakítja. Paraméterei:
+	1. a dekódolandó (kizárólag UTF-8 kódolású) JSON formátumú szöveg (kötelező paraméter).
+	2. kimeneti formátum (opcionális paraméter). Logikai érték, mellyel azt lehet
+	beállítani, hogy a JavaScript 	objektumokat PHP objektumként (```false```) vagy
+	asszociatív tömbként (```true```) adja 	vissza a függvény. Az alapértelmezett
+	érték ```null```, ekkor a negyedik paraméter függvényében objektumot, vagy
+	asszociatív tömböt ad vissza.
+	3. A rekúrzió mélysége (opcionális paraméter). Egész szám típusú érték, mely
+	meghatározza, hogy milyen mélységig épülhetnek egymásba az elemek. Pl. ha ez a
+	paraméter 4, akkor az alábbihoz hasonló struktúra lehetséges:
+	```php
+
+	/* (tömb -> tömb -> tömb -> szöveg) */
+	
+	array(1) {
+	  [1]=>
+	  array(2) {
+		["English"]=>
+		array(2) {
+		  [0]=>
+		  string(3) "One"
+		  [1]=>
+		  string(7) "January"
+		}
+		["French"]=>
+		array(2) {
+		  [0]=>
+		  string(3) "Une"
+		  [1]=>
+		  string(7) "Janvier"
+		}
+	  }
+	}
+
+	```
+	4. Bitmaszk (opcionális paraméter). Egész szám típusú érték, amely a következő [JSON konstansok](https://www.php.net/manual/en/json.constants.php)
+	értékét veheti fel:
+		* ```JSON_BIGINT_AS_STRING```: a nagy egész számokat szövegként adja vissza
+		* ```JSON_INVALID_UTF8_IGNORE```: figyelmenkívül hagyja az érvénytelen UTF-8 karaktereket
+		* ```JSON_INVALID_UTF8_SUBSTITUTE```: átkonvertálja az érvénytelen UTF-8 karaktereket
+		* ```JSON_OBJECT_AS_ARRAY```: a JSON objektumot asszociatív PHP tömbbé alakítja.
+		* ```JSON_THROW_ON_ERROR```: [JsonException](https://www.php.net/manual/en/class.jsonexception.php)
+		típusú hibaobjektumot dob, hiba esetén.
+
 
 ## 6. Az AJAX.
 
