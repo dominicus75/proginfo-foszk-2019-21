@@ -1501,10 +1501,10 @@ a következő műveleteket definiálja:
 ## 5. JSON.
 
 A JSON (JavaScript Object Notation, JavaScript objektumjelölés) emberek számára is
-olvasható–írható, programozottan pedig könnyen feldolgozható és előállítható, pehelysúlyú
-adatcsere-formátum. A JavaScript programozási nyelv egy részén alapul. A JavaScripttel
-való kapcsolata ellenére nyelvfüggetlen, több nyelvhez is van értelmezője. Formátuma
-a C családú nyelvekben ismert konvenciókhoz igazodik.
+olvasható–írható, programozottan pedig könnyen feldolgozható és előállítható, pehelysúlyú,
+önleíró adatcsere-formátum. A JavaScript programozási nyelv egy részén alapul. A
+JavaScripttel való kapcsolata ellenére nyelvfüggetlen, több nyelvhez is van értelmezője.
+Formátuma a C családú nyelvekben ismert konvenciókhoz igazodik.
 
 A JSON-t legtöbbször egy szerver és egy kliens számítógép közti adatátvitelre használják
 (jellemzően AJAX technológiával), az XML egyik alternatívájaként. Általánosságban
@@ -1630,6 +1630,87 @@ csomagjának composer.json állománya:
 ```
 
 ### 5.2 JSON-formázott szöveg értelmezése JavaScript-ben (eval(), JSON.parse()).
+
+Mivel a JSON-formázott szöveg szintaktikailag érvényes JavaScript-kód, értelmezésének
+egy egyszerű módja a JavaScriptbe beépített ```eval()``` függvény használata, amely
+a függvénynek szöveges formában átadott JavaScript-kifejezések kiértékelésére szolgál.
+Így a JSON-értelmező helyett magát a JavaScript interpretert használják a JSON adatok
+"lefuttatására", amely ezáltal natív JavaScript-objektumokat hoz létre. 
+
+Az ```eval()``` használata azért veszélyes, mert bármilyen JS kódot végrehajt, amit
+odaadunk neki. Éppen ezért sose használjuk olyan kódok végrehajtására amiknek az
+eredete nem megbízható vagy éppen ismeretlen. Például, ha a forrás nem megbízható,
+akkor az érkező adat lehetséges, hogy egy JavaScriptes kódbeszúrásos támadást idéz elő.
+Emellett a bizalom ilyen megsértése okozhat adatlopást, autentikáció-hamisítást, és az
+adatok és erőforrások egyéb rossz használatát.
+
+Éppen ezért soha ne használjunk ```eval()```. Bármilyen kód működése, teljesítménye,
+ill. biztonsága megkérdőjelezhető amely használja ezt a nyelvi elemet. Semmilyen
+megoldás használata nem ajánlott amely első sorban erre épül.
+
+Az **ECMAScript szabvány 5. kiadása (2009)** az ```eval()``` biztonságosabb alternatívájaként
+bevezette a ```JSON.parse()``` függvényt, melynek kizárólagos feladata JSON-adatok,
+nem pedig JavaScript-kódok értelmezése. A ```JSON.parse()``` függvény egy JavaSript
+objektumot ad vissza. Kötelező első paraméterként egy JSON-formázott szöveget, opcionális
+második paraméterként egy függvényt vár, amellyel az ereményobjektumon lehet további
+műveleteket eszközölni.
+
+```javascript
+
+/* A második paraméterként átadott függvény a city tulajdonság értékét alakítja
+csupa nagybetűssé */
+
+var text = '{ "name":"Józsi", "age":"39", "city":"Karakószörcsök"}';
+var obj = JSON.parse(text, function (key, value) {
+  if (key == "city") {
+    return value.toUpperCase();
+  } else {
+    return value;
+  }
+});
+
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.city;
+
+```
+
+Az ES5 szabvány a Javascript objektumok szöveges (JSON) formátumba alakítására is
+bevezetett egy függvényt. A ```JSON.stringify()``` egy JSON formátumú stringet ad
+vissza, kötelező első paramétere a JavaScript objektum, amelyet szövegként akarunk
+viszontlátni. Opcionálisan megadható második paraméterként egy függvény, amellyel az
+ereményobjektumon lehet további műveleteket eszközölni, illetve harmadik paraméterként
+egy szám vagy szöveg, amely a JSON string-ben olvashatóság könnyítési célzattal
+elhelyezendő térköz karakterek számát (legfeljebb 10) vagy a beszúrandó karaktereket
+(legfeljebb 10 karakter) adja meg.
+
+```javascript
+
+/* A második paraméterként átadott függvény a city tulajdonság értékét alakítja
+csupa nagybetűssé */
+
+var obj  = '{ "name":"Józsi", "age":"39", "city":"Karakószörcsök"}';
+var text = JSON.stringify(text, function (key, value) {
+  if (key == "city") {
+    return value.toUpperCase();
+  } else {
+    return value;
+  }
+});
+
+/* A második paraméter null, tehát nem lesz átalakítás az eredményen, a harmadik
+paraméter pedig 10 db szóközös behúzást alkalmaz minden egyes tulajdonság elé */
+
+var text = JSON.stringify(obj, null, 10);
+
+/* Az eremény valahogy így fog festeni: */
+
+"{
+          "name": "John",
+          "age": "39",
+          "city": "New York"
+}"
+
+```
+
 
 ### 5.3 JSON objektumok kódolása és dekódolása PHP-ben (json_encode(), json_decode())
 
@@ -1762,6 +1843,7 @@ csomagjának composer.json állománya:
 * W3Schools: [HTML SSE API](https://www.w3schools.com/html/html5_serversentevents.asp)
 * JavaScript.info: [Server Sent Events](https://javascript.info/server-sent-events)
 * MDN: [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+* Ivo Wetzel, Zhang Yi Jiang: [JavaScript Garden](https://bonsaiden.github.io/JavaScript-Garden/hu/)
 * W3Schools: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
 
 #### JSON:
