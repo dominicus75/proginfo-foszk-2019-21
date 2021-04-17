@@ -1704,9 +1704,9 @@ var text = JSON.stringify(obj, null, 10);
 /* Az eremény valahogy így fog festeni: */
 
 "{
-          "name": "John",
+          "name": "Józsi",
           "age": "39",
-          "city": "New York"
+          "city": "Karakószörcsök"
 }"
 
 ```
@@ -1717,17 +1717,14 @@ var text = JSON.stringify(obj, null, 10);
 JSON objektumok kezelésére a PHP a következő két beépített függvényt biztosítja:
 
 * ```json_encode(mixed $value[, int $flags = 0, int $depth = 512]) : string|false```
-
-* ```json_decode(string $json[, bool|null $associative = null, int $depth = 512, int $flags = 0]) : mixed```
-Az első paraméterként megkapott JSON formátumú szöveget PHP változóvá alakítja.
+Az első paraméterként bekért adatot JSON formátumú szövegként adja vissza. Ha ez nem
+sikerül, ```false```-al tér vissza.
 Paraméterei:
 
-	1. a dekódolandó (kizárólag UTF-8 kódolású) JSON formátumú szöveg (kötelező paraméter).
-	2. kimeneti formátum (opcionális paraméter). Logikai érték, mellyel azt lehet
-	beállítani, hogy a JavaScript 	objektumokat PHP objektumként (```false```) vagy
-	asszociatív tömbként (```true```) adja 	vissza a függvény. Az alapértelmezett
-	érték ```null```, ekkor a negyedik paraméter függvényében objektumot, vagy
-	asszociatív tömböt ad vissza.
+	1. A kódolandó érték (kötelező paraméter). Ez - resource típus kivételével -
+	bármi lehet. A szöveges adatoknak UTF-8 kódolásúaknak kell lenniük.
+	2. Bitmaszk (opcionális paraméter). Egész szám típusú érték, amely [JSON konstansok](https://www.php.net/manual/en/json.constants.php)
+	értékét veheti fel.
 	3. A rekúrzió mélysége (opcionális paraméter). Egész szám típusú érték, mely
 	meghatározza, hogy milyen mélységig épülhetnek egymásba az elemek. Pl. ha ez a
 	paraméter 4, akkor az alábbihoz hasonló struktúra lehetséges:
@@ -1756,6 +1753,21 @@ Paraméterei:
 	}
 
 	```
+	
+* ```json_decode(string $json[, bool|null $associative = null, int $depth = 512, int $flags = 0]) : mixed```
+Az első paraméterként megkapott JSON formátumú szöveget PHP változóvá alakítja. ```null```
+értékkel tér vissza, ha a dekódolás nem sikerül, vagy a kimenet mélysége nagyobb,
+mint 3. paraméterben beállított rekúrzió.
+Paraméterei:
+
+	1. a dekódolandó (kizárólag UTF-8 kódolású) JSON formátumú szöveg (kötelező paraméter).
+	2. kimeneti formátum (opcionális paraméter). Logikai érték, mellyel azt lehet
+	beállítani, hogy a JavaScript 	objektumokat PHP objektumként (```false```) vagy
+	asszociatív tömbként (```true```) adja 	vissza a függvény. Az alapértelmezett
+	érték ```null```, ekkor a negyedik paraméter függvényében objektumot, vagy
+	asszociatív tömböt ad vissza.
+	3. A rekúrzió mélysége (opcionális paraméter). Egész szám típusú érték, mely
+	meghatározza, hogy milyen mélységig épülhetnek egymásba az elemek. 
 	4. Bitmaszk (opcionális paraméter). Egész szám típusú érték, amely a következő [JSON konstansok](https://www.php.net/manual/en/json.constants.php)
 	értékét veheti fel:
 		* ```JSON_BIGINT_AS_STRING```: a nagy egész számokat szövegként adja vissza
@@ -1763,7 +1775,7 @@ Paraméterei:
 		* ```JSON_INVALID_UTF8_SUBSTITUTE```: átkonvertálja az érvénytelen UTF-8 karaktereket
 		* ```JSON_OBJECT_AS_ARRAY```: a JSON objektumot asszociatív PHP tömbbé alakítja.
 		* ```JSON_THROW_ON_ERROR```: [JsonException](https://www.php.net/manual/en/class.jsonexception.php)
-		típusú hibaobjektumot dob, hiba esetén.
+		típusú hibaobjektumot dob hiba esetén.
 
 
 ## 6. Az AJAX.
