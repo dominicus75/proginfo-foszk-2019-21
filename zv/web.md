@@ -1780,9 +1780,106 @@ Paraméterei:
 
 ## 6. Az AJAX.
 
+Az **Ajax (Asynchronous JavaScript and XML)** interaktív webalkalmazások létrehozására
+szolgáló webfejlesztési technika. Az AJAX technológiával lehetővé válik a szerverrel
+való kapcsolattartás a teljes oldal újratöltése nélkül, ezáltal sokkal folyamatosabb,
+nagyobb fokú élményt adva a felhasználóknak weboldalak használata közben.
+
+Az Ajax a következő technikák kombinációja:
+
+* **XHTML** (vagy **HTML**) és **CSS**: a tartalom leírására és formázására.
+* **DOM**: dinamikus felhasználói felület, interakció.
+* **XMLHttpRequest**: aszinkron kliens-szerver adatátvitel.
+* **XML, JSON** (vagy sima szöveg): adatleíró és kommunikációs formátum.
+
+Az AJAX lelkét a szabványos [XMLHttpRequest](https://developer.mozilla.org/hu/docs/Web/API/XMLHttpRequest) objektum jelenti, mely segítségével a háttérben
+aszinkron módon, azaz a felhasználói felület működtetésével párhuzamosan lehet a
+szerver felé kéréseket indítani és az onnan érkező válaszokat feldolgozni. Egy
+AJAX-os hívás során a kliens ugyanúgy HTTP protokollon keresztül lép kapcsolatba
+a szerverrel, mint a hagyományos oldalkiszolgálás esetén, az egyetlen különbség az,
+hogy AJAX esetén nem a böngésző kezdeményezi a kérést, hanem mindezt JavaScript
+programmal vezéreljük. A kapcsolattartásért az XMLHttpRequest objektum a felelős.
+
+Az oldalkiszolgálás folyamata a következő:
+
+* a felhasználó valamilyen tevékenységének hatására szükség van szerveroldali kommunikációra;
+* ennek érdekében JavaScript segítségével egy XMLHttpRequest objektumon keresztül
+kérést intézünk a szerverhez, miközben a felhasználói felület változatlanul használható;
+* a szerver kiszolgálja a kérést, a választ elküldi a kliensnek;
+* az XMLHttpRequest objektum fogadja a választ, JavaScripttel feldolgozza, és az
+oldalon a szükséges módosításokat elvégzi.
+
 ### 6.1 Az AJAX céljai és előnyei
 
+A legnyilvánvalóbb ok az Ajax használatára a felhasználói élmény fokozása. Az Ajaxot
+használó oldalak viselkedése sokkal inkább hasonlít a desktopos alkalmazásokhoz, mint
+a tipikus weboldalakhoz. Amikor egy linkre kattintás hatására a teljes weboldal
+újratöltődik, az sokszor időigényes művelet. Az Ajaxot használó oldalak e helyett
+képesek rá, hogy csak az oldal szükséges részét frissítsék, így gyorsabb reagálást
+biztosítanak a felhasználói interakciókra. Néhányan úgy gondolják, hogy az Ajax lesz
+az a feltörekvő technológia, amelynek segítségével a jövőben a webes alkalmazások
+minden eddiginél interaktívabbá és így széles körben is sokkal népszerűbbé válhatnak.
+
+Az Ajaxot használó oldalak mérséklik a szerver terhelését, ezáltal rövidebb a válaszidő
+is, ugyanis a szervertől HTML formázás nélkül kapják az adatokat. A szervertől kapott
+adatokból a HTML kód a böngészőben jön létre javascript segítségével, ami jól optimalizált
+programkód esetén legtöbbször gyorsabb – de legalábbis nem lassabb – mintha az erősen
+leterhelt szerver hozná azt létre. Ennek oka, hogy ma már a kliens oldalon a felhasználók
+viszonylag gyors személyi számítógépekkel rendelkeznek, amelyek terhelése általában
+lényegesen alacsonyabb, mint a szerveré. Mindezen jótékony hatásokat tovább erősíti,
+hogy az Ajax segítségével sokszor jól megvalósítható, hogy mindig csak az éppen
+szükséges minimális mennyiségű adat töltődjön le a szerverről. Ennek köszönhetően
+mindig csak a feltétlen szükséges minimális mennyiségű adattal kell dolgozni.
+Összefoglalva az Ajax és az itt leírt módszerek együttes használatával szignifikáns
+oldal letöltési sebesség növekedés és szerverterhelés csökkentés érhető el. A gyorsulás
+általában fordított arányban áll a webes alkalmazás funkcionális összetettségével
+és alkalmazáslogikájának bonyolultságával.
+
+Egy másik előnye az Ajax használatának, hogy lehetővé teszi az adatokat szolgáltató
+és a megjelenítésért felelős programkód elkülönítését.
+
 ### 6.2 Az AJAX technikái, a jQuery fontosabb AJAX metódusai ($.ajax, $.get, $.getJSON, $.post, $.fn.load)
+
+A **jQuery** az egyik legnépszerűbb JavaScript keretrendszer, rengeteg bővítmény tölthető
+le hozzá. Használata megkönnyíti HTML dokumentumok bejárását, manipulálását, animálását,
+stílusok módosítását, események kezelését és az AJAX-os kommunikációt. A benne írt
+kód böngészőfüggetlen lesz, azaz bármelyik böngésző bármelyik verziójában ugyanazt
+az eredményt kapjuk. A jQuery-t az utóbbi időben több projektre bontották, a **jQueryUI**
+különböző felületi komponenseket definiál, míg a **jQuery Mobile** mobilalkalmazások
+készítését könnyíti meg jQuery alapokon különböző felületi elemeket definiálva.
+
+Minden művelet előtt szükséges kiválasztanunk azokat az elemeket, amelyekkel dolgozni
+szeretnénk. A jQuery filozófiájának középpontjában éppen ezért a ```jQuery()``` vagy
+```$()``` függvény áll. Ez paraméterül egy szövegként megadott CSS3 kompatibilis
+szelektorkifejezést vár. Ha paraméterként HTML kifejezést tartalmazó szöveget kap,
+akkor megpróbálja a kifejezésnek megfelelő elemeket létrehozni a memóriában, és e
+struktúrának a legkülső elemét teszi a jQuery objektumba. Végül a ```jQuery()``` függvény
+egy függvénykifejezést is paraméterül kaphat. Az így átadott függvény akkor hívódik
+meg, amikor az oldal betöltődött, pontosabban egy kicsit előtte, amikor az oldal
+DOM struktúrája felépült.
+
+A kiválasztott elemekkel sokféleképpen lehet dolgozni, általában lekérdezni szeretnénk
+valamilyen paraméterüket, vagy módosítani azokat. A jQuery metódusai általában egyszerre
+*setter*ek és *getter*ek is. Ha nem kapnak paramétert, akkor általában az adott
+tulajdonság értékével térnek vissza, paramétert kapva azonban beállítják azt. A
+setterek általában mindegyik elemre érvényesülnek, a getterek általában a tömbben
+lévő első elemre vonatkoznak.
+
+Manipulálni az elemek attribútumait, tartalmát, stílustulajdonságait lehet, valamint
+elemeket létrehozni, áthelyezni, törölni. A jQuery az AJAX hívásokat is egyszerűbbé
+teszi metódusaival, gyakorlatilag paraméterezési kérdéssé válik használatuk. A legmagasabb
+szintű metódus ahhoz a gyakori feladathoz ad segítséget, melynek során egy kiválasztott
+elembe szeretnénk a szerverről egy HTML részletet betölteni.
+
+#### $.ajax
+
+#### $.get
+
+#### $.getJSON
+
+#### $.post
+
+#### $.fn.load
 
 ## 7. A PHP nyelv szerepe a webfejlesztésben
 
@@ -1922,6 +2019,7 @@ Paraméterei:
 * Wikipedia: [AJAX](https://hu.wikipedia.org/wiki/Ajax_(programoz%C3%A1s))
 * H-Well SEO Studio: [Mi az az Ajax?](https://hwellkft.hu/marketing-szotar/ajax)
 * Több szerző: [AJAX](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=18)
+* MDN: [XMLHttpRequest](https://developer.mozilla.org/hu/docs/Web/API/XMLHttpRequest)
 * W3Schools: [AJAX Tutorial](https://www.w3schools.com/js/js_ajax_intro.asp)
 
 #### PHP alapok:
