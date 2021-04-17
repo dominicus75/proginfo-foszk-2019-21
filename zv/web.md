@@ -1719,7 +1719,9 @@ JSON objektumok kezelésére a PHP a következő két beépített függvényt bi
 * ```json_encode(mixed $value[, int $flags = 0, int $depth = 512]) : string|false```
 
 * ```json_decode(string $json[, bool|null $associative = null, int $depth = 512, int $flags = 0]) : mixed```
-Az első paraméterként megkapott JSON formátumú szöveget PHP változóvá alakítja. Paraméterei:
+Az első paraméterként megkapott JSON formátumú szöveget PHP változóvá alakítja.
+Paraméterei:
+
 	1. a dekódolandó (kizárólag UTF-8 kódolású) JSON formátumú szöveg (kötelező paraméter).
 	2. kimeneti formátum (opcionális paraméter). Logikai érték, mellyel azt lehet
 	beállítani, hogy a JavaScript 	objektumokat PHP objektumként (```false```) vagy
