@@ -1964,7 +1964,7 @@ request.fail(function( jqXHR, textStatus ) {
 *Leírás*: adatokat tölt le a szerverről HTTP GET metódus használatával és egy
 **jqXHR** objektummal tér vissza.
 
-*Szintaxis:* ```$.get(URL[, data] [, function(data,status,xhr)] [, dataType])```
+*Szintaxis:* ```$.get(URL[, data] [, function(data, textStatus, jqXHR)] [, dataType])```
 
 *Paraméterei:*
 
@@ -1999,38 +1999,115 @@ $.get("example.php", function() {
 
 #### $.post
 
-*Leírás*:
+*Leírás*: adatokat küld a szervernek HTTP POST metódus segítségével és egy
+**jqXHR** objektummal tér vissza.
 
-*Szintaxis:* ```$.post()```
+*Szintaxis:* ```$.post(URL[, data] [, function(data, textStatus, jqXHR)] [, dataType])```
 
 *Paraméterei:*
 
-* **** (kötelező):
-* **** (opcionális):
+* **URL** (kötelező): String típusú érték, amely a kérés célpontját határozza meg
+(ez általában a szerveren futó dinamikus weboldal URL-je).
+* **data** (opcionális): : PlainObject vagy String típusú érték, a kiszolgáló felé
+küldendő adatokat tartalmazza.
+* **function** (opcionális): függvény, amely akkor hívódik meg, ha a HTTP kérés
+sikeres. 3 paramétere van: data (Object, ami tartalmazza a kiszolgálóról érkezett
+adatokat), textStatus (String), és jqXHR (jqXHR objektum).
+* **dataType** (opcionális): String típusú érték, melyben a visszaküldött adatok
+adattípusát adhatjuk meg (lehetséges értékei: text, html, xml, json, jsonp, script).
+
+Példakód:
+
+```javascript
+
+$.post( "test.php", { name: "John", time: "2pm" })
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+
+```
 
 
 #### $.getJSON
 
-*Leírás*:
+*Leírás*: JSON formátumú adatokat tölt le a szerverről HTTP GET metódus használatával
+és egy **jqXHR** objektummal tér vissza.
 
-*Szintaxis:* ```$.getJSON()```
+*Szintaxis:* ```$.getJSON(URL[, data][, function(data, textStatus, jqXHR)])```
 
 *Paraméterei:*
 
-* **** (kötelező):
-* **** (opcionális):
+* **URL** (kötelező): String típusú érték, amely a kérés célpontját határozza meg
+(ez általában a szerveren futó dinamikus weboldal URL-je).
+* **data** (opcionális): : PlainObject vagy String típusú érték, a kiszolgáló felé
+küldendő adatokat tartalmazza.
+* **function** (opcionális): függvény, amely akkor hívódik meg, ha a HTTP kérés
+sikeres. 3 paramétere van: data (Object, ami tartalmazza a kiszolgálóról érkezett
+adatokat), textStatus (String), és jqXHR (jqXHR objektum).
+
+Példakód:
+
+```javascript
+
+$.getJSON( "test.js", { name: "John", time: "2pm" } )
+  .done(function( json ) {
+    console.log( "JSON Data: " + json.users[ 3 ].name );
+  })
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
+
+```
 
 
 #### $.load
 
-*Leírás*:
+*Leírás*: adatokat tölt le a szerverről, majd elhelyezi őket a kiválasztóban
+megjelölt HTML elemben. Ez a metódus a legegyszerűbb módja az adatletöltésnek.
 
-*Szintaxis:* ```$.fn.load()```
+*Szintaxis:* ```$.load(url[, data][, function(response, textStatus, jqXHR)])```
 
 *Paraméterei:*
 
-* **** (kötelező):
-* **** (opcionális):
+* **URL** (kötelező): String típusú érték, amely a kérés célpontját határozza meg
+(ez általában a szerveren futó dinamikus weboldal URL-je).
+* **data** (opcionális): : PlainObject vagy String típusú érték, a kiszolgáló felé
+küldendő adatokat tartalmazza.
+* **function** (opcionális): függvény, amely akkor hívódik meg, ha a HTTP kérés
+sikeres. 3 paramétere van: response (String, ami tartalmazza a kiszolgálóról érkezett
+adatokat), textStatus (String), és jqXHR (jqXHR objektum).
+
+Példakód:
+
+```html
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>load demo</title>
+  <style>
+  body {
+    font-size: 12px;
+    font-family: Arial;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+	<b>Projects:</b>
+	<ol id="new-projects"></ol>
+	<!-- ide kerülnek a letöltött adatok -->
+	<script>
+		$( "#new-projects" ).load( "/resources/load.html #projects li" );
+	</script>
+ 
+</body>
+</html>
+
+```
 
 
 ## 7. A PHP nyelv szerepe a webfejlesztésben
