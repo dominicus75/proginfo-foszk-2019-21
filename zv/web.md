@@ -1838,7 +1838,7 @@ oldal letöltési sebesség növekedés és szerverterhelés csökkentés érhet
 Egy másik előnye az Ajax használatának, hogy lehetővé teszi az adatokat szolgáltató
 és a megjelenítésért felelős programkód elkülönítését.
 
-### 6.2 Az AJAX technikái, a jQuery fontosabb AJAX metódusai ($.ajax, $.get, $.getJSON, $.post, $.fn.load)
+### 6.2 Az AJAX technikái, a jQuery fontosabb AJAX metódusai ($.ajax, $.get, $.getJSON, $.post, $.load)
 
 A **jQuery** egy JavaScript függvénykönyvtár, amelyet John Resig kezdett fejleszteni.
 Első kiadása 2006-ban volt, jelenleg a 3.6 verzió van forgalomban. Licencét tekintve
@@ -1893,7 +1893,7 @@ csak az 1.5 jQuery választotta külön).
 
 *Paraméterei:*
 
-* **url** (kötelező): string típusú érték, amely a kérés célpontját határozza meg
+* **url** (kötelező): String típusú érték, amely a kérés célpontját határozza meg
 (ez általában a szerveren futó dinamikus weboldal URL-je).
 * **settings** (opcionális): [PlainObject](https://api.jquery.com/Types/#PlainObject)
 típusú (*tulajdonképpen egy kulcs/érték párokat tartalmazó mezei JavaScript objektum,
@@ -1937,11 +1937,71 @@ objektum is):
 A **settings** objektumnak még számos lehetséges tulajdonsága van, ezek megtalálhatók
 a [dokumentációban](https://api.jquery.com/jquery.ajax/).
 
+Példakód:
+
+```javascript
+
+var menuId = $( "ul.nav" ).first().attr( "id" );
+var request = $.ajax({
+  url: "script.php",
+  method: "POST",
+  data: { id : menuId },
+  dataType: "html"
+});
+ 
+request.done(function( msg ) {
+  $( "#log" ).html( msg );
+});
+ 
+request.fail(function( jqXHR, textStatus ) {
+  alert( "Request failed: " + textStatus );
+});
+
+```
+
 #### $.get
+
+*Leírás*: adatokat tölt le a szerverről HTTP GET metódus használatával és egy
+**jqXHR** objektummal tér vissza.
+
+*Szintaxis:* ```$.get(URL[, data] [, function(data,status,xhr)] [, dataType])```
+
+*Paraméterei:*
+
+* **URL** (kötelező): String típusú érték, amely a kérés célpontját határozza meg
+(ez általában a szerveren futó dinamikus weboldal URL-je).
+* **data** (opcionális): : PlainObject vagy String típusú érték, a kiszolgáló felé
+küldendő adatokat tartalmazza.
+* **function** (opcionális): függvény, amely akkor hívódik meg, ha a HTTP kérés
+sikeres. 3 paramétere van: data (Object, ami tartalmazza a kiszolgálóról érkezett
+adatokat), textStatus (String), és jqXHR (jqXHR objektum).
+* **dataType** (opcionális): String típusú érték, melyben a visszaküldött adatok
+adattípusát adhatjuk meg (lehetséges értékei: text, html, xml, json, jsonp, script).
+
+Példakód:
+
+```javascript
+
+$.get("example.php", function() {
+  alert("sikeres");
+})
+  .done(function() {
+    alert("sikeres másodszor");
+  })
+  .fail(function() {
+    alert("hiba");
+  })
+  .always(function() {
+    alert("befejezve");
+  });
+
+```
+
+#### $.post
 
 *Leírás*:
 
-*Szintaxis:* ```$.get()```
+*Szintaxis:* ```$.post()```
 
 *Paraméterei:*
 
@@ -1961,19 +2021,7 @@ a [dokumentációban](https://api.jquery.com/jquery.ajax/).
 * **** (opcionális):
 
 
-#### $.post
-
-*Leírás*:
-
-*Szintaxis:* ```$.post()```
-
-*Paraméterei:*
-
-* **** (kötelező):
-* **** (opcionális):
-
-
-#### $.fn.load
+#### $.load
 
 *Leírás*:
 
