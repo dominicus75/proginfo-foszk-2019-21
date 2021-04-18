@@ -1918,7 +1918,8 @@ objektum is):
 	adatokat tartalmazza. Ha string-ről van szó, akkor azt a jQuery átalakítja
 	lekérdezés (query) string-é. Javascript objektum esetén kulcs érték pároknak
 	kell lennie a tartalmának. Tömb esetén szerializálni kell.
-	* **dataType** (String): a visszaküldött adatok adattípusát adhatjuk meg itt.
+	* **dataType** (String): a visszaküldött adatok adattípusát adhatjuk meg itt
+	(lehetséges értékei: text, html, xml, json, jsonp, script).
 	* **error** (Function): akkor hívódik meg, ha a HTTP kérés sikertelen. 3 paramétere
 	van: jqXHR (jqXHR objektum), textStatus (String), errorThrown (String). A jQuery
 	3.0 változatától nem használható, helyette a ```jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});```
