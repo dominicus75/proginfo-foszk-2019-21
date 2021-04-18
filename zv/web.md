@@ -2066,7 +2066,7 @@ $.getJSON( "test.js", { name: "John", time: "2pm" } )
 *Leírás*: adatokat tölt le a szerverről, majd elhelyezi őket a kiválasztóban
 megjelölt HTML elemben. Ez a metódus a legegyszerűbb módja az adatletöltésnek.
 
-*Szintaxis:* ```$.load(url[, data][, function(response, textStatus, jqXHR)])```
+*Szintaxis:* ```$(kiválasztó).load(url[, data][, function(response, textStatus, jqXHR)])```
 
 *Paraméterei:*
 
