@@ -1840,13 +1840,17 @@ Egy másik előnye az Ajax használatának, hogy lehetővé teszi az adatokat sz
 
 ### 6.2 Az AJAX technikái, a jQuery fontosabb AJAX metódusai ($.ajax, $.get, $.getJSON, $.post, $.fn.load)
 
-A **jQuery** az egyik legnépszerűbb JavaScript keretrendszer, rengeteg bővítmény tölthető
-le hozzá. Használata megkönnyíti HTML dokumentumok bejárását, manipulálását, animálását,
-stílusok módosítását, események kezelését és az AJAX-os kommunikációt. A benne írt
-kód böngészőfüggetlen lesz, azaz bármelyik böngésző bármelyik verziójában ugyanazt
-az eredményt kapjuk. A jQuery-t az utóbbi időben több projektre bontották, a **jQueryUI**
-különböző felületi komponenseket definiál, míg a **jQuery Mobile** mobilalkalmazások
-készítését könnyíti meg jQuery alapokon különböző felületi elemeket definiálva.
+A **jQuery** egy JavaScript függvénykönyvtár, amelyet John Resig kezdett fejleszteni.
+Első kiadása 2006-ban volt, jelenleg a 3.6 verzió van forgalomban. Licencét tekintve
+nyílt forráskódú, kettős licenccel: GPL/MIT. A jQuery célja, hogy segítsen minél
+inkább leválasztani a JavaScript kódot a HTML-ről, és kényelmes kommunikációt
+biztosítson a weblap elemeivel. Használata megkönnyíti HTML dokumentumok bejárását,
+manipulálását, animálását, stílusok módosítását, események kezelését és az AJAX-os
+kommunikációt. A benne írt kód böngészőfüggetlen lesz, azaz bármelyik böngésző
+bármelyik verziójában ugyanazt az eredményt kapjuk. A jQuery-t az utóbbi időben
+több projektre bontották, a **jQueryUI** különböző felületi komponenseket definiál,
+míg a **jQuery Mobile** mobilalkalmazások készítését könnyíti meg jQuery alapokon
+különböző felületi elemeket definiálva.
 
 Minden művelet előtt szükséges kiválasztanunk azokat az elemeket, amelyekkel dolgozni
 szeretnénk. A jQuery filozófiájának középpontjában éppen ezért a ```jQuery()``` vagy
@@ -1866,20 +1870,119 @@ setterek általában mindegyik elemre érvényesülnek, a getterek általában a
 lévő első elemre vonatkoznak.
 
 Manipulálni az elemek attribútumait, tartalmát, stílustulajdonságait lehet, valamint
-elemeket létrehozni, áthelyezni, törölni. A jQuery az AJAX hívásokat is egyszerűbbé
-teszi metódusaival, gyakorlatilag paraméterezési kérdéssé válik használatuk. A legmagasabb
-szintű metódus ahhoz a gyakori feladathoz ad segítséget, melynek során egy kiválasztott
-elembe szeretnénk a szerverről egy HTML részletet betölteni.
+elemeket létrehozni, áthelyezni, törölni. A jQuery könyvtár támogatja az AJAX hívásokat,
+amik gyakorlatilag aszinkron HTTP kérések. Ez azt jelenti, hogy a háttérben történik
+egy HTTP kérés, és amikor ennek eredménye megérkezik, akkor azt felhasználja, mindezt
+az oldal újratöltése nélkül.
 
 #### $.ajax
 
+Az ```$.ajax()``` az összes jQuery által küldött AJAX-kérés alapjául szolgál. Sokszor
+azonban felesleges ezt a függvényt direktben meghívni, mivel léteznek magasabb szintű,
+egyszerűbben használható alternatívái (mint a ```$.get()``` és a ```$.load()```).
+Viszont, ha ritkábban használt beállításokra is szükség lenne (a ```settings```
+PlainObject típusú paraméterben), akkor az ```$.ajax()``` rugalmasabban használható,
+mint a felsorolt többi függvény.
+
+*Leírás*: Végrehajt egy aszinkron HTTP (AJAX) kérést és egy **jqXHR** objektummal tér
+vissza, ami a szabványos XMLHttpRequest objektumból származik (annak kibővítése).
+
+*Szintaxis:* ```$.ajax(url[, settings])``` a jQuuery 1.5 verziótól, előtte: ```$.ajax(settings)```
+(az url nem volt külön paraméter, hanem a **settings** objektum egyik tulajdonsága,
+csak az 1.5 jQuery választotta külön).
+
+*Paraméterei:*
+
+* **url** (kötelező): string típusú érték, amely a kérés célpontját határozza meg
+(ez általában a szerveren futó dinamikus weboldal URL-je).
+* **settings** (opcionális): [PlainObject](https://api.jquery.com/Types/#PlainObject)
+típusú (*tulajdonképpen egy kulcs/érték párokat tartalmazó mezei JavaScript objektum,
+amit azért becéznek ```PlainObject```-nek, hogy megkülönböztessék a többi JS objetum-típustól*)
+érték, ami az AJAX-kérés felkonfigurálásához szükséges beállításokat tartalmazza,
+```kulcs:érték``` párok formájában. Ha a **settings** paramétert mellőzzük, akkor az
+alapértelmezett beállítások lesznek felhasználva, melyeket a [$.ajaxSetup](https://api.jquery.com/jQuery.ajaxSetup/)
+metódussal lehet módosítani (használata azonban ellenjavallott). Alább a **settings**
+objektum néhány fontosabb tulajdonsága (bármelyik szabadon elhagyható, akár az egész
+objektum is):
+	* **beforeSend** (Function): a HTTP kérés elküldése előtt futtatandó függvény
+	* **contentType** (String vagy Boolean): megfelel a 'Content-Type' HTTP fejlécnek,
+	illetve a HTML form elem *enctype* tulajdonságának, nem kell birizgálni (alapértelmezett
+	érték: ```application/x-www-form-urlencoded; charset=UTF-8```)
+	* **complete****** (Function): akkor hívódik meg, ha a lekérés befejeződött,
+	és a **success** illetve **error** függvények már lefutottak. 2 paramétere van:
+	jqXHR (jqXHR objektum) és a textStatus (String). A jQuery 3.0 változatától nem
+	használható, helyette a ```jqXHR.always(function(data|jqXHR, textStatus, jqXHR|errorThrown) { }); ```
+	alkalmazadó (az	```$.ajax()``` által visszaadott jqXHR objektumon), a szintaxisban
+	feltüntetett kibővített paraméterlistával.
+	* **data** (PlainObject vagy String vagy Array):  a kiszolgáló felé küldendő
+	adatokat tartalmazza. Ha string-ről van szó, akkor azt a jQuery átalakítja
+	lekérdezés (query) string-é. Javascript objektum esetén kulcs érték pároknak
+	kell lennie a tartalmának. Tömb esetén szerializálni kell.
+	* **dataType** (String): a visszaküldött adatok adattípusát adhatjuk meg itt.
+	* **error** (Function): akkor hívódik meg, ha a HTTP kérés sikertelen. 3 paramétere
+	van: jqXHR (jqXHR objektum), textStatus (String), errorThrown (String). A jQuery
+	3.0 változatától nem használható, helyette a ```jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});```
+	alkalmazadó (az	```$.ajax()``` által visszaadott jqXHR objektumon), ugyanazokkal
+	a paraméterekkel.
+	* **method** (String): az alkalmazott HTTP metódus (alapértelmezett érték: GET)
+	* **success** (Function): akkor hívódik meg, ha a HTTP kérés sikeres. 3 paramétere
+	van: data (Object, ami tartalmazza a kiszolgálóról érkezett adatokat), textStatus
+	(String), és jqXHR (jqXHR objektum). A jQuery 3.0 változatától nem használható,
+	helyette a ```jqXHR.done(function(data, textStatus, jqXHR) {});``` alkalmazadó (az
+	```$.ajax()``` által visszaadott jqXHR objektumon), ugyanazokkal a paraméterekkel.
+	* **type** (String): az alkalmazott HTTP metódus, a JQuery 1.9.0 előtti változataiban
+	a *method* megfelelője (alapértelmezett érték: GET).
+
+A **settings** objektumnak még számos lehetséges tulajdonsága van, ezek megtalálhatók
+a [dokumentációban](https://api.jquery.com/jquery.ajax/).
+
 #### $.get
+
+*Leírás*:
+
+*Szintaxis:* ```$.get()```
+
+*Paraméterei:*
+
+* **** (kötelező):
+* **** (opcionális):
+
 
 #### $.getJSON
 
+*Leírás*:
+
+*Szintaxis:* ```$.getJSON()```
+
+*Paraméterei:*
+
+* **** (kötelező):
+* **** (opcionális):
+
+
 #### $.post
 
+*Leírás*:
+
+*Szintaxis:* ```$.post()```
+
+*Paraméterei:*
+
+* **** (kötelező):
+* **** (opcionális):
+
+
 #### $.fn.load
+
+*Leírás*:
+
+*Szintaxis:* ```$.fn.load()```
+
+*Paraméterei:*
+
+* **** (kötelező):
+* **** (opcionális):
+
 
 ## 7. A PHP nyelv szerepe a webfejlesztésben
 
@@ -2017,6 +2120,7 @@ elembe szeretnénk a szerverről egy HTML részletet betölteni.
 
 #### AJAX:
 * Wikipedia: [AJAX](https://hu.wikipedia.org/wiki/Ajax_(programoz%C3%A1s))
+* jQuery [API Documantation](https://api.jquery.com/jquery.ajax/)
 * H-Well SEO Studio: [Mi az az Ajax?](https://hwellkft.hu/marketing-szotar/ajax)
 * Több szerző: [AJAX](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=18)
 * MDN: [XMLHttpRequest](https://developer.mozilla.org/hu/docs/Web/API/XMLHttpRequest)
@@ -2032,6 +2136,7 @@ elembe szeretnénk a szerverről egy HTML részletet betölteni.
 * Több szerző: [A PHP programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=1)
 * Sallai András: [A PHP nyelv](https://szit.hu/doku.php?id=oktatas:programozas:php:php_nyelv)
 * Bundi: [Készülj fel a PHP 7-re](http://webmestertanfolyam.hu/webmester-blog/keszulj-fel-a-php-7-re)
+* Botond: [A PHP 8 újdonságai és változásai](https://www.linuxportal.info/cikkek/egyeb-szoftverek/a-php-8-ujdonsagai-es-valtozasai)
 * W3Schools: [PHP Tutorial](https://www.w3schools.com/php/)
 
 #### PHP OOP, MVC, CMS:
