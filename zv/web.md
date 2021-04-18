@@ -2020,7 +2020,11 @@ elembe szeretnénk a szerverről egy HTML részletet betölteni.
 * H-Well SEO Studio: [Mi az az Ajax?](https://hwellkft.hu/marketing-szotar/ajax)
 * Több szerző: [AJAX](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=18)
 * MDN: [XMLHttpRequest](https://developer.mozilla.org/hu/docs/Web/API/XMLHttpRequest)
+* Zsolt jegyzetei: [jQuery.ajax() alapozó](https://anon117blog.wordpress.com/2013/12/11/jquery-ajax-alapozo/)
+* Sallai András: [jQuery AJAX](http://szit.hu/doku.php?id=oktatas:web:jquery:ajax)
 * W3Schools: [AJAX Tutorial](https://www.w3schools.com/js/js_ajax_intro.asp)
+* W3Schools: [AJAX - The XMLHttpRequest Object](https://www.w3schools.com/js/js_ajax_http.asp)
+* W3Schools: [jQuery AJAX Methods](https://www.w3schools.com/jquery/jquery_ref_ajax.asp)
 
 #### PHP alapok:
 * Wikipedia: [PHP](https://hu.wikipedia.org/wiki/PHP)
