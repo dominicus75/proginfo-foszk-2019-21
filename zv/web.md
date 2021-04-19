@@ -2157,8 +2157,14 @@ Példakód:
 * Nagy Gusztáv: [Web-programozás, 2.1 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Nagy Gusztáv: [Webes szabványok, 2-6. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
 * Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 3, 4. és 5. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
-* Abonyi-Tóth Andor: [A weblapkészítés technikája (HTML5, CSS3) és ergonómiája](http://tamop412.elte.hu/tananyagok/weblapkeszites/index.html)
-* Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
+* Abonyi-Tóth Andor: A weblapkészítés technikája (HTML5, CSS3) és ergonómiája
+	* [HTML-bevezető](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke2_lap1.html)
+	* [Oldalszerkezet elemek](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke7_lap1.html)
+	* [Űrlapok](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke9_lap1.html)
+	* [Videó állományok beillesztésére](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke6_lap4.html#hiv2)
+	* [Hangállomány beillesztése](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke6_lap3.html#hiv2)
+* Horváth Győző: Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe
+	* [Űrlapok és űrlapelemek](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke9_lap1.html#hiv2)
 * Gál Tamás: [HTML5 weboldalak készítése](https://webfejlesztes.gtportal.eu/index.php?f0=HTML5)
 * Tamás Ferenc: [Weblapkészítés HTMl alapokon](https://tferi.hu/weblapkeszites-html-alapokon-1)
 * Sallai András: [A HTML 5 nyelv](https://szit.hu/doku.php?id=oktatas:web:html:html5_nyelv)
@@ -2185,6 +2191,13 @@ Példakód:
 
 #### CSS:
 * Wikipedia: [CSS](https://hu.wikipedia.org/wiki/Cascading_Style_Sheets)
+* Abonyi-Tóth Andor: A weblapkészítés technikája (HTML5, CSS3) és ergonómiája
+	* [Kitekintés a stíluslapok használatába, tipikus szövegformázások](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke4_lap1.html)
+	* [Bevezetés a stíluslapok használatába](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke11_lap1.html)
+	* [CSS kiértékelési sorrend (rangsorolás)](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke12_lap1.html)
+	* [Ismerkedés a CSS dobozmodelljével](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke13_lap1.html)
+	* [Vizuális formázásmodell](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke15_lap1.html)
+	* [Médiatípusok használata](http://tamop412.elte.hu/tananyagok/weblapkeszites/lecke17_lap1.html)
 * Gál Tamás: [CSS3 stíluslapok készítése](https://webfejlesztes.gtportal.eu/index.php?f0=CSS3)
 * Nagy Gusztáv: [Web-programozás, 2.2 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Nagy Gusztáv: [Webes szabványok, 6. fejezet](https://nagygusztav.hu/sites/default/files/csatol/webes_szabvanyok_jegyzet_0.1.pdf)
@@ -2210,7 +2223,12 @@ Példakód:
 * Sallai András: [Javascript](http://szit.hu/doku.php?id=oktatas:web:javascript)
 * Kvaszingerné Prantner Csilla – Nagy Dénes: [Weblapfejlesztés, 10. fejezet](https://mek.oszk.hu/14100/14137/pdf/14137.pdf)
 * Tari Balázs: [JavaScript](http://www.inf.u-szeged.hu/~tarib/javascript/)
-* Horváth Győző: [Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe](http://webprogramozas.inf.elte.hu/tananyag/wf2/index.html)
+* Horváth Győző: Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe
+	* [Alapvető ismeretek a JavaScripthez](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke2_lap1.html)
+	* [A JavaScript nyelvi alapjai](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke3_lap1.html)
+	* [A JavaScript további nyelvi elemei](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke4_lap1.html)
+	* [A HTML dokumentum programozásának alapjai](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke5_lap1.html)
+	* [A Dokumentum Objektum Modell](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke7_lap1.html)
 * MDN: [JavaScript](https://developer.mozilla.org/hu/docs/Web/JavaScript)
 * Szabó Viktor: [HTML5 Web Storage – Tároljuk okosan](https://html5.ugyesen.com/2012/04/html5-web-storage-taroljuk-okosan/)
 * W3schools: [HTML Web Storage API](https://www.w3schools.com/html/html5_webstorage.asp)
@@ -2250,6 +2268,8 @@ Példakód:
 * H-Well SEO Studio: [Mi az az Ajax?](https://hwellkft.hu/marketing-szotar/ajax)
 * Több szerző: [AJAX](http://nyelvek.inf.elte.hu/leirasok/JavaScript/index.php?chapter=18)
 * MDN: [XMLHttpRequest](https://developer.mozilla.org/hu/docs/Web/API/XMLHttpRequest)
+* Horváth Győző: Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe
+	* [AJAX – weboldalak részleges frissítése](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke19_lap1.html)
 * Zsolt jegyzetei: [jQuery.ajax() alapozó](https://anon117blog.wordpress.com/2013/12/11/jquery-ajax-alapozo/)
 * Sallai András: [jQuery AJAX](http://szit.hu/doku.php?id=oktatas:web:jquery:ajax)
 * W3Schools: [AJAX Tutorial](https://www.w3schools.com/js/js_ajax_intro.asp)
@@ -2258,6 +2278,10 @@ Példakód:
 
 #### PHP alapok:
 * Wikipedia: [PHP](https://hu.wikipedia.org/wiki/PHP)
+* Horváth Győző: Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe
+	* [A PHP mint programozási nyelv](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke13_lap1.html)
+	* [Weboldalak dinamikus generálása PHP-val](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke14_lap1.html)
+	* [Munkamenet-kezelés](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke17_lap1.html)
 * Nagy Gusztáv: [Web-programozás, 3. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Több szerző: [A PHP programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=1)
 * Sallai András: [A PHP nyelv](https://szit.hu/doku.php?id=oktatas:programozas:php:php_nyelv)
