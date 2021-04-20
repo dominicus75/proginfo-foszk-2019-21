@@ -2124,8 +2124,8 @@ kapcsolatot létesíthetnek távoli kiszolgálókkal. A PHP-kódok kimenete a me
 HTML elemekkel együtt kerül az ügyfélhez.
 
 A PHP alkalmas parancssori alkalmazások készítésére is. Számos rendszergazda automatizálási
-célokra is a PHP-t használja (a [Perl](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv)
-vagy a [shell scriptek](http://web.cs.elte.hu/linfo/Shell/script.html) helyett).
+célokra is a PHP-t használja a [Perl](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv))
+vagy a [shell scriptek](http://web.cs.elte.hu/linfo/Shell/script.html) helyett.
 
 A PHP-t [Rasmus Lerdorf](https://en.wikipedia.org/wiki/Rasmus_Lerdorf) dán programozó agyalta ki valamikor 1994 őszén. Az első
 kiadatlan verziókat a saját honlapján használta, hogy figyelemmel kísérje, kik
