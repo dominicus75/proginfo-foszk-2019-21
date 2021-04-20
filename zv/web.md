@@ -2112,6 +2112,68 @@ Példakód:
 
 ## 7. A PHP nyelv szerepe a webfejlesztésben
 
+A **PHP (PHP: Hypertext Preprocessor)** erőteljes szerver-oldali szkriptnyelv, jól
+alkalmazható dinamikus és interaktív weboldalak elkészítéséhez. Az első szkriptnyelvek
+egyike, amely külső fájl használata helyett HTML oldalba ágyazható. A kódot a webszerver
+PHP feldolgozó modulja értelmezi, ezzel dinamikus weboldalakat hozva létre. A hagyományos
+HTML lapokkal ellentétben a kiszolgáló a PHP-kódot nem küldi el az ügyfélnek, hanem
+a kiszolgáló oldalán a PHP-értelmező motor dolgozza fel azt. A programokban lévő
+HTML elemek érintetlenül maradnak, de a PHP kódok lefutnak. A kódok végezhetnek
+adatbázis-lekérdezéseket, létrehozhatnak képeket, fájlokat olvashatnak és írhatnak,
+kapcsolatot létesíthetnek távoli kiszolgálókkal. A PHP-kódok kimenete a megadott
+HTML elemekkel együtt kerül az ügyfélhez.
+
+A PHP alkalmas parancssori alkalmazások készítésére is. Számos rendszergazda automatizálási
+célokra is a PHP-t használja (a [Perl](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv)
+vagy a [shell scriptek](http://web.cs.elte.hu/linfo/Shell/script.html) helyett).
+
+A PHP-t [Rasmus Lerdorf](https://en.wikipedia.org/wiki/Rasmus_Lerdorf) dán programozó agyalta ki valamikor 1994 őszén. Az első
+kiadatlan verziókat a saját honlapján használta, hogy figyelemmel kísérje, kik
+látogatják az oldalait. Ez a verzió még nem önálló programozási nyelv volt, csupán
+a weblapok programozott előállítását megkönnyítő, Perl-szkriptekből álló makrógyűjtemény.
+Egy nagyon egyszerű feldolgozó programból állt, ami csak néhány speciális makrót
+értett meg, valamint tartalmazott számos eszközt, amiket akkoriban gyakran használtak
+a honlapokon (számláló, vendégkönyv és hasonlók).
+
+A PHP-t Lerdorf még 1995-ben kibővítette egy HTML-űrlap-feldolgozóval (*Form Interpreter*) és
+*miniSql* adatbázis-kezelő rendszer elérését biztosító függvényekkel. A program
+nevét ez után változtatta PHP/FI-re (PHP/FI 2.). Az új, C nyelven megírt változat
+képes volt adatbázisokhoz kapcsolódni és segítségével egyszerű dinamikus weboldalakat
+is létre lehetett hozni. Lerdorf **1995. június 8-án adta ki a PHP első nyilvános
+változatát**, hogy külső segítséggel gyorsabbá tegye a hibák megtalálását és a kód
+további fejlesztését. Ez a verzió volt a PHP 2 (Personal Home Page Tools) és már
+megtalálhatóak voltak benne a mai PHP alapvető tulajdonságai: a [Perl](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv))-éhez hasonló
+változók, az űrlapok kezelése és a HTML-kód beszúrásának lehetősége. A szintaktikája
+is hasonló volt a Perl-éhez, de annál jóval korlátoltabb, egyszerűbb és kevésbé
+egységes volt.
+
+A program bámulatos ütemben fejlődött, és az emberek elkezdték kódokkal segíteni
+a fejlesztést. 1997-ben Lerdorf, [Zeev Suraski](https://en.wikipedia.org/wiki/Zeev_Suraski)
+és [Andi Gutmans](https://en.wikipedia.org/wiki/Andi_Gutmans) szinte teljesen átírta
+a programkódot. A PHP hivatalos neve ezzel egy időben **PHP: Hypertext Preprocessor**-ra
+változott. A fejlesztők ezzel is jelezték, hogy a PHP a fejlesztés nyomán önálló,
+elsősorban webalkalmazások készítésére alkalmas, szerveroldali programozási nyelvé
+alakult.
+
+Az PHP-t azt követően is többször átírták. A nyelv funkciói egyre bővültek, ugyanakkor
+hatékonysága is jelentősen nőtt. 1998 júniusában Suraski és Gutmans megint a PHP-mag
+újraírása mellett döntött, amiből 1999-ben megszületett a Zend Engine.
+A két fejlesztő ekkor alapította meg a [Zend Technologies](https://en.wikipedia.org/wiki/Zend_(company))-t,
+ami máig aktívan ellenőrzi a PHP fejlesztését.
+
+A Zend Engine 1.0 által hajtott PHP 4.0 2000. május 4-én jelent meg. Ezt követte 2004.
+július 13-án a következő nagy mérföldkőnek számító, az új Zend Engine 2-n alapuló PHP 5.0
+Az ötös verzió sok újítást tartalmazott: fejlettebb objektumorientált programozási
+lehetőségeket, a *PDO (PHP Data Objects)* adatbázis-absztrakciós kiterjesztést, és
+sok teljesítményt növelő javítást is. A nyelv régen várt 6. verziója sohasem készült el,
+helyette 2015 december 3-án megérkezett a 7.0, majd 2020. november 26-án a 8.0. Jelenleg
+a 8. a főverzió, de még a 7.4 is aktívan támogatott, a 7.3-hoz viszont már csak
+biztonsági frissítések várhatók. 
+
+A PHP nyelv szabad, de licence kimondja, hogy a származtatott termékek nem használhatják
+nevükben a PHP szót a group@php.net írásos engedélye nélkül. Emiatt a PHP licenc nem
+csereszabatos a [GNU General Public License](https://hu.wikipedia.org/wiki/GNU_General_Public_License)-szel.
+
 ### 7.1 A PHP nyelvtana, felhasználási területei
 
 ### 7.2 Változók, konstansok, operátorok, tömbök
@@ -2282,6 +2344,8 @@ Példakód:
 	* [A PHP mint programozási nyelv](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke13_lap1.html)
 	* [Weboldalak dinamikus generálása PHP-val](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke14_lap1.html)
 	* [Munkamenet-kezelés](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke17_lap1.html)
+* Stig Sćther Bakken, Alexander Aulbach, Egon Schmid, Jim Winstead, Lars Torben Wilson, Rasmus Lerdorf
+Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](https://www.nejanet.hu/~ksanyi/php3/manual.html)
 * Nagy Gusztáv: [Web-programozás, 3. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Több szerző: [A PHP programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=1)
 * Sallai András: [A PHP nyelv](https://szit.hu/doku.php?id=oktatas:programozas:php:php_nyelv)
