@@ -2114,18 +2114,17 @@ Példakód:
 
 A **PHP (PHP: Hypertext Preprocessor)** erőteljes szerver-oldali szkriptnyelv, jól
 alkalmazható dinamikus és interaktív weboldalak elkészítéséhez. Az első szkriptnyelvek
-egyike, amely külső fájl használata helyett HTML oldalba ágyazható. A kódot a webszerver
-PHP feldolgozó modulja értelmezi, ezzel dinamikus weboldalakat hozva létre. A hagyományos
-HTML lapokkal ellentétben a kiszolgáló a PHP-kódot nem küldi el az ügyfélnek, hanem
-a kiszolgáló oldalán a PHP-értelmező motor dolgozza fel azt. A programokban lévő
-HTML elemek érintetlenül maradnak, de a PHP kódok lefutnak. A kódok végezhetnek
-adatbázis-lekérdezéseket, létrehozhatnak képeket, fájlokat olvashatnak és írhatnak,
-kapcsolatot létesíthetnek távoli kiszolgálókkal. A PHP-kódok kimenete a megadott
-HTML elemekkel együtt kerül az ügyfélhez.
-
-A PHP alkalmas parancssori alkalmazások készítésére is. Számos rendszergazda automatizálási
-célokra is a PHP-t használja a [Perl](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv))
-vagy a [shell scriptek](http://web.cs.elte.hu/linfo/Shell/script.html) helyett.
+egyike, amely külső fájl használata helyett HTML oldalba ágyazható. A PHP
+oldalak elkészítésénél a HTML-t gyakorlatilag csak mint formázást használják.
+Ezen lapok teljes funkcionalitása a PHP-re épül. Amikor egy PHP-ben megírt oldalt
+akarunk elérni, a kiszolgáló először feldolgozza a PHP utasításokat, és csak a
+kész (HTML) kimenetet küldi el a böngészőnek. Így kliensoldalról nem látható a
+programkód. A feldolgozáshoz egy ún. interpretert (értelmezőt) használ, amely
+általában a webszerver egy külső modulja. A kódot az értelmező futás közben fordítja,
+és azonnal végre is hajtja. A kódok végezhetnek adatbázis-lekérdezéseket,
+létrehozhatnak képeket, fájlokat olvashatnak és írhatnak, kapcsolatot létesíthetnek
+távoli kiszolgálókkal. A PHP-kódok kimenete a megadott HTML elemekkel együtt kerül
+az ügyfélhez.
 
 A PHP-t [Rasmus Lerdorf](https://en.wikipedia.org/wiki/Rasmus_Lerdorf) dán programozó agyalta ki valamikor 1994 őszén. Az első
 kiadatlan verziókat a saját honlapján használta, hogy figyelemmel kísérje, kik
@@ -2176,11 +2175,104 @@ csereszabatos a [GNU General Public License](https://hu.wikipedia.org/wiki/GNU_G
 
 ### 7.1 A PHP nyelvtana, felhasználási területei
 
-### 7.2 Változók, konstansok, operátorok, tömbök
+Bár a PHP-t alapvetően a webes környezet ihlette, ez egy általános szkriptnyelv,
+melyet sokféle környezetben lehet felhasználni. Egyre gyakrabban használják parancssori
+feladatok elvégzésére (parancssori interfész, angolul *Command Line Interface – CLI*),
+amellyel klasszikus szkriptnyelveket, például [shell szkriptet](http://web.cs.elte.hu/linfo/Shell/script.html)
+vagy a [Perlt](https://hu.wikipedia.org/wiki/Perl_(programoz%C3%A1si_nyelv)) váltják ki.
+Népszerűsége kapcsán olyan területeken is megjelenik, amely távol áll eredeti céljától.
+Ilyen például grafikus asztali alkalmazások programozása, amely egy külön projekt, a
+[PHP-GTK](https://gtk.php.net/) segítségével válik lehetővé.
 
-### 7.3 Feltételes utasítások, ciklusok, függvények
+Természetesen leggyakrabban dinamikus weboldalak készítéséhez használják. Ekkor a
+```.php``` kiterjesztésű állományt a webszerveren kell elhelyezni. A PHP telepítésétől
+függően két lehetséges helyre kerülhet. Ha a PHP CGI módban van telepítve, akkor a
+*cgi-bin* könyvtárba szükséges a futtatandó fájlt elhelyezni. Sokkal hatékonyabb
+kiszolgálást kapunk azonban akkor, ha a PHP szerver modulként van feltelepítve.
+Ekkor ugyanis nem külön folyamat (process), hanem csak külön szálként (thread) indul
+el az értelmező, ami az operációs rendszer szempontjából gyorsabban megvalósítható.
+Ekkor a PHP állományok bárhol elhelyezkedhetnek a publikus dokumentumaink között. 
 
-### 7.4 Sütik és munkamentek kezelése
+#### Nyelvtan
+
+A PHP egy gyengén típusos, értelmezett, általános célú, C-típusú szkriptnyelv, amely
+sokat merített a Perlből (pl. változók ```$``` jellel való jelölése), a C++-ból és a
+Javából, például az ```if``` feltételes utasítást, a ```for``` és a ```while``` ciklusokat.
+Az osztályok megalkotása a C++-t, az absztrakt osztályok és az öröklődés megvalósítása
+a Javát idézi.
+
+A PHP állományok tipikus kiterjesztése a ```.php```, de előfordul, hogy más kiterjesztésű
+fájlok (pl. ```.inc```) is tartalmaznak PHP kódot. Igazából a kiterjesztés mindegy is,
+a PHP értelmező a fájl tartalma alapján végzi el a végrehajtást. Egy PHP állományban
+a PHP kódot ```<?php``` és ```?>``` elemek közé kell helyezni. A legegyszerűbb esetben
+a fájl egyetlen ilyen elempárt tartalmaz, egy fájlban azonban több ilyen PHP blokk
+is elhelyezkedhet. Amikor a PHP értelmező feldolgoz egy fájlt, akkor a nyitó és a
+záró tag-eket keresi, amelyek megmondják neki, hogy kezdje el ill. fejezze be a
+közöttük lévő kód értelmezését. Ez teszi lehetővé azt, hogy a PHP kódokat HTML
+dokumentumba lehessen ágyazni, mivel **a blokkon belüli rész értelmezésre, az a szövegrész
+pedig, ami PHP blokkon kívül helyezkedik el, automatikusan kiírásra kerül**. 
+
+A PHP tartalmaz még egy *short echo* néven ismert cimkepárt is (```<?=``` és ```?>```),
+amelyet főleg template-fájlokban használnak egy-egy változó értékének a kiíratására.
+
+```php
+
+<?= 'Írd ki ezt a szöveget!' ?>
+
+#egyenértékű ezzel a kifejezéssel:
+
+<?php echo 'Írd ki ezt a szöveget!' ?>
+
+```
+
+A záró tag a fájl végén opcionális, egyes esetekben az elhagyása hasznos (pl. több
+fájlból felépülő projekt, ahol ```include()``` vagy ```require()``` segítségével
+illesztjük be az egyes - kizárólag php kódot tartalmazó - forrásállományokat). Ahol
+viszont a php kód és a html tartalom egy állományban szerepel, mindig ki kell tenni
+a záró tag-et is.
+
+A nyelv néhány jellemzője:
+
+* Kis- és nagybetű érzékeny, akárcsak a többi C alapú nyelv.
+* Az utasításokat pontosvessző zárja le.
+* Klasszikus objektumorientált nyelv, osztályokkal, interfészekkel.
+* Nincs főprogram, akárcsak JavaScriptben, a szkript elején kezdődik az értelmezés
+és fentről halad lefelé.
+* Az egysoros megjegyzéseket ```#``` vagy ```//``` jel után, a többsorosakat pedig
+```/*``` és ```*/``` jelek közé kell írni.
+
+```php
+
+<?php
+
+//egysoros megjegyzés
+  
+# Perl szintaktikájú egysoros megjegyzés
+  
+/*
+többsoros
+megjegyzés
+*/
+
+?>
+
+```
+
+#### Adattípusok
+
+### 7.2 Változók, konstansok
+
+### 7.3 Operátorok
+
+### 7.4 Tömbök
+
+### 7.5 Feltételes utasítások
+
+### 7.6 Ciklusok
+
+### 7.7 Függvények
+
+### 7.8 Sütik és munkamentek kezelése
 
 ## 8. Objektum orientált programozás PHP-ben
 
