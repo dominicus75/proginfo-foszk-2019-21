@@ -2328,9 +2328,9 @@ olyan tömböt vagy objektumot elfogad, amely implementálja a *Traversable* int
 tartalmaz referenciát. Az erőforrásokat speciális függvények hozzák létre és használják. 
 * **null**: a speciális NULL érték jelzi, hogy egy változó nem tartalmaz értéket.
 A NULL a null egyetlen lehetséges értéke. Egy változó NULL-nak tekintendő, ha
-* a NULL állandó értéke lett hozzárendelve.
-* ha még semmilyen érték nem lett hozzárendelve.
-* ha az ```unset()``` függvény törölte.
+	* a NULL állandó értéke lett hozzárendelve.
+	* ha még semmilyen érték nem lett hozzárendelve.
+	* ha az ```unset()``` függvény törölte.
 
 ### 7.2 Változók, konstansok
 
