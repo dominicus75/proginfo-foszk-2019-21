@@ -2260,6 +2260,78 @@ megjegyzés
 
 #### Adattípusok
 
+A PHP gyengén típusos nyelv, ezért nem követeli meg (és nem is támogatja) az explicit
+típusdefiníciót a változók deklalárásakor; egy változó típusát a környezet határozza
+meg, amiben a változót használjuk.
+
+*Elemi (vagy skaláris) adattípusok:*
+
+* **logikai (bool)**: két értéke van (nem kis- és nagybetű érzékeny), ```true``` és ```false```
+* **egész szám (int)**: megadhatók bináris, oktális, decimális és hexadecimális értékek
+* **lebegőpontos szám (float, más néven double)**:
+* **szöveg (string)**: PHP-ban sokféleképpen lehet szöveget megadni. Legegyszerűbb
+esetben a szöveget aposztrófok között adjuk meg. Ekkor a PHP semmiféle további
+feldolgozást nem végez. Ha macskakörmök közé rakjuk a szöveget, akkor egyrészt a
+szokásos escape szekvenciák értelmeződnek (pl. ```\t```, ```\n```, stb.), másrészt
+a szövegben lévő változók értékei is automatikusan behelyettesítésre kerülnek. Mindkét
+megadási mód támogatja többsoros szövegek bevitelét. A fenti megadási módok alternatívája
+a nowdoc és heredoc formátum. Ezeknél egy tetszőlegesen megadott token nyitó és zárópárja
+között adjuk meg a szöveget. A nyitótokent ```<<<``` előzi meg, a zárótokennek a sor
+elején kell lennie egyedüli szövegként a sorban. A nowdoc formátum az aposztrófos megadás,
+a heredoc a macskakörmös megadás viselkedését örökli.
+```php
+<?php
+$a = 12;
+  
+'alma\t{$a} alma';          //"alma\t{$a} alma"
+'Több
+sor is lehet benne';
+  
+"alma\t{$a} alma";          //"alma   12 alma"
+"Ez egy
+több soros szöveg";
+  
+<<<'EOT'                    //"Ez is lehet {$a}
+Ez is lehet {$a}            // több soros"
+több soros.
+EOT;
+  
+<<<EOT                      //"Több soros 12
+Több soros {$a}             // szöveg"
+szöveg
+EOT;
+?>
+```
+
+*Összetett adattípusok:*
+
+* **tömb (array)**:  szabadon változtatható méretű dinamikus struktúra, melynek elemei
+kulcs-érték párokból állnak. **A kulcs egész szám vagy szöveg, az érték bármilyen
+típusú lehet**. A PHP-s tömb ilyen jellegű rugalmassága teszi lehetővé, hogy PHP-ban
+a gyűjtemények általános objektuma legyen. Segítségével gyakorlatilag az összes
+ismert összetett adatszerkezet leírható, megvalósítható: rekord, indexelt tömb,
+asszociatív tömb, többdimenziós tömb, mátrix, fa, sor, verem, stb. Természetesen
+ezek az adatszerkezetek tetszőleges mélységben egymásba ágyazhatók a leírandó adatnak
+megfelelően.
+* **objektum (object)**: objektum létrehozására a ```new``` operátor való, amely
+az adott objektumtípus egy példányát hivatott létrehozni.
+* **hívható (callable)**: ál-típus, amelyet a PHP 5.4-ben vezettek be. Olyan kód,
+amely függvényként hívható és a neve szöveges paraméterként átadható, pl a
+```call_user_func()``` beépített függvénynek.
+* **bejárható (iterable)**: ál-típus, amelyet a PHP 7.1-ben vezettek be. Minden
+olyan tömböt vagy objektumot elfogad, amely implementálja a *Traversable* interfészt
+és ```foreach``` ciklus segítségével bejárható.
+
+*Speciális típusok:*
+
+* **erőforrás (resource)**: egy olyan speciális változó, ami egy külső erőforrásra
+tartalmaz referenciát. Az erőforrásokat speciális függvények hozzák létre és használják. 
+* **null**: a speciális NULL érték jelzi, hogy egy változó nem tartalmaz értéket.
+A NULL a null egyetlen lehetséges értéke. Egy változó NULL-nak tekintendő, ha
+* a NULL állandó értéke lett hozzárendelve.
+* ha még semmilyen érték nem lett hozzárendelve.
+* ha az ```unset()``` függvény törölte.
+
 ### 7.2 Változók, konstansok
 
 ### 7.3 Operátorok
