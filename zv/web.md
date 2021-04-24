@@ -2587,7 +2587,7 @@ történik annak növelése/csökkentése 1-el.
 | ```xor``` | kizáró vagy | kizárólag az egyik operandus igaz | ```true xor true``` | ```false``` | 
 | ```!``` | tagadás | az egyetlen operandus hamis | ```!true``` | ```true``` | 
 | ```&&``` | és | mindkét operandus igaz | ```true && true``` | ```true``` | 
-| ```||``` | vagy | legalább az egyik operandus igaz | ```true || true``` | ```true``` |
+| ```\|\|``` | vagy | legalább az egyik operandus igaz | ```true \|\| true``` | ```true``` |
 
 Az "és" és a "vagy" operátorok két variációjára a magyarázat az operátorok precedenciájában
 keresendő (a betűvel írt változatok később értékelődnek ki).
