@@ -2487,7 +2487,7 @@ számot ASCII kóddal megadott karakternek értelmezi.
 | Operátor | Név | Példa | Eredmény | Leírás | 
 |----------|-----|-------|----------|--------|
 | ```&``` | And | ```0011 & 0101``` | ```0001``` | Az eredményben azon a helyiértéken lesz 1, ahol minkét operandusnál 1 áll, egyébként 0. |
-| ```|``` | Or | ```0011 | 0101``` | ```0111``` | Az eredményben azon a helyiértéken lesz 1, ahol legalább az egyik operandusnál 1 áll, egyébként 0. |
+| ```\|``` | Or | ```0011 \| 0101``` | ```0111``` | Az eredményben azon a helyiértéken lesz 1, ahol legalább az egyik operandusnál 1 áll, egyébként 0. |
 | ```^``` | Xor | ```0011 ^ 0101``` | ```0110``` | Az eredményben azon a helyiértéken lesz 1, ahol csakis az egyik operandusnál áll 1, egyébként 0. |
 | ```~``` | Not | ```~0101``` | ```1010``` | Az összes bitet invertálja |
 | ```<<``` | Balra tolás | ```00110101 << 2``` | ```11010100``` | A bal oldali operandus bitjeit a jobb oldali operandusban megadott számú bittel balra tolja (minden bitnyi eltolás 2-vel való szorzást jelent).  |
