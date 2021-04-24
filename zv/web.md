@@ -2260,10 +2260,6 @@ megjegyzés
 
 #### Adattípusok
 
-A PHP gyengén típusos nyelv, ezért nem követeli meg (és nem is támogatja) az explicit
-típusdefiníciót a változók deklalárásakor; egy változó típusát a környezet határozza
-meg, amiben a változót használjuk.
-
 *Elemi (vagy skaláris) adattípusok:*
 
 * **logikai (bool)**: két értéke van (nem kis- és nagybetű érzékeny), ```true``` és ```false```
@@ -2332,19 +2328,130 @@ A NULL a null egyetlen lehetséges értéke. Egy változó NULL-nak tekintendő,
 	* ha még semmilyen érték nem lett hozzárendelve.
 	* ha az ```unset()``` függvény törölte.
 
-### 7.2 Változók, konstansok
+### 7.2 Változók
 
-### 7.3 Operátorok
+A PHP gyengén típusos nyelv, ezért nem követeli meg (és nem is támogatja) az explicit
+típusdefiníciót a változók deklalárásakor; egy változó típusát a környezet határozza
+meg, amiben a változót használjuk. Ebből kifolyólag a PHP nyelvben a változókat
+használatuk előtt nem kell deklarálni, viszont célszerű egy kezdő értékadással
+bevezetni használatukat. Az értékadás és paraméterátadás alapesetben érték szerint
+történik, de lehetőség van referencia szerinti átadásra is (a változó neve elé írt
+```&``` karakterrel).
 
-### 7.4 Tömbök
+```php
 
-### 7.5 Feltételes utasítások
+<?php
 
-### 7.6 Ciklusok
+$foo = 'Bob';              // $foo változó értéke legyen 'Bob'
+$bar = &$foo;              // Hivatkozás $foo-ra $bar-ban ($bar értéke $foo lesz)
+$bar = "Nevem $bar";       // $bar megváltoztatása...
+echo $foo;                 // $foo is megváltozik.
+echo $bar;
 
-### 7.7 Függvények
+?>
 
-### 7.8 Sütik és munkamentek kezelése
+```
+
+A változók nevét a a Perl nyelvhez hasonlóan a ```$``` karakter vezeti be, például:
+```$valtozo```. A változónevek case sensitiv-ek, vagyis kisbetű-nagybetű érzékenyek.
+A változónevekre a PHP más jelzőivel azonos szabályok vonatkoznak. Egy érvényes
+változónév csak ASCII karaktereket tartalmazhat, betűjvel vagy aláhúzással kezdődik,
+amit tetszőleges számú betű, szám vagy aláhúzás követ.
+
+Hatókört illetően a függvényen és osztályon kívül létrehozott változók **globálisak**
+lesznek, a függvényen belül létrehozottak **lokálisak**. Más szavakkal: a változó a
+függvényen kívülről vagy más függvényekből nem lesz elérhető. Viszont a függvényen
+kívül meghatározott változó sem érhető el automatikusan a függvényen belülről. A
+PHP-ben a globális változókat ```global``` kulcsszóval deklarálni kell a függvényekben,
+ha szeretnénk őket a függvényben is használni. Globális változók elérésének másik
+módja a PHP által definiált speciális ```$GLOBALS``` szuperglobális tömb használata.
+A ```$GLOBALS``` tömb egy asszociatív tömb, ahol a globális változó neve a kulcs,
+és a változó az értéke. *Megjegyzendő, hogy egy függvénynek átadott paraméter általában
+valamilyen érték másolata, a paraméter megváltoztatásának a függvény vége után semmilyen
+hatása nincs. Ha azonban egy globális változó értékét változtatjuk meg egy függvényen
+belül, akkor az eredeti változót változtattuk meg és nem egy másolatot.*
+
+A PHP a ```$GLOBALS``` tömbön kívül definiál még néhány szuperglobális változót,
+amelyek mindenhonnan elérhetőek. A felhasználható előre definiált változók listája
+függ a szkript környezetétől (pl. webszerveren fut-e a PHP vagy esetleg különálló
+programként), a PHP verziószámától és a webszerver típusától.
+
+### 7.3 Konstansok
+
+Az állandó a PHP-ben egy előre meghatározott érték azonosítója. Olyan, mint a változó,
+azt a két dolgot kivéve, hogy konstans a ```define()``` függvénnyel hozható létre
+és később nem módosítható. Az állandók nevei is kis/nagybetű érzékenyek, bár nem
+előírás, de a programozói gyakorlat szerint csupa nagybetűvel írjuk őket. Az állandók
+nevei az angol abc betűit, valamit az ASCII kódtábla 128-255. elemeit tartalmazhatják
+(pl. aláhúzás jelet igen, de kötőjelet nem), mindig betűvel, vagy aláhúzás jellel
+kell kezdődniük. Fontosabb különbségek a változókhoz képest:
+* Az állandók nevei elé nem tesszük ki a ```$``` dollárjelet.
+* Az állandók a scriptben bárhol definiálhatók, és bárhonnan elérhetők, a változók
+környezeti korlátozásaitól függetlenül (szuperglobálisak).
+* Az állandók értéke létrehozásuk után nem módosítható és nem törölhető.
+* Az állandók skaláris értékeket (boolean, integer, float vagy string) és tömböt
+(PHP 7.0 óta) tartalmazhatnak.
+
+Állandót a PHP ```define()``` beépített függvényével lehet létrehozni. A függvény
+globális hatókörben és függvényekben használható, osztály meződefinícióban nem.
+
+```php
+define (string $nev, mixed $ertek, bool $nem_kisbetu_nagybetu_erzekeny = false) : bool
+```
+
+Osztályállandó létrehozására a ```const``` kulcsszó használható.
+
+```php
+const ALLANDO_NEVE = "érték, ami lehet boolean, integer, float, string vagy tömb";
+```
+
+A PHP nyelv tartalmaz jó-néhány előre meghatározott konstanst. A fontosabbak:
+
+| Állandó | Típus | Leírás | Lehetséges értékek |
+|---------|-------|--------|--------------------|
+| ```PHP_VERSION``` | string | a szerveren futó PHP verziószáma | pl. ```"8.0.0-extra"``` |
+| ```PHP_OS_FAMILY``` | string | Az operációs rendszer, ami alatt a PHP fut | ```'Windows', 'BSD', 'Darwin', 'Solaris', 'Linux', 'Unknown'``` |
+| ```PHP_SAPI``` | string | A webszerver és a PHP közötti interfész típusa | ```'apache', 'apache2handler', 'cgi', 'cgi-fcgi', 'cli', 'cli-server', 'embed', 'fpm-fcgi', 'litespeed', 'phpdbg'``` |
+| ```true``` | bool | Logikai igaz érték | ```true``` |
+| ```false``` | bool | Logikai hamis érték | ```false``` |
+| ```null``` | null | Null érték | ```null``` |
+| ```DIRECTORY_SEPARATOR``` | string | Operációs rendszer-függő könyvtárelválasztó karakter | ```/``` (Unix) vagy ```\``` (Windows) |
+| ```PHP_EOL``` | string | Operációs rendszer-függő 'End Of Line' (sorvég, újsor) karakter | ```\n``` (Unix) vagy ```\r\n``` (Windows) |
+| ```E_ERROR``` | int | Az ```error_reporting()``` függvényben használni kívánt hibajelentési szint megadására szolgál (nem feldolgozás során keletkezett helyrehozhatatlan hiba) | ```1``` |
+| ```E_WARNING``` | int | Az ```error_reporting()``` függvényben használni kívánt hibajelentési szint megadására szolgál (figyelmeztetés, ami nem akadályozza meg a kód végrehajtását) | ```2``` |
+| ```E_PARSE``` | int | Az ```error_reporting()``` függvényben használni kívánt hibajelentési szint megadására szolgál (szintaktikai hiba) | ```4``` |
+| ```E_NOTICE``` | int | Az ```error_reporting()``` függvényben használni kívánt hibajelentési szint megadására szolgál (lehet, hogy hiba, de lehet, hogy nem, ami nem akadályozza meg a kód végrehajtását) | ```8``` |
+| ```E_ALL``` | int | Az ```error_reporting()``` függvényben használni kívánt hibajelentési szint megadására szolgál (Minden ```E_*``` formátumú hiba) | ```32767``` |
+
+Különleges, úgynevezett [mágikus állandók](https://www.php.net/manual/en/language.constants.magic.php) (a nevük minden esetben dupla aláhúzás karakterrel kezdődik):
+
+* ```__LINE__```: Az aktuális scripten belüli sor száma. Ha includdal, vagy require-ral
+behívott file-ra alkalmazzuk, az include-olt file-on belüli pozíciót kapjuk.
+* ```__FILE__```: A script file neve. Ha egy olyan file-on belül használjuk, amelyet
+include-oltunk, vagy require-ral rakjuk be, akkor az include-olt file nevét kapjuk,
+nem a futtatott scriptét.
+* ```__DIR__```: A könyvtár neve, ahol a script található. Ha egy olyan file-on belül használjuk,
+amelyet include-oltunk, vagy require-ral rakjuk be, akkor az include-olt file-t
+tartalmazó könyvtár nevét kapjuk, nem a futtatott scriptét.
+* ```__FUNCTION__```: A függvény neve.
+* ```__CLASS__```: Az osztály neve.
+* ```__TRAIT__```: Aktuális trait neve
+* ```__METHOD__```: Az osztály metódusának neve.
+* ```__NAMESPACE__```: Az aktuális névtér
+* ```ClassName::class```: Teljesen minősített osztálynév
+
+
+### 7.4 Operátorok
+
+### 7.5 Tömbök
+
+### 7.6 Feltételes utasítások
+
+### 7.7 Ciklusok
+
+### 7.8 Függvények
+
+### 7.9 Sütik és munkamentek kezelése
 
 ## 8. Objektum orientált programozás PHP-ben
 
