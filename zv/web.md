@@ -2336,7 +2336,9 @@ meg, amiben a változót használjuk. Ebből kifolyólag a PHP nyelvben a válto
 használatuk előtt nem kell deklarálni, viszont célszerű egy kezdő értékadással
 bevezetni használatukat. Az értékadás és paraméterátadás alapesetben érték szerint
 történik, de lehetőség van referencia szerinti átadásra is (a változó neve elé írt
-```&``` karakterrel).
+```&``` karakterrel). A referencia szerinti értékhozzárendelés azt jelenti, hogy
+mindkét változó ugyanarra az adatra fog mutatni, és nem történik meg a változó
+értékének lemásolása.
 
 ```php
 
@@ -2442,6 +2444,218 @@ tartalmazó könyvtár nevét kapjuk, nem a futtatott scriptét.
 
 
 ### 7.4 Operátorok
+
+Az [operátorokat](https://www.php.net/manual/en/language.operators.php) csoportosíthatjuk operandusaik (az értékek, melyeken valamilyen
+műveletet végzünk) száma (egy vagy több), típusa (aritmetikai, logikai, típus),
+illetve az operátor által végeztt művelet jellege (hozzárendelő, összehasonlító,
+hibakezelő, értékadó) szerint.
+
+**Aritmetikai operátorok**
+
+A PHP nyelvben az **aritmetikai operátorok** teszik lehetővé a négy matematikai alapművelet
+elvégezését (*összeadás*: ```+```, *kivonás*: ```-```, *szorzás*: ```*```, *osztás*: ```/```).
+Az osztás operátor ("/") mindig lebegőpontos számot ad eredményül, kivéve, ha mindkét
+operandus egész típusú vagy egész típusúvá alakított string, illetve abban az esetben,
+ha a két operandus maradék nélkül osztható. A maradékos osztás operátora a ```%```,
+melynek segítségével az osztási művelet maradékát kapjuk meg (```$result = 5 % 2; #$result értéke: 1```).
+
+A PHP **értékadó operátora**: ```=``` (egyenlőségjel), azt jelenti, hogy a bal oldali
+operandus a jobb oldali kifejezést kapja értékül. Annak ellenére, hogy valójában csak
+egy hozzárendelő művelet van, a PHP számos további **hozzárendelő operátort** biztosít,
+amelyek a bal oldali operandust módosítják. A műveletek az operandusokat általában nem
+változtatják meg, ez alól azonban a hozzárendelés kivétel. Az összetett hozzárendelő
+operátorok egy hagyományos aritmetikai műveletjelből és az azt követő értékadó operátorból
+állnak, az alábbiak szerint:
+
+| Operátor | Példakód | Egyenértékű kifejezés |
+|----------|----------|-----------------------|
+| ```+=``` | ```$x += 5;``` | ```$x = $x + 5;``` |
+| ```-=``` | ```$x -= 5;``` | ```$x = $x - 5;``` |
+| ```*=``` | ```$x *= 5;``` | ```$x = $x * 5;``` |
+| ```/=``` | ```$x /= 5;``` | ```$x = $x / 5;``` |
+| ```%=``` | ```$x %= 5;``` | ```$x = $x % 5;``` |
+| ```.=``` | ```$x .= 'valami szöveg';``` | ```$x = $x.'valami szöveg';``` |
+
+**Bitorientált operátorok**
+
+A **bitorientált operátorok** teszik lehetővé, hogy egész típusú számokon belül
+bizonyos biteket beállítsunk, vagy lefedjünk (maszkolás). Ha viszont az operátor
+mindkét oldalán sztring típusú változó áll, akkor az a sztringek karakterein dolgozik
+úgy, hogy a karakterek ASCII kódjain végzi el a műveletet, és az eredményül kapott
+számot ASCII kóddal megadott karakternek értelmezi.
+
+| Operátor | Név | Példa | Eredmény | Leírás | 
+|----------|-----|-------|----------|--------|
+| ```&``` | And | ```0011 & 0101``` | ```0001``` | Az eredményben azon a helyiértéken lesz 1, ahol minkét operandusnál 1 áll, egyébként 0. |
+| ```|``` | Or | ```0011 | 0101``` | ```0111``` | Az eredményben azon a helyiértéken lesz 1, ahol legalább az egyik operandusnál 1 áll, egyébként 0. |
+| ```^``` | Xor | ```0011 ^ 0101``` | ```0110``` | Az eredményben azon a helyiértéken lesz 1, ahol csakis az egyik operandusnál áll 1, egyébként 0. |
+| ```~``` | Not | ```~0101``` | ```1010``` | Az összes bitet invertálja |
+| ```<<``` | Balra tolás | ```00110101 << 2``` | ```11010100``` | A bal oldali operandus bitjeit a jobb oldali operandusban megadott számú bittel balra tolja (minden bitnyi eltolás 2-vel való szorzást jelent).  |
+| ```>>``` | Jobbra tolás | ```00110101 >> 2``` | ```00001101``` | A bal oldali operandus bitjeit a jobb oldali operandusban megadott számú bittel jobbra tolja (minden bitnyi eltolás 2-vel való egész-osztást jelent).  |
+
+**Összehasonlító operátorok**
+
+Az **összehasonlító operátorok** az operandusokon vizsgálatokat végeznek. A PHP 7.0 változatában
+bevezetett kombinált összehasonlítás operátor (vagy "űrhajó operátor") kivételével
+logikai értékkel térnek vissza, vagyis értékük ```true``` lesz, ha a feltételezett viszony
+fennáll, és ```false```, ha nem. Az "űrhajó operátor" (```<=>```) célja, hogy egyszerűsítse
+az összehasonlító kódrészleteket.
+
+```php
+$x = 10;
+```
+
+| Operátor | Név | Igaz, ha | Példa | Eredmény |
+|----------|-----|--------|-------|----------|
+| ```==``` | Egyenlő | a két érték megegyezik | ```$x == 5;``` | ```false``` |
+| ```===``` | Azonos | a két érték és típus megegyezik | ```$x === 10;``` | ```true``` |
+| ```!=``` vagy ```<>``` | Nem egyenlő | a két érték különböző | ```$x != 8;``` | ```true``` |
+| ```!==``` | Nem azonos | a két érték vagy típus különböző | ```$x !== "tíz";``` | ```true``` |
+| ```<``` | Kisebb, mint | a bal oldal kisebb a jobb oldalnál | ```$x < 20;``` | ```true``` |
+| ```>``` | Nagyobb, mint | a bal oldal nagyobb a jobb oldalnál | ```$x > 20;``` | ```false``` |
+| ```<=``` | Kisebb, vagy egyenlő | a bal oldal kisebb a jobb oldalnál vagy egyenlő vele | ```$x <= 12;``` | ```true``` |
+| ```>=``` | Nagyobb, vagy egyenlő | a bal oldal nagyobb a jobb oldalnál vagy egyenlő vele | ```$x >= 12;``` | ```false``` |
+| ```<=>``` | Űrhajó | eredménye ```-1```, ha a bal oldali operandus kisebb, mint a jobb oldali, ```0```, ha egyenlőek és ```1```, ha nagyobb | ```$x <=> 12;``` | ```1``` |
+
+Az **összehasonlító operátorok** közé tartozik a három operandusú (ternáris) feltételes
+(```?:```, népszerűbb nevén: Elvis) operátor is, amely úgyanúgy működik, mint C-ben és sok
+más nyelvben. Két egymástól kettősponttal elválasztott értékből egyet ad vissza
+annak a függvényében, hogy teljesül-e a kérdőjel bal oldalán álló feltétel. Amennyiben
+a feltétel teljesül (igazzal tér vissza), az operátor a kérdőjel és a kettőspont
+közötti, egyébként pedig a kettőspont utáni értékkel tér vissza. Szintaxisa:
+
+```php
+
+feltetel ? "érték, ha feltetel igaz" : "érték, ha feltetel hamis" ;
+
+```
+
+A PHP 7.0 változata óta létezik a feltételes operátornak egy rövidebb változatai is,
+a nullával összehasonlító operátor (```??```). Ezt abban az esetben lehet alkalmazni, ha a feltételben
+vizsgálnunk kell, hogy egy adott változó létezik-e, mielőtt felhasználnánk az értékét
+egy kifejezésben.
+
+```php
+
+/* Megvizsgáljuk, hogy $b létezik-e, ha igen az értékét átadjuk $a-nak, ha nem,
+akkor $a értéke a "default" string lesz. */
+
+//Ternáris operátorral:
+$a = isset($b) ? $b : "default";
+
+//Ugyan az a kifejezés nullával összehasonlító operátorral:
+$a = $b ?? "default";
+
+```
+
+**Hibakezelő operátor**
+
+A PHP egy hibakezelő operátort támogat, az at jelet (```@``` - kukac). PHP kifejezés
+elé írva a kifejezés által esetlegesen generált hibaüzenete(ke)t figyelmen kívül
+hagyja a rendszer. Használható változók, függvények és ```include()``` hívások, állandók
+neve előtt és sok más esetben. Nem használható azonban függvény és osztály definíciók
+vagy nyelvi szerkezetek (mint például ```if``` és ```foreach``` utasítások) előtt.
+A PHP 8.0.0 előtt a ```@``` hibakezelő operátor kikapcsolja azon kritikus hibák
+jelentését is, amelyek megszakítják a szkript futását.
+
+**Végrehajtás-operátor**
+
+A vissza-aposztróf ' ` ' (AltGr+7) operátor használatával ugyanazt érjük el, mintha
+a ```shell_exec()``` függvényt használnánk: mindent, amit a két ' ` ' jel közé írunk,
+az operációs rendszernek küldi el a php végrehajtásra. Az operációs rendszer válaszát
+stringként kapjuk vissza. Ez nem egyszerűen a kimenetre kerül, hanem hozzárendelhető
+egy változóhoz.
+
+**Vigyázzunk, nehogy beleessünk abba a hibába, hogy például egy form mezőjén keresztül
+várunk egy inputot, amit végrehajtatunk, mivel így a felhasználó azt csinál a
+szerverünkkel, amit csak akar.**
+
+**Növelő, csökkentő operátorok**
+
+A PHP támogatja a C-szerű, egy operandusú inkrementáló (```++```) és dekrementáló
+(```--```) operátorokat is. Ha az operátor az operandus előtt áll, akkor a PHP
+előbb 1-el növeli/csökkenti az operandus értékét, majd visszaadja azt. Ellenben, ha
+az operandus után helyzkedik el, akkor előbb megkapjuk az operandus értékét, ezután
+történik annak növelése/csökkentése 1-el.
+
+**Logikai operátorok**
+
+| Operátor | Név | Igaz, ha | Példa | Eredmény |
+|----------|-----|----------|-------|----------|
+| ```and``` | és | mindkét operandus igaz | ```true and false``` | ```false``` | 
+| ```or``` | vagy | legalább az egyik operandus igaz | ```true or false``` | ```true``` | 
+| ```xor``` | kizáró vagy | kizárólag az egyik operandus igaz | ```true xor true``` | ```false``` | 
+| ```!``` | tagadás | az egyetlen operandus hamis | ```!true``` | ```true``` | 
+| ```&&``` | és | mindkét operandus igaz | ```true && true``` | ```true``` | 
+| ```||``` | vagy | legalább az egyik operandus igaz | ```true || true``` | ```true``` |
+
+Az "és" és a "vagy" operátorok két variációjára a magyarázat az operátorok precedenciájában
+keresendő (a betűvel írt változatok később értékelődnek ki).
+
+**String operátorok**
+
+A konkatenáció (összefűzés) jele a pont ```.``` , mindkét operandust karakterláncnak
+tekintve, a jobb oldali elemet hozzáfűzi a bal oldalihoz. Az elemek típusuktól függetlenül
+karakterláncként értékelődnek ki és az eredmény is mindig karakterlánc lesz. Az
+összefűző-hozzárendelő operátor (```.=```) hozzáfűzi a jobb oldalon szereplő szöveges
+értéket a bal oldali operandus végéhez.
+
+**Tömb operátorok**
+
+A ```+``` (únió) az egyetlen tömb-operátor PHP-ban. A jobboldali tömböt a baloldalihoz fűzi
+úgy, hogy a mindkét tömbben létező kulcsoknál a bal oldali tömb elemeit használják,
+és a jobb oldali tömb azonos kulcs által jelölt elemeit figyelmen kívül hagyják.
+
+```php
+
+$a = array("a" => "alma", "b" => "banán");
+$b = array("a" =>"körte", "b" => "áfonya", "c" => "cseresznye");
+
+$c = $a + $b;
+
+var_dump($c);
+array(3) {
+  ["a"]=>
+  string(5) "alma"
+  ["b"]=>
+  string(6) "banán"
+  ["c"]=>
+  string(6) "cseresznye"
+}
+
+```
+
+Tömbökre alkalmazhatók még az egyenlőséget és azonosságot vizsgáló összehasonlító
+operátorok is. Az ```==``` operátor pl. azt vizsgálja, hogy a két tömb ugyanazokat
+a kulcs-érték párokat tartalmazza-e, míg a ```===``` operátor a kulcs-érték párok
+sorrendjét és típusát is ellenőrzi.
+
+**Típus operátor**
+
+A PHP egyetlen típus operátorral rendelkeik, ez az ```instanceof```, amely azt vizsgálja,
+hogy a bal oldalán álló változó a jobb oldalon megadott osztály öröklődési fájában
+van-e (az öröklési fában lehetnek ős-osztályok és interfészek is).
+
+```php
+<?php
+
+$a = 1;
+$b = NULL;
+$c = imagecreate(5, 5);
+
+var_dump($a instanceof stdClass); // false, mert $a egy egész szám
+var_dump($b instanceof stdClass); // false, mert $b értéke NULL
+var_dump($c instanceof stdClass); // false, mert $c egy erőforrás
+
+?>
+```
+
+Rendelkezik egy beépített függvény változattal is:
+```is_a (mixed $object, string $class_name, bool $allow_string = false) : bool```,
+amely szintén ```true``` értékkel tér vissza, ha az ```instanceof``` bal oldali
+operandusának megfelelő ```$object``` a jobb oldali operandusnak megfelelő ```$class_name```
+egy példánya (ha nem, akkor szintén ```false```-t kapunk).
+
 
 ### 7.5 Tömbök
 
@@ -2611,6 +2825,7 @@ tartalmazó könyvtár nevét kapjuk, nem a futtatott scriptét.
 
 #### PHP alapok:
 * Wikipedia: [PHP](https://hu.wikipedia.org/wiki/PHP)
+* [PHP Kézikönyv](https://www.php.net/manual/en/index.php)
 * Horváth Győző: Bevezetés a kliens- és szerveroldali webalkalmazások készítésébe
 	* [A PHP mint programozási nyelv](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke13_lap1.html)
 	* [Weboldalak dinamikus generálása PHP-val](http://webprogramozas.inf.elte.hu/tananyag/wf2/lecke14_lap1.html)
