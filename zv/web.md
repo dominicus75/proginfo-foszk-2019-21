@@ -4,16 +4,17 @@
 
 ## 1. HTML nyelv alapjai
 
-A HTML (Hypertext MarkUp Language) egy szöveges jelölőnyelv, más néven leírónyelv, amelyet weboldalak készítéséhez fejlesztettek ki, mára egyes
-változatai internetes szabvánnyá váltak a W3C (World Wide Web Consorcium)
-jóvoltából. A HTML leírónyelv egy általános leírónyelvből, az [SGML (Standard Generalized MarkUp Language)](https://hu.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
+A HTML (Hypertext MarkUp Language) egy szöveges jelölőnyelv, más néven leírónyelv,
+amelyet weboldalak készítéséhez fejlesztettek ki, mára egyes változatai internetes
+szabvánnyá váltak a W3C (World Wide Web Consorcium) jóvoltából. A HTML leírónyelv
+egy általános leírónyelvből, az [SGML (Standard Generalized MarkUp Language)](https://hu.wikipedia.org/wiki/Standard_Generalized_Markup_Language)
 dokumentumszabványból jött létre. Az SGML 1986-ban lett ISO szabvány, dokumentumok
 általános leírására szolgált, ennek elődje volt a GML (Generalized MarkUp Language),
 amelyet az 1960-as években fejlesztettek ki az IBM-nél.
 
-A HTML nem programozási nyelv, azaz nem valósíthatunk meg vele szelekciót (feltételektől
-függő elágazást), sem iterációt (ismétlődést, ciklusokat). A három vezérlési szerkezet
-közül csakis a szekvencia (parancsok egymásutáni végrehajtása) valósítható meg vele.
+A HTML nem programozási nyelv, azaz nem valósíthatunk meg vele *szelekciót* (feltételektől
+függő elágazást), sem *iterációt* (ismétlődést, ciklusokat). A három vezérlési szerkezet
+közül csakis a *szekvencia* (parancsok egymásutáni végrehajtása) valósítható meg vele.
 
 ### 1.1 A HTML fontosabb verziói
 
@@ -286,8 +287,8 @@ lesz a list paraméter értéke.
 * **placeholder**: helyőrző szöveg, ami eltűnik, ha a felhasználó gépelni kezd a mezőbe
 
 A Web forms 2.0 a fentebb felsorolt type értékeket az alábbi új típusokkal
-(a HTML 5. szabvány összesen [21 lehetséges értéket sorol fel](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute)
-a type attribútumhoz) egészítette ki:
+(a HTML 5. szabvány összesen *[21 lehetséges értéket sorol fel](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute)
+a type attribútumhoz)* egészítette ki:
 
 * **tel**: telefonszám bekérésére használatos űrlapmező. Az url és email típusú
 mezőkkel ellentétben itt nincs alapértelmezett szintaxis elemzés, mivel számos telefonszám
@@ -2834,6 +2835,86 @@ tömbök feldolgozását:
 * ```ksort()```: asszociatív tömb rendezése kulcs szerint
 
 ### 7.6 Feltételes utasítások
+
+Sok esetben merül fel egy-egy programozási feladat kapcsán annak szükségessége, hogy
+különféle lehetőségekhez más-más viselkedést rendeljünk. Ennek megoldására használhatjuk
+a feltételes kifejezéseket.
+
+**if, elseif, else**
+
+Az ```if``` kifejezés igazságértéke értékelődik ki. Ha kifejezés ```TRUE```, a PHP
+végrehajtja az utasítást; ha ```FALSE``` figyelmen kívül hagyja. A feltételes utasítások
+vég nélkül további ```if``` utasításokba ágyazhatók.
+
+Gyakan van rá szükség, hogy ha teljesül egy bizonyos felétel, akkor valamilyen utasítást
+kell végrehajtani, de ha nem, akkor egy másikat. Erre való az ```else```. Az ```else```
+kibővíti az ```if``` utasítást, hogy akkor hajtson végre valamit, amikor az ```if```
+kifejezés nem teljesül, vagyis ```FALSE```. Viszont csak akkor hajtódik végre, ha
+az ```if``` és az összes ```elseif``` kifejezés is ```FALSE``` értékű.
+
+Az ```elseif```, amint azt a neve is sugallja, az ```if``` és az ```else``` kombinációja.
+Ha több feltételből egy teljesülése esetén szeretnénk más-más kódot futtatni, ezt
+szerkezetet használjuk. Az ```else```-hez hasonlóan az ```if``` kifejezést terjeszti
+ki, hogy különböző utasításokat hajtson végre abban az esetben, ha az eredeti ```if```
+kifejezés értéke ```FALSE``` lenne. Azonban az ```else```-sel ellentétben csak akkor
+hajtra végre az alternatív kódrészt, ha az ```elseif``` kifejezés ```TRUE```. Egy
+feltételes kifejezésben akárhány ```elseif``` elágazás lehet (a jó ízlés határán belül,
+ha nagyon megszaporodik a számuk érdemesebb a ```switch``` szerkezetet használni).
+
+*Szintaxis:*
+```php
+if (feltétel1) {
+ végrehajtandó kód, ha a feltétel1 teljesül;
+} elseif (feltéte2l) {
+ végrehajtandó kód, ha a feltétel2 teljesül;
+} else {
+ végrehajtandó kód, ha egyik feltétel sem teljesül;
+}
+```
+
+Néha előfordul, hogy az ```if-else``` szerkezet helyett egyetlen operátort, a feltételes
+(Elvis) operátort használjuk. Ez csak akkor lehet alternatívája az ```if-else``` használatának,
+ha mindkét ágon valamilyen értéket akarunk előállítani, és azt a továbbiakban felhasználni.
+Például, ha a feltételtől függ, hogy egy változó melyik értéket kapja.
+
+**Switch**
+
+A **switch** utasítást a PHP-ben akkor használjuk, hogyha más-más kódot szeretnénk
+végrehajtani egy változó vagy kifejezés lehetséges értékei alapján. A switch használatával
+bizonyos esetekben elkerülhetőek a hosszú *if-elseif-else* blokkok. Működése:
+* egy egyszerű kifejezés (leggyakrabban egy változó) egyszer kiértékelődik
+* a kifejezés értéke összehasonlításra kerül mindegyik case kifejezéssel a blokkon belül
+(a case kifejezések működésüket tekintve nagyjából az ```elseif``` ágnak felelnek
+meg)
+* ha egyezést talál, akkor az adott case-ben található kód végrehajtódik
+* miután ez megtörtént, a break utasítás leállítja az utasítások végrehajtását és
+a vezérlés átkerül a switch blokk utáni programrészre
+* a default utasítás arra használható, hogy le tudjuk kezelni azokat a kifejezéseket,
+értékeket is, amelyek egy case utasításban sem voltak kezelve (nagyjából az ```else```
+ágnak felel meg).
+
+*Szintaxis:*
+
+```php
+switch (<kifejezés>) {
+	case <cimke1>:
+		 <a végrehajtandó kód, ha a kifejezés = cimke1>;
+		 break;
+	case <cimke2>:
+		 <a végrehajtandó kód, ha a kifejezés = cimke2>;
+		 break;
+	default:
+		 <a végrehajtandó kód ha a kifejezés különbözik
+		 cimke1 és cimke2-től>;
+		 break;
+}
+
+```
+
+Egy switch szerkezetben tetszőleges számú case blokk elhelyzehető. Figyelni kell arra,
+hogy minden egyes case ágat zárjunk le egy break-kel, különben a következő case
+ág is lefut. Más nyelvektől eltérően a case értékei nem kell, hogy konstansok legyenek.
+Tetszőleges kifejezés alkalmazható.
 
 ### 7.7 Ciklusok
 
