@@ -2320,8 +2320,9 @@ olyan tömböt vagy objektumot elfogad, amely implementálja a *Traversable* int
 
 *Speciális típusok:*
 
-* **erőforrás (resource)**: egy olyan speciális változó, ami egy külső erőforrásra
-tartalmaz referenciát. Az erőforrásokat speciális függvények hozzák létre és használják. 
+* **erőforrás (resource)**: egy olyan speciális változó, ami referenciát tartalmaz
+valamilyen külső erőforrásra, mint például fájl, adatbázis kapcsolat, hálózati
+kapcsolat, stb. Az erőforrásokat speciális függvények hozzák létre és használják. 
 * **null**: a speciális NULL érték jelzi, hogy egy változó nem tartalmaz értéket.
 A NULL a null egyetlen lehetséges értéke. Egy változó NULL-nak tekintendő, ha
 	* a NULL állandó értéke lett hozzárendelve.
@@ -2452,12 +2453,12 @@ hibakezelő, értékadó) szerint.
 
 **Aritmetikai operátorok**
 
-A PHP nyelvben az **aritmetikai operátorok** teszik lehetővé a négy matematikai alapművelet
-elvégezését (*összeadás*: ```+```, *kivonás*: ```-```, *szorzás*: ```*```, *osztás*: ```/```).
-Az osztás operátor ("/") mindig lebegőpontos számot ad eredményül, kivéve, ha mindkét
-operandus egész típusú vagy egész típusúvá alakított string, illetve abban az esetben,
-ha a két operandus maradék nélkül osztható. A maradékos osztás operátora a ```%```,
-melynek segítségével az osztási művelet maradékát kapjuk meg (```$result = 5 % 2; #$result értéke: 1```).
+Az aritmetikai operátorok a matematikából ismert feladatukat látják el (*összeadás*: ```+```,
+*kivonás*: ```-```, *szorzás*: ```*```, *osztás*: ```/```). Az osztás operátor ("/")
+mindig lebegőpontos számot ad eredményül, kivéve, ha mindkét operandus egész típusú
+vagy egész típusúvá alakított string, illetve abban az esetben, ha a két operandus
+maradék nélkül osztható. A maradékos osztás operátora a ```%```, melynek segítségével
+az osztási művelet maradékát kapjuk meg (```$result = 5 % 2; #$result értéke: 1```).
 
 A PHP **értékadó operátora**: ```=``` (egyenlőségjel), azt jelenti, hogy a bal oldali
 operandus a jobb oldali kifejezést kapja értékül. Annak ellenére, hogy valójában csak
@@ -2658,6 +2659,179 @@ egy példánya (ha nem, akkor szintén ```false```-t kapunk).
 
 
 ### 7.5 Tömbök
+
+A PHP tömb a Perl-beli megfelelőjéhez hasonlóan működik, ám akadnak komolyabb különbségek.
+Míg a Perlben két külön típus volt a *tömb* és a *hasítótábla*, a PHP nyelvben
+teljesen ugyanaz a két fogalom, ugyanis az index tetszőleges nem negatív egész szám,
+vagy szöveg is lehet, ráadásul ez akár egy tömbön belül is tetszőlegesen változhat.
+Ha nem adjuk meg előre a tömb indexeit, akkor 0-tól induló egész sorozat rendelődik
+hozzá.
+
+A PHP tömb szabadon változtatható méretű dinamikus struktúra, melynek elemei kulcs-érték
+párokból állnak. A PHP tömbjei rendezett leképezéseket valósítanak meg. A leképezés
+értékeket rendel kulcsokhoz. A kulcs egész szám vagy szöveg, az érték bármilyen
+típusú lehet. Ez a típus sokféleképpen használható, mint egy hagyományos tömb, lista
+(vektor), hash tábla, szótár, kollekció, halmaz, sor, és mások. Mivel egy újabb
+PHP tömb szerepelhet értékként, könnyen lehet fákat szimulálni.
+
+Egy array (tömb) típusú változót többféleképpen lehet létrehozni:
+
+* ```array()``` nyelvi elemmel, amely egy vagy több vesszővel elválasztott kulcs => érték
+párt vár. Ha nem adunk meg kulcsokat, csak a tömb elemeit soroljuk fel, akkor az indexelés
+0-ról indul, automatikusan. A vessző az utolsó tömbelem után opcionális, szabadon elhagyható.
+```php
+//Manuális indexeléssel:
+$tomb = array(kulcs1 => érték, kulcs2 => érték2, kulcs3 => érték3,...kulcsN => értékN);
+//Automatikus indexeléssel:
+$tomb = array(érték, érték2, érték3,...értékN);
+```
+
+* ```[]``` (szögletes zárójelben). A JavaScriptből ismerős literálforma a PHP 5.4-es
+verziójától kezdve használható. Ha nem adunk meg kulcsokat, csak a tömb elemeit
+soroljuk fel, akkor az indexelés itt is 0-ról indul, automatikusan. A vessző az
+utolsó tömbelem után opcionális, szabadon elhagyható.
+```php
+//Manuális indexeléssel:
+$tomb = [kulcs1 => érték, kulcs2 => érték2, kulcs3 => érték3,...kulcsN => értékN];
+//Automatikus indexeléssel:
+$tomb = [érték, érték2, érték3,...értékN];
+```
+
+Az egyes elemekre ```[]``` zárójelben megadott kulccsal hivatkozhatunk. A tömb hosszát
+a ```count()``` függvénnyel lehet lekérni, de ez nem az utolsó számmal indexelt
+elem indexét adja vissza, hanem a tömb számosságát. A tömb végére elemet rakni
+legegyszerűbben egy üres ```[]``` operátorral lehet. Ekkor egy számmal indexelt
+elem jön létre, méghozzá az eddigi legnagyobb számos index eggyel növelt helyén.
+Elem törlésére az ```unset()``` függvény szolgál.
+
+```php
+
+//Üres tömb létrehozása:
+$uresTomb = array();
+//PHP 5.4-től kezdve:
+$uresTomb = [];
+  
+//Indexelt tömb létrehozása előre megadott elemekkel
+$indTomb = array('alma', 12, true, -23.34);
+
+print_r($indTomb); //Tömb kiíratása
+/*
+Array
+(
+    [0] => alma
+    [1] => 12
+    [2] => 1
+    [3] => -23.34
+)
+*/
+  
+//Hivatkozás az elemekre
+$indTomb[0];        //"alma"
+$indTomb[1];        //12
+$indTomb[2];        //true
+$indTomb[3];        //-23.34
+  
+//A tömb hosszának lekérdezése
+count($indTomb);    // Eredmény: 4
+  
+//Elemek módosítása
+$indTomb[1] = 13;   
+
+//Új elem beszúrása a tömb végére
+$indTomb[] = 'új';
+
+print_r($indTomb);
+/*
+Array
+(
+    [0] => alma
+    [1] => 13
+    [2] => 1
+    [3] => -23.34
+    [4] => 'új'
+)
+*/
+  
+//Új elem felvétele tetszőleges indexre
+$indTomb[100] = 'messze';
+
+print_r($indTomb);
+/*
+Array
+(
+    [0] => alma
+    [1] => 13
+    [2] => 1
+    [3] => -23.34
+    [4] => 'új'
+    [100] => 'messze'
+)
+*/
+  
+//Elem törlése
+unset($indTomb[1]);
+
+print_r($indTomb);
+/*
+Array
+(
+    [0] => alma
+    [2] => 1
+    [3] => -23.34
+    [4] => 'új'
+    [100] => 'messze'
+)
+*/
+  
+//Asszociatív tömb
+$gyumolcsok = array(
+    'alma'      => 'piros',
+    'korte'     => 'sárga',
+    'szilva'    => 'kék',
+);
+
+print_r($gyumolcsok);
+/*
+Array
+(
+    [alma] => piros
+    [korte] => sárga
+    [szilva] => kék
+)
+*/
+  
+//Hivatkozás elemekre
+echo $gyumolcsok['alma']; //piros
+  
+//Bővítés új elemekkel
+$gyumolcsok['barack'] = 'barackszín';
+$gyumolcsok[] = 'zöld';
+
+print_r($gyumolcsok);
+/*
+Array
+(
+    [alma] => piros
+    [korte] => sárga
+    [szilva] => kék
+    [barack] => barackszín
+    [0] => zöld
+)
+*/
+```
+
+Tömbök bejárása legegyszerűbben a ```foreach``` ciklussal lehetséges.
+
+A PHP rengeteg [függvénnyel](https://www.php.net/manual/en/ref.array.php) segíti a
+tömbök feldolgozását:
+
+* ```array_merge()```: két vagy több tömb egyesítése
+* ```array_push()```: egyszerre több elem hozzáadása egy tömb végéhez
+* ```array_shift()```: az első elem eltávolítása
+* ```array_slice()```: tömb részének kinyerése
+* ```sort()```: számmal indexelt tömb rendezése érték szerint
+* ```asort()```: asszociatív tömb rendezése érték szerint
+* ```ksort()```: asszociatív tömb rendezése kulcs szerint
 
 ### 7.6 Feltételes utasítások
 
