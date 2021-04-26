@@ -3023,7 +3023,7 @@ elsőhöz képest. Mindkét forma végigmegy a ```<bejarhato_elem>``` által ado
 vagy objektumon. Minden alkalommal az aktuális elem értéke a ```$ertek``` változóba kerül,
 és a belső tömb mutató növekszik eggyel (tehát a következő alkalommal a soron következő
 elemen fog dolgozni). A második forma ezt kiegészíti annyival, hogy az aktuális elem
-kulcsa a ```$key``` változóba kerül, így a ciklusmagban erre is lehet közvetlenül
+kulcsa a ```$kulcs``` változóba kerül, így a ciklusmagban erre is lehet közvetlenül
 hivatkozni, nem csak az ```$ertek``` változóra.
 
 A ```forech``` nem az eredeti adatszerkezeten dolgozik, hanem egy másolaton. Ha
