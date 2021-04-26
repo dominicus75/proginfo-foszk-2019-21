@@ -2918,6 +2918,124 @@ Tetszőleges kifejezés alkalmazható.
 
 ### 7.7 Ciklusok
 
+A *ciklus*, vagy *iteráció* a számítógép-programozás és az algoritmusok egyik alapvető
+eszköze, amely az ismétlődő tevékenységek megvalósítására szolgál. A ciklus beépítését
+a programba ciklusszervezésnek is nevezik. A PHP nyelvben ciklusszervezésre több
+lehetőség is van, más C-típusú nyelvekhez hasonlóan léteznek **feltételes**, **számláló**
+és **iteráló** (bejáró) cilkusok.
+
+#### Feltételes ciklusok
+
+A feltételes ciklus olyankor használatos, amikor nem ismert előre, hogy hányszor
+kell a ciklusnak lefutnia, az viszont igen, hogy milyen feltétel teljesülése
+esetén kell futnia. A feltétel teljesülését vizsgálhatjuk a *ciklusfejben* vagy
+a *ciklusvégben* is; a különbség abban fog állni, hogy legalább egyszer lefut-e
+a ciklus. Ez alapján vannak elől-, és hátultesztelő ciklusok.
+
+Az **előltesztelő** ```while``` ciklusok a PHP legegyszerűbb ciklusai. Éppen úgy viselkednek,
+mint C nyelvbeli megfelelőik. A ```while``` ciklus tehát először megvizsgálja, hogy
+a feltétel fennáll-e. Ha igen, akkor lefuttatja a ciklusmagot, és újból kezdődik;
+ha nem, akkor a program a ciklus utáni ponton folytatódik, azaz a ciklusmag kimarad.
+Lehetséges tehát, hogy a ciklus egyszer sem fog lefutni. A ```while``` ciklus tipikus
+alkalmazása az adatállományok beolvasása; előfordulhat ugyanis, hogy az állomány üres,
+és ilyenkor nincs mit beolvasni. Hasonló a helyzet a könyvtárak listázásakor is,
+hiszen a könyvtárban nem biztos, hogy van állomány.
+
+*Szintaxisa:*
+
+```php
+while (<feltétel>) {
+  <ciklusmag>;
+}
+```
+
+A **hátultesztelő** ```do..while``` ciklusnál a feltételvizsgálat a ciklusmag után
+áll, ezért legalább egyszer mindenképpen lefut. Jellemző példa a hátultesztelő
+ciklusra az adatbevitel ellenőrzése.
+
+*Szintaxisa:*
+
+```php
+do {
+ <ciklusmag>;
+} while (<feltétel>);
+```
+
+A ```do..while``` ciklus feltételét tartalmazó zárójel után mindig ki kell tenni
+a pontosvesszőt.
+
+#### Számláló ciklusok
+
+A számláló ciklus általánosságban olyan elöltesztelő ciklust jelent, amely egy
+felsorolható típus adott intervallumán léptet végig, speciálisan egész számokon.
+Üres intervallumra nem fut le.
+
+A ```for``` cilus a legbonyolultabb ciklus a PHP-ben. Éppen úgy viselkedik, mint
+a C nyelvbeli párja. Akkor használjuk, amikor előre tudjuk, hányszor kell futtatni
+egy adott utasítást vagy utasítás listát. A ```for``` ciklusfejének három eleme van.
+Az első ad kezdőértéket a ciklusváltozóknak (vagy számlálónak), a második tartalmazza
+a feltételt és a harmadikban pedig az inkrementáló (növelő) utasítás van, ami a
+ciklust vezérli. Ha több mint egy változó is szerepel az értékadásban vagy az
+inkrementáló részben, vesszővel válasszuk el őket. Megjegyzendő, hogy bármilyen
+```while``` ciklus átírható ```for``` ciklussá (mivel a ```for``` is elől tesztel).
+
+*Szintaxisa:*
+
+```php
+for (<inicializálás>; <feltétel>; <növelés>) {
+ <ciklusmag>;
+}
+```
+
+Az ```<inicializálás>``` egyszer hajtódik végre, mégpedig a ciklus elején (kezdőértéket kap
+a ciklusváltozó). Minden iteráció elején kiértékelődik a ```<feltétel>```. Ha értéke
+```TRUE```, a ciklus folytatódik, és az ciklusmag végrehajtódik, ha ```FALSE```, a
+ciklus véget ér. A ```<növelés>``` minden iteráció végén végrehajtódik (növeljük a
+számlálóként funkcionáló ciklusváltozót eggyel). A ```for``` ciklus fejéből bármelyik
+kifejezés elhagyható, de figyelnünk kell arra, hogy a pontosvesszőket mindig kiírjuk.
+Ha például a ```<feltétel>``` marad ki, végtelen ciklust kapunk.
+
+#### Bejáró ciklusok
+
+A bejáró (iteráló) ciklusok arra valók, hogy egy egy tároló (PHP-ben iterable típusú elem,
+amely implementálja a *Traversable* interfészt, kizárólag tömb vagy objektum) elemeit
+bejárják és minden egyes elemre végrehajtsák a ciklus törzsében található utasítást
+illetve utasításokat. A PHP 4-től a Perlhez és más nyelvekhez hasonlóan rendelkezésre
+áll a ```forech``` szerkezet is.
+
+
+*Szintaxisa:*
+
+```php
+foreach (<bejarhato_elem> as $ertek) {
+	<ciklusmag>;
+}
+
+//Vagy:
+
+foreach (<bejarhato_elem> as $kulcs => $ertek) {
+	<ciklusmag>;
+}
+```
+
+Két szintaxis létezik, a második egy apró, de hasznos plusz szolgáltatást nyújt az
+elsőhöz képest. Mindkét forma végigmegy a ```<bejarhato_elem>``` által adott tömbön,
+vagy objektumon. Minden alkalommal az aktuális elem értéke a ```$ertek``` változóba kerül,
+és a belső tömb mutató növekszik eggyel (tehát a következő alkalommal a soron következő
+elemen fog dolgozni). A második forma ezt kiegészíti annyival, hogy az aktuális elem
+kulcsa a ```$key``` változóba kerül, így a ciklusmagban erre is lehet közvetlenül
+hivatkozni, nem csak az ```$ertek``` változóra.
+
+A ```forech``` nem az eredeti adatszerkezeten dolgozik, hanem egy másolaton. Ha
+az eredeti adatszerkezetet szeretnénk módosítani, akkor a ciklusfejben az ```$ertek```
+változót referencia szerint kell átadnunk, a ```&``` operátor hasznákatával:
+```php
+foreach (<bejarhato_elem> as &$ertek) {
+	<ciklusmag>;
+}
+```
+
+
 ### 7.8 Függvények
 
 ### 7.9 Sütik és munkamentek kezelése
