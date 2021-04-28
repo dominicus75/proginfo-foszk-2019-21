@@ -3035,8 +3035,73 @@ foreach (<bejarhato_elem> as &$ertek) {
 }
 ```
 
+#### Kilépés a ciklusból
+
+A ```break``` utasítással ki lehet lépni egy ciklusból, a hagyományostól eltérő
+módon is. A ciklusmag tetszőleges pontján, ha ráfut a vezérlés a ```break``` utasításra,
+akkor egy vagy több ciklusból is kiléphetünk. A ciklus teljes megszakítása helyett
+időnként csak az aktuális ciklusmag futtatását akarjuk megszakítani. A ```continue```
+utasítás átugorja a ciklusmag hátralevő részét.
+
 
 ### 7.8 Függvények
+
+Ha a program különböző részein ugyanaz az utasítássorozat fordul elő, akkor azt
+ki lehet emelni, így többször felhasználható anélkül, hogy a program kódjának több
+példányban is tartalmaznia kellene. Ezek az önálló programegységek az ún. **alprogram**ok,
+amelyek a kód újrafelhasználásának eszközei. Az **alprogram** egy paraméterezhető
+programegység, olyan utasítássorozat, melyet egy azonosítóval látunk el. Ezt a program
+bármely pontján végrehajthatjuk úgy, hogy a nevére hivatkozva meghívjuk. Az alprogramok
+nem csak egy konkrét feladat végrehajtására szolgának, paraméterek segítségével
+hasonló típusú feladatok egy szélesebb körét képesek ellátni, tehát nemcsak az
+algoritmus beágyazást, hanem az általánosítást is megvalósítják.
+
+Alprogramot akkor készítünk amikor egy részfeladatot többször végre kell hajtani
+a program különböző részein. Az alprogramok használatának igazi előnye akkor jelentkezik,
+amikor nagyobb programokban egy-egy utasítássorozatot többször is meg kell hívni.
+Az alprogramok áttekinthetőbbé teszik a programot, és az esetleges hibák javítása
+is egyetlen helyen elvégezhető, mégpedig a deklaráció helyén.
+
+Az alprogramok használatnak előnyei:
+* csökkenthető a kódismétlődés
+* ugyanaz a függvény más programban is használható
+* összetett problémák egyszerűbb részekre bonthatók, ami könnyebbé teszi a kód
+karbantarthatóságát és olvashatóságát
+* elrejthetők és szabályozhatók a program egyes részei
+
+A programban betöltött szerepük szerint az alprogramoknak két csoportját különböztetjük
+meg: az **eljárás**t és a **függvény**t. Az **eljárás (procedure)** egy adott feladatot
+hajt végre, végrehajtandó utasításnak tekinthető. Amikor az alprogram nem egyszerűen
+elvégez valamilyen feladatot, hanem végül egy számítási értéket eredményez (értéket
+ad vissza, visszatérési értéke van), **függvénynek (function)** hívjuk. Nagyon hasonló
+a matematikai függvény fogalomhoz, a visszatérési érték nem egyszerűen kiíratódik a
+kimenetre, hanem visszakerül a függvényhívás helyére, ahol általában egy kifejezésben
+kerül felhasználásra.
+
+A nyelvek általában külön alapszóval jelzik, hogy melyikről van szó. A függvényt
+majdnem minden nyelvben a ```function```, míg az eljárást a ```procedure``` (pl.
+Pascal, FORTRAN) kulcsszóval vezetik be. **PHP-ban viszont minden alprogram függvény**.
+Ha a kódunk nem ad vissza a ```return``` kulcsszóval értéket, azaz egy eljárást írtunk,
+akkor is explicit módon egy alapértelmezett ```NULL``` értékkel tér vissza a függvényünk.
+
+A PHP függvény nagyon zárt, külön jelzés nélkül még a globális változók sem érhetők
+el belőle. Kétféleképpen lehet rájuk hivatkozni: vagy a ```$GLOBALS``` tömbön keresztül,
+vagy ```global``` kulcsszóval kell ellátni a globális változót. Egyedüli kivételt
+ez alól a szabály alól a szuperglobális változók képeznek. Ezek – ahogy a nevük is
+sejteti – mindenhonnan elérhetőek. Ilyen például a ```$GLOBALS``` tömb is. Minden
+függvény láthatósága globális, azaz bárhonnan meghívható.
+
+Minden függvény létrehozása a ```function``` kulcsszóval kezdődik. Egy függvényen
+belül bármely érvényes PHP kód megjelenhet. A PHP gyengén típusosságból adódóan
+**a függvények nem szükséges meghatározni sem a paraméterek, sem a visszatérési érték
+típusát**, azonban *a 7.0.0 változattól kezdve lehetséges a szigorú (strict) mód aktiválására
+is* (a program első sorában: ```declare(strict_types = 1);``` direktíva meghívásával),
+mely nem megfelelő típusú argumentum vagy visszatérési érték esetén hibát dob. **A
+PHP 7-től kezdve tehát *bármilyen érvényes típust kérhetünk és adhatunk vissza*, nem
+csak skaláris típusokat (akár osztályokat, intefészeket is)**. Sőt a PHP 8. változata
+már többféle, vagylagosan (az egyes típusokat függőleges vonallal elválasztva) megadott
+argumentum és visszatérési érték-típus deklarációt is elfogad (*[union type](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union)*).
+
 
 ### 7.9 Sütik és munkamentek kezelése
 
