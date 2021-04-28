@@ -3102,6 +3102,42 @@ csak skaláris típusokat (akár osztályokat, intefészeket is)**. Sőt a PHP 8
 már többféle, vagylagosan (az egyes típusokat függőleges vonallal elválasztva) megadott
 argumentum és visszatérési érték-típus deklarációt is elfogad (*[union type](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union)*).
 
+*Általános szintaxis:*
+
+```php
+
+function <függvény_neve>([<paraméterlista>]) {
+	<függvénytörzs>;
+	[return] [<visszatérési_érték>];
+}
+
+<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter
+<paraméterlista>     ::= (opcionális) nulla vagy több argumentum
+<függvénytörzs>      ::= bármely érvényes PHP kód 
+<visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
+
+```
+
+*Szigorúan típusos szintaxis:*
+
+```php
+
+function <függvény_neve>([<paraméterlista>]) : <visszatérési_érték_típusa> {
+	<függvénytörzs>;
+	[return] [<visszatérési_érték>];
+}
+
+<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter
+<paraméterlista>     ::= <arg1>[, <arg2>...<argN>] (opcionális) nulla vagy több argumentum
+<arg>				 ::= <típus> <paraméternév>
+<típus>, <visszatérési_érték_típusa> ::= bármely skalár vagy összetett típus, ideértve
+a saját osztályokat, interfészeket és az union type (több típus felsorlása) típust is
+(union type példa: int|float|bool|string|null)
+<paraméternév>		 ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
+<függvénytörzs>      ::= bármely érvényes PHP kód 
+<visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
+
+```
 
 ### 7.9 Sütik és munkamentek kezelése
 
