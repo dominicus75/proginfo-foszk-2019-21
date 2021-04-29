@@ -3094,14 +3094,11 @@ függvény láthatósága globális, azaz bárhonnan meghívható.
 Minden függvény létrehozása a ```function``` kulcsszóval kezdődik. Egy függvényen
 belül bármely érvényes PHP kód megjelenhet. A PHP gyengén típusosságból adódóan
 **a függvények nem szükséges meghatározni sem a paraméterek, sem a visszatérési érték
-típusát**, azonban *a 7.0.0 változattól kezdve lehetséges a szigorú (strict) mód aktiválására
-is* (a program első sorában: ```declare(strict_types = 1);``` direktíva meghívásával),
-mely nem megfelelő típusú argumentum vagy visszatérési érték esetén hibát dob. **A
-PHP 7-től kezdve tehát *bármilyen érvényes típust kérhetünk és adhatunk vissza*, nem
-csak skaláris típusokat (akár osztályokat, intefészeket is)**. Sőt a PHP 8. változata
-már többféle, vagylagosan (az egyes típusokat függőleges vonallal elválasztva) megadott
-argumentum és visszatérési érték-típus deklarációt is elfogad (*[union type](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union)*).
-
+típusát**. Lehetőség van egy paraméternek alapértelmezett értéket adni (így téve
+opcionálissá az adott paramétert), valamint az érték szerinti paraméterátadás mellett
+referencia szerint is átadhatjuk a paramétereket. Ekkor a formális paraméter előtt
+a ```&``` operátorral kell ezen szándékunkat jelölni.
+ 
 *Általános szintaxis:*
 
 ```php
@@ -3111,12 +3108,33 @@ function <függvény_neve>([<paraméterlista>]) {
 	[return] [<visszatérési_érték>];
 }
 
-<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter
+<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter (a függvények
+						 nevében a PHP nem különbözteti meg a kis- és a nagybetűket)
 <paraméterlista>     ::= (opcionális) nulla vagy több argumentum
 <függvénytörzs>      ::= bármely érvényes PHP kód 
 <visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
 
 ```
+
+*A 7.0.0 változattól kezdve lehetséges a szigorú (strict) mód aktiválására is* (a
+program első sorában a ```declare(strict_types = 1);``` direktíva meghívásával),
+mely nem megfelelő típusú argumentum vagy visszatérési érték esetén hibát dob. **A
+PHP 7-től kezdve tehát a függvénydeklarációban *bármilyen érvényes típust kérhetünk
+és adhatunk vissza* (akár osztályokat, intefészeket is)**. A PHP 8. változata
+már többféle, vagylagosan (az egyes típusokat függőleges vonallal elválasztva) megadott
+argumentum és visszatérési érték-típus deklarációt is elfogad (*[union type](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union)*).
+A PHP 8.-ban bevezetett ```mixed``` áltípus egyenértékű az unió típusok teljességével:
+```php
+mixed == string|int|float|bool|null|array|object|callable|resource;
+```
+Vagyis, ha egy változó tényleg bármit elfogad, akkor az új mixed segítségével azt
+is lehetséges deklarálni, viszont ha konkrét típusokat akarunk felsorolni, akkor az
+union type a megfelelő eszköz.
+
+Alapértelmezetten (ha a ```declare(strict_types = 1);``` direktíva nincs aktiválva)
+a kényszerítés nem szigorú, azaz integer paraméter kérésekor beérkező float változó
+esetén a PHP nem dob hibát, sem figyelmeztetést – egyszerűen csak átalakítja; ahogy
+a nem megfelelő visszatérési értéket is.
 
 *Szigorúan típusos szintaxis:*
 
@@ -3127,16 +3145,38 @@ function <függvény_neve>([<paraméterlista>]) : <visszatérési_érték_típus
 	[return] [<visszatérési_érték>];
 }
 
-<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter
+<függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter (a függvények
+						 nevében a PHP nem különbözteti meg a kis- és a nagybetűket)
 <paraméterlista>     ::= <arg1>[, <arg2>...<argN>] (opcionális) nulla vagy több argumentum
 <arg>				 ::= <típus> <paraméternév>
 <típus>, <visszatérési_érték_típusa> ::= bármely skalár vagy összetett típus, ideértve
-a saját osztályokat, interfészeket és az union type (több típus felsorlása) típust is
-(union type példa: int|float|bool|string|null)
+										 a saját osztályokat, interfészeket és az union type
+										 (több típus felsorlása) típust is (union type
+										 példa: int|float|bool|string|null)
 <paraméternév>		 ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
 <függvénytörzs>      ::= bármely érvényes PHP kód 
 <visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
 
+```
+
+A PHP 8. változatától lehetőség van **nevesített paraméterek** (*named arguments*)
+alkalmazására is. Lényege, hogy úgy tudunk értékeket átadni egy-egy függvénynek
+vagy metódusnak, hogy azokra neveikkel hivatkozunk. Ez a megoldás a paramétereket
+sorrendfüggetlenné teszi, valamint lehetővé teszi az alapértelmezett/opcionális
+értékek kihagyhatóságát is.
+
+```php
+/**
+ * A függvény deklarációja változatlan, a paraméterlistában megadjuk a várt
+ * argumentumok típusát és nevét
+ */
+function str_contains(string $egyikParameter, string $masikParameter): bool {}
+
+/**
+ * A függvény hívásakor pedig minden egyes argumentumra név:érték alakban hivatkozunk,
+ * tetszőleges sorrendben.
+ */
+str_contains(egyikParameter: 'izé', masikParameter: 'bigyó');
 ```
 
 ### 7.9 Sütik és munkamentek kezelése
