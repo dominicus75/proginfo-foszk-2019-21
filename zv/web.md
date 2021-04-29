@@ -3093,8 +3093,8 @@ függvény láthatósága globális, azaz bárhonnan meghívható.
 
 Minden függvény létrehozása a ```function``` kulcsszóval kezdődik. Egy függvényen
 belül bármely érvényes PHP kód megjelenhet. A PHP gyengén típusosságból adódóan
-**a függvények nem szükséges meghatározni sem a paraméterek, sem a visszatérési érték
-típusát**. Lehetőség van egy paraméternek alapértelmezett értéket adni (így téve
+**nem szükséges meghatározni sem a paraméterek, sem a visszatérési érték típusát**.
+Lehetőség van egy paraméternek alapértelmezett értéket adni (így téve
 opcionálissá az adott paramétert), valamint az érték szerinti paraméterátadás mellett
 referencia szerint is átadhatjuk a paramétereket. Ekkor a formális paraméter előtt
 a ```&``` operátorral kell ezen szándékunkat jelölni.
@@ -3148,12 +3148,12 @@ function <függvény_neve>([<paraméterlista>]) : <visszatérési_érték_típus
 <függvény_neve>      ::= angol ABC kis és nagy betűi és aláhúzás karakter (a függvények
 						 nevében a PHP nem különbözteti meg a kis- és a nagybetűket)
 <paraméterlista>     ::= <arg1>[, <arg2>...<argN>] (opcionális) nulla vagy több argumentum
-<arg>	  ::= <típus> <paraméternév>
+<arg>	    ::= <típus> <paraméternév>
 <típus>, <visszatérési_érték_típusa> ::= bármely skalár vagy összetett típus, ideértve
 					a saját osztályokat, interfészeket és az union type
 					(több típus felsorlása) típust is (union type
 					példa: int|float|bool|string|null)
-<paraméternév>	  ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
+<paraméternév>	    ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
 <függvénytörzs>      ::= bármely érvényes PHP kód 
 <visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
 
