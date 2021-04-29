@@ -3084,6 +3084,11 @@ Pascal, FORTRAN) kulcsszóval vezetik be. **PHP-ban viszont minden alprogram fü
 Ha a kódunk nem ad vissza a ```return``` kulcsszóval értéket, azaz egy eljárást írtunk,
 akkor is explicit módon egy alapértelmezett ```NULL``` értékkel tér vissza a függvényünk.
 
+A PHP-ben kétféle függvény létezik: a nyelvbe beépített és az általunk létrehozott
+függvény. A PHP rengeteg beépített függvény biztosít, ezekről részletesen
+a kézikönyv [vonatkozó fejezetében](https://www.php.net/manual/en/funcref.php) lehet
+olvasni.
+
 A PHP függvény nagyon zárt, külön jelzés nélkül még a globális változók sem érhetők
 el belőle. Kétféleképpen lehet rájuk hivatkozni: vagy a ```$GLOBALS``` tömbön keresztül,
 vagy ```global``` kulcsszóval kell ellátni a globális változót. Egyedüli kivételt
@@ -3115,6 +3120,11 @@ function <függvény_neve>([<paraméterlista>]) {
 <visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
 
 ```
+
+A PHP 5.6-tól az argumentumok listája tartalmazhatja a ```...``` tokent, annak
+jelzéséül az interpreter számára, hogy a függvény változó számosságú változót fogadhat
+el. Ekkor a szóban forgó formális paraméterek a függvény törzsében, mint egy tömbként
+érhetőek el.
 
 *A 7.0.0 változattól kezdve lehetséges a szigorú (strict) mód aktiválására is* (a
 program első sorában a ```declare(strict_types = 1);``` direktíva meghívásával),
