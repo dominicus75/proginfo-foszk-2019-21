@@ -3150,9 +3150,9 @@ function <függvény_neve>([<paraméterlista>]) : <visszatérési_érték_típus
 <paraméterlista>     ::= <arg1>[, <arg2>...<argN>] (opcionális) nulla vagy több argumentum
 <arg>				 ::= <típus> <paraméternév>
 <típus>, <visszatérési_érték_típusa> ::= bármely skalár vagy összetett típus, ideértve
-						 a saját osztályokat, interfészeket és az union type
-						 (több típus felsorlása) típust is (union type
-						 példa: int|float|bool|string|null)
+a saját osztályokat, interfészeket és az union type
+(több típus felsorlása) típust is (union type
+példa: int|float|bool|string|null)
 <paraméternév>		 ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
 <függvénytörzs>      ::= bármely érvényes PHP kód 
 <visszatérési_érték> ::= (opcionális) bármi, amit a függvény visszaad
