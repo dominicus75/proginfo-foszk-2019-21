@@ -3190,7 +3190,57 @@ function str_contains(string $egyikParameter, string $masikParameter): bool {}
 str_contains(egyikParameter: 'izé', masikParameter: 'bigyó');
 ```
 
-### 7.9 Sütik és munkamentek kezelése
+### 7.9 Sütik kezelése
+
+A **süti (cookie)** egy információcsomag, amelyet a szerver küld a böngészőnek,
+majd a böngésző visszaküld a szervernek minden, a szerver felé irányított kérés
+alkalmával. A süti bármilyen, a kiszolgáló által meghatározott információtartalmat
+hordozhat.
+
+Az eljárás célja az állapot bevezetése az alapvetően állapotmentes HTTP tranzakcióba.
+Sütik hiányában minden egyes weboldal (vagy erőforrás) lekérése elszigetelt esemény,
+gyakorlatilag független a honlap többi oldalának lekérésétől. Ha a böngésző visszaküld
+egy sütit, a szerver oldali kódnak lehetősége van összekapcsolni az aktuális kérést
+a korábbiakkal.
+
+Leggyakrabban egy adott weboldal regisztrált felhasználóinak azonosítására, „bevásárlókosár”
+nyilvántartására vagy látogatók nyomonkövetésére használják. A legtöbb böngésző
+egyszerű szöveges fájlban vagy fájlokban tárolja a sütik tartalmát, hogy azok a
+böngésző kikapcsolása és újraindítása után is elérhetőek maradjanak. Ezeket sütifájloknak
+nevezik.
+
+A PHP támogatja a HTTP cookie-k kezelését. Cookie-k beállítására a ```setcookie()```
+függvénnyel nyílik lehetőség. A HTTP protokoll szerint a szerver először fejlécet
+(header) küld, ennek a fejlécnek lesz része a süti is. A HTML oldal a fejléc után
+kerül küldése, egy elválasztó üres sor után. Ha tehát akár egyetlen betűt is elküldünk
+az oldalból, akkor már nem küldhetünk fejlécet. A cookie-k részei a HTTP fejlécnek,
+így a ```setcookie()``` függényt még a doctype és a html tag előtt kell meghívnunk.
+Ez a ```header()``` függénnyel megegyező korlátozást jelent.
+
+*A setcookie() szignatúrája:*
+
+```php
+setcookie(string $name, string $value = "", int $expires = 0, string $path = "", string $domain = "", bool $secure = false, bool $httponly = false) : bool
+```
+
+* ```$name```(kötelező): a süti neve
+* ```$value```(opcionális):  a süti értéke
+* ```$expires```(opcionális): a süti lejárati ideje (Unix időbélyeg)
+* ```$path```(opcionális): elérési út a szerveren, ahol a cookie elérhető lesz (ha
+```/``` van megadva, akkor a süti az egész oldalon elérhető, ha ```/aloldal/```, akkor
+csak az ez alatti dokumentumoknál)
+* ```$domain```(opcionális): az (al)domain, amelyhez a süti elérhető
+* ```$secure```(opcionális): ha értéke ```true```, a cookie csak akkor lesz beállítva,
+ha a biztonságos kapcsolat (HTTPS) rendelkezésre áll
+* ```$httponly```(opcionális): ha ez ```true```, akkor a süti csak HTTP protokollon
+keresztül lesz elérhető, scriptnyelvek (pl. JavaScript) használatával nem
+
+A süti értéke automatikusan kódolásra kerül küldéskor, és automatikusan dekódolódik
+kiértékeléskor. Minden cookie, amit a kliens visszaküld, automatikusan PHP változóvá
+válik, pont úgy, mint a GET és a POST kérésekkel érkező adatok. A süti értéke a
+```$_COOKIE``` szuperglobális tömbben kerül tárolásra.
+
+### 7.10 Munkamentek kezelése
 
 ## 8. Objektum orientált programozás PHP-ben
 
