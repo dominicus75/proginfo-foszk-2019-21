@@ -3190,7 +3190,40 @@ function str_contains(string $egyikParameter, string $masikParameter): bool {}
 str_contains(egyikParameter: 'izé', masikParameter: 'bigyó');
 ```
 
-### 7.9 Sütik kezelése
+### 7.9 Sütik és munkamenetek kezelése
+
+**A HTTP állapotmentes protokoll**, ami azt jelenti, hogy a szerver nem tudja, melyik
+kliens fordul hozzá, és annak milyen az állapota. Az oldalkiszolgálás folyamatában
+a kliens egy HTTP kérést küld a webszervernek, amelyre az HTTP válasz formájában
+reagál. **A kliens és szerver közötti kapcsolat csak arra az időre él, ameddig a
+kérés-válasz folyamat végrehajtódik, ezt követően a kapcsolat megszakad**. A következő
+kéréshez egy új kapcsolat épül fel, és minden kezdődik előlről.
+
+Az állapot nélküli protokollok előnye, hogy a szervernek nem kell nyilvántartania
+felhasználói információkat az egyes kérések kiszolgálása között. A HTTP eredetileg
+nem arra készült, hogy felhasználók jelentkezzenek be rajta keresztül szerverekre
+és ott munkamenetet (session-t) indítsanak. Történetileg azonban úgy alakult, hogy
+a HTTP terjedt el széles körben más, felhasználói bejelentkezést támogató protokollok
+helyett, ami arra kényszerítette a webfejlesztőket, hogy kerülőutakon járva tárolják
+a felhasználók munkamenet-állapotait, ha arra szükség van.
+
+Gyakran van szükség az adatok felhasználónkénti megkülönböztetésére, például
+levelezés, internetbank, vagy webáruház esetén. A kliensek megkülönböztetését
+és a kliensenkénti adattárolást munkamenet-kezelésnek hívják és arra használják,
+hogy információt tároljon a felhasználó beállításairól. A felhasználói információkat
+lehetséges kliens-, és szerveroldalon is tárolni.
+
+A kliensoldali munkamenet-kezelésnek az a lényege, hogy a kliensenkénti adatokat
+magán a kliensen tároljuk, és minden kérésnél felküldjük a szervernek őket. A feldolgozást
+követően a tárolandó adatokat a szerver visszaküldi a kliensnek. A következő lehetőségek
+vannak a kliensoldali munkamenet-kezelésre:
+* URL kérésszövege (QUERY STRING, név=érték pár alakjában, ami a ```$_GET``` szuperglobális
+tömbbe kerül),
+* űrlapok rejtett mezője (```<input type="hidden" name="név" value="valami érték">```,
+a ```$_POST``` szuperglobális tömbbe kerül),
+* sütik használata.
+
+#### Sütik
 
 A **süti (cookie)** egy információcsomag, amelyet a szerver küld a böngészőnek,
 majd a böngésző visszaküld a szervernek minden, a szerver felé irányított kérés
@@ -3209,18 +3242,22 @@ egyszerű szöveges fájlban vagy fájlokban tárolja a sütik tartalmát, hogy 
 böngésző kikapcsolása és újraindítása után is elérhetőek maradjanak. Ezeket sütifájloknak
 nevezik.
 
-A PHP támogatja a HTTP cookie-k kezelését. Cookie-k beállítására a ```setcookie()```
-függvénnyel nyílik lehetőség. A HTTP protokoll szerint a szerver először fejlécet
-(header) küld, ennek a fejlécnek lesz része a süti is. A HTML oldal a fejléc után
-kerül küldése, egy elválasztó üres sor után. Ha tehát akár egyetlen betűt is elküldünk
-az oldalból, akkor már nem küldhetünk fejlécet. A cookie-k részei a HTTP fejlécnek,
-így a ```setcookie()``` függényt még a doctype és a html tag előtt kell meghívnunk.
-Ez a ```header()``` függénnyel megegyező korlátozást jelent.
+A PHP támogatja a HTTP cookie-k kezelését. A szerver a HTTP válasz fejlécében jelzi
+a kliens számára sütielhelyezési szándékát. A HTTP protokoll szerint a szerver először
+fejlécet (header) küld, ennek a fejlécnek lesz része a süti is. A HTML oldal a fejléc
+után kerül küldése, egy elválasztó üres sor után. Ha tehát akár egyetlen betűt is
+elküldünk az oldalból, akkor már nem küldhetünk fejlécet. Ezt a fejlécet generálhatnánk
+a ```header()``` függénnyel is, de sokkal kényelmesebb a ```setcookie()``` függvény
+használata, mely a süti elhelyezését paraméterezési kérdéssé egyszerűsíti. Mivel
+a cookie-k részei a HTTP fejlécnek, így a ```setcookie()``` függényt még a doctype
+és a html tag előtt kell meghívnunk. Ez a ```header()``` függénnyel megegyező
+korlátozást jelent.
 
 *A setcookie() szignatúrája:*
 
 ```php
-setcookie(string $name, string $value = "", int $expires = 0, string $path = "", string $domain = "", bool $secure = false, bool $httponly = false) : bool
+setcookie(string $name, string $value = "", int $expires = 0, string $path = "",
+string $domain = "", bool $secure = false, bool $httponly = false) : bool
 ```
 
 * ```$name```(kötelező): a süti neve
@@ -3240,7 +3277,83 @@ kiértékeléskor. Minden cookie, amit a kliens visszaküld, automatikusan PHP v
 válik, pont úgy, mint a GET és a POST kérésekkel érkező adatok. A süti értéke a
 ```$_COOKIE``` szuperglobális tömbben kerül tárolásra.
 
-### 7.10 Munkamentek kezelése
+A süti törlése gyakorlatilag azt jelenti, hogy a sütit lejártnak állítjuk be (a
+```setcookie()``` függvény segítségével).
+
+A kliensoldali adattárolásnak több hátránya is van. Egy süti mérete korlátozott (2kB),
+adatai a megfelelő webfejlesztési eszközökkel kiolvashatók és megváltoztathatók.
+A sütik használata a böngészőkben letiltható, így nem ad általános megoldást a
+munkamenet-kezelésre. Továbbá az adatok minden kérés-válasz során elküldésre kerülnek,
+ezzel sokszor feleslegesen növelve az adatforgalmat. Ezeket a hátrányok mind abból
+a tényből fakadnak, hogy az adatok a kliensen tárolódnak. A problémákra megoldást
+a szerveroldali tárolás ad.
+
+#### Munkamenetek (session)
+
+A szerveroldali adattárolás előnyei :
+* Az adatok a szerveren tárolódnak, így kliensoldalon nem hozzáférhetőek.
+* Nem közlekednek feleslegesen a kliens és a szerver között.
+
+Ha az adatokat a szerveroldalon tároljuk, szükségessé válik a kliensek megkülönböztetése,
+hiszen tudnunk kell, melyik kliensről érkezik a kérés, hogy a hozzá tartozó adatokat
+használjuk. A kliensek azonosítása úgy történik, hogy minden kliens kap egy egyedi
+kulcsot a szervertől. Ezt a kulcsot csatolja minden kéréséhez, és a szerver ez alapján
+veszi elő az adott kulcshoz tartozó adatokat. A kliensen tárolandó adatok helyett
+tehát itt egyetlen adat, maga a kulcs (munkamenet-azonosító) közlekedik, ezt kell
+egyedül a kliensoldalon tárolni. Általában sütiben szokták az azonosító kulcsot
+tárolni. Mivel azonban a sütik letilthatók, így másodlagos megoldásként az
+URL-ben tárolás jöhet szóba. Az adatok tárolása szerveroldalon fájlban vagy adatbázisban
+is megvalósulhat, egyszerűsége miatt a fájlos használat elterjedtebb. A session
+információk ideiglenesek, és törlődnek, miután a felhasználó elhagyta az oldalt
+(kilépett, vagy bezárta a böngészőablakot). Összetettebb alkalmazások hatékonysági
+és biztonsági szempontok alapján adatbázisban tárolják a kliensenkénti adatokat.
+
+*Szerveroldali munkamenet-kezelés általános lépései*
+
+A webszerver elküldi ezt az azonosítót (PHPSESSID) a böngészőnek, amikor az először
+lekér egy oldalt, a saját adatbázisában pedig ehhez az azonosítóhoz kötve tárol
+egy bizonyos ideig különféle adatokat (például azt, hogy a felhasználó be van-e
+jelentkezve). A böngésző minden további oldallekérésnél visszaküldi a kapott azonosítót,
+amiből a szerver tudja, hogy ugyanarról a felhasználóról van szó, amelyiknek az
+azonosítót elküldte (pusztán az IP-címből ezt NAT, proxy, vagy más hasonló technikai
+megoldás használata esetén nem lehetne kitalálni), és megfelelően átalakított oldalt
+tud neki küldeni.
+
+A PHP alapvetően elrejti a munkamenet-azonosítókkal kapcsolatos teendőket: automatikusan
+létrehozza őket, leküldi a kliensre, megfelelő módon váltogat a süti és az URL-es
+tárolás között, és egyszerű módon tálalja a munkamenetben tárolt adatokat. A munkamenet
+adatait a PHP a ```$_SESSION``` szuperglobális asszociatív tömbben tárolja. A szkript
+kezdetekor ebbe tölti be, a szkript végén pedig ennek tartalmát menti ki (alapértelmezetten
+fájlba).
+
+PHP-ban számos függvény és nyelvi elem segíti a [munkamenet-kezelést](https://www.php.net/manual/en/book.session.php),
+az alábbiak a leggyakrabban használtak:
+
+* ```session_start(array $options = []) : bool```: új munkamenetet indít vagy folytatja
+a már létezőt. Minden olyan szkript elején el kell helyezni, ahol a munkamenet
+adataira van szükség. A parancs kiadása után a PHP ellenőrzi a sütiben vagy URL-ben
+érkező munkamenet-azonosítót, és ha van ilyen, akkor a hozzá tartozó adatokat betölti
+a ```$_SESSION``` tömbbe. Ha nincs azonosító, akkor újat hoz létre. Az opcionálisan
+megadható ```$options``` asszociatív tömbben felül lehet írni az aktuális munkamenet
+konfigurációs direktívákat.
+* ```session_id(string|null $id = null) : string|false```: lekéri, illetve (ha nincs
+beállítva) beállítja az aktuális munkammenet azonosítót, amely a ```SID``` beépített
+konstansban is elérhető, ```PHPSESSID=munkamenet-azonosító``` formájú szövegként. 
+* ```session_regenerate_id(bool $delete_old_session = false) : bool```: frissíti
+az aktuális munkamenetet egy új azonosítóval, miközben megőrzi a többi munkamenet
+információt.
+* ```session_destroy( ) : bool```: megsemmisíti az aktuális munkamenethez regisztrált
+összes  adatot.
+
+Munkamenettel hitelesítési megoldások is kialakíthatók. Sikeres bejelentkezés (felhasználónév-jelszó)
+után a szerver a kliens munkamenetében egy speciális kulcsot helyez el. Minden
+további kérésnél elég megnézni e kulcsnak a jelenlétét a munkamenetben. Ha megvan,
+akkor a felhasználó már sikeresen teljesítette az azonosítást. Ha nincs ilyen, akkor
+a felhasználó még nem azonosította magát. A hitelesítési folyamat a következő:
+* Beléptető űrlapon a felhasználónév és jelszó bekérése.
+* Sikeres belépés esetén hitelesítő kulcs elhelyezése a munkamenetben
+* Minden további kérésnél a megfelelő oldalakon: ha ez a kulcs megvan, akkor azonosított
+felhasználóról van szó, és ez alapján más feldolgozási logika vagy megjelenítés alkalmazható.
 
 ## 8. Objektum orientált programozás PHP-ben
 
