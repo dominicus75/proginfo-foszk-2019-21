@@ -3375,6 +3375,15 @@ felhasználóról van szó, és ez alapján más feldolgozási logika vagy megje
 
 ## 10. Webszolgáltatások
 
+A webszolgáltatás (angolul webservice) alkalmazások közötti adatcserére szolgáló
+protokollok és szabványok gyűjteménye. A webszolgáltatások önálló, önleíró modulokból
+álló alkalmazások, amiket a weben lehet közzétenni, megtalálni és használni. A
+webszolgáltatások olyan, tipikusan a színfalak mögött futó megoldásokat jelentenek,
+amelyek révén a hálózati alkalmazások dinamikusan képesek kommunikálni és együttműködni
+egyéb hálózati alkalmazásokkal, megtalálják a megfelelő adatforrást, és a nyílt
+szabványokkal (SOAP, WSDL, XML) megvalósított információcserének köszönhetően mindezt
+platformfüggetlenül teszik.
+
 ### 10.1 A webszolgáltatások jellemzői
 
 ### 10.2 Alapvető szabványok: SOAP, WSDL, UDDI
@@ -3540,10 +3549,15 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 
 #### Webszolgáltatások:
 * Wikipedia: [Webszolgáltatás](https://hu.wikipedia.org/wiki/Webszolg%C3%A1ltat%C3%A1s)
-* Wikipedia: [SOAP](https://hu.wikipedia.org/wiki/SOAP)
-* Wikipedia: [WSDL - Webszolgáltatás-leíró nyelv](https://hu.wikipedia.org/wiki/Webszolg%C3%A1ltat%C3%A1s-le%C3%ADr%C3%B3_nyelv)
-* Wikipedia: [UDDI](https://hu.wikipedia.org/wiki/UDDI)
 * IBM Knowledge Center: [Webszolgáltatások](https://www.ibm.com/support/knowledgecenter/hu/SS4JE2_7.5.5/org.eclipse.jst.ws.doc.user/concepts/cws.html)
+* Hernyák Zoltán: Elosztott programozás Microsoft.NET környezetben, 10. fejezet - [Web Service](http://aries.ektf.hu/~hz/pdf-tamop/pdf-03/html/ch10.html)
+* Wikipedia: [SOAP](https://hu.wikipedia.org/wiki/SOAP)
+* IBM Knowledge Center: [SOAP](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-soap)
+* Wikipedia: [WSDL - Webszolgáltatás-leíró nyelv](https://hu.wikipedia.org/wiki/Webszolg%C3%A1ltat%C3%A1s-le%C3%ADr%C3%B3_nyelv)
+* IBM Knowledge Center: [Webszolgáltatás leírónyelv (WSDL)](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-web-services-description-language-wsdl)
+* Wikipedia: [UDDI](https://hu.wikipedia.org/wiki/UDDI)
+* IBM Knowledge Center: [Általános leíró, kereső és integráció (UDDI)](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-universal-description-discovery-integration-uddi)
+* IBM Knowledge Center: [Webszolgáltatás-vizsgáló nyelv (WSIL)](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-web-services-inspection-language-wsil)
 * Wikipedia: [REST](https://hu.wikipedia.org/wiki/REST)
 * Peter Smith: [REST alapú kommunikáció](https://psprog.hu/article/rest-alapu-kommunikacio)
 * Szerző nélkül: [A REST szabályai: Hogyan lehet RESTful a HTTP / JSON API-kban](https://hun.small-business-tracker.com/rules-rest-how-be-restful-httpjson-apis-527492)
