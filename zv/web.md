@@ -3375,18 +3375,174 @@ felhasználóról van szó, és ez alapján más feldolgozási logika vagy megje
 
 ## 10. Webszolgáltatások
 
-A webszolgáltatás (angolul webservice) alkalmazások közötti adatcserére szolgáló
+A webszolgáltatás (webservice) alkalmazások közötti adatcserére szolgáló
 protokollok és szabványok gyűjteménye. A webszolgáltatások önálló, önleíró modulokból
-álló alkalmazások, amiket a weben lehet közzétenni, megtalálni és használni. A
-webszolgáltatások olyan, tipikusan a színfalak mögött futó megoldásokat jelentenek,
-amelyek révén a hálózati alkalmazások dinamikusan képesek kommunikálni és együttműködni
-egyéb hálózati alkalmazásokkal, megtalálják a megfelelő adatforrást, és a nyílt
-szabványokkal (SOAP, WSDL, XML) megvalósított információcserének köszönhetően mindezt
-platformfüggetlenül teszik.
+álló alkalmazások, amiket a weben lehet közzétenni, megtalálni és használni. Olyan
+tipikusan a színfalak mögött futó megoldásokat jelentenek, amelyek révén a hálózati
+alkalmazások dinamikusan képesek kommunikálni és együttműködni egyéb hálózati alkalmazásokkal,
+megtalálják a megfelelő adatforrást, és a nyílt szabványokkal (SOAP, WSDL, XML)
+megvalósított információcserének köszönhetően mindezt platformfüggetlenül teszik.
+
+A webszolgáltatás bármi lehet, színházi kritika, időjárásjelentés, hitelellenőrzés,
+részvényárfolyam, utazási tanácsadó vagy repülőjegy-foglaló rendszer. Ezek közül
+az önálló üzleti szolgáltatások közül bármelyik könnyen integrálható újabb, azonos
+vagy más cég által nyújtott szolgáltatásokkal, hogy teljes üzleti folyamatot alkossanak.
+Ez az együttműködés teszi lehetővé, hogy a cégek az Interneten szolgáltatások széles
+körét közzétegyék, felkutassák és összekössék.
 
 ### 10.1 A webszolgáltatások jellemzői
 
+**A webszolgáltatás nyílt szabványokat és protokollokat használ**. A protokollok
+és adatok minden lehetséges helyen szöveg alapúak. A HTTP használatával a webszolgáltatások
+keresztüljutnak a legtöbb tűzfalon a tűzfal paramétereinek megváltoztatása nélkül.
+
+**A webszolgáltatások önállóak**. Az ügyfél oldalán semmilyen egyéb programra nincs
+szükség, elég egy programnyelv, ami támogatja az XML nyelvet és az ügyféloldali
+HTTP protokollt. Az ügyfél és a kiszolgáló különböző környezetben is megvalósítható.
+Egy már meglévő alkalmazás akár egyetlen sor kód írása nélkül is képessé tehető a
+webszolgáltatások használatára.
+
+**A webszolgáltatások önleírók**. Az ügyfélnek és a kiszolgálónak csak a kérés- és
+válaszüzenetek formátumát és tartalmát kell felismerniük. Az üzenet formátumának
+leírása az üzenettel együtt megy, ezért nincs szükség külső metaadatokra vagy kódelőállító
+eszközökre.
+
+**A webszolgáltatások platformfüggetlenek**. A webszolgáltatások alapját néhány
+tömör, XML-alapú szabvány adja, amiket azzal a szándékkal hoztak létre, hogy a különböző
+programozási nyelveken megvalósított, eltérő operációs rendszer alatt futó ügyfelek
+és webszolgáltatások együtt tudjanak működni. A webszolgáltatások együttműködést
+(interoperabilitást) biztosítanak a különböző platformokon futó szoftver alkalmazások
+között.
+
+A webszolgáltatások egyszerű módon teszik lehetővé különböző gyártóktól származó
+szoftverek és szolgáltatások kombinálását új, integrált szolgáltatások létrehozására,
+valamint ezek újrafelhasználását egy infrastruktúrán belül.
+
 ### 10.2 Alapvető szabványok: SOAP, WSDL, UDDI
+
+A webszolgáltatás architektúrában egy hálózati komponensnek több szerepe is lehet:
+szolgáltató (Service Provider), közvetítő (Service Broker) vagy ügyfél (Service
+Requestor, Client).
+
+* A **szolgáltatók** létrehozzák és telepítik a saját webszolgáltatásaikat, majd
+közzéteszik a WSDL nyelven leírt szolgáltatások elérhetőségét egy szolgáltatásnyilvántartáson,
+például az **UDDI** üzleti nyilvántartáson keresztül.
+* A **közvetítők** nyilvántartják és kategorizálják a szolgáltatásokat, valamint
+keresőszolgáltatásokat biztosítanak. Az **UDDI** például a **WSDL** nyelven leírt
+projekteknél szolgáltatásközvetítőként működik.
+* Az **ügyfelek** a közvetítő szolgáltatások (például az UDDI üzleti nyilvántartás)
+segítségével felkutatják a szolgáltatásokat, majd hozzájuk kapcsolódnak és meghívják őket.
+Az összekapcsolódáshoz hozzátartozik az összes környezeti előfeltétel kialakítása,
+ami a szolgáltatás sikeres használatához szükséges. A környezeti előfeltételek
+érinthetik a biztonságot, a tranzakciófigyelést és a HTTP elérhetőséget.
+
+Az OASIS és a W3C a vezető bizottságok a webszolgáltatások szabványosításának terén.
+Az internetes szabványok egyik fő jellemzője, hogy megvalósítások helyett protokollokkra
+fókuszálnak. Az alábbi szabványok kulcsszerepet játszanak a webszolgáltatásokban:
+
+#### SOAP
+
+A SOAP a WSDL és a UDDI mellett a webszolgáltatások harmadik alapvető elemét képezi.
+A név eredetileg az angol *Simple Object Access Protocol* rövidítése volt, de a
+szabvány 1.2-es verziójától kezdve a Simple Object Access Protocol nevet már nem
+használják, mert az elnevezés félrevezető volt. A SOAP szabványt a W3C tartja karban.
+
+A SOAP lehetővé teszi a kikeresett webszolgáltatások használatát azáltal, hogy az
+útvonalkezelés számára üzenetútvonalat biztosít. A SOAP protokollt használják a
+webszolgáltatások UDDI lekérdezéseinél.
+
+A SOAP független a szállító rétegtől, de ezt a szerepet leggyakrabban a HTTP tölti be,
+hogy a már meglévő internetes infrastruktúrán futhasson. Mind a HTTP, mind pedig
+az SMTP lehetséges szállítási protokollok SOAP üzenetek továbbítására, ugyanakkor
+a HTTP szélesebb körben elfogadott, mivel jól együttműködik az internet mai szerkezetével,
+különösen a tűzfalakkal. A SOAP ugyanakkor továbbítható HTTPS protokollon keresztül is.
+
+A SOAP egy elosztott feldolgozási modellt definiál a résztvevői, a SOAP csomópontok
+számára, valamint azt, hogy hogy dolgozza fel a fogadó az üzenetet. A következő
+SOAP csomópont típusok lehetnek:
+* **SOAP küldő**: egy csomópont, ami üzenetet küld
+* **SOAP fogadó**: egy csomópont, ami üzeneteket fogad
+* **SOAP üzenet útvonal**: csomópontok egy halmaza, melyeken egy üzenet áthalad
+* **Kezdeti SOAP küldő**: az a csomópont, ahonnan az üzenet útvonala elindult
+* **SOAP közvetítő**: egy olyan csomópont, amely küld és fogad is üzeneteket.
+* **Végső SOAP fogadó**: egy olyan SOAP fogadó, mely a SOAP üzenet végső célpontja.
+Feladata az üzenet törzsének a feldolgozása. Egy végső SOAP fogadó nem lehet közvetítő
+is egy adott üzenet esetén.
+
+A SOAP XML-alapú protokoll. Azért az XML formátumra esett a választás, mivel széles
+körben használt a nagyvállalatoknál és a nyílt forrású fejlesztéseknél. A SOAP minden
+üzenethez három részt határoz meg:
+
+* **Boríték**: meghatároz egy keretrendszert az üzenet tartalmának és feldolgozási
+módjának a leírásához. A SOAP üzenetek egy borítékból állnak, ami bármennyi fejlécet
+tartalmazhat (vagy akár egyet sem) és pontosan egy törzset. **A boríték az XML dokumentum
+legfelső eleme**, ami tárolót biztosít a vezérlőinformáció, a címzés és maga az üzenet
+számára. A **fejlécek** tartalmazzák az összes vezérlő információt, például a szolgáltatási
+minőség jellemzőket. A **törzs** tartalmazza az üzenetazonosítást és annak a paramétereit.
+A fejléc és a törzs is a boríték leszármazott elemei.
+* **Kódolási szabályok**: meghatározzák a sorosítási mechanizmusokat amik az alkalmazások
+által definiált adattípusok cseréjéhez használhatók. A SOAP egyrészt egy XSD-alapú,
+programozási nyelvtől független adattípus sémát határoz meg, másrészt pedig kódolási
+szabályokat minden, e modell szerint meghatározott adattípushoz. A SOAP kódolás nem
+felel meg a WS-I szabványnak, így a webszolgáltatásoknál a literál (vagyis kódolás
+nélküli) használata javasolt, a WS-I szabványnak való megfeleléskor pedig ez
+kötelező is.
+* **Kommunikációstílusok**: a kommunikáció lehet távoli eljáráshívás (RPC, amely
+műveleteket hív meg, amik visszaadnak valamilyen eredményt) vagy dokumentum-központú
+(alacsonyabb szintű absztrakciót használ és több programozási munkát igényel) formátumú.
+
+A SOAP használatához a PHP is biztosít [eszközöket](https://www.php.net/manual/en/book.soap.php).
+
+#### WSDL
+
+A Webszolgáltatás leíró nyelv (Web Services Description Language, röviden WSDL)
+XML-alapú hálózati szolgáltatások leírására szolgáló szabványspecifikáció. A szolgáltatások
+nyújtói számára egyszerű módot ad arra, hogy a konkrét megvalósítástól függetlenül
+leírják a rendszereikhez intézhető kérések alapvető formátumát. A WSDL a webszolgáltatás
+nyilvános felületét írja le, beleértve a használható üzenetek formátumát.
+
+A WSDL meghatároz egy XML formátumot, ami a hálózati szolgáltatásokat olyan végpontok
+halmazaként írja le, amik dokumentum- vagy eljárás-orientált üzenetekkel kommunikálnak.
+Egy WSDL-fájl további WSDL-fájlokat importálhat. Az üzenetekben használhatók a beépített
+XML-adattípusok, illetve egyedi, összetett adattípusok is definiálhatók XML Schema nyelven.
+
+A WSDL segítségével a webszolgáltatások következő jellemzőit lehet megadni:
+* A webszolgáltatás neve és a címzési információk
+* A webszolgáltatás nyilvános műveleteinek eléréséhez használható protokoll és kódolási stílus
+* A típusinformációk, mint például a webszolgáltatás felületét alkotó műveletek,
+paraméterek és adattípusok.
+
+A WSDL-t általában SOAP-pal együtt használják, hogy webszolgáltatást nyújtsanak
+az interneten. Egy webszolgáltatáshoz kapcsolódó kliens-program (általában a szolgáltatás
+tényleges használatától függetlenül) le tudja kérni WSDL-t, hogy feltérképezze a
+rendelkezésre álló funkciókat a szerveren.
+
+#### UDDI
+
+Az **UDDI** a *Universal Description, Discovery, and Integration*, azaz univerzális leírás,
+felfedezés és integrálás rövidítése – egy platformfüggetlen, XML-alapú nyilvántartó
+rendszer (regiszter), mely lehetőséget biztosít a vállalatok számára, hogy bekerüljenek
+egy internetes listába és közzétegyék webszolgáltatásaikat. A rendszer segítségével
+kereshetünk a publikált webszolgáltatások között és további információkat tudhatunk
+meg azokról. Ezek között szerepel az is, hogy az adott szolgáltatást hogyan lehet
+használni. Az UDDI nyílt ipari szabvány, amelyet az *[Organization for the Advancement
+of Structured Information Standards (OASIS)](https://en.wikipedia.org/wiki/OASIS_(organization))* támogat.
+
+Az [UDDI](http://uddi.xml.org/uddi-org) a cégeket és szolgáltatásaikat leíró XML
+formátumú osztott nyilvántartásra támaszkodva irányítja a webszolgáltatások keresését.
+Cég és webszolgáltatás adatainak közzététele előtt először be kell jegyezni a céget
+az UDDI nyilvántartásba. Az UDDI nyilvántartásoknak két formájuk van: a nyilvános
+és a magán. Mindkét típus azonos specifikáció alapján működik. A magán nyilvántartások
+lehetővé teszik a belső e-üzlet alkalmazások biztonságos környezetben való közzétételét
+és tesztelését. A nyilvános nyilvántartások egyenrangú címjegyzékek gyűjteményei,
+amik cégekről és szolgáltatásokról tartalmaznak adatokat. 
+
+Az UDDI üzleti nyilvántartás cégek közötti címjegyzékként működik, összekötve piacokat,
+eladókat és vevőket. A cégek az általuk biztosított szolgáltatások leírásait töltik
+fel a nyilvántartásokba. Az UDDI minden egyes szolgáltatásleíráshoz és céges bejegyzéshez
+egy egyedi azonosítót rendel. Ezek a szolgáltatás- és a célkulcsok. A keresőmotorok
+és az alkalmazások a nyilvántartást kérdezik le a szolgáltatások keresésekor. **Az
+UDDI kiszolgálók rendelkezésre álló szolgáltatások és szolgáltatók címjegyzékei**.
 
 
 ### Jegyzetek:
@@ -3553,6 +3709,7 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 * Hernyák Zoltán: Elosztott programozás Microsoft.NET környezetben, 10. fejezet - [Web Service](http://aries.ektf.hu/~hz/pdf-tamop/pdf-03/html/ch10.html)
 * Wikipedia: [SOAP](https://hu.wikipedia.org/wiki/SOAP)
 * IBM Knowledge Center: [SOAP](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-soap)
+* PHP Kézikönyv: [SOAP](https://www.php.net/manual/en/book.soap.php)
 * Wikipedia: [WSDL - Webszolgáltatás-leíró nyelv](https://hu.wikipedia.org/wiki/Webszolg%C3%A1ltat%C3%A1s-le%C3%ADr%C3%B3_nyelv)
 * IBM Knowledge Center: [Webszolgáltatás leírónyelv (WSDL)](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-web-services-description-language-wsdl)
 * Wikipedia: [UDDI](https://hu.wikipedia.org/wiki/UDDI)
