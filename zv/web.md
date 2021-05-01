@@ -3395,8 +3395,8 @@ is leszármazottja.
 
 Az osztály fogalma felfogható az E-K modell entitásának kiterjesztéseként is, azzal
 a különbséggel, hogy az entitásnak nincsenek metódusai, az osztálynak viszont vannak.
-Vagyis, az osztály tulajdonképpen egy metódusokkal felruházott entitás. Az osztály
- - az entitáshoz hasonlóan - kapcsolatban állhat más - tőle független - osztályokkal,
+Vagyis, az osztály tulajdonképpen egy metódusokkal felruházott entitás. Az osztály - az
+entitáshoz hasonlóan - kapcsolatban állhat más - tőle független - osztályokkal,
 származhat más, általánosabb osztályból és tulajdonságként tartalmazhat más osztályokat
 (ahogy az entitás egyes tulajdonságai is lehetnek más entitásra hivatkozó referenciák). 
 
