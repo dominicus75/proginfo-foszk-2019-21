@@ -3357,9 +3357,63 @@ felhasználóról van szó, és ez alapján más feldolgozási logika vagy megje
 
 ## 8. Objektum orientált programozás PHP-ben
 
+Az objektumorientált vagy objektumelvű programozás (OOP) az objektumok fogalmán
+alapuló programozási paradigma. Az OOP egy olyan paradigma, amely a hagyományosnak
+tekinthető procedurális megközelítés továbbfejlesztése. A korábbi programtervezési
+módszerekkel megterveztük az algoritmust, és az adatszerkezetet, de a kettő között
+gyakran elég laza kapcsolat volt. **Az objektumok egységbe foglalják az adatokat és
+a hozzájuk tartozó műveleteket**. Az adatokat ismerik **mezők, attribútumok, tulajdonságok**
+vagy **adattagok** néven is, a műveleteket **metódusokként** szokták emlegetni. Az objektum
+által tartalmazott adatokon általában az objektum metódusai végeznek műveletet. *A
+program egymással kommunikáló objektumok összességéből áll*.
+
+A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztályok példányai,
+és típusuk az osztály. Az objektum állapotát adattagokkal, viselkedését pedig metódusokkal
+(tagfüggvényekkel) tudjuk leírni. Az objektumok egymással kommunikálni elsősorban a
+(publikus) metódusaikon keresztül tudnak.
+
+A PHP nyelven belül az objektumorientáltság támogatása nem olyan régre vezethető vissza,
+a PHP 3 vezette be, és a PHP 4 bővítette, majd a PHP 5-ben teljesen átstrukturálták
+az osztályokat.
+
 ### 8.1 Osztályok, tagváltozók, tagfüggvények, a konstruktor és a destruktor
 
+Az osztály a valóság mintájára tulajdonságokkal és viselkedésekkel felruházott zárt
+egység, a való világban található dolgok (létezők) informatikai leképezése. Az osztály
+fogalma némi rokonságot mutat a platóni ideákkal (ősképek, ősminták), amelyek egy-egy
+dolog örök és változatlan lényegét írják le. A programozásban alkalmazott osztályok
+is egy-egy való világbeli dolognak a megoldandó programozási probléma szempontjából
+releváns lényegét foglalják magukba (tehát nem a teljes lényegét, csak azt a szeletét,
+amire éppen szükségünk van), és mint ilyenek típusokként (vagy a filozófiai hasonlatnál
+maradva, ideaként, ősképként, ősmintaként) is értelmezhetők.
+
+De az osztály fogalma - más nézőpontból vizsgálva - kategóriaként is felfogható,
+mégpedig az öröklődés/leszármaztatás alapján. Ez esetben az osztályhoz tartozás már
+nem csak azt jelenti, hogy a dolog azonos önmagával (az adott dolgot leíró osztály
+egy konkrét példánya), hanem azt is, hogy egy tágabb, általánosabb kategóriának/osztálynak
+is leszármazottja.
+
+Az osztály fogalma felfogható az E-K modell entitásának kiterjesztéseként is, azzal
+a különbséggel, hogy az entitásnak nincsenek metódusai, az osztálynak viszont vannak.
+Vagyis, az osztály tulajdonképpen egy metódusokkal felruházott entitás. Az osztály
+ - az entitáshoz hasonlóan - kapcsolatban állhat más - tőle független - osztályokkal,
+származhat más, általánosabb osztályból és tulajdonságként tartalmazhat más osztályokat
+(ahogy az entitás egyes tulajdonságai is lehetnek más entitásra hivatkozó referenciák). 
+
+Az osztály tehát jelenthet - méghozzá egyidejűleg, hogy érdekesebb legyen - típust
+(ideát, a dolog nézőpontunkból releváns lényegét) és kategóriát (más, speciálisabb 
+típusokat magában foglaló általánosabb típust) is. A programozásban leginkább olyan 
+objektumminta vagy típus értendő alatta, mely alapján példányokat (objektumokat) 
+lehet létrehozni. **Az **osztály** az egyes objektumok elvi tervrajzát, működését
+definiálja**. Az elnevezés onnan származik, hogy az egyes objektumok hasonlóságait
+a tervezés során felismerhetjük. Ezt szoktuk *osztályozásnak* is hívni.
+
+
 ### 8.2 Objektumok létrehozása
+
+A programkódban tehát először létre hozzuk az osztályok forráskódját, majd az osztály
+példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
+érdekében.
 
 ### 8.3 Osztályok kiterjesztése, öröklés, absztrakt osztályok
 
