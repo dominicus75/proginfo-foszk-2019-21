@@ -3483,14 +3483,11 @@ az objektumra mutató referenciákat más objektumokban, hogy később ne tört�
 A PHP 4-ben még nem létezett objektum destruktor mechanizmus, a PHP 5 vezeti be a 
 destruktor fogalmát. Más OOP-t támogató nyelvekhez hasonlóan a destruktor meghívása
 nem tér el a megszokottaktól: amikor az utolsó hivatkozás is megszűnik az objektumra,
-akkor meghívódik a destruktor, még mielőtt a memóriából kitörlődne az objektum. A
-konstruktorhoz hasonlóan a szülőosztály destruktora nem hívódik meg implicit módon
-a gyermekosztály destruktorában. A szülőosztály destruktora ```parent::__destruct()```
-kóddal hívható meg.
-
-A lehetőség, hogy a destruktorokat a fejlesztők átdefiniálhassák nagyon fontos,
-hiszen a destruktorok végezhetik el a naplózási feladatokat, szakíthatják meg az
-adatbázis kapcsolatot vagy végezhetnek egyéb "tisztítási utómunkát". PHP-ben
+akkor meghívódik a destruktor, még mielőtt a memóriából kitörlődne az objektum.
+A destruktor végezheti el a naplózási feladatokat, szakíthatja meg az adatbázis
+kapcsolatot vagy végezhet egyéb "tisztítási utómunkát". A konstruktorhoz hasonlóan
+a szülőosztály destruktora nem hívódik meg implicit módon a gyermekosztály destruktorában.
+A szülőosztály destruktora ```parent::__destruct()``` kóddal hívható meg. PHP-ben
 viszonylag ritkán használjuk a destruktort, mert van **automatikus szemétgyűjtő**
 (*garbage collection*) mechanizmus.
 
@@ -3499,7 +3496,6 @@ viszonylag ritkán használjuk a destruktort, mert van **automatikus szemétgyű
 ```php
 __destruct() : void
 ```
-
 
 ### 8.2 Objektumok létrehozása
 
