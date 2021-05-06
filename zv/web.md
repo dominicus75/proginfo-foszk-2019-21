@@ -3361,22 +3361,13 @@ Az objektumorientált vagy objektumelvű programozás (OOP) az objektumok fogalm
 alapuló programozási paradigma. Az OOP egy olyan paradigma, amely a hagyományosnak
 tekinthető procedurális megközelítés továbbfejlesztése. A korábbi programtervezési
 módszerekkel megterveztük az algoritmust, és az adatszerkezetet, de a kettő között
-gyakran elég laza kapcsolat volt. **Az objektumok egységbe foglalják az adatokat és
-a hozzájuk tartozó műveleteket**. Az adatokat ismerik **mezők, attribútumok, tulajdonságok**
-vagy **adattagok** néven is, a műveleteket **metódusokként** szokták emlegetni. Az objektum
-által tartalmazott adatokon általában az objektum metódusai végeznek műveletet. *A
-program egymással kommunikáló objektumok összességéből áll*.
-
-A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztályok példányai,
-és típusuk az osztály. Az objektum állapotát adattagokkal, viselkedését pedig metódusokkal
-(tagfüggvényekkel) tudjuk leírni. Az objektumok egymással kommunikálni elsősorban a
-(publikus) metódusaikon keresztül tudnak.
+gyakran elég laza kapcsolat volt.
 
 A PHP nyelven belül az objektumorientáltság támogatása nem olyan régre vezethető vissza,
 a PHP 3 vezette be, és a PHP 4 bővítette, majd a PHP 5-ben teljesen átstrukturálták
 az osztályokat.
 
-### 8.1 Osztályok, tagváltozók, tagfüggvények, a konstruktor és a destruktor
+### 8.1 Osztályok, tulajdonságok, metódusok, a konstruktor és a destruktor
 
 Az osztály a valóság mintájára tulajdonságokkal és viselkedésekkel felruházott zárt
 egység, a való világban található dolgok (létezők) informatikai leképezése. Az osztály
@@ -3384,8 +3375,7 @@ fogalma némi rokonságot mutat a platóni ideákkal (ősképek, ősminták), am
 dolog örök és változatlan lényegét írják le. A programozásban alkalmazott osztályok
 is egy-egy való világbeli dolognak a megoldandó programozási probléma szempontjából
 releváns lényegét foglalják magukba (tehát nem a teljes lényegét, csak azt a szeletét,
-amire éppen szükségünk van), és mint ilyenek típusokként (vagy a filozófiai hasonlatnál
-maradva, ideaként, ősképként, ősmintaként) is értelmezhetők.
+amire éppen szükségünk van), és mint ilyenek típusokként is értelmezhetők.
 
 De az osztály fogalma - más nézőpontból vizsgálva - kategóriaként is felfogható,
 mégpedig az öröklődés/leszármaztatás alapján. Ez esetben az osztályhoz tartozás már
@@ -3407,6 +3397,108 @@ objektumminta vagy típus értendő alatta, mely alapján példányokat (objektu
 lehet létrehozni. **Az **osztály** az egyes objektumok elvi tervrajzát, működését
 definiálja**. Az elnevezés onnan származik, hogy az egyes objektumok hasonlóságait
 a tervezés során felismerhetjük. Ezt szoktuk *osztályozásnak* is hívni.
+
+**Az objektumok egységbe foglalják az adatokat és a hozzájuk tartozó műveleteket**.
+Az adatokat ismerik **mezők, attribútumok, tulajdonságok** vagy **adattagok** néven
+is (a PHP-terminológiában a tulajdonság [property] kifejezés a leginkább elterjedt),
+a műveleteket **metódusokként** szokták emlegetni. Az objektum által tartalmazott
+adatokon általában az objektum metódusai végeznek műveletet. 
+
+A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztályok példányai,
+és típusuk az osztály. Az objektum állapotát adattagokkal, viselkedését pedig metódusokkal
+(tagfüggvényekkel) tudjuk leírni. Az objektumok egymással kommunikálni elsősorban a
+(publikus) metódusaikon keresztül tudnak. *A program egymással kommunikáló objektumok
+összességéből áll*.
+
+A programkódban először létre hozzuk az osztályok forráskódját, majd az osztály
+példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
+érdekében. **Az objektumok létrehozását példányosításnak hívjuk**. 
+
+A **konstruktor**ok az osztályok olyan metódusai, amelyek automatikusan meghívásra kerülnek
+egy új objektumpéldány ```new``` kulcsszóval történő létrehozása során és beállíthatják
+az objektum induló állapotát (inicializálás). A PHP 4-ben a kostruktor nevének még
+meg kellett egyeznie annak az osztálynak a nevével, ahol deifiniálták. A PHP 5 azonban
+bevezetett egy teljesen új konstruktor deklarációs módot: a konstruktor "mágikus metódus"
+lett (ezek neve mindig dupla aláhúzás karakterrel kezdődik), a neve minden esetben
+```__construct()```.
+
+*A konstruktor szignatúrája:*
+
+```php
+__construct (mixed ...$values = "") : void
+```
+
+A konstruktor nulla vagy több tetszőleges típusú paramétert vehet át, visszatérési
+értéke nincsen (```void```). A szülőosztály konstruktora nem hívódik meg implicit
+módon a gyermekosztály konstruktorában. A szülőosztály konstruktora ```parent:: __construct()```
+kóddal hívható meg.
+
+A PHP 8. főverziója bevezette az egyszerűsített konstruktort (*Constructor Property
+Promotion*), amely leegyszerűsíti az objektumok létrehozását: ahelyett, hogy külön
+meg kellene adni az osztálytulajdonságokat és a konstruktort, a PHP 8 egybe
+kombinálja ezeket. Az új szintaxisnak hála egyszerűbben, egy lépésben tudunk
+(típusos) osztályváltozókat definiálni és a konstruktorban értéket adni nekik.
+Az osztályváltozók típusai (*type*) és a láthatósági módosító kulcsszavak (*modifier*)
+is bekerültek a konstruktorba, így külön már nem kell azokat deklarálni. Természetesen
+itt is lehet alapértelmezett értékeket megadni.
+
+```php
+// Korábbi PHP változatok (5.x - 7.x) esetén:
+class Point {
+  public float $x;
+  public float $y;
+  public float $z;
+
+  public function __construct(
+    float $x = 0.0,
+    float $y = 0.0,
+    float $z = 0.0
+  ) {
+    $this->x = $x;
+    $this->y = $y;
+    $this->z = $z;
+  }
+}
+
+// PHP 8-ban ugyanez:
+class Point {
+  public function __construct(
+    public float $x = 0.0,
+    public float $y = 0.0,
+    public float $z = 0.0,
+  ) {}
+}
+```
+
+Nem lehet egy tulajdonságot a konstruktoron kívül és belül is deklarálni, így a
+két szintaktika nem keverhető (vagy ez vagy az). Absztrakt osztály esetén nem
+használható a egyszerűsített konstruktor, traitek esetében viszont igen.
+
+A **destruktor** egy olyan (PHP-ban a konstruktorhoz hasonlóan mágikus) metódus,
+amely automatikusan meghívódik, amikor az objektum megszűnik. Elsődleges célja az
+hogy felszabadítsa az objektum által lefoglalt erőforrásokat illetve megszüntesse
+az objektumra mutató referenciákat más objektumokban, hogy később ne történhessen
+érvénytelen hivatkozás.
+
+A PHP 4-ben még nem létezett objektum destruktor mechanizmus, a PHP 5 vezeti be a 
+destruktor fogalmát. Más OOP-t támogató nyelvekhez hasonlóan a destruktor meghívása
+nem tér el a megszokottaktól: amikor az utolsó hivatkozás is megszűnik az objektumra,
+akkor meghívódik a destruktor, még mielőtt a memóriából kitörlődne az objektum. A
+konstruktorhoz hasonlóan a szülőosztály destruktora nem hívódik meg implicit módon
+a gyermekosztály destruktorában. A szülőosztály destruktora ```parent::__destruct()```
+kóddal hívható meg.
+
+A lehetőség, hogy a destruktorokat a fejlesztők átdefiniálhassák nagyon fontos,
+hiszen a destruktorok végezhetik el a naplózási feladatokat, szakíthatják meg az
+adatbázis kapcsolatot vagy végezhetnek egyéb "tisztítási utómunkát". PHP-ben
+viszonylag ritkán használjuk a destruktort, mert van **automatikus szemétgyűjtő**
+(*garbage collection*) mechanizmus.
+
+*A destruktor szignatúrája:*
+
+```php
+__destruct() : void
+```
 
 
 ### 8.2 Objektumok létrehozása
