@@ -3358,10 +3358,10 @@ felhasználóról van szó, és ez alapján más feldolgozási logika vagy megje
 ## 8. Objektum orientált programozás PHP-ben
 
 Az objektumorientált vagy objektumelvű programozás (OOP) az objektumok fogalmán
-alapuló programozási paradigma. Az OOP egy olyan paradigma, amely a hagyományosnak
-tekinthető procedurális megközelítés továbbfejlesztése. A korábbi programtervezési
-módszerekkel megterveztük az algoritmust, és az adatszerkezetet, de a kettő között
-gyakran elég laza kapcsolat volt.
+alapuló programozási paradigma. Az OOP a hagyományosnak tekinthető procedurális
+megközelítés továbbfejlesztése. A korábbi programtervezési módszerekkel megterveztük
+az algoritmust, és az adatszerkezetet, de a kettő között gyakran elég laza kapcsolat
+volt.
 
 A PHP nyelven belül az objektumorientáltság támogatása nem olyan régre vezethető vissza,
 a PHP 3 vezette be, és a PHP 4 bővítette, majd a PHP 5-ben teljesen átstrukturálták
@@ -3410,9 +3410,62 @@ A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztály
 (publikus) metódusaikon keresztül tudnak. *A program egymással kommunikáló objektumok
 összességéből áll*.
 
-A programkódban először létre hozzuk az osztályok forráskódját, majd az osztály
-példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
-érdekében. **Az objektumok létrehozását példányosításnak hívjuk**. 
+#### Tulajdonságok
+
+Az objektumok tulajdonságai hasonlóak a változókhoz, annyi különbséggel, hogy
+rendelkeznek láthatósági minősítőkkel (egy mezei változó láthatóságát a létrehozás
+helye határozza meg: ha függvényben deklaráljuk, akkor lokális [private], ha azon
+kívül, akkor globális [public]), illetve a PHP 7.4 változatától a típusdeklarációt
+is támogatja a nyelv.
+
+A PHP három láthatósági szintet különböztet meg a tulajdonságok és metódusok esetén:
+
+* **private** (privát): csak a deklaráló osztályon belül lehet látni
+* **protected** (védett): csak a deklaráló osztályban és annak leszármazottaiban érhető el
+* **public** (nyílvános): bárhonnan elérhető (ha nem adunk meg láthatósági szintet,
+akkor a public lesz az alapértelmezett).
+
+A tulajdonság típusa bármilyen skalár vagy összetett típus lehet (tömb, osztály,
+interfész is), a PHP 8. főverziójától kezdve *union type* típusdeklaráció is lehetséges
+(függőleges vonallal elválasztva több lehetséges típus is felsorolható), vagy ```mixed```
+(bármilyen típus), ami nagyjából a PHP eredeti dinamikus típuskezelésével egyenértékű
+(a változó típusát a kapott adat határozza meg), vagyis a visszamenőleges kompatibilitás
+érdekében a típusdeklaráció nem kötelező. A típuskényszerítés is csak szigorú (strict)
+módban működik.
+
+*Szintaxis:*
+
+```php
+
+# PHP 7.4 előtt:
+class Person {
+	protected $name;
+	protected $age;
+	protected $birthDate;
+}
+
+
+# PHP 7.4 után
+class Person {
+	protected string $name;
+	protected int $age;
+	protected int $birthDate;
+}
+
+# PHP 8.x után
+class Person {
+	protected string $name;
+	protected int $age;
+	protected int|DateTime $birthDate;
+}
+
+
+```
+
+#### Metódusok
+
+
+#### Konstruktor
 
 A **konstruktor**ok az osztályok olyan metódusai, amelyek automatikusan meghívásra kerülnek
 egy új objektumpéldány ```new``` kulcsszóval történő létrehozása során és beállíthatják
@@ -3430,7 +3483,7 @@ __construct (mixed ...$values = "") : void
 
 A konstruktor nulla vagy több tetszőleges típusú paramétert vehet át, visszatérési
 értéke nincsen (```void```). A szülőosztály konstruktora nem hívódik meg implicit
-módon a gyermekosztály konstruktorában. A szülőosztály konstruktora ```parent:: __construct()```
+módon a gyermekosztály konstruktorában, helyette a ```parent:: __construct()```
 kóddal hívható meg.
 
 A PHP 8. főverziója bevezette az egyszerűsített konstruktort (*Constructor Property
@@ -3474,6 +3527,8 @@ Nem lehet egy tulajdonságot a konstruktoron kívül és belül is deklarálni, 
 két szintaktika nem keverhető (vagy ez vagy az). Absztrakt osztály esetén nem
 használható a egyszerűsített konstruktor, traitek esetében viszont igen.
 
+#### Destruktor
+
 A **destruktor** egy olyan (PHP-ban a konstruktorhoz hasonlóan mágikus) metódus,
 amely automatikusan meghívódik, amikor az objektum megszűnik. Elsődleges célja az
 hogy felszabadítsa az objektum által lefoglalt erőforrásokat illetve megszüntesse
@@ -3504,6 +3559,10 @@ példányait létrehozva, az objektumokat hálózatként használhatjuk a felada
 érdekében.
 
 ### 8.3 Osztályok kiterjesztése, öröklés, absztrakt osztályok
+
+Az objektumok, és maguk az osztályok is kapcsolatban lehetnek egymással. Az öröklődés
+azt fejezi ki, hogy a leszármazott megfelel az ősének, de tovább finomítja
+(specializálja) az őséhez képest a lehetőségeit.
 
 ### 8.4 A static és a final kulcsszavak
 
