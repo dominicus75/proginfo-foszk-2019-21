@@ -3671,7 +3671,9 @@ A ```__call()``` és a ```__callStatic()``` mágikus metódusok alkalmasak a met
 túlterhelés (amit a PHP egyébként nem támogat) megvalósítására is: a hívott metódus
 neve (az első, ```$name``` paraméter) ugyanis szövegként kerül átadásra, míg a többi
 paramétert egy tömbbe gyűjti össze a metódus, így egy ```switch(count($arguments))```
-szerkezet segítségével más-más viselkedést rendelhetünk a különböző számú paraméterhez.```php
+szerkezet segítségével más-más viselkedést rendelhetünk a különböző számú paraméterhez.
+
+```php
 public function __call(string $name, array $arguments): mixed {
 
 	switch($name) {
@@ -3720,7 +3722,9 @@ public function __call(string $name, array $arguments): mixed {
 
 }
 
-``` Megjegyzendő, hogy a nevesített paraméterek bevezetése (PHP 8.0) a fenti problémára
+```
+
+Megjegyzendő, hogy a nevesített paraméterek bevezetése (PHP 8.0) a fenti problémára
 egyszerűbb, elegánsabb megoldást kínál.
 * ```__get(string $name):mixed```: adott kontextusból nem elérhető (private vagy
 protected láthatóságú, esetleg nem létező) tulajdonság lekérésére szolgál. Visszadaja
