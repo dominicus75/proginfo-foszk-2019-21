@@ -2533,9 +2533,9 @@ feltetel ? "érték, ha feltetel igaz" : "érték, ha feltetel hamis" ;
 ```
 
 A PHP 7.0 változata óta létezik a feltételes operátornak egy rövidebb változatai is,
-a nullával összehasonlító operátor (```??```). Ezt abban az esetben lehet alkalmazni, ha a feltételben
-vizsgálnunk kell, hogy egy adott változó létezik-e, mielőtt felhasználnánk az értékét
-egy kifejezésben.
+a nullával összehasonlító operátor (```??```). Ezt abban az esetben lehet alkalmazni,
+ha a feltételben vizsgálnunk kell, hogy egy adott változó létezik-e, mielőtt felhasználnánk
+az értékét egy kifejezésben.
 
 ```php
 
@@ -3410,9 +3410,14 @@ A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztály
 (publikus) metódusaikon keresztül tudnak. *A program egymással kommunikáló objektumok
 összességéből áll*.
 
+Az osztályokat a ```class``` kulcsszóval vezetjük be, ezt követi az osztály neve, majd a két
+kapcsos zárójel, amelyek között szerepelnek a tulajdonságok és a hozzájuk tartozó
+metódusok. Az osztály neve nem lehet foglalt szó. Az érvényes osztálynév betűvel
+vagy alulvonással kezdődik, ezt követhetik számok, betűk és alulvonások.
+
 #### Tulajdonságok
 
-Az objektumok tulajdonságai hasonlóak a változókhoz, annyi különbséggel, hogy
+Az objektumok tulajdonságai és a változók küzött annyi a különbség, hogy
 rendelkeznek láthatósági minősítőkkel (egy mezei változó láthatóságát a létrehozás
 helye határozza meg: ha függvényben deklaráljuk, akkor lokális [private], ha azon
 kívül, akkor globális [public]), illetve a PHP 7.4 változatától a típusdeklarációt
@@ -3425,6 +3430,9 @@ A PHP három láthatósági szintet különböztet meg a tulajdonságok és met�
 * **public** (nyílvános): bárhonnan elérhető (ha nem adunk meg láthatósági szintet,
 akkor a public lesz az alapértelmezett).
 
+Adattagokat alapvetően privát, esetleg végett, míg konstruktorokat, metódusokat
+általában publikus láthatósággal hozunk létre.
+
 A tulajdonság típusa bármilyen skalár vagy összetett típus lehet (tömb, osztály,
 interfész is), a PHP 8. főverziójától kezdve *union type* típusdeklaráció is lehetséges
 (függőleges vonallal elválasztva több lehetséges típus is felsorolható), vagy ```mixed```
@@ -3433,36 +3441,337 @@ interfész is), a PHP 8. főverziójától kezdve *union type* típusdeklaráci�
 érdekében a típusdeklaráció nem kötelező. A típuskényszerítés is csak szigorú (strict)
 módban működik.
 
+A publikus tulajdonságok csak minősített (az objektumot tartalmazó változó nevét
+is magában foglaló) névvel hozzáférhetők, a protected és private adattagok pedig
+getter és setter metódusokon keresztül. Ha nem kívül, hanem az osztály törzsén belül
+szeretnénk a tagokra utalni, akkor szintén kötelező a minősített hivatkozás alkalmazása.
+Ilyenkor a ```$this``` pszeudo változó segítségével érhetjük el a tagokat (a ```$this```
+mindig az akuális objektumpéldányra mutat).
+
 *Szintaxis:*
 
 ```php
 
 # PHP 7.4 előtt:
 class Person {
-	protected $name;
+
+	public $name;
 	protected $age;
 	protected $birthDate;
+
+	public function setAge($age) {
+		$this->age = $age;
+	}
+
+	public function setBirthDate($birthDate) {
+		$this->birthDate = $birthDate;
+	}
+
+	public function getAge() {
+		return $this->age;
+	}
+
+	public function getBirthDate() {
+		return $this->birthDate;
+	}
+	
 }
 
 
 # PHP 7.4 után
 class Person {
-	protected string $name;
+	public $name;
 	protected int $age;
 	protected int $birthDate;
+
+	public function setAge(int $age):self {
+		$this->age = $age;
+	}
+
+	public function setBirthDate(int $birthDate):self {
+		$this->birthDate = $birthDate;
+	}
+
+	public function getAge():int {
+		return $this->age;
+	}
+
+	public function getBirthDate():int {
+		return $this->birthDate;
+	}
+
 }
 
 # PHP 8.x után
 class Person {
-	protected string $name;
+	public $name;
 	protected int $age;
 	protected int|DateTime $birthDate;
+
+	public function setAge(int $age):self {
+		$this->age = $age;
+	}
+
+	public function setBirthDate(int|DateTime $birthDate):self {
+		$this->birthDate = $birthDate;
+	}
+
+	public function getAge():int {
+		return $this->age;
+	}
+
+	public function getBirthDate():int|DateTime {
+		return $this->birthDate;
+	}
+
 }
 
+# Példányosítás
+$person = new Person("Gipsz Jakab", 88, -1158164422);
+
+# Publikus tulajdonság lekérése:
+echo $person->name; 	//Kiírja, hogy "Gipsz Jakab"
+
+# Védett tulajdonság lekérése getterrel:
+echo $person->getAge();
 
 ```
 
 #### Metódusok
+
+Az objektum tulajdonságain általában az objektum metódusai végeznek műveletet. Ezek
+példány szintű metódusok, hozzáférnek az adott példány összes adatához és metódusához,
+és paramétereik is lehetnek. Vannak olyan metódusok is, amelyek nem dolgoznak saját
+adattal, hívhatók anélkül, hogy az objektumosztályból példányosítottunk volna, ezek
+statikus vagy osztály szintű metódusok, amelyek csak az osztályváltozókhoz és konstansokhoz
+férhetnek hozzá, példányváltozókhoz nem (mivel példányosítás nélkül hívhatók, ezért
+nincs is mihez hozzáférniük).
+
+Metódusokat úgy hozhatunk létre, hogy az osztálydefiníción belül függvényeket deklarálunk.
+A tagfüggvények is rendelkezhetnek láthatósági minősítőkkel, az adattagoknál leírtak
+itt is érvényesek. Ha nem adunk egy metódusnak láthatósági minősítőt, akkor alapértelmezetten
+```public``` elérhetőségű lesz.
+
+Minden metódus létrehozása - a függvényekhez hasonlóan - a ```function``` kulcsszóval
+kezdődik. Egy metóduson belül bármely érvényes PHP kód megjelenhet. A PHP gyengén
+típusosságból adódóan **nem szükséges meghatározni sem a paraméterek, sem a visszatérési
+érték típusát**. Lehetőség van egy paraméternek alapértelmezett értéket adni (így téve
+opcionálissá az adott paramétert), valamint az érték szerinti paraméterátadás mellett
+referencia szerint is átadhatjuk a paramétereket. Ekkor a formális paraméter előtt
+a ```&``` operátorral kell ezen szándékunkat jelölni.
+ 
+*Általános szintaxis:*
+
+```php
+
+[<láthatóság>] [static] function <metódus_neve>([<paraméterlista>]) {
+	<függvénytörzs>;
+	[return] [<visszatérési_érték>];
+}
+
+<láthatóság>         ::= private|protected|public (opcionális, ha nem adunk meg
+                         semmit, alapértelmezés szerint public lesz)
+<metódus_neve>       ::= angol ABC kis és nagy betűi és aláhúzás karakter (a metódusok
+						 nevében a PHP nem különbözteti meg a kis- és a nagybetűket)
+<paraméterlista>     ::= (opcionális) nulla vagy több argumentum
+<függvénytörzs>      ::= bármely érvényes PHP kód 
+<visszatérési_érték> ::= (opcionális) bármi, amit a metódus visszaad
+
+```
+
+A PHP 5.6-tól az argumentumok listája tartalmazhatja a ```...``` tokent, annak
+jelzéséül az interpreter számára, hogy a függvény változó számosságú változót fogadhat
+el. Ekkor a szóban forgó formális paraméterek a függvény törzsében, mint egy tömbként
+érhetőek el.
+
+*A 7.0.0 változattól kezdve lehetséges a szigorú (strict) mód aktiválására is* (a
+program első sorában a ```declare(strict_types = 1);``` direktíva meghívásával),
+mely nem megfelelő típusú argumentum vagy visszatérési érték esetén hibát dob. **A
+PHP 7-től kezdve tehát a metódusdeklarációban *bármilyen érvényes típust kérhetünk
+és adhatunk vissza* (akár osztályokat, intefészeket is)**. A PHP 8. változata
+már többféle, vagylagosan (az egyes típusokat függőleges vonallal elválasztva) megadott
+argumentum és visszatérési érték-típus deklarációt is elfogad (*[union type](https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union)*).
+A PHP 8.-ban bevezetett ```mixed``` áltípus egyenértékű az unió típusok teljességével:
+```php
+mixed == string|int|float|bool|null|array|object|callable|resource;
+```
+Vagyis, ha egy változó tényleg bármit elfogad, akkor az új mixed segítségével azt
+is lehetséges deklarálni, viszont ha konkrét típusokat akarunk felsorolni, akkor az
+union type a megfelelő eszköz.
+
+Alapértelmezetten (ha a ```declare(strict_types = 1);``` direktíva nincs aktiválva)
+a kényszerítés nem szigorú, azaz integer paraméter kérésekor beérkező float változó
+esetén a PHP nem dob hibát, sem figyelmeztetést – egyszerűen csak átalakítja; ahogy
+a nem megfelelő visszatérési értéket is.
+
+*Szigorúan típusos szintaxis:*
+
+```php
+
+[<láthatóság>] [static] function <metódus_neve>([<paraméterlista>]) : <visszatérési_érték_típusa> {
+	<függvénytörzs>;
+	[return] [<visszatérési_érték>];
+}
+
+<láthatóság>         ::= private|protected|public (opcionális, ha nem adunk meg
+                         semmit, alapértelmezés szerint public lesz)
+<metódus_neve>       ::= angol ABC kis és nagy betűi és aláhúzás karakter (a metódusok
+						 nevében a PHP nem különbözteti meg a kis- és a nagybetűket)
+<paraméterlista>     ::= <arg>[, <arg>...<arg>] (opcionális) nulla vagy több argumentum
+<arg>	             ::= <típus> <paraméternév>
+<típus>, <visszatérési_érték_típusa>
+                     ::= bármely skalár vagy összetett típus, ideértve
+                         a saját osztályokat, interfészeket és az union type
+                         (több típus felsorlása) típust is (union type
+                         példa: int|float|bool|string|null)
+<paraméternév>	     ::= $ után angol ABC kis és nagy betűi és aláhúzás karakter
+<függvénytörzs>      ::= bármely érvényes PHP kód 
+<visszatérési_érték> ::= (opcionális) bármi, amit a metódus visszaad
+
+```
+
+A PHP 8. változatától lehetőség van **nevesített paraméterek** (*named arguments*)
+alkalmazására is. Lényege, hogy úgy tudunk értékeket átadni egy-egy függvénynek
+vagy metódusnak, hogy azokra neveikkel hivatkozunk. Ez a megoldás a paramétereket
+sorrendfüggetlenné teszi, valamint lehetővé teszi az alapértelmezett/opcionális
+értékek kihagyhatóságát is.
+
+```php
+/**
+ * A metódus deklarációja változatlan, a paraméterlistában megadjuk a várt
+ * argumentumok típusát és nevét
+ */
+public function str_contains(string $egyikParameter, string $masikParameter): bool {}
+
+/**
+ * A metódus hívásakor pedig minden egyes argumentumra név:érték alakban hivatkozunk,
+ * tetszőleges sorrendben.
+ */
+$osztalyom->str_contains(egyikParameter: 'izé', masikParameter: 'bigyó');
+```
+
+*Mágikus metódusok*
+
+A PHP nyelvben objektumainknak vannak olyan metódusai, amelyek valamilyen eseménynek
+hatására futnak le, nem közvetlen hívással. Ezeket a függvényeket mágikus metódusoknak
+nevezzük és minden esetben ```__``` -el (dupla alsóvonás) kezdődnek. A mágikus metódusok
+olyan speciális függvények, amelyek segítségével felül lehet írni a PHP alapértelmezett
+működését: meghatározott események hatására milyen műveleteket hajtsanak végre az
+objektumon.
+
+* ```__construct(mixed ...$values = ""):void```: konstruktor, amely automatikusan meghívásra kerül egy új
+objektumpéldány ```new``` kulcsszóval történő létrehozása során
+* ```__destruct():void```: automatikusan meghívódik, amikor az objektum megszűnik
+* ```__call(string $name, array $arguments):mixed```: automatikusan meghívásra kerül, amikor
+olyan metódust hívtunk meg, amit az adott kontextusból nem érnénk el (például kívülről
+egy private metódust).
+* ```__callStatic(string $name, array $arguments):mixed```: automatikusan meghívásra kerül,
+amikor olyan statikus metódust hívtunk meg, amit az adott kontextusból nem érnénk el.
+A ```__call()``` és a ```__callStatic()``` mágikus metódusok alkalmasak a metódus
+túlterhelés (amit a PHP egyébként nem támogat) megvalósítására is: a hívott metódus
+neve (az első, ```$name``` paraméter) ugyanis szövegként kerül átadásra, míg a többi
+paramétert egy tömbbe gyűjti össze a metódus, így egy ```switch(count($arguments))```
+szerkezet segítségével más-más viselkedést rendelhetünk a különböző számú paraméterhez.
+```php
+public function __call(string $name, array $arguments): mixed {
+
+	switch($name) {
+		case 'egyikMetodus':
+			switch(count($arguments)) {
+				case 1:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				case 2:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				default:
+					/* utasítások 0 darab paraméter esetén */
+				break;
+			}
+		break;
+		case 'masikMetodus':
+			switch(count($arguments)) {
+				case 1:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				case 2:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				default:
+					/* utasítások 0 darab paraméter esetén */
+				break;
+			}
+		break;
+		case 'harmadikMetodus':
+			switch(count($arguments)) {
+				case 1:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				case 2:
+					/* utasítások 1 darab paraméter esetén */
+				break;
+				default:
+					/* utasítások 0 darab paraméter esetén */
+				break;
+			}
+		break;
+		default: /* egyik sem, avagy alaéprtelmezett viselkedés */
+		break;
+	}
+
+}
+
+```
+Megjegyzendő, hogy a nevesített paraméterek bevezetése (PHP 8.0) a fenti problémára
+egyszerűbb, elegánsabb megoldást kínál.
+* ```__get(string $name):mixed```: adott kontextusból nem elérhető (private vagy
+protected láthatóságú, esetleg nem létező) tulajdonság lekérésére szolgál. Visszadaja
+a védett tulajdonság értékét, ha a hivatkozott property nem létezik, akkor végrehajtja
+az ez esetre rendelt kódblokkunkat (ha van ilyen). Ha ezt a módszert használjuk,
+akkor elesünk attól a védelemtől, amit saját getter() függvények nyújtanak.
+* ```__set(string $name, mixed $value):void```: adott kontextusból nem elérhető
+(private vagy protected láthatóságú, esetleg nem létező) tulajdonság értékének
+beállításra szolgál. Hozzárendeli ```$value``` értéket a ```$name``` tulajdonsághoz,
+ha a hivatkozott property nem létezik, akkor végrehajtja az ez esetre rendelt
+kódblokkunkat (ha van ilyen). Ha ezt a módszert használjuk, akkor elesünk attól a
+védelemtől, amit saját setter() függvények nyújtanak.
+* ```__isset(string $name):bool```: az ```isset()``` vagy ```empty()``` beépített
+függvény adott kontextusból nem elérhető (private vagy protected láthatóságú, esetleg
+nem létező) tulajdonságon történő meghívása váltja ki.
+* ```__unset(string $name):void```: az ```unset()``` beépített függvény adott
+kontextusból nem elérhető (private vagy protected láthatóságú, esetleg nem létező)
+tulajdonságon történő meghívása váltja ki.
+* ```__sleep():array``` vagy ```__serialize():array```: akkor hívódik meg, mikor az
+objektumunkat a ```serialize()``` beépített függvénnyel szeretnénk feldolgozni. A
+```serialize()``` mindig ellenőrzi, hogy a paraméterül kapott objektum rendelkezik-e
+ezen mágikus függvények valamelyikével, ha igen, akkor a szerializáció előtt meghívja
+(ha mindkettő deklarálva van, akkor csak a ```__serialize()``` fog lefutni, a
+```__sleep()``` metódust a PHP figyelmen kívül hagyja).
+* ```__wakeup():void``` vagy ```__unserialize(array $data):void```: akkor hívódik
+meg, mikor egy szerializált objektumot az ```unserialize()``` beépített függvénnyel
+szeretnénk PHP objektummá visszaalakítani. Az ```unserialize()``` visszaalakítás után
+mindig ellenőrzi, hogy a kimeneti objektum rendelkezik-e ezen mágikus függvények
+valamelyikével, ha igen, akkor meghívja (ha mindkettő deklarálva van, akkor csak
+az ```__unserialize()``` fog lefutni, a ```__wakeup()``` metódust a PHP figyelmen
+kívül hagyja).
+* ```__toString():string```: lehetővé teszi az osztály számára, hogy eldöntse, hogyan fog
+reagálni, ha karakterláncként kezelik (```echo``` segítségével próbálják kimenetre
+írni). A ```__toString()``` a metódus törzsében meghatározott módon adja vissza
+az adott objektum szöveges reprezentációját.
+* ```__invoke(...$values):mixed```: akkor hívódik meg, mikor osztályunkra nem változóként,
+hanem függvényként hivatkozunk.
+* ```static __set_state(array $properties):object```: ez a metódus a valid, végrehajtható
+PHP kódot eredményező ```var_export()``` beépített függvény objektumunkon történő
+meghívása esetén fut le, paraméterként a ```var_export()```-nak átadott paramétereket
+kapja, egy asszociatív tömb formájában. A tömbben az objektum aktuális állapotát
+jelképező tulajdonságok név => érték párok formájában vannak jelen.
+* ```__clone():void```: akkor kerül meghívásra, mikor a ```clone``` kulcsszóval
+lemásolunk egy már létező objektumot, annak minden tulajdonságával együtt.
+* ```__debugInfo():array```: ezt a metódust a ```var_dump()``` beépített függvény
+hívja meg (ha rendelkezésre áll), hogy lekérdezze a megjelenítendő tulajdonságokat.
+Ha ez a mágikus metódus nincs definiálva egy objektumban, akkor a ```var_dump()```
+válogatás nélkül mindent (private és protected tulajdonságokat is) a kimenetre
+ír.
 
 
 #### Konstruktor
@@ -3554,17 +3863,40 @@ __destruct() : void
 
 ### 8.2 Objektumok létrehozása
 
-A programkódban tehát először létre hozzuk az osztályok forráskódját, majd az osztály
+A programkódban először létre hozzuk az osztályok forráskódját, majd az osztály
 példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
-érdekében.
+érdekében. Az objektumok létrehozását példányosításnak hívjuk. A példány létrejöttekor
+automatikusan meghívódó függvény neve konstruktor. Ez inicializálja (kezőértékkel
+látja el) az objektum tulajdonságait. Objektumot a ```new``` utasítással tudunk
+létrehozni.
+
+
 
 ### 8.3 Osztályok kiterjesztése, öröklés, absztrakt osztályok
 
 Az objektumok, és maguk az osztályok is kapcsolatban lehetnek egymással. Az öröklődés
 azt fejezi ki, hogy a leszármazott megfelel az ősének, de tovább finomítja
-(specializálja) az őséhez képest a lehetőségeit.
+(specializálja) az őséhez képest a lehetőségeit. Az öröklődés a kód újrahasznosításának
+egy gyakori módja.
 
 ### 8.4 A static és a final kulcsszavak
+
+Egy adattag vagy egy objektum statikusként(static) való definiálása elérhetővé teszi
+azt az objektum kontextusán kívülről is, azaz osztályszintre emeli. A statikusként
+definiált adattag illetve metódus nem érhető el úgy, mint egy egyszerű adattag és
+nem definiálható újra az öröklődés során. A statikusnak való definiálásnak a láthatósági
+deklaráció után kell következnie. Ha nincsen láthatósági deklaráció, alapértelmezés
+szerint public staticként lesz definiálva. 
+
+Mivel a statikus tagfüggvények hívhatók anélkül, hogy az objektumosztályból példányosítottunk
+volna, ezért az olyan függvényeket, amelyek nem dolgoznak saját adattal, érdemes
+statikus metódusnak felvenni.
+
+Statikus tulajdonságok és metódusok nem érhetőek el az objektumon keresztül a ```->```
+operátort használva. A ```$this``` pszeudo változó sem érhető el a statikus
+metódusokból, helyette a ```self::$mező``` vagy ```self::metódus()``` illetve
+(az osztályon kívül) ```Osztálynev::$mező``` illetve ```Osztálynev::metódus()```
+használandó. 
 
 ## 9. A PHP, mint sablonrendszer
 
@@ -3896,6 +4228,11 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 #### PHP OOP, MVC, CMS:
 * Wikipedia: [Objektumorientált programozás](https://hu.wikipedia.org/wiki/Objektumorient%C3%A1lt_programoz%C3%A1s)
 * Wikipedia: [Tartalomkezelő rendszerek](https://hu.wikipedia.org/wiki/Tartalomkezel%C5%91_rendszerek)
+* Papp Krisztián: [It’s a kind of __magic()!](https://letscode.hu/2015/02/13/its-a-kind-of-__magic/)
+* Papp Krisztián: [PHP OOP – mielőtt bármibe kezdenénk](https://letscode.hu/2015/01/08/php-oop-mielott-barmibe-kezdenenk/)
+* Papp Krisztián: [PHP OOP – Absztrakt osztályok és interfészek](https://letscode.hu/2015/01/19/php-oop-absztrakt-osztalyok-es-interfeszek/)
+* Papp Krisztián: [PHP Model-View-Controller](https://letscode.hu/2015/01/09/php-model-view-controller/)
+* Papp Krisztián: [De jegyezd meg jól, míg a Föld kerek, mindig lesznek névterek!](https://letscode.hu/2015/02/24/de-jegyezd-meg-jol-mig-a-fold-kerek-mindig-lesznek-nevterek/)
 * Nagy Gusztáv: [Web-programozás, 3.8, 3.10, 3.11 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Gremmedia: [Minden, amit az objektumorientált PHP programozásról tudni érdemes](https://gremmedia.hu/edukacio/bejegyzes/minden-amit-az-objektumorientalt-php-programozasrol-tudni-erdemes)
 * Több szerző: [PHP keretrendszerek](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=19)
@@ -3911,6 +4248,7 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 * Wikipedia: [SOAP](https://hu.wikipedia.org/wiki/SOAP)
 * IBM Knowledge Center: [SOAP](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-soap)
 * PHP Kézikönyv: [SOAP](https://www.php.net/manual/en/book.soap.php)
+* Papp Krisztián: [SOAP, avagy ‘Run you fools!’](https://letscode.hu/2017/01/23/soap-avagy-run-you-fools/)
 * Wikipedia: [WSDL - Webszolgáltatás-leíró nyelv](https://hu.wikipedia.org/wiki/Webszolg%C3%A1ltat%C3%A1s-le%C3%ADr%C3%B3_nyelv)
 * IBM Knowledge Center: [Webszolgáltatás leírónyelv (WSDL)](https://www.ibm.com/docs/hu/rsas/7.5.0?topic=standards-web-services-description-language-wsdl)
 * Wikipedia: [UDDI](https://hu.wikipedia.org/wiki/UDDI)
