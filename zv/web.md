@@ -3410,10 +3410,18 @@ A legtöbb objektumorientált nyelv osztály alapú, azaz az objektumok osztály
 (publikus) metódusaikon keresztül tudnak. *A program egymással kommunikáló objektumok
 összességéből áll*.
 
-Az osztályokat a ```class``` kulcsszóval vezetjük be, ezt követi az osztály neve, majd a két
-kapcsos zárójel, amelyek között szerepelnek a tulajdonságok és a hozzájuk tartozó
-metódusok. Az osztály neve nem lehet foglalt szó. Az érvényes osztálynév betűvel
-vagy alulvonással kezdődik, ezt követhetik számok, betűk és alulvonások.
+Az osztályokat a ```class``` kulcsszóval vezetjük be, ezt követi az osztály neve,
+majd a két kapcsos zárójel, amelyek között szerepelnek a tulajdonságok és a hozzájuk
+tartozó metódusok. Az osztály neve nem lehet foglalt szó. Az érvényes osztálynév
+betűvel vagy alulvonással kezdődik, ezt követhetik számok, betűk és alulvonások.
+
+A programkódban először létre hozzuk az osztályok forráskódját, majd az osztály
+példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
+érdekében. Az objektumok létrehozását példányosításnak hívjuk. Objektumot a ```new```
+utasítással tudunk létrehozni, mellyel egy új példányt kérünk. Ekkor meghívódik
+az osztályunk ```__construct()``` nevű mágikus függvénye, elvégzi az általunk definiált
+prekonfigurációt és visszaad egy példányt az osztályból. 
+
 
 #### Tulajdonságok
 
@@ -3430,7 +3438,7 @@ A PHP három láthatósági szintet különböztet meg a tulajdonságok és met�
 * **public** (nyílvános): bárhonnan elérhető (ha nem adunk meg láthatósági szintet,
 akkor a public lesz az alapértelmezett).
 
-Adattagokat alapvetően privát, esetleg végett, míg konstruktorokat, metódusokat
+Adattagokat alapvetően privát, esetleg védett, míg konstruktorokat, metódusokat
 általában publikus láthatósággal hozunk létre.
 
 A tulajdonság típusa bármilyen skalár vagy összetett típus lehet (tömb, osztály,
@@ -3536,6 +3544,11 @@ echo $person->name; 	//Kiírja, hogy "Gipsz Jakab"
 echo $person->getAge();
 
 ```
+
+Ahhoz, hogy az osztály nem publikus tulajdonságai kívülről is elérhetőek legyenek
+alkalmazhatunk public setter és getter metódusokat, amikben pl. ellenőrízhetjük,
+hogy ki kéri az adott változót és jogosult-e rá, a setter esetében ellenőrízhetjük,
+hogy a kapott érték megfelelő-e.
 
 #### Metódusok
 
@@ -3775,8 +3788,7 @@ Ha ez a mágikus metódus nincs definiálva egy objektumban, akkor a ```var_dump
 válogatás nélkül mindent (private és protected tulajdonságokat is) a kimenetre
 ír.
 
-
-#### Konstruktor
+#### Objektumok létrehozása, a konstruktor
 
 A **konstruktor**ok az osztályok olyan metódusai, amelyek automatikusan meghívásra kerülnek
 egy új objektumpéldány ```new``` kulcsszóval történő létrehozása során és beállíthatják
@@ -3863,27 +3875,41 @@ viszonylag ritkán használjuk a destruktort, mert van **automatikus szemétgyű
 __destruct() : void
 ```
 
-### 8.2 Objektumok létrehozása
-
-A programkódban először létre hozzuk az osztályok forráskódját, majd az osztály
-példányait létrehozva, az objektumokat hálózatként használhatjuk a feladat megoldása
-érdekében. Az objektumok létrehozását példányosításnak hívjuk. A példány létrejöttekor
-automatikusan meghívódó függvény neve konstruktor. Ez inicializálja (kezőértékkel
-látja el) az objektum tulajdonságait. Objektumot a ```new``` utasítással tudunk
-létrehozni.
-
-
-
-### 8.3 Osztályok kiterjesztése, öröklés, absztrakt osztályok
+### 8.2 Osztályok kiterjesztése, öröklés, absztrakt osztályok
 
 Az objektumok, és maguk az osztályok is kapcsolatban lehetnek egymással. Az öröklődés
 azt fejezi ki, hogy a leszármazott megfelel az ősének, de tovább finomítja
 (specializálja) az őséhez képest a lehetőségeit. Az öröklődés a kód újrahasznosításának
-egy gyakori módja.
+egy gyakori módja és hatékony eszköz a kódduplikálás felszámolására. Minden megismételt
+kód nehezíti a karbantarthatóságot, hiszen ha módosítanánk a viselkedésén, akkor azt
+minden duplikátum esetében meg kellene tenni. A programozás egyik igen fontos elve
+a **DRY (Don't repeat yourself)**, vagyis kerüljük az ismétlődő elemeket (ugyanis
+abban rejlik egy minta, amit le tudunk rövidíteni), ezért a hasonló osztályok
+közös metódusait ki lehet emelni egy ősosztályba és ebből származtatni őket.
 
-### 8.4 A static és a final kulcsszavak
+A kiterjesztett, vagy származtatott osztály minden tulajdonággal és metódussal
+rendelkezik, ami a kiindulási osztályban megvolt (örökli az ős tulajdonságait és
+metódusait). Amit hozzáadunk a kiindulási osztályhoz, azt nevezzük kiterjesztésnek.
+Viszont nem lehetséges megcsonkítani egy osztályt, azaz megszüntetni egy metódust,
+vagy tulajdonságot. A PHP nyelvben egyszeres öröklés van, vagyis **egy leszármazott
+osztály mindig pontosan egy alaposztálytól függ**, azaz egyidejűéleg többszörös
+leszármaztatás nem támogatott (egy szülőosztálynak lehet több leszármazottja, de
+minden leszármazottnak csak egyetlen közvetlen őse lehet).
 
-Egy adattag vagy egy objektum statikusként(static) való definiálása elérhetővé teszi
+Az öröklést az ```extends``` kulcsszó jelöli, ```class GyermekOsztaly extends SzuloOsztaly {}```
+formában. A szülőre hivatkozáskor használhatjuk a ```parent``` kulcsszót (```parent::metodus()```),
+de használhatunk explicit típusmegjelölést is a ```::``` hatókör feloldó operátorral
+(```SzuloOsztaly::metodus()```). A szülőosztály konstruktora nem hívódik meg automatikusan
+a gyermekosztály konstruktorában, ha szükség van rá, akkor a ```parent:: __construct()```
+kóddal hívható meg.
+
+Többszintű öröklődés (nagyszülő -> szülő -> gyermek) lehetséges a PHP nyelvben is.
+
+
+
+### 8.3 A static kulcsszó
+
+Egy adattag vagy egy objektum statikusként (```static```) való definiálása elérhetővé teszi
 azt az objektum kontextusán kívülről is, azaz osztályszintre emeli. A statikusként
 definiált adattag illetve metódus nem érhető el úgy, mint egy egyszerű adattag és
 nem definiálható újra az öröklődés során. A statikusnak való definiálásnak a láthatósági
@@ -3894,11 +3920,80 @@ Mivel a statikus tagfüggvények hívhatók anélkül, hogy az objektumosztályb
 volna, ezért az olyan függvényeket, amelyek nem dolgoznak saját adattal, érdemes
 statikus metódusnak felvenni.
 
-Statikus tulajdonságok és metódusok nem érhetőek el az objektumon keresztül a ```->```
-operátort használva. A ```$this``` pszeudo változó sem érhető el a statikus
-metódusokból, helyette a ```self::$mező``` vagy ```self::metódus()``` illetve
-(az osztályon kívül) ```Osztálynev::$mező``` illetve ```Osztálynev::metódus()```
-használandó. 
+Statikus tulajdonságok és metódusok nem érhetőek el az objektum operátort (```->```)
+használva, helyette a [hatókör feloldó operátor](https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php)
+(dupla kettőspont, ```::```) alkalmazandó. A ```$this``` pszeudo változó helyett
+pedig vagy a (```__CLASS__``` beépített konstanshoz hasonlóan a) deklaráló osztályra
+hivatkozó ```self```, vagy a meghívott osztályra mutató ```static``` kulcsszó használható,
+```self::$mező``` illetve ```self::metódus()``` alakban. Az osztályon kívülről az
+osztálynév és a hatókör feloldó operátor segítségével érhetők el a (nyilvános)
+statikus tulajdonságok (```Osztalynev::$mező```), vagy metódusok (```Osztalynev::metódus()```).
+
+```php
+
+# self kulcsszó használatával:
+
+class A {
+
+    public static function who() {
+        echo __CLASS__;		// Kiírja, hogy "A"
+    }
+    
+    public static function test() {
+        self::who();		// Kiírja, hogy "A"
+    }
+}
+
+class B extends A {
+
+    public static function who() {
+        echo __CLASS__;		// Kiírja, hogy "B", mert felülírtuk az ősosztály metódusát
+    }
+    
+}
+
+B::test();		// Kiírja, hogy "A"
+
+# static kulcsszó használatával:
+
+class A {
+
+    public static function who() {
+        echo __CLASS__;		// Kiírja, hogy "A"
+    }
+    
+    public static function test() {
+        static::who();		// Kiírja, hogy "A"
+    }
+    
+}
+
+
+class B extends A {
+
+    public static function who() {
+        echo __CLASS__;		// Kiírja, hogy "B", mert felülírtuk az ősosztály metódusát
+    }
+    
+}
+
+B::test();		// Kiírja, hogy "B"
+
+```
+
+### 8.4 A final kulcsszó
+
+Ha örököltünk egy osztálytól és a gyerek osztályunkban újra definiálunk (felülírunk)
+egy örökölt metódust, akkor meghívásakor a felülírt verzió fog lefutni. A ```final```
+kulcsszóval elérhetjük, hogy a származtatás során a leszármazott osztályok az ezen
+kulcsszóval ellátott metódusokat nem definiálhatják felül. Osztályokra is alkalmazható
+ez a kulcsszó, de itt a további öröklődés akadályozható meg, vagyis a ```final```
+kulcsszóval ellátott osztálynak nem lehetnek leszármazottai, azaz nem specializálható.
+Ekkor a metódusokat nem kell egyenként finalként definiálni.
+
+Tulajdonságok és osztályállandók deklarálásakor nem használható a ```final```. A
+PHP 8.0.0 verziójától kezdve a ```private``` láthatóságú metódusokat a konstruktor
+kivételével nem lehet véglegesnek deklarálni.
 
 ## 9. A PHP, mint sablonrendszer
 
@@ -4221,6 +4316,7 @@ UDDI kiszolgálók rendelkezésre álló szolgáltatások és szolgáltatók cí
 * Stig Sćther Bakken, Alexander Aulbach, Egon Schmid, Jim Winstead, Lars Torben Wilson, Rasmus Lerdorf
 Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](https://www.nejanet.hu/~ksanyi/php3/manual.html)
 * Nagy Gusztáv: [Web-programozás, 3. fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
+* Pásztor János: [Félreértett programnyelvek: PHP](https://letscode.hu/2016/08/17/felreertett-programnyelvek-php/)
 * Több szerző: [A PHP programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=1)
 * Sallai András: [A PHP nyelv](https://szit.hu/doku.php?id=oktatas:programozas:php:php_nyelv)
 * Bundi: [Készülj fel a PHP 7-re](http://webmestertanfolyam.hu/webmester-blog/keszulj-fel-a-php-7-re)
@@ -4229,18 +4325,26 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 
 #### PHP OOP, MVC, CMS:
 * Wikipedia: [Objektumorientált programozás](https://hu.wikipedia.org/wiki/Objektumorient%C3%A1lt_programoz%C3%A1s)
-* Wikipedia: [Tartalomkezelő rendszerek](https://hu.wikipedia.org/wiki/Tartalomkezel%C5%91_rendszerek)
 * Papp Krisztián: [It’s a kind of __magic()!](https://letscode.hu/2015/02/13/its-a-kind-of-__magic/)
 * Papp Krisztián: [PHP OOP – mielőtt bármibe kezdenénk](https://letscode.hu/2015/01/08/php-oop-mielott-barmibe-kezdenenk/)
 * Papp Krisztián: [PHP OOP – Absztrakt osztályok és interfészek](https://letscode.hu/2015/01/19/php-oop-absztrakt-osztalyok-es-interfeszek/)
+* Rimelek: [Absztrakt osztály, interfész és trait-ek közti különbségek](https://it-sziget.hu/oop/absztrakt-osztaly-interfesz-es-trait-ek-kozti-kulonbsegek)
+* Pásztor János: [Tiszta kód, 5. rész – A S.O.L.I.D. alapelvek](https://letscode.hu/2016/04/26/tiszta-kod-5-resz-a-s-o-l-i-d-alapelvek/)
+* Wikipedia: [Modell-nézet-vezérlő](https://hu.wikipedia.org/wiki/Modell-n%C3%A9zet-vez%C3%A9rl%C5%91)
+* Pásztor János: [Tiszta kód, 6. rész – Beszélnünk kell az MVC-ről…](https://letscode.hu/2016/05/02/tiszta-kod-6-resz-beszelnunk-kell-az-mvc-rol/)
 * Papp Krisztián: [PHP Model-View-Controller](https://letscode.hu/2015/01/09/php-model-view-controller/)
 * Papp Krisztián: [De jegyezd meg jól, míg a Föld kerek, mindig lesznek névterek!](https://letscode.hu/2015/02/24/de-jegyezd-meg-jol-mig-a-fold-kerek-mindig-lesznek-nevterek/)
 * Nagy Gusztáv: [Web-programozás, 3.8, 3.10, 3.11 fejezet](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
 * Gremmedia: [Minden, amit az objektumorientált PHP programozásról tudni érdemes](https://gremmedia.hu/edukacio/bejegyzes/minden-amit-az-objektumorientalt-php-programozasrol-tudni-erdemes)
 * Több szerző: [PHP keretrendszerek](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=19)
+* Pásztor János: [Utószó a Tiszta kód sorozathoz](https://letscode.hu/2016/07/18/utoszo-a-tiszta-kod-sorozathoz/)
 * Nagy Gusztáv: [Web-programozás, 3.11 fejezet: Sablonrendszerek](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
+* Wikipedia: [Tartalomkezelő rendszerek](https://hu.wikipedia.org/wiki/Tartalomkezel%C5%91_rendszerek)
 * Webshark: [Mi az a cms?](https://webshark.hu/gyik/cms-tartalomkezelo-rendszer-wordpress/)
 * Horváth Győző, Tarcsi Ádám: [Webadatbázis-programozás](http://ade.web.elte.hu/wabp/index.html)
+	* [Alkalmazások funkcionális strukturálása](http://ade.web.elte.hu/wabp/lecke6_lap1.html)
+	* [Keretrendszerek, tervezési minták webes alkalmazásokban](http://ade.web.elte.hu/wabp/lecke7_lap1.html)
+	* [Webes alkalmazások gyakori feladatai](http://ade.web.elte.hu/wabp/lecke11_lap1.html)
 * W3Schools: [PHP OOP](https://www.w3schools.com/php/php_oop_what_is.asp)
 
 #### Webszolgáltatások:
