@@ -4056,6 +4056,103 @@ kivételével nem lehet véglegesnek deklarálni.
 
 ## 9. A PHP, mint sablonrendszer
 
+Egy-egy PHP kódrészletben – függetlenül attól, hol jelenik meg – különböző funkcionalitású
+kódok keverednek: az inputadatok feldolgozása, az adatbáziskapcsolat kialakítása,
+egy-egy lekérdezés futtatása, majd eredményeinek kiírása. Bár ezek logikailag
+szükségszerűen egymás után következő feladatok, de nem feltétlenül kell egy helyen,
+egymást követő, sokszor összefolyó kódsorokban manifesztálódniuk. Ezt elkerülendő,
+az alkalmazás logikát és a megjelenítési kódot a lehető legtisztábban válasszuk el
+egymástól. Így bármelyik komponens változása esetén a másik komponenshez csak kis
+részben, vagy egyáltalán nem kell hozzányúlni. A nézet leválasztásának viszont ára
+van: a megjelenítendő adatokat a logikai részben elő kell készíteni és tárolni kell
+a memóriában (egy tömbben, vagy valamilyen adat-objektumban), majd átadni a megfelelő
+nézetnek.
+
+Mióta ember él a Földön, ádáz viták tárgyát képezi a sablonkezelők alkalmazása.
+Akadnak szép számmal olyanok, akik szerint a sablonmotor nem feltétlenül szükséges
+egy PHP alkalmazáshoz, mivel maga a PHP is felfogható sablonnyelvként, így a tartalom
+és a megjelenés szétválasztása PHP-ban is egyszerűen megoldható. A sablonkezelő e
+mellett – ha nem is látványos mértékben, de – lassítja az alkalmazást, mivel adatainkat
+egy újabb rétegen kell átvonszolni.
+
+A nézet (a megjelenítésért felelős kódrész) tulajdonképpen az adataink HTML sablonja,
+melynek megfelelő helyére kell az adatokat beilleszteni. A nézetben tehát gyakran
+csak a kiíró parancs jelenik meg egy változó értékének megjelenítésekor. Természetesen
+előfordul az is, hogy egy HTML kódrészlet egy változó értékétől függően megjelenik
+vagy sem, ebben az esetben elágazás is előfordulhat. Végül sorozatok megjelenítéséhez
+ciklusokat használunk. Összegezve, a nézetben alapvetően csak az alábbi típusú utasítások
+fordulhatnak elő:
+* kiíratás (```echo $valtozo``` vagy ```<?=$valtozo?>```),
+* feltételes utasítás (```if```, ```switch```),
+* ciklus (```while```, ```for```, ```foreach```).
+
+Ügyeljünk arra, hogy az ```echo``` (vagy short echo) parancs általában nem generálhat
+HTML-t, csupán egy változó értékét írathatja ki a HTML sablon megfelelő helyére.
+Mivel a nézet alapvetően egy PHP nyelven megvalósított sablon, ezért a vezérlési
+szerkezetek esetében is a sablonnyelvekhez közel álló, ún. alternatív szintaxist
+használunk, amely egyrészt jobban olvasható kódot eredményez, másrészt ezzel is
+jelezzük ezen PHP kód eltérő funkcióját. Az alternatív szintaxist csakis a nézetben
+szabad használni, a logikai részben továbbra is a ```{ }``` zárójeles blokkok használata
+javasolt!
+
+Az alternatív szintaxisban a kódblokkok nyitó kapcsos zárójeleit kettőspont (```:```),
+a blokkot lezáró kapcsos zárójeleket pedig ```endif;```, ```endswitch;```, ```endwhile;```,
+```endfor;```, ```endforeach;``` helyettesíti. Alkalmazható ez ```elseif``` és
+az ```else``` elágazás is. Ugyanabban a vezérlési szerkezetben a keveret szintaxist
+a PHP nem támogatja (vagy ez, vagy az).
+    
+```php
+# felételes elágazás:
+
+<?php
+if ($a == 5):
+    echo "<p>a egyenlő 5-el...</p>";
+elseif ($a == 6):
+    echo "<p>a egyenlő 6-al...</p>";
+else:
+    echo "<p>a értéke sem nem 5, se 6</p>";
+endif;
+?>
+
+```
+
+Mivel a PHP értelmező mindent, ami a nyitó és záró PHP tag-en kivül esik, azt változatlan
+formában a kimenetre ír, ezért az ```echo``` el is hagyható (ha a vezérlő utasításokat
+php nyitó-, és záró tag-ek közé helyezzük):
+
+```php
+<?php if ($a == 5): ?>
+<p>a egyenlő 5-el...</p>
+<?php elseif ($a == 6): ?>
+<p>a egyenlő 6-al...</p>
+<?php else: ?>
+<p>a értéke sem nem 5, se 6</p>
+<?php endif; ?>
+```
+
+*A switch alternatív szintaxisa:*
+```php
+<?php switch ($i): ?>
+<?php case 0: ?>
+<p>i értéke: 0</p>
+<?php break; ?>
+<?php case 1: ?>
+<p>i értéke: 1</p>
+<?php break; ?>
+<?php case 2: ?>
+<p>i értéke: 2</p>
+<?php break; ?>
+<?php default: ?>
+<p>i értéke sem nem 0, se 1, se 2</p>
+<?php endswitch; ?>
+```
+
+A nézetet fizikailag is különválaszhatjuk a logikai feldolgozástól. A nézetet külön
+(általában ```.tpl``` vagy ```.tpl.php``` kiterjesztésű) fájlba rakva azt már csak
+be kell emelni a megfelelő helyre egy ```include``` paranccsal. Ezzel még modulárisabb
+és rugalmasabb kódot kapunk, megnyitva az utat az adott adattartalomhoz tartozó
+különböző nézetek előtt.
+
 ### 9.1 Keretrendszerek alapjai
 
 ### 9.2 MVC modell
@@ -4399,6 +4496,9 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 * Több szerző: [PHP keretrendszerek](http://nyelvek.inf.elte.hu/leirasok/PHP/index.php?chapter=19)
 * Pásztor János: [Utószó a Tiszta kód sorozathoz](https://letscode.hu/2016/07/18/utoszo-a-tiszta-kod-sorozathoz/)
 * Nagy Gusztáv: [Web-programozás, 3.11 fejezet: Sablonrendszerek](https://nagygusztav.hu/sites/default/files/csatol/web_programozas_-_szines.pdf)
+* Nagy krisztián: [PHP, mint sablonnyelv](https://deadlime.hu/2006/07/28/php-mint-sablonnyelv/)
+* INF (weblabor): [Sablonkezelés PHP-vel](http://weblabor.hu/cikkek/sablonkezeles-php)
+* Szabó Bálint Gábor: [PHP alapú sablonmegoldás](http://weblabor.hu/blog/20100814/php-alapu-sablonmegoldas)
 * Wikipedia: [Tartalomkezelő rendszerek](https://hu.wikipedia.org/wiki/Tartalomkezel%C5%91_rendszerek)
 * Webshark: [Mi az a cms?](https://webshark.hu/gyik/cms-tartalomkezelo-rendszer-wordpress/)
 * Csorba Kristóf: [Design patterns bevezető](https://bmeaut.github.io/snippets/snippets/0200_DesignPatternsBev/)
