@@ -8,7 +8,7 @@
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
 
-## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine) (egy konkrét példa is szükséges).
+## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
 
 ## 5. Ismertesse a sorrend diagramot (egy konkrét példa is szükséges).
 
@@ -35,5 +35,15 @@
 * Dr. Ulbert Zsolt: [Szoftverfejlesztési folyamatok és szoftver minőségbiztosítás](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/)
 * Szabolcsi Judit: [Szoftvertechnológia](http://johanyak.hu/files/u1/segedlet/szoftvertechnologia/Szabolcsi_Judit_Szoftvertechnologia_2012.pdf)
 * Panem Könyvkiadó: [Szoftvertechnológia](https://gyires.inf.unideb.hu/GyBITT/31/index.html)
+* Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
+* Kollár Lajos, Sterbinszky Nóra: [Programozási technológiák](https://gyires.inf.unideb.hu/GyBITT/21/index.html)
+	* [GoF tervezési minták katalógusa](https://gyires.inf.unideb.hu/GyBITT/21/ch04s02.html)
+	* [Tervezési minták alkalmazása a gyakorlatban](https://gyires.inf.unideb.hu/GyBITT/21/ch04s03.html)
+* Antal Gábor, Dr. Ferenc Rudolf, Dr. Jász Judit, Keleti Márton György, Kicsi András, 
+Szarka Tibor Alex, Gercsó Márk: [Programozás I. jegyzet](https://okt.sed.hu/prog1/gyakorlat/)
+	* [Tervezési minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/mintakAttekintese/)
+	* [Gyártási minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/gyartasiMintak/)
+	* [Szerkezeti minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/szerkezetiMintak/)
+	* [Viselkedési minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/viselkedesiMintak/)
 
 [Kezdőlap](../README.md)
