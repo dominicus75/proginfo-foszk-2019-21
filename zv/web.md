@@ -3904,8 +3904,67 @@ a gyermekosztály konstruktorában, ha szükség van rá, akkor a ```parent:: __
 kóddal hívható meg.
 
 Többszintű öröklődés (nagyszülő -> szülő -> gyermek) lehetséges a PHP nyelvben is.
+Ennek megvalósításához nyújtanak segítséget az **absztrakt osztályok és metódusok**,
+melyek az 5.2 verzóval kerültek be a nyelvbe. Az absztraktnak definiált osztályok
+**nem példányosíthatók, kizárólag az ősosztály szerepét töltik be az osztályhierarchiában**.
+Egy osztályt absztraktnak kell definiálnunk, ha létezik legalább egy absztrakt metódusa.
+Az absztraktnak definiált metódusok csak deklarálják a metódus szignatúráját, de
+az implementációt nem definiálhatják. A ```class``` kulcsszó előtti ```abstract```
+kulcsszóval absztraktnak definiálható egy osztály.
 
+```php
+// Szülőosztály
+abstract class Car {
+  public string $name;
+  public function __construct(string $name) {
+    $this->name = $name;
+  }
+  abstract public function intro() : string;
+}
 
+// Gyermek osztályok:
+class Audi extends Car {
+  public function intro() : string {
+    return "Válaszd a német minőséget! Én egy $this->name vagyok!";
+  }
+}
+
+class Volvo extends Car {
+  public function intro() : string {
+    return "Büszke vagyok arra, hogy svéd vagyok! Én egy $this->name vagyok!";
+  }
+}
+
+class Citroen extends Car {
+  public function intro() : string {
+    return "Francia extravagancia! Én egy $this->name vagyok!";
+  }
+}
+
+// Gyermekosztályok példányosítása:
+$audi = new Audi("Audi");
+echo $audi->intro();
+echo "<br>";
+
+$volvo = new Volvo("Volvo");
+echo $volvo->intro();
+echo "<br>";
+
+$citroen = new Citroen("Citroen");
+echo $citroen->intro();
+```
+
+Az absztrakt metódust implementáló osztály a metódus láthatóságát köteles nem erősíteni
+(tehát az örökölt ```protected``` láthatóságú metódus a leszármazott osztályban nem
+lehet ```private``` csak ```protected``` vagy ```public```). Egy absztrakt metódus
+tehát vagy publikus (```public```) vagy védett (```protected```) láthatóságú lehet,
+hiszen a privát metódusokat a leszármazott nem éri el. 
+
+Az absztrakt osztály is örökölhet absztrakt osztálytól, de nem kell megvalósítania
+a szülő metódusait. Azt csak az első nem absztrakt osztálynak kell megtennie. Tartalmazhatja
+interfészek implementációjának jelölését, de nem kell ténylegesen implementálnia
+is azokat. Csak az első nem absztrakt osztálynak kell ezt megtennie. Az interfészekkel
+ellentétben az absztrakt osztály tulajdonságokat is tartalmazhat.
 
 ### 8.3 A static kulcsszó
 
