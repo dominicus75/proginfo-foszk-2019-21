@@ -4338,7 +4338,78 @@ kezelése, vagy űrlapok kezelése, vagy az átmeneti gyorsítótár (cache) kez
 
 ### 9.3 Tartalomkezelő rendszerek (CMS)
 
+A tartalomkezelő rendszer (content management system, CMS) egy marketingkifejezés
+azokra a szoftverekre, amelyeket több személy együttműködésével készülő munkák
+koordinálására dolgoztak ki. A különböző alkalmazási területekre specializált
+tartalomkezelő rendszerekre változatos megnevezéseket használnak:
+* vállalati szintű tartalomkezelő rendszer (ECMS)
+* webtartalom-kezelő rendszer (WCMS)
+* dokumentumkezelő rendszer (DMS)
+* mobil tartalomkezelő rendszer (MCMS)
+* komponens tartalomkezelő rendszer (CCMS)
+* digitális vagyonkezelő rendszer (DAM)
+* oktatási tartalomkezelő rendszerek (LMS).
 
+Ezen elnevezések meghatározása azon keresztül történik, hogy milyen tevékenységre
+jellemző munkafolyamatokat támogat a tartalomkezelő rendszer.
+
+A webtartalom-kezelő rendszer tulajdonképpen egy webes szoftvercsomag a weboldak
+kezeléséhez, jellemzően könnyen érthető és használható a felhasználói felülettel.
+Egyszerre több felhasználó munkáját is képes koordinálni. A rendszer lényege, hogy
+a felhasználók programozói vagy webfejlesztői szaktudás nélkül is tudjanak digitális
+tartalmakat megosztani, közzétenni az interneten, valamint karbantartani azokat.
+Ezeknek a legelterjedtebb formája a hírek, blogbejegyzések vagy akár az eladásra
+kínált különböző termékek publikálása a világhálón.
+
+A mai CMS rendszerek általában interaktívak, lehetőséget biztosítanak a látogatók
+számára, hogy saját felhasználói fiókokat hozhassanak létre, azaz regisztrálhassanak,
+hogy a rendszer tudja tárolni a felhasználó különböző adatait, beállításait, továbbá
+hozzászólhatnak a különböző tartalmakhoz, értékelhetik őket, stb. Könnyen beállítható
+a megfelelő hozzáférési jogosultság különböző felhasználók számára. Az adminisztrációs
+felületen az oldal üzemeltetői kényelmesen elvégezhetnek minden beállítást, valamint
+figyelemmel kísérhetik a rendszer állapotát.
+
+A weben működő CMS rendszerek adatbázisban tárolják a felvitt adatokat vagy beállításokat,
+amik a leggyakrabban MySQL (Maria DB) kiszolgálót használnak erre a célra. A legtöbb
+CMS segítségével az egyes tartalmak változásai is követhetők, vagyis látható, hogy
+az egyes verziók miben térnek el egymástól, illetve vissza is állítható a tartalom
+egy korábbi állapotába.
+
+A tartalomkezelő rendszerek legfontosabb funkciói:
+* biztosítják, hogy sok személy tudjon egyszerre adatokat tárolni és ezeket egymással megosztani,
+* a hozzáférés szerep szerinti szabályozása: a felhasználó szerepe határozza meg,
+hogy mely adatokat láthat vagy módosíthat,
+* könnyű adattárolási és adatelérési lehetőségek biztosítása,
+* csökkentik a redundáns adatbevitelt,
+* megkönnyítik a kimutatások összeállítását,
+* segítik a felhasználók közti kommunikációt.
+
+A mai CMS rendszerek sikere nagyban annak is köszönhető, hogy nem kell egyszerre
+a teljes programcsomagot letölteni és feltelepíteni, hanem elegendő csak az alaprendszert
+üzembe helyezni, és később az igényeknek megfelelően további modulokat is telepíteni,
+amik ellátják a megfelelő feladatokat. Így a weboldal nem tartalmaz sok felesleges
+programkódot, ami lassítaná a rendszert. A népszerűbb CMS rendszerekhez akár több
+tízezer modul is letölthető, amiknek a nagy részét külső fejlesztők készítik el.
+
+A legtöbb CMS rendszerben lehetőség van ún. témák telepítésére, amik az oldal külső
+megjelenítéséért felelősek. Ezek segítségével egyedi megjelenítés beállítására is
+van lehetőség. Ezeket a témákat is nagyrészt külső fejlesztők készítik, ahogyan
+a modulokat, továbbá ma már szinte minden téma mobilbarát, így a weboldal optimálisan
+jelenik meg minden eszközön.
+
+Ezeknek a rendszereknek további nagy előnye, hogy könnyen telepíthetőek, és nincs
+nagy rendszerigényük sem, így egy átlagos dinamikus webtárhelyen elfutnak. Többnyire
+csak adatbázisra van szükségük és PHP környezetre. A CMS rendszerek fejlesztői
+folyamatosan dolgoznak a hibák kijavításán és az újabb funkciók beépítésén. Így
+amikor a fejlesztők elérnek egy újabb "mérföldkövet", kiadnak egy frissítési
+csomagot, amit a tartalomkezelő rendszer gyakran figyel, és ha talál újabb kiadást,
+értesíti az adminisztrátort a frissítési feladatok elvégzéséről.
+
+Néhány ismertebb CMS:
+* [Drupal](https://drupal.hu/)
+* [Joomla](https://joomlacms.hu/)
+* [WordPress](https://hu.wordpress.org/)
+* [e107](https://e107hungary.org/)
 
 ## 10. Webszolgáltatások
 
@@ -4682,6 +4753,7 @@ Zeev Suraski, Andrei Zmievski: [PHP Kézikönyv (2000-es kiadás fordítása)](h
 * Pásztor János: [Utószó a Tiszta kód sorozathoz](https://letscode.hu/2016/07/18/utoszo-a-tiszta-kod-sorozathoz/)
 * Wikipedia: [Tartalomkezelő rendszerek](https://hu.wikipedia.org/wiki/Tartalomkezel%C5%91_rendszerek)
 * Webshark: [Mi az a cms?](https://webshark.hu/gyik/cms-tartalomkezelo-rendszer-wordpress/)
+* Botond: [CMS (Tartalomkezelő rendszer)](https://www.linuxportal.info/enciklopedia/c/cms-tartalomkezelo-rendszer)
 * Csorba Kristóf: [Design patterns bevezető](https://bmeaut.github.io/snippets/snippets/0200_DesignPatternsBev/)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
 * Horváth Győző, Tarcsi Ádám: [Webadatbázis-programozás](http://ade.web.elte.hu/wabp/index.html)
