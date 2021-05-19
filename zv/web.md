@@ -4096,15 +4096,16 @@ a [Slim micro-framework](https://github.com/slimphp/Slim), illetve a népszerű
 [Laravel](https://github.com/laravel/laravel) keretrendszer.
 
 Tipikus feladatok egy webes alkalmazásban:
-* **HTTP kérések kezelése**,
-* **Feltöltött fájlok kezelése**,
+* **[HTTP kérések kezelése](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-7-http-message.md)**,
+* **[Feltöltött fájlok kezelése](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-7-http-message.md)**,
 * **Routing**,
 * **Munkamenet-kezelés**,
+* **[Eseménykezelés](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-14-event-dispatcher.md)**,
 * **Autentikáció (felhasználó-kezelés)**,
 * **Autorizáció (hitelesítés, jogosultságok kezelése)**,
 * **Konfigurációs állományok kezelése**,
-* **Gyorsítótárazás (cache)**,
-* **HTTP válaszok küldése**.
+* **[Gyorsítótárazás (cache)](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-6-cache.md)**,
+* **[HTTP válaszok küldése](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-7-http-message.md)**.
 
 A webes keretrendszerek alapegysége az interoperábilitás és helyettesíthetőség miatt
 bizonyos formai megkötéseknek elegettevő csomag (package), amely egy vagy több
@@ -4114,8 +4115,8 @@ a legtöbb keretrendszert a [Composer](https://getcomposer.org/) (a PHP függős
 segítségével lehet telepíteni. Egy csomag gyökérkönyvtárának a bevett konvenciók alapján
 a következőket illik tartalmaznia:
 * **/src mappa**: itt foglalnak helyet a csomagot alkotó osztályok, absztrakt
-osztályok, trait-ek és interface-ek, állományonként pontosab egy darab (vagyis a
-HttpRequest osztályt az autoloader a HttpRequest.php állományban fogja keresni);
+osztályok, trait-ek és interface-ek, állományonként pontosan egy darab (vagyis a
+HttpRequest osztályt az [autoloader](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-4-autoloader.md) a HttpRequest.php állományban fogja keresni);
 * **/docs mappa**: ha a csomag fejlesztője részletesebb dokumentációt csatol a
 művéhez, azt általában ide szokás elraktározni;
 * **/test mappa**: itt találhatóak a csomaghoz tartozó egységtesztek;
@@ -4132,8 +4133,8 @@ alapján fog dolgozni, nem pedig json fájl alapján.
 A különböző webes keretrendszereket fejlesztő közösségek már jó ideje rájöttek, hogy
 az egyes komponensek cserélhetősége, illetve a keretrendszerek közti együttműködés és
 átjárhatóság érdekében célszerű néhány jól átgondolt szabályt lefektetni, amelyek
-a kódolási stílustól az autoloaderekkel szemben támasztott követelményeken át egészen
-a különböző feladatokat leíró interfészek meghatározásáig (komponensek közötti
+a [kódolási stílustól](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md) az [autoloaderekkel szemben támasztott követelményeken](https://github.com/dominicus75/fig-standards/blob/master/accepted/PSR-4-autoloader.md)
+át egészen a különböző feladatokat leíró interfészek meghatározásáig (komponensek közötti
 adatátadás szabályozása) terjednek. Ez a gondolat hívta életre 2009-ben a [PHP Keretrendszerközi Együttműködési Munkacsoportot (PHP-FIG)](https://www.php-fig.org/),
 amely a mai napig gondozza a [PSR szabványokat](https://github.com/dominicus75/fig-standards).
 A FIG-nek jelenleg 37 tagja van (néhány az ismertebbek közül: Drupal, Joomla, Magento,
