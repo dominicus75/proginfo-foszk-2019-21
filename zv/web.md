@@ -4062,15 +4062,82 @@ Lényege, hogy a különböző alkalmazásokban leggyakrabban használt elemeket
 helyre gyűjti össze. Tartalmazhat támogató programokat, fordítókat, kódkönyvtárakat,
 eszközöket, valamint alkalmazás-programozási interfészeket (API) is.
 
+*Lényegi különbségek a keretrendszer és a tartalomkezelő rendszer között:*
+
+| Tartalomkezelő rendszer (CMS) | Keretrendszer |
+|-------------------------------|---------------|
+| Végfelhasználók számára készül | Programozók számára készül |
+| Programozási ismeretek nélkül is használható | Programozási ismeretek nélkül nem használható |
+| Gyors, instant megoldás, azonnal használható | Alapos programozói munka szükséges hozzá |
+| Konkrét feladatokra van kitalálva | Bármilyen feladatra alkalmas lehet |
+
 A keretrendszer felfogható úgy is, mint az alkalmazás fejlesztését szolgáló szabályok
 gyűjteménye. A keretrendszerben megjelenő szabályok tipikus problémákra adnak jól
 bevált megoldásokat. Vannak általános keretrendszerek, és vannak olyanok, amelyek
-egyféle feladatkör számára biztosítanak jól bevált megoldásokat. Ilyen tipikus
-probléma egy webes alkalmazásban a konfigurációs állományok kezelése, az egy
-belépési pont biztosítása, munkamenet-kezelés indítása, nyelvi beállítások
-kezelése, átmeneti tárolással kapcsolatos nehézségek áthidalása, stb. Ezek megoldását
-egy fejlesztő maga is kigondolhatja, de kényelmesebb és célszerűbb a keretrendszerek
-által nyújtott kidolgozott megoldást választani.
+egyféle feladatkör számára biztosítanak jól bevált megoldásokat.
+
+Ezek megoldását egy fejlesztő maga is kigondolhatja, vagy a keretrendszerek által
+kidolgozott megoldást is választhatja. Az ismert keretrendszerek előnye a jobb biztonsági
+szint, a könnyebb tanulhatóság, jó közösség, a gyorsabb fejlesztési idő, valamint
+a későbbi megtérülés a technológiai tudásban.
+
+Az egyedi keretrendszerek előnye, hogy a kódot teljes mértékben a kezünkben tarthatjuk
+(nem függünk harmadik fél kodjától), és sokkal kisebb méretűek. Ezen felül, komolyabb
+programozói szemléletre tehetünk szert általuk. Egyes szerzők úgy látják, hogy a
+leghatékonyabb keretrendszer nem a külsősök által fejlesztett, hanem a saját gyakran
+használt kódokból [refaktorálással](https://hu.wikipedia.org/wiki/K%C3%B3drefaktor%C3%A1l%C3%A1s)
+összeállított keretrendszer.
+
+Léteznek komponens alapú keretrendszerek, mint például a [Laminas](https://github.com/laminas)
+(lánykori nevén: Zend Framework), vagy a [Symfony](https://github.com/symfony/symfony),
+amelyek minden része (komponense) működik önmagában is; és vannak olyan keretrendszerek,
+amelyek – a komponenseik közötti függőségek miatt – csak egyben használhatók, mint
+a [Slim micro-framework](https://github.com/slimphp/Slim), illetve a népszerű
+[Laravel](https://github.com/laravel/laravel) keretrendszer.
+
+Tipikus feladatok egy webes alkalmazásban:
+* **HTTP kérések kezelése**,
+* **Feltöltött fájlok kezelése**,
+* **Routing**,
+* **Munkamenet-kezelés**,
+* **Autentikáció (felhasználó-kezelés)**,
+* **Autorizáció (hitelesítés, jogosultságok kezelése)**,
+* **Konfigurációs állományok kezelése**,
+* **Gyorsítótárazás (cache)**,
+* **HTTP válaszok küldése**.
+
+A webes keretrendszerek alapegysége az interoperábilitás és helyettesíthetőség miatt
+bizonyos formai megkötéseknek elegettevő csomag (package), amely egy vagy több
+osztályt (ideértve a trait-et és az interface-t is) tartalmazhat, az általa megoldandó
+probléma bonyolultságától és a megvalósítástól függően. Az egyes csomagokat, illetve
+a legtöbb keretrendszert a [Composer](https://getcomposer.org/) (a PHP függőségkezelője)
+segítségével lehet telepíteni. Egy csomag gyökérkönyvtárának a bevett konvenciók alapján
+a következőket illik tartalmaznia:
+* **/src mappa**: itt foglalnak helyet a csomagot alkotó osztályok, absztrakt
+osztályok, trait-ek és interface-ek, állományonként pontosab egy darab (vagyis a
+HttpRequest osztályt az autoloader a HttpRequest.php állományban fogja keresni);
+* **/docs mappa**: ha a csomag fejlesztője részletesebb dokumentációt csatol a
+művéhez, azt általában ide szokás elraktározni;
+* **/test mappa**: itt találhatóak a csomaghoz tartozó egységtesztek;
+* **README.md állomány**: a github felületén ez funkcionál nyitólapként a csomagot
+tartalmazó repository-ban, ide illik tömören megénekelni, hogy mit is tud a csomagunk,
+illetve hogyan lehet használni;
+* **/composer.json állomány**: a csomagunk rövid leírását, függőségeit a [Composer](https://github.com/dominicus75/no-framework-tutorial/blob/master/02-composer.md)
+számára is érthető (.json) formátumban megörökítő fájl; itt lehet felkonfigurálni
+a használni kívánt autoloader-t is;
+* **/composer.lock fájl**: a Composer által generált állomány, ebben tárolja a composer
+a letöltött függőségek konkrét verzióját és ha ez a fájl is megtalálható, akkor ez
+alapján fog dolgozni, nem pedig json fájl alapján.
+
+A különböző webes keretrendszereket fejlesztő közösségek már jó ideje rájöttek, hogy
+az egyes komponensek cserélhetősége, illetve a keretrendszerek közti együttműködés és
+átjárhatóság érdekében célszerű néhány jól átgondolt szabályt lefektetni, amelyek
+a kódolási stílustól az autoloaderekkel szemben támasztott követelményeken át egészen
+a különböző feladatokat leíró interfészek meghatározásáig (komponensek közötti
+adatátadás szabályozása) terjednek. Ez a gondolat hívta életre 2009-ben a [PHP Keretrendszerközi Együttműködési Munkacsoportot (PHP-FIG)](https://www.php-fig.org/),
+amely a mai napig gondozza a [PSR szabványokat](https://github.com/dominicus75/fig-standards).
+A FIG-nek jelenleg 37 tagja van (néhány az ismertebbek közül: Drupal, Joomla, Magento,
+Laminas Project, Yii Framework, Composer).
 
 
 ### 9.1 A PHP, mint sablonrendszer
@@ -4174,12 +4241,12 @@ különböző nézetek előtt.
 
 ### 9.2 Az MVC modell
 
-A tervezés során mintákra hagyatkozunk, a szoftver teljes architektúráját definiáló
-mintákat nevezzük **architekturális mintáknak** (*architectural pattern*). Az architekturális
-minta felvázolja egy szoftver architektúrájának kialakítását, definiálva az architekturális
-elemeket és azok kapcsolatait, a teljes rendszer általános felépítését jellemzi.
-A **tervminták** (*design pattern*) az architektúra alkalmazásának módját, az egyes
-komponensek összekapcsolását segítik elő.
+A szoftver teljes architektúráját definiáló mintákat nevezzük **architekturális
+mintáknak** (*architectural pattern*). Az architekturális minta felvázolja egy
+szoftver architektúrájának kialakítását, definiálva az architekturális elemeket
+és azok kapcsolatait, a teljes rendszer általános felépítését jellemzi. A **tervminták**
+(*design pattern*) az architektúra alkalmazásának módját, az egyes komponensek
+összekapcsolását segítik elő.
 
 ### 9.3 Tartalomkezelő rendszerek (CMS)
 
