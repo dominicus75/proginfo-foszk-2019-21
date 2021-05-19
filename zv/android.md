@@ -349,6 +349,140 @@ Az Activity megszűntetése előtti utolsó „callback” metódus, amely bekö
 Ezen a ponton az Activity által birtokolt minden erőforrást fel kell szabadítani, ha ez még nem történt meg az előző állapotokban.
 
 ## 6. Felület létrehozása. Vezérlőelemek. View. Felugró értesítések.
+Mielőtt a felhasználói felület megvalósításának nekilátnánk, meg kell terveznünk milyen oldalakat jelenítünk meg, hány darab felületből áll az alkalmazásunk, milyen vezérlőelemek kerülnek felhasználásra, az egyes oldalak között milyen kapcsolat lesz, azaz egyik felületről hogyan tudunk egy másikra navigálni.
+Alkalmazásunk tervezési fázisában lehetőségünk van online vagy offline eszközöket igénybe venni (vagy akár papíron is), így elősegítve azt, hogy amikor már az Android Studio layout designer-éhez nyúlunk, már egy kész felülettervet kelljen megvalósítanunk.
+Ezek a szoftverek általános vezérlőelemeken túl biztosítanak Android, iOS specifikus vezérlőket és témákat egyaránt.
+
+**Vezérlők**
+A vezérlők olyan felületi elemeket jelölnek, amelyek a felhasználó számára valamilyen információt jelenítenek meg, vagy információt kérnek be tőle (pl. szövegbeviteli mező) esetleg valamilyen eseményre (érintés vagy más gesztusok) tudnak reagálni.
+
+**View**
+Felületen elhelyezhető elemek őse a View osztály, amely egy téglalapnyi terület kirajzolásáért, és azon belül az események kezeléséért felelős.
+Minden UI vezérlőelem (widget) tőle származik (Button, TextView, EditText, stb.), ezért megkapják a tulajdonságait és viselkedéseit. 
+A View egyik legfontosabb leszármazottja a ViewGroup, minden layout ősosztályja.
+A layout-oknak nevezzük azokat a speciális vezérlőket, melyek segítenek a más vezérlők elrendezésében a felületen az általuk definiált rendezési elv szerint.
+Egy ViewGroup típusú elem több View-t vagy akár további ViewGroup elemet tartalmazhat.
+
+View tulajdonsági közül az egyik legfontosabb az azonosító (`id`). Minden vezérlőelemhez rendelhetünk egy egyedi azonosítót, ami abban segít, hogy programozott módon (Java kódból) elérjük őket és valamilyen tulajdonságát futásidőben megváltoztassuk (pl.: kiírt szöveg módosítása).
+Azonosítót nem minden esetben kell használnunk.
+Egy statikus szövegmegjelenítésnél felelős vezérlőnél, amely tartalma sosem változik alkalmazásunk életciklusa alatt, nem feltétlen indokolt beállítani.
+A vezérlők elrendezési módszerétől függően ez utóbbi esetben is lehet értelme, például ha az egyik vezérlő elhelyezkedését egy másik befolyásolja, így tudunk az adott elemre hivatkozni. (pl. RelativeLayout, ConstraintLayout).
+A fejlesztőkörnyezet (Android Studio) automatikusan generál azonosítókat (pl. textView, textView1 és így tovább), ettől függetlenül érdemes beszédes neveket használni, amely alapján más fejlesztő számára is egyértelmű melyik vezérlőt használja. (pl.: usernameTextView, passwordEditText, loginButton)
+
+A View-t reprezentáló téglalap méretét a szélesség és magasság tulajdonságok határozzák meg, melyeket párban kell megadnunk.
+Kötelező tulajdonságokról van szó, amennyiben elhagyjuk őket (felületet leíró XML-ben), fordítási hibát fogunk kapni.
+Szélesség és magasság XML attribútumai:
+
+* layout_width
+* layout_height
+
+View rendelkezik padding és margin tulajdonságokkal is.
+Padding a vezérlő méretét befolyásoló tulajdonság, bal oldalt, felül, jobb oldalt és alul növelhetjük az eredeti méretet.
+A többi vezérlőtől vagy a szülőelemtől való eltolást (térköz) pedig a margin (négy oldalt külön módosíthatjuk ugyanúgy, mint a padding esetében) tulajdonsággal állíthatjuk be.
+
+A példában a vezérlő szélességét 400dp-re, a magasságát 200dp-re állítjuk. Margin segítségével a bal oldalt és felül 8dp-vel toljuk el a többi elemtől.
+```
+<View
+   android:id="@+id/main_view"
+   android:layout_width="400dp" 
+   android:layout_height="200dp"/>
+   android:layout_marginTop="8dp" 
+   android:layout_marginLeft="8dp" />
+```
+
+Minden View-tól származó vezérlő képes eseményekre reagálni, amely a vezérlő területén történik.
+Leggyakrabban használt ezek közül a „kattintás” esemény, minden View-től származó vezérlőnél fel lehet iratkozni erre az eseményre.
+
+A példában a fenti View elemre hivatkozunk Java kódból.
+Először inicializáljuk a vezérlőt a `findViewById` függvény segítségével.
+Meg kell valósítanunk a `View.OnClickListener` interface-t, amely során az `onClick` függvényben definiáljuk mi történjen az esemény hatására.
+Az így keletkezett példányt a vezérlő `setOnClickListener` függvényének adjuk át paraméterként.
+```
+final View mainView = findViewById(R.id.main_view);
+
+mainView.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
+		// TODO do something
+	}
+});
+
+```
+
+**TextView**
+Felhasználói felületen a szövegmegjelenítésért felelős vezérlő.
+Két alapvető használatot különböztethetünk meg a TextView-nál:
+* Statikus szöveget jelenítünk meg, később nem szeretnénk módosítani
+* Programkódból egy esemény hatására (pl. nyomógombra kattintás) megváltozik a megjelenítendő szöveg
+
+Legfontosabb tulajdonsága a *text*, amelyen keresztül a megjelenítendő szöveget beállíthatjuk, illetve programozott módon ki is olvashatjuk.
+További említésre méltó tulajdonságai még a szöveg méretét befolyásoló *textSize* (értékét sp, azaz Scale-independent Pixels mértékegységben adjuk meg), a szöveg megjelenítését módosító *textStyle* (értékei: normal, italic, bold) és a szöveg színét meghatározó *textColor*.
+
+**EditText**
+Alkalmazásunk működése során a felhasználótól is várhatunk adatokat szöveg formájában,
+erre szolgál az EditText vezérlő.
+A vezérlő által megjelenített szöveget szintén a text tulajdonsággal íratjuk, olvashatjuk. 
+Segítséget is adhatunk a felhasználónak, hogy milyen információt várunk tőle, így akár a formátumra vonatkozóan is adhatunk utasításokat.
+Ebben segít a hint, amely egy placeholder szöveg. Amikor a vezérlő megkapja az input fókuszt a hint szövege eltűnik, csak akkor jelenik meg újra, amikor más vezérlő kapja meg a fókuszt.
+Lehetőségünk van korlátozni milyen típusú adatot várunk a felhasználótól (*inputType*), értelemszerűen, ha számot várunk el felesleges más karaktert megjeleníteni a billentyűzeten.
+Legtöbbet használt inputType értékek: text, number, textEmailAddress, phone.
+
+**Button**
+A nyomógomb az egyik leggyakrabban használt vezérlőelem, amely érintés (kattintás)
+hatására egy általunk definiált műveletet képes végrehajtani.
+Az alkalmazás egyes funkcióit nyomógombok segítségével tudjuk legegyszerűbben a felhasználó számra elérhetővé tenni.
+A `Button` vezérlőn egy feliratot helyezhetünk el a *text* tulajdonságával (leírja a megvalósított funkciót, például Mentés).
+Lehetőségünk van képeket is megjeleníteni nyomógombon belül, erre egy külön vezérlőt, az ImageButton-t használhatjuk.
+Nyomógomb kattintására (megérintésére) egy `View.OnClickListener` interface impementációt kell létrehoznunk és a `Button` `setOnClickListener` függvényének átadnunk.
+
+**ImageView**
+Képi erőforrások megjelenítését valósítja meg az `ImageView` vezérlő.
+Bitmap és Drawable típusú adatokat képes megjeleníteni, eredeti vagy átméretezett formában.
+A megjeleníteni kívánt képi erőforrást az `src` attribútumon keresztül állítjuk be, ilyenkor általában a `res/drawable` könyvtárba elhelyezett képi erőforrásokra szoktunk hivatkozni.
+
+**Felugró értesítések**
+**Toast**
+Felugró üzenetek, ablakok létrehozására több lehetőségünk is van Android-ban.
+Legegyszerűbb formája a `Toast`, amely rövidebb vagy hosszabb ideig felugró üzenetet jelenít meg.
+A megjelenítés idejét a `Toast` osztály `makeText` függvényének a harmadik paramétere szabályozza, értékei: 
+
+* Toast.LENGTH_SHORT
+* Toast.LENGTH_LONG
+
+Toast létrehozása után a megjelenítést a `show` függvény eredményezi.
+
+```
+Toast.makeText(
+   context,
+   "Toast message",
+   Toast.LENGTH_SHORT
+).show();
+```
+
+**Snackbar**
+Üzenetmegjelenítő elem a felhasználói felületen, amely tipikusan valamilyen művelet
+eredményéről értesíti a felhasználót.
+A felületen alsó részén jelenik meg (nagy méretű képernyőkön a bal oldalon) egy ideig, viszont a felhasználó akár söprés mozdulattal el is tudja tűntetni.
+A Toast-tal összehasonlítva egy szebb és a Material design-ba jobban illő megjelenítést kapunk.
+Másik fontos tulajdonsága, hogy a szövegmegjelenítésen túl definiálhatunk funkciót is, amit a felhasználó végrehajthat.
+Például egy művelet végrehajtása után lehetőséget biztosítunk annak visszavonására is.
+```
+Snackbar.make(
+   contextView,
+   "Snackbar message",
+   Snackbar.LENGTH_SHORT
+).show()
+```
+
+**Dialog**
+Dialógus ablakokkal információt tudunk megjeleníteni, illetve döntési lehetőséget biztosíthatunk, vagy további adatokat kérhetünk be a felhasználótól.
+Nem foglalják el a teljes képernyőt, általában akkor használjuk, ha a felhasználói beavatkozásra van szükség az alkalmazás működéséhez.
+Dialógus ablakokból több típus is létezik, ősosztályuk a `Dialog`.
+Például:
+
+* AlertDialog: dialógus ablak címmel, nyomógombbal, listás megjelenítéssel vagy akár teljesen testreszabott felülettel
+* DatePickerDialog, TimePickerDialog: dátum és idő kiválasztására szolgáló felületek
+
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
 ## 9. Fragmentek és navigáció megvalósítása.
