@@ -4054,7 +4054,26 @@ Tulajdonságok és osztályállandók deklarálásakor nem használható a ```fi
 PHP 8.0.0 verziójától kezdve a ```private``` láthatóságú metódusokat a konstruktor
 kivételével nem lehet véglegesnek deklarálni.
 
-## 9. A PHP, mint sablonrendszer
+## 9. Keretrendszerek alapjai
+
+A keretrendszer egy önmagában közvetlenül nem használható, általános, újrafelhasználható
+szoftverkörnyezet, ami megkönnyíti alkalmazások, termékek és megoldások fejlesztését.
+Lényege, hogy a különböző alkalmazásokban leggyakrabban használt elemeket egyetlen
+helyre gyűjti össze. Tartalmazhat támogató programokat, fordítókat, kódkönyvtárakat,
+eszközöket, valamint alkalmazás-programozási interfészeket (API) is.
+
+A keretrendszer felfogható úgy is, mint az alkalmazás fejlesztését szolgáló szabályok
+gyűjteménye. A keretrendszerben megjelenő szabályok tipikus problémákra adnak jól
+bevált megoldásokat. Vannak általános keretrendszerek, és vannak olyanok, amelyek
+egyféle feladatkör számára biztosítanak jól bevált megoldásokat. Ilyen tipikus
+probléma egy webes alkalmazásban a konfigurációs állományok kezelése, az egy
+belépési pont biztosítása, munkamenet-kezelés indítása, nyelvi beállítások
+kezelése, átmeneti tárolással kapcsolatos nehézségek áthidalása, stb. Ezek megoldását
+egy fejlesztő maga is kigondolhatja, de kényelmesebb és célszerűbb a keretrendszerek
+által nyújtott kidolgozott megoldást választani.
+
+
+### 9.1 A PHP, mint sablonrendszer
 
 Egy-egy PHP kódrészletben – függetlenül attól, hol jelenik meg – különböző funkcionalitású
 kódok keverednek: az inputadatok feldolgozása, az adatbáziskapcsolat kialakítása,
@@ -4153,11 +4172,18 @@ be kell emelni a megfelelő helyre egy ```include``` paranccsal. Ezzel még modu
 és rugalmasabb kódot kapunk, megnyitva az utat az adott adattartalomhoz tartozó
 különböző nézetek előtt.
 
-### 9.1 Keretrendszerek alapjai
+### 9.2 Az MVC modell
 
-### 9.2 MVC modell
+A tervezés során mintákra hagyatkozunk, a szoftver teljes architektúráját definiáló
+mintákat nevezzük **architekturális mintáknak** (*architectural pattern*). Az architekturális
+minta felvázolja egy szoftver architektúrájának kialakítását, definiálva az architekturális
+elemeket és azok kapcsolatait, a teljes rendszer általános felépítését jellemzi.
+A **tervminták** (*design pattern*) az architektúra alkalmazásának módját, az egyes
+komponensek összekapcsolását segítik elő.
 
 ### 9.3 Tartalomkezelő rendszerek (CMS)
+
+
 
 ## 10. Webszolgáltatások
 
