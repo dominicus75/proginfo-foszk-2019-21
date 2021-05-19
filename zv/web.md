@@ -4246,8 +4246,95 @@ A szoftver teljes architektúráját definiáló mintákat nevezzük **architekt
 mintáknak** (*architectural pattern*). Az architekturális minta felvázolja egy
 szoftver architektúrájának kialakítását, definiálva az architekturális elemeket
 és azok kapcsolatait, a teljes rendszer általános felépítését jellemzi. A **tervminták**
-(*design pattern*) az architektúra alkalmazásának módját, az egyes komponensek
+(*design pattern*) ellenben az architektúra alkalmazásának módját, az egyes komponensek
 összekapcsolását segítik elő.
+
+A modell-nézet-vezérlő (model-view-controller, MVC) egy architekturális minta. Összetett,
+sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői
+kívánalom az adathoz (modell) és a felhasználói felülethez (nézet) tartozó dolgok
+szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést, és az
+adatok átszervezhetők legyenek a felhasználói felület változtatása nélkül. A modell-nézet-vezérlő
+ezt úgy éri el, hogy elkülöníti az adatok elérését és az üzleti logikát az adatok
+megjelenítésétől és a felhasználói interakciótól egy közbülső összetevő, a vezérlő
+bevezetésével. Az MVC egy olyan tervezési architekturális minta, mely megfelelő
+útmutatást ad az alkalmazás funkcionális részeinek szétválasztására, de a megvalósítás
+részleteit nem elemzi.
+
+A mintát Trygve Reenskaug írta le először 1979-ben, miután a Smalltalk nyelv fejlesztésén
+dolgozott a Xerox kutatói laborban. Az eredeti megvalósítás részletesen az *Applications
+Programming in Smalltalk-80: How to use Model-View-Controller* című tanulmányban olvasható.
+A megjelenés elválasztása az modelltől platformtól függetlenül jól alkalmazhatónak
+bizonyult, de asztali grafikus alkalmazásokban a felhasználói felületben gyakran
+összeolvadt a nézet és a vezérlő. A webes világ szerver-kliens architektúrájában
+azonban ez a két szerep szükségszerűen szétvált: míg a nézet elsősorban a kliensen
+megjelenítendő adatot definiálta, addig a vezérlő a szerveren futott. A jól bevált
+(platformfüggetlen) alapelvek mellett tehát az alkalmazások felépítése is indokolta
+az MVC-minta alkalmazását a weben. Ahogy a kétezres években a web mindinkább teret
+nyert, gyakorlatilag de-facto szabvánnyá vált és mára szinte eretnekségnek számít
+nem MVC-re építeni egy webes alkalmazást.
+
+*Az MVC-minta az alábbi részekből áll:*
+
+* **Modell**: Az alkalmazás adatait és az ahhoz tartozó üzleti logikát tartalmazza.
+Maga a minta nem definiálja, hogy egy többrétegű architektúrában pontosan meddig is
+tart a modell. Tágabb értelemben a leghátsó adattárolási réteget, az adatbázisokat
+is beleértjük, szűkebb értelemben a vezérlővel közvetlen kapcsolatban lévő üzleti
+logikai réteg osztályai tartoznak csak ide. Általában a modell a legnagyobb és
+legbonyolultabb része egy nagyobb alkalmazásnak, hiszen az adatok tárolásán túl itt
+történik azok leképezése szemantikailag jobban értelmezhető üzleti objektumokká
+és üzleti logikává (itt kapnak pontos jelentést a nyers adatok, mondhatni: itt
+lesz az adatból információ).
+* **Nézet**: Megjeleníti a modellt egy megfelelő alakban, mely alkalmas a felhasználói
+interakcióra, jellemzően egy felhasználói felületi elem képében. Webes alkalmazások
+esetén a nézetben van az oldal kinézete, szerkezete. A modell adatai HTML, CSS,
+JavaScript vagy XML formátumban jelennek meg. Különböző célokra különböző nézetek
+létezhetnek ugyanahhoz a modellhez. A nézetünk általában egy sablon, amelyben
+megfelelő módon jelzünk bizonyos logikát (elágazás, ciklus), vagy a változók helyét.
+* **Vezérlő**: Az eseményeket, jellemzően felhasználói műveleteket dolgozza fel és
+válaszol rájuk, illetve a modellben történő változásokat is kiválthat. Alapvető
+feladatai a HTTP kérés feldolgozása, adatok továbbítása a modellnek és a nézetnek, 
+biztonsági ellenőrzések, alkalmazásszintű beállítások elvégzése, munkamenet indítása,
+konfigurációs állományok betöltése, és még sorolhatnánk. Ezek általában mindegyik
+vezérlőre nézve közös dolgok, így ezeket általában külön választják, kiemelik, és a konkrét
+műveletet elvégző vezérlő elé teszik. Az egyes vezérlők előtti közös műveletek
+elvégzéséért felelős vezérlőt *elővezérlőnek*, vagy az angol terminológia alapján
+**Front Controller**nek hívjuk. Az elővezérlő biztosítja az alkalmazás egyetlen
+belépési pontját (általában index.php), segítségével mindegyik vezérlő rajta
+keresztül hívódik meg. Az objektumorientált programozás elve szerint az elővezérlőt
+is meg lehet valósítani osztályként (tipikusan Egyke, azaz Singleton).
+* **Szolgáltatás (Service)**: A vezérlő és a modell közötti réteg. Hívják még Business
+Logic rétegnek is. A modelltől kér le adatokat és a vezérlőnek adja azt. Ennek a
+rétegnek a segítségével az adat tárolás (modell), adat lekérés (szolgáltatás) és
+az adat kezelés (vezérlő) elkülöníthetőek egymástól. **Mivel ez a réteg nem része
+az eredeti MNV mintának, ezért használata nem kötelező**.
+
+A vezérlés menete általánosságban a következőképp működik:
+
+1. A felhasználói felületen a felhasználó eseményt vált ki.
+2. A vezérlő átveszi a bejövő eseményt a felhasználói felülettől, gyakran egy bejegyzett
+eseménykezelő vagy visszahívás útján.
+3. A vezérlő az eseménynek megfelelően kapcsolatot teremt a modellel, annak adatokat
+adva át. A modellben tárolt adatok akár meg is változhatnak.
+4. A vezérlő meghívja a nézetet, amely a modelltől elkéri az adatokat, és azokat
+megjeleníti. A nézet a modellből nyeri az adatait. A modellnek nincs közvetlen tudomása
+a nézetről.
+5. A felhasználói felület újabb eseményre vár, mely az elejéről kezdi a kört.
+
+Az MVC-mintára épülve számos, webes alkalmazás készítéséhez kialakított keretrendszer
+található. Ezekben a keretrendszerekben a kódot állományszinten is modell, nézet
+és vezérlő elnevezésű mappákba sorolják. Nagyon gyakoriak bennük a különböző elnevezési
+szabályok, amelyek meghatározzák az osztályok, fájlok neveit, elhelyezkedését. A
+keretrendszer magja tipikusan külön könyvtárban helyezkedik el, az alkalmazásunknak
+is külön mappája van. Ezáltal könnyen elvégezhető a keretrendszer magjának a frissítése
+anélkül, hogy az alkalmazásunk mappájába kellene módosításokat végrehajtani. A rendszermag
+általában sok osztályból áll, ezek végzik el a tipikus folyamatokat elrejtve őket
+a konkrét alkalmazásfejlesztési folyamat elől. Nagyon gyakori, hogy a szokásos modell,
+nézet és vezérlő mappák és osztályok mellett egyéb funkcionalitású komponensek is
+megjelennek: függvénykönyvtárak (library), kisegítő osztályok (helper), modulok, stb.
+Ezek mind az egyes keretrendszerek sajátos kiegészítői, nehezen általánosíthatóak. A
+keretrendszerek sokszor biztosítanak tipikus webes problémákra előre elkészített
+megoldásokat. Ilyen például a felhasználó azonosítása, bejelentkeztetése és jogainak
+kezelése, vagy űrlapok kezelése, vagy az átmeneti gyorsítótár (cache) kezelése.
 
 ### 9.3 Tartalomkezelő rendszerek (CMS)
 
