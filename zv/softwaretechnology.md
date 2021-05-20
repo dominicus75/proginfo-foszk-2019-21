@@ -249,7 +249,36 @@ látszattevékenységet kell közbeiktatni)
 • minden tevékenységet úgy kell ábrázolni, ahogy az a projekt végrehajtása során
 logikai/időrendi sorrendben egymás után vagy egymással párhuzamosan végrehajtandó.
 
-![Imgur](https://imgur.com/aYDHJcS.png) 
+### A hálótervezés bemutatása gyakorlati példán
+
+Az elvégzendő feladat (projekt) a fél órás ebédidő kihasználása úgy, hogy dohányzásra
+is maradjon idő. Első lépés a tevékenységjegyzék összeállítása, különös tekintettel
+az egyes tevékenységek időszükségletére és függőségeire (megelőző tevékenységek,
+amelyek befejezése előfeltétele az adott tevékenység megkezdésének). A függőségekből
+megállapítható az is, mely tevékenységek végezhetők egyidejűleg, párhuzamosan.
+
+| Tevékenység jele | Megnevezés | Időszükséglet (perc) | Függőségek |
+|------------------|------------|----------------------|------------|
+| A | Kávéfőzés | 6 perc | –  |
+| B | Főétel melegítése | 4 perc | – | 
+| C | Főétel elfogyasztása | 10 perc | B | 
+| D | Gyümölcs elfogyasztása | 3 perc | – | 
+| E | Kávé elfogyasztása |  1 perc | A | 
+| F | Mosogatás | 5 perc | C, D, E | 
+| G | Elcsomagolás | 3 perc | F |
+| H | Heveny dohányzás |  5 perc | G |
+
+A fenti tevékenységlistából az derül ki, hogy **A**, **B**, és **D** tevékenységeknek
+nincsenek függőségeik, ellenben más tevékenységek tőlük függnek. Ezért elvégzésük
+lehet akár párhuzamos is, de be kell fejeződniük a tőlük függő tevékenységek elkezdése
+előtt. Ezt szem előtt tartva a tevékenységi háló a következőképpen fog kinézni:
+
+![Imgur](https://imgur.com/aYDHJcS.png)
+
+A projekt tehát **A**, **B** és **D** tevékenységek párhuzamosításával éppen 30
+perc (a rendelkezésre álló idő) alatt kivitelezhető. A kritikus út: 1, 4, 5, 6, 7,
+8, 9. 1 és 4 esemény között **A** tevékenységnek nincs tartalékideje, viszont **B**
+és **D** tevékenységnek van.
 
 ## 2. Ismertesse és hasonlítsa össze a vízesés és a V modelleket.
 
