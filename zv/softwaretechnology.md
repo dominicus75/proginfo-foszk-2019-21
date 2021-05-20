@@ -58,9 +58,7 @@ fejlesztette ki 1958-ban a Booz Allan Hamilton Inc. tanácsadó cég a projektek
 tervezésére és ütemezésére használt első tudományos modellt, az ún. PERT-modellt
 (Program Evaluation and Review Technique – program kiértékelési és felülvizsgálati
 technika). Ezzel a módszerrel a projekt 5 éves határidejét 3 és fél évre sikerült
-lefaragni.
-
-1957. május 7-én a Du Pont vállalat és a Remington Rand Kutatóintézet létrehozta a
+lefaragni. 1957. május 7-én a Du Pont vállalat és a Remington Rand Kutatóintézet létrehozta a
 CPM-projektet, Morgan R. Walker (Du Pont) és James Elliot Kelly (matematikus, Remington
 Rand) vezetésével. *„Innen datálódik a projektmenedzsment mint önálló tudományterület
 és önálló eszköztárral rendelkező szakma elismerése is.”* (dr. Hajdú Miklós)
