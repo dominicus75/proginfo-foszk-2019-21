@@ -4,6 +4,249 @@
 
 ## 1. Ismertesse a tevékenység hálót és sávdiagramot (ábra szükséges mindkettőhöz). Mi a Kritikus út, és mi a jelentősége?
 
+### Történeti áttekintés
+
+Bár a ma ismert projekttervezési és irányítási technikák csak a XX. században születtek
+meg, a problémák, amelyekre választ kerestek, szinte egyidősek a civilizációval. A
+történelem nagy vállalkozásai (piramisok, a kínai nagy fal, a középkori katedrálisok,
+stb.) nem születhettek volna meg a munka valamilyen ütemezése nélkül. Ugyanez igaz
+az emberiség kezdetektől legkedveltebb időtöltésére, a háborúra is. [Szun-ce](https://hu.wikipedia.org/wiki/Szun-ce)
+(kínai hadvezér, Kr. e 544-470) mondja: „*irányítsuk a sereget alapos számítások és
+jó tervek szerint, de ugyanakkor tetteinket senki át ne tekinthesse”* (A hadviselés
+törvényei, 11. fejezet).
+
+A XX. századig a projektek tervezése és irányítása nem számított önálló szakterületnek
+és több köze volt egy-egy vezető (mérnök vagy hadvezér) szervezőképességéhez, tehetségéhez,
+tapasztalatához, mint bármiféle tudományosan megalapozott módszertanhoz. A tervezési
+eszközök az 1900 évek elején kezdtek formalizált alakot ölteni. Ekkortól kezdték
+összegyűjteni és tudományos módszerekkel rendszerezni azokat az évezredek óta alkalmazott
+informális eljárásokat és újabb technikákat, melyek ma a projektmenedzsment alapjainak
+tekinthetők.
+
+A szakterület egyik úttörőjének tekintett [Frederick Winslow Taylor](https://hu.wikipedia.org/wiki/Frederick_Winslow_Taylor)
+(amerikai mérnök, 1856–1915) például egy pennsylvaniai acélműben rájött, hogy a
+munkások által végzett feladatok részekre bontásával és mérésével növelhető a hatékonyság.
+Az ő munkatársa volt [Henry Laurence Gantt](https://en.wikipedia.org/wiki/Henry_Gantt)
+(gépészmérnök és vezetési tanácsadó, 1861–1919), a hadihajók építésének
+folyamatát feladatokra bontotta, az egyes feladatok végrehajtását pedig mérte és
+grafikonokkal dokumentálta. Még 1896-ban [Karol Adamiecki](https://en.wikipedia.org/wiki/Karol_Adamiecki)
+lengyel mérnök, közgazdász kifejlesztette az általa harmonogram-nak nevezett diagramot,
+ami manapság Gantt-diagram néven ismert. Adamiecki nem publikálta diagramját csak 1931-ben,
+akkor is kizárólag lengyelül. Ezért viseli Henry Gantt nevét, aki 1910-1915 között
+fejlesztette ki a saját harmonogram-verzióját, amit nyugaton el is terjesztett. A
+koncepció később alkalmazást nyert a számítástechnikában is. A Gantt-diagram egy
+olyan grafikus ütemterv, mely a tevékenységek tervezett lefolyását időskála mentén
+mutatja be. Ennek segítségével nyomon lehet követni a munka előrehaladását (terv
+szerint, késésben), ma is fontos eszköze a projektmenedzsmentnek, a mai hálós
+technikák előfutárának tekinthető.
+
+A projektek tervezését a XX. század fordulójától kezdve szinte kizárólag az ún.
+*tradicionális technikák* uralták (*Gantt-diagram*, *mérföldkődiagram*, *ciklogram*,
+*Line of Balance eljárás [LOB]*), melyek egyszerű, jól áttekinthető információt
+szolgáltattak a tervezett megvalósulásról, viszont módosításuk nehézkes volt. Ezért
+a 30-as évektől kezdve a projekt belső összefüggéseit megjelenítő, könnyebben és
+egyszerűbben módosítható technikák után kezdtek kutatni. A kutatást később a hidegháború
+is nagyban ösztönözte. Az amerikai rakétaprogram ugyanis az 1950-es években jelentős
+lemaradásban volt a szovjetekkel szemben, így nemzetbiztonsági kérdéssé vált, hogy
+az USA minél előbb képessé váljon tengeralattjáróról indítható ballisztikus rakétát
+előállítani (1955 szeptemberében az oroszok már indítottak ballisztikus rakétát egy
+felszínen tartózkodó tengeralattjáróról, 1959-es rendszerbe állításakor ez volt a
+világ első ilyen jellegű fegyverrendszere).
+
+A Polaris projekt (melyen ezernél is több alvállalkozó és beszállító dolgozott) során
+fejlesztette ki 1958-ban a Booz Allan Hamilton Inc. tanácsadó cég a projektek
+tervezésére és ütemezésére használt első tudományos modellt, az ún. PERT-modellt
+(Program Evaluation and Review Technique – program kiértékelési és felülvizsgálati
+technika). Ezzel a módszerrel a projekt 5 éves határidejét 3 és fél évre sikerült
+lefaragni.
+
+1957. május 7-én a Du Pont vállalat és a Remington Rand Kutatóintézet létrehozta a
+CPM-projektet, Morgan R. Walker (Du Pont) és James Elliot Kelly (matematikus, Remington
+Rand) vezetésével. *„Innen datálódik a projektmenedzsment mint önálló tudományterület
+és önálló eszköztárral rendelkező szakma elismerése is.”* (dr. Hajdú Miklós)
+
+1969-ben megalakult a Project Management Institute (PMI). Az intézet alapötlete az
+a felismerés volt, hogy *a projektmenedzsment-eszközök és technikák közösek még az
+olyan egymástól távol álló területek között is, mint a szoftverfejlesztés vagy az
+építőipar*.
+
+### A Gantt-diagramm
+
+A Gantt-diagramm lényegében egy sávdiagram, ahol a vízszintes (X) tengelyen az időt,
+míg a függőleges (Y) tengelyen az egyes tevékenységeket tüntetjük fel. A projekt
+egyes tevékenységeit egy-egy vízszintesen elhelyezkedő oszloppal vagy sávval jeleníti
+meg az időtervben. A diagram kialakításától függően az oszlopok, egy időskála alatt
+vagy fölött helyezkednek el és azok hossza arányos a tevékenységek tervezett teljesítési
+idejével. A diagram baloldalán található a tevékenységek fölsorolása.
+
+Adott folyamat modellezésének főbb lépései a következők:
+* a feladat építőelemeinek, azaz az egyes tevékenységek felsorolása azok számbavétele,
+* a tevékenységek közötti logikai-függőségi kapcsolatok megállapítása,
+* az egyes tevékenységekhez tartozó idő- és erőforrás - hozzárendelés elvégzése,
+* a Gantt-diagram megrajzolása.
+
+A diagram a tevékenységek közötti logikai-függőségi kapcsolatokat a következőkben jelöli:
+* Ha **a tevékenységi oszlopok egymás mellett vannak**, akkor ez azt jelenti, hogy
+az időben előbb (sorban följebb) lévő tevékenységet be kell fejezni ahhoz, hogy
+a követő tevékenység megkezdhető legyen.
+* Ha **a tevékenységi oszlopok egymás alatt vagy fölött találhatóak**, akkor ez azt
+jelzi, hogy az adott tevékenységek párhuzamosan végezhetők.
+* Ha **két tevékenységi oszlop átfedésben van**, akkor ez azt fejezi ki, hogy az
+időben előbb kezdődő tevékenységet nem kell teljesen befejezni ahhoz, hogy az azt
+követő tevékenység teljesítése megkezdhető legyen. Ez az úgynevezett pozitív átfedés.
+* **Két tevékenységi oszlop közötti távolság** (oszlop nélküli rész) utal a várakozás
+mértékére, a késleltetésre vagy az úgynevezett negatív átfedésre.
+
+![gantt](https://upload.wikimedia.org/wikipedia/commons/9/9e/Gantt_chart_example.png)
+
+A megszerkesztett diagram információ-tartalma a következőkről tájékoztat:
+* a végrehajtáshoz szükséges tevékenységekről,
+* az egyes tevékenységek kezdési és befejezési időpontjairól,
+* a tevékenységekhez tartozó idő- és erőforrás értékekről,
+* a projektfeladat átfutási idejéről (arra az esetre, ha valamennyi kritikus műveletet
+sikerül a becsült időtartam alatt megvalósítani).
+
+A Gantt-diagramm  népszerűségét szemléletességének köszönheti. Kisméretű projekt
+esetén ideális az ütemezés szemléltetésére. Több száz tevékenységből álló bonyolult
+projekteknél azonban elveszti egyszerűségét és követhetetlenné, átláthatatlanná válik.
+
+### A tevékenységi háló fogalma
+
+A hálódiagram egy olyan folyamatábra, amely egy komplex folyamat (projekt) véges
+számú elemi részekre bontott munkatervét jeleníti meg grafikusan. Másképpen kifejezve,
+egy speciális gráf, amely:
+• véges elemből áll (egy kezdő és egy végponttal)
+• irányított
+• hurokmentes (nincsenek benne ciklusok)
+• a tevékenységek csomópontban is összefuthatnak, illetve csomópontból is indulhatnak
+• összefüggő.
+
+A hálódiagramokat többféleképpen lehet csoportosítani, attól függően, hogy egy adott
+háló milyen szempontokat helyez előtérbe, mit akarunk vele hangsúlyozni. A **logikai
+háló** az egyes tevékenységek közötti logikai-függőségi kapcsolatokat jeleníti meg,
+míg egy **technikai háló** számszerű adatokat is tartalmaz (idő és erőforrás igény).
+Az alkalmazott gráf típusa szerint léteznek **eseményorientált/tevékenységélű hálók**
+(CPM, PERT), ahol a gráfok csúcsai/csomópontjai eseményeket jelképeznek, az élek pedig
+tevékenységeket; illetve **tevékenységorientált hálók** (MPM), itt a gráf csúcsaiban
+találjuk a tevékenységeket, míg az élek az eseményeket jelenítik meg. Meghatározottság
+szerint megkülönböztetünk **determinisztikus** (CPM, MPM – a megvalósulás ideje
+meghatározott), és **sztochasztikus** (PERT – a véletlen hatását is számításba veszi,
+a megvalósulási időt egy adott valószínűségi eloszlásfüggvény írja le) hálókat.
+
+### A hálótervezés folyamata
+
+#### 1. 1. Logikai tervezés
+
+**Minden összetett feladat lebontható elemi lépésekre, feladatokra (tevékenységekre),
+amelyek aztán logikai hálóba rendezhetők**. A logikai hálóterv kidolgozásának alapja
+a tevékenységek folyamatszintű és teljes körű ismerete.
+
+Az egyes tevékenységek a következő tulajdonságokkal jellemezhetők:
+• időigény
+• erőforrásigény (anyag és munkaerő)
+• megelőző tevékenység (vagy ennek hiánya: kezdet)
+• vele párhuzamosan végezhető tevékenység
+• következő tevékenység (vagy ennek hiánya: vég).
+
+A tevékenységeket célszerű tevékenységjegyzékbe foglalni, amely a felsorolt tulajdonságokat
+(különös tekintettel az időadatokra, a megelőző és következő tevékenységekre) is
+tartalmazza. A tevékenységek közötti logikai-függőségi kapcsolatok meghatározása
+érdekében ki kell deríteni, hogy 
+1. milyen megelőző tevékenységeket kell befejezni, adott tevékenység megkezdése előtt;
+2. milyen tevékenységeket lehet vele párhuzamosan végezni;
+3. milyen következő tevékenységeket lehet elkezdeni adott tevékenység befejezése után.
+
+A tevékenységek azonosíthatósága érdekében minden tevékenységet egyedi azonosítóval
+(pl. egy számpárral, szám-betű kombinációval) kell ellátni, különben a párhuzamosan
+teljesíthető tevékenységek megkülönbözhetetlenné válnak a diagramban. A tevékenységjegyzék
+alapján elkészíthető a logikai háló.
+
+#### 2. Időtervezés
+
+Az időtervezés a következő lépésekből áll:
+• a projekt kezdési és befejezési időpontjának meghatározása,
+• a tevékenységek időbecslése, (legkorábbi és legkésőbbi) kezdési és befejezési időpontjának megállapítása,
+• a projekt átfutási idejének meghatározása,
+• a kritikus tevékenységek azonosítása, a kritikus út kijelölése,
+• az időtartalékok meghatározása.
+
+**Kritikus tevékenység az a tevékenység, melynek csúszása nem megengedhető, a kritikus
+út pedig ezen tevékenységek láncolata**. A kritikus úton található tevékenységek ismerete
+azért fontos, mert a projekt átfutási idejét ezen tevékenységek összes időigénye
+határozza meg.
+
+#### 3. Kapacitás tervezés
+
+Időhöz tartozó kapacitások leírása és összegzése.
+
+#### 4. Költségtervezés
+
+Költségigények felmérése és összegzése.
+
+### Kritikus út módszer (Critical Path Method, CPM)
+
+A különféle sávos diagramokon az egyes részfeladatok (tevékenységek) kezdő-, és
+befejező időpontja, valamint az esetlegesen rendelkezésre álló időtartalék jól
+nyomon követhető (erre találták ki), viszont az egyes munkafolyamtok közötti függőségi
+viszony (főleg szerteágazóbb projekteknél, ahol egymással párhuzamosan is végezhetők
+egyes tevékenységek) ábrázolása már nem annyira szemléletes és magától értetődő.
+A CPM (Kritikus út metódus) technika 1957-es megjelenése többek között ezt a problémát
+igyekezett kiküszöbölni.
+
+A CPM módszer eseményorientált (a gráf csúcsai eseményeket jelölnek, míg élei tevékenységeket),
+determinisztikus, tehát akkor alkalmazható, ha a tevékenységek időszükséglete ismert.
+Segítségével a projekt teljes átfutási ideje az egyes tevékenységek időszükséglete
+és a tevékenységek közötti kapcsolat alapján számítható ki, meghatározva, mely tevékenységek
+kritikusak, és melyeknek van tartalékidejük.
+
+Alkalmas bonyolult, nehezen áttekinthető folyamatok szervezésére és irányítására,
+melyekről könnyen átlátható képet ad, a feladatok végrehajtásának ütemezését, időbeni
+kezelhetőbbé teszi. A kritikus folyamatok kijelölésével (kritikus út – innen a neve)
+lehetővé teszi a rendelkezésre álló erőforrások átcsoportosítását oda, ahol az
+esetleges elmaradás az egész projekt csúszását okozhatja. A CPM tehát nemcsak a
+legrövidebb időtartam meghatározásában és betartásában segít, hanem abban is,
+hogy miként lehet a rendelkezésre álló kapacitást optimálisan kihasználni. Mindezeken
+felül jól programozható (a Du Pont éppen azért bízta meg anno Morgan Walker mérnököt
+azzal, hogy kiderítse, a cég UNIVAC-típusú számítógépe alkalmas-e projekttervezési
+feladatokra, ez a kutatás vezetett aztán a CPM-technika kidolgozásához).
+
+A CPM hálóknak három fő építőeleme van: az események, a tevékenységek és a látszattevékenységek.
+
+Az **esemény** a terv meghatározott, pillanatnyi állapotaként értelmezhető, készültségi
+foknak is nevezhető (vagy *csomópont*nak, esetleg *mérföldkő*nek). **Valamennyi tevékenységet
+egy kezdő- és egy végesemény határol**. Az esemény *mindig egy konkrét időpontot jelöl,
+így idő-, és erőforrás igénye nincs*. Az eseményorientált hálók (CPM, PERT) az eseményeket
+helyezik a gráf csúcsaiba és általában körrel vagy más síkidommal jelölik. Az eseményeket
+számozzuk, a tevékenységet jelölő nyíl mindig a kisebbtől a nagyobb felé mutat, ehhez
+balról jobbra, majd fentről lefelé haladva kell elvégezni a számozást, az első esemény
+sorszáma 0.
+
+A **tevékenység** egy munkafolyamatot jelent, ami a terv jól körülhatárolható részfolyamata,
+meghatározott kezdő, illetve végállapottal. **A tevékenység mindig időtartamot jelent,
+így idő-, és erőforrásigénye is van**. Az eseményorientált hálók (CPM, PERT) a gráf
+éleiként, nyílban végződő folyamatos vonallal ábrázolják, ami az egyik eseménytől
+a másik eseményig tart.
+
+A **látszattevékenység** két esemény egymásutániságát, logikai kapcsolatát fejezi ki,
+**önmaga nem jelent konkrét munkavégzést, ezért időtartam és erőforrás igénye nincs**.
+Akkor kell alkalmazni, ha egy esemény bekövetkezésével 2 tevékenység indulhat el,
+de mindkettő befejeződése szükséges ahhoz, hogy egy harmadik tevékenység elkezdődhessen.
+A látszattevékenység az eseményorientált hálók (CPM, PERT) kiegészítő eleme, nyílban
+végződő szaggatott vonallal jelölik.
+
+A CPM-háló megkötései:
+• minden hálótervnek csak egyetlen kezdő-, és végpontja lehet
+• csak véges számú eseményt tartalmazhat
+• hurokmentesség és irányfolyamatosság
+• a tevékenységek (a gráf élei) nem keresztezhetik egymást (ha lehet...)
+• a tevékenységeket (a gráf éleit) a határoló események számaival (0-1, 2-3, 4-6,
+stb.) vagy külön jellel (A, B, C4, stb.) jelöljük
+• él (tevékenység) csak eseményből (csúcs, csomópont) indulhat és csak oda érkezhet
+• két egymást követő eseményt két tevékenység nem kapcsolhat össze (ilyenkor
+látszattevékenységet kell közbeiktatni)
+• minden tevékenységet úgy kell ábrázolni, ahogy az a projekt végrehajtása során
+logikai/időrendi sorrendben egymás után vagy egymással párhuzamosan végrehajtandó. 
+
 ## 2. Ismertesse és hasonlítsa össze a vízesés és a V modelleket.
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
@@ -31,6 +274,9 @@
 * Wikipédia: [Unified Modeling Language](https://hu.wikipedia.org/wiki/Unified_Modeling_Language)
 * Microsoft 365 Team: [Egyszerű útmutató az UML típusú diagramkészítéshez és adatbázis-modellezéshez](https://www.microsoft.com/hu-hu/microsoft-365/business-insights-ideas/resources/guide-to-uml-diagramming-and-database-modeling)
 * Online diagram-készítő program: [Diagrams.net](https://app.diagrams.net/)
+* Dr. Daróczi, Miklós: [Projektmenedzsment](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2010-0019_Projektmenedzsment/index.html)
+	* [27. fejezet - A Gantt-diagram](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2010-0019_Projektmenedzsment/ch27.html)
+	* [28. fejezet - A hálótervezés alapjai](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2010-0019_Projektmenedzsment/ch28.html)
 * Ficsor Lajos, Krizsán Zoltán, Mileff Péter: [Szoftverfejlesztés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/index.html)
 * Dr. Ulbert Zsolt: [Szoftverfejlesztési folyamatok és szoftver minőségbiztosítás](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/)
 * Szabolcsi Judit: [Szoftvertechnológia](http://johanyak.hu/files/u1/segedlet/szoftvertechnologia/Szabolcsi_Judit_Szoftvertechnologia_2012.pdf)
