@@ -113,11 +113,11 @@ projekteknél azonban elveszti egyszerűségét és követhetetlenné, átlátha
 A hálódiagram egy olyan folyamatábra, amely egy komplex folyamat (projekt) véges
 számú elemi részekre bontott munkatervét jeleníti meg grafikusan. Másképpen kifejezve,
 egy speciális gráf, amely:
-• véges elemből áll (egy kezdő és egy végponttal)
-• irányított
-• hurokmentes (nincsenek benne ciklusok)
-• a tevékenységek csomópontban is összefuthatnak, illetve csomópontból is indulhatnak
-• összefüggő.
+* véges elemből áll (egy kezdő és egy végponttal)
+* irányított
+* hurokmentes (nincsenek benne ciklusok)
+* a tevékenységek csomópontban is összefuthatnak, illetve csomópontból is indulhatnak
+* összefüggő.
 
 A hálódiagramokat többféleképpen lehet csoportosítani, attól függően, hogy egy adott
 háló milyen szempontokat helyez előtérbe, mit akarunk vele hangsúlyozni. A **logikai
@@ -140,11 +140,11 @@ amelyek aztán logikai hálóba rendezhetők**. A logikai hálóterv kidolgozás
 a tevékenységek folyamatszintű és teljes körű ismerete.
 
 Az egyes tevékenységek a következő tulajdonságokkal jellemezhetők:
-• időigény
-• erőforrásigény (anyag és munkaerő)
-• megelőző tevékenység (vagy ennek hiánya: kezdet)
-• vele párhuzamosan végezhető tevékenység
-• következő tevékenység (vagy ennek hiánya: vég).
+* időigény
+* erőforrásigény (anyag és munkaerő)
+* megelőző tevékenység (vagy ennek hiánya: kezdet)
+* vele párhuzamosan végezhető tevékenység
+* következő tevékenység (vagy ennek hiánya: vég).
 
 A tevékenységeket célszerű tevékenységjegyzékbe foglalni, amely a felsorolt tulajdonságokat
 (különös tekintettel az időadatokra, a megelőző és következő tevékenységekre) is
@@ -162,11 +162,11 @@ alapján elkészíthető a logikai háló.
 #### 2. Időtervezés
 
 Az időtervezés a következő lépésekből áll:
-• a projekt kezdési és befejezési időpontjának meghatározása,
-• a tevékenységek időbecslése, (legkorábbi és legkésőbbi) kezdési és befejezési időpontjának megállapítása,
-• a projekt átfutási idejének meghatározása,
-• a kritikus tevékenységek azonosítása, a kritikus út kijelölése,
-• az időtartalékok meghatározása.
+* a projekt kezdési és befejezési időpontjának meghatározása,
+* a tevékenységek időbecslése, (legkorábbi és legkésőbbi) kezdési és befejezési időpontjának megállapítása,
+* a projekt átfutási idejének meghatározása,
+* a kritikus tevékenységek azonosítása, a kritikus út kijelölése,
+* az időtartalékok meghatározása.
 
 **Kritikus tevékenység az a tevékenység, melynek csúszása nem megengedhető, a kritikus
 út pedig ezen tevékenységek láncolata**. A kritikus úton található tevékenységek ismerete
@@ -237,16 +237,16 @@ végződő szaggatott vonallal jelölik.
 ![Imgur](https://imgur.com/aKjRLMU.png)
 
 A CPM-háló megkötései:
-• minden hálótervnek csak egyetlen kezdő-, és végpontja lehet
-• csak véges számú eseményt tartalmazhat
-• hurokmentesség és irányfolyamatosság
-• a tevékenységek (a gráf élei) nem keresztezhetik egymást (ha lehet...)
-• a tevékenységeket (a gráf éleit) a határoló események számaival (0-1, 2-3, 4-6,
+* minden hálótervnek csak egyetlen kezdő-, és végpontja lehet
+* csak véges számú eseményt tartalmazhat
+* hurokmentesség és irányfolyamatosság
+* a tevékenységek (a gráf élei) nem keresztezhetik egymást (ha lehet...)
+* a tevékenységeket (a gráf éleit) a határoló események számaival (0-1, 2-3, 4-6,
 stb.) vagy külön jellel (A, B, C4, stb.) jelöljük
-• él (tevékenység) csak eseményből (csúcs, csomópont) indulhat és csak oda érkezhet
-• két egymást követő eseményt két tevékenység nem kapcsolhat össze (ilyenkor
+* él (tevékenység) csak eseményből (csúcs, csomópont) indulhat és csak oda érkezhet
+* két egymást követő eseményt két tevékenység nem kapcsolhat össze (ilyenkor
 látszattevékenységet kell közbeiktatni)
-• minden tevékenységet úgy kell ábrázolni, ahogy az a projekt végrehajtása során
+* minden tevékenységet úgy kell ábrázolni, ahogy az a projekt végrehajtása során
 logikai/időrendi sorrendben egymás után vagy egymással párhuzamosan végrehajtandó.
 
 ### A hálótervezés bemutatása gyakorlati példán
