@@ -219,7 +219,7 @@ számozzuk, a tevékenységet jelölő nyíl mindig a kisebbtől a nagyobb felé
 balról jobbra, majd fentről lefelé haladva kell elvégezni a számozást, az első esemény
 sorszáma 0.
 
-![Imgur](https://imgur.com/J2sUBTS)
+![Imgur](https://imgur.com/J2sUBTS.png)
 
 A **tevékenység** egy munkafolyamatot jelent, ami a terv jól körülhatárolható részfolyamata,
 meghatározott kezdő, illetve végállapottal. **A tevékenység mindig időtartamot jelent,
@@ -234,7 +234,7 @@ de mindkettő befejeződése szükséges ahhoz, hogy egy harmadik tevékenység 
 A látszattevékenység az eseményorientált hálók (CPM, PERT) kiegészítő eleme, nyílban
 végződő szaggatott vonallal jelölik.
 
-![Imgur](https://imgur.com/aKjRLMU)
+![Imgur](https://imgur.com/aKjRLMU.png)
 
 A CPM-háló megkötései:
 • minden hálótervnek csak egyetlen kezdő-, és végpontja lehet
@@ -249,7 +249,7 @@ látszattevékenységet kell közbeiktatni)
 • minden tevékenységet úgy kell ábrázolni, ahogy az a projekt végrehajtása során
 logikai/időrendi sorrendben egymás után vagy egymással párhuzamosan végrehajtandó.
 
-![Imgur](https://imgur.com/aYDHJcS) 
+![Imgur](https://imgur.com/aYDHJcS.png) 
 
 ## 2. Ismertesse és hasonlítsa össze a vízesés és a V modelleket.
 
