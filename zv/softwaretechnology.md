@@ -282,6 +282,66 @@ perc (a rendelkezésre álló idő) alatt kivitelezhető. A kritikus út: 1, 4, 
 
 ## 2. Ismertesse és hasonlítsa össze a vízesés és a V modelleket.
 
+[Ian Sommerville](https://hu.wikipedia.org/wiki/Ian_Sommerville) meghatározása szerint *„a szoftverfolyamat tevékenységek és kapcsolódó
+eredmények sora, amelyek egy szoftvertermék előállításához vezetnek”*<sup id="1">[[1]](#note1)</sup>.
+Számos különböző szoftverfolyamat létezik, vannak azonban olyan általános feladatok,
+alapvető tevékenységek, amelyek minden szoftverfolyamatban közösek. Sommerville
+négy ilyen tevékenységet sorol fel:<sup id="2">[[2]](#note2)</sup>
+* **Szoftverspecifikáció**: Itt kell meghatároznunk, hogy milyen szolgáltatásokat
+követelünk meg a rendszertől, és hogy a rendszer fejlesztésének és működtetéseinek
+milyen megszorításait alkalmazzuk. Ezt a tevékenységet gyakran *követelménytervezésnek*
+is hívják, amely a követelménydokumentum előállítását eredményezi.
+* **Szoftvertervezés és implementáció**: Az implementáció nem más, mint a rendszerspecifikáció
+futtatható rendszerré történő konvertálása. Ez magában foglalja a szoftver tervezését
+és a programozást. A tervezési folyamat általános modellje:
+	* *Architekturális tervezés*: a rendszert felépítő alrendszereket és a köztük
+	lévő kapcsolatokat 	azonosítja és dokumentálja.
+	* *Absztrakt specifikáció*: az alrendszerek szolgáltatásainak absztrakt specifikációjának
+	megadása és azok a megszorítások, amelyek mellett a szolgáltatások működnek.
+	* *Interfész tervezése*: az alrendszerek interfészeinek megtervezése és dokumentálása
+	* *Komponens tervezése*: A szolgáltatásokat el kell helyezi a különböző komponensekben
+	és meg kell tervezni az interfészeket.
+	* *Adatszerkezet tervezése*: Meg kell határozni és részletesen meg kell tervezni
+	a rendszer implementációjában használat adatszerkezeteket.
+	* *Algoritmus tervezése*: Meg kell tervezni és pontosan meg kell határozni a
+	szolgáltatásokhoz 	szükséges algoritmusokat.
+* **Szoftvervalidáció**: célja: hogy megmutassa, a rendszer egyezik saját specifikációjával,
+és hogy a rendszer megfelel a rendszert megvásárló ügyfél elvárásainak. A validációnál
+két fő technikát használnak: a szoftverátvizsgálásokat és a tesztelést. 
+* **Szovftverevolúció**: A nagy és összetett rendszerek hosszú élettartamúak. Ezalatt
+egyrészt korrigálni kell az eredeti rendszer követelményeinek hibáit, másrészt a
+felmerülő új követelményeket is bele kell építeni. A szoftvert úgy kell alakítani,
+hogy a megrendelő által kért változtatásoknak minél könnyebben eleget tudjunk tenni.
+
+**A szoftverfolyamat modellje a szoftverfolyamat absztrakt reprezentációja**. Minden
+egyes modell különböző speciális nézőpontból reprezentál egy folyamatot, de ily
+módon csak részleges információval szolgálhat arról. Ezek az általános modellek
+nem a szoftverfolyamat pontos, végleges leírásai, hanem valójában inkább hasznos
+absztrakciók, amelyet a szoftverfejlesztés különböző megközelítési módjainak
+megértéséhez használhatunk.
+
+A szoftverfejlesztési gyakorlatban leginkább három általános modell terjedt el széles
+körben:
+* **Vízesésmodell**, mely a folyamat alapvető tevékenységeit a folyamat különálló
+fázisainak tekinti.
+* **Evolúciós vagy iteratív fejlesztés**, amely összefésüli a specifikáció, a fejlesztés
+és a validáció tevékenységeit. A kezdeti, nem teljes specifikációból gyorsan kifejleszthető
+egy kezdeti szoftververzió. A továbbiakban ezt a kezdeti verziót kell a megrendelő
+újabb követelményeinek megfelelően, több egymást követő fordulóban úgy finomítani,
+hogy az kielégítse az ügyfél kívánságait.
+* **Komponens alapú fejlesztés** az újrafelhasználható komponensek felhasználásán
+alapul. A szoftverfolyamat ezeknek a komponenseknek rendszerré történő integrációjára
+összpontosít ahelyett, hogy kifejlesszék ki azokat.
+
+Egy fejlesztési projekt során nem kizárólagos a használatuk, gyakran váltják egymást
+az alkalmazott modellek. Egy komplex és összetett rendszer alrendszereit
+különböző folyamatmodellek alapján is kifejleszthetik.
+
+### A vízesés modell
+
+### A V modell
+
+
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
 
 ## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
@@ -302,9 +362,15 @@ perc (a rendelkezésre álló idő) alatt kivitelezhető. A kritikus út: 1, 4, 
 
 ## 12. Ismertesse a programozási nyelvek generációk szerinti osztályozását.
 
+### Jegyzetek:
+* <span id="note1">[[1]](#1)</span> Ian Sommerville: Szoftverrendszerek fejlesztése - Software Engineering, 64. oldal
+* <span id="note2">[[2]](#2)</span> Ian Sommerville: i. m., 65. oldal
+
 ### Felhasznált (ajánlott) irodalom:
 
+* Wikipédia: [Szoftverfejlesztési folyamat](https://hu.wikipedia.org/wiki/Szoftverfejleszt%C3%A9si_folyamat)
 * Wikipédia: [Unified Modeling Language](https://hu.wikipedia.org/wiki/Unified_Modeling_Language)
+* Wikipédia: [vízesésmodell](https://hu.wikipedia.org/wiki/V%C3%ADzes%C3%A9smodell)
 * Microsoft 365 Team: [Egyszerű útmutató az UML típusú diagramkészítéshez és adatbázis-modellezéshez](https://www.microsoft.com/hu-hu/microsoft-365/business-insights-ideas/resources/guide-to-uml-diagramming-and-database-modeling)
 * Online diagram-készítő program: [Diagrams.net](https://app.diagrams.net/)
 * Dr. Daróczi, Miklós: [Projektmenedzsment](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2010-0019_Projektmenedzsment/index.html)
