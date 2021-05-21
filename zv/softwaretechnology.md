@@ -339,7 +339,11 @@ különböző folyamatmodellek alapján is kifejleszthetik.
 
 ### A vízesés modell
 
+![Imgur](https://imgur.com/tEHA3JK.png)
+
 ### A V modell
+
+![Imgur](https://imgur.com/f2ljBbZ.png)
 
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
