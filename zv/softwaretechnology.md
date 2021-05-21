@@ -318,7 +318,9 @@ egyes modell különböző speciális nézőpontból reprezentál egy folyamatot
 módon csak részleges információval szolgálhat arról. Ezek az általános modellek
 nem a szoftverfolyamat pontos, végleges leírásai, hanem valójában inkább hasznos
 absztrakciók, amelyet a szoftverfejlesztés különböző megközelítési módjainak
-megértéséhez használhatunk.
+megértéséhez használhatunk. A modellek feladata, hogy meghatározzák, hogy a
+szoftver életciklus egyes lépései milyen sorrendben követik egymást, milyen dokumentumokat,
+szoftver termékeket kell előállítani és hogyan.
 
 A szoftverfejlesztési gyakorlatban leginkább három általános modell terjedt el széles
 körben:
@@ -339,11 +341,141 @@ különböző folyamatmodellek alapján is kifejleszthetik.
 
 ### A vízesés modell
 
+A szoftverfejlesztés történetének első publikált modellje, amely más tervezői modellekből
+származik. A vízesés modelljének első hivatalos leírását gyakran [Winston W. Royce](https://en.wikipedia.org/wiki/Winston_W._Royce)
+1970-es [cikkeként](http://www-scf.usc.edu/~csci201/lectures/Lecture11/royce1970.pdf) idézik,
+bár Royce konkrétan nem alkalmazta a *vízesés* kifejezést a publikációjában. A *„vízesés”*
+kifejezés legkorábbi használata Bell és Thayer 1976. évi tanulmányában található. 1985-ben az
+Egyesült Államok Védelmi Minisztériuma fogalmazta meg ezt a megközelítést a *DOD-STD-2167A*
+szabványban, amely a szoftverfejlesztési vállalkozókkal való együttműködésre vonatkozott,
+és kimondta, hogy *„a vállalkozónak olyan szoftverfejlesztési ciklust kell implementálnia,
+amely a következő hat fázist tartalmazza: szoftverkövetelmény-elemzés, előzetes
+tervezés, részletes tervezés, kódolás és egységtesztelés, integráció és tesztelés”*.
+
+A vízesésmodell egy szekvenciális fejlesztési modell, amely jól elkülönülő lépésekre
+osztja a rendszertervezés egymás utáni lépcsőit (innen származik az elnevezés, bár az
+eredeti publikációban még nem így nevezték). Ez a megközelítés alapvetően arra az
+alapgondolatra támaszkodott, hogy a projektek egyértelműen körülhatárolhatóak és
+kiszámíthatóak, hiszen egymásra épülő, lineáris lépéssorozatok alkotják őket. Ezeknek
+köszönhetően részletekbe menően, egyszerűen tervezhetőek, és a megvalósítás során
+nem igényelnek nagymértékű változtatást. 
+
+A modell fontos szabálya, hogy a következő fázis addig nem indulhat el, amíg az előző
+be nem fejeződött. A gyakorlatban persze ezek a szakaszok kissé átfedhetik egymást.
+Maga a szoftverfolyamat nem egyszerű lineáris modell, hanem a fejlesztési tevékenységek
+iterációjának sorozata. Ez a vízesésmodellnél a visszacsatolásokban jelenik meg (
+az ábrán világoskék nyílakkal jelölve). A vízesésmodell a szoftverfejlesztési folyamat
+alapvető tevékenységeit a következő egymást követő fejlesztési fázisokkal reprezentálja:
+
 ![Imgur](https://imgur.com/tEHA3JK.png)
 
-### A V modell
+1. **Követelményelemzés és meghatározás**: a fejlesztendő rendszer céljai, funkciói
+és megszorításai a rendszer megrendelőivel és felhasználóival történő konzultációk
+alapján kerülnek feltárásra. Ezeket részletesen kifejtve határozzák meg a részletes
+rendszer specifikációt.
+2. **Rendszer és szoftvertervezés**: a rendszer tervezési folyamatában válnak szét
+a hardver és a szoftver követelmények. Ebben a fázisban kell kialakítani a rendszer
+átfogó architektúráját a funkcionális követelményeknek megfelelően. A szoftver
+tervezése az alapvető szoftverkomponensek, illetve a közöttük levő kapcsolatok
+azonosítását és leírását foglalja magában.
+3. **Implementáció és egységteszt**: ebben a szakaszban a szoftver komponensek
+implementációja és egységtesztelése történik. Az egységteszt azt ellenőrzi, hogy
+minden egyes komponens megfelel-e a specifikációjának.
+4. **Integráció és rendszerteszt**: ebben a fázisban kerül sor a szoftver komponensek
+integrálására és teljes rendszer tesztelésére abból a célból, hogy a rendszer megfelel-e
+követelményeknek. A tesztelés után a szoftverrendszer átadható az ügyfélnek.
+5. **Működtetés és karbantartás**: általában (bár nem szükségszerűen) ez a szoftver
+életciklusának leghosszabb fázisa. Megtörtént a rendszertelepítés és megtörtént a
+rendszer gyakorlati használatbavétele. A karbantartásba beletartozik az olyan hibák
+kijavítása, amelyekre nem derült fény az életciklus korábbi szakaszaiban, a rendszeregységek
+implementációjának továbbfejlesztése, valamint a rendszer szolgáltatásainak továbbfejlesztése
+a felmerülő új követelményeknek megfelelően.
+
+A vízesésmodell egy strukturált megközelítést biztosít, illetve a modell maga lineárisan
+halad előre egy könnyen érthető és magyarázható szakaszon keresztül; ezenkívül könnyen
+azonosítható mérföldköveket biztosít a fejlesztési folyamatban. A vízesésmodell olyan
+projekteknél lehet alkalmas, ahol a követelmények és az alkalmazási kör rögzítve van,
+maga a termék biztosan megvalósítható, és a technológia is érthető. További érv a
+vízesésmodell mellett, hogy hangsúlyt fektet a dokumentációra (mint a követelmény-
+és tervezési dokumentációk) is, a forráskód megírása mellett.
+
+*A vízesés modell problémái:*
+
+* Lineáris, így nehéz a visszalépés a felmerülő problémák megoldására, és ez jelentősen
+megnöveli a javítás költség- és időigényét.
+* Az integráció a teljes folyamat végén, egyben, robbanásszeren történik. A korábban
+fel nem fedezett hibák ilyenkor hirtelen, együttesen jelennek meg, így felderítésük
+és javításuk egyaránt nehezebb feladat.
+* A megrendelő csak a folyamat végén láthatja a rendszert, menet közben nincs lehetősége
+véleményezni azt.
+* A minőség szintén csak a folyamat utolsó fázisában mérhető.
+* Minden egyes fázis az előző fázis teljes befejezésére épít, ezzel jelentősen megnő a kockázat.
+* A fejlesztés során a követelmények nem módosíthatók, hiszen már az életciklus elején befagyasztjuk őket.
+* Már a fejlesztés kezdetén ismernünk kell valamennyi követelményt, azok későbbi
+módosítására vagy bővítésére nincs lehetőség.
+* Elképzelhető, hogy bár a végtermék megfelel valamennyi specifikációnak, mégsem
+működik (pl. mert az elvárásokban vannak ellentmondások).
+* Dokumentumvezérelt, és túlzott dokumentálási követelményeket állít fel.
+* Az egész szoftvertermék egy időben készül, nincs lehetőség kisebb részekre osztására.
+
+A vízesésmodell legfőbb problémáját a projekt szakaszainak különálló részekké történő
+nem flexibilis partícionálása okozza. Egy komplex, bonyolult probléma megoldása nem
+végezhető el hatékonyan ezzel a megközelítéssel. A vízesésmodell csak akkor használható
+jól, ha már előre jól ismerjük a követelményeket, melyeket részletes és pontos specifikáció
+követ.
+
+Az elméleti vízesésmodellel észlelt problémákra válaszul számos módosított vízesésmodellt
+vezettek be. A különböző módosított vízesésmodellek (ideértve Royce végső modelljét)
+azonban ennek a folyamatnak csekély vagy akár jelentős változásait is tartalmazhatják. 
+
+### A V-modell
+
+A V-modell egy módosított vízesés modellnek tekinthető, ami a nevét onnan kapta,
+hogy két szára van és így egy V betűhöz hasonlít. Az egyik szára megegyezik a vízesés
+modellel, ez a fejlesztési szár. A másik szára a létrejövő termékek tesztjeit tartalmazza,
+ez a tesztelési szár. Az egy szinten lévő fejlesztési és tesztelési lépések összetartoznak,
+azaz a tesztelési lépés a fejlesztési lépés során létrejött dokumentumokat használja,
+vagy a létrejött terméket teszteli.
+
+Ábrázolásánál a szoftverfejlesztési folyamat tervezési és tesztelési tevékenységeit
+helyezik előtérbe. Elsődlegesen azt szemlélteti, hogy az ilyen modellt megtestesítő
+fejlesztési folyamat során a tesztelési tevékenység végigköveti a teljes fejlesztési
+folyamatot. Hasonlóan a vízesés modellhez a fő tevékenységek ebben az esetben is
+szekvenciálisan követik egymást, azonban a V-modell lehetővé teszi az egy szinten
+elhelyezkedő tevékenységek részben párhuzamos végrehajtását is. A V-modell a vízesés
+modell kiegészítése teszteléssel. Ez azt jelenti, hogy először végre kell hajtani
+a fejlesztés lépéseit, ezután jönnek a tesztelés lépései. Ha valamelyik teszt hibát
+talál, akkor vissza kell menni a megfelelő fejlesztési lépésre. 
+
+A modell két ágában ábrázolt fejlesztési tevékenységek a tesztelési folyamat tevékenységeihez
+illeszkednek. A követelmény specifikáció elkészítésével párhuzamosan kidolgozzák
+azokat a teszteseteket, amelyekkel majd a kész szoftver funkcionális működését fogják
+tesztelni. A modell következő szintjén az architekturális tervezés és vele párhozamosan
+az integrációs tesztelés áll. Az architekturális tervezés célja a rendszer architektúrájának,
+a komponenseinek és interfészeinek megtervezése úgy, hogy azok kielégítsék a specifikációs
+követelményeket. Az architekturális tervezés során a rendszert alrendszerekre bontják
+és meghatározzák azokat az interfészeket, amelyeken keresztül a komponensek kommunikálni
+fognak. Ezzel a tervezési tevékenységgel egyidőben elkezdődik az integrációs tesztelés
+tervezése is, amely a rendszer inkrementális integrációjával nyert verziók tesztelését
+végzi abból a szempontból, hogy a szoftver komponensek megfelelően tudnak-e kommunikálni
+egymással az interfészeiken keresztül. A modell következő szintjén a komponens tervezés
+és az egységtesztelés áll. A komponensek tervezésével párhuzamosan elkészítik a komponensek
+egységtesztjeit. A folyamat legalsó részén az implementáció vagy kódolás áll. A fejlesztési
+tevékenység innen már kizárólag a jobb oldali ágon folytatódik az egyes tesztelési
+lépések végrehajtásával.
 
 ![Imgur](https://imgur.com/f2ljBbZ.png)
+
+### A két életciklusmodell összehasonlítása
+
+| Vízesésmodell | V modell |
+|---------------|----------|
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+
 
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
@@ -375,6 +507,7 @@ különböző folyamatmodellek alapján is kifejleszthetik.
 * Wikipédia: [Szoftverfejlesztési folyamat](https://hu.wikipedia.org/wiki/Szoftverfejleszt%C3%A9si_folyamat)
 * Wikipédia: [Unified Modeling Language](https://hu.wikipedia.org/wiki/Unified_Modeling_Language)
 * Wikipédia: [vízesésmodell](https://hu.wikipedia.org/wiki/V%C3%ADzes%C3%A9smodell)
+* Wikipédia: [V modell](https://hu.wikipedia.org/wiki/V_modell_(szoftverfejleszt%C3%A9s))
 * Microsoft 365 Team: [Egyszerű útmutató az UML típusú diagramkészítéshez és adatbázis-modellezéshez](https://www.microsoft.com/hu-hu/microsoft-365/business-insights-ideas/resources/guide-to-uml-diagramming-and-database-modeling)
 * Online diagram-készítő program: [Diagrams.net](https://app.diagrams.net/)
 * Dr. Daróczi, Miklós: [Projektmenedzsment](https://regi.tankonyvtar.hu/hu/tartalom/tamop412A/2010-0019_Projektmenedzsment/index.html)
@@ -386,6 +519,10 @@ különböző folyamatmodellek alapján is kifejleszthetik.
 	* [A használati eset modell](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch08.html)
 	* [Objektumorientált tervezés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch06s02.html)
 	* [Állapotgép diagram](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch10s03.html)
+* Ficsor Lajos, Kovács László, Kusper Gábor, Krizsán Zoltán: [Szoftvertesztelés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/index.html)
+	* [A szoftver életciklusa](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s02.html)
+	* [V-modell](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s03.html#id551431)
+	* [Scrum](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s03.html#id552054)
 * Dr. Ulbert Zsolt: [Szoftverfejlesztési folyamatok és szoftver minőségbiztosítás](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/)
 	* [A szoftverfolyamat modelljei](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch03.html#d0e518)
 	* [Objektumorientált tervezés](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch05.html)
