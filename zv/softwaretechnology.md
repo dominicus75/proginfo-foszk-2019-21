@@ -433,9 +433,11 @@ azonban ennek a folyamatnak csekély vagy akár jelentős változásait is tarta
 A V-modell egy módosított vízesés modellnek tekinthető, ami a nevét onnan kapta,
 hogy két szára van és így egy V betűhöz hasonlít. Az egyik szára megegyezik a vízesés
 modellel, ez a fejlesztési szár. A másik szára a létrejövő termékek tesztjeit tartalmazza,
-ez a tesztelési szár. Az egy szinten lévő fejlesztési és tesztelési lépések összetartoznak,
-azaz a tesztelési lépés a fejlesztési lépés során létrejött dokumentumokat használja,
-vagy a létrejött terméket teszteli.
+ez a tesztelési szár. Míg a tervezési folyamat fentről lefelé halad a diagram bal
+oldali ágában, a jobb oldali ágban a tesztelési folyamat lentről felfelé. Az egy
+szinten lévő fejlesztési és tesztelési lépések összetartoznak, azaz a tesztelési
+lépés a fejlesztési lépés során létrejött dokumentumokat használja, vagy a létrejött
+terméket teszteli.  
 
 Ábrázolásánál a szoftverfejlesztési folyamat tervezési és tesztelési tevékenységeit
 helyezik előtérbe. Elsődlegesen azt szemlélteti, hogy az ilyen modellt megtestesítő
@@ -448,7 +450,11 @@ a fejlesztés lépéseit, ezután jönnek a tesztelés lépései. Ha valamelyik 
 talál, akkor vissza kell menni a megfelelő fejlesztési lépésre. 
 
 A modell két ágában ábrázolt fejlesztési tevékenységek a tesztelési folyamat tevékenységeihez
-illeszkednek. A követelmény specifikáció elkészítésével párhuzamosan kidolgozzák
+illeszkednek.
+
+
+
+A követelmény specifikáció elkészítésével párhuzamosan kidolgozzák
 azokat a teszteseteket, amelyekkel majd a kész szoftver funkcionális működését fogják
 tesztelni. A modell következő szintjén az architekturális tervezés és vele párhozamosan
 az integrációs tesztelés áll. Az architekturális tervezés célja a rendszer architektúrájának,
@@ -464,7 +470,7 @@ egységtesztjeit. A folyamat legalsó részén az implementáció vagy kódolás
 tevékenység innen már kizárólag a jobb oldali ágon folytatódik az egyes tesztelési
 lépések végrehajtásával.
 
-![Imgur](https://imgur.com/f2ljBbZ.png)
+![Imgur](https://imgur.com/IoGancF.png)
 
 ### A két életciklusmodell összehasonlítása
 
