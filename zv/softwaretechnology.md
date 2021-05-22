@@ -517,7 +517,7 @@ illeszkednek.
     </td>
   </tr>
   <tr>
-    <td colspan="2" style="text-align: center;font-size: 20px;">Implementáció</td>
+    <td colspan="2" style="text-align:center;font-size:20px;">Implementáció</td>
   </tr>
 </table>
 
