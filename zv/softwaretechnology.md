@@ -462,10 +462,16 @@ illeszkednek.
   </tr>
   <tr>
     <td>
-	  **Követelmények meghatározása**
+      <dl>
+        <dt>Követelmények meghatározása</dt>
+        <dd></dd>
+      </dl>
     </td>
     <td>
-      **Felhasználói átvételi tesztelés**
+      <dl>
+        <dt>Felhasználói átvételi tesztelés</dt>
+        <dd></dd>
+      </dl>
     </td>
   </tr>
   <tr>
