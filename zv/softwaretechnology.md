@@ -720,10 +720,14 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 			
 ![Imgur](https://imgur.com/dCirtqj.png)</dd>
 			<dt>Kiterjesztés (extend)</dt>
-			<dd>A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
-			felé mutató szaggatott vonallal rajzolt nyíl, amelyet az «Extend» sztereotípiával
-			minősítünk.
-</dd>
+			<dd>A bővítés kapcsolat az jelenti, hogy egy használati eset bizonyos
+			esetekben (valamilyen feltétel fennállása esetén) egy másik funkció
+			végrehajtását igényli. A bővítő használati eset kiegészíti az alap
+			funkciót, vagy valamilyen kivételes esetet kezel. Az ilyen használati
+			eset önmagában – önállóan – nem fordulhat elő, és aktorral közvetlenül
+			nem lehet kapcsolatban.	A kiterjesztő kapcsolat jele a kiegészítő használati
+			eset felől az alap funkció felé mutató szaggatott vonallal rajzolt nyíl,
+			amelyet az «Extend» sztereotípiával minősítünk.</dd>
 		  </dl>
 	</dd>
 	<dt>Rendszerhatár (Boundary)</dt>
