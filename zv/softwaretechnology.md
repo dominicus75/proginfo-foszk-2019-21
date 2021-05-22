@@ -604,6 +604,65 @@ kell működniük a fejlesztőkkel, üzleti-elemzőkkel.
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
 
+A rendszerspecifikáció meghatározásához szükséges a rendszer céljának meghatározása,
+a rendszer tartalmának, működésének, határainak megállapítása; a rendszer felépítésének,
+szerkezetének a kialakítása valamint a rendszer erőforrásainak vizsgálata. Egy olyan
+feltételt, melynek a rendszer meg kell, hogy feleljen, vagy egy olyan képességet,
+melyet a rendszernek nyújtania kell, a rendszerrel szemben támasztott követelménynek
+nevezünk. Követelmény: pontosan megállapított tulajdonságok vagy korlátok halmaza,
+amelyeket az információrendszernek teljesítenie kell.
+
+A követelményspecifikáció, mint dokumentáció egy igazolt tervezést tesz lehetővé.
+Azaz, ha egy terv megfelel a dokumentációban megfogalmazott korlátoknak és tulajdonságoknak,
+akkor ez a terv a fejlesztési probléma egy elfogadható megoldását adja. A rendszerkövetelmények
+felhasználói szintűek, és arról szólnak, hogy milyen feladatokat, és hogyan végez
+el a felhasználó a rendszerrel. A rendszerfejlesztés használati eset centrikus; a
+használati esetek a teljes fejlesztés során központi szerepet játszanak.
+
+A **használati eset-modell** (*use case model*) a rendszer modellezése a felhasználó,
+megrendelő szemszögéből. Ez a modell a fejlesztés kezdeti fázisaiban lényegében kialakul,
+és végigkíséri a teljes fejlesztést. Tartalmazza a rendszerrel szemben támasztott
+felhasználói követelményeket, melyek a következő csoportokba sorolhatók:
+* **Felhasználók információs igényei**: kik és mire akarják használni a rendszert
+* **Funkcionális rendszerkövetelmények**: a rendszertől várt funkciókat és/vagy
+szolgáltatásokat írják le. A szoftverrendszer működésére, a tényleges funkcionalitásra
+vonatkozó leírások. A funkcionális követelmények leírása teljes és konzisztens kell,
+hogy legyen. A teljesség azt jelenti, hogy a felhasználók által igényelt összes
+szolgáltatást tartalmazza. A konzisztencia azt jelenti, hogy egy követelmény sem
+lehet ellentmondásban bármely másik követelménnyel.
+* **Nem funkcionális követelmények**: a rendszer működését befolyásoló követelmények
+és annak funkcióival és szolgáltatásaival kapcsolatos megszorítások. Például időbeli
+korlátozások, szabványok, hardver és szoftverkörnyezeti előírások, teljesítménykövetelmények, stb.
+
+A használati eset modell a rendszer felhasználói nézetét szemlélteti. A modell elemei:
+* egy vagy több használati eset diagram,
+* a diagramokon megjelenő modell elemek megnevezése, rövid, összefoglaló leírása,
+amely a fejlesztés korai fázisában kialakul,
+* az egyes modell elemek részletes specifikációja, amely a fejlesztés későbbi fázisaiban
+bővíti, pontosítja a modellt.
+
+A használati eset modell a feltárt követelmények elemzése alapján készülhet el.
+Jelölésrendszere elég egyszerű és szemléletes ahhoz, hogy a megrendelő is megértse,
+ezért alkalmas a megrendelő és a fejlesztő közötti kommunikáció pontosítására.
+
+A használati eset diagram a rendszer viselkedését írja le, ahogyan az egy külső
+szemlélő szemszögéből látszik. A rendszer belső szerkezetével nem foglalkozik. Általában
+a fejlesztési ciklus elején készítjük. Használati eset diagram készülhet egy
+már meglévő rendszerről (hogy a működését jobban megértsük), vagy egy tervezett rendszerről
+(hogy összegyűjthessük a rendszerkövetelményeket, hogy megmutathassuk a megrendelőknek,
+felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhassuk majd).
+
+A használati eset diagram elemei:
+<dl>
+	<dt>Aktorok</dt>
+	<dd></dd>
+	<dt>Használati esetek</dt>
+	<dd></dd>
+	<dt>Relációk</dt>
+	<dd></dd>
+</dl>
+
+
 ## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
 
 ## 5. Ismertesse a sorrend diagramot (egy konkrét példa is szükséges).
@@ -656,6 +715,7 @@ kell működniük a fejlesztőkkel, üzleti-elemzőkkel.
 	* [Az UML diagramok típusai](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch06.html#d0e2238)
 * Szabolcsi Judit: [Szoftvertechnológia](http://johanyak.hu/files/u1/segedlet/szoftvertechnologia/Szabolcsi_Judit_Szoftvertechnologia_2012.pdf)
 * Panem Könyvkiadó: [Szoftvertechnológia](https://gyires.inf.unideb.hu/GyBITT/31/index.html)
+* Dr. Szepesné Stiftinger Mária: [Rendszertervezés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0027_RSZ5/index.html)
 * Wikipédia: [Dinamikus rendszerfejlesztés folyamata](https://hu.wikipedia.org/wiki/Dinamikus_rendszerfejleszt%C3%A9s_folyamata)
 * Wikipédia: [Scrum](https://hu.wikipedia.org/wiki/Scrum)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
