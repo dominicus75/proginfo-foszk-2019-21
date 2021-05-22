@@ -619,7 +619,7 @@ felhasználói szintűek, és arról szólnak, hogy milyen feladatokat, és hogy
 el a felhasználó a rendszerrel. A rendszerfejlesztés használati eset centrikus; a
 használati esetek a teljes fejlesztés során központi szerepet játszanak.
 
-A **használati eset-modell** (*use case model*) a rendszer modellezése a felhasználó,
+A **használati eset-modell** (*use case model*)<sup id="3">[[3]](#note3)</sup> a rendszer modellezése a felhasználó,
 megrendelő szemszögéből. Ez a modell a fejlesztés kezdeti fázisaiban lényegében kialakul,
 és végigkíséri a teljes fejlesztést. Tartalmazza a rendszerrel szemben támasztott
 felhasználói követelményeket, melyek a következő csoportokba sorolhatók:
@@ -645,21 +645,43 @@ A használati eset modell a feltárt követelmények elemzése alapján készül
 Jelölésrendszere elég egyszerű és szemléletes ahhoz, hogy a megrendelő is megértse,
 ezért alkalmas a megrendelő és a fejlesztő közötti kommunikáció pontosítására.
 
-A használati eset diagram a rendszer viselkedését írja le, ahogyan az egy külső
+A **használati eset diagram** a rendszer viselkedését írja le, ahogyan az egy külső
 szemlélő szemszögéből látszik. A rendszer belső szerkezetével nem foglalkozik. Általában
 a fejlesztési ciklus elején készítjük. Használati eset diagram készülhet egy
 már meglévő rendszerről (hogy a működését jobban megértsük), vagy egy tervezett rendszerről
 (hogy összegyűjthessük a rendszerkövetelményeket, hogy megmutathassuk a megrendelőknek,
 felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhassuk majd).
 
-A használati eset diagram elemei:
+### A használati eset diagram elemei:
 <dl>
-	<dt>Aktorok</dt>
+	<dt>Aktor</dt>
+	<dd>Egy szerepkört reprezentál (személy, csoport, szervezeti egység vagy fizikai
+	eszköz, aki vagy ami kapcsolatba lép a rendszerrel). Az aktor a rendszeren kívül
+	áll. Használati eseteket indítványozhat, illetve fogadhat, de passzív is lehet.
+	Az aktor tehát a felhasználó egy lehetséges szerepkörét jelenti, amelyet betöltve
+	lép kapcsolatba a rendszerrel, hogy annak információt szolgáltasson, vagy egy
+	szolgáltatását igénybe vegye. Jogosultságot is kifejezhet. Aktor nem csak személy
+	lehet, hanem valamilyen külső rendszer, eszköz is. A felhasználó és az aktor
+	fogalmak között több-több kapcsolat van:
+	* *Több felhasználó - egy aktor*: sok tényleges felhasználó léphet kapcsolatba
+	a rendszerrel ugyanolyan szerepkörben
+	* *Egy felhasználó - több aktor*: ugyanaz a személy több szerepkörben is használhatja
+	a rendszert.
+	Az aktor szimbóluma egy pálcikaember. A szimbólum alá kell írni a szerepkör
+	megnevezését.</dd>
+	<dt>Használati eset (use case)</dt>
+	<dd>Egy jól meghatározott funkció, elvárt viselkedési minta, melynek végrehajtása
+	a rendszer és egy aktor közötti üzenetváltást kíván. A használati eset a rendszer,
+	az alrendszer vagy egy osztály által végrehajtott művelet-együttes. Mindig a
+	felhasználó/aktor által elvárt feladatmegoldást jelöli, a konkrét felhasználói
+	cél elérését rögzíti. A használati eset jele egy ellipszis. Az ellipszisbe, vagy
+	az alá kell írni a megnevezését.</dd>
+	<dt>Reláció</dt>
 	<dd></dd>
-	<dt>Használati esetek</dt>
-	<dd></dd>
-	<dt>Relációk</dt>
-	<dd></dd>
+	<dt>Rendszerhatár (Boundary)</dt>
+	<dd>A megvalósítandó rendszer és a szereplők közötti határ. Rajzjele téglalap,
+	amelyen kivül az aktorok, belül a használati eseteket jelképező elipszisek
+	foglalnak helyet.</dd>
 </dl>
 
 
@@ -684,6 +706,16 @@ A használati eset diagram elemei:
 ### Jegyzetek:
 * <span id="note1">[[1]](#1)</span> Ian Sommerville: Szoftverrendszerek fejlesztése - Software Engineering, 64. oldal
 * <span id="note2">[[2]](#2)</span> Ian Sommerville: i. m., 65. oldal
+* <span id="note3">[[3]](#3)</span> „Noha első látásra hasonlónak tűnhetnek, a diagramok
+	és a modellek különböznek egymástól. A modell elvont ábrázolás, amely a modellezett
+	dolog céljának meghatározásához szükséges összes elemet (üzleti, kapcsolati,
+	rendszer- és egyéb tényezőket)tartalmazza. A diagram ezzel szemben konkrét
+	rálátást ad valamire, amit meghatározott környezetben akarunk megérteni. A diagram
+	csupán a modell egészének vagy részének egy adott nézőpontja. Egy bizonyos modellezési
+	elem csak egyszer szerepelhet a modellben, de ugyanaz az elem több diagramban is
+	megjelenthet. [...] A modellek (tehát) több diagramból állnak, a diagramok pedig
+	az elemek és azok más elemekkel való kölcsönhatásának ábrázolásai.”
+	(Robert A. Maksimchuk - Eric J. Naiburg: UML földi halandóknak, 14. oldal Kiskapu Kiadó Budapest, 2006.)
 
 ### Felhasznált (ajánlott) irodalom:
 
