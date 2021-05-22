@@ -475,19 +475,49 @@ illeszkednek.
     </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+      <dl>
+        <dt>Rendszertervezés</dt>
+        <dd></dd>
+      </dl>
+    </td>
+    <td>
+      <dl>
+        <dt>Rendszerteszt</dt>
+        <dd></dd>
+      </dl>
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+      <dl>
+        <dt>Architektúrális tervezés/dt>
+        <dd></dd>
+      </dl>
+    </td>
+    <td>
+      <dl>
+        <dt>Integrációs teszt</dt>
+        <dd></dd>
+      </dl>
+    </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+      <dl>
+        <dt>Komponens tervezés</dt>
+        <dd></dd>
+      </dl>
+    </td>
+    <td>
+      <dl>
+        <dt>Egységteszt</dt>
+        <dd></dd>
+      </dl>
+    </td>
   </tr>
   <tr>
-    <td colspan="2"></td>
+    <td colspan="2">Implementáció</td>
   </tr>
 </table>
 
