@@ -452,27 +452,41 @@ talál, akkor vissza kell menni a megfelelő fejlesztési lépésre.
 A modell két ágában ábrázolt fejlesztési tevékenységek a tesztelési folyamat tevékenységeihez
 illeszkednek.
 
+<table>
+  <tr>
+    <th>Fejlesztési ág</th>
+    <th>Tesztelési ág</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+</table>
 
 
-A követelmény specifikáció elkészítésével párhuzamosan kidolgozzák
-azokat a teszteseteket, amelyekkel majd a kész szoftver funkcionális működését fogják
-tesztelni. A modell következő szintjén az architekturális tervezés és vele párhozamosan
-az integrációs tesztelés áll. Az architekturális tervezés célja a rendszer architektúrájának,
-a komponenseinek és interfészeinek megtervezése úgy, hogy azok kielégítsék a specifikációs
-követelményeket. Az architekturális tervezés során a rendszert alrendszerekre bontják
-és meghatározzák azokat az interfészeket, amelyeken keresztül a komponensek kommunikálni
-fognak. Ezzel a tervezési tevékenységgel egyidőben elkezdődik az integrációs tesztelés
-tervezése is, amely a rendszer inkrementális integrációjával nyert verziók tesztelését
-végzi abból a szempontból, hogy a szoftver komponensek megfelelően tudnak-e kommunikálni
-egymással az interfészeiken keresztül. A modell következő szintjén a komponens tervezés
-és az egységtesztelés áll. A komponensek tervezésével párhuzamosan elkészítik a komponensek
-egységtesztjeit. A folyamat legalsó részén az implementáció vagy kódolás áll. A fejlesztési
-tevékenység innen már kizárólag a jobb oldali ágon folytatódik az egyes tesztelési
-lépések végrehajtásával.
 
 ![Imgur](https://imgur.com/IoGancF.png)
 
 ### A két életciklusmodell összehasonlítása
+
+A V-modell hasonlóan a vízesés modellhez nagyon merev, de alkalmazói kevésbé ragaszkodnak
+ehhez a merevséghez, mint a vízesés modellnél. Ennek megfelelően jobban elterjedt.
+Fő jellemzője a teszt központi szerepe.
 
 | Vízesésmodell | V modell |
 |---------------|----------|
