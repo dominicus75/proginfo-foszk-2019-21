@@ -694,7 +694,8 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 ![Imgur](https://imgur.com/SNIAg6Q.png)</dd>
 			<dt>Generalizáció (általánosítás, öröklés)</dt>
 			<dd>A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
-			mutató, háromszögben végződő folyamatos vonal.</dd>
+			mutató, háromszögben végződő folyamatos vonal.
+![Imgur](https://imgur.com/8UFwogb.png)</dd>
 			<dt>Tartalmazás (include)</dt>
 			<dd>A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott felé mutató,
 			szaggatott vonallal rajzolt nyíl, amelyet az «Include» sztereotípiával
