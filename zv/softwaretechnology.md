@@ -663,10 +663,12 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	szolgáltatását igénybe vegye. Jogosultságot is kifejezhet. Aktor nem csak személy
 	lehet, hanem valamilyen külső rendszer, eszköz is. A felhasználó és az aktor
 	fogalmak között több-több kapcsolat van:
-	* *Több felhasználó - egy aktor*: sok tényleges felhasználó léphet kapcsolatba
-	a rendszerrel ugyanolyan szerepkörben
-	* *Egy felhasználó - több aktor*: ugyanaz a személy több szerepkörben is használhatja
-	a rendszert.
+	<ul>
+	<li>Több felhasználó - egy aktor*: sok tényleges felhasználó léphet kapcsolatba
+	a rendszerrel ugyanolyan szerepkörben</li>
+	<li>Egy felhasználó - több aktor*: ugyanaz a személy több szerepkörben is használhatja
+	a rendszert.</li>
+	</ul>
 	Az aktorok egy meghatározott feladatkört (szerepet, jogosultságot) betöltve lépnek
 	kapcsolatba a rendszerrel, csak a konkrét szerepkör birtokában használhatják a
 	szoftverrendszert és azok szolgáltatásait. A feladatok végrehajtását kezdeményező
@@ -686,24 +688,39 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	<dd>
 		  <dl>
 			<dt>Asszociáció (társítási, vagy kommunikációs kapcsolat)</dt>
-			<dd>Jele egy vonal a két elem között. Egyes UML szerkesztők nyilat használnak,
+			<dd>Csak aktor és használati eset között jöhet létre. Azt jelenti, hogy
+			az aktor használja a használati esetet (vagy információt kap tőle).
+			Jele egy vonal a két elem között. Egyes UML szerkesztők nyilat használnak,
 			ami lehetővé teszi, hogy hangsúlyozzuk, hogy az aktor kezdeményező (ekkor
 			a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
 			aktor felé mutat) viszonyban van a használati esettel.
-			
 ![Imgur](https://imgur.com/SNIAg6Q.png)</dd>
 			<dt>Generalizáció (általánosítás, öröklés)</dt>
-			<dd>A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
-			mutató, háromszögben végződő folyamatos vonal.
+			<dd>Használati esetek között jelölhető az objektum orientált programozásból
+			már ismert általánosítás – pontosítás kapcsolat. Ha A használati eset
+			leszármazottja B, akkor azt jelenti, hogy B egy speciális esete A-nak
+			(azaz tudja mindazt, amit A, de van néhány speciális, csak rá jellemző
+			tulajdonsága). Az aktorok között csak az általánosítás – pontosítás
+			kapcsolat lehetséges. Minden más kapcsolat – ha a valóságban létezik is – a
+			rendszeren kívüli, ezért a rendszer szempontjából közömbös. A generalizáló
+			kapcsolat jele a speciális felől az általános (szülő) felé mutató, háromszögben
+			végződő folyamatos vonal.
 ![Imgur](https://imgur.com/8UFwogb.png)</dd>
 			<dt>Tartalmazás (include)</dt>
-			<dd>A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott felé mutató,
-			szaggatott vonallal rajzolt nyíl, amelyet az «Include» sztereotípiával
-			minősítünk.	</dd>
+			<dd>A és B használati eset között tartalmazás (include) kapcsolat áll fenn,
+			ha az A használati eset végrehajtásakor a B mindig, feltétel nélkül
+			végrehajtódik. Az A használati esetnek részét képezi B, esetleg B ismétlődésével
+			hajtható végre. A tartalmazott használati eset lehet közvetett kapcsolatban
+			egy aktorral, a tartalmazó funkción keresztül, de közvetlen kapcsolatban is
+			állhat vele. A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott
+			felé mutató, szaggatott vonallal rajzolt nyíl, amelyet az «Include»
+			sztereotípiával minősítünk.
+![Imgur](https://imgur.com/dCirtqj.png)</dd>
 			<dt>Kiterjesztés (extend)</dt>
 			<dd>A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
 			felé mutató szaggatott vonallal rajzolt nyíl, amelyet az «Extend» sztereotípiával
-			minősítünk.</dd>
+			minősítünk.
+</dd>
 		  </dl>
 	</dd>
 	<dt>Rendszerhatár (Boundary)</dt>
