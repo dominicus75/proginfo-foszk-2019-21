@@ -604,14 +604,6 @@ kell működniük a fejlesztőkkel, üzleti-elemzőkkel.
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
 
-A rendszerspecifikáció meghatározásához szükséges a rendszer céljának meghatározása,
-a rendszer tartalmának, működésének, határainak megállapítása; a rendszer felépítésének,
-szerkezetének a kialakítása valamint a rendszer erőforrásainak vizsgálata. Egy olyan
-feltételt, melynek a rendszer meg kell, hogy feleljen, vagy egy olyan képességet,
-melyet a rendszernek nyújtania kell, a rendszerrel szemben támasztott követelménynek
-nevezünk. Követelmény: pontosan megállapított tulajdonságok vagy korlátok halmaza,
-amelyeket az információrendszernek teljesítenie kell.
-
 A követelményspecifikáció, mint dokumentáció egy igazolt tervezést tesz lehetővé.
 Azaz, ha egy terv megfelel a dokumentációban megfogalmazott korlátoknak és tulajdonságoknak,
 akkor ez a terv a fejlesztési probléma egy elfogadható megoldását adja. A rendszerkövetelmények
@@ -736,6 +728,46 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	foglalnak helyet.</dd>
 </dl>
 
+### Használati eset diagram elemeinek azonosítása
+
+A használati eset modell a rendszer funkcionális követelményleírásának elemzése
+segítségével készíthető el. Első lépésként célszerű az aktorokat azonosítani, mert
+az általában könnyebb, és még bonyolult rendszerek esetén sem kell túl sok aktorral
+számolnunk. Az aktorok köre már a fejlesztés elején is pontosan meghatározható.
+Az aktorokra a feladat leírásában, a funkciólistákban többnyire valamilyen főnévvel
+hivatkozunk. Fontos azonban, hogy az aktor
+* a rendszeren kívül létező entitás
+* a rendszerrel valamilyen funkcionális kapcsolatba kerül.
+
+Az aktorok azonosításának elsődleges célja, hogy megtudjuk, hogy ki vagy mi fog
+kapcsolatba kerülni a fejlesztendő rendszerrel. Azonosításukra több lehetőség nyílik.
+A felhasználóval folytatott beszélgetések, a felhasználói célokat összefoglaló
+dokumentumok alapján körvonalazódik, hogy mik, vagy kik az érdekeltek a rendszer
+határán kívül, amik/akik közvetlenül kapcsolatba kerülnek, kommunikálnak a
+szoftverrendszerrel. A munkafolyamat végén az egyes aktorokról egy rövid leírást
+kell készíteni, hogy mit vár a rendszertől, és egyben mi a felelőssége.
+
+Következő lépés a használati esetek azonosítása. Egy bonyolult rendszer esetén
+nagyon sok használati esettel kell foglalkozni, ezért ebben is az inkrementális
+megközelítés javasolt. Használati esetekre valamilyen igei szerkezet utalhat a
+feladat leírásában, azonban nem olyan közvetlenül, mint az aktorok esetén. A tapasztalatok
+szerint egy áttekinthető használati eset diagram legfeljebb tíz-húsz használati esetet
+tartalmazhat. A használati eset modellt tehát számos használati eset diagramból kell
+felépíteni. Ezt úgy tudjuk elérni, hogy
+* a rendszert részrendszerekre bontjuk, és azokat külön-külön modellezzük,
+* előbb nagyobb funkcionális egységeket modellezünk egy használati esetként, majd
+ezeket részletezve jutunk el a finomabb felbontásig.
+
+A diagram rajzolása során mind az aktoroknak, mind a használati eseteknek nevet kell
+adni. Az elnevezések nem csak azonosító szerepet töltenek be, hanem segítenek a diagram
+tartalmának megértésében is. Minden további modell típusra is általánosan érvényes
+az, hogy az elnevezési kényszer egyben annak ellenőrzése, hogy az adott funkciót,
+fogalmat, kapcsolatot – általánosságban minden modell elem jelentését pontosan
+megértettük-e. A tapasztalatok alapján elmondható, hogy ha egy modell elemre nem
+tudunk rövid, frappáns, kifejező elnevezést találni, annak mindig az az oka, hogy
+nem tisztáztuk pontosan az adott elem jelentését és a modellen belül játszott szerepét.
+
+### Egy konkrét példa
 
 ## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
 
