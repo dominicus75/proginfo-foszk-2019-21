@@ -587,19 +587,20 @@ illeszkednek.
 
 ### A két életciklusmodell összehasonlítása
 
+A V-modell a vízesés szoftverfejlesztési modell kiterjesztésének tekinthető. Ugyanazokat
+a kapcsolatokat használja a vízesés modellben meghatározott fázisok között. De a
+lineáris lejtés helyett a V-modell lépcsőzetesen lefelé halad, majd visszafelé
+(kódolási fázis után).
+
 A V-modell hasonlóan a vízesés modellhez nagyon merev, de alkalmazói kevésbé ragaszkodnak
 ehhez a merevséghez, mint a vízesés modellnél. Ennek megfelelően jobban elterjedt.
-Fő jellemzője a teszt központi szerepe.
-
-| Vízesésmodell | V modell |
-|---------------|----------|
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-
-
+Fő jellemzője a teszt központi szerepe. A vízesés és a V-modell közötti egyik lényeges
+különbség az, hogy a vízesés modellben a szoftveres tesztelés a fejlesztési szakasz
+befejezése után történik, míg a V-modellben a fejlesztési ciklus minden szakaszának
+van egy közvetlenül társított tesztelési fázisa. A V-modell útmutatást nyújt ahhoz,
+hogy a tesztelést a lehető legkorábban el kell kezdeni az életciklusban, ezeket a
+tevékenységeket a fejlesztéssel párhuzamosan kell elvégezni, és a tesztelőknek együtt
+kell működniük a fejlesztőkkel, üzleti-elemzőkkel.
 
 ## 3. Ismertesse részletesen a használati eset diagramot és annak elemeit (egy konkrét példa is szükséges).
 
