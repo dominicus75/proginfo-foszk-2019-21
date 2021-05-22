@@ -684,39 +684,25 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	az alá kell írni a megnevezését.</dd>
 	<dt>Reláció</dt>
 	<dd>
-	  <dl>
-		<dt>Asszociáció (társítási, vagy kommunikációs kapcsolat)</dt>
-		<dd>
-
-		Jele egy vonal a két elem között. Egyes UML szerkesztők nyilat használnak,
-		ami lehetővé teszi, hogy hangsúlyozzuk, hogy az aktor kezdeményező (ekkor
-		a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
-		aktor felé mutat) viszonyban van a használati esettel.
-		![Association](https://imgur.com/SNIAg6Q.png)
-		</dd>
-		<dt>Generalizáció (általánosítás, öröklés)</dt>
-		<dd>
-
-		A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
-		mutató, háromszögben végződő folyamatos vonal.
-
-		</dd>
-		<dt>Tartalmazás (include)</dt>
-		<dd>
-
-		A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott felé mutató,
-		szaggatott vonallal rajzolt nyíl, amelyet az «Include» sztereotípiával minősítünk.
-
-		</dd>
-		<dt>Kiterjesztés (extend)</dt>
-		<dd>
-
-		A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
-		felé mutató szaggatott vonallal rajzolt nyíl, amelyet az «Extend» sztereotípiával
-		minősítünk.
-
-		</dd>
-	  </dl>
+		  <dl>
+			<dt>Asszociáció (társítási, vagy kommunikációs kapcsolat)</dt>
+			<dd>Jele egy vonal a két elem között. Egyes UML szerkesztők nyilat használnak,
+			ami lehetővé teszi, hogy hangsúlyozzuk, hogy az aktor kezdeményező (ekkor
+			a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
+			aktor felé mutat) viszonyban van a használati esettel.
+			![Association](https://imgur.com/SNIAg6Q.png)</dd>
+			<dt>Generalizáció (általánosítás, öröklés)</dt>
+			<dd>A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
+			mutató, háromszögben végződő folyamatos vonal.</dd>
+			<dt>Tartalmazás (include)</dt>
+			<dd>A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott felé mutató,
+			szaggatott vonallal rajzolt nyíl, amelyet az «Include» sztereotípiával
+			minősítünk.	</dd>
+			<dt>Kiterjesztés (extend)</dt>
+			<dd>A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
+			felé mutató szaggatott vonallal rajzolt nyíl, amelyet az «Extend» sztereotípiával
+			minősítünk.</dd>
+		  </dl>
 	</dd>
 	<dt>Rendszerhatár (Boundary)</dt>
 	<dd>A megvalósítandó rendszer és a szereplők közötti határ. Rajzjele téglalap,
