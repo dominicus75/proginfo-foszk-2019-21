@@ -457,8 +457,8 @@ illeszkednek.
 
 <table>
   <tr>
-    <th align="left" width="50%" class="bg-blue"><h3>Fejlesztési ág</h3></th>
-    <th align="right" class="bg-red"><h3>Tesztelési ág</h3></th>
+    <th align="left" width="50%"><h3>Fejlesztési ág</h3></th>
+    <th align="right" width="50%"><h3>Tesztelési ág</h3></th>
   </tr>
   <tr>
     <td>
@@ -481,10 +481,11 @@ illeszkednek.
     <td align="right">
       <dl>
         <dt>Felhasználói átvételi tesztelés</dt>
-        <dd>A felhasználói elfogadási tesztet a követelmény specifikáció alapján,
-        olyan felhasználói környezetben hajtják végre, amely hasonlít a valós termelési
-        környezetre, ahol már valósághű adatokat használnak fel. Ez a teszt ellenőrzi,
-        hogy az elkészített és leszállított rendszer megfelel-e a felhasználó igényeinek,
+        <dd>A felhasználói elfogadási tesztterveket a követelményelemzés fázisában
+        dolgozzák ki. A tesztet a követelmény specifikáció alapján, olyan felhasználói
+        környezetben hajtják végre, amely hasonlít a valós termelési környezetre,
+        ahol már valósághű adatokat használnak fel. Ez a teszt ellenőrzi, hogy az
+        elkészített és leszállított rendszer megfelel-e a felhasználó igényeinek,
         illetve a rendszer már készen áll-e a használatra a mindennapokban.</dd>
       </dl>
     </td>
@@ -493,13 +494,28 @@ illeszkednek.
     <td>
       <dl>
         <dt>Rendszertervezés</dt>
-        <dd></dd>
+        <dd>A rendszertervezés az a szakasz, amelyben a rendszermérnökök a felhasználói
+        követelményekről szóló dokumentum tanulmányozásával elemzik és megértik a
+        javasolt rendszer üzleti tevékenységét. Megtalálják azokat a lehetőségeket
+        és technikákat, amelyekkel a felhasználói igények megvalósíthatók. Elkészül
+        a szoftver specifikációs dokumentuma, amely konkrét tervként szolgál a
+        fejlesztési szakasz számára, tartalmazza az általános rendszer felépítést,
+        menüszerkezeteket, adatszerkezeteket stb. Ebben a szakaszban más műszaki
+        dokumentáció is készül, például egyed-kapcsolat diagramok, adatszótár. A
+        rendszer tesztelésére szolgáló dokumentumok is ekkor készülnek.</dd>
       </dl>
     </td>
     <td align="right">
       <dl>
         <dt>Rendszerteszt</dt>
-        <dd></dd>
+        <dd>A rendszertesztelési terveket a rendszer tervezési szakaszában dolgozzák ki.
+        A terveket az ügyfél üzleti csapata állítja össze. A rendszerteszt biztosítja,
+        hogy a kifejlesztett alkalmazás elvárásai teljesüljenek. A teljes
+        alkalmazás funkcionalitását, kölcsönös függőségét és más alkalmazásokkal
+        való kommunikációját tesztelik. A rendszer tesztelése azt vizsgálja, hogy
+        a funkcionális és nem funkcionális követelmények teljesültek-e. A terheléses
+        tesztelés, a teljesítmény teszt, a stressz tesztelés, a regressziós tesztelés
+        mind a rendszer tesztelésének a része.</dd>
       </dl>
     </td>
   </tr>
@@ -507,13 +523,21 @@ illeszkednek.
     <td>
       <dl>
         <dt>Architektúrális tervezés</dt>
-        <dd></dd>
+        <dd>Az architektúra kiválasztásának alapja az, hogy megvalósítsa mindazt,
+        amely jellemzően a modulok listájából, az egyes modulok rövid funkcionalitásából,
+        az interfészkapcsolatokból, függőségekből, adatbázis-táblázatokból, architekturális
+        diagramokból, technológiai részletekből stb. áll. A architektúrális terv
+        a rendszert felépítő alrendszereket és a köztük	lévő kapcsolatokat azonosítja
+        és dokumentáljaleírja, leírja, hogy a komponensek hogyan működnek együtt.</dd>
       </dl>
     </td>
     <td align="right">
       <dl>
         <dt>Integrációs teszt</dt>
-        <dd></dd>
+        <dd>Az integrációs tesztterveket az architekturális tervezési szakaszban dolgozzák
+        ki. Ezek a tesztek azt vizsgálják, hogy az önállóan létrehozott és tesztelt
+        egységek nem ütköznek-e és kommunikálni is tudnak egymással. Ezeket a teszteredményeket
+        már megosztják az ügyfél csapatával.</dd>
       </dl>
     </td>
   </tr>
@@ -521,13 +545,31 @@ illeszkednek.
     <td>
       <dl>
         <dt>Komponens tervezés</dt>
-        <dd></dd>
+        <dd>A tervezett rendszert kisebb egységekre vagy modulokra bontják, és mindegyiket
+        részletesen kifejtik, hogy a programozók közvetlenül neki tudjanak kezdeni
+        a kód megírásának. Az alacsony szintű tervezési dokumentum vagy programspecifikációk
+        tartalmazni fogják a modul részletes funkcionális logikáját, pszeudokódban kifejtve:
+		* adatbázis-táblázatokat az összes elemmel, beleértve azok típusát és a méretét
+		* összes interfészt részletes és teljes API-referenciákkal
+		* összes függőségi kérdést
+		* hibaüzenetek felsorolását
+		* teljes bemeneti és kimeneti modulokat.
+		
+        Ebben a szakaszban tervezik meg az egységtesztek tesztelésének folyamatát is.</dd>
       </dl>
     </td>
     <td align="right">
       <dl>
         <dt>Egységteszt</dt>
-        <dd></dd>
+        <dd>Az egységtesztelési terveket a modul tervezési szakaszában fejlesztik ki.
+        Ezeket az egységteszteket még a kódolási vagy egységi (unit) szinten lefuttatják,
+        hogy ki tudják küszöbölni a felmerülő hibákat. Az egység a legkisebb entitás,
+        amely függetlenül létezhet, ilyen például egy programmodul. Az egységtesztelés
+        a forráskód egységeit a kapcsolódó vezérlő adatokkal, a felhasználási-és a
+        működtető eljárásokkal együtt teszteli annak meghatározására, hogy azok
+        elérik-e kitűzött céljukat. Ellenőrzi, hogy a legkisebb entitás megfelelően
+        tud-e működni, ha elkülönül más egységektől. Az egységtesztek általában
+        automatizált tesztek, amelyeket a szoftverfejlesztők írnak és futtatnak.</dd>
       </dl>
     </td>
   </tr>
@@ -535,7 +577,7 @@ illeszkednek.
     <td colspan="2" align="center">
       <dl>
         <dt>Implementáció</dt>
-        <dd></dd>
+        <dd>A rendszerspecifikáció futtatható rendszerré történő konvertálása</dd>
       </dl>
     </td>
   </tr>
