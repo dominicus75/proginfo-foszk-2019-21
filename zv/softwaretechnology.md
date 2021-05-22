@@ -491,7 +491,7 @@ illeszkednek.
   <tr>
     <td>
       <dl>
-        <dt>Architektúrális tervezés/dt>
+        <dt>Architektúrális tervezés</dt>
         <dd></dd>
       </dl>
     </td>
@@ -517,7 +517,7 @@ illeszkednek.
     </td>
   </tr>
   <tr>
-    <td colspan="2">Implementáció</td>
+    <td colspan="2" style="text-align: center;font-size: 20px;">Implementáció</td>
   </tr>
 </table>
 
