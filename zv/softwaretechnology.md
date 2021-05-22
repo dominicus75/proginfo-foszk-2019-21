@@ -554,8 +554,7 @@ illeszkednek.
 		* összes függőségi kérdést
 		* hibaüzenetek felsorolását
 		* teljes bemeneti és kimeneti modulokat.
-		
-        Ebben a szakaszban tervezik meg az egységtesztek tesztelésének folyamatát is.</dd>
+		Ebben a szakaszban tervezik meg az egységtesztek tesztelésének folyamatát is.</dd>
       </dl>
     </td>
     <td align="right">
