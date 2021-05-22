@@ -457,8 +457,8 @@ illeszkednek.
 
 <table>
   <tr>
-    <th align="left" width="50%"><h3>Fejlesztési ág</h3></th>
-    <th align="right"><h3>Tesztelési ág</h3></th>
+    <th align="left" width="50%" class="bg-blue"><h3>Fejlesztési ág</h3></th>
+    <th align="right" class="bg-red"><h3>Tesztelési ág</h3></th>
   </tr>
   <tr>
     <td>
