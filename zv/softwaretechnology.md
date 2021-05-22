@@ -464,13 +464,28 @@ illeszkednek.
     <td>
       <dl>
         <dt>Követelmények meghatározása</dt>
-        <dd></dd>
+        <dd>
+          A követelményelemzési fázisban a rendszer követelményeit a felhasználó(k)
+          igényeinek elemzésével gyűjtik össze. Ez a szakasz annak meghatározására
+          irányul, hogy miként kell működnie az ideális rendszernek.
+		  A követelmény specifikációban jól meghatározott átvételi kritériumokat
+		  fogalmaznak meg, amik lehetnek funkcionális és nemfunkcionális igények
+		  is. Ez lesz majd az alapja a felhasználói átvételi tesztnek (User Acceptance
+		  Test, UAT). Különböző módszereket alkalmaznak a felhasználói követelmények
+		  összegyűjtésére. Ilyenek például a felhasználókkal készített interjúk,
+		  kérdőívek, dokumentumelemzések, megfigyelések, prototípusok készítése,
+		  használati esetek (use case), statikus és dinamikus nézetek használata.
+        </dd>
       </dl>
     </td>
     <td align="right">
       <dl>
         <dt>Felhasználói átvételi tesztelés</dt>
-        <dd></dd>
+        <dd>A felhasználói elfogadási tesztet a követelmény specifikáció alapján,
+        olyan felhasználói környezetben hajtják végre, amely hasonlít a valós termelési
+        környezetre, ahol már valósághű adatokat használnak fel. Ez a teszt ellenőrzi,
+        hogy az elkészített és leszállított rendszer megfelel-e a felhasználó igényeinek,
+        illetve a rendszer már készen áll-e a használatra a mindennapokban.</dd>
       </dl>
     </td>
   </tr>
