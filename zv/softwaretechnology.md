@@ -452,14 +452,21 @@ talál, akkor vissza kell menni a megfelelő fejlesztési lépésre.
 A modell két ágában ábrázolt fejlesztési tevékenységek a tesztelési folyamat tevékenységeihez
 illeszkednek.
 
+![Imgur](https://imgur.com/IoGancF.png)
+
+
 <table>
   <tr>
     <th>Fejlesztési ág</th>
     <th>Tesztelési ág</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>
+	  **Követelmények meghatározása**
+    </td>
+    <td>
+      **Felhasználói átvételi tesztelés**
+    </td>
   </tr>
   <tr>
     <td></td>
@@ -478,9 +485,6 @@ illeszkednek.
   </tr>
 </table>
 
-
-
-![Imgur](https://imgur.com/IoGancF.png)
 
 ### A két életciklusmodell összehasonlítása
 
