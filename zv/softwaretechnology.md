@@ -667,8 +667,14 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	a rendszerrel ugyanolyan szerepkörben
 	* *Egy felhasználó - több aktor*: ugyanaz a személy több szerepkörben is használhatja
 	a rendszert.
-	Az aktor szimbóluma egy pálcikaember. A szimbólum alá kell írni a szerepkör
-	megnevezését.</dd>
+	Az aktorok egy meghatározott feladatkört (szerepet, jogosultságot) betöltve lépnek
+	kapcsolatba a rendszerrel, csak a konkrét szerepkör birtokában használhatják a
+	szoftverrendszert és azok szolgáltatásait. A feladatok végrehajtását kezdeményező
+	szereplőket kezdeményező szereplőnek, a funkció, használati eset megvalósításában
+	részt vevőket résztvevő szereplőnek hívjuk. Egy használati esetet mindig csak
+	egy aktor kezdeményezhet, egy használati eset megvalósításában viszont több aktor
+	is részt vehet.	Az aktor szimbóluma egy pálcikaember. A szimbólum alá kell írni
+	a szerepkör megnevezését.</dd>
 	<dt>Használati eset (use case)</dt>
 	<dd>Egy jól meghatározott funkció, elvárt viselkedési minta, melynek végrehajtása
 	a rendszer és egy aktor közötti üzenetváltást kíván. A használati eset a rendszer,
@@ -677,7 +683,41 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 	cél elérését rögzíti. A használati eset jele egy ellipszis. Az ellipszisbe, vagy
 	az alá kell írni a megnevezését.</dd>
 	<dt>Reláció</dt>
-	<dd></dd>
+	<dd>
+	  <dl>
+		<dt>Asszociáció (társítási, vagy kommunikációs kapcsolat)</dt>
+		<dd>
+
+		Jele egy vonal a két elem között. Egyes UML szerkesztők nyilat használnak,
+		ami lehetővé teszi, hogy hangsúlyozzuk, hogy az aktor kezdeményező (ekkor
+		a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
+		aktor felé mutat) viszonyban van a használati esettel.
+		![Association](https://imgur.com/SNIAg6Q.png)
+		</dd>
+		<dt>Generalizáció (általánosítás, öröklés)</dt>
+		<dd>
+
+		A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
+		mutató, háromszögben végződő folyamatos vonal.
+
+		</dd>
+		<dt>Tartalmazás (include)</dt>
+		<dd>
+
+		A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott felé mutató,
+		szaggatott vonallal rajzolt nyíl, amelyet az «Include» sztereotípiával minősítünk.
+
+		</dd>
+		<dt>Kiterjesztés (extend)</dt>
+		<dd>
+
+		A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
+		felé mutató szaggatott vonallal rajzolt nyíl, amelyet az «Extend» sztereotípiával
+		minősítünk.
+
+		</dd>
+	  </dl>
+	</dd>
 	<dt>Rendszerhatár (Boundary)</dt>
 	<dd>A megvalósítandó rendszer és a szereplők közötti határ. Rajzjele téglalap,
 	amelyen kivül az aktorok, belül a használati eseteket jelképező elipszisek
