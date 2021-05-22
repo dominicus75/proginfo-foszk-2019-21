@@ -549,11 +549,13 @@ illeszkednek.
         részletesen kifejtik, hogy a programozók közvetlenül neki tudjanak kezdeni
         a kód megírásának. Az alacsony szintű tervezési dokumentum vagy programspecifikációk
         tartalmazni fogják a modul részletes funkcionális logikáját, pszeudokódban kifejtve:
-		* adatbázis-táblázatokat az összes elemmel, beleértve azok típusát és a méretét
-		* összes interfészt részletes és teljes API-referenciákkal
-		* összes függőségi kérdést
-		* hibaüzenetek felsorolását
-		* teljes bemeneti és kimeneti modulokat.
+        <ul>
+			<li>adatbázis-táblázatokat az összes elemmel, beleértve azok típusát és a méretét</li>
+			<li>összes interfészt részletes és teljes API-referenciákkal</li>
+			<li>összes függőségi kérdést</li>
+			<li>hibaüzenetek felsorolását</li>
+			<li>teljes bemeneti és kimeneti modulokat.</li>
+		</ul>
 		Ebben a szakaszban tervezik meg az egységtesztek tesztelésének folyamatát is.</dd>
       </dl>
     </td>
