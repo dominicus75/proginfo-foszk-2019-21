@@ -767,7 +767,17 @@ megértettük-e. A tapasztalatok alapján elmondható, hogy ha egy modell elemre
 tudunk rövid, frappáns, kifejező elnevezést találni, annak mindig az az oka, hogy
 nem tisztáztuk pontosan az adott elem jelentését és a modellen belül játszott szerepét.
 
-### Egy konkrét példa
+### Egy konkrét példa<sup id="4">[[4]](#note4)</sup>
+
+A HelóVilág c. tévéműsor-folyamban a nézők kukkolhatnak. Ez egyes esetekben spontán
+agyeltávolításban végződik. A regisztrált nézők a kukkolás mellett kiszavazásban
+is részt vehetnek. Mind a kiszavazás, mind a kukkolás során a rendszer végrehajtja
+az agyzsugorítást. A rendszert a készítők is használják: egyfelől besorsolhatnak
+idiótákat, másfelől feladatokat adhatnak meg, harmadrészt pedig aktív résztvevői
+az agyzsugorításnak. Ha a feladat túl rücskösre sikerül, akkor büntetéssel jár,
+ennek mértékét az [NMHH](https://nmhh.hu/) határozza meg.
+
+![Imgur](https://imgur.com/pgaqstz.png)
 
 ## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
 
@@ -800,6 +810,8 @@ nem tisztáztuk pontosan az adott elem jelentését és a modellen belül játsz
 	megjelenthet. [...] A modellek (tehát) több diagramból állnak, a diagramok pedig
 	az elemek és azok más elemekkel való kölcsönhatásának ábrázolásai.”
 	(Robert A. Maksimchuk - Eric J. Naiburg: UML földi halandóknak, 14. oldal Kiskapu Kiadó Budapest, 2006.)
+* <span id="note4">[[4]](#4)</span> Az elvetemült példa forrása: Mészáros Marika – [UML use-case diagram – Megoldások](https://docplayer.hu/2650239-Uml-use-case-diagram-rajzolas-megoldasok-uml-use-case-diagram-megolda-sok.html)
+
 
 ### Felhasznált (ajánlott) irodalom:
 
