@@ -694,6 +694,7 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 			ami lehetővé teszi, hogy hangsúlyozzuk, hogy az aktor kezdeményező (ekkor
 			a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
 			aktor felé mutat) viszonyban van a használati esettel.
+			
 ![Imgur](https://imgur.com/SNIAg6Q.png)</dd>
 			<dt>Generalizáció (általánosítás, öröklés)</dt>
 			<dd>Használati esetek között jelölhető az objektum orientált programozásból
@@ -705,6 +706,7 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 			rendszeren kívüli, ezért a rendszer szempontjából közömbös. A generalizáló
 			kapcsolat jele a speciális felől az általános (szülő) felé mutató, háromszögben
 			végződő folyamatos vonal.
+			
 ![Imgur](https://imgur.com/8UFwogb.png)</dd>
 			<dt>Tartalmazás (include)</dt>
 			<dd>A és B használati eset között tartalmazás (include) kapcsolat áll fenn,
@@ -715,6 +717,7 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 			állhat vele. A tartalmazás kapcsolat jele a tartalmazótól a tartalmazott
 			felé mutató, szaggatott vonallal rajzolt nyíl, amelyet az «Include»
 			sztereotípiával minősítünk.
+			
 ![Imgur](https://imgur.com/dCirtqj.png)</dd>
 			<dt>Kiterjesztés (extend)</dt>
 			<dd>A kiterjesztő kapcsolat jele a kiegészítő használati eset felől az alap funkció
