@@ -691,9 +691,7 @@ felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhass
 			a nyíl a használati eset felé mutat) vagy információt fogadó (a nyíl az
 			aktor felé mutat) viszonyban van a használati esettel.
 			
-![Imgur](https://imgur.com/SNIAg6Q.png)
-
-			</dd>
+![Imgur](https://imgur.com/SNIAg6Q.png)</dd>
 			<dt>Generalizáció (általánosítás, öröklés)</dt>
 			<dd>A generalizáló kapcsolat jele a speciális felől az általános (szülő) felé
 			mutató, háromszögben végződő folyamatos vonal.</dd>
