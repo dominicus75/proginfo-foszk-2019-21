@@ -458,7 +458,7 @@ illeszkednek.
 <table>
   <tr>
     <th>Fejlesztési ág</th>
-    <th>Tesztelési ág</th>
+    <th align="right">Tesztelési ág</th>
   </tr>
   <tr>
     <td>
@@ -467,7 +467,7 @@ illeszkednek.
         <dd></dd>
       </dl>
     </td>
-    <td>
+    <td align="right">
       <dl>
         <dt>Felhasználói átvételi tesztelés</dt>
         <dd></dd>
@@ -481,7 +481,7 @@ illeszkednek.
         <dd></dd>
       </dl>
     </td>
-    <td>
+    <td align="right">
       <dl>
         <dt>Rendszerteszt</dt>
         <dd></dd>
@@ -495,7 +495,7 @@ illeszkednek.
         <dd></dd>
       </dl>
     </td>
-    <td>
+    <td align="right">
       <dl>
         <dt>Integrációs teszt</dt>
         <dd></dd>
@@ -509,7 +509,7 @@ illeszkednek.
         <dd></dd>
       </dl>
     </td>
-    <td>
+    <td align="right">
       <dl>
         <dt>Egységteszt</dt>
         <dd></dd>
