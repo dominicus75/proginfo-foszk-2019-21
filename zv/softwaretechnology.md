@@ -811,7 +811,7 @@ ennek mértékét az [NMHH](https://nmhh.hu/) határozza meg.
 	az elemek és azok más elemekkel való kölcsönhatásának ábrázolásai.”
 	(Robert A. Maksimchuk - Eric J. Naiburg: UML földi halandóknak, 14. oldal Kiskapu Kiadó Budapest, 2006.)
 * <span id="note4">[[4]](#4)</span> Az elvetemült példa forrása: Mészáros Marika – [UML use-case diagram – Megoldások](https://docplayer.hu/2650239-Uml-use-case-diagram-rajzolas-megoldasok-uml-use-case-diagram-megolda-sok.html)
-
+(van ott még, ahol ez volt...)
 
 ### Felhasznált (ajánlott) irodalom:
 
@@ -856,5 +856,10 @@ Szarka Tibor Alex, Gercsó Márk: [Programozás I. jegyzet](https://okt.sed.hu/p
 	* [Gyártási minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/gyartasiMintak/)
 	* [Szerkezeti minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/szerkezetiMintak/)
 	* [Viselkedési minták](https://okt.sed.hu/prog1/gyakorlat/eloadas/TervezesiMintak/viselkedesiMintak/)
+* Balogh Gergő, Tóth László, Szatmári Attila: [Rendszerfejlesztés II. gyakorlati jegyzet](https://okt.sed.hu/rf2/gyakorlat/kovetelmenyek/)
+	* [UML és egyéb diagramok](https://okt.sed.hu/rf2/gyakorlat/UML/)
+	* [Unit tesztelés a gyakorlatban](https://okt.sed.hu/rf2/gyakorlat/unit_testing/)
+	* [Agilis módszertanok](https://okt.sed.hu/rf2/gyakorlat/agile/)
+
 
 [Kezdőlap](../README.md)
