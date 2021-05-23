@@ -951,6 +951,8 @@ A diagram elemei:
 	csak sorrendiséget jelent: amelyik üzenet nyila lejjebb található, az követi
 	a felé rajzolt üzenetet. A lefelé lejtő (nem vízszintes) nyíllal jelölt üzenet
 	továbbítása „valamennyi időt” vesz igénybe. Az üzenetek fajtái:
+
+![Imgur](https://imgur.com/jMJr7jq.png)
 	<dl>
 	  <dt>szinkron üzenet</dt>
 	  <dd>
@@ -977,8 +979,7 @@ A diagram elemei:
 		jelüljük, ami a hívótól a önmaga felé mutat.
 	  </dd>
 	</dl>
-	
-![Imgur](https://imgur.com/jU49lQI.png)</dd>
+  </dd>
   <dt>Megjegyzések</dt>
   <dd>
 	A diagram bal szélén megjegyzések, megszorítások és időbeliségre utaló jelölések
