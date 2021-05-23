@@ -950,7 +950,13 @@ A diagram elemei:
 	egy felülről lefelé mutató időtengelyt is képvisel. Az időbeliség azonban alapesetben
 	csak sorrendiséget jelent: amelyik üzenet nyila lejjebb található, az követi
 	a felé rajzolt üzenetet. A lefelé lejtő (nem vízszintes) nyíllal jelölt üzenet
-	továbbítása „valamennyi időt” vesz igénybe. Az üzenetek fajtái:
+	továbbítása „valamennyi időt” vesz igénybe. A szekvencia során üzenet segítségével:
+	<ul>
+	  <li>létrehozhatunk új objektumokat (a konstruktorral), ekkor elindul az életvonaluk,</li>
+	  <li>megsemmisíthetünk objektumokat (a destruktorral), ekkor vége az életvonaluknak,</li>
+	  <li>kommunikálhatunk az objektumokkal.</li>
+	</ul>
+	Az üzenetek fajtái:
 
 ![Imgur](https://imgur.com/jMJr7jq.png)
 	<dl>
@@ -986,11 +992,6 @@ A diagram elemei:
     helyezhetők el.
   </dd>
 </dl>
-
-A szekvencia során üzenet segítségével 
-* létrehozhatunk új objektumokat (a konstruktorral), ekkor elindul az életvonaluk,
-* megsemmisíthetünk objektumokat (a destruktorral), ekkor vége az életvonaluknak,
-* kommunikálhatunk az objektumokkal.
 
 
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
