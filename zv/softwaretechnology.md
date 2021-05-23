@@ -915,7 +915,7 @@ az esetben, de ez a működés modellezése szempontjából nem lényeges.
 
 ![Imgur](https://imgur.com/XdUAzkN.png)
  
-## 5. Ismertesse a sorrend diagramot (egy konkrét példa is szükséges).
+## 5. Ismertesse a sorrend (szekvencia) diagramot (egy konkrét példa is szükséges).
 
 A használati esetek az UML jelölésrendszer részei. Ezeket a diagramokat szekvenciadiagrammal
 szokás kiegészíteni, szemléltetendő, hogy a működés során milyen dinamikus kölcsönhatás
@@ -923,7 +923,8 @@ lép fel az objektumok között. Ez ábrázolható az UML szekvencia diagram seg
 ami egy adott forgatókönyv szerint, egy időtengely mentén mutatja be a modellelemek
 közötti összes kölcsönhatást.
 
-A diagram elemei:
+### A diagram elemei:
+
 <dl>
   <dt>Objektum</dt>
   <dd>
@@ -978,7 +979,7 @@ A diagram elemei:
 		a fogadó pedig aktiválódik. Nyitott hegyű nyílban végződő szaggatott vonallal
 		jelüljük, ami a választ küldőtől a hívó felé mutat.
 	  </dd>
-	  <dt>Rekurzív üzenet</dt>
+	  <dt>rekurzív üzenet</dt>
 	  <dd>
 		Az objektum saját magának küld üzenetet, miközben fő tevékenysége felfüggesztődik
 		a kiszolgálás idejére. Nyitott hegyű nyílban végződő folyamatos vonallal
@@ -992,6 +993,21 @@ A diagram elemei:
     helyezhetők el.
   </dd>
 </dl>
+
+Az UML 2.0 verziótól kezdve a nyelv bevezette a *„komplex interakció”* fogalmát, azaz
+az üzeneteket (interakciókat) kombinálhatjuk, és a köztük levő viszonyokat operátorokkal
+fejezhetjük ki. Egy komplex interakció jele egy téglalap. A téglalap bal felső
+sarkában a rá vonatkozó operátort tüntetjük fel, vízszintesen pedig „átfogja” az
+interakciókban érintett objektumok életvonalait. A szekvencia során ábrázolhatunk:
+* *feltételes szakaszt* (**opt**), amely csak a feltétel teljesülésekor hajtódik végre
+* *elágazást* (**alt**), ahol a feltétel függvényében különböző ágakat hajthatunk végre
+* *ciklust* (**loop**), ahol a tevékenységet a feltétel függvényében többször is végrehajtjuk
+* *párhuzamos szakaszt* (**par**), ahol egyszerre párhuzamosan végezzük a tevékenységeket
+* *kritikus szakaszt* (**critical**), amely nem végezhető párhuzamosan.
+
+![Imgur](https://imgur.com/Yxjb93T.png)
+
+### Egy konkrét példa
 
 
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
