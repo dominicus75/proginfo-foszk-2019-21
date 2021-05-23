@@ -917,6 +917,81 @@ az esetben, de ez a működés modellezése szempontjából nem lényeges.
  
 ## 5. Ismertesse a sorrend diagramot (egy konkrét példa is szükséges).
 
+A használati esetek az UML jelölésrendszer részei. Ezeket a diagramokat szekvenciadiagrammal
+szokás kiegészíteni, szemléltetendő, hogy a működés során milyen dinamikus kölcsönhatás
+lép fel az objektumok között. Ez ábrázolható az UML szekvencia diagram segítségével,
+ami egy adott forgatókönyv szerint, egy időtengely mentén mutatja be a modellelemek
+közötti összes kölcsönhatást.
+
+A diagram elemei:
+<dl>
+  <dt>Objektum</dt>
+  <dd>
+	Egy rendszer valamilyen működésre képes részét, vagy akár az egész rendszert
+	jelenheti. Speciális „objektumként” jelenhetnek meg a rendszer aktorai (pálcikaemberrel
+	jelölve), hiszen egy üzenetváltás gyakran az aktor és a rendszer (vagy annak valamely
+	objektuma) 	közötti interakcióval kezdődik, vagy az üzenet egy aktornak szól. Ha
+	implementációs szintű („igazi”) objektumról van szó, akkor a szokásos objektum
+	jelölést (téglalap) használjuk.
+  </dd>
+  <dt>Életvonal</dt>
+  <dd>
+	Az objektumból egy szaggatott vonallal jelzett életvonal indul, amely felülről
+	lefelé az idő múlását jelképezi és meghatározza az objektumok és aktorok létezésének
+	időtartamát. Az életvonalon jelölhetők az objektum aktivitási szakaszai. Az aktivitási
+	szakaszt a szaggatott vonal helyett elnyújtott téglalap jelzi. Ha egy üzenet hatására
+	az objektum megszűnik, az életvonal végét egy X zárja le.
+  </dd>
+  <dt>Üzenet</dt>
+  <dd>
+	Két objektum közötti üzenetet egy vízszintes nyíl ábrázolja, a két életvonal
+	között húzódva. A nyilakon fel van tüntetve az üzenet neve. Ezt ki lehet egészíteni
+	az üzenet argumentumaival és vezérlési információkkal is. Az objektumok életvonala
+	egy felülről lefelé mutató időtengelyt is képvisel. Az időbeliség azonban alapesetben
+	csak sorrendiséget jelent: amelyik üzenet nyila lejjebb található, az követi
+	a felé rajzolt üzenetet. A lefelé lejtő (nem vízszintes) nyíllal jelölt üzenet
+	továbbítása „valamennyi időt” vesz igénybe. Az üzenetek fajtái:
+	<dl>
+	  <dt>szinkron üzenet</dt>
+	  <dd>
+		A feldolgozását a hívó megvárja, addig nem végez további műveleteket, a
+		fogadó aktiválódik (ha nem volt az). Zárthegyű nyílban végződő folyamatos
+		vonallal jelüljük, ami a hívótól a hívott felé mutat.
+	  </dd>
+	  <dt>aszinkron üzenet</dt>
+	  <dd>
+		A feldolgozását a hívó nem várja meg, hanem tovább tevékenykedik. Nyitott
+		hegyű nyílban végződő folyamatos vonallal jelüljük, ami a hívótól a hívott
+		felé mutat.
+	  </dd>
+	  <dt>visszatérési üzenet</dt>
+	  <dd>
+		Egy korábbi üzenet feldolgozásának eredménye. A választ küldő deaktiválódik,
+		a fogadó pedig aktiválódik. Nyitott hegyű nyílban végződő szaggatott vonallal
+		jelüljük, ami a választ küldőtől a hívó felé mutat.
+	  </dd>
+	  <dt>Rekurzív üzenet</dt>
+	  <dd>
+		Az objektum saját magának küld üzenetet, miközben fő tevékenysége felfüggesztődik
+		a kiszolgálás idejére. Nyitott hegyű nyílban végződő folyamatos vonallal
+		jelüljük, ami a hívótól a önmaga felé mutat.
+	  </dd>
+	</dl>
+	
+![Imgur](https://imgur.com/jU49lQI.png)</dd>
+  <dt>Megjegyzések</dt>
+  <dd>
+	A diagram bal szélén megjegyzések, megszorítások és időbeliségre utaló jelölések
+    helyezhetők el.
+  </dd>
+</dl>
+
+A szekvencia során üzenet segítségével 
+* létrehozhatunk új objektumokat (a konstruktorral), ekkor elindul az életvonaluk,
+* megsemmisíthetünk objektumokat (a destruktorral), ekkor vége az életvonaluknak,
+* kommunikálhatunk az objektumokkal.
+
+
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
 
 ## 7. Ismertesse a RUP módszertant.
