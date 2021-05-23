@@ -634,15 +634,16 @@ amely a fejlesztés korai fázisában kialakul,
 bővíti, pontosítja a modellt.
 
 A használati eset modell a feltárt követelmények elemzése alapján készülhet el.
-Jelölésrendszere elég egyszerű és szemléletes ahhoz, hogy a megrendelő is megértse,
-ezért alkalmas a megrendelő és a fejlesztő közötti kommunikáció pontosítására.
 
-A **használati eset diagram** a rendszer viselkedését írja le, ahogyan az egy külső
-szemlélő szemszögéből látszik. A rendszer belső szerkezetével nem foglalkozik. Általában
-a fejlesztési ciklus elején készítjük. Használati eset diagram készülhet egy
-már meglévő rendszerről (hogy a működését jobban megértsük), vagy egy tervezett rendszerről
-(hogy összegyűjthessük a rendszerkövetelményeket, hogy megmutathassuk a megrendelőknek,
-felhasználóknak illetve, hogy a kész rendszer teszteléséhez is használhassuk majd).
+A **használati eset diagram** az üzleti elemzésben használt diagram, amely a modellezni
+kívánt jelenség viselkedését felhasználói oldalról megközelítve modellezi, a rendszer
+belső szerkezetével nem foglalkozik. Fontos, hogy az üzleti esetek leírása során az
+üzleti nyelvet és ne az informatika nyelvét használjuk. Ez a diagram a kommunikációs
+elem az ügyfelek és a fejlesztők között. Általában a fejlesztési ciklus elején készítjük.
+Használati eset diagram készülhet egy már meglévő rendszerről (hogy a működését jobban
+megértsük), vagy egy tervezett rendszerről (hogy összegyűjthessük a rendszerkövetelményeket,
+hogy megmutathassuk a megrendelőknek, felhasználóknak illetve, hogy a kész rendszer
+teszteléséhez is használhassuk majd).
 
 ### A használati eset diagram elemei:
 <dl>
@@ -781,6 +782,139 @@ ennek mértékét az [NMHH](https://nmhh.hu/) határozza meg.
 
 ## 4. Ismertesse az állapotautomatát/állapotgép diagramot (state machine, egy konkrét példa is szükséges).
 
+Minden objektumnak van egy életciklusa. Az objektum létrejön, más objektummal működik
+együtt különböző feladatok megoldásában, majd megsemmisül. Az objektum aktív állapotaiban
+különböző objektumokkal kerül kapcsolatba, és ennek eredményeként különböző állapotokba
+kerül. Az objektum orientált szemlélet szerint egy objektum állapotát az attribútumai
+pillanatnyi értékhalmaza határozza meg (konkrét állapot), ez az objektum attribútumai
+által felvehető értékek részhalmaza.
+
+Az állapot általában esemény, eseménysorozat hatására jön létre. Ezeket az eseményeket
+megelőző eseményeknek (pre-events) nevezzük. Egy speciális, rendszeren kívüli állapot
+a kezdeti állapot.
+
+Az állapot időben mindaddig fennmarad, amíg az objektumok attribútumainak értékei
+kielégítik az állapothoz rendelt invariánst<sup id="5">[[5]](#note5)</sup>. Az állapot
+fennállása során belső átmenetek fordulhatnak elő. Ezek nem változtatják meg az
+objektum állapotát, azaz érvényes marad továbbra is az állapotinvariáns. Az állapot
+megszűnése egy esemény hatására következik be, melyhez egy eseménysorozat kötődhet
+(rákövetkező események, post-events). Azaz az objektum egy külső állapotátmenet
+hatására egy másik állapotba kerül.
+
+Az objektum megszűnése ugyancsak egy állapotátmenet hatására következik be. Ekkor
+az objektum egy rendszeren kívüli, úgynevezett befejező állapotba kerül.
+
+A **dinamikus modell** három fő részből tevődik össze: az *állapotdiagramokból*, az *állapotok
+leírásából* és az *események leírásából*. Az események leírására szolgál a *szekvencia-,
+együttműködési és aktivációs diagram*. A szekvencia- és az együttműködési diagram az
+objektumok interakcióját határozza meg.
+
+Az osztály objektumainak dinamikus viselkedését a probléma megoldása során az
+állapotdiagram írja le. **A diagram egy osztály objektumainak az életciklusuk alatt
+felvehető lehetséges állapotait és az állapotok közötti lehetséges átmeneteket ábrázolja**.
+Ez a diagramfajta nem az UML találmánya, eredetileg David Harell dolgozta ki, amelyet
+az UML beillesztett a saját rendszerébe, az ehhez szükséges módosításokkal és
+kiegészítésekkel.
+
+### Az állapotok ábrázolása
+
+Az állapotok egymástól megkülönböztethetők, például van nevük. Az állapotokat gyakran
+nehéz megfelelően kifejező névvel ellátni. Ezért gyakran azonosítóként használjuk
+a belső tevékenységek, belső műveletek nevét. 
+
+A diagramon két speciális állapot jelenhet meg:
+* **kezdőállapot**: ebbe kerül az objektum, amikor létrejön. Ebbe az állapotba nem
+vezethet átmenet. Kitöltött körrel jelezzük.
+* **végállapot**: az objektum megszűnését jelzi. Ebből az állapotból nem indulhat
+ki átmenet. Egy körbe rajzolt ponttal jelöljük.
+
+Az állapot jelölése egy kerekített sarkú téglalap, amelynek felső részében az állapot
+megnevezése található (ez kötelező) majd a vonal alatt a további elemei, melyek
+opcionálisak. Az opcionális elemek:
+* **entry/**: Annak a tevékenységnek a leírása, ami az állapotba való belépés esetén
+elvégzendő. Ez a tevékenység mindig végrehajtódik, attól függetlenül, hogy milyen
+átmenet miatt lépett be az objektum az állapotba.
+* **do/**: Annak a tevékenységnek a leírása, amely az adott állapothoz tartozik. Ha
+több ilyen is van, azokat a végrehajtásuk sorrendjében soroljuk fel. Ezt a tevékenységet
+egy esemény félbeszakíthatja. Az esemény lehet:
+	* *esemény/*: Belső esemény bekövetkezéséhez kapcsolt tevékenység leírása.
+	* *exit/*: Annak a tevékenységnek a leírása, amelyet bármely átmenet bekövetkezése
+	esetén még az állapotból való kilépés előtt végre kell hajtani.
+
+Előfordulhat, hogy egy állapotot azzal tudunk legjobban jellemezni, hogy milyen
+tevékenységet folytat abban az állapotban az objektum. Ilyenkor nem adunk külön
+nevet az állapotnak, hanem a **do/** fázist használjuk megnevezésként.
+
+Bonyolultabb viselkedésű objektum esetén az állapotok és a köztük lehetséges átmenetek
+száma olyan nagy lehet, hogy a diagram áttekinthetetlenné válna. Az áttekinthetőség
+érdekében ilyenkor az összetartozó állapotokat **szuperállapotokba** foglalhatjuk.
+A szuperállapotok tartalmazhatnak **alállapotokat** és azok közötti átmeneteket.
+A szuperállapotokat külön ábrába is foglalhatjuk.
+
+Ha egy összetett állapotból kilépünk és szeretnénk majd ugyanott folytatni a tevékenységet,
+ahol abbahagytuk, akkor van szükségünk az **emlékező** vagy **történeti állapotra**
+(history state). Létezik egyszerű történeti állapot, amely csak az állapotkonfiguráció
+legfelső szintjét őrzi meg (az alállapotoknak is lehetnek további alállapotai, ezek
+több szintűen is egymásba ágyazhatók), és létezik a mély történeti állapot, amely
+teljes mélységében megőrzi az állapotkonfigurációt. Az egyszerű történeti állapotot
+egy bekarikázott ```H``` betű jelzi, a mélyet pedig egy bekarikázott ```H*```.
+
+### Az esemény és az akció
+
+Az esemény egy olyan tevékenység, történés, ami valamely objektum állapotát megváltoztatja.
+Ha az esemény végrehajtása időben elhúzódik, megkülönböztethetjük tőle a pillanatszerű
+akciót.
+
+Az állapotok közötti átmenet, a tranzakció valójában egy relációt fejez ki két
+állapot között. Az első állapotban az objektum kezdeményezi a kilépés akcióját,
+amely elindítja azt az eseményt, eseménysorozatot, amely a második állapotba történő
+belépést eredményezi. Ha az első állapotból történő kilépés és a másodikba történő
+belépés ugyanaz az időpillanat, akkor akcióról beszélünk, ellenkező esetben eseményről.
+Események esetén célszerű az eseményhez állapotot rendelni.
+
+Az eseményeknek általában három fázisuk van, amelyek közül kettő akció:
+* **entry** fázis, a belépés akciója, amely elindítja azt az eseményt, eseménysorozatot,
+amelynek hatására létrejön egy eseményhez rendelt állapot.
+* **event** fázis, amely az adott állapothoz kötődik, azaz belső események sorozata,
+amely az adott állapothoz kötődő belső állapotokat jelenti.
+* **exit** fázis, a kilépési akció, amely az esemény befejezését, a hozzá rendelt
+állapotból való kilépést eredményezi.
+
+*Az állapotátmeneteket szimbolizáló nyilakra ráírhatjuk az állapotváltást okozó
+esemény vagy akció nevét, illetve a feltételt*.
+
+### Az állapot átmenet és jelölése
+
+Az állapotok közötti átmenetet valamilyen esemény bekövetkezése okozza. Az átmenetek
+atomi egységek, nem szakíthatók félbe, azaz időponthoz kötöttek. Lehetséges olyan
+esemény, amelynek hatására ugyanabba az állapotba tér vissza az objektum. **Az átmenetet
+nyitott hegyű nyíllal jelezzük**. Az átmenet adatai lehetnek:
+* kiváltó ok (trigger) az esemény megnevezése
+* feltétel (guard) szögletes zárójelpárral határolt, az átmenet bekövetkezésének
+feltételét adja meg,
+* hatás (effekt) az októl ```/``` jellel elválasztva adható meg, és az átmenet miatt
+végrehajtandó tevékenységet specifikálhatja.
+
+A fentiek mindegyike opcionális. Ha nincs megadva kiváltó ok, akkor a kiváltó esemény
+az előző állapot befejeződése. Minden állapothoz legalább egy átmenet vezet (kivéve:
+kezdőállapot), és onnan legalább egy átmenet vezet egy másik állapotba (kivéve: végállapot).
+Az állapotdiagramban a rombusz az esetválasztó csúcs. Azokra az átmenetekre, amelyek
+az esetválasztó csúcsból indulnak, szögletes zárójelbe helyezett feltételt kell írni.
+Ha az esetválasztó csúcsból kiinduló átmenetek feltételei kölcsönösen kizárják egymást
+és együttesen lefednek minden lehetséges esetet, akkor a feltételt írhatjuk az esetválasztó
+csúcshoz is.
+
+### Egy konkrét példa<sup id="6">[[6]](#note6)</sup>
+
+Példaként, rajzoljuk meg egy ATM állapotgép diagramját (a valóságban ennél biztosan
+több állapota van, és nem biztos, hogy minden állapot átmenet az ábrának megfelelő,
+de a diagram jelöléseinek szemléltetésére ez is elegendő). Figyeljük meg, hogy
+ezen az ábrán nincs kezdő és végállapot feltüntetve, azaz az ATM objektumot „örökéletűként”
+modelleztük. A kezdő állapot a telepítést, a végállapot a leszerelést jelentené ebben
+az esetben, de ez a működés modellezése szempontjából nem lényeges.
+
+![Imgur](https://imgur.com/XdUAzkN.png)
+ 
 ## 5. Ismertesse a sorrend diagramot (egy konkrét példa is szükséges).
 
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
@@ -811,7 +945,28 @@ ennek mértékét az [NMHH](https://nmhh.hu/) határozza meg.
 	az elemek és azok más elemekkel való kölcsönhatásának ábrázolásai.”
 	(Robert A. Maksimchuk - Eric J. Naiburg: UML földi halandóknak, 14. oldal Kiskapu Kiadó Budapest, 2006.)
 * <span id="note4">[[4]](#4)</span> Az elvetemült példa forrása: Mészáros Marika – [UML use-case diagram – Megoldások](https://docplayer.hu/2650239-Uml-use-case-diagram-rajzolas-megoldasok-uml-use-case-diagram-megolda-sok.html)
-(van ott még, ahol ez volt...)
+van ott még, ahol ez volt...
+* <span id="note5">[[5]](#5)</span> „Amikor egy osztályt tervezünk, egy jól meghatározott
+	feladat érdekében tesszük, a feladat leírásában segít, ha olyan állításokat is megfogalmazhatunk,
+	melyek mindig igazak egy osztály esetén. Akár azt is mondhatjuk, hogy ezek az logikai
+	állítások – bizonyos szempontból – konzisztens állapotban tartják az osztályt. Az
+	osztályinvariánsban megfogalmazott állításban osztály attribútumok és függvények
+	közötti relációk is megfogalmazhatók. **Az invariáns kifejezés onnan ered, hogy olyan
+	feltételeket határoz meg, melyek az osztály példányainak életciklusa alatt minden
+	kitüntetett időpillanatban a példányokon végzett műveletek során megőrzik igaz értéküket**.
+	Más szóval ezek olyan logikai kifejezések, melyek mindegyike True logikai értékkel
+	rendelkezik és változásokra érzéketlen. Egy invariáns általában több logikai állításból
+	áll össze, az osztályinvariánst képző logikai állítások az and then logikai operátorral
+	vannak összekapcsolva a forráskódban meghatározott fizikai sorrend szerint. Természetesen,
+	szigorúan véve egy osztály példány életciklusának minden pillanatában az invariáns nem
+	lehet igaz, előfordulhatnak olyan állapotok – tipikusan feldolgozási vagy transzformációs
+	lépések közben – amikor az invariáns nem teljesül. Ha jól meggondoljuk, akkor látjuk,
+	ilyen esetekben nincs is szükség arra, hogy az invariáns teljesüljön. Ennek megfelelően
+	az osztályinvariánsok kiértékelésre csak a nyilvános eljárások meghívása előtt és
+	után (mint kitüntetett időpillanat) kerül sor.”
+	(Nyékyné Gaizler Judit, Herczeg István: [Az Eiffel programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/Eiffel/index.php?chapter=9#section_8))
+* <span id="note6">[[6]](#6)</span> A példa Ficsor Lajos, Krizsán Zoltán, Mileff Péter: [Szoftverfejlesztés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/index.html)
+	című könyvéből van (10.3 fejezet).
 
 ### Felhasznált (ajánlott) irodalom:
 
