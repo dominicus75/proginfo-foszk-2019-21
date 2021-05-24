@@ -933,7 +933,7 @@ közötti összes kölcsönhatást.
 	jelölve), hiszen egy üzenetváltás gyakran az aktor és a rendszer (vagy annak valamely
 	objektuma) 	közötti interakcióval kezdődik, vagy az üzenet egy aktornak szól. Ha
 	implementációs szintű („igazi”) objektumról van szó, akkor a szokásos objektum
-	jelölést (téglalap) használjuk. A téglalapban <példány_neve>:<osztály_neve>
+	jelölést (téglalap) használjuk. A téglalapban példány_neve:osztály_neve
 	alakban jelöljük, hogy mit is ábrázol.
   </dd>
   <dt>Életvonal</dt>
