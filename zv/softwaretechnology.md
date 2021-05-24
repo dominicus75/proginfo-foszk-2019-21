@@ -1264,9 +1264,13 @@ verziója készül el. Minden iteráció egy teljes, illetve részben önálló 
 ciklust jelent. Minden egyes iterációban „kicsiben” megvan minden, ami egy fejlesztési
 projekt szerves része. Kezdődik az üzleti modellezéssel, követelményelemzéssel, folytatódik
 elemzéssel, tervezéssel, implementálással, teszteléssel, és befejeződik a telepítéssel.
-Az iteráción belül a feladatokat kilenc munkafolyamatra (tudományterületre) osztják:
+Az iteráción belül a feladatokat kilenc munkafolyamatra (újabb megfogalmazás szerint
+tudományterületre) osztják. A tevékenység jellegének megfelelően megkülönböztetünk
+mérnöki, illetve támogató folyamatokat. A mérnöki folyamatok hozzák létre a szoftverterméket,
+míg a támogató munkafolyamatok a fejlesztés irányításával, a környezet biztosításával,
+a változáskövetéssel, azaz a menedzsment feladataival foglalkoznak.
 
-**Tervezési munkafolyamatok:**
+**Mérnöki munkafolyamatok:**
 
 * Üzleti folyamatok elemzése (Business Modeling)
 * Követelmények elemzése (Requirements)
