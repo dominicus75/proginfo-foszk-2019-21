@@ -1203,35 +1203,100 @@ döntéseket kell meghozni. Minden fázis végén megvizsgáljuk az elért eredm
 döntünk a fejlesztés folytatásról.
 
 **A négy fázis:**
+	<ul>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	</ul>
 
 <dl>
   <dt>Előkészítés</dt>
   <dd>
-
+	Az előkészítés (inception) elsősorban üzleti szempontból írja le a fejlesztést és
+	meghatározza az alkalmazás határait. Az üzleti szempont röviden a következőket jelenti:
+	<ul>
+	  <li>sikertényezők meghatározása</li>
+	  <li>kockázati tényezők felmérése</li>
+	  <li>erőforrás-becslés</li>
+	  <li>projekterv: a mérföldkövek dátumainak meghatározása</li>
+	</ul>
+	A fázis végén meghatározzuk az egyes iterációs ciklusok célját és döntünk a
+	folytatásról.
   </dd>
   <dt>Kidolgozás</dt>
   <dd>
-
+	A kidolgozás (elaboration) során a problémát elsősorban szakterületi szempontból
+	elemezzük. Elsődleges cél az elemzéssel azonosított legfontosabb kockázati tételek
+	enyhítése e szakasz végéig. Ebben a fázisban elkészül a problémakör elemzése,
+	és a projekt architektúrája megkapja alapvető formáját. Az architektúrára vonatkozó
+	helyes döntéseket csak a teljes rendszer megismerése után hozhatunk, ezért szükséges,
+	hogy a használati esetek döntő részét specifikáljuk, valamint, hogy meghatározzuk
+	a nem-funkcionális követelményeket. A fázis végén kiválasztottuk az architektúrát
+	és megszüntetettük a főbb kockázati tényezőket. A mérföldkőnél itt is elemezzük
+	az elért eredményeket és döntünk a folytatásról.
   </dd>
   <dt>Megvalósítás</dt>
   <dd>
-
+	A megvalósítási fázis legfőképpen a rendszertervvel, a programozással és a teszteléssel
+	foglalkozik. Az elsődleges cél a szoftverrendszer felépítése. Ebben a szakaszban
+	a fő hangsúly a rendszer komponenseinek és egyéb tulajdonságainak fejlesztésére
+	kerül. Ebben a szakaszban történik a kódolás nagy része. Nagyobb projektekben több
+	építési iterációt lehet kidolgozni annak érdekében, hogy a felhasználási eseteket
+	kezelhető szegmensekre bonthassák, és megfelelő prototípusokat állítsanak elő.
+	A rendszer különböző részei párhuzamosan fejleszthetők, majd ez alatt a fázis
+	alatt integrálhatók. A fázis végén már rendelkezünk egy működő szoftverrendszerrel
+	és a hozzá csatlakozó dokumentációval, amely készen áll, hogy leszállítsuk a
+	felhasználónak.
   </dd>
   <dt>Átadás</dt>
   <dd>
-
+	Az elsődleges cél a rendszernek a fejlesztésről a termelésre történő átvitele,
+	hozzáférhetővé tétele és a végfelhasználó számára történő megértése. E szakasz
+	tevékenységei között szerepel a végfelhasználók és karbantartók képzése is.
+	Ez a fázis tipikusan az alkalmazás béta-tesztjével kezdődik. A rendszer hangolása
+	miatt szükség lehet kiegészítő fejlesztésekre és a megjelenő hibákat ki kell
+	küszöbölni, illetve a még hiányzó részeket ki kell fejleszteni.
+	A fázis végén dönteni kell, hogy elértük-e a fejlesztés során kitűzött célokat, illetve,
+	hogy indítanunk kell-e újabb fejlesztési ciklust. Ugyancsak célszerű, hogy a projekt
+	tapasztalatait elemezve vizsgáljuk meg azt, hogy miként módosíthatunk a fejlesztési
+	módszerünkön. 
   </dd>
 </dl>
 
 A fejlesztés nagyobb egységeit jelentő fázisok további kisebb egységekre, iterációkra
-(iteration) bonthatók. Minden iteráció egy teljes, illetve részben önálló fejlesztési
-ciklust jelent, mivel az iteráció végén egy működő és végrehajtható alkalmazásnak kell
-előállnia. Minden iteráció végén így a végső, teljes rendszer egyre bővülő részét kapjuk
-eredményül, melyeket a rendszer egymás utáni kibocsátásainak (release), vagy belső
-változatainak nevezünk. A belső változatok lehetővé teszik, hogy azt a fejlesztők
-kipróbálhassák és annak tapasztalatai alapján esetleg módosíthassák a fejlesztés
-ütemezését. 
+(iteration) bonthatók. Az iteráció végén a rendszer újabb, bővített funkcionalitású
+verziója készül el. Minden iteráció egy teljes, illetve részben önálló fejlesztési
+ciklust jelent. Minden egyes iterációban „kicsiben” megvan minden, ami egy fejlesztési
+projekt szerves része. Kezdődik az üzleti modellezéssel, követelményelemzéssel, folytatódik
+elemzéssel, tervezéssel, implementálással, teszteléssel, és befejeződik a telepítéssel.
+Az iteráción belül a feladatokat kilenc munkafolyamatra (tudományterületre) osztják:
 
+**Tervezési munkafolyamatok:**
+
+* Üzleti folyamatok elemzése (Business Modeling)
+* Követelmények elemzése (Requirements)
+* Elemzés és tervezés (Analysis & Design)
+* Implementáció (Implementation)
+* Tesztelés (Test)
+* Átadással kapcsolatos tevékenységek (Deployment)
+
+**Támogató munkafolyamatok:**
+
+* Konfiguráció és változáskövetés (Configuration & Change Management)
+* Projektvezetés (Project Management)
+* Fejlesztői környezet felállítása (Environment)
+
+A fejlesztés különböző fázisaiban az iterációk lényegesen különbözőek lehetnek. Míg a
+fejlesztés kezdeti szakaszában az üzleti modellezés és a követelményelemzés a hangsúlyosabb,
+s a tesztelés, telepítés lehet, hogy ki is marad, addig a középső szakaszban az implementálás,
+a legvégső szakaszban a telepítés, a tesztelés a domináns. A fejlesztés bizonyos szakaszaiban
+egyes munkafolyamatok erőforrásigénye szinte nullára is csökkenhet. Az iterációk
+számát nem rögzíti a szabvány, fázisonként illetve fejlesztésenként eltérő számú
+iterációra lehet szükségünk.
+
+![Imgur](https://imgur.com/ZmpQ0Qp.png)
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
