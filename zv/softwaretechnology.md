@@ -1025,6 +1025,89 @@ ezt a bundát küldi Tatjánának.
 
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
 
+Az objektum orientált programozás (OOP) gyakorlatilag egy teljesen új szemléletmódot
+követel a programok megvalósításának tekintetében. Amíg egy strukturált rendszerben
+egymásra épülő, sorban lefutó algoritmusokkal valósítottuk meg egy probléma megoldását,
+addig itt úgynevezett objektumok segítségével kell mindezt megtennünk. Nem a
+programrészek megírása a fő cél, hanem az objektumok hierarchiája és kapcsolata áll a
+középpontban. Ennek a rendszernek a pontos megtervezése és megvalósítása adja a feladat
+megoldását.
+
+Az objektumorientáltság egy szemléletmód, amelyben a valós világ dolgait egymással
+kapcsolatban lévő objektumoknak tekintjük, olyan tervezési stratégia, amelyben a
+rendszertervezők műveletek és funkciók helyett „dolgokban” (objektumokban) gondolkodnak.
+Egy objektumorientált tervezési folyamat az osztályoknak és azok közötti kapcsolatoknak
+a megtervezéséből áll.
+
+### Alapelvek
+
+<dl>
+  <dt>Elvonatkoztatás (absztrakció)</dt>
+  <dd>
+	Az osztály a valóság mintájára tulajdonságokkal és viselkedésekkel felruházott zárt
+	egység, a való világban található dolgok (létezők) elvont informatikai leképezése.
+	A programozásban alkalmazott osztályok egy-egy való világbeli dolognak a megoldandó
+	programozási probléma szempontjából releváns lényegét foglalják magukba, és mint
+	ilyenek típusokként is értelmezhetők. A legtöbb objektumorientált nyelv osztály
+	alapú, azaz az objektumok osztályok példányai, és típusuk az osztály. Az osztály
+	az egyes objektumok elvi tervrajzát, működését definiálja, olyan elvont objektumminta
+	vagy típus értendő alatta, mely alapján konkrét példányokat (objektumokat) lehet
+	létrehozni.
+  </dd>
+  <dt>Egységbezárás (enkapszuláció)</dt>
+  <dd>
+	Az objektum egységbe foglalja az állapotát tároló adatokat és azok szerkezetét,
+	valamint a rajtuk végrehajtott, az objektum viselkedését meghatározó műveleteket.
+	Az adatokat ismerik mezők, attribútumok, tulajdonságok vagy adattagok néven is,
+	a műveleteket metódusokként szokták emlegetni. Az objektum állapotát adattagokkal,
+	viselkedését pedig metódusokkal (tagfüggvényekkel) tudjuk leírni. Az objektum
+	által tartalmazott adatokon általában az objektum metódusai végeznek műveletet.
+	Az objektumok elrejtik az állapotuk reprezentációját, korlátozzák a kívülről
+	történő hozzáférést (adatrejtés), egymással kommunikálni elsősorban a (publikus)
+	metódusaikon keresztül tudnak. A program egymással kommunikáló objektumok
+	összességéből áll. Az objektumok úgy kommunikálnak, hogy szolgáltatásokat kérnek
+	más ob­jektumoktól (meghívják azok metódusait). A szolgáltatás végrehajtásához
+	szükséges információ paraméterként adódik át, a szolgáltatás végrehajtásának
+	eredmé­nye a hívott metódus visszatérési értéke lesz.
+  </dd>
+  <dt>Öröklés (Inheritencia)</dt>
+  <dd>
+	<p>Az öröklődés/leszármaztatás alapján az osztály fogalma kategóriaként is felfogható.
+	Ez esetben az osztályhoz tartozás már nem csak azt jelenti, hogy a dolog azonos
+	önmagával (az adott dolgot leíró osztály egy konkrét példánya), hanem azt is,
+	hogy egy tágabb, általánosabb kategóriának/osztálynak is leszármazottja. Az
+	objektumosztályok egy generalizációs vagy öröklődési hierarchiába szervezhetők,
+	amely az általános és a specifikus objektum­osztályok közötti kapcsolatot jeleníti
+	meg. Egy objektum példánya saját osztályának, de az öröklődési hierarchiában
+	egyben példánya valamennyi ősosztálynak is (pl. a Lada nem csak személygépkocsi,
+	hanem gépkocsi, jármű, gép, létező is egyben).</p>
+	<p>Az öröklődés a kód újrahasznosításának gyakori módja és hatékony eszköz a kódduplikálás
+	felszámolására. Minden megismételt kód nehezíti a karbantarthatóságot, hiszen
+	ha módosítanánk a viselkedésén, akkor azt minden duplikátum esetében meg kellene
+	tenni. A programozás egyik igen fontos elve a DRY (Don't repeat yourself), vagyis
+	kerüljük az ismétlődő elemeket (ugyanis abban rejlik egy minta, amit le tudunk
+	rövidíteni), ezért a hasonló osztályok közös metódusait ki lehet emelni egy
+	ősosztályba és ebből származtatni őket.</p>
+	<p>A kiterjesztett, vagy származtatott osztály minden tulajdonággal és metódussal
+	rendelkezik, ami a kiindulási osztályban megvolt (örökli az ős tulajdonságait
+	és metódusait). Amit hozzáadunk a kiindulási osztályhoz, azt nevezzük
+	kiterjesztésnek.</p>
+  </dd>
+  <dt>Többalakúság (polimorfizmus)</dt>
+  <dd>
+	<p>Amikor létrehozunk egy származtatott osztályt, abban új metódusokat, vagy adattagokat
+	is elhelyezhetünk, sőt, arra is van lehetőségünk, hogy átírjuk a szülőtől örökölt
+	kódot. Ezzel a technikával az azonos szülőtől származó osztályok specializálhatók.
+	Ezt hívják <b>altípusos polimorfizmus</b>nak, ami egy egységes interfészre utal, amit
+	különböző osztályok valósítanak meg. Ha egy leszármazott osztály egy örökölt metódust
+	újraimplementál	(<i>overriding</i>), a metódus szignatúrája (neve és paraméterlistája)
+	változatlan marad, de az implementáció más lehet az öröklődési vonalon.</p>
+	<p>Polimorfizmus megvalósítható még <b>metódus túéterheléssel</b> is, ahol
+	a metódus neve minden esetben változatlan marad, de az argumentumok száma és
+	típusa eltérhet, ezért a metódus ennek megfelelően különféleképpen viselkedhet.</p>
+  </dd>
+</dl>
+
 ## 7. Ismertesse a RUP módszertant.
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
