@@ -1108,7 +1108,130 @@ a megtervezéséből áll.
   </dd>
 </dl>
 
-## 7. Ismertesse a RUP módszertant.
+## 7. Ismertesse a RUP módszertant
+
+Az Egységesített Eljárás Módszertan (RUP, Rational Unified Process) egy
+[iteratív és inkrementális szoftverfejlesztési módszertan](https://hu.wikipedia.org/wiki/Iterat%C3%ADv_%C3%A9s_inkrement%C3%A1lis_m%C3%B3dszertanok),
+amelyet a Rational Software Corporation (2002 óta az IBM része) fejlesztett ki a
+90-es évek közepétől. Első publikált változata 1998-ban jelent meg, az utolsó pedig
+már az IBM égisze alatt, 2005-ben. A RUP nem egy szokásos, egyszerű eljárás, hanem
+inkább egy feladatokra adaptálható keretrendszer, amelyből minden feladattípushoz
+az ahhoz illeszkedő módszereket, eszközöket alkalmazhatjuk.
+
+A RUP módszertan létrehozásának célja az volt, hogy kiküszöbölje a fejlesztési
+folyamatban felmerülő, a projekt sikerét megakadályozó problémákat. A fejlesztési
+projektek sikerességét három tényező alapján mérjük:
+1. költségkeret betartása,
+2. határidő betartása,
+3. a követelményeknek való megfelelés.
+
+A három tényező nyilvánvalóan összefüggésben áll egymással. A 80-as és 90-es évek
+kutatásai a problémák okaként elsősorban nem technológiai, hanem módszertani
+hiányosságokat jelöltek meg, ezen belül is elsősorban a fejlesztés ideje alatt
+bekövetkező változások követésének, illetve az együttműködéskommunikáció problémáira
+világítottak rá. A RUP ezekre a problémákra a
+* fejlesztési folyamat és a folyamat során elvégzendő tevékenységek,
+* a tevékenységek egymásra épülésének, egymásutániságának, ugyanakkor
+* a változások követésének
+definiálásával, megoldásával és előírásával próbál válaszolni.
+
+A módszertan elméleti módszertan, ami azt jelenti, hogy ajánlásait, mintáit és módszereit
+a különböző típusú fejlesztési feladatok esetében mindig át kell vizsgálni, és a
+helyzetnek megfelelően kell azokat alkalmazni.
+
+A RUP a rendszerfejlesztés folyamatát alapvetően három perspektívából írja le:
+* **dinamikus perspektíva**, amely a modell fázisait mutatja
+* **statikus perspektíva**, amely a végrehajtandó folyamattevékenységeket mutatja
+* **gyakorlati perspektíva**, amely gyakorlatokat javasol a folyamat alatt
+
+### A RUP módszertan jellemzői
+
+<dl>
+  <dt>Követelményvezérelt jelleg</dt>
+  <dd>
+	A módszertan egyik fő szempontként emeli ki a követelménymenedzsment fontosságát 
+	és érvényesíti is mind a nézethierarchiában, mind a fejlesztési munkafolyamatokban.
+	A követelménymenedzsment folyamatos tevékenység, amely végigkíséri a fejlesztés
+	teljes folyamatát. Célja a követelmények feltárása, rendszerezése, dokumentálása.
+	További fontos feladata a követelmények változásának nyomon követése és ezek
+	érvényesítése a fejlesztési folyamatra
+  </dd>
+  <dt>Architektúra központúság</dt>
+  <dd>
+	Architektúra alatt egy rendszer meghatározó összetevőit és ezek kapcsolatait értjük.
+	Az architektúra célja:
+	<ul>
+		<li>átláthatóvá teszi a fejlesztést;</li>
+		<li>könnyebben felismerhetők az újrafelhasználható elemek;</li>
+		<li>átlátható projektmenedzsment;</li>
+		<li>kockázatok csökkentése;</li>
+		<li>lehetővé válik a párhuzamos fejlesztés.</li>
+	</ul>
+	<p>Az alkalmazást rétegekkel és a réteg által biztosított interfészekkel modellezik.
+	Az egyes rétegeknek jellegzetesen különböző feladatkörük van, mint például felhasználói
+	felület, vezérlés, adattárolás. Az elvileg ideális esetben minden egyes réteg csak
+	és kizárólag a vele szomszédos rétegekkel tart kapcsolatot.</p>
+  </dd>
+  <dt>Iteratív és inkrementális jelleg</dt>
+  <dd>
+	A módszertan által preferált fejlesztési folyamat fázisiterációk-mérföldkövek
+	felépítése előírja ezt a fajta megközelítést. Egyszerű, kicsiny rendszerek esetében
+	még alkalmazható a feladat definiálása, tervezés, kódolás, tesztelés szekvenciális,
+	„vízesésszerű” fejlesztési mód. Nagyobb, bonyolultabb rendszerek esetében más
+	módszert kell keresni. A megrendelői, felhasználói igények is folyamatosan változnak.
+	A hagyományos „vízesés modell” alkalmazásakor számos hiányosság, félreértés,
+	hiba csak a fejlesztés végén, a tesztelési fázisban bukik elő. Ugyanakkor ez
+	a „vízesés modell” nagyon nehezen viseli el a fejlesztési célok menet közbeni
+	megváltozását. Ezzel szemben az iteratív fejlesztés
+	<ul>
+		<li>tolerálja a követelmények megváltozását</li>
+		<li>biztonságosabb, hibatűrőbb alkalmazást eredményez</li>
+		<li>lehetővé teszi a résztvevők folyamatos tanulását, a módszertan finomítását</li>
+		<li>lerövidíti a fejlesztés időtartamát</li>
+		<li>tervszerű</li>
+	</ul>
+  </dd>
+</dl>
+
+### A projekt életciklus szakaszai
+
+A RUP szemléletében egy fejlesztés életciklusa a munka megkezdésétől a késztermék
+egy üzemszerű működésre szánt változatának átadásáig tart. Az RUP a projekt életciklusát
+négy szakaszban határozza meg. Minden fázis a fejlesztés egy-egy jól meghatározott
+mérföldkövét jelenti, azaz olyan pontot, ahol egy célt elértünk, illetve ahol kritikus
+döntéseket kell meghozni. Minden fázis végén megvizsgáljuk az elért eredményeket és
+döntünk a fejlesztés folytatásról.
+
+**A négy fázis:**
+
+<dl>
+  <dt>Előkészítés</dt>
+  <dd>
+
+  </dd>
+  <dt>Kidolgozás</dt>
+  <dd>
+
+  </dd>
+  <dt>Megvalósítás</dt>
+  <dd>
+
+  </dd>
+  <dt>Átadás</dt>
+  <dd>
+
+  </dd>
+</dl>
+
+A fejlesztés nagyobb egységeit jelentő fázisok további kisebb egységekre, iterációkra
+(iteration) bonthatók. Minden iteráció egy teljes, illetve részben önálló fejlesztési
+ciklust jelent, mivel az iteráció végén egy működő és végrehajtható alkalmazásnak kell
+előállnia. Minden iteráció végén így a végső, teljes rendszer egyre bővülő részét kapjuk
+eredményül, melyeket a rendszer egymás utáni kibocsátásainak (release), vagy belső
+változatainak nevezünk. A belső változatok lehetővé teszik, hogy azt a fejlesztők
+kipróbálhassák és annak tapasztalatai alapján esetleg módosíthassák a fejlesztés
+ütemezését. 
+
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
@@ -1196,6 +1319,8 @@ van ott még, ahol ez volt...
 * Wikipédia: [Scrum](https://hu.wikipedia.org/wiki/Scrum)
 * Wikipedia: [Egységesített racionális fejlesztési módszer](https://hu.wikipedia.org/wiki/Egys%C3%A9ges%C3%ADtett_racion%C3%A1lis_fejleszt%C3%A9si_m%C3%B3dszer)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
+* Bartók Roland: [Az Egységesített Eljárás módszertan](http://mazsola.iit.uni-miskolc.hu/~bartok3/digit/RUP.pdf)
+* Vég Csaba: [Rational Unified Process](http://logos2000.weaveworld.org/it/doc/RUP.pdf)
 * Kollár Lajos, Sterbinszky Nóra: [Programozási technológiák](https://gyires.inf.unideb.hu/GyBITT/21/index.html)
 	* [GoF tervezési minták katalógusa](https://gyires.inf.unideb.hu/GyBITT/21/ch04s02.html)
 	* [Tervezési minták alkalmazása a gyakorlatban](https://gyires.inf.unideb.hu/GyBITT/21/ch04s03.html)
