@@ -933,7 +933,8 @@ közötti összes kölcsönhatást.
 	jelölve), hiszen egy üzenetváltás gyakran az aktor és a rendszer (vagy annak valamely
 	objektuma) 	közötti interakcióval kezdődik, vagy az üzenet egy aktornak szól. Ha
 	implementációs szintű („igazi”) objektumról van szó, akkor a szokásos objektum
-	jelölést (téglalap) használjuk.
+	jelölést (téglalap) használjuk. A téglalapban <példány_neve>:<osztály_neve>
+	alakban jelöljük, hogy mit is ábrázol.
   </dd>
   <dt>Életvonal</dt>
   <dd>
@@ -959,8 +960,13 @@ közötti összes kölcsönhatást.
 	</ul>
 	Az üzenetek fajtái:
 
-![Imgur](https://imgur.com/jMJr7jq.png)
+![Imgur](https://imgur.com/gQ2bV06.png)
 	<dl>
+	  <dt>létrehozó üzenet</dt>
+	  <dd>
+		Az üzenet hatására létrejön egy új objektum. A létrehozandó objektum fejére
+		mutató, nyitott hegyű nyílban végződő szaggatott vonallal jelüljük.
+	  </dd>
 	  <dt>szinkron üzenet</dt>
 	  <dd>
 		A feldolgozását a hívó megvárja, addig nem végez további műveleteket, a
@@ -1005,10 +1011,17 @@ interakciókban érintett objektumok életvonalait. A szekvencia során ábrázo
 * *párhuzamos szakaszt* (**par**), ahol egyszerre párhuzamosan végezzük a tevékenységeket
 * *kritikus szakaszt* (**critical**), amely nem végezhető párhuzamosan.
 
-![Imgur](https://imgur.com/Yxjb93T.png)
+![Imgur](https://imgur.com/mgWtjlS.png)
 
-### Egy konkrét példa
+### Egy konkrét példa<sup id="7">[[7]](#note7)</sup>
 
+Tatjána levelet ír, majd elküldi Anyeginnek. Ha Anyegin ivott vodkát, akkor többször
+is elolvassa a levelet, majd készít egy gyönyörű, aranyozott szamovárt, és elküldi
+Tatjánának, aki (mivel nem erre számított) megsemmisíti a szamovárt. Ha azonban
+Anyegin nem ivott, akkor csak egyszer olvassa el a levelet, majd bundát csinál, és
+ezt a bundát küldi Tatjánának.
+
+![Imgur](https://imgur.com/PgB2769.png)
 
 ## 6. Ismertesse és magyarázza el az objektum-orientált fejlesztés négy tanult alapelvét.
 
@@ -1060,6 +1073,9 @@ van ott még, ahol ez volt...
 	(Nyékyné Gaizler Judit, Herczeg István: [Az Eiffel programozási nyelv](http://nyelvek.inf.elte.hu/leirasok/Eiffel/index.php?chapter=9#section_8))
 * <span id="note6">[[6]](#6)</span> A példa Ficsor Lajos, Krizsán Zoltán, Mileff Péter: [Szoftverfejlesztés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/index.html)
 	című könyvéből van (10.3 fejezet).
+* <span id="note7">[[7]](#7)</span> A példa a Vik Wiki [UML szekvencia diagram – megoldások](https://vik.wiki/images/archive/e/e8/20150113175911%21Szofttech_jegyzet_UML_szekvenciadiagram_mo.pdf)
+	című dokumentumából származik.
+
 
 ### Felhasznált (ajánlott) irodalom:
 
