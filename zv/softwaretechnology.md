@@ -1203,18 +1203,11 @@ döntéseket kell meghozni. Minden fázis végén megvizsgáljuk az elért eredm
 döntünk a fejlesztés folytatásról.
 
 **A négy fázis:**
-	<ul>
-	  <li></li>
-	  <li></li>
-	  <li></li>
-	  <li></li>
-	  <li></li>
-	</ul>
 
 <dl>
-  <dt>Előkészítés</dt>
+  <dt>Előkészítés (inception)</dt>
   <dd>
-	Az előkészítés (inception) elsősorban üzleti szempontból írja le a fejlesztést és
+	Az előkészítés elsősorban üzleti szempontból írja le a fejlesztést és
 	meghatározza az alkalmazás határait. Az üzleti szempont röviden a következőket jelenti:
 	<ul>
 	  <li>sikertényezők meghatározása</li>
@@ -1225,9 +1218,9 @@ döntünk a fejlesztés folytatásról.
 	A fázis végén meghatározzuk az egyes iterációs ciklusok célját és döntünk a
 	folytatásról.
   </dd>
-  <dt>Kidolgozás</dt>
+  <dt>Kidolgozás (elaboration)</dt>
   <dd>
-	A kidolgozás (elaboration) során a problémát elsősorban szakterületi szempontból
+	A kidolgozás során a problémát elsősorban szakterületi szempontból
 	elemezzük. Elsődleges cél az elemzéssel azonosított legfontosabb kockázati tételek
 	enyhítése e szakasz végéig. Ebben a fázisban elkészül a problémakör elemzése,
 	és a projekt architektúrája megkapja alapvető formáját. Az architektúrára vonatkozó
@@ -1237,7 +1230,7 @@ döntünk a fejlesztés folytatásról.
 	és megszüntetettük a főbb kockázati tényezőket. A mérföldkőnél itt is elemezzük
 	az elért eredményeket és döntünk a folytatásról.
   </dd>
-  <dt>Megvalósítás</dt>
+  <dt>Megvalósítás (Construction)</dt>
   <dd>
 	A megvalósítási fázis legfőképpen a rendszertervvel, a programozással és a teszteléssel
 	foglalkozik. Az elsődleges cél a szoftverrendszer felépítése. Ebben a szakaszban
@@ -1250,7 +1243,7 @@ döntünk a fejlesztés folytatásról.
 	és a hozzá csatlakozó dokumentációval, amely készen áll, hogy leszállítsuk a
 	felhasználónak.
   </dd>
-  <dt>Átadás</dt>
+  <dt>Átadás (Transition)</dt>
   <dd>
 	Az elsődleges cél a rendszernek a fejlesztésről a termelésre történő átvitele,
 	hozzáférhetővé tétele és a végfelhasználó számára történő megértése. E szakasz
@@ -1292,11 +1285,12 @@ A fejlesztés különböző fázisaiban az iterációk lényegesen különböző
 fejlesztés kezdeti szakaszában az üzleti modellezés és a követelményelemzés a hangsúlyosabb,
 s a tesztelés, telepítés lehet, hogy ki is marad, addig a középső szakaszban az implementálás,
 a legvégső szakaszban a telepítés, a tesztelés a domináns. A fejlesztés bizonyos szakaszaiban
-egyes munkafolyamatok erőforrásigénye szinte nullára is csökkenhet. Az iterációk
-számát nem rögzíti a szabvány, fázisonként illetve fejlesztésenként eltérő számú
-iterációra lehet szükségünk.
+egyes munkafolyamatok erőforrásigénye szinte nullára is csökkenhet. 
 
 ![Imgur](https://imgur.com/ZmpQ0Qp.png)
+
+Az iterációk számát nem rögzíti a szabvány, fázisonként illetve fejlesztésenként
+eltérő számú iterációra lehet szükségünk.
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
