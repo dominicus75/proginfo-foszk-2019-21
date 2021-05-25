@@ -1331,7 +1331,7 @@ viszonyokat és kölcsönhatásokat. A Scrum szabályait a [Scrum Guide](https:/
 
 ### Szerepkörök
 
-A módszertan kétféle szerepkört különböztet meg, ezek a disznók és a csirkék. A
+A módszertan kétféle szerepkört különböztetett meg, ezek a disznók és a csirkék. A
 megkülönböztetés alapja egy [üzleti mese](https://en.wikipedia.org/wiki/The_Chicken_and_the_Pig),
 amely egy projekt vagy ügy iránti elkötelezettségről szól és így hangzik:
 
@@ -1348,31 +1348,57 @@ a néhány emberből alkotott csapat, azaz a Scrum Team. A Scrum három specifik
 felelősségi kört különböztet meg a Scrum Teamen belül: 
 
 <dl>
-  <dr>Scrum mester</dt>
+  <dt>Scrum mester</dt>
   <dd>
-
+	Lényegében ő a projekt menedzser. Ez egy támogató vezető szerepkör, fő célja
+	a csapat teljesítményének növelése és a munkát akadályozó tényezők elhárítása,
+	amelyek gátolják a csapatot abban, hogy a sprint célját megvalósítsa. A scrum
+	mester nem a csapat vezetője (a csapat önszerveződő), hanem a csapat és a külső
+	tényezők közötti összekötő. Ügyel arra, hogy a scrum folyamatot megfelelően
+	alkalmazzák. Ő tartatja be a scrum szabályait. A Scrum Master felelős a Scrum
+	Team eredményességéért. Ezt úgy teszi meg, hogy lehetővé teszi a Scrum csapat
+	számára, hogy saját munkamódszereit javítsa, a Scrum keretein belül maradva.
+	Kulcsfontosságú feladatának számít annak biztosítása, hogy a csapat az elvégzendő
+	feladatokra koncentráljon.
   </dd>
-  <dr>Terméktulajdonos (Product Owner)</dt>
+  <dt>Terméktulajdonos (Product Owner)</dt>
   <dd>
-
+	A termék „szakértője”, aki képviseli az érintetteket, és az ügyfél hangja. Ő
+	felel a termék fejlesztési irányáért. A megrendelő szerepét tölti be, ő a felelős
+	azért, hogy a csapat mindig azt a részét fejlessze a terméknek, amely éppen a
+	legfontosabb, vagyis a felhasználói sztorik fontossági sorrendbe állítása a
+	feladata a Product Backlog-ban (Termék Teendőlista). A Product Owner és a Scrum
+	Master nem lehet ugyanaz a személy.
   </dd>
-  <dr>Fejlesztők (Developers)</dt>
+  <dt>Fejlesztők (Developers)</dt>
   <dd>
-
+	A fejlesztők (általában 5-9 fő) azért felelősek hogy a termék elkészüljön. A
+	csapattagok különféle képességei lehetővé teszik, hogy a feladatot közösen
+	megoldják (fejlesztő, tervező, tesztelő stb.). A fejlesztők olyan szakemberek,
+	akik azon dolgoznak, hogy minden egyes Sprint végén leszállítható legyen a
+	termék egy „Kész” potenciálisan kibocsátható növekménye. A növekmény elkészítésében
+	csak a ők vesznek részt.
   </dd>
 </dl>
 
+Az **egyéb érintettek** (ők voltak a 2011 előtti terminológiában a *„csirkék”*) nem
+részei a scrum folyamatnak, de figyelembe kell venni őket. Az agilis szoftverfejlesztés
+egyik fontos aspektusa, hogy bevonják a felhasználót a fejlesztési folyamatba, a
+tőlük érkező visszajelzéseket figyelembe veszik a sprintek tervezésénél.
 
 <dl>
-  <dr></dt>
+  <dt>Üzleti szereplők (Stakeholders)</dt>
   <dd>
-
+	Azok az emberek, akik lehetővé teszik a projekt létrehozását és akiknek a termék
+	hasznot fog hozni (megrendelők, forgalmazók). Közvetlenül csak a sprintáttekintő
+	megbeszélésen (Sprint Review) vesznek részt a folyamatban.
   </dd>
-  <dr></dt>
+  <dt>Menedzserek</dt>
   <dd>
-
+	A fejlesztésben részt vevő szervezeti egységek munkakörnyezetét teremtik meg.
   </dd>
 </dl>
+
 
 ### Scrum munkaanyagok (Scrum artifacts)
 
