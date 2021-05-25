@@ -1381,6 +1381,17 @@ felelősségi kört különböztet meg a Scrum Teamen belül:
   </dd>
 </dl>
 
+A Scrum Teamek keresztfunkcionálisak, ami azt jelenti, hogy rendelkeznek mindazon
+kompetenciával, ami ahhoz szükséges, hogy minden Sprintben értéket teremtsenek. Ezen
+kívül önmenedzselőek, azaz csapaton belül döntik el, hogy ki milyen munkát végez el,
+mikor és hogyan. A Scrum Team megfelelően kicsi, hogy gyors maradjon és elég nagy,
+hogy jelentős mennyiségű munkával készüljön el egy Sprinten belül. Tipikusan 10
+vagy kevesebb emberből áll.
+
+A Scrum Team feladata minden termékkel kapcsolatos tevékenység: az érdekelt felekkel
+való együttműködés, ellenőrzés, karbantartás, üzemeltetés, kísérletek végrehajtása,
+kutatás és fejlesztés, valamint bármi más, amire szükség lehet.
+
 Az **egyéb érintettek** (ők voltak a 2011 előtti terminológiában a *„csirkék”*) nem
 részei a scrum folyamatnak, de figyelembe kell venni őket. Az agilis szoftverfejlesztés
 egyik fontos aspektusa, hogy bevonják a felhasználót a fejlesztési folyamatba, a
