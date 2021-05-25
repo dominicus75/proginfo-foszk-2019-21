@@ -1302,6 +1302,81 @@ az alábbi diagram:
 
 ## 9. Ismertesse a Scrum módszertant.
 
+A Scrum a szoftverfejlesztés egy inkrementális, iteratív módszere, amit gyakran
+használnak az [agilis szoftverfejlesztés](https://hu.wikipedia.org/wiki/Agilis_szoftverfejleszt%C3%A9s) eszközeként.
+1986-ban *Hirotaka Takeuchi* és *Ikujiro Nonaka* írtak le egy módszert, amely
+nagyban felgyorsítja és flexibilisebbé teszi új termékek fejlesztését. A tradicionális
+vízesés módszert, amelyben az egymást sorban követő fejlesztési fázisokat más-más
+szakembercsapat kezeli, a váltófutáshoz hasonlítják, ahol egyszerre csak egy ember
+fut, és a futók egymásnak adják a stafétát. Az új módszert, amiben a fázisok erősen
+átlapolódnak, és a különböző területeket képviselő szakemberek egy kis csoportja
+végig, minden fázisban együtt dolgozik, a rögbihez hasonlítják, ahol egyszerre az
+egész csapat fut, és egymás között passzolgatják a labdát. Ezt a szemléletmódot
+hangsúlyozandó a Scrum fogalmait az amerikai futballból meríti. Ilyen maga az elnevezés
+is, amely dulakodást jelent.
+
+A Scrum keretrendszer a Scrum Csapatokból, valamint a hozzájuk rendelt szerepekből,
+eseményekből, munkaanyagokból (artifacts) és szabályokból áll. A módszertan jelentős
+szerepet tulajdonít a csoporton belüli összetartásnak. A csoporton belül sok a találkozó,
+a kommunikáció, lehetőség van a gondok megbeszélésre is. Az ajánlás szerint jó, ha
+a csapat egy helyen dolgozik és szóban kommunikál.
+
+A keretrendszeren belül minden egyes komponens meghatározott célt szolgál, és mindegyik
+alapvetően szükséges a Scrum sikeréhez és használatához. A Scrum szabályai kapcsolják
+össze az eseményeket, szerepköröket és a munkaanyagokat, meghatározva a köztük lévő
+viszonyokat és kölcsönhatásokat. A Scrum szabályait a [Scrum Guide](https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Hungarian.pdf) ismerteti.
+
+### Scrum események
+
+
+### Szerepkörök
+
+A módszertan kétféle szerepkört különböztet meg, ezek a disznók és a csirkék. A
+megkülönböztetés alapja egy [üzleti mese](https://en.wikipedia.org/wiki/The_Chicken_and_the_Pig),
+amely egy projekt vagy ügy iránti elkötelezettségről szól és így hangzik:
+
+![Imgur](https://imgur.com/wyC32nH.png)
+
+A disznók azok, akik elkötelezettek a szoftver projekt sikerében. Ők azok, akik a
+„vérüket” adják a projekt sikeréért, azaz felelősséget vállalnak érte. A csirkék
+is érdekeltek a projekt sikerében, ők a haszonélvezői a sikernek, de ha esetleg
+mégse sikeres a projekt, akkor az nem az ő felelősségük. A mesét 2011-ben [eltávolították](https://www.scrum.org/resources/chickens-and-pigs)
+a hivatalos Scrum Guide-ból, mert sokan becsmérlőnek érezték a metafórát. Így lett
+a disznóból „alkalmazott” vagy „résztvevő”, akikre összességében Scrum Team-ként is
+hivatkoznak, a csirkéből pedig „érdekelt fél”. A Scrum alapvető egysége tehát ez
+a néhány emberből alkotott csapat, azaz a Scrum Team. A Scrum három specifikus
+felelősségi kört különböztet meg a Scrum Teamen belül: 
+
+<dl>
+  <dr>Scrum mester</dt>
+  <dd>
+
+  </dd>
+  <dr>Terméktulajdonos (Product Owner)</dt>
+  <dd>
+
+  </dd>
+  <dr>Fejlesztők (Developers)</dt>
+  <dd>
+
+  </dd>
+</dl>
+
+
+<dl>
+  <dr></dt>
+  <dd>
+
+  </dd>
+  <dr></dt>
+  <dd>
+
+  </dd>
+</dl>
+
+### Scrum munkaanyagok (Scrum artifacts)
+
+
 ## 10. Ismertesse az Adapter tervezési mintát.
 
 ## 11. Ismertesse és hasonlítsa össze az MVC és MVP tervezési mintákat.
@@ -1382,6 +1457,7 @@ van ott még, ahol ez volt...
 * Dr. Szepesné Stiftinger Mária: [Rendszertervezés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0027_RSZ5/index.html)
 * Wikipédia: [Dinamikus rendszerfejlesztés folyamata](https://hu.wikipedia.org/wiki/Dinamikus_rendszerfejleszt%C3%A9s_folyamata)
 * Wikipédia: [Scrum](https://hu.wikipedia.org/wiki/Scrum)
+* Ken Schwaber és Jeff Sutherland: [A Scrum útmutató](https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Hungarian.pdf)
 * Wikipedia: [Egységesített racionális fejlesztési módszer](https://hu.wikipedia.org/wiki/Egys%C3%A9ges%C3%ADtett_racion%C3%A1lis_fejleszt%C3%A9si_m%C3%B3dszer)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
 * Bartók Roland: [Az Egységesített Eljárás módszertan](http://mazsola.iit.uni-miskolc.hu/~bartok3/digit/RUP.pdf)
