@@ -1261,8 +1261,11 @@ döntünk a fejlesztés folytatásról.
 A fejlesztés nagyobb egységeit jelentő fázisok további kisebb egységekre, iterációkra
 (iteration) bonthatók. Az iteráció végén a rendszer újabb, bővített funkcionalitású
 verziója készül el. Minden iteráció egy teljes, illetve részben önálló fejlesztési
-ciklust jelent. Minden egyes iterációban „kicsiben” megvan minden, ami egy fejlesztési
-projekt szerves része. Kezdődik az üzleti modellezéssel, követelményelemzéssel, folytatódik
+ciklust jelent. Az iterációk számát nem rögzíti a szabvány, fázisonként illetve
+fejlesztésenként eltérő számú iterációra lehet szükségünk.
+
+Minden egyes iterációban „kicsiben” megvan minden, ami egy fejlesztési projekt
+szerves része. Kezdődik az üzleti modellezéssel, követelményelemzéssel, folytatódik
 elemzéssel, tervezéssel, implementálással, teszteléssel, és befejeződik a telepítéssel.
 Az iteráción belül a feladatokat kilenc munkafolyamatra (újabb megfogalmazás szerint
 tudományterületre) osztják. A tevékenység jellegének megfelelően megkülönböztetünk
@@ -1272,29 +1275,28 @@ a változáskövetéssel, azaz a menedzsment feladataival foglalkoznak.
 
 **Mérnöki munkafolyamatok:**
 
-* Üzleti folyamatok elemzése (Business Modeling)
-* Követelmények elemzése (Requirements)
-* Elemzés és tervezés (Analysis & Design)
-* Implementáció (Implementation)
-* Tesztelés (Test)
-* Átadással kapcsolatos tevékenységek (Deployment)
+* Üzleti folyamatok elemzése (*Business Modeling*)
+* Követelmények elemzése (*Requirements*)
+* Elemzés és tervezés (*Analysis & Design*)
+* Implementáció (*Implementation*)
+* Tesztelés (*Test*)
+* Átadással kapcsolatos tevékenységek (*Deployment*)
 
 **Támogató munkafolyamatok:**
 
-* Konfiguráció és változáskövetés (Configuration & Change Management)
-* Projektvezetés (Project Management)
-* Fejlesztői környezet felállítása (Environment)
+* Konfiguráció és változáskövetés (*Configuration & Change Management*)
+* Projektvezetés (*Project Management*)
+* Fejlesztői környezet felállítása (*Environment*)
 
 A fejlesztés különböző fázisaiban az iterációk lényegesen különbözőek lehetnek. Míg a
 fejlesztés kezdeti szakaszában az üzleti modellezés és a követelményelemzés a hangsúlyosabb,
 s a tesztelés, telepítés lehet, hogy ki is marad, addig a középső szakaszban az implementálás,
 a legvégső szakaszban a telepítés, a tesztelés a domináns. A fejlesztés bizonyos szakaszaiban
-egyes munkafolyamatok erőforrásigénye szinte nullára is csökkenhet. 
+egyes munkafolyamatok erőforrásigénye szinte nullára is csökkenhet. Ezt szemlélteti
+az alábbi diagram:
 
 ![Imgur](https://imgur.com/ZmpQ0Qp.png)
 
-Az iterációk számát nem rögzíti a szabvány, fázisonként illetve fejlesztésenként
-eltérő számú iterációra lehet szükségünk.
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
@@ -1384,6 +1386,7 @@ van ott még, ahol ez volt...
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
 * Bartók Roland: [Az Egységesített Eljárás módszertan](http://mazsola.iit.uni-miskolc.hu/~bartok3/digit/RUP.pdf)
 * Vég Csaba: [Rational Unified Process](http://logos2000.weaveworld.org/it/doc/RUP.pdf)
+* Csilinkó Ádám: [Agilis módszertan összefoglaló nem csak IT-soknak](https://gantt.hu/agilis-modszertan-osszefoglalo/)
 * Kollár Lajos, Sterbinszky Nóra: [Programozási technológiák](https://gyires.inf.unideb.hu/GyBITT/21/index.html)
 	* [GoF tervezési minták katalógusa](https://gyires.inf.unideb.hu/GyBITT/21/ch04s02.html)
 	* [Tervezési minták alkalmazása a gyakorlatban](https://gyires.inf.unideb.hu/GyBITT/21/ch04s03.html)
