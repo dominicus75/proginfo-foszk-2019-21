@@ -1302,9 +1302,9 @@ az alábbi diagram:
 
 ## 9. Ismertesse a Scrum módszertant.
 
-A Scrum a szoftverfejlesztés egy inkrementális, iteratív módszere, amit gyakran
-használnak az [agilis szoftverfejlesztés](https://hu.wikipedia.org/wiki/Agilis_szoftverfejleszt%C3%A9s) eszközeként.
-1986-ban *Hirotaka Takeuchi* és *Ikujiro Nonaka* írtak le egy módszert, amely
+A Scrum a szoftverfejlesztés egy [inkrementális, iteratív módszere](https://hu.wikipedia.org/wiki/Iterat%C3%ADv_%C3%A9s_inkrement%C3%A1lis_m%C3%B3dszertanok),
+amit gyakran használnak az [agilis szoftverfejlesztés](https://hu.wikipedia.org/wiki/Agilis_szoftverfejleszt%C3%A9s)
+eszközeként. 1986-ban *Hirotaka Takeuchi* és *Ikujiro Nonaka* írtak le egy módszert, amely
 nagyban felgyorsítja és flexibilisebbé teszi új termékek fejlesztését. A tradicionális
 vízesés módszert, amelyben az egymást sorban követő fejlesztési fázisokat más-más
 szakembercsapat kezeli, a váltófutáshoz hasonlítják, ahol egyszerre csak egy ember
@@ -1328,6 +1328,63 @@ viszonyokat és kölcsönhatásokat. A Scrum szabályait a [Scrum Guide](https:/
 
 ### Scrum események
 
+Minden Scrum esemény egy formális lehetőség a Scrum munkaanyagok felülvizsgálatára
+és a szükséges korrekció elvégzésére. Ezen események a szükséges átláthatóság biztosítására
+lettek tervezve. 
+
+<dl>
+  <dt>Futam (Sprint)</dt>
+  <dd>
+	A Sprint minden egyéb esemény gyűjtője. A következetesség jegyében egy hónapos,
+	vagy annál rövidebb idejű, rögzített hosszúságú események. Az új Sprint közvetlenül
+	az előző lezárása után indul. Kezdődik a Sprint Planning-gel, majd a Retrospective-vel
+	zárul. Ez a Scrum úgynevezett iterációs ciklusa, addig kell ismételni, amíg a
+	Product Backlog-ról el nem tűnnek a megoldásra váró felhasználói sztorik. Alapelv,
+	hogy minden sprint végére egy potenciálisan leszállítható szoftvert kell előállítani
+	a csapatnak, azaz egy prototípust. 
+  </dd>
+  <dt>Sprint Tervezés (Sprint Planning)</dt>
+  <dd>
+	A Sprint Planning a Sprintet úgy indítja el, hogy meghatározza a Sprint alatt
+	elvégzendő munkákat. Ez a terv az egész Scrum Team közös munkájának eredménye.
+	A csapat a Product Owner-rel megbeszéli, majd teljes mértékben megérti, hogy
+	a vevő mit szeretne az adott sztoritól, így elkerülhetőek az esetleges félreértésekből
+	adódó problémák. 
+  </dd>
+  <dt>Napi Scrum-megbeszélés (Daily Scrum)</dt>
+  <dd>
+	A sprint ideje alatt minden nap kell tartani egy rövid megbeszélést, ami maximum
+	15 perc, és egy előre megbeszélt időpontban, a csapattagok és a Scrum Master
+	jelenlétében történik (mások is ott lehetnek, de nem szólhatnak bele). Érdekesség,
+	hogy nem szabad leülni, mindenki áll, ezzel is jelezve, hogy ez egy rövid találkozó.
+	Bárki részt vehet, de csak a „disznók” beszélhetnek. Három kérdésre kell válaszolnia
+	a csapat minden tagjának, ezek a következőek:
+	<ol>
+	  <li>Mit csináltál a tegnapi megbeszélés óta?</li>
+	  <li>Mit fogsz csinálni a következő megbeszélésig?</li>
+	  <li>Milyen akadályokba ütköztél az adott feladat megoldása során?</li>
+	</ol>
+  </dd>
+  <dt>Futam áttekintés (Sprint Review)</dt>
+  <dd>
+	Minden sprint végén összeülnek a szereplők, és megnézik, hogy melyek azok a
+	sztorik, amelyeket sikerült elkészíteni, illetve az megfelel-e a követelményeknek.
+	Ekkor a sztori állapotát készre állítják. Fontos, hogy egy sztori csak akkor
+	kerülhet ebbe az állapotba, ha minden taszkja elkészült, és a Review-on elfogadták.
+	Ezen a megrendelő is jelen van.
+  </dd>
+  <dt>Sprint Visszatekintés (Sprint Retrospective)</dt>
+  <dd>
+	A Sprint Retrospective zárja a Sprintet. Időtartama legfeljebb három óra egy
+	hónapos Sprint esetén. Rövidebb Sprintek esetében az esemény általában rövidebb.
+	Ez az egyik legfontosabb meeting. A Scrum egyik legfontosabb funkciója, hogy
+	felszínre hozza azokat a problémákat, amelyek hátráltatják a fejlesztőket a
+	feladatmegoldásban, így ha ezeket az akadályokat megoldjuk, a csapat jobban
+	tud majd alkalmazkodni a következő sprint alatt a feladathoz. Problémák a Daily
+	Scrum-on is előkerülnek, de ott inkább a személyeket érintő kérdések vannak
+	napirenden, míg itt a csapatmunka továbbfejlesztése az elsődleges.
+  </dd>
+</dl>
 
 ### Szerepkörök
 
@@ -1412,6 +1469,40 @@ tőlük érkező visszajelzéseket figyelembe veszik a sprintek tervezésénél.
 
 
 ### Scrum munkaanyagok (Scrum artifacts)
+
+Az agilis fejlesztés a működő szoftvert előnyben részesíti az átfogó dokumentációval
+szemben. A Scrum 3 munkaanyag (artifact) meglétét írja elő:
+
+<dl>
+  <dt>Termék teendőlista (Product Backlog)</dt>
+  <dd>
+	A Terméktulajdonos által vezetett lista, ami tartalmazza az összes szükséges funkciókat,
+	követelményeket (sztorikat), amit a termékben a jövő során fejleszteni kell.
+	Sohasem végleges a lista. Dinamikusan változik, mivel az érdekekelt felekkel
+	együtt kerül egyeztetésre. A Terméktulajdonos minden sztorihoz prioritást, fontossági
+	sorrendet rendel, így tudja szabályozni, hogy melyeket kell elsősorban elkészíteni,
+	így a Sprint Planning során a csapattagok láthatják, hogy ami a Backlog-ban
+	legfelül van, azt szeretné a vevő leghamarabb készen látni.
+  </dd>
+  <dt>Sprint teendőlista (Sprint Backlog)</dt>
+  <dd>
+	Ebben a dokumentumban az aktuális sprintre bevállalt munkák, storyk vannak felsorolva,
+	ezeket kell adott időn belül a csapatnak megvalósítania. A sztorik tovább vannak
+	bontva taszkokra, és ezeket a taszkokat vállalják el a tagok a Daily Meeting
+	során. Ez a feldarabolása a feladatoknak a feladat minél jobb megértését segíti.
+  </dd>
+  <dt>Növekmény (Increment)</dt>
+  <dd>
+	A Növekmény (más szóval Inkrementum) a Sprintben leszállított Termék Backlog
+	elemeknek és az összes megelőző Sprint során szállított növekmények értékének
+	összessége. A Sprint végére az új növekménynek „Kész”-nek, azaz használhatónak
+	kell lennie, és meg kell felelnie a Scrum Csapat által meghatározott „Kész”
+	definíciójának (a Definition of Done az Inkrementum állapotának formális leírása
+	abban az időpillanatban, amikor megfelel a termék számára előírt minőségi
+	kritériumoknak). Felhasználható állapotban kell lennie független attól, hogy
+	a Terméktulajdonos úgy dönt, hogy ténylegesen kibocsátja-e azt.
+  </dd>
+</dl>
 
 
 ## 10. Ismertesse az Adapter tervezési mintát.
