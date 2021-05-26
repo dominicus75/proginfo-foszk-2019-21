@@ -1692,6 +1692,194 @@ keresztül.
 
 ## 12. Ismertesse a programozási nyelvek generációk szerinti osztályozását.
 
+A programnyelvek változásának egy-egy fontosabb állomását a programozási nyelvek
+generációjának nevezzük. Az elektronikus számítógépek nagy generációi tulajdonképpen
+meghatározták a programozási nyelvek generációit is.
+
+### Első generáció (1GL)
+
+Az első programozási nyelv a gépi kód volt. Teljes mértékű processzorfüggőség jellemezte.
+Az utasítások bitsorozatok voltak, amelyeket a gép előlapján lévő kapcsolókkal
+lehetett megadni. Ennek a nyelvnek az utasításait a számítógép képes volt közvetlenül,
+minden átalakítás nélkül végrehajtani, értelmezni. A problémákat nagyon precízen
+kellett megfogalmazni, lépésekre bontani. Emellett a nyelv erősen gépfüggő
+volt, hiszen minden gépen más és más utasításokat használt, az adott problémát minden
+géptípus esetén másképpen kellett leírni, megfogalmazni, alkalmazkodva a számolóegység
+sajátosságaihoz. Előnyei:
+* A leggyorsabb programot eredményezi, mivel nem tartalmaz felesleges utasításokat.
+* A CPU és az egyéb hardware-elemek hatékonyságának maximális kihasználása.
+
+A gépi kódot tulajdonképpen nem is lehet igazi programnyelvnek tekinteni, hiszen
+a klasszikus értelemben vett programnyelvi elemek (utasítások, vezérlőszerkezetek,
+kifejezések) nem jellemzőek rá. Manapság szinte soha senki nem ír programot közvetlenül
+gépi kódban, mivel ekkor számos olyan részletre kellene odafigyelni, melyeket egy
+magasabb szintű nyelv automatikusan kezelne, valamint minden egyes utasításhoz
+számkódokat kellene megjegyezni vagy kikeresni egy listából.
+
+### Második generáció (2GL)
+
+A programnyelvek második generációját képviselik az alacsony szintű (gépközeli)
+nyelvek. Ezen nyelveknél megmarad a számítógép erőforrásainak maradéktalan kihasználhatósága,
+a memóriacímek, a regiszterek, a verem és a megszakítások közvetlen elérhetősége,
+programozhatósága.
+
+Ilyen második generációs nyelv az [Assembly](https://hu.wikipedia.org/wiki/Assembly),
+melynek fordítóprogramja az [assembler](https://hu.wikipedia.org/wiki/Assembler).
+Az alacsony szintű nyelveknél minden gépi utasításnak megfelel egy nyelvi utasítás
+(egy nyelvi utasítás azonban állhat több gépi utasításból is). Az utasítások már
+egyszerűsített angol szavak, így sokkal könnyebb megjegyezni őket. Az utasítások
+számkódjait néhány betűs (2-3-4 betűs) ún. **mnemonikokkal** helyettesítették. Egy
+ilyen mnemonik (emlékeztető szócska) a gépi kódú utasítás jelentéstartalmára utalt.
+Például a *„memória-tartalom beolvasása egy regiszterbe”* (bemozgatás) az angol
+MOVE = mozgatni szó alapján a ```MOV``` mnemonikot kapta. A *„két szám összeadása”*
+az angol ```ADD``` = összeadni mnemonikot kapta.
+
+Megjelennek az adatok és az adatok helyfoglalását, a programkód memóriába helyezését
+definiáló utasítások is. A memóriacímek azonosítóval való ellátására is van lehetőség.
+Elnevezhetjük az adatok kezdőcímét, ebből alakul ki később a változó fogalma. Az
+Assembly primitív típusnevei (dword, word, byte,...) még nem jelölték az azonosítók
+tényleges típusát, a fordító ezeket mindössze a tárigény-szükséglet kiszámítására
+használta fel.
+
+Habár az egyes architektúrák assembly nyelvei hasonlóak, mégis különböznek annyira,
+hogy az assembly kód ne legyen hordozható. Minden egyes processzor-családnak saját
+assembly nyelve van.
+
+### Harmadik generáció (3GL)
+
+A számítógépek alkalmazási területének bővülése szükségessé tette a programok fejlesztési
+idejének csökkentését, azaz felmerült az igény, hogy a programokat minél gyorsabban írják
+meg a programozók. A gépi kód és az assembly nehézkessége, géphez igazodása miatt nem
+volt erre alkalmas.
+
+A 60-as évek elején jelentek meg az első **magas szintű programozási nyelvek**. Az új
+nyelvek struktúrája már nem a számítógép sajátosságaihoz, hanem a problémához igazodott,
+a programozóknak itt már nem kellett a gépi végrehajtással foglalkoznia. A magas szintű
+elnevezés arra utal, hogy nagyobb mértékű az elvonatkoztatás (absztrakció) a gépi kódtól.
+
+A programnyelvek e generációjánál a változófogalom pontosabb megjelenése az egyik
+legfontosabb tulajdonság. **A változó azonosítója nem memória-kezdőcímet, hanem egy
+egész memóriatartományt jelöl**. A változófogalom mellett kialakul a típusfogalom,
+és lehetőség van arra, hogy a programozó saját típusokat is létrehozzon.
+
+Az assembly nyelv ugróutasításaiból megszervezhető vezérlési szerkezetek körét
+csökkentették, és rögzítették azokat:
+* **szekvencia**: az utasításokat a forráskódban rögzített sorrendben kell végrehajtani,
+* **szelekció**: feltételes elágazás,
+* **iteráció**: adott programrész ismétlése (ciklus).
+
+A vezérlési szerkezetek e formája áttekinthető, egyszerű, könnyen olvasható kódot
+eredményez. Mills bizonyította, hogy minden algoritmus kódolható a fenti három
+vezérlési szerkezet használatával, így az ugró utasítások szükségtelenné váltak.
+Természetesen, amikor a fordítóprogram a gépi kódú változatot generálja, akkor a
+fenti szerkezeteket ugró utasítások formájában valósítja meg – hiszen a gépi kódban
+csak ezek szerepelnek.
+
+Az eljárás (és függvény) nyelvi elemmé vált. Az eljárásoknak neve volt, és rögzített
+paraméterezése (formális paraméterlista). Ez leírta, hogy az eljárás meghívása során
+milyen adatokat, értékeket kell az eljárás számára átadni. Az eljárásoknak lehetnek
+név, illetve cím szerint átadott paraméterei is.
+
+A harmadik generációs programnyelveket feladatorientált vagy eljárásorientált
+(procedurális) nyelveknek is nevezzük, mivel felépítésükből fakadóan a programfejlesztő
+számára egy program adott részfeladatainak megoldására szolgáló struktúrákat (eljárásokat)
+kínálnak. A procedurális nyelvek már nem processzor függőek. A fordítóprogram ismeri
+az adott számítógép processzorának gépi kódját – és a procedurális nyelven megírt
+magas szintű kódot az adott gépi kódra fordítja. Amennyiben a programot más platformon
+is szeretnénk futtatni, úgy a magas szintű forráskódot az adott számítógépre írt
+fordítóprogrammal újra kell fordítani – a forráskód bármilyen változtatása nélkül.
+
+Harmadik generációs nyelvek:
+* [Fortran](https://hu.wikipedia.org/wiki/Fortran)(1957)
+* [ALGOL](https://hu.wikipedia.org/wiki/ALGOL)(1958)
+* [COBOL](https://hu.wikipedia.org/wiki/COBOL)(1959)
+* [BASIC](https://hu.wikipedia.org/wiki/BASIC)(1964)
+* [C](https://hu.wikipedia.org/wiki/C_(programoz%C3%A1si_nyelv))(1972)
+
+A harmadik generációs programnyelveket a mai napig használják. Igen sokféle probléma
+megoldására alkalmasak. Némelyek mára objektumorientált elemekkel bővültek (Fortran,
+COBOL).
+
+### Három és feledik generáció (3.5GL)
+
+A harmadik generációs programnyelvek nyitva hagytak egy nagyon fontos problémát:
+a felhasználó által definiált típusokhoz nem lehet operátorokat definiálni, emiatt
+kifejezésekben nem lehet az új típusokat felhasználni. Vagyis a felhasználói adattípus
+kevesebbet ér, mint a gyári, eleve létező elemi típus. Az objektum orientált programozási
+nyelvek (OOP nyelv) ezen a ponton jelentenek fejlődést. A felhasználó sokkal egyszerűbben
+és szabadabban készítheti el a saját típusait. Meglévő típusok továbbfejlesztésével
+(öröklődés) kevés munkával készíthet új típusokat. A saját típusaihoz (általában)
+készíthet operátorokat is (melyeknek jelentését természetesen le kell programozni).
+Ezek után a saját típus szinte minden szempontból egyenragúvá válik a nyelvi
+alaptípusokkal. A saját típusokhoz nem csak operátorokat rendelhet, hanem megadhat
+függvényeket és eljárásokat is, amelyek az adott típusú adatokkal végeznek valamilyen
+műveletet. Mivel ezen függvények és operátorok az adott típushoz tartoznak, a típus
+részeinek tekintendők. Az egy típusba sorolt adattároló változók (mezők), a hozzájuk
+tartozó műveletek és operátorok csoportját (halmazát) osztálynak nevezzük.
+
+A nyelvek logikája közelít az emberi gondolkodáshoz. Az OOP nyelvek inkább
+csak szemléletmódban mások (melyik eljárást és függvényt hova írjuk meg), mint kódolási
+technikákban. Ezért az OOP nyelveket nem tekintik külön generációnak.
+
+Az első objektumorientált nyelv a [Simula](https://hu.wikipedia.org/wiki/Simula)
+(1967) volt, amit szimulációhoz fejlesztettek ki. Az objektumok voltak a legfontosabb
+információreprezentációk. Az objektumorientáció azonban csak a [Smalltalk](http://nyelvek.inf.elte.hu/leirasok/Smalltalk/index.php?chapter=1)
+után vált ismertebbé (1972-1980). Ezzel párhuzamosan kezdett el fejlődni az objektumorientáció
+elmélete is.
+
+Vannak tisztán objektumorientált nyelvek, ahol következetesen minden objektum, a
+primitívektől kezdve az osztályok, prototípusok, modulok, blokkok is. Arra tervezték
+őket, hogy megkönnyítsék, vagy kikényszerítsék az objektumorientációt (Python, Ruby,
+Scala, Smalltalk, Eiffel). Vannak más nyelvek, amelyeket főként objektumorientációra
+terveztek, de procedurális elemekkel, nyitva hagyva a lehetőséget további paradigmák
+bevezetésére (Java, C++, C#, Delphi/Object Pascal, VB.NET). Végül vannak eredetileg
+procedurálisnak tervezett, utólag objektumorientált elemekkel bővített nyelvek (PHP,
+Perl, Visual Basic, COBOL 2002, Fortran 2003, Pascal).
+
+### Negyedik generáció (4GL)
+
+A negyedik generációs nyelvek közé tartoznak a *nagyon magas szintű programozási
+nyelvek*, melyek használata általában egy specifikus alkalmazásra, célra, vagy
+feladattípusra korlátozódik. Ezen nyelvek jellemzője, hogy nagyon kevés nyelvi elemmel
+dolgoznak, és nagyon egyszerű, szinte mondatszerűen olvasható utasítások fogalmazhatók
+meg. Az absztrakció itt még magasabb szintet ér el, próbál a nyelv még emberbarátabb
+lenni. Sok esetben már szinte természetes emberi nyelvnek tűnik az, amit a programban
+olvasunk. Habár nem általános programnyelv, hanem adatbáziskezeléshez tervezték,
+az SQL is a ebbe a csoportba sorolható.
+
+A negyedik generációs nyelvek deklaratív szemléletű nyelvek (szemben a harmadik
+generáció imperatív szemléletével), amelyekben a programozó erőfeszítései inkább
+az alkalmazáslogikára összpontosulnak (mit) mint a megvalósítás részleteire (hogyan).
+A deklaratív programozás két válfaját szokás megkülönböztetni: a logikai és a funkcionális
+programozást. A negyedik generációs nyelvek ez utóbbihoz tartoznak. A programozó
+deklarálja a kívánt eredmény tulajdonságait, de nem azt, hogy hogyan kell azt
+kiszámítani.
+
+### Ötödik generáció (5GL)
+
+Az 5. GL kialakításának a célja az volt, hogy a számítógép oldja meg a problémát
+programozó szakember igénybevétele nélkül. Az 5GL a „programozónak” csak azt kell
+a számítógép tudtára adni mi a probléma, milyen feltételek mellet kell megoldani,
+de a hogyan már a számítógép dolga. Kiderült azonban, hogy nagyobb feladat esetén
+a probléma részekre bontása továbbra is embert (programozót) igényel. Felhasználása
+pl. központilag vezérelt számítógép-hálózatok, döntéstámogató rendszerek fejlesztése;
+valamint a mesterséges intelligenciát fejlesztők eszköze.
+
+Az ötödik generációs nyelvek szintén deklaratív szemléletűek, de már logikai
+programozási nyelvek, erősebben kötődnek a matematikai logikához. A logikai programozás
+alapgondolata, hogy egy, a matematikai logikán alapuló nyelvet használjunk programozási
+nyelvként, végrehajtási módszerként pedig logikai következtetési és tételbizonyítási
+módszereket alkalmazzunk. Ez utóbbi már nem a programozó, hanem az adott logikai
+nyelvet megvalósító rendszer feladata. A kívánt eredményt tények és szabályok rendszerével
+kapcsolatos kérdésre adott válaszként deklarálják.
+
+A legelterjedtebb logikai programozási nyelv a [Prolog](https://hu.wikipedia.org/wiki/Prolog)
+(PROgramming in LOGic), ami 1995-ben ISO szabvány lett. Professzionális, gyakorlati
+feladatok megoldására alkalmas megvalósításai a deklaratív nyelvi elemek mellett imperatív
+elemeket is tartalmaznak és fejlett programozási eszközöket megvalósító könyvtára van.
+Más logikai programozási nyelvek is vannak, pl. az [OPS5](https://en.wikipedia.org/wiki/OPS5),
+a CLP (Constraint Logical Programming) nyelvcsalád, vagy a Mercury.
+
 ### Jegyzetek:
 * <span id="note1">[[1]](#1)</span> Ian Sommerville: Szoftverrendszerek fejlesztése - Software Engineering, 64. oldal
 * <span id="note2">[[2]](#2)</span> Ian Sommerville: i. m., 65. oldal
@@ -1788,6 +1976,12 @@ Szarka Tibor Alex, Gercsó Márk: [Programozás I. jegyzet](https://okt.sed.hu/p
 	* [UML és egyéb diagramok](https://okt.sed.hu/rf2/gyakorlat/UML/)
 	* [Unit tesztelés a gyakorlatban](https://okt.sed.hu/rf2/gyakorlat/unit_testing/)
 	* [Agilis módszertanok](https://okt.sed.hu/rf2/gyakorlat/agile/)
-
+* Tamás Ferenc: [Programozási nyelvek generációi](https://tferi.hu/programozasi-nyelvek-generacioi)
+* Szabó Mária: [Programozás - Strukturált programozás a gyakorlatban](https://www.nive.hu/Downloads/Szakkepzesi_dokumentumok/Bemeneti_kompetenciak_meresi_ertekelesi_eszkozrendszerenek_kialakitasa/7_1155_018_100915.pdf)
+* Dr. Nyakóné dr. Juhász Katalin, Dr. Terdik György, Biró Piroska, Dr. Kátai Zoltán: [Bevezetés az Informatikába](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_bevezetes_az_informatikaba/index.html)
+	* [A programozás alapjai](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_bevezetes_az_informatikaba/ch09s03.html)
+* Dr. Kovács Emőd, Hernyák Zoltán, Radványi Tibor, Király Roland: [A C# programozási nyelv a felsőoktatásban](http://csharptk.ektf.hu/online/index.html)
+	* [Történeti áttekintő](http://csharptk.ektf.hu/online/ch01s02.html)
+* Bóta András: [Korlát-logikai programozás és alkalmazásai](https://core.ac.uk/download/pdf/160916133.pdf)
 
 [Kezdőlap](../README.md)
