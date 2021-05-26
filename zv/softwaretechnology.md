@@ -1507,6 +1507,60 @@ szemben. A Scrum 3 munkaanyag (artifact) meglétét írja elő:
 
 ## 10. Ismertesse az Adapter tervezési mintát.
 
+Az informatikában a programtervezési mintának (Software Design Patterns) nevezik a
+gyakran előforduló programozási feladatokra adható általános, újrafelhasználható
+megoldásokat. A tervminták nem nyújtanak kész tervet, amit közvetlenül le lehet
+kódolni. Céljuk az, hogy leírást vagy sablont nyújtsanak. Segítik formalizálni a
+megoldást.
+
+Objektum orientált programok esetében a tervezési minta leírása megadja azokat az
+egymással kommunikáló objektumokat, osztályokat, amelyek együttes viselkedése az
+adott problémára megoldás lehet. A legtöbb tervminta objektumorientált környezetre
+van kidolgozva. A tervezési minták alacsonyabb szintűek, mint az architekturális
+minták, amelyek a teljes rendszer általános felépítését jellemzik (pl. MVC).
+
+A programtervezési minták a 90-es évek elején (1994) tettek szert népszerűségre,
+amikor a négyek bandájaként (*„Gang of Four”* vagy **GoF**) emlegetett *Erich Gamma*,
+*Richard Helm*, *Ralph Johnson* és *John Vlissides* programozó négyes kiadta a
+[Programtervezési minták](https://www.libri.hu/konyv/erich_gamma.programtervezesi-mintak.html) című könyvüket,
+amely ma is alapjául szolgál az objektumorientált programozási minták kutatásának.
+Ez a könyv összesen 23 mintát mutat be, és a következő kategóriákba sorolja őket:
+* **létrehozási minták** (a példányosítási folyamat elvont ábrázolásai),
+* **szerkezeti minták** (megkönnyítik a szoftver tervezését az entitások közötti kapcsolatok
+egyszerű azonosításával, felderítésével),
+* **viselkedési minták** (az osztályok és objektumok közötti kommunikációval, a felelősségi
+körök kijelölésével foglalkoznak).
+
+Az **Illesztő** (*Adapter*) tervezési minta a *szerkezeti minták* csoportjába tartozik.
+A nem összeillő interfészek együttműködését teszi lehetővé, akkor használjuk, amikor
+két különböző osztály nem kompatibilis interfészét szeretnénk együttműködésre bírni.
+Az adapter tervezési minta megoldást nyújt arra az esetre, amikor van egy osztályunk,
+ami alkalmas egy bizonyos feladat elvégzésére, de az általa nyújtott interfész
+eltér attól, amit a szolgáltatást igénybevevő osztály (ügyfél) elvár. Az adapter
+minta konvertálja az osztály interfészét az ügyfél által elvárt alakra.
+
+**Alkalmazása:**
+* Egy meglévő osztály felhasználásánál, aminek felülete nem megfelelő,
+* Újra felhasználható osztály létrehozásánál, ami képes előre nem ismert osztályokkal
+együtt működni.
+
+**Kétfajta illesztő minta lehetséges:**
+
+<dl>
+  <dt>Objektum illesztő</dt>
+  <dd>
+	Az illesztő tartalmazza annak az osztálynak egy példányát, amelyet becsomagol,
+	hívásokat indít a becsomagolt példány objektum felé és ezek eredményét adja át
+	a kliensnek.
+  </dd>
+  <dt>Osztály illesztő</dt>
+  <dd>
+	Úgy készül, hogy megvalósítja vagy örökli mind várt (ügyfél) interfészt, mind
+	a már korábban létező (szolgáltató) interfészt, vagyis az Adapter az illesztendő
+	(szolgáltató) osztály leszármazottja. 
+  </dd>
+</dl>
+
 ## 11. Ismertesse és hasonlítsa össze az MVC és MVP tervezési mintákat.
 
 ## 12. Ismertesse a programozási nyelvek generációk szerinti osztályozását.
@@ -1588,6 +1642,7 @@ van ott még, ahol ez volt...
 * Ken Schwaber és Jeff Sutherland: [A Scrum útmutató](https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Hungarian.pdf)
 * Wikipedia: [Egységesített racionális fejlesztési módszer](https://hu.wikipedia.org/wiki/Egys%C3%A9ges%C3%ADtett_racion%C3%A1lis_fejleszt%C3%A9si_m%C3%B3dszer)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
+* Wikipedia: [Illesztő programtervezési minta](https://hu.wikipedia.org/wiki/Illeszt%C5%91_programtervez%C3%A9si_minta)
 * Bartók Roland: [Az Egységesített Eljárás módszertan](http://mazsola.iit.uni-miskolc.hu/~bartok3/digit/RUP.pdf)
 * Vég Csaba: [Rational Unified Process](http://logos2000.weaveworld.org/it/doc/RUP.pdf)
 * Csilinkó Ádám: [Agilis módszertan összefoglaló nem csak IT-soknak](https://gantt.hu/agilis-modszertan-osszefoglalo/)
