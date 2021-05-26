@@ -1563,6 +1563,127 @@ együtt működni.
 
 ## 11. Ismertesse és hasonlítsa össze az MVC és MVP tervezési mintákat.
 
+A szoftver teljes architektúráját definiáló mintákat nevezzük **architekturális
+mintáknak** (*architectural pattern*). Az architekturális minta felvázolja egy
+szoftver architektúrájának kialakítását, definiálva az architekturális elemeket
+és azok kapcsolatait, a teljes rendszer általános felépítését jellemzi.
+
+### MVC
+
+A modell-nézet-vezérlő (model-view-controller, MVC) egy architekturális minta. Összetett,
+sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői
+kívánalom az adathoz (modell) és a felhasználói felülethez (nézet) tartozó dolgok
+szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést, és az
+adatok átszervezhetők legyenek a felhasználói felület változtatása nélkül. A modell-nézet-vezérlő
+ezt úgy éri el, hogy elkülöníti az adatok elérését és az üzleti logikát az adatok
+megjelenítésétől és a felhasználói interakciótól egy közbülső összetevő, a vezérlő
+bevezetésével. Az MVC egy olyan tervezési architekturális minta, mely megfelelő
+útmutatást ad az alkalmazás funkcionális részeinek szétválasztására, de a megvalósítás
+részleteit nem elemzi.
+
+A mintát Trygve Reenskaug írta le először 1979-ben, miután a Smalltalk nyelv fejlesztésén
+dolgozott a Xerox kutatói laborban. Az eredeti megvalósítás részletesen az *Applications
+Programming in Smalltalk-80: How to use Model-View-Controller* című tanulmányban olvasható.
+A megjelenés elválasztása az modelltől platformtól függetlenül jól alkalmazhatónak
+bizonyult, de asztali grafikus alkalmazásokban a felhasználói felületben gyakran
+összeolvadt a nézet és a vezérlő. A webes világ szerver-kliens architektúrájában
+azonban ez a két szerep szükségszerűen szétvált: míg a nézet elsősorban a kliensen
+megjelenítendő adatot definiálta, addig a vezérlő a szerveren futott. A jól bevált
+(platformfüggetlen) alapelvek mellett tehát az alkalmazások felépítése is indokolta
+az MVC-minta alkalmazását a weben. Ahogy a kétezres években a web mindinkább teret
+nyert, gyakorlatilag de-facto szabvánnyá vált és mára szinte eretnekségnek számít
+nem MVC-re építeni egy webes alkalmazást.
+
+*Az MVC-minta az alábbi részekből áll:*
+
+* **Modell**: Az alkalmazás adatait és az ahhoz tartozó üzleti logikát tartalmazza.
+Maga a minta nem definiálja, hogy egy többrétegű architektúrában pontosan meddig is
+tart a modell. Tágabb értelemben a leghátsó adattárolási réteget, az adatbázisokat
+is beleértjük, szűkebb értelemben a vezérlővel közvetlen kapcsolatban lévő üzleti
+logikai réteg osztályai tartoznak csak ide. Általában a modell a legnagyobb és
+legbonyolultabb része egy nagyobb alkalmazásnak, hiszen az adatok tárolásán túl itt
+történik azok leképezése szemantikailag jobban értelmezhető üzleti objektumokká
+és üzleti logikává (itt kapnak pontos jelentést a nyers adatok, mondhatni: itt
+lesz az adatból információ).
+* **Nézet**: Megjeleníti a modellt egy megfelelő alakban, mely alkalmas a felhasználói
+interakcióra, jellemzően egy felhasználói felületi elem képében. Különböző célokra
+különböző nézetek létezhetnek ugyanahhoz a modellhez.
+* **Vezérlő**: Az eseményeket, jellemzően felhasználói műveleteket dolgozza fel és
+válaszol rájuk, illetve a modellben történő változásokat is kiválthat. Az egyes
+vezérlők előtti közös műveletek elvégzéséért felelős vezérlőt *elővezérlőnek*, vagy
+az angol terminológia alapján **Front Controller**nek hívjuk. Az elővezérlő biztosítja
+az alkalmazás egyetlen belépési pontját, segítségével mindegyik vezérlő rajta
+keresztül hívódik meg. Az objektumorientált programozás elve szerint az elővezérlőt
+is meg lehet valósítani osztályként (tipikusan Egyke, azaz Singleton).
+* **Szolgáltatás (Service)**: A vezérlő és a modell közötti réteg. Hívják még Business
+Logic rétegnek is. A modelltől kér le adatokat és a vezérlőnek adja azt. Ennek a
+rétegnek a segítségével az adat tárolás (modell), adat lekérés (szolgáltatás) és
+az adat kezelés (vezérlő) elkülöníthetőek egymástól. **Mivel ez a réteg nem része
+az eredeti MVC mintának, ezért használata nem kötelező**.
+
+A vezérlés menete általánosságban a következőképp működik:
+
+1. A felhasználói felületen a felhasználó eseményt vált ki.
+2. A vezérlő átveszi a bejövő eseményt a felhasználói felülettől, gyakran egy bejegyzett
+eseménykezelő vagy visszahívás útján.
+3. A vezérlő az eseménynek megfelelően kapcsolatot teremt a modellel, annak adatokat
+adva át. A modellben tárolt adatok akár meg is változhatnak.
+4. A vezérlő meghívja a nézetet, amely a modelltől elkéri az adatokat, és azokat
+megjeleníti. A nézet a modellből nyeri az adatait. A modellnek nincs közvetlen tudomása
+a nézetről.
+5. A felhasználói felület újabb eseményre vár, mely az elejéről kezdi a kört.
+
+### MVP
+
+A **modell-nézet-prezenter** (*Modell-View-Presenter*, *MVP*) egy architekturális
+minta, amely az MVC-mintából alakult ki. Az MVP-modell főleg olyan alkalmazásokban
+nyújt jelentős előnyöket – hasonlóan az MVC-hez –, ahol komplex adathalmazokon kell
+műveleteket végezni, és ezek eredményeit a felhasználó elé tárni. A mintát felhasználó
+alkalmazások a minta sajátosságaiból eredően könnyedén alávethetőek egységteszteknek
+(unit test).
+
+Az MVP modell három rétegre osztja az alkalmazást. Mindhárom rétegnek jól körülírható
+feladatai vannak, és csak a szomszéd réteggel kommunikálhatnak. Ez nagyfokú rugalmasságot
+ad: a két szélső komponens egymás tudta nélkül bármikor lecserélhető. Például egy új
+adatbázismotor támogatásához nem kell módosítani a felhasználói felületet, illetve
+egy új publikus interfész bevezetése sem igényli a modell módosítását.
+
+A háromrétegű architektúrában a felhasználóval a nézet réteg tartja a kapcsolatot,
+amely ezért tartalmazza a felületi logikát. A felületi logika feladatai:
+* felhasználói interakció fogadása, feldolgozása, és továbbítása az üzleti logika számára
+* az adatok megjelenítése (a megjelentéshez szükséges konverzióval)
+* a megfelelő nézet előállítása, új nézetek létrehozása.
+
+A felületi logika és maga a megjelenítés két jól elhatárolható feladatkör, amelyet
+célszerű szeparálni (a megjelenítés elsősorban nem programozói, hanem tervezői
+feladatkör). A Model-View-Presenter (MVP) architektúra lehetőséget ad a felületi
+logika leválasztására egy prezentáció (presenter) számára.
+
+
+Az MVP minta részei:
+* A **modell** az alkalmazás által megjelenített és feldolgozott adatok reprezentációja.
+* A **nézet** megjeleníti a modellben tárolt adatokat a felhasználó számára, illetve
+a felhasználói interakció során bekövetkező eseményeket továbbítja a prezenter felé.
+* A **prezenter** tartalmazza a felhasználói interakció feldolgozásáért felelős
+tevékenységeket:
+	* továbbítja a kéréseket az üzleti logika számára
+	* megadja az interakcióra válaszoló nézetet
+	* összegyűjti az adatokat, illetve formázza a nézet számára feldolgozható módon.
+
+Az MVP architektúra két esete különböztethető meg:
+
+* **Passzív nézet** (Passive View): passzívnak akkor nevezzük a View réteget, ha
+a megjelenítésen kívül nem végez semmilyen feladatot. Ebben az esetben garantáltan
+minden logika a Presenter rétegen van. A nézet elsősorban grafikus vezérlők halmazának
+tekinthető, nem ismeri a modellt, így a prezentáció adja át a nézet számára a munkafolyamat
+állapotot.
+* **Felügyelő nézet** (Supervisor View): akkor beszélünk Supervisor View-ről, ha
+a View nem csak passzívan megjeleníti az adatokat, hanem egyes vezérlési feladatokat
+saját maga is ellát. A nézet ismeri a modellt (le tudja kérni a munkafolyamat
+állapotot), és el tud végezni alapvető tevékenységeket.
+
+### Az MVC és MVP tervezési minták összehasonlítása
+
 ## 12. Ismertesse a programozási nyelvek generációk szerinti osztályozását.
 
 ### Jegyzetek:
@@ -1643,6 +1764,8 @@ van ott még, ahol ez volt...
 * Wikipedia: [Egységesített racionális fejlesztési módszer](https://hu.wikipedia.org/wiki/Egys%C3%A9ges%C3%ADtett_racion%C3%A1lis_fejleszt%C3%A9si_m%C3%B3dszer)
 * Wikipedia: [Programtervezési minta](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)
 * Wikipedia: [Illesztő programtervezési minta](https://hu.wikipedia.org/wiki/Illeszt%C5%91_programtervez%C3%A9si_minta)
+* Wikipedia: [Modell-nézet-vezérlő](https://hu.wikipedia.org/wiki/Modell-n%C3%A9zet-vez%C3%A9rl%C5%91)
+* Wikipedia: [Modell-nézet-prezenter](https://hu.wikipedia.org/wiki/Modell-n%C3%A9zet-prezenter)
 * Bartók Roland: [Az Egységesített Eljárás módszertan](http://mazsola.iit.uni-miskolc.hu/~bartok3/digit/RUP.pdf)
 * Vég Csaba: [Rational Unified Process](http://logos2000.weaveworld.org/it/doc/RUP.pdf)
 * Csilinkó Ádám: [Agilis módszertan összefoglaló nem csak IT-soknak](https://gantt.hu/agilis-modszertan-osszefoglalo/)
