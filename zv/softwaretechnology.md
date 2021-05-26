@@ -1684,6 +1684,12 @@ saját maga is ellát. A nézet ismeri a modellt (le tudja kérni a munkafolyama
 
 ### Az MVC és MVP tervezési minták összehasonlítása
 
+Az MVC minta Controller eleme az MVP mintában Prezenterként jelenik meg, hasonló, de
+nem azonos feladatkörrel. A Prezenter tartalmazza a megjelenítési logikát is, e mellett
+a Nézet és a Model között csak rajta keresztül lehetséges a kommunikáció. A Model
+az MVP mintában közvetlenül nem válthat ki eseményt a Nézetben, csak a Prezenteren
+keresztül.
+
 ## 12. Ismertesse a programozási nyelvek generációk szerinti osztályozását.
 
 ### Jegyzetek:
