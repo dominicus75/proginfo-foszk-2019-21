@@ -1305,8 +1305,9 @@ Legfőbb célja, hogy megmutassa, a rendszer konform a saját specifi­kációj�
 hogy megfelel az ügyfél elvárásai­nak. A V & V két, egymást kiegészítő különböző
 perspektíva segítségével végzi az ellenőrzési folyamatot:
 
-* **Statikus**: szoftverátvizsgálások. Olyan technikák, melyek kimondottan csak a
-rendszer követelmény dokumentumát, a terveit, és forráskódját elemzik.
+* **Statikus**: szoftverátvizsgálások. Az átvizsgálási technikák közé tartoznak a
+programátvizsgálások, az automatizált forráskód elemzés és formális verifikáció.
+Magát a programot nem futtatjuk.
 * **Dinamikus**: a klasszikus értelemben vett szoftvertesztelés. Valamely tesztadatok
 segítségével ellenőrzi, hogy a rendszer adott inputra megfelelő outputot nyújt-e.
 A kimenetek eredményei lehetőséget adnak anomáliák, problémák feltárására.
@@ -1323,7 +1324,7 @@ Ezen tesztelés két fajtája ismert:
 	amelyek az általános használatát tükrözik, helyesen működjön, és akkor nevezzük a
 	tesztelést sikeresnek, ha ez teljesül.
 
-A tesztelés alapjait a következőben foglalhatjuk össze:
+**A dinamikus tesztelés elvi alapjait a következőben foglalhatjuk össze:**
 * A tesztelés képes felfedni a hibákat, de azt nem, hogy nincs hiba. Ugyanakkor a
 szoftver minőségét és megbízhatóságát növeli.
 * Nem lehetséges kimerítő teszt, minden bemeneti kombinációt nem lehet letesztelni
@@ -1343,7 +1344,7 @@ ha a tesztre 10 napunk vagy csak egy éjszakánk van.
 elégedett a megrendelő, ha nem felel meg az igényeinek. Azaz használhatatlan szoftvert
 nem érdemes tesztelni.
 * A program tesztelését csak a program írójától különböző személy képes hatékonyan
-elvégezni. Ennek oka, hogy a tesztelés nem „jóindulatú” tevékenység, saját munkájának
+elvégezni. Ennek oka, hogy a tesztelés nem *„jóindulatú”* tevékenység, saját munkájának
 vizsgálatához mindenki úgy áll hozzá, hogy önkéntelenül jónak feltételezi.
 
 A dinamikus ellenőrzési technikák legfőbb jellemzője, hogy a vizsgált forráskód a
@@ -1353,17 +1354,12 @@ alábbi három lépésből áll:
 <dl>
   <dt>Tesztesetek (test cases) specifikálása</dt>
   <dd>
-	Tesztesetnek a be- és kimeneti adatok és feltételek együttes megadását nevezzük.
-	Akkor tudunk a tesztelés eredményeiről bármit is mondani, ha van elképzelésünk
-	arról, hogy adott bemenő adatra milyen eredményt várunk. Egy teszteset célja
-	egy meghatározott vezérlési út végrehajtatása a tesztelendő program egységben,
-	vagy egy meghatározott követelmény teljesülésének ellenőrzése. Egy teszteset
-	végrehajtása esetén a rendszert egy megadott kezdő állapotban kell hozni (prekondíciók),
-	megadott input értékek halmazával futtatni kell a tesztelt elemet, majd a teszt
-	futásának eredményét össze kell hasonlítani az elvárt eredménnyel és ellenőrizni
-	kell, hogy a végrehajtás után a rendszer az elvárt állapotba (posztkondíciók)
-	került-e. Teszteseteket mind az érvénytelen, mind az érvényes adatokra kell
-	készíteni.
+	A teszteset nem más, mint a teszthez szükséges inputok és a rendszertől várt
+	outputok speci­fikációja. A tesztadatok kifejezetten a rendszer tesztelésére
+	létrehozott inputok. A tesztadatok néha automatikusan generálhatók, az automatikus
+	teszteset-generálás viszont általában nem lehetséges. A tesztek outputjait csak
+	azok tudják előre megjósolni, akik értik, hogy a rendszernek mit kellene csinálnia.
+	Teszteseteket mind az érvénytelen, mind az érvényes adatokra kell készíteni.
   </dd>
   <dt>A tesztelés alanyának, céljának meghatározása (test condition)</dt>
   <dd>
@@ -1389,53 +1385,30 @@ mérőszámok arra nézve adnak információt, hogy milyen készültségi szinte
 tevékenység, és a tesztelési terv részeként meghatározzák, hogy milyen feltételek
 esetén tekinthetjük a tevékenységet késznek.
 
-### A dinamikus tesztelési módszerek felosztása
-
-#### Feketedoboz-módszerek
-
-Ezek a módszerek a teszteseteket közvetlenül a rendszer specifikációjából (modelljéből)
-vezetik le. Ezért is nevezzük ezeket Black-box technikáknak, mert az egyes szoftver
-modulok belső szerkezetének (vagyis a forráskód) ismerete nélkül, az egyes modulok
-által teljesítendő funkcionalitások alapján tervezhetjük meg a teszteseteket. Ide
-sorolható a Modell alapú technika (Model-driven testing) is. Ez egy formalizáltabb
-technika, ami közvetlenül az UML modellből vezeti le a teszteseteket, és formalizált
-teszt specifikációt alkalmaz. Erre használható az UML kiterjesztése (UTP – UML Testing Profile).
-Az ilyen teszteket jellemzően nem a fejlesztő csapat végzi.
-
-A tesztelő a felhasználói interfészen keresztül szolgáltatja a bemeneteket, és vizsgálja
-a kimeneteket. Közepesen képzett tesztelők nagy számban tesztelhetik az alkalmazást,
-anélkül, hogy ismernék az implementációt, a programozási nyelvet vagy az operációs
-rendszert.
+### A dinamikus tesztelési módszerek csoportosítása
 
 <dl>
-  <dt>Ekvivalencia osztályok keresése</dt>
+  <dt>Feketedoboz-módszerek</dt>
   <dd>
-
+	<p>Ezek a módszerek a teszteseteket közvetlenül a rendszer specifikációjából (modelljéből)
+	vezetik le. Ezért is nevezzük ezeket Black-box technikáknak, mert az egyes szoftver
+	modulok belső szerkezetének (vagyis a forráskód) ismerete nélkül, az egyes modulok
+	által teljesítendő funkcionalitások alapján tervezhetjük meg a teszteseteket. Az
+	ilyen teszteket jellemzően nem a fejlesztő csapat végzi.</p>
+	<p>A tesztelő a felhasználói interfészen keresztül szolgáltatja a bemeneteket, és vizsgálja
+	a kimeneteket. Közepesen képzett tesztelők nagy számban tesztelhetik az alkalmazást,
+	anélkül, hogy ismernék az implementációt, a programozási nyelvet vagy az operációs
+	rendszert.</p>
   </dd>
-  <dt>Határeset-elemzés</dt>
+  <dt>Fehérdoboz-módszerek</dt>
   <dd>
-
-  </dd>
-</dl>
-
-#### Fehérdoboz-módszerek
-
-Ezek a módszerek a kód ismeretében határozzák meg a teszteseteket. Általában az
-alrendszer belsejéhez való hozzáférés megkönnyíti az alrendszer megértését; például,
-ha egy programozó vizsgálhatja a forráskódot, az algoritmus gyengeségei sokkal
-könnyebben feltárhatók. Emiatt a fehérdobozos tesztelés sokkal hatékonyabb, mint
-a feketedobozos tesztelés, de jelentősen nehezebb az alrendszer-tesztelő részéről
-a szükséges alapos megértés miatt. A tesztelőnek meg kell ismernie a forráskódot,
-meg kell értenie, ezért magasan képzettnek kell lennie.
-
-<dl>
-  <dt>Kipróbálási stratégiák</dt>
-  <dd>
-
-  </dd>
-  <dt>Teszteset-generáló módszerek</dt>
-  <dd>
-
+	Ezek a módszerek a kód ismeretében határozzák meg a teszteseteket. Általában az
+	alrendszer belsejéhez való hozzáférés megkönnyíti az alrendszer megértését; például,
+	ha egy programozó vizsgálhatja a forráskódot, az algoritmus gyengeségei sokkal
+	könnyebben feltárhatók. Emiatt a fehérdobozos tesztelés sokkal hatékonyabb, mint
+	a feketedobozos tesztelés, de jelentősen nehezebb az alrendszer-tesztelő részéről
+	a szükséges alapos megértés miatt. A tesztelőnek meg kell ismernie a forráskódot,
+	meg kell értenie, ezért magasan képzettnek kell lennie.
   </dd>
 </dl>
 
@@ -1443,6 +1416,86 @@ Mivel sem a fehérdoboz-módszerrel, sem a feketedoboz-módszerrel nem lehetség
 kimerítő tesztelés, el kell fogadnunk, hogy nem tudjuk egyetlen program hibamentességét
 sem szavatolni. A további cél ezek után az összes lehetséges teszteset halmazából
 a lehető leghatékonyabb teszteset-csoport kiválasztása lehet.
+
+### A dinamikus tesztelés szintjei
+
+<dl>
+  <dt>Komponensteszt</dt>
+  <dd>
+	A komponensteszt a rendszer önálló részeit teszteli általában a forráskód ismeretében
+	(fehér dobozos tesztelés). Gyakori fajtái:
+	<dl>
+	  <dt>Egységteszt (unit test)</dt>
+      <dd>
+		A unit egy rendszer legkisebb önálló egységként tesztlehető része. Ez a
+		legalacsonyabb szintű tesztelés, a programot felépítő egységek tesztelése.
+		Az egységeket egymástól izoláltan kell tesztelni. Az egységteszt a metódusokat
+		teszteli. Adott paraméterekre ismerjük a metódus visszatérési értékét (vagy
+		mellékhatását). A unit-teszt megvizsgálja, hogy a tényleges visszatérési
+		érték megegyezik-e az elvárttal. A tesztek eredménye egy boolean érték,
+		futásuk vagy sikeres, vagy sikertelen. Elvárás, hogy magának a unit-tesztnek
+		ne legyen mellékhatása.
+	  </dd>
+	  <dt>Modulteszt</dt>
+      <dd>
+		A modulteszt önálló modulokból álló programrendszer moduljainak egyenkénti
+		tesztelése, a többi modultól függetlenül. Általában a modul nem-funkcionális
+		tulajdonságát teszteli.
+	  </dd>
+	</dl>
+  </dd>
+  <dt>Integrációs teszt</dt>
+  <dd>
+	A fejlesztés során az integrált komponensek lehetnek megvásárolt, újrafelhasználható,
+	illetve újonnan kifejlesztett komponensek. A komponensek tesztelését és integrációját
+	követően kerül sor az integrációs tesztelésre, amelynek célja, hogy az integrált
+	komponensek együttműködésében található hibákat felderítsük. Az integrációs
+	tesztelés elsődlegesen azt ellenőrzi, hogy ezek a komponensek képesek-e együttműködni
+	azaz, hogy megfelelően vannak-e meghívva és interfészeiken keresztül a megfelelő
+	adatokat, megfelelő típussal, megfelelő sorrendben és megfelelő időben küldik-e át.
+	Az integrációs teszteket érdemes minél hamarabb elvégezni, mert minél nagyobb
+	az integráció mértéke, annál nehezebb meghatározni, hogy a fellelt hiba honnan
+	származik.
+  </dd>
+  <dt>Rendszerteszt</dt>
+  <dd>
+	A rendszer összes komponensének teljes körű tesztelése. Leggyakrabban a fejlesztés
+	során alkalmazott végső teszt, mely ellenőrzi, hogy az átadandó rendszer megfelel-e
+	a specifikációnak, célja pedig a lehető legtöbb programhiba megtalálása. A rendszerteszt
+	során a rendszer funkcionális és nem funkcionális követelményeit is vizsgálni
+	kell. A rendszertesztet a fejlesztő szervezet végzi ellenőrzött tesztkörnyezetben,
+	amelynek a lehető legjobban kell hasonlítania a végfelhasználási vagy termelési
+	környezetre. 
+  </dd>
+  <dt>Átvételi teszt</dt>
+  <dd>
+	<p>A felhasználó vagy a megrendelő által a végterméken végzett feketedoboz teszt,
+	amely azt hivatott eldönteni, hogy a termék megfelel-e a megfogalmazott üzleti
+	elvárásoknak. Az átvételi teszt végrehajtásához szükség van egy tesztkörnyezetre,
+	amely a lehető legpontosabban reprezentálja a valós termelési környezetet. Itt
+	a projekt során korábban alkalmazott tesztelési módszertől eltérő módon, a
+	végfelhasználó szemszögéből kell tesztelni a rendszert.</p> 
+	<p>Tömegpiacra fejlesztett, dobozos szoftverek esetén az átvételi tesztet gyakran
+	két szakaszban hajtják végre:</p>
+	<dl>
+	  <dt>Alfa-teszt</dt>
+	  <dd>
+		A fejlesztő szervezetnél egy potenciális felhasználókból és a fejlesztői
+		szervezet tagjaiból álló csoport használja a rendszert, közben a fejlesztők
+		megfigyelik a felhasználókat és dokumentálják a problémákat.
+	  </dd>
+	  <dt>Béta-teszt</dt>
+	  <dd>
+		A rendszert külső tesztelésre küldik felhasználók bizonyos csoportjához,
+		akik telepítik és valós feltételek mellett használják a rendszert. A
+		felhasználók a rendszerrel kapcsolatos incidensekről, működési rendellenességekről
+		készített feljegyzéseiket megküldik a fejlesztő szervezetnek, ahol a
+		programhibákat kijavítják. 
+	  </dd>
+	</dl>
+  </dd>
+</dl>
+
 
 ## 9. Ismertesse a Scrum módszertant.
 
