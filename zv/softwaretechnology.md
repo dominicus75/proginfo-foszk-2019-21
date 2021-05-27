@@ -1300,15 +1300,30 @@ az alábbi diagram:
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
-Tesztelésre azért van szükség, hogy a szoftver termékben meglévő hibákat még az üzembe
-helyezés előtt megtaláljuk, ezzel növeljük a termék minőségét, megbízhatóságát. Abban
-szinte biztosak lehetünk, hogy a szoftverben tesztelés előtt van hiba (emberek fejlesztik
-és az emberek hibáznak), abban viszont nem lehetünk biztosak, hogy tesztelés után
-nem marad hiba. A tesztelés után azt tudjuk elmondani, hogy a letesztelt részekben
-nincs hiba, így nő a program megbízhatósága. Ez azt is mutatja, hogy a program azon
-funkcióit kell tesztelni, amiket a felhasználók legtöbbször fognak használni.
+A verifikáció és a validációt (*V & V*) általánosan **szoftvervalidációnak** nevezik.
+Legfőbb célja, hogy megmutassa, a rendszer konform a saját specifi­kációjával, és
+hogy megfelel az ügyfél elvárásai­nak. A V & V két, egymást kiegészítő különböző
+perspektíva segítségével végzi az ellenőrzési folyamatot:
 
-A tesztelés alapjait a következő alapelvekben foglalhatjuk össze:
+* **Statikus**: szoftverátvizsgálások. Olyan technikák, melyek kimondottan csak a
+rendszer követelmény dokumentumát, a terveit, és forráskódját elemzik.
+* **Dinamikus**: a klasszikus értelemben vett szoftvertesztelés. Valamely tesztadatok
+segítségével ellenőrzi, hogy a rendszer adott inputra megfelelő outputot nyújt-e.
+A kimenetek eredményei lehetőséget adnak anomáliák, problémák feltárására.
+A szoftvertesztelés, mint dinamikus V & V a gyakorlatban inkább alkalmazott technika.
+Ezen tesztelés két fajtája ismert:
+	* **Hiányosságtesztelés**: célja a program és a specifikációja között meglévő ellentmondások
+	felderítése. Az ilyen teszteket a rendszer hiányosságainak feltárására tervezik, nem a
+	valós működés szimulálására. Hiányosságtesztelés esetén a tesztet akkor nevezzük
+	sikeresnek, ha az felderít egy olyan hibát vagy hiányosságot, amely a rendszer helytelen
+	működését eredményezi.
+	* **Validációs tesztelés**: a program teljesítményének és megbízhatóságának tesztelése
+	valós körülményeket szimulálva. Annak megmutatása, hogy a szoftver megfelel-e a vásárlói
+	igényeknek. A tesztelés során azt várjuk a rendszertől, hogy az olyan tesztesetekre,
+	amelyek az általános használatát tükrözik, helyesen működjön, és akkor nevezzük a
+	tesztelést sikeresnek, ha ez teljesül.
+
+A tesztelés alapjait a következőben foglalhatjuk össze:
 * A tesztelés képes felfedni a hibákat, de azt nem, hogy nincs hiba. Ugyanakkor a
 szoftver minőségét és megbízhatóságát növeli.
 * Nem lehetséges kimerítő teszt, minden bemeneti kombinációt nem lehet letesztelni
@@ -1330,14 +1345,6 @@ nem érdemes tesztelni.
 * A program tesztelését csak a program írójától különböző személy képes hatékonyan
 elvégezni. Ennek oka, hogy a tesztelés nem „jóindulatú” tevékenység, saját munkájának
 vizsgálatához mindenki úgy áll hozzá, hogy önkéntelenül jónak feltételezi.
-
-A tesztelés lehet statikus és dinamikus. **Statikus tesztelés**ről beszélünk, amikor
-nem fordítjuk, nem futtatjuk a programot, csak a forráskódot vizsgáljuk. **Dinamikus
-tesztelés** esetén a forráskódot és a futó programot is vizsgáljuk. A dinamikus és
-statikus tesztelés egymást jól kiegészítő módszerek, mert általában különböző típusú
-programhibák eredményes és hatékony felfedésére alkalmasak. 
-
-### Dinamikus szoftvertesztelési módszerek
 
 A dinamikus ellenőrzési technikák legfőbb jellemzője, hogy a vizsgált forráskód a
 folyamat során végrehajtásra kerül. A dinamikus tesztek tervezése alapvetően az
@@ -1431,44 +1438,6 @@ meg kell értenie, ezért magasan képzettnek kell lennie.
 
   </dd>
 </dl>
-
-#### Speciális tesztek
-
-<dl>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-  <dt></dt>
-  <dd>
-
-  </dd>
-</dl>
-
 
 Mivel sem a fehérdoboz-módszerrel, sem a feketedoboz-módszerrel nem lehetséges a
 kimerítő tesztelés, el kell fogadnunk, hogy nem tudjuk egyetlen program hibamentességét
@@ -2117,6 +2086,7 @@ van ott még, ahol ez volt...
 	* [V-modell](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s03.html#id551431)
 	* [Scrum](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s03.html#id552054)
 	* [A tesztelés alapfogalmai](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch01.html)
+	* [A tesztelés szintjei](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch01s03.html)
 	* [Teszt tervezési technikák](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch04.html)
 * Dr. Ulbert Zsolt: [Szoftverfejlesztési folyamatok és szoftver minőségbiztosítás](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/)
 	* [A szoftverfolyamat modelljei](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch03.html#d0e518)
@@ -2126,6 +2096,7 @@ van ott még, ahol ez volt...
 	* [Scrum](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch04.html#d0e1422)
 	* [Az UML diagramok típusai](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch06.html#d0e2238)
 	* [Rational Unified Process szoftverfejlesztési módszertan](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch03.html#d0e783)
+	* [Szoftvertesztelés](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch09.html)
 * Szabolcsi Judit: [Szoftvertechnológia](http://johanyak.hu/files/u1/segedlet/szoftvertechnologia/Szabolcsi_Judit_Szoftvertechnologia_2012.pdf)
 * Panem Könyvkiadó: [Szoftvertechnológia](https://gyires.inf.unideb.hu/GyBITT/31/index.html)
 * Dr. Szepesné Stiftinger Mária: [Rendszertervezés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0027_RSZ5/index.html)
