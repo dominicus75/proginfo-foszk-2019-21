@@ -1039,21 +1039,19 @@ rendszertervezők műveletek és funkciók helyett „dolgokban” (objektumokba
 Egy objektumorientált tervezési folyamat az osztályoknak és azok közötti kapcsolatoknak
 a megtervezéséből áll.
 
+Az osztály a valóság mintájára tulajdonságokkal és viselkedésekkel felruházott zárt
+egység, a való világban található dolgok (létezők) elvont informatikai leképezése.
+A programozásban alkalmazott osztályok egy-egy való világbeli dolognak a megoldandó
+programozási probléma szempontjából releváns lényegét foglalják magukba, és mint
+ilyenek típusokként is értelmezhetők. A legtöbb objektumorientált nyelv osztály
+alapú, azaz az objektumok osztályok példányai, és típusuk az osztály. Az osztály
+az egyes objektumok elvi tervrajzát, működését definiálja, olyan elvont objektumminta
+vagy típus értendő alatta, mely alapján konkrét példányokat (objektumokat) lehet
+létrehozni.
+
 ### Alapelvek
 
 <dl>
-  <dt>Elvonatkoztatás (absztrakció)</dt>
-  <dd>
-	Az osztály a valóság mintájára tulajdonságokkal és viselkedésekkel felruházott zárt
-	egység, a való világban található dolgok (létezők) elvont informatikai leképezése.
-	A programozásban alkalmazott osztályok egy-egy való világbeli dolognak a megoldandó
-	programozási probléma szempontjából releváns lényegét foglalják magukba, és mint
-	ilyenek típusokként is értelmezhetők. A legtöbb objektumorientált nyelv osztály
-	alapú, azaz az objektumok osztályok példányai, és típusuk az osztály. Az osztály
-	az egyes objektumok elvi tervrajzát, működését definiálja, olyan elvont objektumminta
-	vagy típus értendő alatta, mely alapján konkrét példányokat (objektumokat) lehet
-	létrehozni.
-  </dd>
   <dt>Egységbezárás (enkapszuláció)</dt>
   <dd>
 	Az objektum egységbe foglalja az állapotát tároló adatokat és azok szerkezetét,
@@ -1062,13 +1060,6 @@ a megtervezéséből áll.
 	a műveleteket metódusokként szokták emlegetni. Az objektum állapotát adattagokkal,
 	viselkedését pedig metódusokkal (tagfüggvényekkel) tudjuk leírni. Az objektum
 	által tartalmazott adatokon általában az objektum metódusai végeznek műveletet.
-	Az objektumok elrejtik az állapotuk reprezentációját, korlátozzák a kívülről
-	történő hozzáférést (adatrejtés), egymással kommunikálni elsősorban a (publikus)
-	metódusaikon keresztül tudnak. A program egymással kommunikáló objektumok
-	összességéből áll. Az objektumok úgy kommunikálnak, hogy szolgáltatásokat kérnek
-	más ob­jektumoktól (meghívják azok metódusait). A szolgáltatás végrehajtásához
-	szükséges információ paraméterként adódik át, a szolgáltatás végrehajtásának
-	eredmé­nye a hívott metódus visszatérési értéke lesz.
   </dd>
   <dt>Öröklés (Inheritencia)</dt>
   <dd>
@@ -1106,7 +1097,33 @@ a megtervezéséből áll.
 	a metódus neve minden esetben változatlan marad, de az argumentumok száma és
 	típusa eltérhet, ezért a metódus ennek megfelelően különféleképpen viselkedhet.</p>
   </dd>
+  <dt>Adatrejtés</dt>
+  <dd>
+	<p>Az egységbezárás és az adatrejtés igen gyakran összemosódó objektum-orientált
+	alapfogalmak. Az egységbezárás azt mondja ki, hogy az adatokat és a rajtuk
+	végezhető műveletekért felelős eljárásokat egy egységként kell kezelni. Minden
+	eljárást úgy kell meghatározni, hogy az csak az objektum saját adataival végezhessen
+	műveleteket. Ehhez szorosan kapcsolódik az adatrejtés, ami pedig azt mondja,
+	hogy az objektumoknak el kell rejteni a külvilág felől az adataikat. Az adatokhoz
+	mindig csak valamilyen ellenőrzött metódus formájában lehessen hozzáférni.</p>
+	<p>Az objektum orientált tervezési ajánlás az, hogy az objektum adatait csak
+	az objektum saját eljárásai (metódusai) kezeljék. Az objektumok adatai így az
+	objektum „tudta" nélkül nem változtathatók meg. Ennek előnyei akkor mutatkoznak,
+	ha egy objektum adatát csak úgy lehet megadni, hogy előtte az adat érvényességét
+	és a többi adattal való összefüggését megvizsgáltuk az objektum saját metódusában.</p> 
+	<p>A két fogalom jelentőségét együttesen lehet meghatározni. Ha az objektum zárt,
+	és a külvilág felé rejtetett, akkor az egyes osztályok jól meghatározott publikus
+	interfészeken keresztül kommunikálnak egymással. Ezzel azt érjük el, hogy ha egy
+	osztály megvalósítja a használója számára elérhető műveleteket, akkor a belső
+	működése, adatszerkezete a többi modul befolyásolása nélkül is megváltozhat.</p>
+  </dd>
 </dl>
+
+Az objektum-orientált eljárás egységes programozási módszert nyújt a programfejlesztéshez,
+megkönnyíti a résztvevők közötti információcserét, és a tesztmódszerek is egységesen
+tervezhetőek, továbbá megkönnyíti a programok módosítását is. A kiegészítések, új
+osztályokat kezelő programrészek rendszerbe illesztése nem érinti a már megírt
+programrészeket.
 
 ## 7. Ismertesse a RUP módszertant
 
@@ -2134,6 +2151,7 @@ van ott még, ahol ez volt...
 	* [A használati eset modell](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch08.html)
 	* [Objektumorientált tervezés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch06s02.html)
 	* [Állapotgép diagram](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverfejlesztes/ch10s03.html)
+* Rétsághy Zsolt, Lajtos Gábor: [Objektumorientált tervezés, UML](http://centroszet.hu/tananyag/OOT/index.html)
 * Ficsor Lajos, Kovács László, Kusper Gábor, Krizsán Zoltán: [Szoftvertesztelés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/index.html)
 	* [A szoftver életciklusa](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s02.html)
 	* [V-modell](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch02s03.html#id551431)
