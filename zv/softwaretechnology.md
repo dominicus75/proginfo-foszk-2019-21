@@ -1300,6 +1300,169 @@ az alábbi diagram:
 
 ## 8. Ismertesse a dinamikus szoftvertesztelési módszereket
 
+Tesztelésre azért van szükség, hogy a szoftver termékben meglévő hibákat még az üzembe
+helyezés előtt megtaláljuk, ezzel növeljük a termék minőségét, megbízhatóságát. Abban
+szinte biztosak lehetünk, hogy a szoftverben tesztelés előtt van hiba (emberek fejlesztik
+és az emberek hibáznak), abban viszont nem lehetünk biztosak, hogy tesztelés után
+nem marad hiba. A tesztelés után azt tudjuk elmondani, hogy a letesztelt részekben
+nincs hiba, így nő a program megbízhatósága. Ez azt is mutatja, hogy a program azon
+funkcióit kell tesztelni, amiket a felhasználók legtöbbször fognak használni.
+
+A tesztelés alapjait a következő alapelvekben foglalhatjuk össze:
+* A tesztelés képes felfedni a hibákat, de azt nem, hogy nincs hiba. Ugyanakkor a
+szoftver minőségét és megbízhatóságát növeli.
+* Nem lehetséges kimerítő teszt, minden bemeneti kombinációt nem lehet letesztelni
+(csak egy 10 hosszú karakterláncnak 256^10 lehetséges értéke van) és nem is érdemes.
+Általában csak a magas kockázatú és magas prioritású részeket teszteljük.
+* Érdemes a tesztelést az életciklus minél korábbi szakaszában elkezdeni, mert minél
+hamarabb találunk meg egy hibát, annál olcsóbb javítani.
+* A tesztelésre csak véges időnk van, ezért a tesztelést azokra a modulokra kell
+koncentrálni, ahol a hibák a legvalószínűbbek, illetve azokra a bemenetekre kell
+tesztelnünk, amelyre valószínűleg hibás a szoftver (pl. szélsőértékek).
+* Ha az újratesztelés során mindig ugyanazokat a teszteseteket futtatjuk, akkor
+egy idő után ezek már nem találnak több hibát (mintha a hibák alkalmazkodnának a
+teszthez). Ezért a tesztjeinket néha bővíteni kell.
+* Másképp tesztelünk egy atomerőműnek szánt programot és egy beadandót. Másképp tesztelünk,
+ha a tesztre 10 napunk vagy csak egy éjszakánk van.
+* Nincs hibátlan rendszer, hiába javítjuk ki a hibákat a szoftverben, azzal nem lesz
+elégedett a megrendelő, ha nem felel meg az igényeinek. Azaz használhatatlan szoftvert
+nem érdemes tesztelni.
+* A program tesztelését csak a program írójától különböző személy képes hatékonyan
+elvégezni. Ennek oka, hogy a tesztelés nem „jóindulatú” tevékenység, saját munkájának
+vizsgálatához mindenki úgy áll hozzá, hogy önkéntelenül jónak feltételezi.
+
+A tesztelés lehet statikus és dinamikus. **Statikus tesztelés**ről beszélünk, amikor
+nem fordítjuk, nem futtatjuk a programot, csak a forráskódot vizsgáljuk. **Dinamikus
+tesztelés** esetén a forráskódot és a futó programot is vizsgáljuk.
+
+### Dinamikus szoftvertesztelési módszerek
+
+A dinamikus ellenőrzési technikák legfőbb jellemzője, hogy a vizsgált forráskód a
+folyamat során végrehajtásra kerül. A dinamikus tesztek tervezése alapvetően az
+alábbi három lépésből áll:
+
+<dl>
+  <dt>Tesztesetek (test cases) specifikálása</dt>
+  <dd>
+	Tesztesetnek a be- és kimeneti adatok és feltételek együttes megadását nevezzük.
+	Akkor tudunk a tesztelés eredményeiről bármit is mondani, ha van elképzelésünk
+	arról, hogy adott bemenő adatra milyen eredményt várunk. Egy teszteset célja
+	egy meghatározott vezérlési út végrehajtatása a tesztelendő program egységben,
+	vagy egy meghatározott követelmény teljesülésének ellenőrzése. Egy teszteset
+	végrehajtása esetén a rendszert egy megadott kezdő állapotban kell hozni (prekondíciók),
+	megadott input értékek halmazával futtatni kell a tesztelt elemet, majd a teszt
+	futásának eredményét össze kell hasonlítani az elvárt eredménnyel és ellenőrizni
+	kell, hogy a végrehajtás után a rendszer az elvárt állapotba (posztkondíciók)
+	került-e. Teszteseteket mind az érvénytelen, mind az érvényes adatokra kell
+	készíteni.
+  </dd>
+  <dt>A tesztelés alanyának, céljának meghatározása (test condition)</dt>
+  <dd>
+	A tesztelés alanya lehet a rendszer egy olyan jellemzője, amely ellenőrizhető
+	egy vagy több teszt esettel. Ilyen lehet például: funkció, tranzakció, képesség (feature),
+	minőségi jellemző, vagy strukturális elem.
+  </dd>
+  <dt>Teszt folyamat (test procedure) specifikálása</dt>
+  <dd>
+	Egy teszteset végrehajtásához szükséges tevékenységek sorozatának a leírása.
+	Szokás teszt forgatókönyvnek (manual test script) is nevezni.
+  </dd>
+</dl>
+
+**A tesztelési folyamathoz kapcsolódó fogalmak:**
+* **teszt készlet** (test suite): tesztesetek és hozzájuk tartozó teszt specifikációk
+halmaza. Csoportosítható egy teszt alanyra, vagy egy vizsgált hibára.
+* **hibamodell**: azon (feltételezett) szoftver hibák halmaza, amelyre a teszt
+tervezés irányul. A tesztesetek tervezéséhez ad támpontokat.
+* **lefedettség** (test coverage): a számszerű értékelése annak, hogy a tesztelési
+tevékenység mennyire alapos, illetve hogy egy adott időpontban hol tart. A lefedettségi
+mérőszámok arra nézve adnak információt, hogy milyen készültségi szinten áll a tesztelési
+tevékenység, és a tesztelési terv részeként meghatározzák, hogy milyen feltételek
+esetén tekinthetjük a tevékenységet késznek.
+
+### A dinamikus tesztelési módszerek felosztása
+
+#### Feketedoboz-módszerek
+
+Ezek a módszerek a teszteseteket közvetlenül a rendszer specifikációjából (modelljéből)
+vezetik le. Ezért is nevezzük ezeket Black-box technikáknak, mert az egyes szoftver
+modulok belső szerkezetének (vagyis a forráskód) ismerete nélkül, az egyes modulok
+által teljesítendő funkcionalitások alapján tervezhetjük meg a teszteseteket. Ide
+sorolható a Modell alapú technika (Model-driven testing) is. Ez egy formalizáltabb
+technika, ami közvetlenül az UML modellből vezeti le a teszteseteket, és formalizált
+teszt specifikációt alkalmaz. Erre használható az UML kiterjesztése (UTP – UML Testing Profile).
+Az ilyen teszteket jellemzően nem a fejlesztő csapat végzi.
+
+<dl>
+  <dt>Ekvivalencia osztályok keresése</dt>
+  <dd>
+
+  </dd>
+  <dt>Határeset-elemzés</dt>
+  <dd>
+
+  </dd>
+</dl>
+
+#### Fehérdoboz-módszerek
+
+Ezek a módszerek a kód ismeretében határozzák meg a teszteseteket.
+
+
+<dl>
+  <dt>Kipróbálási stratégiák</dt>
+  <dd>
+
+  </dd>
+  <dt>Teszteset-generáló módszerek</dt>
+  <dd>
+
+  </dd>
+</dl>
+
+#### Speciális tesztek
+
+<dl>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+  <dt></dt>
+  <dd>
+
+  </dd>
+</dl>
+
+
+Mivel sem a fehérdoboz-módszerrel, sem a feketedoboz-módszerrel nem lehetséges a
+kimerítő tesztelés, el kell fogadnunk, hogy nem tudjuk egyetlen program hibamentességét
+sem szavatolni. A további cél ezek után az összes lehetséges teszteset halmazából
+a lehető leghatékonyabb teszteset-csoport kiválasztása lehet.
+
 ## 9. Ismertesse a Scrum módszertant.
 
 A Scrum a szoftverfejlesztés egy [inkrementális, iteratív módszere](https://hu.wikipedia.org/wiki/Iterat%C3%ADv_%C3%A9s_inkrement%C3%A1lis_m%C3%B3dszertanok),
