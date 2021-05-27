@@ -1333,7 +1333,9 @@ vizsgálatához mindenki úgy áll hozzá, hogy önkéntelenül jónak feltétel
 
 A tesztelés lehet statikus és dinamikus. **Statikus tesztelés**ről beszélünk, amikor
 nem fordítjuk, nem futtatjuk a programot, csak a forráskódot vizsgáljuk. **Dinamikus
-tesztelés** esetén a forráskódot és a futó programot is vizsgáljuk.
+tesztelés** esetén a forráskódot és a futó programot is vizsgáljuk. A dinamikus és
+statikus tesztelés egymást jól kiegészítő módszerek, mert általában különböző típusú
+programhibák eredményes és hatékony felfedésére alkalmasak. 
 
 ### Dinamikus szoftvertesztelési módszerek
 
@@ -1393,6 +1395,11 @@ technika, ami közvetlenül az UML modellből vezeti le a teszteseteket, és for
 teszt specifikációt alkalmaz. Erre használható az UML kiterjesztése (UTP – UML Testing Profile).
 Az ilyen teszteket jellemzően nem a fejlesztő csapat végzi.
 
+A tesztelő a felhasználói interfészen keresztül szolgáltatja a bemeneteket, és vizsgálja
+a kimeneteket. Közepesen képzett tesztelők nagy számban tesztelhetik az alkalmazást,
+anélkül, hogy ismernék az implementációt, a programozási nyelvet vagy az operációs
+rendszert.
+
 <dl>
   <dt>Ekvivalencia osztályok keresése</dt>
   <dd>
@@ -1406,8 +1413,13 @@ Az ilyen teszteket jellemzően nem a fejlesztő csapat végzi.
 
 #### Fehérdoboz-módszerek
 
-Ezek a módszerek a kód ismeretében határozzák meg a teszteseteket.
-
+Ezek a módszerek a kód ismeretében határozzák meg a teszteseteket. Általában az
+alrendszer belsejéhez való hozzáférés megkönnyíti az alrendszer megértését; például,
+ha egy programozó vizsgálhatja a forráskódot, az algoritmus gyengeségei sokkal
+könnyebben feltárhatók. Emiatt a fehérdobozos tesztelés sokkal hatékonyabb, mint
+a feketedobozos tesztelés, de jelentősen nehezebb az alrendszer-tesztelő részéről
+a szükséges alapos megértés miatt. A tesztelőnek meg kell ismernie a forráskódot,
+meg kell értenie, ezért magasan képzettnek kell lennie.
 
 <dl>
   <dt>Kipróbálási stratégiák</dt>
