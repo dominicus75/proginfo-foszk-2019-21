@@ -524,7 +524,8 @@ az adatbázissémát.
 ### 2.4 Relációk tulajdonságai, az attribútumok értéktartománya
 
 **Értéktartomány [domain]** alatt adott tulajdonság (attribútum) általánosan felvehető
-értékeinek halmazát értjük.
+értékeinek halmazát értjük. A relációs adatmodellnél az értéktartomány csak atomi
+értékekből állhat, vagyis elemei nem lehetnek struktúrák, halmazok, stb.
 
 
 ### 2.5 Kulcsok, indexek és tulajdonságaik
