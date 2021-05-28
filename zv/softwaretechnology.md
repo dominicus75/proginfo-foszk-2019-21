@@ -1461,9 +1461,9 @@ a lehető leghatékonyabb teszteset-csoport kiválasztása lehet.
 	  </dd>
 	</dl>
   </dd>
-  <dt>Integrációs teszt</dt>
+  <dt>Integrációs teszt (Integration Level Testing, ILT)</dt>
   <dd>
-	A fejlesztés során az integrált komponensek lehetnek megvásárolt, újrafelhasználható,
+	<p>A fejlesztés során az integrált komponensek lehetnek megvásárolt, újrafelhasználható,
 	illetve újonnan kifejlesztett komponensek. A komponensek tesztelését és integrációját
 	követően kerül sor az integrációs tesztelésre, amelynek célja, hogy az integrált
 	komponensek együttműködésében található hibákat felderítsük. Az integrációs
@@ -1472,17 +1472,100 @@ a lehető leghatékonyabb teszteset-csoport kiválasztása lehet.
 	adatokat, megfelelő típussal, megfelelő sorrendben és megfelelő időben küldik-e át.
 	Az integrációs teszteket érdemes minél hamarabb elvégezni, mert minél nagyobb
 	az integráció mértéke, annál nehezebb meghatározni, hogy a fellelt hiba honnan
-	származik.
+	származik.</p>
+	<p>A részrendszerek összeépítésére és a tesztesetek megtervezésére és futtatására
+	különböző stratégiák alakultak ki.</p>
+	<dl>
+	  <dt>Big-bang integráció</dt>
+	  <dd>
+		Feltételezzük, hogy a rendszer minden egység rendelkezésre áll, és ezekből
+		egyből a teljes rendszer építjük fel, azaz valójában a tulajdonképpeni
+		integrációs teszt kimarad, és egyből a rendszerteszt következik. 
+	  </dd>
+	  <dt>Inkrementációs integrációs és tesztelési stratégia</dt>
+	  <dd>
+		<p>A rendszer elemeit fokozatosan integráljuk, és minden egyes integrációs
+		szinten teszteket hajtunk végre. A kibővített rendszeren újra kell futtatnunk
+		az előzőleg már sikeresen lefutott teszteket is, hiszen nem lehetünk biztosak
+		abban, hogy az újabb modulok integrációja nem okoz hibát a korábbi modulok
+		működésében. Ez a futtatandó tesztesetek számának exponenciális növekedését
+		jelenti.</p>
+		<p>Mivel a tesztelés tárgya mindig csak egy részrendszer, annak működtetéséhez
+		tesztelési környezetet kell biztosítani, ami attól függ, milyen integrációs
+		módszert alkalmazunk. Elvben két lehetséges megközelítés közül választhatunk:
+		top-down integráció (a hierarchia legfelső szintjén álló elem tesztelésével
+		kezdjük) és bottom-up integráció  (a hierarchia legalsó szintjén álló
+		elem tesztelésével kezdjük). Többnyire a két megközelítés valamilyen ötvözetét
+		használják a gyakorlatban.</p>
+	  </dd>
+	</dl>
   </dd>
-  <dt>Rendszerteszt</dt>
+  <dt>Rendszerteszt (System Level Testing, SLT)</dt>
   <dd>
-	A rendszer összes komponensének teljes körű tesztelése. Leggyakrabban a fejlesztés
+	<p>A rendszer összes komponensének teljes körű tesztelése. Leggyakrabban a fejlesztés
 	során alkalmazott végső teszt, mely ellenőrzi, hogy az átadandó rendszer megfelel-e
 	a specifikációnak, célja pedig a lehető legtöbb programhiba megtalálása. A rendszerteszt
 	során a rendszer funkcionális és nem funkcionális követelményeit is vizsgálni
 	kell. A rendszertesztet a fejlesztő szervezet végzi ellenőrzött tesztkörnyezetben,
 	amelynek a lehető legjobban kell hasonlítania a végfelhasználási vagy termelési
-	környezetre. 
+	környezetre.</p>
+	<p>A rendszerteszt egy végső ellenőrzési fázis a fejlesztési folyamatban, melyben
+	a rendszert több szempont szerint tesztelhetik:</p>
+	<dl>
+	  <dt>Szolgáltatás tesztelés</dt>
+	  <dd>
+		Célja annak megállapítása, hogy a rendszer minden funkcionális követelményt
+		implementál, és azok helyesen működnek.
+	  </dd>
+	  <dt>Használhatósági tesztelés</dt>
+	  <dd>
+		A rendszer egy meghatározott felhasználó által, egy meghatározott felhasználási
+		körben használva, meghatározott célok hatékony és produktív elérésére, mennyire
+		kielégítő és mennyire vezet megelégedésre. Minden felhasználói szerepkört,
+		minden használati módot meg kell vizsgálni.
+	  </dd>
+	  <dt>Teljesítménytesztelés</dt>
+	  <dd>
+		A teljesítmény vagy a hatékonyság mérése különböző terheléseknél és konfigurációkra
+		meghatározott válaszidők és feldolgozási sebességek formájában.
+	  </dd>
+	  <dt>Mennyiségi tesztelés</dt>
+	  <dd>
+		A szoftver működését nagy mennyiségű adattal teszteljük a kapacitáskorlátok
+		ellenőrzésére. Ellenőrizzük, hogy az adatmennyiség nem okoz-e hibás működést.
+	  </dd>
+	  <dt>Terheléses tesztelés (Stressz-tesztelés)</dt>
+	  <dd>
+		A tesztelt rendszert valamilyen szempontból erős terhelésnek teszi ki. Fontos
+		feladata a megfelelő válaszidők ellenőrzése. Ennek érdekében:
+		<ul>
+		  <li>Vizsgálni kell, hogy a rendszer adott időkorláton belül hogyan teljesít
+		  nagy mennyiségű adatokon dolgozva.</li>
+		  <li>Intenzív feldolgozást kívánó helyzeteket kell teremteni, melyek szélsőségesek,
+		  de előfordulhatnak.</li>
+		  <li>A robosztusság ellenőrzésére érdemes a terhelést olyan szintre is emelni,
+		  amely (elvileg) a használat során nem fordulhat elő.</li>
+		</ul>
+	  </dd>
+	  <dt>Biztonsági tesztelés</dt>
+	  <dd>
+		Az adatbiztonsággal és adatvédelemmel kapcsolatos hibák vizsgálata. A mai,
+		elosztott architektúrájú, gyakran (legalább részben) Web alapú rendszerek
+		esetén egyre nagyobb a jelentősége.
+		Biztonsági teszt során többek közt vizsgálni kell, hogy
+		<ul>
+		  <li>a program ellenőrzi-e a felhasználótól kapott adatokat?</li>
+		  <li>hibás adatokkal meg lehet-e zavarni működését?</li>
+		  <li>ellenőrzi-e a szükséges perifériák, file-ok létét, típusát, a file-ok
+		  elhelyezkedését a háttértáron?</li>
+		</ul>
+		<p>A támadás ellenállóság tesztelése általában feketedobozos teszt. Történhet
+		a rendszer kiadása előtt vagy után is. Ha utána történik, akkor általában
+		etikus törési kísérletről beszélünk. Ehhez általában külső szakembereket,
+		fehér kalapos hacker-eket szoktak felkérni. Ha a kiadás előtt történik,
+		akkor általában a legmagasabban képzett belső tesztmérnökök feladata.</p>
+	  </dd>
+	</dl>
   </dd>
   <dt>Átvételi teszt</dt>
   <dd>
@@ -2159,6 +2242,7 @@ van ott még, ahol ez volt...
 	* [A tesztelés alapfogalmai](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch01.html)
 	* [A tesztelés szintjei](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch01s03.html)
 	* [Teszt tervezési technikák](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch04.html)
+	* [Biztonsági tesztelés](https://regi.tankonyvtar.hu/hu/tartalom/tamop425/0046_szoftverteszteles/ch06.html)
 * Dr. Ulbert Zsolt: [Szoftverfejlesztési folyamatok és szoftver minőségbiztosítás](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/)
 	* [A szoftverfolyamat modelljei](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch03.html#d0e518)
 	* [Objektumorientált tervezés](http://moodle.autolab.uni-pannon.hu/Mecha_tananyag/szoftverfejlesztesi_folyamatok_magyar/ch05.html)
