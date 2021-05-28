@@ -335,7 +335,7 @@ amelybe beleírjuk a kapcsolat nevét.
 
 **Kapcsolattípus:** az egyedtípusok közötti viszonyok absztrakt osztályai, melyek
 leírják, hogy az egyes egyedtípusok milyen kapcsolatban lehetnek egymással. **Nem
-összekeverendő a kapcsolat típusával (2. tétel, 3. pont)!**
+összekeverendő a kapcsolat típusával (1. tétel, 8. pont)!**
 
 **Kapcsolat előfordulás:** egy absztrakt kapcsolattípus konkrét előfordulása, két
 egyedpéldány közötti tényleges kapcsolat.
