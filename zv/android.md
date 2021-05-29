@@ -490,10 +490,12 @@ Például:
 
 ### Felhasznált (ajánlott) irodalom:
 
+* Wikipedia: [Android](https://hu.wikipedia.org/wiki/Android_(oper%C3%A1ci%C3%B3s_rendszer))
 * [Hivatalos Android fejlesztői oldal - angol](https://developer.android.com/index.html)
-* Eszéki Dániel - Bolla Kálmán Milán [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
+* Eszéki Dániel, Bolla Kálmán Milán: [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
 * Fehér Krisztián: [Alkalmazásfejlesztés Android Studio rendszerben](https://www.libri.hu/konyv/feher_krisztian.alkalmazasfejlesztes-android-studio-rendszerben-2.html)
-* Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](https://www.libri.hu/konyv/ekler_peter.android-alapu-szoftverfejlesztes.html)
+* Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](http://szatyika.hu/files/Android_26m3y1we.alapu.szoftverfejlesztes.2012.eBOOk-digIT.pdf)
 * [Android alapú szoftverfejlesztés kezdőknek - oktatási segédanyag](http://zeus.nyf.hu/~gyiszaly/targyak/android/jegyzetek/Android%20alap%C3%BA%20szoftverfejleszt%C3%A9s%20kezd%C5%91knek_lektor%C3%A1lt.pdf)
+* Konyha Péter: [Kerékpárost segítő alkalmazás fejlesztése Android platformra](http://midra.uni-miskolc.hu/document/25234/20371.pdf)
 
 [Kezdőlap](../README.md)
