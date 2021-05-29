@@ -484,16 +484,86 @@ Például:
 * DatePickerDialog, TimePickerDialog: dátum és idő kiválasztására szolgáló felületek
 
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
+
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
+
 ## 9. Fragmentek és navigáció megvalósítása.
+
 ## 10. Listák létrehozása. Adapter.
+
+A legtöbb alkalmazásban találkozunk olyan felületekkel, amelyek egy görgethető listát
+tartalmaznak. Ezek a listák lehetnek egy (```List```), vagy akár több oszloposak (```Grid```) a
+megjelenítendő tartalomból függően. Képek megjelenítésére általában Grid-et használunk a
+képernyő nagyságának függvényében változó oszlopszámmal, a sok ugyanolyan elemet
+tartalmazó felsorolást pedig listákba szervezzük.
+
+A listák létrehozására két osztály áll rendelkezésre, egyszerű listákra használhatjuk
+a [ListView](https://developer.android.com/reference/android/widget/ListView) osztályt,
+de a legtöbb esetben érdemes a [RecyclerView](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView)
+osztályt használni. A ```RecyclerView``` a ```ListView``` osztály egy fejlettebb és
+flexibilisebb verziója, beépítetten támogatja a nézetek újrahasznosítását, ezáltal
+jobb teljesítményt biztosít nagy adathalmazoknál. 
+
+Minden listához szükséges egy Adapter-t definiálni, amely a biztosítja a kapcsolatot
+az adatok és a megjelenített nézetek között. Az adapterekből különböző implementációk
+léteznek attól függően, milyen formában áll rendelkezésre az adatforrás. Tömbök esetén
+használható az [ArrayAdapter](https://developer.android.com/reference/android/widget/ArrayAdapter) osztály,
+[Cursor](https://developer.android.com/reference/android/database/Cursor) esetén pedig
+a [SimpleCursorAdapter](https://developer.android.com/reference/android/widget/SimpleCursorAdapter),
+```RecyclerView``` használatához viszont létre kell hoznunk egy saját adapter osztályt,
+ami a [RecyclerView.Adapter](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter)
+absztrakt osztályból örököl. Az adapter végzi a nézetek létrehozását, újrafelhasználását
+és az adatok frissítését.
+
+![Imgur](https://imgur.com/FP7aSN2.png)
+
+A működéshez szükséges még a listához tartozó [ViewHolder](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.ViewHolder)
+osztály létrehozása, amely a lista egy elemét reprezentálja, és annak nézet elemeit
+fogja tartalmazni. Az adapter a lista első betöltésekor szükség szerinti számban
+dinamikusan létrehozza a ```ViewHolder``` példányokat az [onCreateViewHolder](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter#onCreateViewHolder(android.view.ViewGroup,%20int))
+metódussal. Mielőtt egy ```ViewHolder``` megjelenítésre kerül, az [onBindViewHolder](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter#onBindViewHolder(VH,%20int))
+metódus kerül meghívásra, amelyben megtörténik a megjelenítendő adatok beállítása
+az adott elemre. Ha egy ```ViewHolder``` példány lekerül a képernyőről és már nem
+lesz látható, akkor újra felhasználásra kerül és az ```onBindViewHolder``` metódusban
+megtörténik az adatok frissítése.
+
+A felület elrendezésétől függően (lista, rács stb...) meg kell határozni egy [LayoutManager](https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.LayoutManager)
+példányt, ami a listát alkotó elemek méretezéséért a pozicionálásáért felel. Egy oszlopos
+listákhoz használhatjuk például a [LinearLayoutManager](https://developer.android.com/reference/androidx/recyclerview/widget/LinearLayoutManager)
+osztályt, és több oszlopból álló rácsos felületekhez pedig a
+[GridLayoutManager](https://developer.android.com/reference/androidx/recyclerview/widget/GridLayoutManager)
+osztályt.
+
+A listák elemeit általában módosítani is tudjuk a megjelenítés után, ilyenkor pedig
+szükség van a lista elemeinek átrendezésére, törlésére vagy új elem hozzáadására.
+Ezek kezeléséről az ```Adapter``` osztályunk gondoskodik, melyben jelezni kell a
+változásokat, vagyis melyik pozíciókon történt változás és milyen változásról van
+szó (hozzáadás, törlés).
+
+Vannak azonban olyan esetek, amikor nem tudjuk pontosan, hogy mi változott, és adott
+a lista új állapota és az aktuális állapot. Ekkor a két lista alapján meg kell határozni,
+a régi és új lista közötti különbségeket. Ennek leegyszerűsítésére használhatjuk a
+[ListAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter) osztályt,
+melynek konstruktora egy [DiffUtil.ItemCallback](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil.ItemCallback)
+példányt vár. Ez az osztály két megvalósítandó metódussal rendelkezik, amivel egyszerűen
+meghatározhatjuk a két listában eltérő elemeket.
+
+Az [areItemsTheSame](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil.ItemCallback#areContentsTheSame(T,%20T))
+metódusban meg kell állapítani, hogy a két összehasonlítandó objektum ugyanazt az
+elemet tartalmazza-e, ezt pedig legegyszerűbben az egyedi azonosítók összehasonlításával
+tehetjük meg. Ha a két elem ugyanazt az elemet tartalmazza, akkor következik az
+[areContentsTheSame](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil.ItemCallback#areContentsTheSame(T,%20T))
+metódus, ami azt adja meg, hogy a két objektum példány ugyanazokat az adatokat
+tartalmazza-e. Ezzel a két metódussal egyszerűen megállapítható a két lista elemei
+között keletkezett sorrendi vagy tartalmi változás, és csak azok az elemek kerülnek
+frissítésre, amelyekben ténylegesen változás történt.
 
 ### Felhasznált (ajánlott) irodalom:
 
 * Wikipedia: [Android](https://hu.wikipedia.org/wiki/Android_(oper%C3%A1ci%C3%B3s_rendszer))
 * [Hivatalos Android fejlesztői oldal - angol](https://developer.android.com/index.html)
 * Eszéki Dániel, Bolla Kálmán Milán: [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
-* Fehér Krisztián: [Alkalmazásfejlesztés Android Studio rendszerben](https://www.libri.hu/konyv/feher_krisztian.alkalmazasfejlesztes-android-studio-rendszerben-2.html)
+* Fehér Krisztián: [Alkalmazásfejlesztés Android Studio rendszerben](https://books.google.hu/books?id=P-6RDwAAQBAJ&lpg=PA81&hl=hu&pg=PA1#v=onepage&q&f=false)
 * Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](http://szatyika.hu/files/Android_26m3y1we.alapu.szoftverfejlesztes.2012.eBOOk-digIT.pdf)
 * [Android alapú szoftverfejlesztés kezdőknek - oktatási segédanyag](http://zeus.nyf.hu/~gyiszaly/targyak/android/jegyzetek/Android%20alap%C3%BA%20szoftverfejleszt%C3%A9s%20kezd%C5%91knek_lektor%C3%A1lt.pdf)
 * Konyha Péter: [Kerékpárost segítő alkalmazás fejlesztése Android platformra](http://midra.uni-miskolc.hu/document/25234/20371.pdf)
