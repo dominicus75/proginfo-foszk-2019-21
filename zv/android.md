@@ -489,6 +489,142 @@ Például:
 
 ## 9. Fragmentek és navigáció megvalósítása.
 
+A legtöbb mobil alkalmazás rendelkezik felhasználói felülettel, ennek megvalósítását
+Android rendszerben az Activity és Fragment osztályok biztosítják. Egy alkalmazáshoz
+több Activity és több Fragment is tartozhat, ezek összességét UI vezérlőknek hívjuk.
+Ha az alkalmazás funkciói egymástól jól elkülöníthetőek, érdemes a programot úgy
+felépíteni, hogy az egyes részek egymástól függetlenül, önállóan is működőképesek
+legyenek.
+
+Egy Fragment a felhasználói felület egy részét képezi, és önálló életciklussal rendelkezik.
+A Fragment példányok az általuk létrehozott felület viselkedéséért és működéséért
+felelnek. Viszont Fragment-ek használatához mindenképpen szükség van egy Activity
+osztályra, hiszen az életciklusukat befolyásolja a tartalmazó Activity állapota.
+A Fragment-ek egymástól teljesen függetlenül működnek, és az egymás között szükséges
+kommunikációt érdemes a tartalmazó Activity példányban megoldani. 
+
+Egy Fragment létrehozása sokban hasonlít egy Activity létrehozásához. Saját osztályokat
+kell definiálni, amelyek az Fragment ősosztályból örökölnek. Az Activity-hez hasonlóan a
+Fragment is saját életciklussal rendelkezik, létrehozásakor ugyanúgy egy inicializálásra
+használható Bundle objektumot kap, és elmentheti, valamint betöltheti az állapotukat.
+A Fragment viselkedését és működését az állapotváltozásokon keresztül tudjuk meghatározni.
+Életciklusa során az Activity-hez hasonló állapotokat vesz fel, de rendelkezik új
+metódusokkal, is mint például az ```onCreateView()```, ```onActivityCreated()```,
+```onDestroyView()```.
+
+Egy Fragment alapvető működéséhez általában 3 életciklus-metódus felüldefiniálására van
+szükség, amelyekben megtörténik a változók és erőforrások inicializálása, és a felhasználói
+felület létrehozása. A felület létrehozásához egy külön életciklusfüggvény tartozik
+(```onCreateView()```), melynek visszatérési értéke a megjelenítendő nézet gyökér eleme.
+
+### Fragment-ek létrehozása és megjelenítése
+
+Minden Fragmenthez egyedi view hierarchia rendelhető, amely XML­ erőforrásból és
+kódból is előállítható. Nem kötelező azonban, hogy egy Fragment felhasználói felülettel
+is rendelkezzen, készíthetünk úgynevezett hát­tér Fragmenteket is, amelyek szintén
+az Activityhez vannak rendelve, és nem felhasználói felülethez kapcsolódó feladatokat
+látnak el.
+
+A Fragment-ek létrehozására és megjelenítésére 2 különböző módszert alkalmazhatunk.
+Egyik megoldás, amikor **az Activity-hez tartozó elrendezés fájlban a** ```<fragment>```
+**tag használatával definiáljuk a Fragment-et** úgy, mint bármilyen más nézet elemet:
+
+```java
+
+	<LinearLayout
+		 android:orientation="horizontal"
+		 android:layout_width="match_parent"
+		 android:layout_height="match_parent">
+		 <fragment android:name="com.example.ExampleFragment"
+			 android:id="@+id/list"
+			 android:layout_weight="1"
+			 android:layout_width="0dp"
+			 android:layout_height="match_parent" />
+	</LinearLayout>
+
+```
+
+Ebben az esetben a Fragment elrendezés tulajdonságait ugyanúgy megadhatjuk, mint
+bármely nézet elemnek. Az ```android:name``` tulajdonság határozza meg a rendszer
+számára, melyik Fragment osztályt kell példányosítani, ebben az esetben az ```ExampleFragment```-et.
+Amikor az Activity létrehozása megtörténik és beállításra kerül a megjelenítendő
+felület, a rendszer létrehozza a szükséges Fragment-eket, melyekben az életciklusnak
+megfelelően meghívásra kerül az ```onCreateView()``` metódus. A metódus a Fragment
+által megjelenített nézettel tér vissza, így a létrehozott nézet a ```<fragment>```
+tag helyére kerül beillesztésre.
+
+A másik lehetséges megoldás az, hogy **programkódból hozzuk létre a Fragment-et**
+tranzakciók segítségével, majd egy nézetcsoporthoz adjuk. Ennek megvalósítására az
+Activity elrendezésében létrehozunk egy nézetcsoportot, általában egy FrameLayout-ot.
+Így tehát az elrendezés fájlt a következőképpen kell megadni:
+
+```java
+
+	<LinearLayout
+		 android:orientation="horizontal"
+		 android:layout_width="match_parent"
+		 android:layout_height="match_parent">
+		 <FrameLayout
+			 android:id="@+id/container"
+			 android:layout_width="match_parent"
+			 android:layout_height="match_parent" />
+	</LinearLayout>
+```
+
+Fontos, hogy a ```FrameLayout``` nézeten meghatározzuk az ```android:id``` attribútumot,
+hiszen a tranzakciók során ennek megadására szükséges lesz. A tranzakciók kezeléséhez
+szükség lesz a FragmentManager osztályra, melyet az ```AppCompatActivity``` osztályban található
+```getSupportFragmentManager()``` metódussal érhetünk el. A FragmentManager segítségével
+indíthatunk tranzakciót, melyben végrehajthatjuk a Fragment-ek létrehozását (```add()```),
+törlését(```remove()```), cseréjét(```replace()```).
+
+### Navigáció
+
+A teljes alkalmazás megjelenését befolyásolja hány felület alkotja és azokat milyen
+módon szeretnénk elérhetővé tenni a felhasználó számára. Legtöbbször menüvezérelt
+alkalmazásokkal találkozhatunk, a menüelemek kiválasztásával pedig elérhetjük ez
+az egyes felületeket. Android-ban az alábbi három megjelenítési rendszert szokták
+leginkább alkalmazni:
+
+<dl>
+  <dt>Tab</dt>
+  <dd>
+	Amennyiben az alkalmazásunk mindössze 2-3 felületből áll és ezek között szabadon
+	navigálhat a felhasználó érdemes Tab-okat használnunk. A Tab-okat megjeleníthetjük
+	fixen vagy görgethető formában abban az esetben ha az összes egyszerre megjeleníthető.
+	Szöveges és ikon tartalmat jeleníthetünk meg egy Tab-on így informálva a felhasználót
+	milyen oldalra fogjuk elnavigálni. Megvalósításhoz a ```TabLayout``` (```android.support.design.widget```
+	csomag) elemet kell a felületet leíró XML-ben elhelyeznünk, statikus Tab-ok
+	esetén pedig TabLayout-on belül ```TabItem``` elemeket kell definiálnunk.
+  </dd>
+  <dt>Action bar</dt>
+  <dd>
+	Ez a design elem segít a felhasználónak, hogy könnyebben átláthassa az alkalmazás
+	funkcióit és egyúttal a navigációt is segíti az alkalmazáson belül. Action Bar
+	által biztosított funkciók:
+	<ul>
+	  <li>Lehetőségünk van szöveges formában megjeleníteni, melyik felületen vagyunk</li>
+	  <li>Fontosabb funkciókat kiemelhetjük (pl.: keresés)</li>
+	  <li>Lenyíló listában további menüelemeket hozhatunk létre, amellyel navigálhatunk az
+	  egyes felületek között</li>
+	</ul>
+	<p>Az ActionBar tulajdonképpen egy dedikált felület az alkalmazáson belül, ame­lyen
+	az alkalmazás logója, a főbb parancsok és a globális navigációs eszközök láthatók.
+	Az ActionBar célja az, hogy a gyakran használt funkciókat egysze­rűen elérhetővé
+	tegye a felhasználók számára, és ne kelljen őket eldugott me­nükben, illetve
+	különféle nézeteken keresgélni.</p>
+  </dd>
+  <dt>Navigation Drawer</dt>
+  <dd>
+	A Navigation Drawer az előző két megoldásnál sokkal több lehetőséget kínál.
+	A teljes felület bal oldalán egy menüsáv helyezkedik el, amely a felhasználó
+	által megjeleníthető vagy eltüntethető. Action Bar-ral együtt használják,
+	annak lehetőségeit remekül ki tudja egészíteni. A menüsávon csoportosítva is
+	tudunk menüelemeket létrehozni vagy akár egy bejelentkezett felhasználó profiladatait
+	(kép, email cím, megjelenítési név, stb.) is megjeleníthetjük.
+  </dd>
+</dl>
+
 ## 10. Listák létrehozása. Adapter.
 
 A legtöbb alkalmazásban találkozunk olyan felületekkel, amelyek egy görgethető listát
@@ -567,5 +703,6 @@ frissítésre, amelyekben ténylegesen változás történt.
 * Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](http://szatyika.hu/files/Android_26m3y1we.alapu.szoftverfejlesztes.2012.eBOOk-digIT.pdf)
 * [Android alapú szoftverfejlesztés kezdőknek - oktatási segédanyag](http://zeus.nyf.hu/~gyiszaly/targyak/android/jegyzetek/Android%20alap%C3%BA%20szoftverfejleszt%C3%A9s%20kezd%C5%91knek_lektor%C3%A1lt.pdf)
 * Konyha Péter: [Kerékpárost segítő alkalmazás fejlesztése Android platformra](http://midra.uni-miskolc.hu/document/25234/20371.pdf)
+* DKRMG Android Szakkör [honlapja](http://dkrmg-android.github.io/index.html#page-top)
 
 [Kezdőlap](../README.md)
