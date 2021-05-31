@@ -484,6 +484,95 @@ Például:
 * DatePickerDialog, TimePickerDialog: dátum és idő kiválasztására szolgáló felületek
 
 ## 7. Felület létrehozása. Layout management megoldások. ViewGroup.
+A vezérlők önmagukban a teljes felület csak egy apró részét valósítják meg.
+Szükségünk van olyan felületi elemre is, amely összefogja a vezérlőket és meghatározza hol helyezkedjenek el a vezérlők a felhasználói felületen.
+Ezeket a felületi elemeket layout-nak hívják.
+Feladatuk a vezérlők rendezési szabályának meghatározása.
+Egy layout vezérlőelemeken (View) kívül tartalmazhat más layout-okat is, így biztosítva komplex felületek létrehozását.
+Amikor létrehozunk egy Activity-t vagy Fragment-et, a felületet leíró XML gyökéreleme egy layout típusú elem lesz.
+
+**ViewGroup**
+Minden layout ősosztályja a ViewGroup. 
+Egy ViewGroup típusú elem több View-t vagy akár további ViewGroup elemet tartalmazhat, ezeket gyerekeknek (children) hívjuk.
+A ViewGroup osztály definiálja a `ViewGroup.LayoutParams` osztályt, ami a layout paraméterek ősosztálya.
+
+**LinearLayout**
+A LinearLayout a legalapvetőbb elrendezési módszer.
+Olyan elrendezés valósítható meg vele, ami a nézeteket vízszintesen egy sorba vagy függőlegesen egymás alá helyezi.
+
+Az elrendezést a LinearLayout `orientation` attribútumával változtathatjuk meg, vízszintes (`horizontal`) vagy függőleges (`vertical`) megjelenítések közül választhatunk.
+Amennyiben nem állítjuk be mi magunk az XML kódban az alapértelemezett vízszintes megjelenítést fogja használni, tehát a vezérlők egymás mellett jelennek meg a LinearLayout-on belül. 
+
+LinearLayout-on belül lehetőségünk van a vezérlőelemek pozícionálására is, a négy oldalra, vízszintesen, függőlegesen vagy mindkét irányt tekintve középre is elhelyezhetjük a vezérlőinket.
+
+Vezérlők jobb elhelyezése érdekében súlyozást is alkalmazhatunk az `android:layout_weight` attribútummal.
+Vezérlők szélességét vagy magasságát `0dp`-re kell vennünk attól függően, hogy a súlyokat vízszintesen vagy függőlegesen alkalmazzuk.
+Súlyösszeget a szülő elemben lehetőségünk van beállítani az `android:weightSum` attribútummal, ekkor jobb performanciát érhetünk el.
+Az alábbi példában egy 1-3-1 arányban osztott LinearLayout látható.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" 
+android:orientation="horizontal"
+android:weightSum="5">
+
+  <Button
+  android:layout_width="0dp"
+  android:layout height="wrap_content"
+  android:layout_weight="1"
+  android:text="1" />
+
+  <Button
+  android:layout_width="0dp"
+  android:layout height="wrap_content"
+  android:layout_weight="3"
+  android:text="3" />
+
+  <Button
+  android:layout_width="0dp"
+  android:layout height="wrap_content"
+  android:layout_weight="1"
+  android:text="1" />
+
+</LinearLayout>
+```
+
+**RelativeLayout**
+Relative Layout lehetővé teszi, hogy vezérlők egy csoportját relatív elhelyezkedésük alapján jelenítsük meg. A vezérlőket más vezérlőkhöz (ennek az a feltétele, hogy a vezérlők azonosítóját be kell állítanunk) vagy a szülő Relative Layout-hoz viszonyítva pozícionálhatjuk a felületen.
+Ez a típusú pozícionálás a felületet leíró struktúrát egyszerűbbé teszi, olyan felületek, amelyhez korábban több egymásba ágyazott Linear Layout volt szükséges, itt egyetlen layout vezérlő ki tudja váltani.
+
+Néhány vezérlő attribútum a sok közül:
+* `android:layout_alignParentTop`: `true` esetén a vezérlő felső széle a szülő felső széléhez igazodik.
+* `android:layout_centerVertical`: `true` esetén a vezérlőt vertikálisan a szülő közepére illeszti.
+* `android:layout_below`: a vezérlő felső szélét a megadott másik vezérlő alá helyezi el.
+* `android:layout_toRightOf`: a vezérlő bal szélét a megadott másik vezérlő jobb széléhez helyezi el.
+
+A jobb performancia és eszköztámogatás miatt érdemes a ConstraintLayout-ot használni.
+
+**ConstraintLayout**
+ConstraintLayout egy új layout vezérlő elem, amely használatával könnyűszerrel létre tudunk hozni komplex felületeket.
+A megvalósításban nagy szerepet kap az Android Studio beépített designere, számos hasznos funkcióval bővült, amely a felületlétrehozást segíti.
+A ConstraintLayout megtartotta a RelativeLayout által biztosított, vezérlők egymáshoz viszonyított elrendezési lehetőségét és ezen túlmutatva további elrendezéseket tesz lehetővé
+
+Korábban erőforrások segítségével tudtuk megoldani, hogy egy adott felület több felbontáson is hasonló kinézettel rendelkezzen, a ConstraintLayout ebben is segít, gyakorlatilag egy layout XML és egy erőforráskészlet is elegendő a felületek létrehozásához.
+
+Amikor ConstraintLayout-ot használunk egy vezérlő (View) esetében legalább egy vízszintes és egy függőleges beállítást (constraint) meg kell határoznunk. Ezeket az attribútumokat akkor kapják meg a vezérlők – ugyanúgy, mint a korábbi layout vezérlők esetén – ha a ConstraintLayout a szülő elemük.
+
+A beállítások valamilyen kapcsolatot vagy elhelyezkedést írnak le egy másik vezérlőhöz vagy a szülő layout-hoz, illetve guideline-hoz (felületen nem látható vertikális vagy horizontális vonal, ami a vezérlők elhelyezkedését segíti) képest.
+Távolságokat `margin` segítségével adhatunk meg `dp` mértékegységben.
+
+Android Studio-ban egy új felület létrehozásakor már alapértelmezetten a ConstraintLayout-ot kapjuk, mint szülő layout vezérlő.
+
+Lehetőség van a vezérlők összeláncolására. Ekkor megadott beállítás szerint töltik ki vízszintesen vagy függőlegesen a teret:
+
+* Spread: rendelkezésre álló helyet egyenlően elosztva töltik ki a vezérlők (alapértelmezett)
+* Spread inside: az első és utolsó elemet rögzítjük a szülő ConstraintLayout-hoz és a belső elemek pedig osztoznak a közbülső helyen
+* Weighted: előző két beállítást kihasználva a közbülső elem (egyet vagy többet) méretét match constraint-re lehet állítani és súlyokat tudunk meghatározni (hasonlít a LinearLayout weight attribútumára)
+* Packed: vezérlők közvetlenül egymás mellett helyezkednek el (leszámítva a margin-t)
+
+A ConstraintLayout egy leszármazott osztálya a MotionLayout, aminek segítségével könnyedén tudunk animációkat létrehozni a felületen.
 
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
 
