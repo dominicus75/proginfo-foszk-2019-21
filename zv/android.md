@@ -487,6 +487,63 @@ Például:
 
 ## 8. Intent felépítése és működése. Implicit és explicit Intent. Activity indítás formái.
 
+A legtöbb Android rendszerre készült alkalmazás több Activity-vel rendelkezik, és
+mindegyiknek önálló feladatköre van. Mivel a rendszerben minden alkalmazás külön
+folyamatként fut, külön engedélyekkel, amelyek tiltják más alkalmazások hozzáférését
+a használt erőforrásokhoz, ezért egy alkalmazásból nem tudjuk közvetlenül elindítani
+egy másik alkalmazás valamely komponensét. Azt csak a rendszer tudja megtenni. Ezért
+az alkalmazáson belül egy másik Activity megnyitásához, vagy egy másik alkalmazás
+elindításához Intent-ek létrehozására van szükség. Az Intent egy olyan objektum,
+melyet az alkalmazás küld az Android rendszernek, majd a rendszer az Intent tulajdonságai
+alapján kiválasztja a megfelelő komponenseket, amelyek fogadni tudják az Intent-et.
+Tehát a rendszerre telepített alkalmazások Intent-ek segítségével kommunikálnak egymással,
+valamint az Android rendszer is Intent-eket küld bizonyos események bekövetkezésekor,
+mint például a rendszerindítás befejezése, alacsony akkumulátor szint, vagy akár egy
+alkalmazás sikeres telepítése. Az Activity, a Service és a Broadcast intentek segítségével
+aktivizálódik.
+
+Az intentek futási időben összekötik a különálló komponenseket. Egy intentet egy
+```Intent``` objektum valósít meg, amely definiál egy üzenetet, vagy egy konkrét
+komponens, vagy egy megadott típusú komponens indítására. Intent típusok:
+* **Explicit Intent**:  egy *konkrét komponenst határoz meg*, akár az alkalmazáson
+belül, akár egy másik alkalmazásban
+* **Implicit Intent**: egy *műveletet/tevékenységet definiál*. Ilyen Intent-ek esetében
+a rendszer egy olyan alkalmazást keres, amely kezelni tudja az Intent által
+meghatározott műveletet. Ha több alkalmazás is képes erre, akkor a felhasználó
+kiválaszthatja, melyik komponenst szeretné használni.
+
+Új Activity indításához a ```startActivity(Intent)``` metódust használjuk, és a
+paraméterben megadott Intent objektum tartalmazza az információt, amely alapján a
+rendszer létrehozza és elindítja a megadott Activity-t. Néha egy activityt olyan
+célból futtatunk, hogy az valamilyen eredményt szolgáltasson nekünk. Ilyenkor az
+activityt a ```startActivityForResult()``` metódussal kell indítani a ```startActivity()```
+helyett. Ekkor az eredmény megkapásához az Activity osztály ```onActivityResult()```
+callback metódusát kell implementálni. Mikor az indított activity végez, visszaad
+egy eredményt egy Intent-ben az ```onActivityResult()``` metódusnak.
+
+A ```startService(Intent)``` metódust használjuk a szolgáltatások indítására, ahol
+az intent paraméter határozza meg az indítandó szolgáltatást. Broadcast-ok küldésére
+is Intent-eket használ az Android rendszer, ennek megvalósításához a ```sendBroadcast(Intent)```
+metódust használhatjuk. Az Intent-ben a ```setAction(String)``` metódussal meg kell
+határozni egy egyedi szöveges értéket, amellyel a broadcast egyedileg beazonosítható.
+
+```java
+Intent intent = new Intent();
+intent.setAction(TEST_BROADCAST_ACTION);
+sendBroadcast(intent);
+```
+
+Az Intent részei:
+* **Címzett komponens osztályneve** (Component name): ha üres akkor az Android
+megkeresi a megfelelőt
+* **Akció** (Action): az elvárt vagy megtörtént esemény. Ez egy szöveges érték,
+amelynek értéke általában az Intent osztályban meghatározott konstansok közül kerül ki. 
+* **Adat** (Data): az adat (URI-ja és MIME típusa), amin az esemény értelmezett
+* **Kategória** (Category): további kritériumok a feldolgozó komponessel kapcsolatban
+* **Extrák** (Extras): saját kulcs-érték párok, amiket át akarunk adni a címzettnek
+* **Kapcsolók** (Flags): Activity indításának lehetőségei
+
+
 ## 9. Fragmentek és navigáció megvalósítása.
 
 A legtöbb mobil alkalmazás rendelkezik felhasználói felülettel, ennek megvalósítását
@@ -697,10 +754,12 @@ frissítésre, amelyekben ténylegesen változás történt.
 ### Felhasznált (ajánlott) irodalom:
 
 * Wikipedia: [Android](https://hu.wikipedia.org/wiki/Android_(oper%C3%A1ci%C3%B3s_rendszer))
+* Rédecsi Máté, Tóth Gábor: [Android](http://nyelvek.inf.elte.hu/leirasok/Android/index.php)
 * [Hivatalos Android fejlesztői oldal - angol](https://developer.android.com/index.html)
 * Eszéki Dániel, Bolla Kálmán Milán: [Android szoftverfejlesztés](https://oszkdk.oszk.hu/storage/00/03/17/37/dd/1/03_Esz__ki_D__niel_Bolla_K__lm__n_Mil__n_Android_szoftverfejleszt__s.pdf)
 * Fehér Krisztián: [Alkalmazásfejlesztés Android Studio rendszerben](https://books.google.hu/books?id=P-6RDwAAQBAJ&lpg=PA81&hl=hu&pg=PA1#v=onepage&q&f=false)
-* Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](http://szatyika.hu/files/Android_26m3y1we.alapu.szoftverfejlesztes.2012.eBOOk-digIT.pdf)
+* dr. Ekler Péter, Fehér Marcell, Forstner Bertalan, Kelényi Imre: [Android-alapú szoftverfejlesztés](http://szatyika.hu/files/Android_26m3y1we.alapu.szoftverfejlesztes.2012.eBOOk-digIT.pdf)
+* dr. Ekler Péter: [Mobil- és webes szoftverek](https://vik.wiki/images/f/f6/Mobil-web_2017_eloadasdia_android_6.pdf) (*előadásvázlat*)
 * [Android alapú szoftverfejlesztés kezdőknek - oktatási segédanyag](http://zeus.nyf.hu/~gyiszaly/targyak/android/jegyzetek/Android%20alap%C3%BA%20szoftverfejleszt%C3%A9s%20kezd%C5%91knek_lektor%C3%A1lt.pdf)
 * Konyha Péter: [Kerékpárost segítő alkalmazás fejlesztése Android platformra](http://midra.uni-miskolc.hu/document/25234/20371.pdf)
 * DKRMG Android Szakkör [honlapja](http://dkrmg-android.github.io/index.html#page-top)
