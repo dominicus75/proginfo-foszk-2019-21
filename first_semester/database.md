@@ -1208,12 +1208,15 @@ függőség mentén.
 ### 10.1 Az SQL nyelv általános jellemzői
 
 Az **SQL (Structured Query Language – strukturált lekérdezőnyelv)** relációsadatbázis-kezelők
-szabványos lekérdezési nyelve. Jellegét tekintve szakterület-specifikus nyelv. Az
-SQL nem algoritmikus nyelv, nem tartalmaz algoritmus szerkezeteket (például elágazás,
-ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Halmazorientált
-nyelv, amely a relációkon dolgozik. Az SQL-t jellemzően kliens-szerver hierarchiában
-használják, ahol az adatbázis a szerveren kerül tárolásra. A kliens oldaláról érkező
-kéréseket a szerver szolgálja ki, és az adatokat visszaadja a kliensnek.
+szabványos lekérdezési nyelve. Az SQL deklaratív nyelv, ami azt jelenti, hogy a kiadott
+parancsokkal azt definiálhatjuk, hogy mit szeretnénk eredményül kapni. Szemben az imperatív
+programozási stílussal, amelyben a programozónak meg kell adnia, hogy milyen módon jut
+el a probléma megoldásához. Az SQL ezért nem tartalmaz algoritmus szerkezeteket (például
+elágazás, ciklus), de algoritmikus nyelvekbe beépíthető (beágyazott SQL). Jellegét
+tekintve az SQL szakterület-specifikus (halmazorientált) nyelv, amely a relációkon
+dolgozik. Az SQL-t jellemzően kliens-szerver hierarchiában használják, ahol az adatbázis
+a szerveren kerül tárolásra. A kliens oldaláról érkező kéréseket a szerver szolgálja ki,
+és az adatokat visszaadja a kliensnek.
 
 Az SQL nyelv **önálló felhasználás**a esetén csak a nyelv saját utasításai állnak
 rendelkezésre. Ennek alkalmazására főként akkor kerülhet sor, ha nincs megfelelő
